@@ -11,7 +11,7 @@ export class Disbursements extends APIResource {
    * Create Disbursement
    */
   create(body: DisbursementCreateParams, options?: RequestOptions): APIPromise<PublicDisbursementResponse> {
-    return this._client.post('/v1/public/disbursements', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/disbursements', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Disbursements extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -42,11 +41,7 @@ export class Disbursements extends APIResource {
     body: DisbursementUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PublicDisbursementResponse> {
-    return this._client.put(path`/v1/public/disbursements/${disbursementID}`, {
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/disbursements/${disbursementID}`, { body, ...options });
   }
 
   /**
@@ -64,7 +59,6 @@ export class Disbursements extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -80,7 +74,6 @@ export class Disbursements extends APIResource {
     return this._client.delete(path`/v1/public/disbursements/${disbursementID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

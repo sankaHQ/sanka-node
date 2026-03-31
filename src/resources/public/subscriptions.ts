@@ -11,7 +11,7 @@ export class Subscriptions extends APIResource {
    * Create Subscription
    */
   create(body: SubscriptionCreateParams, options?: RequestOptions): APIPromise<SubscriptionDetail> {
-    return this._client.post('/v1/public/subscriptions', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/subscriptions', { body, ...options });
   }
 
   /**
@@ -22,11 +22,7 @@ export class Subscriptions extends APIResource {
     query: SubscriptionRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<SubscriptionDetail> {
-    return this._client.get(path`/v1/public/subscriptions/${subscriptionID}`, {
-      query,
-      ...options,
-      __security: {},
-    });
+    return this._client.get(path`/v1/public/subscriptions/${subscriptionID}`, { query, ...options });
   }
 
   /**
@@ -42,7 +38,6 @@ export class Subscriptions extends APIResource {
       query: { external_id },
       body,
       ...options,
-      __security: {},
     });
   }
 
@@ -61,7 +56,6 @@ export class Subscriptions extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -77,7 +71,6 @@ export class Subscriptions extends APIResource {
     return this._client.delete(path`/v1/public/subscriptions/${subscriptionID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

@@ -11,7 +11,7 @@ export class Deals extends APIResource {
    * Create Deal
    */
   create(body: DealCreateParams, options?: RequestOptions): APIPromise<PublicCaseResponse> {
-    return this._client.post('/v1/public/deals', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/deals', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Deals extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -39,12 +38,7 @@ export class Deals extends APIResource {
    */
   update(caseID: string, params: DealUpdateParams, options?: RequestOptions): APIPromise<PublicCaseResponse> {
     const { external_id, ...body } = params;
-    return this._client.put(path`/v1/public/deals/${caseID}`, {
-      query: { external_id },
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/deals/${caseID}`, { query: { external_id }, body, ...options });
   }
 
   /**
@@ -62,7 +56,6 @@ export class Deals extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -75,11 +68,7 @@ export class Deals extends APIResource {
     options?: RequestOptions,
   ): APIPromise<PublicCaseResponse> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/deals/${caseID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/deals/${caseID}`, { query: { external_id }, ...options });
   }
 
   /**
@@ -89,7 +78,7 @@ export class Deals extends APIResource {
     query: DealListPipelinesParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<DealListPipelinesResponse> {
-    return this._client.get('/v1/public/deals/pipelines', { query, ...options, __security: {} });
+    return this._client.get('/v1/public/deals/pipelines', { query, ...options });
   }
 }
 

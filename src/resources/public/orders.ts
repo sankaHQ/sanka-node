@@ -11,7 +11,7 @@ export class Orders extends APIResource {
    * Create Orders
    */
   create(body: OrderCreateParams, options?: RequestOptions): APIPromise<BulkOrders> {
-    return this._client.post('/v1/public/orders', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/orders', { body, ...options });
   }
 
   /**
@@ -22,14 +22,14 @@ export class Orders extends APIResource {
     query: OrderRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<OrderRetrieveResponse> {
-    return this._client.get(path`/v1/public/orders/${orderID}`, { query, ...options, __security: {} });
+    return this._client.get(path`/v1/public/orders/${orderID}`, { query, ...options });
   }
 
   /**
    * Update Order
    */
   update(orderID: string, body: OrderUpdateParams, options?: RequestOptions): APIPromise<BulkOrders> {
-    return this._client.put(path`/v1/public/orders/${orderID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/orders/${orderID}`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,6 @@ export class Orders extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -60,18 +59,14 @@ export class Orders extends APIResource {
     options?: RequestOptions,
   ): APIPromise<OrderDeleteResponse> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/orders/${orderID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/orders/${orderID}`, { query: { external_id }, ...options });
   }
 
   /**
    * Bulk Create Orders
    */
   bulkCreate(body: OrderBulkCreateParams, options?: RequestOptions): APIPromise<BulkOrders> {
-    return this._client.post('/v1/public/orders/bulk', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/orders/bulk', { body, ...options });
   }
 }
 

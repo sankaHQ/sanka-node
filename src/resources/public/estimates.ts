@@ -11,7 +11,7 @@ export class Estimates extends APIResource {
    * Create Estimate
    */
   create(body: EstimateCreateParams, options?: RequestOptions): APIPromise<PublicEstimateResponse> {
-    return this._client.post('/v1/public/estimates', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/estimates', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Estimates extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -42,7 +41,7 @@ export class Estimates extends APIResource {
     body: EstimateUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PublicEstimateResponse> {
-    return this._client.put(path`/v1/public/estimates/${estimateID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/estimates/${estimateID}`, { body, ...options });
   }
 
   /**
@@ -60,7 +59,6 @@ export class Estimates extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -76,7 +74,6 @@ export class Estimates extends APIResource {
     return this._client.delete(path`/v1/public/estimates/${estimateID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

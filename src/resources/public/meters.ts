@@ -11,7 +11,7 @@ export class Meters extends APIResource {
    * Create Meter
    */
   create(body: MeterCreateParams, options?: RequestOptions): APIPromise<Meter> {
-    return this._client.post('/v1/public/meters', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/meters', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Meters extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -39,12 +38,7 @@ export class Meters extends APIResource {
    */
   update(meterID: string, params: MeterUpdateParams, options?: RequestOptions): APIPromise<Meter> {
     const { external_id, ...body } = params;
-    return this._client.put(path`/v1/public/meters/${meterID}`, {
-      query: { external_id },
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/meters/${meterID}`, { query: { external_id }, body, ...options });
   }
 
   /**
@@ -62,7 +56,6 @@ export class Meters extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -75,11 +68,7 @@ export class Meters extends APIResource {
     options?: RequestOptions,
   ): APIPromise<Meter> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/meters/${meterID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/meters/${meterID}`, { query: { external_id }, ...options });
   }
 }
 

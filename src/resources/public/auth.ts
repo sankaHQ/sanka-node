@@ -9,7 +9,7 @@ export class Auth extends APIResource {
    * Get Current Public Auth Identity
    */
   getCurrentIdentity(options?: RequestOptions): APIPromise<AuthGetCurrentIdentityResponse> {
-    return this._client.get('/v1/public/auth/whoami', { ...options, __security: {} });
+    return this._client.get('/v1/public/auth/whoami', options);
   }
 }
 

@@ -11,7 +11,7 @@ export class Bills extends APIResource {
    * Create Bill
    */
   create(body: BillCreateParams, options?: RequestOptions): APIPromise<PublicBillResponse> {
-    return this._client.post('/v1/public/bills', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/bills', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Bills extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -38,7 +37,7 @@ export class Bills extends APIResource {
    * Update Bill
    */
   update(billID: string, body: BillUpdateParams, options?: RequestOptions): APIPromise<PublicBillResponse> {
-    return this._client.put(path`/v1/public/bills/${billID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/bills/${billID}`, { body, ...options });
   }
 
   /**
@@ -56,7 +55,6 @@ export class Bills extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -69,11 +67,7 @@ export class Bills extends APIResource {
     options?: RequestOptions,
   ): APIPromise<PublicBillResponse> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/bills/${billID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/bills/${billID}`, { query: { external_id }, ...options });
   }
 }
 

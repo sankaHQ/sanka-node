@@ -13,7 +13,7 @@ export class Expenses extends APIResource {
    * Create Expense
    */
   create(body: ExpenseCreateParams, options?: RequestOptions): APIPromise<PublicExpenseResponse> {
-    return this._client.post('/v1/public/expenses', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/expenses', { body, ...options });
   }
 
   /**
@@ -32,7 +32,6 @@ export class Expenses extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -44,7 +43,7 @@ export class Expenses extends APIResource {
     body: ExpenseUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PublicExpenseResponse> {
-    return this._client.put(path`/v1/public/expenses/${expenseID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/expenses/${expenseID}`, { body, ...options });
   }
 
   /**
@@ -62,7 +61,6 @@ export class Expenses extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -78,7 +76,6 @@ export class Expenses extends APIResource {
     return this._client.delete(path`/v1/public/expenses/${expenseID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 
@@ -91,7 +88,7 @@ export class Expenses extends APIResource {
   ): APIPromise<ExpenseUploadAttachmentResponse> {
     return this._client.post(
       '/v1/public/expenses/files',
-      multipartFormRequestOptions({ body, ...options, __security: {} }, this._client),
+      multipartFormRequestOptions({ body, ...options }, this._client),
     );
   }
 }
