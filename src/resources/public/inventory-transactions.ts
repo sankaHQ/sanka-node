@@ -11,7 +11,7 @@ export class InventoryTransactions extends APIResource {
    * Create Inventory Transaction
    */
   create(body: InventoryTransactionCreateParams, options?: RequestOptions): APIPromise<TransactionResponse> {
-    return this._client.post('/v1/public/inventory-transactions', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/inventory-transactions', { body, ...options });
   }
 
   /**
@@ -29,7 +29,6 @@ export class InventoryTransactions extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -41,11 +40,7 @@ export class InventoryTransactions extends APIResource {
     body: InventoryTransactionUpdateParams,
     options?: RequestOptions,
   ): APIPromise<TransactionResponse> {
-    return this._client.put(path`/v1/public/inventory-transactions/${transactionID}`, {
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/inventory-transactions/${transactionID}`, { body, ...options });
   }
 
   /**
@@ -63,7 +58,6 @@ export class InventoryTransactions extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -71,10 +65,7 @@ export class InventoryTransactions extends APIResource {
    * Delete Inventory Transaction
    */
   delete(transactionID: string, options?: RequestOptions): APIPromise<TransactionResponse> {
-    return this._client.delete(path`/v1/public/inventory-transactions/${transactionID}`, {
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/inventory-transactions/${transactionID}`, options);
   }
 }
 

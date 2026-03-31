@@ -15,7 +15,7 @@ export class Properties extends APIResource {
     body: PropertyCreateParams,
     options?: RequestOptions,
   ): APIPromise<PropertyMutation> {
-    return this._client.post(path`/v1/public/properties/${objectName}`, { body, ...options, __security: {} });
+    return this._client.post(path`/v1/public/properties/${objectName}`, { body, ...options });
   }
 
   /**
@@ -34,7 +34,6 @@ export class Properties extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -47,11 +46,7 @@ export class Properties extends APIResource {
     options?: RequestOptions,
   ): APIPromise<PropertyMutation> {
     const { object_name, ...body } = params;
-    return this._client.put(path`/v1/public/properties/${object_name}/${propertyRef}`, {
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/properties/${object_name}/${propertyRef}`, { body, ...options });
   }
 
   /**
@@ -70,7 +65,6 @@ export class Properties extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -83,10 +77,7 @@ export class Properties extends APIResource {
     options?: RequestOptions,
   ): APIPromise<PropertyMutation> {
     const { object_name } = params;
-    return this._client.delete(path`/v1/public/properties/${object_name}/${propertyRef}`, {
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/properties/${object_name}/${propertyRef}`, options);
   }
 }
 

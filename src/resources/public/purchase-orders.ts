@@ -11,7 +11,7 @@ export class PurchaseOrders extends APIResource {
    * Create Purchase Order
    */
   create(body: PurchaseOrderCreateParams, options?: RequestOptions): APIPromise<PurchaseOrderResponse> {
-    return this._client.post('/v1/public/purchase-orders', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/purchase-orders', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class PurchaseOrders extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -42,11 +41,7 @@ export class PurchaseOrders extends APIResource {
     body: PurchaseOrderUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PurchaseOrderResponse> {
-    return this._client.put(path`/v1/public/purchase-orders/${purchaseOrderID}`, {
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/purchase-orders/${purchaseOrderID}`, { body, ...options });
   }
 
   /**
@@ -64,7 +59,6 @@ export class PurchaseOrders extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -80,7 +74,6 @@ export class PurchaseOrders extends APIResource {
     return this._client.delete(path`/v1/public/purchase-orders/${purchaseOrderID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

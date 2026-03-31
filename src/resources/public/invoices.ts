@@ -11,7 +11,7 @@ export class Invoices extends APIResource {
    * Create Invoice
    */
   create(body: InvoiceCreateParams, options?: RequestOptions): APIPromise<Invoice> {
-    return this._client.post('/v1/public/invoices', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/invoices', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Invoices extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -38,7 +37,7 @@ export class Invoices extends APIResource {
    * Update Invoice
    */
   update(invoiceID: string, body: InvoiceUpdateParams, options?: RequestOptions): APIPromise<Invoice> {
-    return this._client.put(path`/v1/public/invoices/${invoiceID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/invoices/${invoiceID}`, { body, ...options });
   }
 
   /**
@@ -56,7 +55,6 @@ export class Invoices extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -72,7 +70,6 @@ export class Invoices extends APIResource {
     return this._client.delete(path`/v1/public/invoices/${invoiceID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }
