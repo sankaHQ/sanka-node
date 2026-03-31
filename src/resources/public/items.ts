@@ -11,7 +11,7 @@ export class Items extends APIResource {
    * Create Item
    */
   create(body: ItemCreateParams, options?: RequestOptions): APIPromise<ItemResponse> {
-    return this._client.post('/v1/public/items', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/items', { body, ...options });
   }
 
   /**
@@ -22,14 +22,14 @@ export class Items extends APIResource {
     query: ItemRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<ShopTurboItem> {
-    return this._client.get(path`/v1/public/items/${itemID}`, { query, ...options, __security: {} });
+    return this._client.get(path`/v1/public/items/${itemID}`, { query, ...options });
   }
 
   /**
    * Update Item
    */
   update(itemID: string, body: ItemUpdateParams, options?: RequestOptions): APIPromise<ItemResponse> {
-    return this._client.put(path`/v1/public/items/${itemID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/items/${itemID}`, { body, ...options });
   }
 
   /**
@@ -47,7 +47,6 @@ export class Items extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -60,11 +59,7 @@ export class Items extends APIResource {
     options?: RequestOptions,
   ): APIPromise<ItemResponse> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/items/${itemID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/items/${itemID}`, { query: { external_id }, ...options });
   }
 }
 

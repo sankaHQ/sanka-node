@@ -11,7 +11,7 @@ export class Contacts extends APIResource {
    * Create Contact
    */
   create(body: ContactCreateParams, options?: RequestOptions): APIPromise<PublicContactResponse> {
-    return this._client.post('/v1/public/contacts', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/contacts', { body, ...options });
   }
 
   /**
@@ -22,7 +22,7 @@ export class Contacts extends APIResource {
     query: ContactRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<ContactRetrieveResponse> {
-    return this._client.get(path`/v1/public/contacts/${contactID}`, { query, ...options, __security: {} });
+    return this._client.get(path`/v1/public/contacts/${contactID}`, { query, ...options });
   }
 
   /**
@@ -33,7 +33,7 @@ export class Contacts extends APIResource {
     body: ContactUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PublicContactResponse> {
-    return this._client.put(path`/v1/public/contacts/${contactID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/contacts/${contactID}`, { body, ...options });
   }
 
   /**
@@ -51,7 +51,6 @@ export class Contacts extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -67,7 +66,6 @@ export class Contacts extends APIResource {
     return this._client.delete(path`/v1/public/contacts/${contactID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

@@ -11,7 +11,7 @@ export class Inventories extends APIResource {
    * Create Inventory
    */
   create(body: InventoryCreateParams, options?: RequestOptions): APIPromise<InventoryResponse> {
-    return this._client.post('/v1/public/inventories', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/inventories', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Inventories extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -42,11 +41,7 @@ export class Inventories extends APIResource {
     body: InventoryUpdateParams,
     options?: RequestOptions,
   ): APIPromise<InventoryResponse> {
-    return this._client.put(path`/v1/public/inventories/${inventoryID}`, {
-      body,
-      ...options,
-      __security: {},
-    });
+    return this._client.put(path`/v1/public/inventories/${inventoryID}`, { body, ...options });
   }
 
   /**
@@ -64,7 +59,6 @@ export class Inventories extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -80,7 +74,6 @@ export class Inventories extends APIResource {
     return this._client.delete(path`/v1/public/inventories/${inventoryID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

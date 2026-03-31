@@ -9,7 +9,7 @@ export class Enrich extends APIResource {
    * Enrich Company Data
    */
   create(body: EnrichCreateParams, options?: RequestOptions): APIPromise<EnrichCreateResponse> {
-    return this._client.post('/v1/enrich', { body, ...options, __security: {} });
+    return this._client.post('/v1/enrich', { body, ...options });
   }
 }
 

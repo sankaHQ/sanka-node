@@ -11,7 +11,7 @@ export class Payments extends APIResource {
    * Create Payment
    */
   create(body: PaymentCreateParams, options?: RequestOptions): APIPromise<PaymentResponse> {
-    return this._client.post('/v1/public/payments', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/payments', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Payments extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -47,7 +46,6 @@ export class Payments extends APIResource {
       query: { external_id },
       body,
       ...options,
-      __security: {},
     });
   }
 
@@ -66,7 +64,6 @@ export class Payments extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -82,7 +79,6 @@ export class Payments extends APIResource {
     return this._client.delete(path`/v1/public/payments/${paymentID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

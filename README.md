@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Sanka REST API from server-side TypeScript or JavaScript.
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.sanka.com](https://docs.sanka.com/en/developers/api). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -25,7 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Sanka from 'sanka';
 
-const client = new Sanka();
+const client = new Sanka({
+  apiKey: process.env['SANKA_API_KEY'], // This is the default and can be omitted
+});
 
 const enrich = await client.enrich.create({ object_type: 'object_type' });
 
@@ -40,7 +42,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Sanka from 'sanka';
 
-const client = new Sanka();
+const client = new Sanka({
+  apiKey: process.env['SANKA_API_KEY'], // This is the default and can be omitted
+});
 
 const params: Sanka.EnrichCreateParams = { object_type: 'object_type' };
 const enrich: Sanka.EnrichCreateResponse = await client.enrich.create(params);
