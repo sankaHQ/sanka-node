@@ -10,7 +10,7 @@ export class Workflows extends APIResource {
    * Get Workflow
    */
   retrieve(workflowRef: string, options?: RequestOptions): APIPromise<WorkflowRetrieveResponse> {
-    return this._client.get(path`/v1/public/workflows/${workflowRef}`, { ...options, __security: {} });
+    return this._client.get(path`/v1/public/workflows/${workflowRef}`, options);
   }
 
   /**
@@ -20,7 +20,7 @@ export class Workflows extends APIResource {
     query: WorkflowListParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<WorkflowListResponse> {
-    return this._client.get('/v1/public/workflows', { query, ...options, __security: {} });
+    return this._client.get('/v1/public/workflows', { query, ...options });
   }
 
   /**
@@ -30,28 +30,28 @@ export class Workflows extends APIResource {
     body: WorkflowCreateOrUpdateParams,
     options?: RequestOptions,
   ): APIPromise<WorkflowCreateOrUpdateResponse> {
-    return this._client.post('/v1/public/workflows', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/workflows', { body, ...options });
   }
 
   /**
    * List Public Workflow Actions
    */
   listActions(options?: RequestOptions): APIPromise<WorkflowListActionsResponse> {
-    return this._client.get('/v1/public/workflows/actions', { ...options, __security: {} });
+    return this._client.get('/v1/public/workflows/actions', options);
   }
 
   /**
    * Get Workflow Run
    */
   retrieveRun(runID: string, options?: RequestOptions): APIPromise<WorkflowRunResponse> {
-    return this._client.get(path`/v1/public/workflows/runs/${runID}`, { ...options, __security: {} });
+    return this._client.get(path`/v1/public/workflows/runs/${runID}`, options);
   }
 
   /**
    * Run Workflow
    */
   run(workflowRef: string, options?: RequestOptions): APIPromise<WorkflowRunResponse> {
-    return this._client.post(path`/v1/public/workflows/${workflowRef}/run`, { ...options, __security: {} });
+    return this._client.post(path`/v1/public/workflows/${workflowRef}/run`, options);
   }
 }
 

@@ -9,7 +9,7 @@ export class Score extends APIResource {
    * Score Company or Deal Data
    */
   create(body: ScoreCreateParams, options?: RequestOptions): APIPromise<ScoreCreateResponse> {
-    return this._client.post('/v1/score', { body, ...options, __security: {} });
+    return this._client.post('/v1/score', { body, ...options });
   }
 }
 

@@ -11,7 +11,7 @@ export class Reports extends APIResource {
    * Create Report
    */
   create(body: ReportCreateParams, options?: RequestOptions): APIPromise<CreateReport> {
-    return this._client.post('/v1/public/reports', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/reports', { body, ...options });
   }
 
   /**
@@ -22,7 +22,7 @@ export class Reports extends APIResource {
     query: ReportRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<ReportRetrieveResponse> {
-    return this._client.get(path`/v1/public/reports/${reportID}`, { query, ...options, __security: {} });
+    return this._client.get(path`/v1/public/reports/${reportID}`, { query, ...options });
   }
 
   /**
@@ -34,7 +34,6 @@ export class Reports extends APIResource {
       query: { workspace_id },
       body,
       ...options,
-      __security: {},
     });
   }
 
@@ -45,7 +44,7 @@ export class Reports extends APIResource {
     query: ReportListParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<ReportListResponse> {
-    return this._client.get('/v1/public/reports', { query, ...options, __security: {} });
+    return this._client.get('/v1/public/reports', { query, ...options });
   }
 
   /**
@@ -57,11 +56,7 @@ export class Reports extends APIResource {
     options?: RequestOptions,
   ): APIPromise<ReportDeleteResponse> {
     const { workspace_id } = params ?? {};
-    return this._client.delete(path`/v1/public/reports/${reportID}`, {
-      query: { workspace_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/reports/${reportID}`, { query: { workspace_id }, ...options });
   }
 }
 

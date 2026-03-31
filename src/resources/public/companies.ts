@@ -11,7 +11,7 @@ export class Companies extends APIResource {
    * Create Company
    */
   create(body: CompanyCreateParams, options?: RequestOptions): APIPromise<PublicCompanyResponse> {
-    return this._client.post('/v1/public/companies', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/companies', { body, ...options });
   }
 
   /**
@@ -22,7 +22,7 @@ export class Companies extends APIResource {
     query: CompanyRetrieveParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<CompanyRetrieveResponse> {
-    return this._client.get(path`/v1/public/companies/${companyID}`, { query, ...options, __security: {} });
+    return this._client.get(path`/v1/public/companies/${companyID}`, { query, ...options });
   }
 
   /**
@@ -33,7 +33,7 @@ export class Companies extends APIResource {
     body: CompanyUpdateParams,
     options?: RequestOptions,
   ): APIPromise<PublicCompanyResponse> {
-    return this._client.put(path`/v1/public/companies/${companyID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/companies/${companyID}`, { body, ...options });
   }
 
   /**
@@ -51,7 +51,6 @@ export class Companies extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -67,7 +66,6 @@ export class Companies extends APIResource {
     return this._client.delete(path`/v1/public/companies/${companyID}`, {
       query: { external_id },
       ...options,
-      __security: {},
     });
   }
 }

@@ -11,7 +11,7 @@ export class Slips extends APIResource {
    * Create Slip
    */
   create(body: SlipCreateParams, options?: RequestOptions): APIPromise<SlipResponse> {
-    return this._client.post('/v1/public/slips', { body, ...options, __security: {} });
+    return this._client.post('/v1/public/slips', { body, ...options });
   }
 
   /**
@@ -30,7 +30,6 @@ export class Slips extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -38,7 +37,7 @@ export class Slips extends APIResource {
    * Update Slip
    */
   update(slipID: string, body: SlipUpdateParams, options?: RequestOptions): APIPromise<SlipResponse> {
-    return this._client.put(path`/v1/public/slips/${slipID}`, { body, ...options, __security: {} });
+    return this._client.put(path`/v1/public/slips/${slipID}`, { body, ...options });
   }
 
   /**
@@ -56,7 +55,6 @@ export class Slips extends APIResource {
         { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
         options?.headers,
       ]),
-      __security: {},
     });
   }
 
@@ -69,11 +67,7 @@ export class Slips extends APIResource {
     options?: RequestOptions,
   ): APIPromise<SlipResponse> {
     const { external_id } = params ?? {};
-    return this._client.delete(path`/v1/public/slips/${slipID}`, {
-      query: { external_id },
-      ...options,
-      __security: {},
-    });
+    return this._client.delete(path`/v1/public/slips/${slipID}`, { query: { external_id }, ...options });
   }
 }
 
