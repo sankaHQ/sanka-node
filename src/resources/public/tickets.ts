@@ -10,8 +10,12 @@ export class Tickets extends APIResource {
   /**
    * Create Ticket
    */
-  create(body: TicketCreateParams, options?: RequestOptions): APIPromise<TicketResponse> {
-    return this._client.post('/v1/public/tickets', { body, ...options });
+  create(params: TicketCreateParams, options?: RequestOptions): APIPromise<TicketResponse> {
+    const { body_external_id, ...body } = params;
+    return this._client.post('/v1/public/tickets', {
+      body: { external_id: body_external_id, ...body },
+      ...options,
+    });
   }
 
   /**
@@ -29,10 +33,10 @@ export class Tickets extends APIResource {
    * Update Ticket
    */
   update(ticketID: string, params: TicketUpdateParams, options?: RequestOptions): APIPromise<TicketResponse> {
-    const { query_external_id, ...body } = params;
+    const { external_id, body_external_id, ...body } = params;
     return this._client.put(path`/v1/public/tickets/${ticketID}`, {
-      query: { external_id: query_external_id },
-      body,
+      query: { external_id },
+      body: { external_id: body_external_id, ...body },
       ...options,
     });
   }
@@ -216,7 +220,7 @@ export interface TicketCreateParams {
 
   description?: string | null;
 
-  external_id?: string | null;
+  body_external_id?: string | null;
 
   first_response_due_at?: string | null;
 
@@ -245,7 +249,7 @@ export interface TicketUpdateParams {
   /**
    * Query param
    */
-  query_external_id?: string | null;
+  external_id?: string | null;
 
   /**
    * Body param
