@@ -1,0 +1,39 @@
+speakeasyVersion: 1.761.0
+sources:
+    NinjaAPI:
+        sourceNamespace: ninja-api
+        sourceRevisionDigest: sha256:4bb4c98923ff233bfac1c28200fa8fa5fad5a90b6c550f853da8c2aedb82d7be
+        sourceBlobDigest: sha256:de3522be94735ad78c0451495e335bc5d73685b73871cdbd88367fe1a8eb20dc
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    sanka-sdk:
+        source: NinjaAPI
+        sourceNamespace: ninja-api
+        sourceRevisionDigest: sha256:4bb4c98923ff233bfac1c28200fa8fa5fad5a90b6c550f853da8c2aedb82d7be
+        sourceBlobDigest: sha256:de3522be94735ad78c0451495e335bc5d73685b73871cdbd88367fe1a8eb20dc
+        codeSamplesNamespace: ninja-api-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:ac0c4a573f945975e772d1c5946c07437bb190207236871de9ec9dc568c8c27f
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        NinjaAPI:
+            inputs:
+                - location: openapi/openapi.json
+            overlays:
+                - location: .speakeasy/operation-ids.overlay.yaml
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/sanka/sanka/ninja-api
+    targets:
+        sanka-sdk:
+            target: typescript
+            source: NinjaAPI
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/sanka/sanka/ninja-api-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    NinjaAPI:
+        inputs:
+            - location: openapi/openapi.json
+        overlays:
+            - location: .speakeasy/operation-ids.overlay.yaml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/sanka/sanka/ninja-api
+targets:
+    sanka-sdk:
+        target: typescript
+        source: NinjaAPI
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/sanka/sanka/ninja-api-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

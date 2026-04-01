@@ -1,0 +1,886 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Suggestions - NinjaAPI
+  version: 0.0.1
+actions:
+  - target: $["paths"]["/v1/public/expenses"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.expenses.create()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_create_public_expense()
+      type: method-name
+  - target: $["paths"]["/v1/public/subscriptions/{subscription_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.subscriptions.get()
+      before: sdk.Subscriptions.api_routers_v1_subscriptions_public_api_get_public_subscription()
+      type: method-name
+  - target: $["paths"]["/v1/score"]["post"]
+    update:
+      x-speakeasy-group: ai
+      x-speakeasy-name-override: score
+    x-speakeasy-metadata:
+      after: sdk.ai.score()
+      before: sdk.AI.api_routers_v1_ai_api_score_record()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets/{ticket_id}/status"]["patch"]
+    update:
+      x-speakeasy-name-override: updateStatus
+    x-speakeasy-metadata:
+      after: sdk.tickets.updateStatus()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_update_public_ticket_status()
+      type: method-name
+  - target: $["paths"]["/v1/public/payments"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.payments.create()
+      before: sdk.Payments.api_routers_v1_payments_public_api_create_public_payment()
+      type: method-name
+  - target: $["paths"]["/v1/public/calendar/bootstrap"]["get"]
+    update:
+      x-speakeasy-name-override: bootstrap
+    x-speakeasy-metadata:
+      after: sdk.calendar.bootstrap()
+      before: sdk.Calendar.api_routers_v1_calendar_public_api_public_calendar_bootstrap()
+      type: method-name
+  - target: $["paths"]["/v1/public/bills/{bill_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.bills.delete()
+      before: sdk.Bills.api_routers_v1_bills_public_api_delete_public_bill()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets/pipelines"]["get"]
+    update:
+      x-speakeasy-name-override: listPipelines
+    x-speakeasy-metadata:
+      after: sdk.tickets.listPipelines()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_list_public_ticket_pipelines()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals/{case_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.deals.delete()
+      before: sdk.Deals.api_routers_v1_cases_public_api_delete_public_case()
+      type: method-name
+  - target: $["paths"]["/v1/public/companies"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.companies.create()
+      before: sdk.Companies.api_routers_v1_companies_public_api_create_public_company()
+      type: method-name
+  - target: $["paths"]["/v1/public/expenses/{expense_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.expenses.get()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_get_public_expense()
+      type: method-name
+  - target: $["paths"]["/v1/public/subscriptions"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.subscriptions.create()
+      before: sdk.Subscriptions.api_routers_v1_subscriptions_public_api_create_public_subscription()
+      type: method-name
+  - target: $["paths"]["/v1/public/disbursements"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.disbursements.create()
+      before: sdk.Disbursements.api_routers_v1_disbursements_public_api_create_public_disbursement()
+      type: method-name
+  - target: $["paths"]["/v1/public/reports"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.reports.list()
+      before: sdk.Reports.api_routers_v1_reports_public_api_list_public_reports()
+      type: method-name
+  - target: $["paths"]["/v1/public/bills"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.bills.list()
+      before: sdk.Bills.api_routers_v1_bills_public_api_list_workspace_bills()
+      type: method-name
+  - target: $["paths"]["/v1/public/estimates"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.estimates.create()
+      before: sdk.Estimates.api_routers_v1_estimates_public_api_create_public_estimate()
+      type: method-name
+  - target: $["paths"]["/v1/public/purchase-orders/{purchase_order_id}"]["get"]
+    update:
+      x-speakeasy-group: purchaseOrders
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.purchaseOrders.get()
+      before: sdk.Purchase Orders.api_routers_v1_purchase_orders_public_api_get_public_purchase_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/slips"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.slips.list()
+      before: sdk.Slips.api_routers_v1_slips_public_api_list_workspace_slips()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventory-transactions/{transaction_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+      x-speakeasy-group: inventoryTransactions
+    x-speakeasy-metadata:
+      after: sdk.inventoryTransactions.get()
+      before: sdk.Inventory Transactions.api_routers_v1_inventory_transactions_public_api_get_public_inventory_transaction()
+      type: method-name
+  - target: $["paths"]["/v1/public/meters"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.meters.list()
+      before: sdk.Meters.api_routers_v1_meters_public_api_list_workspace_meters()
+      type: method-name
+  - target: $["paths"]["/v1/public/properties/{object_name}/{property_ref}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.properties.update()
+      before: sdk.Properties.api_routers_v1_properties_public_api_update_public_property()
+      type: method-name
+  - target: $["paths"]["/v1/public/locations"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.locations.create()
+      before: sdk.Locations.api_routers_v1_locations_public_api_create_public_location()
+      type: method-name
+  - target: $["paths"]["/v1/public/disbursements/{disbursement_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.disbursements.update()
+      before: sdk.Disbursements.api_routers_v1_disbursements_public_api_update_public_disbursement()
+      type: method-name
+  - target: $["paths"]["/v1/public/meters/{meter_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.meters.get()
+      before: sdk.Meters.api_routers_v1_meters_public_api_get_public_meter()
+      type: method-name
+  - target: $["paths"]["/v1/public/contacts"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.contacts.create()
+      before: sdk.Contacts.api_routers_v1_contacts_public_api_create_public_contact()
+      type: method-name
+  - target: $["paths"]["/v1/public/purchase-orders/{purchase_order_id}"]["delete"]
+    update:
+      x-speakeasy-group: purchaseOrders
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.purchaseOrders.delete()
+      before: sdk.Purchase Orders.api_routers_v1_purchase_orders_public_api_delete_public_purchase_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/slips/{slip_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.slips.update()
+      before: sdk.Slips.api_routers_v1_slips_public_api_update_public_slip()
+      type: method-name
+  - target: $["paths"]["/v1/public/calendar/attendance/{attendance_id}/cancel"]["post"]
+    update:
+      x-speakeasy-name-override: cancelAttendance
+    x-speakeasy-metadata:
+      after: sdk.calendar.cancelAttendance()
+      before: sdk.Calendar.api_routers_v1_calendar_public_api_public_calendar_cancel_attendance()
+      type: method-name
+  - target: $["paths"]["/v1/public/disbursements/{disbursement_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.disbursements.get()
+      before: sdk.Disbursements.api_routers_v1_disbursements_public_api_get_public_disbursement()
+      type: method-name
+  - target: $["paths"]["/v1/public/properties/{object_name}/{property_ref}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.properties.delete()
+      before: sdk.Properties.api_routers_v1_properties_public_api_delete_public_property()
+      type: method-name
+  - target: $["paths"]["/v1/public/calendar/attendance/{attendance_id}/reschedule"]["post"]
+    update:
+      x-speakeasy-name-override: rescheduleAttendance
+    x-speakeasy-metadata:
+      after: sdk.calendar.rescheduleAttendance()
+      before: sdk.Calendar.api_routers_v1_calendar_public_api_public_calendar_reschedule_attendance()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows/{workflow_ref}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.workflows.get()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_get_public_workflow_by_ref()
+      type: method-name
+  - target: $["paths"]["/v1/public/payments"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.payments.list()
+      before: sdk.Payments.api_routers_v1_payments_public_api_list_workspace_payments()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventory-transactions"]["get"]
+    update:
+      x-speakeasy-group: inventoryTransactions
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.inventoryTransactions.list()
+      before: sdk.Inventory Transactions.api_routers_v1_inventory_transactions_public_api_list_workspace_inventory_transactions()
+      type: method-name
+  - target: $["paths"]["/v1/public/subscriptions/{subscription_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.subscriptions.update()
+      before: sdk.Subscriptions.api_routers_v1_subscriptions_public_api_update_public_subscription()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets/{ticket_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tickets.delete()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_delete_public_ticket()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals/{case_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.deals.update()
+      before: sdk.Deals.api_routers_v1_cases_public_api_update_public_case()
+      type: method-name
+  - target: $["paths"]["/v1/public/properties/{object_name}"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.properties.list()
+      before: sdk.Properties.api_routers_v1_properties_public_api_list_public_properties()
+      type: method-name
+  - target: $["paths"]["/v1/enrich"]["post"]
+    update:
+      x-speakeasy-group: ai
+      x-speakeasy-name-override: enrich
+    x-speakeasy-metadata:
+      after: sdk.ai.enrich()
+      before: sdk.AI.api_routers_v1_ai_api_enrich_record()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals/{case_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.deals.get()
+      before: sdk.Deals.api_routers_v1_cases_public_api_get_public_case()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.workflows.list()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_list_workflows()
+      type: method-name
+  - target: $["paths"]["/v1/public/companies/{company_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.companies.update()
+      before: sdk.Companies.api_routers_v1_companies_public_api_update_public_company()
+      type: method-name
+  - target: $["paths"]["/v1/public/disbursements"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.disbursements.list()
+      before: sdk.Disbursements.api_routers_v1_disbursements_public_api_list_workspace_disbursements()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals/pipelines"]["get"]
+    update:
+      x-speakeasy-name-override: listPipelines
+    x-speakeasy-metadata:
+      after: sdk.deals.listPipelines()
+      before: sdk.Deals.api_routers_v1_cases_public_api_list_public_case_pipelines()
+      type: method-name
+  - target: $["paths"]["/v1/public/meters/{meter_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.meters.delete()
+      before: sdk.Meters.api_routers_v1_meters_public_api_delete_public_meter()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.deals.list()
+      before: sdk.Deals.api_routers_v1_cases_public_api_list_public_cases()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows/{workflow_ref}/run"]["post"]
+    update:
+      x-speakeasy-name-override: runByRef
+    x-speakeasy-metadata:
+      after: sdk.workflows.runByRef()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_run_public_workflow_by_ref()
+      type: method-name
+  - target: $["paths"]["/v1/public/subscriptions"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.subscriptions.list()
+      before: sdk.Subscriptions.api_routers_v1_subscriptions_public_api_list_workspace_subscriptions()
+      type: method-name
+  - target: $["paths"]["/v1/public/bills/{bill_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.bills.get()
+      before: sdk.Bills.api_routers_v1_bills_public_api_get_public_bill()
+      type: method-name
+  - target: $["paths"]["/v1/public/payments/{payment_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.payments.delete()
+      before: sdk.Payments.api_routers_v1_payments_public_api_delete_public_payment()
+      type: method-name
+  - target: $["paths"]["/v1/public/meters/{meter_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.meters.update()
+      before: sdk.Meters.api_routers_v1_meters_public_api_update_public_meter()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventory-transactions"]["post"]
+    update:
+      x-speakeasy-group: inventoryTransactions
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.inventoryTransactions.create()
+      before: sdk.Inventory Transactions.api_routers_v1_inventory_transactions_public_api_create_public_inventory_transaction()
+      type: method-name
+  - target: $["paths"]["/v1/public/invoices/{invoice_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.invoices.get()
+      before: sdk.Invoices.api_routers_v1_invoices_public_api_get_public_invoice()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.tickets.create()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_create_public_ticket()
+      type: method-name
+  - target: $["paths"]["/v1/public/bills/{bill_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.bills.update()
+      before: sdk.Bills.api_routers_v1_bills_public_api_update_public_bill()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.orders.create()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_upsert_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/items"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.items.create()
+      before: sdk.Items.api_routers_v1_items_public_api_create_public_item()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventory-transactions/{transaction_id}"]["put"]
+    update:
+      x-speakeasy-group: inventoryTransactions
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.inventoryTransactions.update()
+      before: sdk.Inventory Transactions.api_routers_v1_inventory_transactions_public_api_update_public_inventory_transaction()
+      type: method-name
+  - target: $["paths"]["/v1/public/invoices"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.invoices.list()
+      before: sdk.Invoices.api_routers_v1_invoices_public_api_list_workspace_invoices()
+      type: method-name
+  - target: $["paths"]["/v1/public/items/{item_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.items.update()
+      before: sdk.Items.api_routers_v1_items_public_api_update_public_item()
+      type: method-name
+  - target: $["paths"]["/v1/public/expenses/files"]["post"]
+    update:
+      x-speakeasy-name-override: uploadFile
+    x-speakeasy-metadata:
+      after: sdk.expenses.uploadFile()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_upload_public_expense_file()
+      type: method-name
+  - target: $["paths"]["/v1/public/companies"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.companies.list()
+      before: sdk.Companies.api_routers_v1_companies_public_api_list_workspace_companies()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders/bulk"]["post"]
+    update:
+      x-speakeasy-name-override: bulkCreate
+    x-speakeasy-metadata:
+      after: sdk.orders.bulkCreate()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_bulk_upsert_orders()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.tickets.list()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_list_public_tickets()
+      type: method-name
+  - target: $["paths"]["/v1/public/purchase-orders/{purchase_order_id}"]["put"]
+    update:
+      x-speakeasy-group: purchaseOrders
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.purchaseOrders.update()
+      before: sdk.Purchase Orders.api_routers_v1_purchase_orders_public_api_update_public_purchase_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/expenses/{expense_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.expenses.update()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_update_public_expense()
+      type: method-name
+  - target: $["paths"]["/v1/public/contacts/{contact_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.contacts.delete()
+      before: sdk.Contacts.api_routers_v1_contacts_public_api_delete_public_contact()
+      type: method-name
+  - target: $["paths"]["/v1/public/meters"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.meters.create()
+      before: sdk.Meters.api_routers_v1_meters_public_api_create_public_meter()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventories"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.inventories.list()
+      before: sdk.Inventories.api_routers_v1_inventories_public_api_list_workspace_inventories()
+      type: method-name
+  - target: $["paths"]["/v1/public/payments/{payment_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.payments.get()
+      before: sdk.Payments.api_routers_v1_payments_public_api_get_public_payment()
+      type: method-name
+  - target: $["paths"]["/v1/public/subscriptions/{subscription_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.subscriptions.delete()
+      before: sdk.Subscriptions.api_routers_v1_subscriptions_public_api_delete_public_subscription()
+      type: method-name
+  - target: $["paths"]["/v1/public/slips/{slip_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.slips.delete()
+      before: sdk.Slips.api_routers_v1_slips_public_api_delete_public_slip()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets/{ticket_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.tickets.update()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_update_public_ticket()
+      type: method-name
+  - target: $["paths"]["/v1/public/calendar/availability"]["get"]
+    update:
+      x-speakeasy-name-override: availability
+    x-speakeasy-metadata:
+      after: sdk.calendar.availability()
+      before: sdk.Calendar.api_routers_v1_calendar_public_api_public_calendar_availability()
+      type: method-name
+  - target: $["paths"]["/v1/public/expenses"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.expenses.list()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_list_workspace_expenses()
+      type: method-name
+  - target: $["paths"]["/v1/public/invoices/{invoice_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.invoices.update()
+      before: sdk.Invoices.api_routers_v1_invoices_public_api_update_public_invoice()
+      type: method-name
+  - target: $["paths"]["/v1/public/contacts/{contact_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.contacts.get()
+      before: sdk.Contacts.api_routers_v1_contacts_public_api_get_public_contact()
+      type: method-name
+  - target: $["paths"]["/v1/public/auth/whoami"]["get"]
+    update:
+      x-speakeasy-group: publicAuth
+      x-speakeasy-name-override: getCurrentIdentity
+    x-speakeasy-metadata:
+      after: sdk.publicAuth.getCurrentIdentity()
+      before: sdk.Public Auth.api_routers_v1_public_auth_api_get_public_auth_whoami()
+      type: method-name
+  - target: $["paths"]["/v1/public/invoices/{invoice_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.invoices.delete()
+      before: sdk.Invoices.api_routers_v1_invoices_public_api_delete_public_invoice()
+      type: method-name
+  - target: $["paths"]["/v1/public/locations/{location_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.locations.update()
+      before: sdk.Locations.api_routers_v1_locations_public_api_update_public_location()
+      type: method-name
+  - target: $["paths"]["/v1/public/estimates/{estimate_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.estimates.get()
+      before: sdk.Estimates.api_routers_v1_estimates_public_api_get_public_estimate()
+      type: method-name
+  - target: $["paths"]["/v1/public/bills"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.bills.create()
+      before: sdk.Bills.api_routers_v1_bills_public_api_create_public_bill()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventories/{inventory_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.inventories.delete()
+      before: sdk.Inventories.api_routers_v1_inventories_public_api_delete_public_inventory()
+      type: method-name
+  - target: $["paths"]["/v1/public/companies/{company_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.companies.get()
+      before: sdk.Companies.api_routers_v1_companies_public_api_get_public_company()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders/{order_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.orders.delete()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_delete_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows/runs/{run_id}"]["get"]
+    update:
+      x-speakeasy-name-override: getRun
+    x-speakeasy-metadata:
+      after: sdk.workflows.getRun()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_get_public_workflow_run_by_id()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventory-transactions/{transaction_id}"]["delete"]
+    update:
+      x-speakeasy-group: inventoryTransactions
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.inventoryTransactions.delete()
+      before: sdk.Inventory Transactions.api_routers_v1_inventory_transactions_public_api_delete_public_inventory_transaction()
+      type: method-name
+  - target: $["paths"]["/v1/public/estimates/{estimate_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.estimates.delete()
+      before: sdk.Estimates.api_routers_v1_estimates_public_api_delete_public_estimate()
+      type: method-name
+  - target: $["paths"]["/v1/public/tickets/{ticket_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.tickets.get()
+      before: sdk.Tickets.api_routers_v1_tickets_public_api_get_public_ticket()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows"]["post"]
+    update:
+      x-speakeasy-name-override: createOrUpdate
+    x-speakeasy-metadata:
+      after: sdk.workflows.createOrUpdate()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_create_public_workflow()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventories/{inventory_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.inventories.get()
+      before: sdk.Inventories.api_routers_v1_inventories_public_api_get_public_inventory()
+      type: method-name
+  - target: $["paths"]["/v1/public/items"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.items.list()
+      before: sdk.Items.api_routers_v1_items_public_api_list_workspace_items()
+      type: method-name
+  - target: $["paths"]["/v1/public/properties/{object_name}/{property_ref}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.properties.get()
+      before: sdk.Properties.api_routers_v1_properties_public_api_retrieve_public_property()
+      type: method-name
+  - target: $["paths"]["/v1/public/invoices"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.invoices.create()
+      before: sdk.Invoices.api_routers_v1_invoices_public_api_create_public_invoice()
+      type: method-name
+  - target: $["paths"]["/v1/public/contacts"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.contacts.list()
+      before: sdk.Contacts.api_routers_v1_contacts_public_api_public_list_contacts()
+      type: method-name
+  - target: $["paths"]["/v1/public/calendar/attendance"]["post"]
+    update:
+      x-speakeasy-name-override: createAttendance
+    x-speakeasy-metadata:
+      after: sdk.calendar.createAttendance()
+      before: sdk.Calendar.api_routers_v1_calendar_public_api_public_calendar_create_attendance()
+      type: method-name
+  - target: $["paths"]["/v1/public/purchase-orders"]["post"]
+    update:
+      x-speakeasy-group: purchaseOrders
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.purchaseOrders.create()
+      before: sdk.Purchase Orders.api_routers_v1_purchase_orders_public_api_create_public_purchase_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/reports/{report_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.reports.update()
+      before: sdk.Reports.api_routers_v1_reports_public_api_update_public_report()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventories"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.inventories.create()
+      before: sdk.Inventories.api_routers_v1_inventories_public_api_create_public_inventory()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders/{order_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.orders.update()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_update_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/purchase-orders"]["get"]
+    update:
+      x-speakeasy-group: purchaseOrders
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.purchaseOrders.list()
+      before: sdk.Purchase Orders.api_routers_v1_purchase_orders_public_api_list_workspace_purchase_orders()
+      type: method-name
+  - target: $["paths"]["/v1/public/locations/{location_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.locations.delete()
+      before: sdk.Locations.api_routers_v1_locations_public_api_delete_public_location()
+      type: method-name
+  - target: $["paths"]["/v1/public/deals"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.deals.create()
+      before: sdk.Deals.api_routers_v1_cases_public_api_create_public_case()
+      type: method-name
+  - target: $["paths"]["/v1/public/inventories/{inventory_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.inventories.update()
+      before: sdk.Inventories.api_routers_v1_inventories_public_api_update_public_inventory()
+      type: method-name
+  - target: $["paths"]["/v1/public/reports/{report_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.reports.get()
+      before: sdk.Reports.api_routers_v1_reports_public_api_get_public_report()
+      type: method-name
+  - target: $["paths"]["/v1/public/companies/{company_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.companies.delete()
+      before: sdk.Companies.api_routers_v1_companies_public_api_delete_public_company()
+      type: method-name
+  - target: $["paths"]["/v1/public/locations"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.locations.list()
+      before: sdk.Locations.api_routers_v1_locations_public_api_list_workspace_locations()
+      type: method-name
+  - target: $["paths"]["/v1/public/payments/{payment_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.payments.update()
+      before: sdk.Payments.api_routers_v1_payments_public_api_update_public_payment()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.orders.list()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_list_orders()
+      type: method-name
+  - target: $["paths"]["/v1/public/workflows/actions"]["get"]
+    update:
+      x-speakeasy-name-override: listActions
+    x-speakeasy-metadata:
+      after: sdk.workflows.listActions()
+      before: sdk.Workflows.api_routers_v1_workflows_public_api_list_public_workflow_actions()
+      type: method-name
+  - target: $["paths"]["/v1/public/expenses/{expense_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.expenses.delete()
+      before: sdk.Expenses.api_routers_v1_expenses_public_api_delete_public_expense()
+      type: method-name
+  - target: $["paths"]["/v1/public/estimates"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.estimates.list()
+      before: sdk.Estimates.api_routers_v1_estimates_public_api_list_workspace_estimates()
+      type: method-name
+  - target: $["paths"]["/v1/public/orders/{order_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.orders.get()
+      before: sdk.Orders.api_routers_v1_orders_public_api_public_get_order()
+      type: method-name
+  - target: $["paths"]["/v1/public/properties/{object_name}"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.properties.create()
+      before: sdk.Properties.api_routers_v1_properties_public_api_create_public_property()
+      type: method-name
+  - target: $["paths"]["/v1/public/reports/{report_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.reports.delete()
+      before: sdk.Reports.api_routers_v1_reports_public_api_delete_public_report()
+      type: method-name
+  - target: $["paths"]["/v1/public/disbursements/{disbursement_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.disbursements.delete()
+      before: sdk.Disbursements.api_routers_v1_disbursements_public_api_delete_public_disbursement()
+      type: method-name
+  - target: $["paths"]["/v1/public/locations/{location_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.locations.get()
+      before: sdk.Locations.api_routers_v1_locations_public_api_get_public_location()
+      type: method-name
+  - target: $["paths"]["/v1/public/slips"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.slips.create()
+      before: sdk.Slips.api_routers_v1_slips_public_api_create_public_slip()
+      type: method-name
+  - target: $["paths"]["/v1/public/items/{item_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.items.get()
+      before: sdk.Items.api_routers_v1_items_public_api_get_public_item()
+      type: method-name
+  - target: $["paths"]["/v1/public/items/{item_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.items.delete()
+      before: sdk.Items.api_routers_v1_items_public_api_delete_public_item()
+      type: method-name
+  - target: $["paths"]["/v1/public/reports"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.reports.create()
+      before: sdk.Reports.api_routers_v1_reports_public_api_create_public_report()
+      type: method-name
+  - target: $["paths"]["/v1/public/slips/{slip_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.slips.get()
+      before: sdk.Slips.api_routers_v1_slips_public_api_get_public_slip()
+      type: method-name
+  - target: $["paths"]["/v1/public/estimates/{estimate_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.estimates.update()
+      before: sdk.Estimates.api_routers_v1_estimates_public_api_update_public_estimate()
+      type: method-name
+  - target: $["paths"]["/v1/public/contacts/{contact_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.contacts.update()
+      before: sdk.Contacts.api_routers_v1_contacts_public_api_update_public_contact()
+      type: method-name

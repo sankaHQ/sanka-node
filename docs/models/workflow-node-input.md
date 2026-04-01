@@ -1,0 +1,28 @@
+# WorkflowNodeInput
+
+## Example Usage
+
+```typescript
+import { WorkflowNodeInput } from "sanka-sdk/models";
+
+let value: WorkflowNodeInput = {};
+```
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `id`                                                                                | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `actionUid`                                                                         | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `actionSlug`                                                                        | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `actionId`                                                                          | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `isBase`                                                                            | *boolean*                                                                           | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `inputData`                                                                         | Record<string, *any*>                                                               | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `predefinedInput`                                                                   | Record<string, *any*>                                                               | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `previousOutputData`                                                                | Record<string, *any*>                                                               | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `userDisplayName`                                                                   | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `integrationSlug`                                                                   | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `integrationId`                                                                     | *string*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `costMinutes`                                                                       | *number*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `validToRun`                                                                        | *boolean*                                                                           | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `conditionGroups`                                                                   | [models.WorkflowConditionGroupInput](../models/workflow-condition-group-input.md)[] | :heavy_minus_sign:                                                                  | N/A                                                                                 |
