@@ -1,0 +1,26 @@
+# PublicExpenseRequest
+
+## Example Usage
+
+```typescript
+import { PublicExpenseRequest } from "sanka-sdk/models";
+
+let value: PublicExpenseRequest = {};
+```
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `externalId`                                                                            | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `contactId`                                                                             | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `contactExternalId`                                                                     | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `companyId`                                                                             | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `companyExternalId`                                                                     | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `description`                                                                           | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `reimburseDate`                                                                         | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `dueDate`                                                                               | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `status`                                                                                | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `currency`                                                                              | *string*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `amount`                                                                                | *number*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `attachmentFile`                                                                        | [models.PublicExpenseAttachmentPayload](../models/public-expense-attachment-payload.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |
