@@ -792,6 +792,86 @@
             "required": false
           },
           {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "title": "Limit",
+              "nullable": true,
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "created_at_from",
+            "schema": {
+              "title": "Created At From",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "created_at_to",
+            "schema": {
+              "title": "Created At To",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "updated_at_from",
+            "schema": {
+              "title": "Updated At From",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "updated_at_to",
+            "schema": {
+              "title": "Updated At To",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_by",
+            "schema": {
+              "title": "Sort By",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_order",
+            "schema": {
+              "title": "Sort Order",
+              "nullable": true,
+              "type": "string"
+            },
+            "required": false
+          },
+          {
             "in": "header",
             "name": "Accept-Language",
             "schema": {
@@ -812,6 +892,46 @@
                   },
                   "title": "Response",
                   "type": "array"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemsErrorResponse"
                 }
               }
             }

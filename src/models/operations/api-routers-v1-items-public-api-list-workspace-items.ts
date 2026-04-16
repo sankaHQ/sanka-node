@@ -9,6 +9,14 @@ export type ApiRoutersV1ItemsPublicApiListWorkspaceItemsRequest = {
   workspaceId?: string | null | undefined;
   lang?: string | null | undefined;
   language?: string | null | undefined;
+  page?: number | undefined;
+  limit?: number | null | undefined;
+  createdAtFrom?: string | null | undefined;
+  createdAtTo?: string | null | undefined;
+  updatedAtFrom?: string | null | undefined;
+  updatedAtTo?: string | null | undefined;
+  sortBy?: string | null | undefined;
+  sortOrder?: string | null | undefined;
   acceptLanguage?: string | undefined;
 };
 
@@ -17,6 +25,14 @@ export type ApiRoutersV1ItemsPublicApiListWorkspaceItemsRequest$Outbound = {
   workspace_id?: string | null | undefined;
   lang?: string | null | undefined;
   language?: string | null | undefined;
+  page: number;
+  limit?: number | null | undefined;
+  created_at_from?: string | null | undefined;
+  created_at_to?: string | null | undefined;
+  updated_at_from?: string | null | undefined;
+  updated_at_to?: string | null | undefined;
+  sort_by?: string | null | undefined;
+  sort_order?: string | null | undefined;
   "Accept-Language"?: string | undefined;
 };
 
@@ -30,11 +46,25 @@ export const ApiRoutersV1ItemsPublicApiListWorkspaceItemsRequest$outboundSchema:
       workspaceId: z.optional(z.nullable(z.string())),
       lang: z.optional(z.nullable(z.string())),
       language: z.optional(z.nullable(z.string())),
+      page: z._default(z.int(), 1),
+      limit: z.optional(z.nullable(z.int())),
+      createdAtFrom: z.optional(z.nullable(z.string())),
+      createdAtTo: z.optional(z.nullable(z.string())),
+      updatedAtFrom: z.optional(z.nullable(z.string())),
+      updatedAtTo: z.optional(z.nullable(z.string())),
+      sortBy: z.optional(z.nullable(z.string())),
+      sortOrder: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {
         workspaceId: "workspace_id",
+        createdAtFrom: "created_at_from",
+        createdAtTo: "created_at_to",
+        updatedAtFrom: "updated_at_from",
+        updatedAtTo: "updated_at_to",
+        sortBy: "sort_by",
+        sortOrder: "sort_order",
         acceptLanguage: "Accept-Language",
       });
     }),

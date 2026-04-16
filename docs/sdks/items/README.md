@@ -25,7 +25,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.items.list();
+  const result = await sanka.items.list({});
 
   console.log(result);
 }
@@ -48,7 +48,7 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await itemsList(sanka);
+  const res = await itemsList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -75,9 +75,11 @@ run();
 
 ### Errors
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+| Error Type                | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| errors.ItemsErrorResponse | 400, 403, 404             | application/json          |
+| errors.ItemsErrorResponse | 500                       | application/json          |
+| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
 
 ## create
 
