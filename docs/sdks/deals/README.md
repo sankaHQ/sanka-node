@@ -4,29 +4,29 @@
 
 ### Available Operations
 
-* [list](#list) - List Deals
-* [create](#create) - Create Deal
-* [listPipelines](#listpipelines) - List Deal Pipelines
-* [get](#get) - Get Deal
-* [update](#update) - Update Deal
-* [delete](#delete) - Delete Deal
+* [list](#list) - List Public Deals
+* [create](#create) - Create Public Deal
+* [listPipelines](#listpipelines) - List Public Deal Pipelines
+* [get](#get) - Get Public Deal
+* [update](#update) - Update Public Deal
+* [delete](#delete) - Delete Public Deal
 
 ## list
 
-List Deals
+List Public Deals
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_list_public_cases" method="get" path="/v1/public/deals" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_deals_api_v2_public_deals_get" method="get" path="/v2/public/deals" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.deals.list();
+  const result = await sanka.deals.list({});
 
   console.log(result);
 }
@@ -45,11 +45,11 @@ import { dealsList } from "sanka-sdk/funcs/deals-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await dealsList(sanka);
+  const res = await dealsList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -65,37 +65,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1CasesPublicApiListPublicCasesRequest](../../models/operations/api-routers-v1-cases-public-api-list-public-cases-request.md)                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPublicDealsApiV2PublicDealsGetRequest](../../models/operations/list-public-deals-api-v2-public-deals-get-request.md)                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CaseSchema[]](../../models/.md)\>**
+**Promise\<[operations.ListPublicDealsApiV2PublicDealsGetResponse](../../models/operations/list-public-deals-api-v2-public-deals-get-response.md)\>**
 
 ### Errors
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## create
 
-Create Deal
+Create Public Deal
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_create_public_case" method="post" path="/v1/public/deals" -->
+<!-- UsageSnippet language="typescript" operationID="create_public_deal_api_v2_public_deals_post" method="post" path="/v2/public/deals" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.deals.create({});
+  const result = await sanka.deals.create({
+    body: {},
+  });
 
   console.log(result);
 }
@@ -114,11 +117,13 @@ import { dealsCreate } from "sanka-sdk/funcs/deals-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await dealsCreate(sanka, {});
+  const res = await dealsCreate(sanka, {
+    body: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -134,35 +139,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.PublicCaseRequest](../../models/public-case-request.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePublicDealApiV2PublicDealsPostRequest](../../models/operations/create-public-deal-api-v2-public-deals-post-request.md)                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicCaseResponse](../../models/public-case-response.md)\>**
+**Promise\<[operations.CreatePublicDealApiV2PublicDealsPostResponse](../../models/operations/create-public-deal-api-v2-public-deals-post-response.md)\>**
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.CasesErrorResponse | 400, 403, 404             | application/json          |
-| errors.CasesErrorResponse | 500                       | application/json          |
-| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## listPipelines
 
-List Deal Pipelines
+List Public Deal Pipelines
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_list_public_case_pipelines" method="get" path="/v1/public/deals/pipelines" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_deal_pipelines_api_v2_public_deals_pipelines_get" method="get" path="/v2/public/deals/pipelines" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -185,7 +189,7 @@ import { dealsListPipelines } from "sanka-sdk/funcs/deals-list-pipelines.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -205,40 +209,39 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1CasesPublicApiListPublicCasePipelinesRequest](../../models/operations/api-routers-v1-cases-public-api-list-public-case-pipelines-request.md)           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPublicDealPipelinesApiV2PublicDealsPipelinesGetRequest](../../models/operations/list-public-deal-pipelines-api-v2-public-deals-pipelines-get-request.md)       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicCasePipelineSchema[]](../../models/.md)\>**
+**Promise\<[operations.ListPublicDealPipelinesApiV2PublicDealsPipelinesGetResponse](../../models/operations/list-public-deal-pipelines-api-v2-public-deals-pipelines-get-response.md)\>**
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.CasesErrorResponse | 400, 403, 404             | application/json          |
-| errors.CasesErrorResponse | 500                       | application/json          |
-| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
-Get Deal
+Get Public Deal
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_get_public_case" method="get" path="/v1/public/deals/{case_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_deal_api_v2_public_deals__deal_id__get" method="get" path="/v2/public/deals/{deal_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.deals.get({
-    caseId: "<id>",
+    dealId: "<id>",
   });
 
   console.log(result);
@@ -258,12 +261,12 @@ import { dealsGet } from "sanka-sdk/funcs/deals-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await dealsGet(sanka, {
-    caseId: "<id>",
+    dealId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -280,40 +283,39 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1CasesPublicApiGetPublicCaseRequest](../../models/operations/api-routers-v1-cases-public-api-get-public-case-request.md)                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPublicDealApiV2PublicDealsDealIdGetRequest](../../models/operations/get-public-deal-api-v2-public-deals-deal-id-get-request.md)                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CaseSchema](../../models/case-schema.md)\>**
+**Promise\<[operations.GetPublicDealApiV2PublicDealsDealIdGetResponse](../../models/operations/get-public-deal-api-v2-public-deals-deal-id-get-response.md)\>**
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.CasesErrorResponse | 400, 403, 404             | application/json          |
-| errors.CasesErrorResponse | 500                       | application/json          |
-| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
-Update Deal
+Update Public Deal
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_update_public_case" method="put" path="/v1/public/deals/{case_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_deal_api_v2_public_deals__deal_id__put" method="put" path="/v2/public/deals/{deal_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.deals.update({
-    caseId: "<id>",
+    dealId: "<id>",
     body: {},
   });
 
@@ -334,12 +336,12 @@ import { dealsUpdate } from "sanka-sdk/funcs/deals-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await dealsUpdate(sanka, {
-    caseId: "<id>",
+    dealId: "<id>",
     body: {},
   });
   if (res.ok) {
@@ -357,40 +359,39 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1CasesPublicApiUpdatePublicCaseRequest](../../models/operations/api-routers-v1-cases-public-api-update-public-case-request.md)                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpdatePublicDealApiV2PublicDealsDealIdPutRequest](../../models/operations/update-public-deal-api-v2-public-deals-deal-id-put-request.md)                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicCaseResponse](../../models/public-case-response.md)\>**
+**Promise\<[operations.UpdatePublicDealApiV2PublicDealsDealIdPutResponse](../../models/operations/update-public-deal-api-v2-public-deals-deal-id-put-response.md)\>**
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.CasesErrorResponse | 400, 403, 404, 409        | application/json          |
-| errors.CasesErrorResponse | 500                       | application/json          |
-| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
-Delete Deal
+Delete Public Deal
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_cases_public_api_delete_public_case" method="delete" path="/v1/public/deals/{case_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_deal_api_v2_public_deals__deal_id__delete" method="delete" path="/v2/public/deals/{deal_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.deals.delete({
-    caseId: "<id>",
+    dealId: "<id>",
   });
 
   console.log(result);
@@ -410,12 +411,12 @@ import { dealsDelete } from "sanka-sdk/funcs/deals-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await dealsDelete(sanka, {
-    caseId: "<id>",
+    dealId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -432,19 +433,18 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1CasesPublicApiDeletePublicCaseRequest](../../models/operations/api-routers-v1-cases-public-api-delete-public-case-request.md)                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePublicDealApiV2PublicDealsDealIdDeleteRequest](../../models/operations/delete-public-deal-api-v2-public-deals-deal-id-delete-request.md)                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicCaseResponse](../../models/public-case-response.md)\>**
+**Promise\<[operations.DeletePublicDealApiV2PublicDealsDealIdDeleteResponse](../../models/operations/delete-public-deal-api-v2-public-deals-deal-id-delete-response.md)\>**
 
 ### Errors
 
-| Error Type                | Status Code               | Content Type              |
-| ------------------------- | ------------------------- | ------------------------- |
-| errors.CasesErrorResponse | 400, 403, 404, 409        | application/json          |
-| errors.CasesErrorResponse | 500                       | application/json          |
-| errors.SankaDefaultError  | 4XX, 5XX                  | \*/\*                     |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

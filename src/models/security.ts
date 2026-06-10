@@ -3,31 +3,23 @@
  */
 
 import * as z from "zod/v4-mini";
-import { remap as remap$ } from "../lib/primitives.js";
 
 export type Security = {
-  publicOAuthOrJWTAuth?: string | undefined;
+  bearerAuth?: string | undefined;
 };
 
 /** @internal */
 export type Security$Outbound = {
-  PublicOAuthOrJWTAuth?: string | undefined;
+  bearerAuth?: string | undefined;
 };
 
 /** @internal */
 export const Security$outboundSchema: z.ZodMiniType<
   Security$Outbound,
   Security
-> = z.pipe(
-  z.object({
-    publicOAuthOrJWTAuth: z.optional(z.string()),
-  }),
-  z.transform((v) => {
-    return remap$(v, {
-      publicOAuthOrJWTAuth: "PublicOAuthOrJWTAuth",
-    });
-  }),
-);
+> = z.object({
+  bearerAuth: z.optional(z.string()),
+});
 
 export function securityToJSON(security: Security): string {
   return JSON.stringify(Security$outboundSchema.parse(security));

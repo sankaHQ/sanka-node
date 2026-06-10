@@ -4,26 +4,28 @@
 
 ### Available Operations
 
-* [enrich](#enrich) - Enrich Company Data
-* [score](#score) - Score Company or Deal Data
+* [enrich](#enrich) - Enrich Record
+* [score](#score) - Score Record
 
 ## enrich
 
-Enrich Company Data
+Enrich Record
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_ai_api_enrich_record" method="post" path="/v1/enrich" -->
+<!-- UsageSnippet language="typescript" operationID="enrich_record_api_v2_enrich_post" method="post" path="/v2/enrich" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.ai.enrich({
-    objectType: "<value>",
+    body: {
+      objectType: "<value>",
+    },
   });
 
   console.log(result);
@@ -43,12 +45,14 @@ import { aiEnrich } from "sanka-sdk/funcs/ai-enrich.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await aiEnrich(sanka, {
-    objectType: "<value>",
+    body: {
+      objectType: "<value>",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -65,41 +69,42 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.EnrichRequest](../../models/enrich-request.md)                                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.EnrichRecordApiV2EnrichPostRequest](../../models/operations/enrich-record-api-v2-enrich-post-request.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.EnrichResponse](../../models/enrich-response.md)\>**
+**Promise\<[operations.EnrichRecordApiV2EnrichPostResponse](../../models/operations/enrich-record-api-v2-enrich-post-response.md)\>**
 
 ### Errors
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| errors.AIErrorResponse   | 400, 401, 403, 404       | application/json         |
-| errors.AIErrorResponse   | 500, 502, 503            | application/json         |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## score
 
-Score Company or Deal Data
+Score Record
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_ai_api_score_record" method="post" path="/v1/score" -->
+<!-- UsageSnippet language="typescript" operationID="score_record_api_v2_score_post" method="post" path="/v2/score" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.ai.score({
-    objectType: "<value>",
-    recordId: "9e1769ac-f87d-4eaa-a362-deaa819234cc",
+    body: {
+      objectType: "<value>",
+      recordId: "ba6f2fdc-5afa-45da-aa37-bcd9b9dc2ab9",
+    },
   });
 
   console.log(result);
@@ -119,13 +124,15 @@ import { aiScore } from "sanka-sdk/funcs/ai-score.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await aiScore(sanka, {
-    objectType: "<value>",
-    recordId: "9e1769ac-f87d-4eaa-a362-deaa819234cc",
+    body: {
+      objectType: "<value>",
+      recordId: "ba6f2fdc-5afa-45da-aa37-bcd9b9dc2ab9",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -142,19 +149,18 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ScoreRequest](../../models/score-request.md)                                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ScoreRecordApiV2ScorePostRequest](../../models/operations/score-record-api-v2-score-post-request.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ScoreResponse](../../models/score-response.md)\>**
+**Promise\<[operations.ScoreRecordApiV2ScorePostResponse](../../models/operations/score-record-api-v2-score-post-response.md)\>**
 
 ### Errors
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| errors.AIErrorResponse   | 400, 401, 403, 404       | application/json         |
-| errors.AIErrorResponse   | 500                      | application/json         |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

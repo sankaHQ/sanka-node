@@ -7,21 +7,19 @@ import { billsDelete } from "../funcs/bills-delete.js";
 import { billsGet } from "../funcs/bills-get.js";
 import { billsList } from "../funcs/bills-list.js";
 import { billsUpdate } from "../funcs/bills-update.js";
+import { billsUploadPublicBillFileApiV2PublicBillsFilesPost } from "../funcs/bills-upload-public-bill-file-api-v2-public-bills-files-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Bills extends ClientSDK {
   /**
-   * List Bills
+   * List Public Bills
    */
   async list(
-    request?:
-      | operations.ApiRoutersV1BillsPublicApiListWorkspaceBillsRequest
-      | undefined,
+    request?: operations.ListPublicBillsApiV2PublicBillsGetRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.BillSchema>> {
+  ): Promise<operations.ListPublicBillsApiV2PublicBillsGetResponse> {
     return unwrapAsync(billsList(
       this,
       request,
@@ -30,12 +28,12 @@ export class Bills extends ClientSDK {
   }
 
   /**
-   * Create Bill
+   * Create Public Bill
    */
   async create(
-    request: models.PublicBillRequest,
+    request: operations.CreatePublicBillApiV2PublicBillsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicBillResponse> {
+  ): Promise<operations.CreatePublicBillApiV2PublicBillsPostResponse> {
     return unwrapAsync(billsCreate(
       this,
       request,
@@ -44,12 +42,26 @@ export class Bills extends ClientSDK {
   }
 
   /**
-   * Get Bill
+   * Upload Public Bill File
+   */
+  async uploadPublicBillFileApiV2PublicBillsFilesPost(
+    request: operations.UploadPublicBillFileApiV2PublicBillsFilesPostRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UploadPublicBillFileApiV2PublicBillsFilesPostResponse> {
+    return unwrapAsync(billsUploadPublicBillFileApiV2PublicBillsFilesPost(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Public Bill
    */
   async get(
-    request: operations.ApiRoutersV1BillsPublicApiGetPublicBillRequest,
+    request: operations.GetPublicBillApiV2PublicBillsBillIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.BillSchema> {
+  ): Promise<operations.GetPublicBillApiV2PublicBillsBillIdGetResponse> {
     return unwrapAsync(billsGet(
       this,
       request,
@@ -58,12 +70,12 @@ export class Bills extends ClientSDK {
   }
 
   /**
-   * Update Bill
+   * Update Public Bill
    */
   async update(
-    request: operations.ApiRoutersV1BillsPublicApiUpdatePublicBillRequest,
+    request: operations.UpdatePublicBillApiV2PublicBillsBillIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicBillResponse> {
+  ): Promise<operations.UpdatePublicBillApiV2PublicBillsBillIdPutResponse> {
     return unwrapAsync(billsUpdate(
       this,
       request,
@@ -72,12 +84,12 @@ export class Bills extends ClientSDK {
   }
 
   /**
-   * Delete Bill
+   * Delete Public Bill
    */
   async delete(
-    request: operations.ApiRoutersV1BillsPublicApiDeletePublicBillRequest,
+    request: operations.DeletePublicBillApiV2PublicBillsBillIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicBillResponse> {
+  ): Promise<operations.DeletePublicBillApiV2PublicBillsBillIdDeleteResponse> {
     return unwrapAsync(billsDelete(
       this,
       request,

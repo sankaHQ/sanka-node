@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sankaHQ/sanka-node"
+    "url": "git+https://github.com/sankaHQ/sanka-node.git"
   },
   "type": "module",
   "main": "./esm/index.js",
@@ -71,18 +71,18 @@
   },
   "sideEffects": false,
   "scripts": {
-    "lint": "oxlint --max-warnings=0 --deny-warnings 'src/**/*.{ts,tsx}'",
+    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tsgo",
     "prepublishOnly": "npm run build",
-    "generate": "./scripts/generate.sh",
-    "sync:openapi": "./scripts/sync-openapi.sh"
+    "sync:openapi": "./scripts/sync-openapi.sh",
+    "generate": "./scripts/generate.sh"
   },
   "peerDependencies": {
     
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
-    "oxlint": "^1.50.0",
+    "oxlint": "^1.60.0",
     "typescript": "~5.8.3"
   },
   "dependencies": {

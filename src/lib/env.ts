@@ -6,13 +6,13 @@ import * as z from "zod/v4-mini";
 import { dlv } from "./dlv.js";
 
 export interface Env {
-  SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH?: string | undefined;
+  SANKA_BEARER_AUTH?: string | undefined;
 
   SANKA_DEBUG?: boolean | undefined;
 }
 
 export const envSchema: z.ZodMiniType<Env, unknown> = z.object({
-  SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH: z.optional(z.string()),
+  SANKA_BEARER_AUTH: z.optional(z.string()),
 
   SANKA_DEBUG: z.optional(z.coerce.boolean()),
 });

@@ -5,17 +5,17 @@
 import { aiEnrich } from "../funcs/ai-enrich.js";
 import { aiScore } from "../funcs/ai-score.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Ai extends ClientSDK {
   /**
-   * Enrich Company Data
+   * Enrich Record
    */
   async enrich(
-    request: models.EnrichRequest,
+    request: operations.EnrichRecordApiV2EnrichPostRequest,
     options?: RequestOptions,
-  ): Promise<models.EnrichResponse> {
+  ): Promise<operations.EnrichRecordApiV2EnrichPostResponse> {
     return unwrapAsync(aiEnrich(
       this,
       request,
@@ -24,12 +24,12 @@ export class Ai extends ClientSDK {
   }
 
   /**
-   * Score Company or Deal Data
+   * Score Record
    */
   async score(
-    request: models.ScoreRequest,
+    request: operations.ScoreRecordApiV2ScorePostRequest,
     options?: RequestOptions,
-  ): Promise<models.ScoreResponse> {
+  ): Promise<operations.ScoreRecordApiV2ScorePostResponse> {
     return unwrapAsync(aiScore(
       this,
       request,

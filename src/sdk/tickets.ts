@@ -10,20 +10,19 @@ import { ticketsList } from "../funcs/tickets-list.js";
 import { ticketsUpdateStatus } from "../funcs/tickets-update-status.js";
 import { ticketsUpdate } from "../funcs/tickets-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Tickets extends ClientSDK {
   /**
-   * List Tickets
+   * List Public Tickets
    */
   async list(
     request?:
-      | operations.ApiRoutersV1TicketsPublicApiListPublicTicketsRequest
+      | operations.ListPublicTicketsApiV2PublicTicketsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.TicketSchema>> {
+  ): Promise<operations.ListPublicTicketsApiV2PublicTicketsGetResponse> {
     return unwrapAsync(ticketsList(
       this,
       request,
@@ -32,12 +31,12 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * Create Ticket
+   * Create Public Ticket
    */
   async create(
-    request: models.PublicTicketRequest,
+    request: operations.CreatePublicTicketApiV2PublicTicketsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicTicketResponse> {
+  ): Promise<operations.CreatePublicTicketApiV2PublicTicketsPostResponse> {
     return unwrapAsync(ticketsCreate(
       this,
       request,
@@ -46,14 +45,16 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * List Ticket Pipelines
+   * List Public Ticket Pipelines
    */
   async listPipelines(
     request?:
-      | operations.ApiRoutersV1TicketsPublicApiListPublicTicketPipelinesRequest
+      | operations.ListPublicTicketPipelinesApiV2PublicTicketsPipelinesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.TicketPipelineSchema>> {
+  ): Promise<
+    operations.ListPublicTicketPipelinesApiV2PublicTicketsPipelinesGetResponse
+  > {
     return unwrapAsync(ticketsListPipelines(
       this,
       request,
@@ -62,12 +63,12 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * Get Ticket
+   * Get Public Ticket
    */
   async get(
-    request: operations.ApiRoutersV1TicketsPublicApiGetPublicTicketRequest,
+    request: operations.GetPublicTicketApiV2PublicTicketsTicketIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.TicketSchema> {
+  ): Promise<operations.GetPublicTicketApiV2PublicTicketsTicketIdGetResponse> {
     return unwrapAsync(ticketsGet(
       this,
       request,
@@ -76,12 +77,14 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * Update Ticket
+   * Update Public Ticket
    */
   async update(
-    request: operations.ApiRoutersV1TicketsPublicApiUpdatePublicTicketRequest,
+    request: operations.UpdatePublicTicketApiV2PublicTicketsTicketIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicTicketResponse> {
+  ): Promise<
+    operations.UpdatePublicTicketApiV2PublicTicketsTicketIdPutResponse
+  > {
     return unwrapAsync(ticketsUpdate(
       this,
       request,
@@ -90,12 +93,15 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * Delete Ticket
+   * Delete Public Ticket
    */
   async delete(
-    request: operations.ApiRoutersV1TicketsPublicApiDeletePublicTicketRequest,
+    request:
+      operations.DeletePublicTicketApiV2PublicTicketsTicketIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicTicketResponse> {
+  ): Promise<
+    operations.DeletePublicTicketApiV2PublicTicketsTicketIdDeleteResponse
+  > {
     return unwrapAsync(ticketsDelete(
       this,
       request,
@@ -104,13 +110,15 @@ export class Tickets extends ClientSDK {
   }
 
   /**
-   * Update Ticket Status
+   * Update Public Ticket Status
    */
   async updateStatus(
     request:
-      operations.ApiRoutersV1TicketsPublicApiUpdatePublicTicketStatusRequest,
+      operations.UpdatePublicTicketStatusApiV2PublicTicketsTicketIdStatusPatchRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicTicketResponse> {
+  ): Promise<
+    operations.UpdatePublicTicketStatusApiV2PublicTicketsTicketIdStatusPatchResponse
+  > {
     return unwrapAsync(ticketsUpdateStatus(
       this,
       request,

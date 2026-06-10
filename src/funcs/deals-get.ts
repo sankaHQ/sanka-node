@@ -5,6 +5,7 @@
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,22 +23,21 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Deal
+ * Get Public Deal
  */
 export function dealsGet(
   client: SankaCore,
-  request: operations.ApiRoutersV1CasesPublicApiGetPublicCaseRequest,
+  request: operations.GetPublicDealApiV2PublicDealsDealIdGetRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.CaseSchema,
-    | errors.CasesErrorResponse
+    operations.GetPublicDealApiV2PublicDealsDealIdGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -57,13 +57,13 @@ export function dealsGet(
 
 async function $do(
   client: SankaCore,
-  request: operations.ApiRoutersV1CasesPublicApiGetPublicCaseRequest,
+  request: operations.GetPublicDealApiV2PublicDealsDealIdGetRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.CaseSchema,
-      | errors.CasesErrorResponse
+      operations.GetPublicDealApiV2PublicDealsDealIdGetResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -80,8 +80,7 @@ async function $do(
     request,
     (value) =>
       z.parse(
-        operations
-          .ApiRoutersV1CasesPublicApiGetPublicCaseRequest$outboundSchema,
+        operations.GetPublicDealApiV2PublicDealsDealIdGetRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -93,43 +92,42 @@ async function $do(
   const body = null;
 
   const pathParams = {
-    case_id: encodeSimple("case_id", payload.case_id, {
+    deal_id: encodeSimple("deal_id", payload.deal_id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/public/deals/{case_id}")(pathParams);
+  const path = pathToFunc("/v2/public/deals/{deal_id}")(pathParams);
 
   const query = encodeFormQuery({
     "external_id": payload.external_id,
-    "lang": payload.lang,
-    "language": payload.language,
+    "form_view_id": payload.form_view_id,
+    "view_id": payload.view_id,
+    "workspace_id": payload.workspace_id,
   });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
-    "Accept-Language": encodeSimple(
-      "Accept-Language",
-      payload["Accept-Language"],
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload["X-Workspace-Code"],
       { explode: false, charEncoding: "none" },
     ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "api_routers_v1_cases_public_api_get_public_case",
+    operationID: "get_public_deal_api_v2_public_deals__deal_id__get",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -154,7 +152,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "404", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -168,8 +167,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.CaseSchema,
-    | errors.CasesErrorResponse
+    operations.GetPublicDealApiV2PublicDealsDealIdGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -179,9 +178,12 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.CaseSchema$inboundSchema),
-    M.jsonErr([400, 403, 404], errors.CasesErrorResponse$inboundSchema),
-    M.jsonErr(500, errors.CasesErrorResponse$inboundSchema),
+    M.json(
+      200,
+      operations.GetPublicDealApiV2PublicDealsDealIdGetResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

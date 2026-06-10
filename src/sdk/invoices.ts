@@ -4,24 +4,30 @@
 
 import { invoicesCreate } from "../funcs/invoices-create.js";
 import { invoicesDelete } from "../funcs/invoices-delete.js";
+import { invoicesDownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet } from "../funcs/invoices-download-public-invoice-pdf-api-v2-public-invoices-invoice-id-pdf-get.js";
 import { invoicesGet } from "../funcs/invoices-get.js";
+import { invoicesListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet } from "../funcs/invoices-list-public-overdue-invoices-api-v2-public-invoices-overdue-get.js";
 import { invoicesList } from "../funcs/invoices-list.js";
+import {
+  invoicesPermanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDelete,
+} from "../funcs/invoices-permanent-delete-public-invoice-api-v2-public-invoices-invoice-id-permanent-delete-delete.js";
+import { invoicesSendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost } from "../funcs/invoices-send-public-invoice-email-api-v2-public-invoices-invoice-id-email-post.js";
 import { invoicesUpdate } from "../funcs/invoices-update.js";
+import { invoicesUploadPublicInvoiceFileApiV2PublicInvoicesFilesPost } from "../funcs/invoices-upload-public-invoice-file-api-v2-public-invoices-files-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Invoices extends ClientSDK {
   /**
-   * List Invoices
+   * List Public Invoices
    */
   async list(
     request?:
-      | operations.ApiRoutersV1InvoicesPublicApiListWorkspaceInvoicesRequest
+      | operations.ListPublicInvoicesApiV2PublicInvoicesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.InvoiceSchema>> {
+  ): Promise<operations.ListPublicInvoicesApiV2PublicInvoicesGetResponse> {
     return unwrapAsync(invoicesList(
       this,
       request,
@@ -30,12 +36,12 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Create Invoice
+   * Create Public Invoice
    */
   async create(
-    request: models.PublicInvoiceRequest,
+    request: operations.CreatePublicInvoiceApiV2PublicInvoicesPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInvoiceResponse> {
+  ): Promise<operations.CreatePublicInvoiceApiV2PublicInvoicesPostResponse> {
     return unwrapAsync(invoicesCreate(
       this,
       request,
@@ -44,12 +50,53 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Get Invoice
+   * Upload Public Invoice File
+   */
+  async uploadPublicInvoiceFileApiV2PublicInvoicesFilesPost(
+    request:
+      operations.UploadPublicInvoiceFileApiV2PublicInvoicesFilesPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UploadPublicInvoiceFileApiV2PublicInvoicesFilesPostResponse
+  > {
+    return unwrapAsync(
+      invoicesUploadPublicInvoiceFileApiV2PublicInvoicesFilesPost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * List Public Overdue Invoices
+   */
+  async listPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet(
+    request?:
+      | operations.ListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGetRequest
+      | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    operations.ListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGetResponse
+  > {
+    return unwrapAsync(
+      invoicesListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Get Public Invoice
    */
   async get(
-    request: operations.ApiRoutersV1InvoicesPublicApiGetPublicInvoiceRequest,
+    request: operations.GetPublicInvoiceApiV2PublicInvoicesInvoiceIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.InvoiceSchema> {
+  ): Promise<
+    operations.GetPublicInvoiceApiV2PublicInvoicesInvoiceIdGetResponse
+  > {
     return unwrapAsync(invoicesGet(
       this,
       request,
@@ -58,12 +105,15 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Update Invoice
+   * Update Public Invoice
    */
   async update(
-    request: operations.ApiRoutersV1InvoicesPublicApiUpdatePublicInvoiceRequest,
+    request:
+      operations.UpdatePublicInvoiceApiV2PublicInvoicesInvoiceIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInvoiceResponse> {
+  ): Promise<
+    operations.UpdatePublicInvoiceApiV2PublicInvoicesInvoiceIdPutResponse
+  > {
     return unwrapAsync(invoicesUpdate(
       this,
       request,
@@ -72,16 +122,76 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Delete Invoice
+   * Delete Public Invoice
    */
   async delete(
-    request: operations.ApiRoutersV1InvoicesPublicApiDeletePublicInvoiceRequest,
+    request:
+      operations.DeletePublicInvoiceApiV2PublicInvoicesInvoiceIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInvoiceResponse> {
+  ): Promise<
+    operations.DeletePublicInvoiceApiV2PublicInvoicesInvoiceIdDeleteResponse
+  > {
     return unwrapAsync(invoicesDelete(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Download Public Invoice Pdf
+   */
+  async downloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet(
+    request:
+      operations.DownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGetResponse
+  > {
+    return unwrapAsync(
+      invoicesDownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Send Public Invoice Email
+   */
+  async sendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost(
+    request:
+      operations.SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostResponse
+  > {
+    return unwrapAsync(
+      invoicesSendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Permanent Delete Public Invoice
+   */
+  async permanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDelete(
+    request:
+      operations.PermanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.PermanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDeleteResponse
+  > {
+    return unwrapAsync(
+      invoicesPermanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDelete(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

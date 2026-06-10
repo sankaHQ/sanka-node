@@ -4,7 +4,8 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,23 +23,22 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Run Workflow
+ * Run Public Workflow
  */
 export function workflowsRunByRef(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1WorkflowsPublicApiRunPublicWorkflowByRefRequest,
+    operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.PublicWorkflowRunResponse,
-    | errors.WorkflowsErrorResponse
+    operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -59,13 +59,13 @@ export function workflowsRunByRef(
 async function $do(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1WorkflowsPublicApiRunPublicWorkflowByRefRequest,
+    operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.PublicWorkflowRunResponse,
-      | errors.WorkflowsErrorResponse
+      operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -83,7 +83,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .ApiRoutersV1WorkflowsPublicApiRunPublicWorkflowByRefRequest$outboundSchema,
+          .RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -92,38 +92,44 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
-    workflow_ref: encodeSimple("workflow_ref", payload.workflow_ref, {
+    workflow_id: encodeSimple("workflow_id", payload.workflow_id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/public/workflows/{workflow_ref}/run")(
-    pathParams,
-  );
+  const path = pathToFunc("/v2/public/workflows/{workflow_id}/run")(pathParams);
+
+  const query = encodeFormQuery({
+    "workspace_id": payload.workspace_id,
+  });
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "api_routers_v1_workflows_public_api_run_public_workflow_by_ref",
+      "run_public_workflow_api_v2_public_workflows__workflow_id__run_post",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -136,6 +142,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -147,7 +154,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["403", "404", "409", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -161,8 +169,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.PublicWorkflowRunResponse,
-    | errors.WorkflowsErrorResponse
+    operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -172,9 +180,15 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.PublicWorkflowRunResponse$inboundSchema),
-    M.jsonErr([403, 404, 409], errors.WorkflowsErrorResponse$inboundSchema),
-    M.jsonErr(500, errors.WorkflowsErrorResponse$inboundSchema),
+    M.json(
+      200,
+      operations
+        .RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([401, 403, 422], errors.ErrorEnvelope$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

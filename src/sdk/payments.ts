@@ -4,24 +4,26 @@
 
 import { paymentsCreate } from "../funcs/payments-create.js";
 import { paymentsDelete } from "../funcs/payments-delete.js";
+import { paymentsDownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet } from "../funcs/payments-download-public-payment-pdf-api-v2-public-payments-payment-id-pdf-get.js";
 import { paymentsGet } from "../funcs/payments-get.js";
+import { paymentsListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGet } from "../funcs/payments-list-public-payment-allocations-api-v2-public-payments-payment-id-allocations-get.js";
 import { paymentsList } from "../funcs/payments-list.js";
+import { paymentsUpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut } from "../funcs/payments-update-public-payment-allocations-api-v2-public-payments-payment-id-allocations-put.js";
 import { paymentsUpdate } from "../funcs/payments-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Payments extends ClientSDK {
   /**
-   * List Payments
+   * List Public Payments
    */
   async list(
     request?:
-      | operations.ApiRoutersV1PaymentsPublicApiListWorkspacePaymentsRequest
+      | operations.ListPublicPaymentsApiV2PublicPaymentsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.ReceiptSchema>> {
+  ): Promise<operations.ListPublicPaymentsApiV2PublicPaymentsGetResponse> {
     return unwrapAsync(paymentsList(
       this,
       request,
@@ -30,12 +32,12 @@ export class Payments extends ClientSDK {
   }
 
   /**
-   * Create Payment
+   * Create Public Payment
    */
   async create(
-    request: models.PublicPaymentRequest,
+    request: operations.CreatePublicPaymentApiV2PublicPaymentsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPaymentResponse> {
+  ): Promise<operations.CreatePublicPaymentApiV2PublicPaymentsPostResponse> {
     return unwrapAsync(paymentsCreate(
       this,
       request,
@@ -44,12 +46,14 @@ export class Payments extends ClientSDK {
   }
 
   /**
-   * Get Payment
+   * Get Public Payment
    */
   async get(
-    request: operations.ApiRoutersV1PaymentsPublicApiGetPublicPaymentRequest,
+    request: operations.GetPublicPaymentApiV2PublicPaymentsPaymentIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.ReceiptSchema> {
+  ): Promise<
+    operations.GetPublicPaymentApiV2PublicPaymentsPaymentIdGetResponse
+  > {
     return unwrapAsync(paymentsGet(
       this,
       request,
@@ -58,12 +62,15 @@ export class Payments extends ClientSDK {
   }
 
   /**
-   * Update Payment
+   * Update Public Payment
    */
   async update(
-    request: operations.ApiRoutersV1PaymentsPublicApiUpdatePublicPaymentRequest,
+    request:
+      operations.UpdatePublicPaymentApiV2PublicPaymentsPaymentIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPaymentResponse> {
+  ): Promise<
+    operations.UpdatePublicPaymentApiV2PublicPaymentsPaymentIdPutResponse
+  > {
     return unwrapAsync(paymentsUpdate(
       this,
       request,
@@ -72,16 +79,76 @@ export class Payments extends ClientSDK {
   }
 
   /**
-   * Delete Payment
+   * Delete Public Payment
    */
   async delete(
-    request: operations.ApiRoutersV1PaymentsPublicApiDeletePublicPaymentRequest,
+    request:
+      operations.DeletePublicPaymentApiV2PublicPaymentsPaymentIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPaymentResponse> {
+  ): Promise<
+    operations.DeletePublicPaymentApiV2PublicPaymentsPaymentIdDeleteResponse
+  > {
     return unwrapAsync(paymentsDelete(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Download Public Payment Pdf
+   */
+  async downloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet(
+    request:
+      operations.DownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGetResponse
+  > {
+    return unwrapAsync(
+      paymentsDownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * List Public Payment Allocations
+   */
+  async listPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGet(
+    request:
+      operations.ListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.ListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGetResponse
+  > {
+    return unwrapAsync(
+      paymentsListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGet(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Update Public Payment Allocations
+   */
+  async updatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut(
+    request:
+      operations.UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPutRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPutResponse
+  > {
+    return unwrapAsync(
+      paymentsUpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

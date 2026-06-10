@@ -46,6 +46,13 @@ async function main() {
 }
 
 async function patchFile(filePath) {
+  try {
+    await fs.access(filePath);
+  } catch (error) {
+    if (error?.code === "ENOENT") return;
+    throw error;
+  }
+
   const original = await fs.readFile(filePath, "utf8");
   let next = original;
 
@@ -144,6 +151,10 @@ run();
     /\| `publicOAuthOrJWTAuth` \| http \| HTTP Bearer \| `SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH` \|/,
     "| `apiKey` | http | HTTP Bearer | `SANKA_API_KEY` |",
   );
+  next = next.replace(
+    /\| `bearerAuth` \| http \| HTTP Bearer \| `SANKA_BEARER_AUTH` \|/,
+    "| `apiKey` | http | HTTP Bearer | `SANKA_API_KEY` |",
+  );
 
   return next;
 }
@@ -156,7 +167,9 @@ function patchUsageSnippet(content) {
     'import Sanka from "sanka-sdk";',
   );
   next = next.replaceAll("publicOAuthOrJWTAuth", "apiKey");
+  next = next.replaceAll("bearerAuth", "apiKey");
   next = next.replaceAll("SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH", "SANKA_API_KEY");
+  next = next.replaceAll("SANKA_BEARER_AUTH", "SANKA_API_KEY");
 
   return next;
 }

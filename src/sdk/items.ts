@@ -8,20 +8,17 @@ import { itemsGet } from "../funcs/items-get.js";
 import { itemsList } from "../funcs/items-list.js";
 import { itemsUpdate } from "../funcs/items-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Items extends ClientSDK {
   /**
-   * List Items
+   * List Public Items
    */
   async list(
-    request?:
-      | operations.ApiRoutersV1ItemsPublicApiListWorkspaceItemsRequest
-      | undefined,
+    request?: operations.ListPublicItemsApiV2PublicItemsGetRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.ShopTurboItemSchema>> {
+  ): Promise<operations.ListPublicItemsApiV2PublicItemsGetResponse> {
     return unwrapAsync(itemsList(
       this,
       request,
@@ -30,12 +27,12 @@ export class Items extends ClientSDK {
   }
 
   /**
-   * Create Item
+   * Create Public Item
    */
   async create(
-    request: models.PublicItemRequest,
+    request: operations.CreatePublicItemApiV2PublicItemsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicItemResponse> {
+  ): Promise<operations.CreatePublicItemApiV2PublicItemsPostResponse> {
     return unwrapAsync(itemsCreate(
       this,
       request,
@@ -44,26 +41,12 @@ export class Items extends ClientSDK {
   }
 
   /**
-   * Update Item
-   */
-  async update(
-    request: operations.ApiRoutersV1ItemsPublicApiUpdatePublicItemRequest,
-    options?: RequestOptions,
-  ): Promise<models.PublicItemResponse> {
-    return unwrapAsync(itemsUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get Item
+   * Get Public Item
    */
   async get(
-    request: operations.ApiRoutersV1ItemsPublicApiGetPublicItemRequest,
+    request: operations.GetPublicItemApiV2PublicItemsItemIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.ShopTurboItemSchema> {
+  ): Promise<operations.GetPublicItemApiV2PublicItemsItemIdGetResponse> {
     return unwrapAsync(itemsGet(
       this,
       request,
@@ -72,12 +55,26 @@ export class Items extends ClientSDK {
   }
 
   /**
-   * Delete Item
+   * Update Public Item
+   */
+  async update(
+    request: operations.UpdatePublicItemApiV2PublicItemsItemIdPutRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdatePublicItemApiV2PublicItemsItemIdPutResponse> {
+    return unwrapAsync(itemsUpdate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Public Item
    */
   async delete(
-    request: operations.ApiRoutersV1ItemsPublicApiDeletePublicItemRequest,
+    request: operations.DeletePublicItemApiV2PublicItemsItemIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicItemResponse> {
+  ): Promise<operations.DeletePublicItemApiV2PublicItemsItemIdDeleteResponse> {
     return unwrapAsync(itemsDelete(
       this,
       request,

@@ -8,20 +8,21 @@ import { subscriptionsGet } from "../funcs/subscriptions-get.js";
 import { subscriptionsList } from "../funcs/subscriptions-list.js";
 import { subscriptionsUpdate } from "../funcs/subscriptions-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Subscriptions extends ClientSDK {
   /**
-   * List Subscriptions
+   * List Public Subscriptions
    */
   async list(
     request?:
-      | operations.ApiRoutersV1SubscriptionsPublicApiListWorkspaceSubscriptionsRequest
+      | operations.ListPublicSubscriptionsApiV2PublicSubscriptionsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.SubscriptionDetailSchema>> {
+  ): Promise<
+    operations.ListPublicSubscriptionsApiV2PublicSubscriptionsGetResponse
+  > {
     return unwrapAsync(subscriptionsList(
       this,
       request,
@@ -30,12 +31,15 @@ export class Subscriptions extends ClientSDK {
   }
 
   /**
-   * Create Subscription
+   * Create Public Subscription
    */
   async create(
-    request: models.SubscriptionCreatePayload,
+    request:
+      operations.CreatePublicSubscriptionApiV2PublicSubscriptionsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.SubscriptionDetailSchema> {
+  ): Promise<
+    operations.CreatePublicSubscriptionApiV2PublicSubscriptionsPostResponse
+  > {
     return unwrapAsync(subscriptionsCreate(
       this,
       request,
@@ -44,13 +48,15 @@ export class Subscriptions extends ClientSDK {
   }
 
   /**
-   * Get Subscription
+   * Get Public Subscription
    */
   async get(
     request:
-      operations.ApiRoutersV1SubscriptionsPublicApiGetPublicSubscriptionRequest,
+      operations.GetPublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.SubscriptionDetailSchema> {
+  ): Promise<
+    operations.GetPublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdGetResponse
+  > {
     return unwrapAsync(subscriptionsGet(
       this,
       request,
@@ -59,13 +65,15 @@ export class Subscriptions extends ClientSDK {
   }
 
   /**
-   * Update Subscription
+   * Update Public Subscription
    */
   async update(
     request:
-      operations.ApiRoutersV1SubscriptionsPublicApiUpdatePublicSubscriptionRequest,
+      operations.UpdatePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.SubscriptionDetailSchema> {
+  ): Promise<
+    operations.UpdatePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdPutResponse
+  > {
     return unwrapAsync(subscriptionsUpdate(
       this,
       request,
@@ -74,13 +82,15 @@ export class Subscriptions extends ClientSDK {
   }
 
   /**
-   * Delete Subscription
+   * Delete Public Subscription
    */
   async delete(
     request:
-      operations.ApiRoutersV1SubscriptionsPublicApiDeletePublicSubscriptionRequest,
+      operations.DeletePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicSubscriptionDeleteResponse> {
+  ): Promise<
+    operations.DeletePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdDeleteResponse
+  > {
     return unwrapAsync(subscriptionsDelete(
       this,
       request,

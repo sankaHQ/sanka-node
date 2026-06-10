@@ -8,20 +8,21 @@ import { inventoryTransactionsGet } from "../funcs/inventory-transactions-get.js
 import { inventoryTransactionsList } from "../funcs/inventory-transactions-list.js";
 import { inventoryTransactionsUpdate } from "../funcs/inventory-transactions-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class InventoryTransactions extends ClientSDK {
   /**
-   * List Inventory Transactions
+   * List Public Inventory Transactions
    */
   async list(
     request?:
-      | operations.ApiRoutersV1InventoryTransactionsPublicApiListWorkspaceInventoryTransactionsRequest
+      | operations.ListPublicInventoryTransactionsApiV2PublicInventoryTransactionsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.InventoryTransactionSchema>> {
+  ): Promise<
+    operations.ListPublicInventoryTransactionsApiV2PublicInventoryTransactionsGetResponse
+  > {
     return unwrapAsync(inventoryTransactionsList(
       this,
       request,
@@ -30,12 +31,15 @@ export class InventoryTransactions extends ClientSDK {
   }
 
   /**
-   * Create Inventory Transaction
+   * Create Public Inventory Transaction
    */
   async create(
-    request: models.PublicInventoryTransactionRequest,
+    request:
+      operations.CreatePublicInventoryTransactionApiV2PublicInventoryTransactionsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryTransactionResponse> {
+  ): Promise<
+    operations.CreatePublicInventoryTransactionApiV2PublicInventoryTransactionsPostResponse
+  > {
     return unwrapAsync(inventoryTransactionsCreate(
       this,
       request,
@@ -44,13 +48,15 @@ export class InventoryTransactions extends ClientSDK {
   }
 
   /**
-   * Get Inventory Transaction
+   * Get Public Inventory Transaction
    */
   async get(
     request:
-      operations.ApiRoutersV1InventoryTransactionsPublicApiGetPublicInventoryTransactionRequest,
+      operations.GetPublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.InventoryTransactionSchema> {
+  ): Promise<
+    operations.GetPublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdGetResponse
+  > {
     return unwrapAsync(inventoryTransactionsGet(
       this,
       request,
@@ -59,13 +65,15 @@ export class InventoryTransactions extends ClientSDK {
   }
 
   /**
-   * Update Inventory Transaction
+   * Update Public Inventory Transaction
    */
   async update(
     request:
-      operations.ApiRoutersV1InventoryTransactionsPublicApiUpdatePublicInventoryTransactionRequest,
+      operations.UpdatePublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryTransactionResponse> {
+  ): Promise<
+    operations.UpdatePublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdPutResponse
+  > {
     return unwrapAsync(inventoryTransactionsUpdate(
       this,
       request,
@@ -74,13 +82,15 @@ export class InventoryTransactions extends ClientSDK {
   }
 
   /**
-   * Delete Inventory Transaction
+   * Delete Public Inventory Transaction
    */
   async delete(
     request:
-      operations.ApiRoutersV1InventoryTransactionsPublicApiDeletePublicInventoryTransactionRequest,
+      operations.DeletePublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryTransactionResponse> {
+  ): Promise<
+    operations.DeletePublicInventoryTransactionApiV2PublicInventoryTransactionsTransactionIdDeleteResponse
+  > {
     return unwrapAsync(inventoryTransactionsDelete(
       this,
       request,

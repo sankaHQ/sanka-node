@@ -9,20 +9,17 @@ import { dealsListPipelines } from "../funcs/deals-list-pipelines.js";
 import { dealsList } from "../funcs/deals-list.js";
 import { dealsUpdate } from "../funcs/deals-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Deals extends ClientSDK {
   /**
-   * List Deals
+   * List Public Deals
    */
   async list(
-    request?:
-      | operations.ApiRoutersV1CasesPublicApiListPublicCasesRequest
-      | undefined,
+    request?: operations.ListPublicDealsApiV2PublicDealsGetRequest | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.CaseSchema>> {
+  ): Promise<operations.ListPublicDealsApiV2PublicDealsGetResponse> {
     return unwrapAsync(dealsList(
       this,
       request,
@@ -31,12 +28,12 @@ export class Deals extends ClientSDK {
   }
 
   /**
-   * Create Deal
+   * Create Public Deal
    */
   async create(
-    request: models.PublicCaseRequest,
+    request: operations.CreatePublicDealApiV2PublicDealsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicCaseResponse> {
+  ): Promise<operations.CreatePublicDealApiV2PublicDealsPostResponse> {
     return unwrapAsync(dealsCreate(
       this,
       request,
@@ -45,14 +42,16 @@ export class Deals extends ClientSDK {
   }
 
   /**
-   * List Deal Pipelines
+   * List Public Deal Pipelines
    */
   async listPipelines(
     request?:
-      | operations.ApiRoutersV1CasesPublicApiListPublicCasePipelinesRequest
+      | operations.ListPublicDealPipelinesApiV2PublicDealsPipelinesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.PublicCasePipelineSchema>> {
+  ): Promise<
+    operations.ListPublicDealPipelinesApiV2PublicDealsPipelinesGetResponse
+  > {
     return unwrapAsync(dealsListPipelines(
       this,
       request,
@@ -61,12 +60,12 @@ export class Deals extends ClientSDK {
   }
 
   /**
-   * Get Deal
+   * Get Public Deal
    */
   async get(
-    request: operations.ApiRoutersV1CasesPublicApiGetPublicCaseRequest,
+    request: operations.GetPublicDealApiV2PublicDealsDealIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.CaseSchema> {
+  ): Promise<operations.GetPublicDealApiV2PublicDealsDealIdGetResponse> {
     return unwrapAsync(dealsGet(
       this,
       request,
@@ -75,12 +74,12 @@ export class Deals extends ClientSDK {
   }
 
   /**
-   * Update Deal
+   * Update Public Deal
    */
   async update(
-    request: operations.ApiRoutersV1CasesPublicApiUpdatePublicCaseRequest,
+    request: operations.UpdatePublicDealApiV2PublicDealsDealIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicCaseResponse> {
+  ): Promise<operations.UpdatePublicDealApiV2PublicDealsDealIdPutResponse> {
     return unwrapAsync(dealsUpdate(
       this,
       request,
@@ -89,12 +88,12 @@ export class Deals extends ClientSDK {
   }
 
   /**
-   * Delete Deal
+   * Delete Public Deal
    */
   async delete(
-    request: operations.ApiRoutersV1CasesPublicApiDeletePublicCaseRequest,
+    request: operations.DeletePublicDealApiV2PublicDealsDealIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicCaseResponse> {
+  ): Promise<operations.DeletePublicDealApiV2PublicDealsDealIdDeleteResponse> {
     return unwrapAsync(dealsDelete(
       this,
       request,

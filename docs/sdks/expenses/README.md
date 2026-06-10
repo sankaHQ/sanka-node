@@ -4,29 +4,29 @@
 
 ### Available Operations
 
-* [list](#list) - List Expenses
-* [create](#create) - Create Expense
-* [uploadFile](#uploadfile) - Upload Expense Attachment File
-* [get](#get) - Get Expense
-* [update](#update) - Update Expense
-* [delete](#delete) - Delete Expense
+* [list](#list) - List Public Expenses
+* [create](#create) - Create Public Expense
+* [uploadFile](#uploadfile) - Upload Public Expense File
+* [get](#get) - Get Public Expense
+* [update](#update) - Update Public Expense
+* [delete](#delete) - Delete Public Expense
 
 ## list
 
-List Expenses
+List Public Expenses
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_list_workspace_expenses" method="get" path="/v1/public/expenses" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_expenses_api_v2_public_expenses_get" method="get" path="/v2/public/expenses" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.expenses.list();
+  const result = await sanka.expenses.list({});
 
   console.log(result);
 }
@@ -45,11 +45,11 @@ import { expensesList } from "sanka-sdk/funcs/expenses-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await expensesList(sanka);
+  const res = await expensesList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -65,38 +65,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ExpensesPublicApiListWorkspaceExpensesRequest](../../models/operations/api-routers-v1-expenses-public-api-list-workspace-expenses-request.md)          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPublicExpensesApiV2PublicExpensesGetRequest](../../models/operations/list-public-expenses-api-v2-public-expenses-get-request.md)                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ExpenseSchema[]](../../models/.md)\>**
+**Promise\<[operations.ListPublicExpensesApiV2PublicExpensesGetResponse](../../models/operations/list-public-expenses-api-v2-public-expenses-get-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 400, 403, 404                | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## create
 
-Create Expense
+Create Public Expense
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_create_public_expense" method="post" path="/v1/public/expenses" -->
+<!-- UsageSnippet language="typescript" operationID="create_public_expense_api_v2_public_expenses_post" method="post" path="/v2/public/expenses" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.expenses.create({});
+  const result = await sanka.expenses.create({
+    body: {},
+  });
 
   console.log(result);
 }
@@ -115,11 +117,13 @@ import { expensesCreate } from "sanka-sdk/funcs/expenses-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await expensesCreate(sanka, {});
+  const res = await expensesCreate(sanka, {
+    body: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -135,41 +139,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.PublicExpenseRequest](../../models/public-expense-request.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePublicExpenseApiV2PublicExpensesPostRequest](../../models/operations/create-public-expense-api-v2-public-expenses-post-request.md)                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicExpenseResponse](../../models/public-expense-response.md)\>**
+**Promise\<[operations.CreatePublicExpenseApiV2PublicExpensesPostResponse](../../models/operations/create-public-expense-api-v2-public-expenses-post-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 400, 403, 404                | application/json             |
-| errors.ExpensesErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## uploadFile
 
-Upload Expense Attachment File
+Upload Public Expense File
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_upload_public_expense_file" method="post" path="/v1/public/expenses/files" -->
+<!-- UsageSnippet language="typescript" operationID="upload_public_expense_file_api_v2_public_expenses_files_post" method="post" path="/v2/public/expenses/files" -->
 ```typescript
-import { openAsBlob } from "node:fs";
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.expenses.uploadFile({
-    file: await openAsBlob("example.file"),
+    body: {
+      file: "<value>",
+    },
   });
 
   console.log(result);
@@ -183,19 +187,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { openAsBlob } from "node:fs";
 import { SankaCore } from "sanka-sdk/core.js";
 import { expensesUploadFile } from "sanka-sdk/funcs/expenses-upload-file.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await expensesUploadFile(sanka, {
-    file: await openAsBlob("example.file"),
+    body: {
+      file: "<value>",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -212,35 +217,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.FileParams](../../models/operations/file-params.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostRequest](../../models/operations/upload-public-expense-file-api-v2-public-expenses-files-post-request.md)       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicExpenseFileUploadResponse](../../models/public-expense-file-upload-response.md)\>**
+**Promise\<[operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse](../../models/operations/upload-public-expense-file-api-v2-public-expenses-files-post-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 403, 404                     | application/json             |
-| errors.ExpensesErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
-Get Expense
+Get Public Expense
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_get_public_expense" method="get" path="/v1/public/expenses/{expense_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_expense_api_v2_public_expenses__expense_id__get" method="get" path="/v2/public/expenses/{expense_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -265,7 +269,7 @@ import { expensesGet } from "sanka-sdk/funcs/expenses-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -287,35 +291,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ExpensesPublicApiGetPublicExpenseRequest](../../models/operations/api-routers-v1-expenses-public-api-get-public-expense-request.md)                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPublicExpenseApiV2PublicExpensesExpenseIdGetRequest](../../models/operations/get-public-expense-api-v2-public-expenses-expense-id-get-request.md)               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ExpenseSchema](../../models/expense-schema.md)\>**
+**Promise\<[operations.GetPublicExpenseApiV2PublicExpensesExpenseIdGetResponse](../../models/operations/get-public-expense-api-v2-public-expenses-expense-id-get-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 400, 403, 404                | application/json             |
-| errors.ExpensesErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
-Update Expense
+Update Public Expense
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_update_public_expense" method="put" path="/v1/public/expenses/{expense_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_expense_api_v2_public_expenses__expense_id__put" method="put" path="/v2/public/expenses/{expense_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -341,7 +344,7 @@ import { expensesUpdate } from "sanka-sdk/funcs/expenses-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -364,35 +367,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ExpensesPublicApiUpdatePublicExpenseRequest](../../models/operations/api-routers-v1-expenses-public-api-update-public-expense-request.md)              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutRequest](../../models/operations/update-public-expense-api-v2-public-expenses-expense-id-put-request.md)         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicExpenseResponse](../../models/public-expense-response.md)\>**
+**Promise\<[operations.UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutResponse](../../models/operations/update-public-expense-api-v2-public-expenses-expense-id-put-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 400, 403, 404, 409           | application/json             |
-| errors.ExpensesErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
-Delete Expense
+Delete Public Expense
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_expenses_public_api_delete_public_expense" method="delete" path="/v1/public/expenses/{expense_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_expense_api_v2_public_expenses__expense_id__delete" method="delete" path="/v2/public/expenses/{expense_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -417,7 +419,7 @@ import { expensesDelete } from "sanka-sdk/funcs/expenses-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -439,19 +441,18 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ExpensesPublicApiDeletePublicExpenseRequest](../../models/operations/api-routers-v1-expenses-public-api-delete-public-expense-request.md)              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePublicExpenseApiV2PublicExpensesExpenseIdDeleteRequest](../../models/operations/delete-public-expense-api-v2-public-expenses-expense-id-delete-request.md)   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicExpenseResponse](../../models/public-expense-response.md)\>**
+**Promise\<[operations.DeletePublicExpenseApiV2PublicExpensesExpenseIdDeleteResponse](../../models/operations/delete-public-expense-api-v2-public-expenses-expense-id-delete-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ExpensesErrorResponse | 400, 403, 404                | application/json             |
-| errors.ExpensesErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

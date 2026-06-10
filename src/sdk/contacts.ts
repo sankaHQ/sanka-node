@@ -8,20 +8,19 @@ import { contactsGet } from "../funcs/contacts-get.js";
 import { contactsList } from "../funcs/contacts-list.js";
 import { contactsUpdate } from "../funcs/contacts-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Contacts extends ClientSDK {
   /**
-   * List Contacts
+   * List Public Contacts
    */
   async list(
     request?:
-      | operations.ApiRoutersV1ContactsPublicApiPublicListContactsRequest
+      | operations.ListPublicContactsApiV2PublicContactsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<models.ContactsListResponse> {
+  ): Promise<operations.ListPublicContactsApiV2PublicContactsGetResponse> {
     return unwrapAsync(contactsList(
       this,
       request,
@@ -30,12 +29,12 @@ export class Contacts extends ClientSDK {
   }
 
   /**
-   * Create Contact
+   * Create Public Contact
    */
   async create(
-    request: models.PublicContactRequest,
+    request: operations.CreatePublicContactApiV2PublicContactsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicContactResponse> {
+  ): Promise<operations.CreatePublicContactApiV2PublicContactsPostResponse> {
     return unwrapAsync(contactsCreate(
       this,
       request,
@@ -44,12 +43,14 @@ export class Contacts extends ClientSDK {
   }
 
   /**
-   * Get Contact
+   * Get Public Contact
    */
   async get(
-    request: operations.ApiRoutersV1ContactsPublicApiGetPublicContactRequest,
+    request: operations.GetPublicContactApiV2PublicContactsContactIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.ContactSchema> {
+  ): Promise<
+    operations.GetPublicContactApiV2PublicContactsContactIdGetResponse
+  > {
     return unwrapAsync(contactsGet(
       this,
       request,
@@ -58,12 +59,15 @@ export class Contacts extends ClientSDK {
   }
 
   /**
-   * Update Contact
+   * Update Public Contact
    */
   async update(
-    request: operations.ApiRoutersV1ContactsPublicApiUpdatePublicContactRequest,
+    request:
+      operations.UpdatePublicContactApiV2PublicContactsContactIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicContactResponse> {
+  ): Promise<
+    operations.UpdatePublicContactApiV2PublicContactsContactIdPutResponse
+  > {
     return unwrapAsync(contactsUpdate(
       this,
       request,
@@ -72,12 +76,15 @@ export class Contacts extends ClientSDK {
   }
 
   /**
-   * Delete Contact
+   * Delete Public Contact
    */
   async delete(
-    request: operations.ApiRoutersV1ContactsPublicApiDeletePublicContactRequest,
+    request:
+      operations.DeletePublicContactApiV2PublicContactsContactIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicContactResponse> {
+  ): Promise<
+    operations.DeletePublicContactApiV2PublicContactsContactIdDeleteResponse
+  > {
     return unwrapAsync(contactsDelete(
       this,
       request,

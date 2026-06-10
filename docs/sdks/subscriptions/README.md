@@ -4,28 +4,28 @@
 
 ### Available Operations
 
-* [list](#list) - List Subscriptions
-* [create](#create) - Create Subscription
-* [get](#get) - Get Subscription
-* [update](#update) - Update Subscription
-* [delete](#delete) - Delete Subscription
+* [list](#list) - List Public Subscriptions
+* [create](#create) - Create Public Subscription
+* [get](#get) - Get Public Subscription
+* [update](#update) - Update Public Subscription
+* [delete](#delete) - Delete Public Subscription
 
 ## list
 
-List Subscriptions
+List Public Subscriptions
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_subscriptions_public_api_list_workspace_subscriptions" method="get" path="/v1/public/subscriptions" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_subscriptions_api_v2_public_subscriptions_get" method="get" path="/v2/public/subscriptions" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.subscriptions.list();
+  const result = await sanka.subscriptions.list({});
 
   console.log(result);
 }
@@ -44,11 +44,11 @@ import { subscriptionsList } from "sanka-sdk/funcs/subscriptions-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await subscriptionsList(sanka);
+  const res = await subscriptionsList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -62,47 +62,41 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                 | Type                                                                                                                                                                                      | Required                                                                                                                                                                                  | Description                                                                                                                                                                               |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                 | [operations.ApiRoutersV1SubscriptionsPublicApiListWorkspaceSubscriptionsRequest](../../models/operations/api-routers-v1-subscriptions-public-api-list-workspace-subscriptions-request.md) | :heavy_check_mark:                                                                                                                                                                        | The request object to use for the request.                                                                                                                                                |
-| `options`                                                                                                                                                                                 | RequestOptions                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                        | Used to set various options for making HTTP requests.                                                                                                                                     |
-| `options.fetchOptions`                                                                                                                                                                    | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                   | :heavy_minus_sign:                                                                                                                                                                        | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.            |
-| `options.retries`                                                                                                                                                                         | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                        | Enables retrying HTTP requests under certain failure conditions.                                                                                                                          |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListPublicSubscriptionsApiV2PublicSubscriptionsGetRequest](../../models/operations/list-public-subscriptions-api-v2-public-subscriptions-get-request.md)           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.SubscriptionDetailSchema[]](../../models/.md)\>**
+**Promise\<[operations.ListPublicSubscriptionsApiV2PublicSubscriptionsGetResponse](../../models/operations/list-public-subscriptions-api-v2-public-subscriptions-get-response.md)\>**
 
 ### Errors
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## create
 
-Create Subscription
+Create Public Subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_subscriptions_public_api_create_public_subscription" method="post" path="/v1/public/subscriptions" -->
+<!-- UsageSnippet language="typescript" operationID="create_public_subscription_api_v2_public_subscriptions_post" method="post" path="/v2/public/subscriptions" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const result = await sanka.subscriptions.create({
-    cid: "<id>",
-    items: [
-      {
-        id: "<id>",
-        amount: 183731,
-      },
-    ],
-    subscriptionStatus: "<value>",
+    body: {},
   });
 
   console.log(result);
@@ -122,19 +116,12 @@ import { subscriptionsCreate } from "sanka-sdk/funcs/subscriptions-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   const res = await subscriptionsCreate(sanka, {
-    cid: "<id>",
-    items: [
-      {
-        id: "<id>",
-        amount: 183731,
-      },
-    ],
-    subscriptionStatus: "<value>",
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;
@@ -151,35 +138,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.SubscriptionCreatePayload](../../models/subscription-create-payload.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePublicSubscriptionApiV2PublicSubscriptionsPostRequest](../../models/operations/create-public-subscription-api-v2-public-subscriptions-post-request.md)       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.SubscriptionDetailSchema](../../models/subscription-detail-schema.md)\>**
+**Promise\<[operations.CreatePublicSubscriptionApiV2PublicSubscriptionsPostResponse](../../models/operations/create-public-subscription-api-v2-public-subscriptions-post-response.md)\>**
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.SubscriptionErrorResponse | 400, 403, 404                    | application/json                 |
-| errors.SubscriptionErrorResponse | 500                              | application/json                 |
-| errors.SankaDefaultError         | 4XX, 5XX                         | \*/\*                            |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
-Get Subscription
+Get Public Subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_subscriptions_public_api_get_public_subscription" method="get" path="/v1/public/subscriptions/{subscription_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_subscription_api_v2_public_subscriptions__subscription_id__get" method="get" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -204,7 +190,7 @@ import { subscriptionsGet } from "sanka-sdk/funcs/subscriptions-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -224,37 +210,36 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                       | [operations.ApiRoutersV1SubscriptionsPublicApiGetPublicSubscriptionRequest](../../models/operations/api-routers-v1-subscriptions-public-api-get-public-subscription-request.md) | :heavy_check_mark:                                                                                                                                                              | The request object to use for the request.                                                                                                                                      |
-| `options`                                                                                                                                                                       | RequestOptions                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                              | Used to set various options for making HTTP requests.                                                                                                                           |
-| `options.fetchOptions`                                                                                                                                                          | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                         | :heavy_minus_sign:                                                                                                                                                              | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.  |
-| `options.retries`                                                                                                                                                               | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                              | Enables retrying HTTP requests under certain failure conditions.                                                                                                                |
+| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                      | [operations.GetPublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdGetRequest](../../models/operations/get-public-subscription-api-v2-public-subscriptions-subscription-id-get-request.md) | :heavy_check_mark:                                                                                                                                                                             | The request object to use for the request.                                                                                                                                                     |
+| `options`                                                                                                                                                                                      | RequestOptions                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                        | :heavy_minus_sign:                                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                 |
+| `options.retries`                                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                                               |
 
 ### Response
 
-**Promise\<[models.SubscriptionDetailSchema](../../models/subscription-detail-schema.md)\>**
+**Promise\<[operations.GetPublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdGetResponse](../../models/operations/get-public-subscription-api-v2-public-subscriptions-subscription-id-get-response.md)\>**
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.SubscriptionErrorResponse | 400, 403, 404                    | application/json                 |
-| errors.SubscriptionErrorResponse | 500                              | application/json                 |
-| errors.SankaDefaultError         | 4XX, 5XX                         | \*/\*                            |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
-Update Subscription
+Update Public Subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_subscriptions_public_api_update_public_subscription" method="put" path="/v1/public/subscriptions/{subscription_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_subscription_api_v2_public_subscriptions__subscription_id__put" method="put" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -280,7 +265,7 @@ import { subscriptionsUpdate } from "sanka-sdk/funcs/subscriptions-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -301,37 +286,36 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                             | [operations.ApiRoutersV1SubscriptionsPublicApiUpdatePublicSubscriptionRequest](../../models/operations/api-routers-v1-subscriptions-public-api-update-public-subscription-request.md) | :heavy_check_mark:                                                                                                                                                                    | The request object to use for the request.                                                                                                                                            |
-| `options`                                                                                                                                                                             | RequestOptions                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                    | Used to set various options for making HTTP requests.                                                                                                                                 |
-| `options.fetchOptions`                                                                                                                                                                | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                               | :heavy_minus_sign:                                                                                                                                                                    | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.        |
-| `options.retries`                                                                                                                                                                     | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                    | Enables retrying HTTP requests under certain failure conditions.                                                                                                                      |
+| Parameter                                                                                                                                                                                            | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                            | [operations.UpdatePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdPutRequest](../../models/operations/update-public-subscription-api-v2-public-subscriptions-subscription-id-put-request.md) | :heavy_check_mark:                                                                                                                                                                                   | The request object to use for the request.                                                                                                                                                           |
+| `options`                                                                                                                                                                                            | RequestOptions                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                   | Used to set various options for making HTTP requests.                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                                               | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                   | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                       |
+| `options.retries`                                                                                                                                                                                    | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                   | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                     |
 
 ### Response
 
-**Promise\<[models.SubscriptionDetailSchema](../../models/subscription-detail-schema.md)\>**
+**Promise\<[operations.UpdatePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdPutResponse](../../models/operations/update-public-subscription-api-v2-public-subscriptions-subscription-id-put-response.md)\>**
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.SubscriptionErrorResponse | 400, 403, 404                    | application/json                 |
-| errors.SubscriptionErrorResponse | 500                              | application/json                 |
-| errors.SankaDefaultError         | 4XX, 5XX                         | \*/\*                            |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
-Delete Subscription
+Delete Public Subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_subscriptions_public_api_delete_public_subscription" method="delete" path="/v1/public/subscriptions/{subscription_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_subscription_api_v2_public_subscriptions__subscription_id__delete" method="delete" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -356,7 +340,7 @@ import { subscriptionsDelete } from "sanka-sdk/funcs/subscriptions-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -376,21 +360,20 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                             | [operations.ApiRoutersV1SubscriptionsPublicApiDeletePublicSubscriptionRequest](../../models/operations/api-routers-v1-subscriptions-public-api-delete-public-subscription-request.md) | :heavy_check_mark:                                                                                                                                                                    | The request object to use for the request.                                                                                                                                            |
-| `options`                                                                                                                                                                             | RequestOptions                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                    | Used to set various options for making HTTP requests.                                                                                                                                 |
-| `options.fetchOptions`                                                                                                                                                                | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                               | :heavy_minus_sign:                                                                                                                                                                    | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.        |
-| `options.retries`                                                                                                                                                                     | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                    | Enables retrying HTTP requests under certain failure conditions.                                                                                                                      |
+| Parameter                                                                                                                                                                                                  | Type                                                                                                                                                                                                       | Required                                                                                                                                                                                                   | Description                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                  | [operations.DeletePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdDeleteRequest](../../models/operations/delete-public-subscription-api-v2-public-subscriptions-subscription-id-delete-request.md) | :heavy_check_mark:                                                                                                                                                                                         | The request object to use for the request.                                                                                                                                                                 |
+| `options`                                                                                                                                                                                                  | RequestOptions                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                         | Used to set various options for making HTTP requests.                                                                                                                                                      |
+| `options.fetchOptions`                                                                                                                                                                                     | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                         | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                             |
+| `options.retries`                                                                                                                                                                                          | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                         | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                           |
 
 ### Response
 
-**Promise\<[models.PublicSubscriptionDeleteResponse](../../models/public-subscription-delete-response.md)\>**
+**Promise\<[operations.DeletePublicSubscriptionApiV2PublicSubscriptionsSubscriptionIdDeleteResponse](../../models/operations/delete-public-subscription-api-v2-public-subscriptions-subscription-id-delete-response.md)\>**
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.SubscriptionErrorResponse | 400, 403, 404, 409               | application/json                 |
-| errors.SubscriptionErrorResponse | 500                              | application/json                 |
-| errors.SankaDefaultError         | 4XX, 5XX                         | \*/\*                            |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

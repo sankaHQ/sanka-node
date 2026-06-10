@@ -5,24 +5,25 @@
 import { ordersBulkCreate } from "../funcs/orders-bulk-create.js";
 import { ordersCreate } from "../funcs/orders-create.js";
 import { ordersDelete } from "../funcs/orders-delete.js";
+import { ordersDownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet } from "../funcs/orders-download-public-order-pdf-api-v2-public-orders-order-id-pdf-get.js";
 import { ordersGet } from "../funcs/orders-get.js";
 import { ordersList } from "../funcs/orders-list.js";
 import { ordersUpdate } from "../funcs/orders-update.js";
+import { ordersUploadPublicOrderFileApiV2PublicOrdersFilesPost } from "../funcs/orders-upload-public-order-file-api-v2-public-orders-files-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Orders extends ClientSDK {
   /**
-   * List Orders
+   * List Public Orders
    */
   async list(
     request?:
-      | operations.ApiRoutersV1OrdersPublicApiPublicListOrdersRequest
+      | operations.ListPublicOrdersApiV2PublicOrdersGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<models.OrdersListResponse> {
+  ): Promise<operations.ListPublicOrdersApiV2PublicOrdersGetResponse> {
     return unwrapAsync(ordersList(
       this,
       request,
@@ -31,12 +32,12 @@ export class Orders extends ClientSDK {
   }
 
   /**
-   * Create Orders
+   * Create Public Order
    */
   async create(
-    request: models.PublicOrderRequest,
+    request: operations.CreatePublicOrderApiV2PublicOrdersPostRequest,
     options?: RequestOptions,
-  ): Promise<models.BulkOrdersResponse> {
+  ): Promise<operations.CreatePublicOrderApiV2PublicOrdersPostResponse> {
     return unwrapAsync(ordersCreate(
       this,
       request,
@@ -45,12 +46,14 @@ export class Orders extends ClientSDK {
   }
 
   /**
-   * Bulk Create Orders
+   * Bulk Create Public Orders
    */
   async bulkCreate(
-    request: models.BulkOrdersRequest,
+    request: operations.BulkCreatePublicOrdersApiV2PublicOrdersBulkPostRequest,
     options?: RequestOptions,
-  ): Promise<models.BulkOrdersResponse> {
+  ): Promise<
+    operations.BulkCreatePublicOrdersApiV2PublicOrdersBulkPostResponse
+  > {
     return unwrapAsync(ordersBulkCreate(
       this,
       request,
@@ -59,12 +62,28 @@ export class Orders extends ClientSDK {
   }
 
   /**
-   * Get Order
+   * Upload Public Order File
+   */
+  async uploadPublicOrderFileApiV2PublicOrdersFilesPost(
+    request: operations.UploadPublicOrderFileApiV2PublicOrdersFilesPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UploadPublicOrderFileApiV2PublicOrdersFilesPostResponse
+  > {
+    return unwrapAsync(ordersUploadPublicOrderFileApiV2PublicOrdersFilesPost(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Public Order
    */
   async get(
-    request: operations.ApiRoutersV1OrdersPublicApiPublicGetOrderRequest,
+    request: operations.GetPublicOrderApiV2PublicOrdersOrderIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicOrderDetailSchema> {
+  ): Promise<operations.GetPublicOrderApiV2PublicOrdersOrderIdGetResponse> {
     return unwrapAsync(ordersGet(
       this,
       request,
@@ -73,12 +92,12 @@ export class Orders extends ClientSDK {
   }
 
   /**
-   * Update Order
+   * Update Public Order
    */
   async update(
-    request: operations.ApiRoutersV1OrdersPublicApiPublicUpdateOrderRequest,
+    request: operations.UpdatePublicOrderApiV2PublicOrdersOrderIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.BulkOrdersResponse> {
+  ): Promise<operations.UpdatePublicOrderApiV2PublicOrdersOrderIdPutResponse> {
     return unwrapAsync(ordersUpdate(
       this,
       request,
@@ -87,16 +106,37 @@ export class Orders extends ClientSDK {
   }
 
   /**
-   * Delete Order
+   * Delete Public Order
    */
   async delete(
-    request: operations.ApiRoutersV1OrdersPublicApiPublicDeleteOrderRequest,
+    request: operations.DeletePublicOrderApiV2PublicOrdersOrderIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicOrderDeleteResponse> {
+  ): Promise<
+    operations.DeletePublicOrderApiV2PublicOrdersOrderIdDeleteResponse
+  > {
     return unwrapAsync(ordersDelete(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Download Public Order Pdf
+   */
+  async downloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet(
+    request:
+      operations.DownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGetResponse
+  > {
+    return unwrapAsync(
+      ordersDownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

@@ -5,6 +5,7 @@
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,24 +23,23 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List Disbursements
+ * List Public Disbursements
  */
 export function disbursementsList(
   client: SankaCore,
   request?:
-    | operations.ApiRoutersV1DisbursementsPublicApiListWorkspaceDisbursementsRequest
+    | operations.ListPublicDisbursementsApiV2PublicDisbursementsGetRequest
     | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    Array<models.DisbursementSchema>,
-    | errors.DisbursementsErrorResponse
+    operations.ListPublicDisbursementsApiV2PublicDisbursementsGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -60,14 +60,14 @@ export function disbursementsList(
 async function $do(
   client: SankaCore,
   request?:
-    | operations.ApiRoutersV1DisbursementsPublicApiListWorkspaceDisbursementsRequest
+    | operations.ListPublicDisbursementsApiV2PublicDisbursementsGetRequest
     | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      Array<models.DisbursementSchema>,
-      | errors.DisbursementsErrorResponse
+      operations.ListPublicDisbursementsApiV2PublicDisbursementsGetResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -86,7 +86,7 @@ async function $do(
       z.parse(
         z.optional(
           operations
-            .ApiRoutersV1DisbursementsPublicApiListWorkspaceDisbursementsRequest$outboundSchema,
+            .ListPublicDisbursementsApiV2PublicDisbursementsGetRequest$outboundSchema,
         ),
         value,
       ),
@@ -98,11 +98,17 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/public/disbursements")();
+  const path = pathToFunc("/v2/public/disbursements")();
 
   const query = encodeFormQuery({
-    "lang": payload?.lang,
     "language": payload?.language,
+    "limit": payload?.limit,
+    "page": payload?.page,
+    "search": payload?.search,
+    "sort": payload?.sort,
+    "status": payload?.status,
+    "usage_status": payload?.usage_status,
+    "view_id": payload?.view_id,
     "workspace_id": payload?.workspace_id,
   });
 
@@ -113,24 +119,30 @@ async function $do(
       payload?.["Accept-Language"],
       { explode: false, charEncoding: "none" },
     ),
+    "X-Language": encodeSimple("X-Language", payload?.["X-Language"], {
+      explode: false,
+      charEncoding: "none",
+    }),
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload?.["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID:
-      "api_routers_v1_disbursements_public_api_list_workspace_disbursements",
+    operationID: "list_public_disbursements_api_v2_public_disbursements_get",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -155,7 +167,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "404", "4XX", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -169,8 +182,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    Array<models.DisbursementSchema>,
-    | errors.DisbursementsErrorResponse
+    operations.ListPublicDisbursementsApiV2PublicDisbursementsGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -180,8 +193,13 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, z.array(models.DisbursementSchema$inboundSchema)),
-    M.jsonErr([400, 403, 404], errors.DisbursementsErrorResponse$inboundSchema),
+    M.json(
+      200,
+      operations
+        .ListPublicDisbursementsApiV2PublicDisbursementsGetResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

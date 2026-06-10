@@ -8,20 +8,19 @@ import { locationsGet } from "../funcs/locations-get.js";
 import { locationsList } from "../funcs/locations-list.js";
 import { locationsUpdate } from "../funcs/locations-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Locations extends ClientSDK {
   /**
-   * List Locations
+   * List Public Locations
    */
   async list(
     request?:
-      | operations.ApiRoutersV1LocationsPublicApiListWorkspaceLocationsRequest
+      | operations.ListPublicLocationsApiV2PublicLocationsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.InventoryWarehouseSchema>> {
+  ): Promise<operations.ListPublicLocationsApiV2PublicLocationsGetResponse> {
     return unwrapAsync(locationsList(
       this,
       request,
@@ -30,12 +29,12 @@ export class Locations extends ClientSDK {
   }
 
   /**
-   * Create Location
+   * Create Public Location
    */
   async create(
-    request: models.PublicLocationRequest,
+    request: operations.CreatePublicLocationApiV2PublicLocationsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicLocationResponse> {
+  ): Promise<operations.CreatePublicLocationApiV2PublicLocationsPostResponse> {
     return unwrapAsync(locationsCreate(
       this,
       request,
@@ -44,12 +43,15 @@ export class Locations extends ClientSDK {
   }
 
   /**
-   * Get Location
+   * Get Public Location
    */
   async get(
-    request: operations.ApiRoutersV1LocationsPublicApiGetPublicLocationRequest,
+    request:
+      operations.GetPublicLocationApiV2PublicLocationsLocationIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.InventoryWarehouseSchema> {
+  ): Promise<
+    operations.GetPublicLocationApiV2PublicLocationsLocationIdGetResponse
+  > {
     return unwrapAsync(locationsGet(
       this,
       request,
@@ -58,13 +60,15 @@ export class Locations extends ClientSDK {
   }
 
   /**
-   * Update Location
+   * Update Public Location
    */
   async update(
     request:
-      operations.ApiRoutersV1LocationsPublicApiUpdatePublicLocationRequest,
+      operations.UpdatePublicLocationApiV2PublicLocationsLocationIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicLocationResponse> {
+  ): Promise<
+    operations.UpdatePublicLocationApiV2PublicLocationsLocationIdPutResponse
+  > {
     return unwrapAsync(locationsUpdate(
       this,
       request,
@@ -73,13 +77,15 @@ export class Locations extends ClientSDK {
   }
 
   /**
-   * Delete Location
+   * Delete Public Location
    */
   async delete(
     request:
-      operations.ApiRoutersV1LocationsPublicApiDeletePublicLocationRequest,
+      operations.DeletePublicLocationApiV2PublicLocationsLocationIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicLocationResponse> {
+  ): Promise<
+    operations.DeletePublicLocationApiV2PublicLocationsLocationIdDeleteResponse
+  > {
     return unwrapAsync(locationsDelete(
       this,
       request,
