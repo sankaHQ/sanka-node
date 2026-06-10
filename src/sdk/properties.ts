@@ -8,19 +8,20 @@ import { propertiesGet } from "../funcs/properties-get.js";
 import { propertiesList } from "../funcs/properties-list.js";
 import { propertiesUpdate } from "../funcs/properties-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Properties extends ClientSDK {
   /**
-   * List Properties
+   * List Public Developer Properties
    */
   async list(
     request:
-      operations.ApiRoutersV1PropertiesPublicApiListPublicPropertiesRequest,
+      operations.ListPublicDeveloperPropertiesApiV2PublicPropertiesObjectNameGetRequest,
     options?: RequestOptions,
-  ): Promise<Array<models.PublicPropertySchema>> {
+  ): Promise<
+    operations.ListPublicDeveloperPropertiesApiV2PublicPropertiesObjectNameGetResponse
+  > {
     return unwrapAsync(propertiesList(
       this,
       request,
@@ -29,13 +30,15 @@ export class Properties extends ClientSDK {
   }
 
   /**
-   * Create Property
+   * Create Public Developer Property
    */
   async create(
     request:
-      operations.ApiRoutersV1PropertiesPublicApiCreatePublicPropertyRequest,
+      operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPropertyMutationResponse> {
+  ): Promise<
+    operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostResponse
+  > {
     return unwrapAsync(propertiesCreate(
       this,
       request,
@@ -44,13 +47,15 @@ export class Properties extends ClientSDK {
   }
 
   /**
-   * Retrieve Property
+   * Retrieve Public Developer Property
    */
   async get(
     request:
-      operations.ApiRoutersV1PropertiesPublicApiRetrievePublicPropertyRequest,
+      operations.RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefGetRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPropertySchema> {
+  ): Promise<
+    operations.RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefGetResponse
+  > {
     return unwrapAsync(propertiesGet(
       this,
       request,
@@ -59,13 +64,15 @@ export class Properties extends ClientSDK {
   }
 
   /**
-   * Update Property
+   * Update Public Developer Property
    */
   async update(
     request:
-      operations.ApiRoutersV1PropertiesPublicApiUpdatePublicPropertyRequest,
+      operations.UpdatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPropertyMutationResponse> {
+  ): Promise<
+    operations.UpdatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefPutResponse
+  > {
     return unwrapAsync(propertiesUpdate(
       this,
       request,
@@ -74,13 +81,15 @@ export class Properties extends ClientSDK {
   }
 
   /**
-   * Delete Property
+   * Delete Public Developer Property
    */
   async delete(
     request:
-      operations.ApiRoutersV1PropertiesPublicApiDeletePublicPropertyRequest,
+      operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPropertyMutationResponse> {
+  ): Promise<
+    operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteResponse
+  > {
     return unwrapAsync(propertiesDelete(
       this,
       request,

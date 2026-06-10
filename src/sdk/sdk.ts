@@ -3,51 +3,92 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Absences } from "./absences.js";
+import { ActivityLogs } from "./activity-logs.js";
 import { Ai } from "./ai.js";
+import { ApprovalRequests } from "./approval-requests.js";
+import { Associations } from "./associations.js";
+import { AttendanceRecords } from "./attendance-records.js";
 import { Bills } from "./bills.js";
-import { Calendar } from "./calendar.js";
 import { Companies } from "./companies.js";
 import { Contacts } from "./contacts.js";
+import { CustomObjects } from "./custom-objects.js";
 import { Deals } from "./deals.js";
 import { Disbursements } from "./disbursements.js";
+import { Employees } from "./employees.js";
 import { Estimates } from "./estimates.js";
 import { Expenses } from "./expenses.js";
+import { Exports } from "./exports.js";
+import { Files } from "./files.js";
+import { Imports } from "./imports.js";
+import { Incentives } from "./incentives.js";
 import { Inventories } from "./inventories.js";
 import { InventoryTransactions } from "./inventory-transactions.js";
 import { Invoices } from "./invoices.js";
 import { Items } from "./items.js";
+import { Journals } from "./journals.js";
 import { Locations } from "./locations.js";
 import { Meters } from "./meters.js";
+import { ObjectSchemas } from "./object-schemas.js";
 import { Orders } from "./orders.js";
 import { Payments } from "./payments.js";
+import { Payroll } from "./payroll.js";
 import { Properties } from "./properties.js";
+import { Prospect } from "./prospect.js";
 import { PublicAuth } from "./public-auth.js";
 import { PurchaseOrders } from "./purchase-orders.js";
+import { Records } from "./records.js";
 import { Reports } from "./reports.js";
-import { Slips } from "./slips.js";
+import { Revenues } from "./revenues.js";
+import { RuleSettings } from "./rule-settings.js";
 import { Subscriptions } from "./subscriptions.js";
+import { Tasks } from "./tasks.js";
 import { Tickets } from "./tickets.js";
+import { Transfers } from "./transfers.js";
+import { Views } from "./views.js";
+import { WorkflowActions } from "./workflow-actions.js";
+import { WorkflowRuns } from "./workflow-runs.js";
 import { Workflows } from "./workflows.js";
 
 export class Sanka extends ClientSDK {
+  private _absences?: Absences;
+  get absences(): Absences {
+    return (this._absences ??= new Absences(this._options));
+  }
+
+  private _activityLogs?: ActivityLogs;
+  get activityLogs(): ActivityLogs {
+    return (this._activityLogs ??= new ActivityLogs(this._options));
+  }
+
   private _ai?: Ai;
   get ai(): Ai {
     return (this._ai ??= new Ai(this._options));
   }
 
-  private _orders?: Orders;
-  get orders(): Orders {
-    return (this._orders ??= new Orders(this._options));
+  private _prospect?: Prospect;
+  get prospect(): Prospect {
+    return (this._prospect ??= new Prospect(this._options));
   }
 
-  private _items?: Items;
-  get items(): Items {
-    return (this._items ??= new Items(this._options));
+  private _approvalRequests?: ApprovalRequests;
+  get approvalRequests(): ApprovalRequests {
+    return (this._approvalRequests ??= new ApprovalRequests(this._options));
   }
 
-  private _contacts?: Contacts;
-  get contacts(): Contacts {
-    return (this._contacts ??= new Contacts(this._options));
+  private _associations?: Associations;
+  get associations(): Associations {
+    return (this._associations ??= new Associations(this._options));
+  }
+
+  private _attendanceRecords?: AttendanceRecords;
+  get attendanceRecords(): AttendanceRecords {
+    return (this._attendanceRecords ??= new AttendanceRecords(this._options));
+  }
+
+  private _bills?: Bills;
+  get bills(): Bills {
+    return (this._bills ??= new Bills(this._options));
   }
 
   private _companies?: Companies;
@@ -55,19 +96,29 @@ export class Sanka extends ClientSDK {
     return (this._companies ??= new Companies(this._options));
   }
 
+  private _contacts?: Contacts;
+  get contacts(): Contacts {
+    return (this._contacts ??= new Contacts(this._options));
+  }
+
+  private _customObjects?: CustomObjects;
+  get customObjects(): CustomObjects {
+    return (this._customObjects ??= new CustomObjects(this._options));
+  }
+
   private _deals?: Deals;
   get deals(): Deals {
     return (this._deals ??= new Deals(this._options));
   }
 
-  private _tickets?: Tickets;
-  get tickets(): Tickets {
-    return (this._tickets ??= new Tickets(this._options));
+  private _disbursements?: Disbursements;
+  get disbursements(): Disbursements {
+    return (this._disbursements ??= new Disbursements(this._options));
   }
 
-  private _subscriptions?: Subscriptions;
-  get subscriptions(): Subscriptions {
-    return (this._subscriptions ??= new Subscriptions(this._options));
+  private _employees?: Employees;
+  get employees(): Employees {
+    return (this._employees ??= new Employees(this._options));
   }
 
   private _estimates?: Estimates;
@@ -75,29 +126,24 @@ export class Sanka extends ClientSDK {
     return (this._estimates ??= new Estimates(this._options));
   }
 
-  private _invoices?: Invoices;
-  get invoices(): Invoices {
-    return (this._invoices ??= new Invoices(this._options));
-  }
-
-  private _payments?: Payments;
-  get payments(): Payments {
-    return (this._payments ??= new Payments(this._options));
-  }
-
   private _expenses?: Expenses;
   get expenses(): Expenses {
     return (this._expenses ??= new Expenses(this._options));
   }
 
+  private _exports?: Exports;
+  get exports(): Exports {
+    return (this._exports ??= new Exports(this._options));
+  }
+
+  private _files?: Files;
+  get files(): Files {
+    return (this._files ??= new Files(this._options));
+  }
+
   private _inventories?: Inventories;
   get inventories(): Inventories {
     return (this._inventories ??= new Inventories(this._options));
-  }
-
-  private _locations?: Locations;
-  get locations(): Locations {
-    return (this._locations ??= new Locations(this._options));
   }
 
   private _inventoryTransactions?: InventoryTransactions;
@@ -107,9 +153,59 @@ export class Sanka extends ClientSDK {
     ));
   }
 
+  private _invoices?: Invoices;
+  get invoices(): Invoices {
+    return (this._invoices ??= new Invoices(this._options));
+  }
+
+  private _incentives?: Incentives;
+  get incentives(): Incentives {
+    return (this._incentives ??= new Incentives(this._options));
+  }
+
+  private _imports?: Imports;
+  get imports(): Imports {
+    return (this._imports ??= new Imports(this._options));
+  }
+
+  private _items?: Items;
+  get items(): Items {
+    return (this._items ??= new Items(this._options));
+  }
+
+  private _journals?: Journals;
+  get journals(): Journals {
+    return (this._journals ??= new Journals(this._options));
+  }
+
+  private _locations?: Locations;
+  get locations(): Locations {
+    return (this._locations ??= new Locations(this._options));
+  }
+
   private _meters?: Meters;
   get meters(): Meters {
     return (this._meters ??= new Meters(this._options));
+  }
+
+  private _objectSchemas?: ObjectSchemas;
+  get objectSchemas(): ObjectSchemas {
+    return (this._objectSchemas ??= new ObjectSchemas(this._options));
+  }
+
+  private _orders?: Orders;
+  get orders(): Orders {
+    return (this._orders ??= new Orders(this._options));
+  }
+
+  private _payments?: Payments;
+  get payments(): Payments {
+    return (this._payments ??= new Payments(this._options));
+  }
+
+  private _payroll?: Payroll;
+  get payroll(): Payroll {
+    return (this._payroll ??= new Payroll(this._options));
   }
 
   private _properties?: Properties;
@@ -117,24 +213,9 @@ export class Sanka extends ClientSDK {
     return (this._properties ??= new Properties(this._options));
   }
 
-  private _purchaseOrders?: PurchaseOrders;
-  get purchaseOrders(): PurchaseOrders {
-    return (this._purchaseOrders ??= new PurchaseOrders(this._options));
-  }
-
-  private _slips?: Slips;
-  get slips(): Slips {
-    return (this._slips ??= new Slips(this._options));
-  }
-
-  private _bills?: Bills;
-  get bills(): Bills {
-    return (this._bills ??= new Bills(this._options));
-  }
-
-  private _disbursements?: Disbursements;
-  get disbursements(): Disbursements {
-    return (this._disbursements ??= new Disbursements(this._options));
+  private _publicAuth?: PublicAuth;
+  get publicAuth(): PublicAuth {
+    return (this._publicAuth ??= new PublicAuth(this._options));
   }
 
   private _reports?: Reports;
@@ -142,18 +223,63 @@ export class Sanka extends ClientSDK {
     return (this._reports ??= new Reports(this._options));
   }
 
+  private _purchaseOrders?: PurchaseOrders;
+  get purchaseOrders(): PurchaseOrders {
+    return (this._purchaseOrders ??= new PurchaseOrders(this._options));
+  }
+
+  private _records?: Records;
+  get records(): Records {
+    return (this._records ??= new Records(this._options));
+  }
+
+  private _revenues?: Revenues;
+  get revenues(): Revenues {
+    return (this._revenues ??= new Revenues(this._options));
+  }
+
+  private _ruleSettings?: RuleSettings;
+  get ruleSettings(): RuleSettings {
+    return (this._ruleSettings ??= new RuleSettings(this._options));
+  }
+
+  private _subscriptions?: Subscriptions;
+  get subscriptions(): Subscriptions {
+    return (this._subscriptions ??= new Subscriptions(this._options));
+  }
+
+  private _tasks?: Tasks;
+  get tasks(): Tasks {
+    return (this._tasks ??= new Tasks(this._options));
+  }
+
+  private _tickets?: Tickets;
+  get tickets(): Tickets {
+    return (this._tickets ??= new Tickets(this._options));
+  }
+
+  private _transfers?: Transfers;
+  get transfers(): Transfers {
+    return (this._transfers ??= new Transfers(this._options));
+  }
+
+  private _views?: Views;
+  get views(): Views {
+    return (this._views ??= new Views(this._options));
+  }
+
+  private _workflowActions?: WorkflowActions;
+  get workflowActions(): WorkflowActions {
+    return (this._workflowActions ??= new WorkflowActions(this._options));
+  }
+
   private _workflows?: Workflows;
   get workflows(): Workflows {
     return (this._workflows ??= new Workflows(this._options));
   }
 
-  private _calendar?: Calendar;
-  get calendar(): Calendar {
-    return (this._calendar ??= new Calendar(this._options));
-  }
-
-  private _publicAuth?: PublicAuth;
-  get publicAuth(): PublicAuth {
-    return (this._publicAuth ??= new PublicAuth(this._options));
+  private _workflowRuns?: WorkflowRuns;
+  get workflowRuns(): WorkflowRuns {
+    return (this._workflowRuns ??= new WorkflowRuns(this._options));
   }
 }

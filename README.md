@@ -22,7 +22,6 @@ The official Node.js and TypeScript SDK for Sanka's public API.
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
-  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -105,9 +104,9 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name                   | Type | Scheme      | Environment Variable              |
-| ---------------------- | ---- | ----------- | --------------------------------- |
-| `apiKey` | http | HTTP Bearer | `SANKA_API_KEY` |
+| Name         | Type | Scheme      | Environment Variable |
+| ------------ | ---- | ----------- | -------------------- |
+| `bearerAuth` | http | HTTP Bearer | `SANKA_BEARER_AUTH`  |
 
 To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -136,204 +135,382 @@ run();
 <details open>
 <summary>Available methods</summary>
 
+### [Absences](docs/sdks/absences/README.md)
+
+* [listPublicAbsencesApiV2PublicAbsencesGet](docs/sdks/absences/README.md#listpublicabsencesapiv2publicabsencesget) - List Public Absences
+* [createPublicAbsenceApiV2PublicAbsencesPost](docs/sdks/absences/README.md#createpublicabsenceapiv2publicabsencespost) - Create Public Absence
+* [getPublicAbsenceApiV2PublicAbsencesAbsenceIdGet](docs/sdks/absences/README.md#getpublicabsenceapiv2publicabsencesabsenceidget) - Get Public Absence
+* [updatePublicAbsenceApiV2PublicAbsencesAbsenceIdPut](docs/sdks/absences/README.md#updatepublicabsenceapiv2publicabsencesabsenceidput) - Update Public Absence
+* [deletePublicAbsenceApiV2PublicAbsencesAbsenceIdDelete](docs/sdks/absences/README.md#deletepublicabsenceapiv2publicabsencesabsenceiddelete) - Delete Public Absence
+
+### [ActivityLogs](docs/sdks/activitylogs/README.md)
+
+* [listPublicActivityLogsApiV2PublicLogsGet](docs/sdks/activitylogs/README.md#listpublicactivitylogsapiv2publiclogsget) - List Public Activity Logs
+
 ### [Ai](docs/sdks/ai/README.md)
 
-* [enrich](docs/sdks/ai/README.md#enrich) - Enrich Company Data
-* [score](docs/sdks/ai/README.md#score) - Score Company or Deal Data
+* [enrich](docs/sdks/ai/README.md#enrich) - Enrich Record
+* [score](docs/sdks/ai/README.md#score) - Score Record
+
+### [ApprovalRequests](docs/sdks/approvalrequests/README.md)
+
+* [listApprovalRequestsApiV2PublicApprovalRequestsGet](docs/sdks/approvalrequests/README.md#listapprovalrequestsapiv2publicapprovalrequestsget) - List Approval Requests
+* [createApprovalRequestApiV2PublicApprovalRequestsPost](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
+* [approveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost](docs/sdks/approvalrequests/README.md#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
+* [rejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost](docs/sdks/approvalrequests/README.md#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
+
+### [Associations](docs/sdks/associations/README.md)
+
+* [listPublicAssociationsApiV2PublicAssociationsGet](docs/sdks/associations/README.md#listpublicassociationsapiv2publicassociationsget) - List Public Associations
+* [createPublicAssociationApiV2PublicAssociationsPost](docs/sdks/associations/README.md#createpublicassociationapiv2publicassociationspost) - Create Public Association
+* [deletePublicAssociationApiV2PublicAssociationsDelete](docs/sdks/associations/README.md#deletepublicassociationapiv2publicassociationsdelete) - Delete Public Association
+
+### [AttendanceRecords](docs/sdks/attendancerecords/README.md)
+
+* [listPublicAttendanceRecordsApiV2PublicAttendanceRecordsGet](docs/sdks/attendancerecords/README.md#listpublicattendancerecordsapiv2publicattendancerecordsget) - List Public Attendance Records
+* [createPublicAttendanceRecordApiV2PublicAttendanceRecordsPost](docs/sdks/attendancerecords/README.md#createpublicattendancerecordapiv2publicattendancerecordspost) - Create Public Attendance Record
+* [getPublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdGet](docs/sdks/attendancerecords/README.md#getpublicattendancerecordapiv2publicattendancerecordsattendancerecordidget) - Get Public Attendance Record
+* [updatePublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdPut](docs/sdks/attendancerecords/README.md#updatepublicattendancerecordapiv2publicattendancerecordsattendancerecordidput) - Update Public Attendance Record
+* [deletePublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdDelete](docs/sdks/attendancerecords/README.md#deletepublicattendancerecordapiv2publicattendancerecordsattendancerecordiddelete) - Delete Public Attendance Record
 
 ### [Bills](docs/sdks/bills/README.md)
 
-* [list](docs/sdks/bills/README.md#list) - List Bills
-* [create](docs/sdks/bills/README.md#create) - Create Bill
-* [get](docs/sdks/bills/README.md#get) - Get Bill
-* [update](docs/sdks/bills/README.md#update) - Update Bill
-* [delete](docs/sdks/bills/README.md#delete) - Delete Bill
-
-### [Calendar](docs/sdks/calendar/README.md)
-
-* [bootstrap](docs/sdks/calendar/README.md#bootstrap) - Public Calendar Bootstrap
-* [availability](docs/sdks/calendar/README.md#availability) - Public Calendar Availability
-* [createAttendance](docs/sdks/calendar/README.md#createattendance) - Public Calendar Create Attendance
-* [rescheduleAttendance](docs/sdks/calendar/README.md#rescheduleattendance) - Public Calendar Reschedule Attendance
-* [cancelAttendance](docs/sdks/calendar/README.md#cancelattendance) - Public Calendar Cancel Attendance
+* [list](docs/sdks/bills/README.md#list) - List Public Bills
+* [create](docs/sdks/bills/README.md#create) - Create Public Bill
+* [uploadPublicBillFileApiV2PublicBillsFilesPost](docs/sdks/bills/README.md#uploadpublicbillfileapiv2publicbillsfilespost) - Upload Public Bill File
+* [get](docs/sdks/bills/README.md#get) - Get Public Bill
+* [update](docs/sdks/bills/README.md#update) - Update Public Bill
+* [delete](docs/sdks/bills/README.md#delete) - Delete Public Bill
 
 ### [Companies](docs/sdks/companies/README.md)
 
-* [list](docs/sdks/companies/README.md#list) - List Companies
-* [create](docs/sdks/companies/README.md#create) - Create Company
-* [get](docs/sdks/companies/README.md#get) - Get Company
-* [update](docs/sdks/companies/README.md#update) - Update Company
-* [delete](docs/sdks/companies/README.md#delete) - Delete Company
+* [list](docs/sdks/companies/README.md#list) - List Public Companies
+* [create](docs/sdks/companies/README.md#create) - Create Public Company
+* [get](docs/sdks/companies/README.md#get) - Get Public Company
+* [update](docs/sdks/companies/README.md#update) - Update Public Company
+* [delete](docs/sdks/companies/README.md#delete) - Delete Public Company
+* [getPublicCompanyPriceTableApiV2PublicCompaniesCompanyIdPriceTableGet](docs/sdks/companies/README.md#getpubliccompanypricetableapiv2publiccompaniescompanyidpricetableget) - Get Public Company Price Table
+* [updatePublicCompanyPriceTableCompanyApiV2PublicCompaniesCompanyIdPriceTableCompanyPatch](docs/sdks/companies/README.md#updatepubliccompanypricetablecompanyapiv2publiccompaniescompanyidpricetablecompanypatch) - Update Public Company Price Table Company
+* [applyPublicCompanyPriceTableItemsApiV2PublicCompaniesCompanyIdPriceTableItemsApplyAllPost](docs/sdks/companies/README.md#applypubliccompanypricetableitemsapiv2publiccompaniescompanyidpricetableitemsapplyallpost) - Apply Public Company Price Table Items
+* [updatePublicCompanyPriceTableItemApiV2PublicCompaniesCompanyIdPriceTableItemsItemIdPatch](docs/sdks/companies/README.md#updatepubliccompanypricetableitemapiv2publiccompaniescompanyidpricetableitemsitemidpatch) - Update Public Company Price Table Item
 
 ### [Contacts](docs/sdks/contacts/README.md)
 
-* [list](docs/sdks/contacts/README.md#list) - List Contacts
-* [create](docs/sdks/contacts/README.md#create) - Create Contact
-* [get](docs/sdks/contacts/README.md#get) - Get Contact
-* [update](docs/sdks/contacts/README.md#update) - Update Contact
-* [delete](docs/sdks/contacts/README.md#delete) - Delete Contact
+* [list](docs/sdks/contacts/README.md#list) - List Public Contacts
+* [create](docs/sdks/contacts/README.md#create) - Create Public Contact
+* [get](docs/sdks/contacts/README.md#get) - Get Public Contact
+* [update](docs/sdks/contacts/README.md#update) - Update Public Contact
+* [delete](docs/sdks/contacts/README.md#delete) - Delete Public Contact
+
+### [CustomObjects](docs/sdks/customobjects/README.md)
+
+* [createPublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPost](docs/sdks/customobjects/README.md#createpubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordspost) - Create Public Custom Object Record Compatibility
+* [updatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost](docs/sdks/customobjects/README.md#updatepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidpost) - Update Public Custom Object Record Compatibility
+* [archivePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdArchivePost](docs/sdks/customobjects/README.md#archivepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidarchivepost) - Archive Public Custom Object Record Compatibility
 
 ### [Deals](docs/sdks/deals/README.md)
 
-* [list](docs/sdks/deals/README.md#list) - List Deals
-* [create](docs/sdks/deals/README.md#create) - Create Deal
-* [listPipelines](docs/sdks/deals/README.md#listpipelines) - List Deal Pipelines
-* [get](docs/sdks/deals/README.md#get) - Get Deal
-* [update](docs/sdks/deals/README.md#update) - Update Deal
-* [delete](docs/sdks/deals/README.md#delete) - Delete Deal
+* [list](docs/sdks/deals/README.md#list) - List Public Deals
+* [create](docs/sdks/deals/README.md#create) - Create Public Deal
+* [listPipelines](docs/sdks/deals/README.md#listpipelines) - List Public Deal Pipelines
+* [get](docs/sdks/deals/README.md#get) - Get Public Deal
+* [update](docs/sdks/deals/README.md#update) - Update Public Deal
+* [delete](docs/sdks/deals/README.md#delete) - Delete Public Deal
 
 ### [Disbursements](docs/sdks/disbursements/README.md)
 
-* [list](docs/sdks/disbursements/README.md#list) - List Disbursements
-* [create](docs/sdks/disbursements/README.md#create) - Create Disbursement
-* [get](docs/sdks/disbursements/README.md#get) - Get Disbursement
-* [update](docs/sdks/disbursements/README.md#update) - Update Disbursement
-* [delete](docs/sdks/disbursements/README.md#delete) - Delete Disbursement
+* [list](docs/sdks/disbursements/README.md#list) - List Public Disbursements
+* [create](docs/sdks/disbursements/README.md#create) - Create Public Disbursement
+* [get](docs/sdks/disbursements/README.md#get) - Get Public Disbursement
+* [update](docs/sdks/disbursements/README.md#update) - Update Public Disbursement
+* [delete](docs/sdks/disbursements/README.md#delete) - Delete Public Disbursement
+* [listPublicDisbursementAllocationsApiV2PublicDisbursementsDisbursementIdAllocationsGet](docs/sdks/disbursements/README.md#listpublicdisbursementallocationsapiv2publicdisbursementsdisbursementidallocationsget) - List Public Disbursement Allocations
+* [createPublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPost](docs/sdks/disbursements/README.md#createpublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationspost) - Create Public Disbursement Allocation
+* [updatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdPatch](docs/sdks/disbursements/README.md#updatepublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationsallocationidpatch) - Update Public Disbursement Allocation
+* [deletePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdDelete](docs/sdks/disbursements/README.md#deletepublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationsallocationiddelete) - Delete Public Disbursement Allocation
+
+### [Employees](docs/sdks/employees/README.md)
+
+* [listPublicEmployeesApiV2PublicEmployeesGet](docs/sdks/employees/README.md#listpublicemployeesapiv2publicemployeesget) - List Public Employees
 
 ### [Estimates](docs/sdks/estimates/README.md)
 
-* [list](docs/sdks/estimates/README.md#list) - List Estimates
-* [create](docs/sdks/estimates/README.md#create) - Create Estimate
-* [get](docs/sdks/estimates/README.md#get) - Get Estimate
-* [update](docs/sdks/estimates/README.md#update) - Update Estimate
-* [delete](docs/sdks/estimates/README.md#delete) - Delete Estimate
+* [list](docs/sdks/estimates/README.md#list) - List Public Estimates
+* [create](docs/sdks/estimates/README.md#create) - Create Public Estimate
+* [uploadPublicEstimateFileApiV2PublicEstimatesFilesPost](docs/sdks/estimates/README.md#uploadpublicestimatefileapiv2publicestimatesfilespost) - Upload Public Estimate File
+* [get](docs/sdks/estimates/README.md#get) - Get Public Estimate
+* [update](docs/sdks/estimates/README.md#update) - Update Public Estimate
+* [delete](docs/sdks/estimates/README.md#delete) - Delete Public Estimate
+* [downloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet](docs/sdks/estimates/README.md#downloadpublicestimatepdfapiv2publicestimatesestimateidpdfget) - Download Public Estimate Pdf
 
 ### [Expenses](docs/sdks/expenses/README.md)
 
-* [list](docs/sdks/expenses/README.md#list) - List Expenses
-* [create](docs/sdks/expenses/README.md#create) - Create Expense
-* [uploadFile](docs/sdks/expenses/README.md#uploadfile) - Upload Expense Attachment File
-* [get](docs/sdks/expenses/README.md#get) - Get Expense
-* [update](docs/sdks/expenses/README.md#update) - Update Expense
-* [delete](docs/sdks/expenses/README.md#delete) - Delete Expense
+* [list](docs/sdks/expenses/README.md#list) - List Public Expenses
+* [create](docs/sdks/expenses/README.md#create) - Create Public Expense
+* [uploadFile](docs/sdks/expenses/README.md#uploadfile) - Upload Public Expense File
+* [get](docs/sdks/expenses/README.md#get) - Get Public Expense
+* [update](docs/sdks/expenses/README.md#update) - Update Public Expense
+* [delete](docs/sdks/expenses/README.md#delete) - Delete Public Expense
+
+### [Exports](docs/sdks/exports/README.md)
+
+* [listPublicExportJobsCompatApiV2PublicExportsGet](docs/sdks/exports/README.md#listpublicexportjobscompatapiv2publicexportsget) - List Public Export Jobs Compat
+* [createPublicExportJobCompatApiV2PublicExportsPost](docs/sdks/exports/README.md#createpublicexportjobcompatapiv2publicexportspost) - Create Public Export Job Compat
+* [getPublicExportJobCompatApiV2PublicExportsJobIdGet](docs/sdks/exports/README.md#getpublicexportjobcompatapiv2publicexportsjobidget) - Get Public Export Job Compat
+* [cancelPublicExportJobCompatApiV2PublicExportsJobIdCancelPost](docs/sdks/exports/README.md#cancelpublicexportjobcompatapiv2publicexportsjobidcancelpost) - Cancel Public Export Job Compat
+
+### [Files](docs/sdks/files/README.md)
+
+* [uploadPublicFileApiV2PublicFilesPost](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
+
+### [Imports](docs/sdks/imports/README.md)
+
+* [listPublicImportJobsCompatApiV2PublicImportsGet](docs/sdks/imports/README.md#listpublicimportjobscompatapiv2publicimportsget) - List Public Import Jobs Compat
+* [createPublicImportJobCompatApiV2PublicImportsPost](docs/sdks/imports/README.md#createpublicimportjobcompatapiv2publicimportspost) - Create Public Import Job Compat
+* [getPublicImportJobCompatApiV2PublicImportsJobIdGet](docs/sdks/imports/README.md#getpublicimportjobcompatapiv2publicimportsjobidget) - Get Public Import Job Compat
+* [cancelPublicImportJobCompatApiV2PublicImportsJobIdCancelPost](docs/sdks/imports/README.md#cancelpublicimportjobcompatapiv2publicimportsjobidcancelpost) - Cancel Public Import Job Compat
+
+### [Incentives](docs/sdks/incentives/README.md)
+
+* [listPublicIncentivesApiV2PublicIncentivesGet](docs/sdks/incentives/README.md#listpublicincentivesapiv2publicincentivesget) - List Public Incentives
+* [listPublicIncentiveCompanyOptionsApiV2PublicIncentivesCompanyOptionsGet](docs/sdks/incentives/README.md#listpublicincentivecompanyoptionsapiv2publicincentivescompanyoptionsget) - List Public Incentive Company Options
+* [listPublicIncentivePlansApiV2PublicIncentivesPlansGet](docs/sdks/incentives/README.md#listpublicincentiveplansapiv2publicincentivesplansget) - List Public Incentive Plans
+* [createPublicIncentivePlanApiV2PublicIncentivesPlansPost](docs/sdks/incentives/README.md#createpublicincentiveplanapiv2publicincentivesplanspost) - Create Public Incentive Plan
+* [updatePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdPatch](docs/sdks/incentives/README.md#updatepublicincentiveplanapiv2publicincentivesplansplanidpatch) - Update Public Incentive Plan
+* [deletePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdDelete](docs/sdks/incentives/README.md#deletepublicincentiveplanapiv2publicincentivesplansplaniddelete) - Delete Public Incentive Plan
+* [listPublicIncentiveAllocationsApiV2PublicIncentivesAllocationsGet](docs/sdks/incentives/README.md#listpublicincentiveallocationsapiv2publicincentivesallocationsget) - List Public Incentive Allocations
+* [replacePublicIncentiveAllocationsApiV2PublicIncentivesAllocationsPut](docs/sdks/incentives/README.md#replacepublicincentiveallocationsapiv2publicincentivesallocationsput) - Replace Public Incentive Allocations
+* [calculatePublicIncentivesApiV2PublicIncentivesCalculatePost](docs/sdks/incentives/README.md#calculatepublicincentivesapiv2publicincentivescalculatepost) - Calculate Public Incentives
+* [approvePublicIncentivesBulkApiV2PublicIncentivesApproveBulkPost](docs/sdks/incentives/README.md#approvepublicincentivesbulkapiv2publicincentivesapprovebulkpost) - Approve Public Incentives Bulk
+* [listPublicIncentiveBatchesApiV2PublicIncentivesBatchesGet](docs/sdks/incentives/README.md#listpublicincentivebatchesapiv2publicincentivesbatchesget) - List Public Incentive Batches
+* [createPublicIncentiveBatchApiV2PublicIncentivesBatchesPost](docs/sdks/incentives/README.md#createpublicincentivebatchapiv2publicincentivesbatchespost) - Create Public Incentive Batch
+* [getPublicIncentiveBatchApiV2PublicIncentivesBatchesBatchIdGet](docs/sdks/incentives/README.md#getpublicincentivebatchapiv2publicincentivesbatchesbatchidget) - Get Public Incentive Batch
+* [approvePublicIncentiveBatchApiV2PublicIncentivesBatchesBatchIdApprovePost](docs/sdks/incentives/README.md#approvepublicincentivebatchapiv2publicincentivesbatchesbatchidapprovepost) - Approve Public Incentive Batch
+* [markPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost](docs/sdks/incentives/README.md#markpublicincentivebatchpaidapiv2publicincentivesbatchesbatchidmarkpaidpost) - Mark Public Incentive Batch Paid
+* [approvePublicIncentiveApiV2PublicIncentivesIncentiveIdApprovePost](docs/sdks/incentives/README.md#approvepublicincentiveapiv2publicincentivesincentiveidapprovepost) - Approve Public Incentive
 
 ### [Inventories](docs/sdks/inventories/README.md)
 
-* [list](docs/sdks/inventories/README.md#list) - List Inventories
-* [create](docs/sdks/inventories/README.md#create) - Create Inventory
-* [get](docs/sdks/inventories/README.md#get) - Get Inventory
-* [update](docs/sdks/inventories/README.md#update) - Update Inventory
-* [delete](docs/sdks/inventories/README.md#delete) - Delete Inventory
+* [list](docs/sdks/inventories/README.md#list) - List Public Inventories
+* [create](docs/sdks/inventories/README.md#create) - Create Public Inventory
+* [get](docs/sdks/inventories/README.md#get) - Get Public Inventory
+* [update](docs/sdks/inventories/README.md#update) - Update Public Inventory
+* [delete](docs/sdks/inventories/README.md#delete) - Delete Public Inventory
 
 ### [InventoryTransactions](docs/sdks/inventorytransactions/README.md)
 
-* [list](docs/sdks/inventorytransactions/README.md#list) - List Inventory Transactions
-* [create](docs/sdks/inventorytransactions/README.md#create) - Create Inventory Transaction
-* [get](docs/sdks/inventorytransactions/README.md#get) - Get Inventory Transaction
-* [update](docs/sdks/inventorytransactions/README.md#update) - Update Inventory Transaction
-* [delete](docs/sdks/inventorytransactions/README.md#delete) - Delete Inventory Transaction
+* [list](docs/sdks/inventorytransactions/README.md#list) - List Public Inventory Transactions
+* [create](docs/sdks/inventorytransactions/README.md#create) - Create Public Inventory Transaction
+* [get](docs/sdks/inventorytransactions/README.md#get) - Get Public Inventory Transaction
+* [update](docs/sdks/inventorytransactions/README.md#update) - Update Public Inventory Transaction
+* [delete](docs/sdks/inventorytransactions/README.md#delete) - Delete Public Inventory Transaction
 
 ### [Invoices](docs/sdks/invoices/README.md)
 
-* [list](docs/sdks/invoices/README.md#list) - List Invoices
-* [create](docs/sdks/invoices/README.md#create) - Create Invoice
-* [get](docs/sdks/invoices/README.md#get) - Get Invoice
-* [update](docs/sdks/invoices/README.md#update) - Update Invoice
-* [delete](docs/sdks/invoices/README.md#delete) - Delete Invoice
+* [list](docs/sdks/invoices/README.md#list) - List Public Invoices
+* [create](docs/sdks/invoices/README.md#create) - Create Public Invoice
+* [uploadPublicInvoiceFileApiV2PublicInvoicesFilesPost](docs/sdks/invoices/README.md#uploadpublicinvoicefileapiv2publicinvoicesfilespost) - Upload Public Invoice File
+* [listPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet](docs/sdks/invoices/README.md#listpublicoverdueinvoicesapiv2publicinvoicesoverdueget) - List Public Overdue Invoices
+* [get](docs/sdks/invoices/README.md#get) - Get Public Invoice
+* [update](docs/sdks/invoices/README.md#update) - Update Public Invoice
+* [delete](docs/sdks/invoices/README.md#delete) - Delete Public Invoice
+* [downloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet](docs/sdks/invoices/README.md#downloadpublicinvoicepdfapiv2publicinvoicesinvoiceidpdfget) - Download Public Invoice Pdf
+* [sendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost](docs/sdks/invoices/README.md#sendpublicinvoiceemailapiv2publicinvoicesinvoiceidemailpost) - Send Public Invoice Email
+* [permanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDelete](docs/sdks/invoices/README.md#permanentdeletepublicinvoiceapiv2publicinvoicesinvoiceidpermanentdeletedelete) - Permanent Delete Public Invoice
 
 ### [Items](docs/sdks/items/README.md)
 
-* [list](docs/sdks/items/README.md#list) - List Items
-* [create](docs/sdks/items/README.md#create) - Create Item
-* [update](docs/sdks/items/README.md#update) - Update Item
-* [get](docs/sdks/items/README.md#get) - Get Item
-* [delete](docs/sdks/items/README.md#delete) - Delete Item
+* [list](docs/sdks/items/README.md#list) - List Public Items
+* [create](docs/sdks/items/README.md#create) - Create Public Item
+* [get](docs/sdks/items/README.md#get) - Get Public Item
+* [update](docs/sdks/items/README.md#update) - Update Public Item
+* [delete](docs/sdks/items/README.md#delete) - Delete Public Item
+
+### [Journals](docs/sdks/journals/README.md)
+
+* [listPublicJournalsApiV2PublicJournalsGet](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Public Journals
+* [createPublicJournalStatementViewApiV2PublicJournalsViewsPost](docs/sdks/journals/README.md#createpublicjournalstatementviewapiv2publicjournalsviewspost) - Create Public Journal Statement View
 
 ### [Locations](docs/sdks/locations/README.md)
 
-* [list](docs/sdks/locations/README.md#list) - List Locations
-* [create](docs/sdks/locations/README.md#create) - Create Location
-* [get](docs/sdks/locations/README.md#get) - Get Location
-* [update](docs/sdks/locations/README.md#update) - Update Location
-* [delete](docs/sdks/locations/README.md#delete) - Delete Location
+* [list](docs/sdks/locations/README.md#list) - List Public Locations
+* [create](docs/sdks/locations/README.md#create) - Create Public Location
+* [get](docs/sdks/locations/README.md#get) - Get Public Location
+* [update](docs/sdks/locations/README.md#update) - Update Public Location
+* [delete](docs/sdks/locations/README.md#delete) - Delete Public Location
 
 ### [Meters](docs/sdks/meters/README.md)
 
-* [list](docs/sdks/meters/README.md#list) - List Meters
-* [create](docs/sdks/meters/README.md#create) - Create Meter
-* [get](docs/sdks/meters/README.md#get) - Get Meter
-* [update](docs/sdks/meters/README.md#update) - Update Meter
-* [delete](docs/sdks/meters/README.md#delete) - Delete Meter
+* [list](docs/sdks/meters/README.md#list) - List Public Meters
+* [create](docs/sdks/meters/README.md#create) - Create Public Meter
+* [get](docs/sdks/meters/README.md#get) - Get Public Meter
+* [update](docs/sdks/meters/README.md#update) - Update Public Meter
+* [delete](docs/sdks/meters/README.md#delete) - Delete Public Meter
+
+### [ObjectSchemas](docs/sdks/objectschemas/README.md)
+
+* [listPublicObjectSchemasApiV2PublicObjectSchemasGet](docs/sdks/objectschemas/README.md#listpublicobjectschemasapiv2publicobjectschemasget) - List Public Object Schemas
+* [mutatePublicObjectSchemaApiV2PublicObjectSchemasPost](docs/sdks/objectschemas/README.md#mutatepublicobjectschemaapiv2publicobjectschemaspost) - Mutate Public Object Schema
 
 ### [Orders](docs/sdks/orders/README.md)
 
-* [list](docs/sdks/orders/README.md#list) - List Orders
-* [create](docs/sdks/orders/README.md#create) - Create Orders
-* [bulkCreate](docs/sdks/orders/README.md#bulkcreate) - Bulk Create Orders
-* [get](docs/sdks/orders/README.md#get) - Get Order
-* [update](docs/sdks/orders/README.md#update) - Update Order
-* [delete](docs/sdks/orders/README.md#delete) - Delete Order
+* [list](docs/sdks/orders/README.md#list) - List Public Orders
+* [create](docs/sdks/orders/README.md#create) - Create Public Order
+* [bulkCreate](docs/sdks/orders/README.md#bulkcreate) - Bulk Create Public Orders
+* [uploadPublicOrderFileApiV2PublicOrdersFilesPost](docs/sdks/orders/README.md#uploadpublicorderfileapiv2publicordersfilespost) - Upload Public Order File
+* [get](docs/sdks/orders/README.md#get) - Get Public Order
+* [update](docs/sdks/orders/README.md#update) - Update Public Order
+* [delete](docs/sdks/orders/README.md#delete) - Delete Public Order
+* [downloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet](docs/sdks/orders/README.md#downloadpublicorderpdfapiv2publicordersorderidpdfget) - Download Public Order Pdf
 
 ### [Payments](docs/sdks/payments/README.md)
 
-* [list](docs/sdks/payments/README.md#list) - List Payments
-* [create](docs/sdks/payments/README.md#create) - Create Payment
-* [get](docs/sdks/payments/README.md#get) - Get Payment
-* [update](docs/sdks/payments/README.md#update) - Update Payment
-* [delete](docs/sdks/payments/README.md#delete) - Delete Payment
+* [list](docs/sdks/payments/README.md#list) - List Public Payments
+* [create](docs/sdks/payments/README.md#create) - Create Public Payment
+* [get](docs/sdks/payments/README.md#get) - Get Public Payment
+* [update](docs/sdks/payments/README.md#update) - Update Public Payment
+* [delete](docs/sdks/payments/README.md#delete) - Delete Public Payment
+* [downloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet](docs/sdks/payments/README.md#downloadpublicpaymentpdfapiv2publicpaymentspaymentidpdfget) - Download Public Payment Pdf
+* [listPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGet](docs/sdks/payments/README.md#listpublicpaymentallocationsapiv2publicpaymentspaymentidallocationsget) - List Public Payment Allocations
+* [updatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut](docs/sdks/payments/README.md#updatepublicpaymentallocationsapiv2publicpaymentspaymentidallocationsput) - Update Public Payment Allocations
+
+### [Payroll](docs/sdks/payroll/README.md)
+
+* [listPublicPayrollProfilesApiV2PublicPayrollProfilesGet](docs/sdks/payroll/README.md#listpublicpayrollprofilesapiv2publicpayrollprofilesget) - List Public Payroll Profiles
+* [upsertPublicPayrollProfileApiV2PublicPayrollProfilesPost](docs/sdks/payroll/README.md#upsertpublicpayrollprofileapiv2publicpayrollprofilespost) - Upsert Public Payroll Profile
+* [listPublicPayrollRunsApiV2PublicPayrollRunsGet](docs/sdks/payroll/README.md#listpublicpayrollrunsapiv2publicpayrollrunsget) - List Public Payroll Runs
+* [calculatePublicPayrollRunApiV2PublicPayrollRunsCalculatePost](docs/sdks/payroll/README.md#calculatepublicpayrollrunapiv2publicpayrollrunscalculatepost) - Calculate Public Payroll Run
+* [getPublicPayrollRunApiV2PublicPayrollRunsRunIdGet](docs/sdks/payroll/README.md#getpublicpayrollrunapiv2publicpayrollrunsrunidget) - Get Public Payroll Run
+* [approvePublicPayrollRunApiV2PublicPayrollRunsRunIdApprovePost](docs/sdks/payroll/README.md#approvepublicpayrollrunapiv2publicpayrollrunsrunidapprovepost) - Approve Public Payroll Run
+* [createPublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost](docs/sdks/payroll/README.md#createpublicpayrolljournalentryapiv2publicpayrollrunsrunidjournalentrypost) - Create Public Payroll Journal Entry
+* [downloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet](docs/sdks/payroll/README.md#downloadpublicpayrollpayslippdfapiv2publicpayrollrunsrunidpayslipspdfget) - Download Public Payroll Payslip Pdf
 
 ### [Properties](docs/sdks/properties/README.md)
 
-* [list](docs/sdks/properties/README.md#list) - List Properties
-* [create](docs/sdks/properties/README.md#create) - Create Property
-* [get](docs/sdks/properties/README.md#get) - Retrieve Property
-* [update](docs/sdks/properties/README.md#update) - Update Property
-* [delete](docs/sdks/properties/README.md#delete) - Delete Property
+* [list](docs/sdks/properties/README.md#list) - List Public Developer Properties
+* [create](docs/sdks/properties/README.md#create) - Create Public Developer Property
+* [get](docs/sdks/properties/README.md#get) - Retrieve Public Developer Property
+* [update](docs/sdks/properties/README.md#update) - Update Public Developer Property
+* [delete](docs/sdks/properties/README.md#delete) - Delete Public Developer Property
+
+### [Prospect.Companies](docs/sdks/prospectcompanies/README.md)
+
+* [create](docs/sdks/prospectcompanies/README.md#create) - Prospect Companies
 
 ### [PublicAuth](docs/sdks/publicauth/README.md)
 
-* [getCurrentIdentity](docs/sdks/publicauth/README.md#getcurrentidentity) - Get Current Public Auth Identity
+* [getCurrentIdentity](docs/sdks/publicauth/README.md#getcurrentidentity) - Get Current Public Developer Auth Identity
+* [getPublicAuthSessionApiV2PublicAuthSessionGet](docs/sdks/publicauth/README.md#getpublicauthsessionapiv2publicauthsessionget) - Get Current Public OAuth Session
+* [switchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePost](docs/sdks/publicauth/README.md#switchpublicauthsessionworkspaceapiv2publicauthsessionswitchworkspacepost) - Switch Current Public OAuth Session Workspace
+* [switchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost](docs/sdks/publicauth/README.md#switchpublicauthmcpsessionworkspaceapiv2publicauthmcpsessionswitchworkspacepost) - Switch Current Public MCP OAuth Session Workspace
+* [recordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPost](docs/sdks/publicauth/README.md#recordpublicauthmcptoolcallapiv2publicauthmcpsessiontoolcalllogpost) - Record Public MCP Tool Call
+* [revokePublicAuthSessionApiV2PublicAuthSessionRevokePost](docs/sdks/publicauth/README.md#revokepublicauthsessionapiv2publicauthsessionrevokepost) - Revoke Current Public OAuth Session
 
 ### [PurchaseOrders](docs/sdks/purchaseorders/README.md)
 
-* [list](docs/sdks/purchaseorders/README.md#list) - List Purchase Orders
-* [create](docs/sdks/purchaseorders/README.md#create) - Create Purchase Order
-* [get](docs/sdks/purchaseorders/README.md#get) - Get Purchase Order
-* [update](docs/sdks/purchaseorders/README.md#update) - Update Purchase Order
-* [delete](docs/sdks/purchaseorders/README.md#delete) - Delete Purchase Order
+* [list](docs/sdks/purchaseorders/README.md#list) - List Public Purchase Orders
+* [create](docs/sdks/purchaseorders/README.md#create) - Create Public Purchase Order
+* [get](docs/sdks/purchaseorders/README.md#get) - Get Public Purchase Order
+* [update](docs/sdks/purchaseorders/README.md#update) - Update Public Purchase Order
+* [delete](docs/sdks/purchaseorders/README.md#delete) - Delete Public Purchase Order
+* [uploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPost](docs/sdks/purchaseorders/README.md#uploadpublicpurchaseorderfileapiv2publicpurchaseordersfilespost) - Upload Public Purchase Order File
+* [downloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGet](docs/sdks/purchaseorders/README.md#downloadpublicpurchaseorderpdfapiv2publicpurchaseorderspurchaseorderidpdfget) - Download Public Purchase Order Pdf
+
+### [Records](docs/sdks/records/README.md)
+
+* [queryPublicRecordsApiV2PublicRecordsQueryPost](docs/sdks/records/README.md#querypublicrecordsapiv2publicrecordsquerypost) - Query Public Records
+* [aggregatePublicRecordsApiV2PublicRecordsAggregatePost](docs/sdks/records/README.md#aggregatepublicrecordsapiv2publicrecordsaggregatepost) - Aggregate Public Records
 
 ### [Reports](docs/sdks/reports/README.md)
 
-* [list](docs/sdks/reports/README.md#list) - List Reports
-* [create](docs/sdks/reports/README.md#create) - Create Report
-* [get](docs/sdks/reports/README.md#get) - Get Report
-* [update](docs/sdks/reports/README.md#update) - Update Report
-* [delete](docs/sdks/reports/README.md#delete) - Delete Report
+* [list](docs/sdks/reports/README.md#list) - List Public Reports
+* [create](docs/sdks/reports/README.md#create) - Create Public Report
+* [get](docs/sdks/reports/README.md#get) - Get Public Report
+* [update](docs/sdks/reports/README.md#update) - Update Public Report
+* [delete](docs/sdks/reports/README.md#delete) - Delete Public Report
 
-### [Slips](docs/sdks/slips/README.md)
+### [Revenues](docs/sdks/revenues/README.md)
 
-* [list](docs/sdks/slips/README.md#list) - List Slips
-* [create](docs/sdks/slips/README.md#create) - Create Slip
-* [get](docs/sdks/slips/README.md#get) - Get Slip
-* [update](docs/sdks/slips/README.md#update) - Update Slip
-* [delete](docs/sdks/slips/README.md#delete) - Delete Slip
+* [list](docs/sdks/revenues/README.md#list) - List Public Slips
+* [create](docs/sdks/revenues/README.md#create) - Create Public Slip
+* [get](docs/sdks/revenues/README.md#get) - Get Public Slip
+* [update](docs/sdks/revenues/README.md#update) - Update Public Slip
+* [delete](docs/sdks/revenues/README.md#delete) - Delete Public Slip
+* [downloadPublicSlipPdfApiV2PublicSlipsRevenueIdPdfGet](docs/sdks/revenues/README.md#downloadpublicslippdfapiv2publicslipsrevenueidpdfget) - Download Public Slip Pdf
+
+### [RuleSettings](docs/sdks/rulesettings/README.md)
+
+* [listPublicApprovalRulesApiV2PublicApprovalRulesGet](docs/sdks/rulesettings/README.md#listpublicapprovalrulesapiv2publicapprovalrulesget) - List Public Approval Rules
+* [upsertPublicApprovalRuleApiV2PublicApprovalRulesPost](docs/sdks/rulesettings/README.md#upsertpublicapprovalruleapiv2publicapprovalrulespost) - Upsert Public Approval Rule
+* [getPublicApprovalRuleOptionsApiV2PublicApprovalRulesOptionsGet](docs/sdks/rulesettings/README.md#getpublicapprovalruleoptionsapiv2publicapprovalrulesoptionsget) - Get Public Approval Rule Options
+* [deletePublicApprovalRuleApiV2PublicApprovalRulesRuleIdDelete](docs/sdks/rulesettings/README.md#deletepublicapprovalruleapiv2publicapprovalrulesruleiddelete) - Delete Public Approval Rule
+* [listPublicLockRulesApiV2PublicLockRulesGet](docs/sdks/rulesettings/README.md#listpubliclockrulesapiv2publiclockrulesget) - List Public Lock Rules
+* [upsertPublicLockRuleApiV2PublicLockRulesPost](docs/sdks/rulesettings/README.md#upsertpubliclockruleapiv2publiclockrulespost) - Upsert Public Lock Rule
+* [getPublicLockRuleOptionsApiV2PublicLockRulesOptionsGet](docs/sdks/rulesettings/README.md#getpubliclockruleoptionsapiv2publiclockrulesoptionsget) - Get Public Lock Rule Options
+* [deletePublicLockRuleApiV2PublicLockRulesRuleIdDelete](docs/sdks/rulesettings/README.md#deletepubliclockruleapiv2publiclockrulesruleiddelete) - Delete Public Lock Rule
+* [listPublicDeliveryRulesApiV2PublicDeliveryRulesGet](docs/sdks/rulesettings/README.md#listpublicdeliveryrulesapiv2publicdeliveryrulesget) - List Public Delivery Rules
+* [upsertPublicDeliveryRuleApiV2PublicDeliveryRulesPost](docs/sdks/rulesettings/README.md#upsertpublicdeliveryruleapiv2publicdeliveryrulespost) - Upsert Public Delivery Rule
+* [getPublicDeliveryRuleOptionsApiV2PublicDeliveryRulesOptionsGet](docs/sdks/rulesettings/README.md#getpublicdeliveryruleoptionsapiv2publicdeliveryrulesoptionsget) - Get Public Delivery Rule Options
+* [deletePublicDeliveryRuleApiV2PublicDeliveryRulesRuleIdDelete](docs/sdks/rulesettings/README.md#deletepublicdeliveryruleapiv2publicdeliveryrulesruleiddelete) - Delete Public Delivery Rule
 
 ### [Subscriptions](docs/sdks/subscriptions/README.md)
 
-* [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
-* [create](docs/sdks/subscriptions/README.md#create) - Create Subscription
-* [get](docs/sdks/subscriptions/README.md#get) - Get Subscription
-* [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
-* [delete](docs/sdks/subscriptions/README.md#delete) - Delete Subscription
+* [list](docs/sdks/subscriptions/README.md#list) - List Public Subscriptions
+* [create](docs/sdks/subscriptions/README.md#create) - Create Public Subscription
+* [get](docs/sdks/subscriptions/README.md#get) - Get Public Subscription
+* [update](docs/sdks/subscriptions/README.md#update) - Update Public Subscription
+* [delete](docs/sdks/subscriptions/README.md#delete) - Delete Public Subscription
+
+### [Tasks](docs/sdks/tasks/README.md)
+
+* [listPublicTasksApiV2PublicTasksGet](docs/sdks/tasks/README.md#listpublictasksapiv2publictasksget) - List Public Tasks
+* [createPublicTaskApiV2PublicTasksPost](docs/sdks/tasks/README.md#createpublictaskapiv2publictaskspost) - Create Public Task
+* [getPublicTaskApiV2PublicTasksTaskIdGet](docs/sdks/tasks/README.md#getpublictaskapiv2publictaskstaskidget) - Get Public Task
+* [updatePublicTaskApiV2PublicTasksTaskIdPut](docs/sdks/tasks/README.md#updatepublictaskapiv2publictaskstaskidput) - Update Public Task
+* [deletePublicTaskApiV2PublicTasksTaskIdDelete](docs/sdks/tasks/README.md#deletepublictaskapiv2publictaskstaskiddelete) - Delete Public Task
 
 ### [Tickets](docs/sdks/tickets/README.md)
 
-* [list](docs/sdks/tickets/README.md#list) - List Tickets
-* [create](docs/sdks/tickets/README.md#create) - Create Ticket
-* [listPipelines](docs/sdks/tickets/README.md#listpipelines) - List Ticket Pipelines
-* [get](docs/sdks/tickets/README.md#get) - Get Ticket
-* [update](docs/sdks/tickets/README.md#update) - Update Ticket
-* [delete](docs/sdks/tickets/README.md#delete) - Delete Ticket
-* [updateStatus](docs/sdks/tickets/README.md#updatestatus) - Update Ticket Status
+* [list](docs/sdks/tickets/README.md#list) - List Public Tickets
+* [create](docs/sdks/tickets/README.md#create) - Create Public Ticket
+* [listPipelines](docs/sdks/tickets/README.md#listpipelines) - List Public Ticket Pipelines
+* [get](docs/sdks/tickets/README.md#get) - Get Public Ticket
+* [update](docs/sdks/tickets/README.md#update) - Update Public Ticket
+* [delete](docs/sdks/tickets/README.md#delete) - Delete Public Ticket
+* [updateStatus](docs/sdks/tickets/README.md#updatestatus) - Update Public Ticket Status
+
+### [Transfers](docs/sdks/transfers/README.md)
+
+* [getPublicTransferHistoryApiV2PublicTransfersHistoryIdGet](docs/sdks/transfers/README.md#getpublictransferhistoryapiv2publictransfershistoryidget) - Get Public Transfer History
+
+### [Views](docs/sdks/views/README.md)
+
+* [listPublicViewsApiV2PublicViewsGet](docs/sdks/views/README.md#listpublicviewsapiv2publicviewsget) - List Public Views
+* [createPublicViewApiV2PublicViewsPost](docs/sdks/views/README.md#createpublicviewapiv2publicviewspost) - Create Public View
+* [getPublicViewApiV2PublicViewsViewIdGet](docs/sdks/views/README.md#getpublicviewapiv2publicviewsviewidget) - Get Public View
+* [updatePublicViewApiV2PublicViewsViewIdPatch](docs/sdks/views/README.md#updatepublicviewapiv2publicviewsviewidpatch) - Update Public View
+* [deletePublicViewApiV2PublicViewsViewIdDelete](docs/sdks/views/README.md#deletepublicviewapiv2publicviewsviewiddelete) - Delete Public View
+* [getPublicViewColumnsApiV2PublicViewsViewIdColumnsGet](docs/sdks/views/README.md#getpublicviewcolumnsapiv2publicviewsviewidcolumnsget) - Get Public View Columns
+
+### [WorkflowActions](docs/sdks/workflowactions/README.md)
+
+* [listActions](docs/sdks/workflowactions/README.md#listactions) - List Public Workflow Actions Compat
+
+### [WorkflowRuns](docs/sdks/workflowruns/README.md)
+
+* [getRun](docs/sdks/workflowruns/README.md#getrun) - Get Public Workflow Run
+* [resolvePublicWorkflowRecordApiV2PublicWorkflowRunsResolveRecordPost](docs/sdks/workflowruns/README.md#resolvepublicworkflowrecordapiv2publicworkflowrunsresolverecordpost) - Resolve Public Workflow Record
+* [previewPublicWorkflowCompatApiV2PublicWorkflowRunsPreviewPost](docs/sdks/workflowruns/README.md#previewpublicworkflowcompatapiv2publicworkflowrunspreviewpost) - Preview Public Workflow Compat
+* [previewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost](docs/sdks/workflowruns/README.md#previewpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcepreviewpost) - Preview Public Salesforce Quote Readiness
+* [startPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost](docs/sdks/workflowruns/README.md#startpublicworkflowcompatapiv2publicworkflowrunsstartpost) - Start Public Workflow Compat
 
 ### [Workflows](docs/sdks/workflows/README.md)
 
-* [list](docs/sdks/workflows/README.md#list) - List Workflows
-* [createOrUpdate](docs/sdks/workflows/README.md#createorupdate) - Create or Update Workflow
-* [listActions](docs/sdks/workflows/README.md#listactions) - List Public Workflow Actions
-* [runByRef](docs/sdks/workflows/README.md#runbyref) - Run Workflow
-* [getRun](docs/sdks/workflows/README.md#getrun) - Get Workflow Run
-* [get](docs/sdks/workflows/README.md#get) - Get Workflow
+* [list](docs/sdks/workflows/README.md#list) - List Public Workflows
+* [createOrUpdate](docs/sdks/workflows/README.md#createorupdate) - Create Public Workflow
+* [get](docs/sdks/workflows/README.md#get) - Get Public Workflow
+* [updatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
+* [runByRef](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -353,168 +530,248 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`aiEnrich`](docs/sdks/ai/README.md#enrich) - Enrich Company Data
-- [`aiScore`](docs/sdks/ai/README.md#score) - Score Company or Deal Data
-- [`billsCreate`](docs/sdks/bills/README.md#create) - Create Bill
-- [`billsDelete`](docs/sdks/bills/README.md#delete) - Delete Bill
-- [`billsGet`](docs/sdks/bills/README.md#get) - Get Bill
-- [`billsList`](docs/sdks/bills/README.md#list) - List Bills
-- [`billsUpdate`](docs/sdks/bills/README.md#update) - Update Bill
-- [`calendarAvailability`](docs/sdks/calendar/README.md#availability) - Public Calendar Availability
-- [`calendarBootstrap`](docs/sdks/calendar/README.md#bootstrap) - Public Calendar Bootstrap
-- [`calendarCancelAttendance`](docs/sdks/calendar/README.md#cancelattendance) - Public Calendar Cancel Attendance
-- [`calendarCreateAttendance`](docs/sdks/calendar/README.md#createattendance) - Public Calendar Create Attendance
-- [`calendarRescheduleAttendance`](docs/sdks/calendar/README.md#rescheduleattendance) - Public Calendar Reschedule Attendance
-- [`companiesCreate`](docs/sdks/companies/README.md#create) - Create Company
-- [`companiesDelete`](docs/sdks/companies/README.md#delete) - Delete Company
-- [`companiesGet`](docs/sdks/companies/README.md#get) - Get Company
-- [`companiesList`](docs/sdks/companies/README.md#list) - List Companies
-- [`companiesUpdate`](docs/sdks/companies/README.md#update) - Update Company
-- [`contactsCreate`](docs/sdks/contacts/README.md#create) - Create Contact
-- [`contactsDelete`](docs/sdks/contacts/README.md#delete) - Delete Contact
-- [`contactsGet`](docs/sdks/contacts/README.md#get) - Get Contact
-- [`contactsList`](docs/sdks/contacts/README.md#list) - List Contacts
-- [`contactsUpdate`](docs/sdks/contacts/README.md#update) - Update Contact
-- [`dealsCreate`](docs/sdks/deals/README.md#create) - Create Deal
-- [`dealsDelete`](docs/sdks/deals/README.md#delete) - Delete Deal
-- [`dealsGet`](docs/sdks/deals/README.md#get) - Get Deal
-- [`dealsList`](docs/sdks/deals/README.md#list) - List Deals
-- [`dealsListPipelines`](docs/sdks/deals/README.md#listpipelines) - List Deal Pipelines
-- [`dealsUpdate`](docs/sdks/deals/README.md#update) - Update Deal
-- [`disbursementsCreate`](docs/sdks/disbursements/README.md#create) - Create Disbursement
-- [`disbursementsDelete`](docs/sdks/disbursements/README.md#delete) - Delete Disbursement
-- [`disbursementsGet`](docs/sdks/disbursements/README.md#get) - Get Disbursement
-- [`disbursementsList`](docs/sdks/disbursements/README.md#list) - List Disbursements
-- [`disbursementsUpdate`](docs/sdks/disbursements/README.md#update) - Update Disbursement
-- [`estimatesCreate`](docs/sdks/estimates/README.md#create) - Create Estimate
-- [`estimatesDelete`](docs/sdks/estimates/README.md#delete) - Delete Estimate
-- [`estimatesGet`](docs/sdks/estimates/README.md#get) - Get Estimate
-- [`estimatesList`](docs/sdks/estimates/README.md#list) - List Estimates
-- [`estimatesUpdate`](docs/sdks/estimates/README.md#update) - Update Estimate
-- [`expensesCreate`](docs/sdks/expenses/README.md#create) - Create Expense
-- [`expensesDelete`](docs/sdks/expenses/README.md#delete) - Delete Expense
-- [`expensesGet`](docs/sdks/expenses/README.md#get) - Get Expense
-- [`expensesList`](docs/sdks/expenses/README.md#list) - List Expenses
-- [`expensesUpdate`](docs/sdks/expenses/README.md#update) - Update Expense
-- [`expensesUploadFile`](docs/sdks/expenses/README.md#uploadfile) - Upload Expense Attachment File
-- [`inventoriesCreate`](docs/sdks/inventories/README.md#create) - Create Inventory
-- [`inventoriesDelete`](docs/sdks/inventories/README.md#delete) - Delete Inventory
-- [`inventoriesGet`](docs/sdks/inventories/README.md#get) - Get Inventory
-- [`inventoriesList`](docs/sdks/inventories/README.md#list) - List Inventories
-- [`inventoriesUpdate`](docs/sdks/inventories/README.md#update) - Update Inventory
-- [`inventoryTransactionsCreate`](docs/sdks/inventorytransactions/README.md#create) - Create Inventory Transaction
-- [`inventoryTransactionsDelete`](docs/sdks/inventorytransactions/README.md#delete) - Delete Inventory Transaction
-- [`inventoryTransactionsGet`](docs/sdks/inventorytransactions/README.md#get) - Get Inventory Transaction
-- [`inventoryTransactionsList`](docs/sdks/inventorytransactions/README.md#list) - List Inventory Transactions
-- [`inventoryTransactionsUpdate`](docs/sdks/inventorytransactions/README.md#update) - Update Inventory Transaction
-- [`invoicesCreate`](docs/sdks/invoices/README.md#create) - Create Invoice
-- [`invoicesDelete`](docs/sdks/invoices/README.md#delete) - Delete Invoice
-- [`invoicesGet`](docs/sdks/invoices/README.md#get) - Get Invoice
-- [`invoicesList`](docs/sdks/invoices/README.md#list) - List Invoices
-- [`invoicesUpdate`](docs/sdks/invoices/README.md#update) - Update Invoice
-- [`itemsCreate`](docs/sdks/items/README.md#create) - Create Item
-- [`itemsDelete`](docs/sdks/items/README.md#delete) - Delete Item
-- [`itemsGet`](docs/sdks/items/README.md#get) - Get Item
-- [`itemsList`](docs/sdks/items/README.md#list) - List Items
-- [`itemsUpdate`](docs/sdks/items/README.md#update) - Update Item
-- [`locationsCreate`](docs/sdks/locations/README.md#create) - Create Location
-- [`locationsDelete`](docs/sdks/locations/README.md#delete) - Delete Location
-- [`locationsGet`](docs/sdks/locations/README.md#get) - Get Location
-- [`locationsList`](docs/sdks/locations/README.md#list) - List Locations
-- [`locationsUpdate`](docs/sdks/locations/README.md#update) - Update Location
-- [`metersCreate`](docs/sdks/meters/README.md#create) - Create Meter
-- [`metersDelete`](docs/sdks/meters/README.md#delete) - Delete Meter
-- [`metersGet`](docs/sdks/meters/README.md#get) - Get Meter
-- [`metersList`](docs/sdks/meters/README.md#list) - List Meters
-- [`metersUpdate`](docs/sdks/meters/README.md#update) - Update Meter
-- [`ordersBulkCreate`](docs/sdks/orders/README.md#bulkcreate) - Bulk Create Orders
-- [`ordersCreate`](docs/sdks/orders/README.md#create) - Create Orders
-- [`ordersDelete`](docs/sdks/orders/README.md#delete) - Delete Order
-- [`ordersGet`](docs/sdks/orders/README.md#get) - Get Order
-- [`ordersList`](docs/sdks/orders/README.md#list) - List Orders
-- [`ordersUpdate`](docs/sdks/orders/README.md#update) - Update Order
-- [`paymentsCreate`](docs/sdks/payments/README.md#create) - Create Payment
-- [`paymentsDelete`](docs/sdks/payments/README.md#delete) - Delete Payment
-- [`paymentsGet`](docs/sdks/payments/README.md#get) - Get Payment
-- [`paymentsList`](docs/sdks/payments/README.md#list) - List Payments
-- [`paymentsUpdate`](docs/sdks/payments/README.md#update) - Update Payment
-- [`propertiesCreate`](docs/sdks/properties/README.md#create) - Create Property
-- [`propertiesDelete`](docs/sdks/properties/README.md#delete) - Delete Property
-- [`propertiesGet`](docs/sdks/properties/README.md#get) - Retrieve Property
-- [`propertiesList`](docs/sdks/properties/README.md#list) - List Properties
-- [`propertiesUpdate`](docs/sdks/properties/README.md#update) - Update Property
-- [`publicAuthGetCurrentIdentity`](docs/sdks/publicauth/README.md#getcurrentidentity) - Get Current Public Auth Identity
-- [`purchaseOrdersCreate`](docs/sdks/purchaseorders/README.md#create) - Create Purchase Order
-- [`purchaseOrdersDelete`](docs/sdks/purchaseorders/README.md#delete) - Delete Purchase Order
-- [`purchaseOrdersGet`](docs/sdks/purchaseorders/README.md#get) - Get Purchase Order
-- [`purchaseOrdersList`](docs/sdks/purchaseorders/README.md#list) - List Purchase Orders
-- [`purchaseOrdersUpdate`](docs/sdks/purchaseorders/README.md#update) - Update Purchase Order
-- [`reportsCreate`](docs/sdks/reports/README.md#create) - Create Report
-- [`reportsDelete`](docs/sdks/reports/README.md#delete) - Delete Report
-- [`reportsGet`](docs/sdks/reports/README.md#get) - Get Report
-- [`reportsList`](docs/sdks/reports/README.md#list) - List Reports
-- [`reportsUpdate`](docs/sdks/reports/README.md#update) - Update Report
-- [`slipsCreate`](docs/sdks/slips/README.md#create) - Create Slip
-- [`slipsDelete`](docs/sdks/slips/README.md#delete) - Delete Slip
-- [`slipsGet`](docs/sdks/slips/README.md#get) - Get Slip
-- [`slipsList`](docs/sdks/slips/README.md#list) - List Slips
-- [`slipsUpdate`](docs/sdks/slips/README.md#update) - Update Slip
-- [`subscriptionsCreate`](docs/sdks/subscriptions/README.md#create) - Create Subscription
-- [`subscriptionsDelete`](docs/sdks/subscriptions/README.md#delete) - Delete Subscription
-- [`subscriptionsGet`](docs/sdks/subscriptions/README.md#get) - Get Subscription
-- [`subscriptionsList`](docs/sdks/subscriptions/README.md#list) - List Subscriptions
-- [`subscriptionsUpdate`](docs/sdks/subscriptions/README.md#update) - Update Subscription
-- [`ticketsCreate`](docs/sdks/tickets/README.md#create) - Create Ticket
-- [`ticketsDelete`](docs/sdks/tickets/README.md#delete) - Delete Ticket
-- [`ticketsGet`](docs/sdks/tickets/README.md#get) - Get Ticket
-- [`ticketsList`](docs/sdks/tickets/README.md#list) - List Tickets
-- [`ticketsListPipelines`](docs/sdks/tickets/README.md#listpipelines) - List Ticket Pipelines
-- [`ticketsUpdate`](docs/sdks/tickets/README.md#update) - Update Ticket
-- [`ticketsUpdateStatus`](docs/sdks/tickets/README.md#updatestatus) - Update Ticket Status
-- [`workflowsCreateOrUpdate`](docs/sdks/workflows/README.md#createorupdate) - Create or Update Workflow
-- [`workflowsGet`](docs/sdks/workflows/README.md#get) - Get Workflow
-- [`workflowsGetRun`](docs/sdks/workflows/README.md#getrun) - Get Workflow Run
-- [`workflowsList`](docs/sdks/workflows/README.md#list) - List Workflows
-- [`workflowsListActions`](docs/sdks/workflows/README.md#listactions) - List Public Workflow Actions
-- [`workflowsRunByRef`](docs/sdks/workflows/README.md#runbyref) - Run Workflow
+- [`absencesCreatePublicAbsenceApiV2PublicAbsencesPost`](docs/sdks/absences/README.md#createpublicabsenceapiv2publicabsencespost) - Create Public Absence
+- [`absencesDeletePublicAbsenceApiV2PublicAbsencesAbsenceIdDelete`](docs/sdks/absences/README.md#deletepublicabsenceapiv2publicabsencesabsenceiddelete) - Delete Public Absence
+- [`absencesGetPublicAbsenceApiV2PublicAbsencesAbsenceIdGet`](docs/sdks/absences/README.md#getpublicabsenceapiv2publicabsencesabsenceidget) - Get Public Absence
+- [`absencesListPublicAbsencesApiV2PublicAbsencesGet`](docs/sdks/absences/README.md#listpublicabsencesapiv2publicabsencesget) - List Public Absences
+- [`absencesUpdatePublicAbsenceApiV2PublicAbsencesAbsenceIdPut`](docs/sdks/absences/README.md#updatepublicabsenceapiv2publicabsencesabsenceidput) - Update Public Absence
+- [`activityLogsListPublicActivityLogsApiV2PublicLogsGet`](docs/sdks/activitylogs/README.md#listpublicactivitylogsapiv2publiclogsget) - List Public Activity Logs
+- [`aiEnrich`](docs/sdks/ai/README.md#enrich) - Enrich Record
+- [`aiScore`](docs/sdks/ai/README.md#score) - Score Record
+- [`approvalRequestsApproveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost`](docs/sdks/approvalrequests/README.md#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
+- [`approvalRequestsCreateApprovalRequestApiV2PublicApprovalRequestsPost`](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
+- [`approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet`](docs/sdks/approvalrequests/README.md#listapprovalrequestsapiv2publicapprovalrequestsget) - List Approval Requests
+- [`approvalRequestsRejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost`](docs/sdks/approvalrequests/README.md#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
+- [`associationsCreatePublicAssociationApiV2PublicAssociationsPost`](docs/sdks/associations/README.md#createpublicassociationapiv2publicassociationspost) - Create Public Association
+- [`associationsDeletePublicAssociationApiV2PublicAssociationsDelete`](docs/sdks/associations/README.md#deletepublicassociationapiv2publicassociationsdelete) - Delete Public Association
+- [`associationsListPublicAssociationsApiV2PublicAssociationsGet`](docs/sdks/associations/README.md#listpublicassociationsapiv2publicassociationsget) - List Public Associations
+- [`attendanceRecordsCreatePublicAttendanceRecordApiV2PublicAttendanceRecordsPost`](docs/sdks/attendancerecords/README.md#createpublicattendancerecordapiv2publicattendancerecordspost) - Create Public Attendance Record
+- [`attendanceRecordsDeletePublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdDelete`](docs/sdks/attendancerecords/README.md#deletepublicattendancerecordapiv2publicattendancerecordsattendancerecordiddelete) - Delete Public Attendance Record
+- [`attendanceRecordsGetPublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdGet`](docs/sdks/attendancerecords/README.md#getpublicattendancerecordapiv2publicattendancerecordsattendancerecordidget) - Get Public Attendance Record
+- [`attendanceRecordsListPublicAttendanceRecordsApiV2PublicAttendanceRecordsGet`](docs/sdks/attendancerecords/README.md#listpublicattendancerecordsapiv2publicattendancerecordsget) - List Public Attendance Records
+- [`attendanceRecordsUpdatePublicAttendanceRecordApiV2PublicAttendanceRecordsAttendanceRecordIdPut`](docs/sdks/attendancerecords/README.md#updatepublicattendancerecordapiv2publicattendancerecordsattendancerecordidput) - Update Public Attendance Record
+- [`billsCreate`](docs/sdks/bills/README.md#create) - Create Public Bill
+- [`billsDelete`](docs/sdks/bills/README.md#delete) - Delete Public Bill
+- [`billsGet`](docs/sdks/bills/README.md#get) - Get Public Bill
+- [`billsList`](docs/sdks/bills/README.md#list) - List Public Bills
+- [`billsUpdate`](docs/sdks/bills/README.md#update) - Update Public Bill
+- [`billsUploadPublicBillFileApiV2PublicBillsFilesPost`](docs/sdks/bills/README.md#uploadpublicbillfileapiv2publicbillsfilespost) - Upload Public Bill File
+- [`companiesApplyPublicCompanyPriceTableItemsApiV2PublicCompaniesCompanyIdPriceTableItemsApplyAllPost`](docs/sdks/companies/README.md#applypubliccompanypricetableitemsapiv2publiccompaniescompanyidpricetableitemsapplyallpost) - Apply Public Company Price Table Items
+- [`companiesCreate`](docs/sdks/companies/README.md#create) - Create Public Company
+- [`companiesDelete`](docs/sdks/companies/README.md#delete) - Delete Public Company
+- [`companiesGet`](docs/sdks/companies/README.md#get) - Get Public Company
+- [`companiesGetPublicCompanyPriceTableApiV2PublicCompaniesCompanyIdPriceTableGet`](docs/sdks/companies/README.md#getpubliccompanypricetableapiv2publiccompaniescompanyidpricetableget) - Get Public Company Price Table
+- [`companiesList`](docs/sdks/companies/README.md#list) - List Public Companies
+- [`companiesUpdate`](docs/sdks/companies/README.md#update) - Update Public Company
+- [`companiesUpdatePublicCompanyPriceTableCompanyApiV2PublicCompaniesCompanyIdPriceTableCompanyPatch`](docs/sdks/companies/README.md#updatepubliccompanypricetablecompanyapiv2publiccompaniescompanyidpricetablecompanypatch) - Update Public Company Price Table Company
+- [`companiesUpdatePublicCompanyPriceTableItemApiV2PublicCompaniesCompanyIdPriceTableItemsItemIdPatch`](docs/sdks/companies/README.md#updatepubliccompanypricetableitemapiv2publiccompaniescompanyidpricetableitemsitemidpatch) - Update Public Company Price Table Item
+- [`contactsCreate`](docs/sdks/contacts/README.md#create) - Create Public Contact
+- [`contactsDelete`](docs/sdks/contacts/README.md#delete) - Delete Public Contact
+- [`contactsGet`](docs/sdks/contacts/README.md#get) - Get Public Contact
+- [`contactsList`](docs/sdks/contacts/README.md#list) - List Public Contacts
+- [`contactsUpdate`](docs/sdks/contacts/README.md#update) - Update Public Contact
+- [`customObjectsArchivePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdArchivePost`](docs/sdks/customobjects/README.md#archivepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidarchivepost) - Archive Public Custom Object Record Compatibility
+- [`customObjectsCreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPost`](docs/sdks/customobjects/README.md#createpubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordspost) - Create Public Custom Object Record Compatibility
+- [`customObjectsUpdatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost`](docs/sdks/customobjects/README.md#updatepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidpost) - Update Public Custom Object Record Compatibility
+- [`dealsCreate`](docs/sdks/deals/README.md#create) - Create Public Deal
+- [`dealsDelete`](docs/sdks/deals/README.md#delete) - Delete Public Deal
+- [`dealsGet`](docs/sdks/deals/README.md#get) - Get Public Deal
+- [`dealsList`](docs/sdks/deals/README.md#list) - List Public Deals
+- [`dealsListPipelines`](docs/sdks/deals/README.md#listpipelines) - List Public Deal Pipelines
+- [`dealsUpdate`](docs/sdks/deals/README.md#update) - Update Public Deal
+- [`disbursementsCreate`](docs/sdks/disbursements/README.md#create) - Create Public Disbursement
+- [`disbursementsCreatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPost`](docs/sdks/disbursements/README.md#createpublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationspost) - Create Public Disbursement Allocation
+- [`disbursementsDelete`](docs/sdks/disbursements/README.md#delete) - Delete Public Disbursement
+- [`disbursementsDeletePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdDelete`](docs/sdks/disbursements/README.md#deletepublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationsallocationiddelete) - Delete Public Disbursement Allocation
+- [`disbursementsGet`](docs/sdks/disbursements/README.md#get) - Get Public Disbursement
+- [`disbursementsList`](docs/sdks/disbursements/README.md#list) - List Public Disbursements
+- [`disbursementsListPublicDisbursementAllocationsApiV2PublicDisbursementsDisbursementIdAllocationsGet`](docs/sdks/disbursements/README.md#listpublicdisbursementallocationsapiv2publicdisbursementsdisbursementidallocationsget) - List Public Disbursement Allocations
+- [`disbursementsUpdate`](docs/sdks/disbursements/README.md#update) - Update Public Disbursement
+- [`disbursementsUpdatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdPatch`](docs/sdks/disbursements/README.md#updatepublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationsallocationidpatch) - Update Public Disbursement Allocation
+- [`employeesListPublicEmployeesApiV2PublicEmployeesGet`](docs/sdks/employees/README.md#listpublicemployeesapiv2publicemployeesget) - List Public Employees
+- [`estimatesCreate`](docs/sdks/estimates/README.md#create) - Create Public Estimate
+- [`estimatesDelete`](docs/sdks/estimates/README.md#delete) - Delete Public Estimate
+- [`estimatesDownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet`](docs/sdks/estimates/README.md#downloadpublicestimatepdfapiv2publicestimatesestimateidpdfget) - Download Public Estimate Pdf
+- [`estimatesGet`](docs/sdks/estimates/README.md#get) - Get Public Estimate
+- [`estimatesList`](docs/sdks/estimates/README.md#list) - List Public Estimates
+- [`estimatesUpdate`](docs/sdks/estimates/README.md#update) - Update Public Estimate
+- [`estimatesUploadPublicEstimateFileApiV2PublicEstimatesFilesPost`](docs/sdks/estimates/README.md#uploadpublicestimatefileapiv2publicestimatesfilespost) - Upload Public Estimate File
+- [`expensesCreate`](docs/sdks/expenses/README.md#create) - Create Public Expense
+- [`expensesDelete`](docs/sdks/expenses/README.md#delete) - Delete Public Expense
+- [`expensesGet`](docs/sdks/expenses/README.md#get) - Get Public Expense
+- [`expensesList`](docs/sdks/expenses/README.md#list) - List Public Expenses
+- [`expensesUpdate`](docs/sdks/expenses/README.md#update) - Update Public Expense
+- [`expensesUploadFile`](docs/sdks/expenses/README.md#uploadfile) - Upload Public Expense File
+- [`exportsCancelPublicExportJobCompatApiV2PublicExportsJobIdCancelPost`](docs/sdks/exports/README.md#cancelpublicexportjobcompatapiv2publicexportsjobidcancelpost) - Cancel Public Export Job Compat
+- [`exportsCreatePublicExportJobCompatApiV2PublicExportsPost`](docs/sdks/exports/README.md#createpublicexportjobcompatapiv2publicexportspost) - Create Public Export Job Compat
+- [`exportsGetPublicExportJobCompatApiV2PublicExportsJobIdGet`](docs/sdks/exports/README.md#getpublicexportjobcompatapiv2publicexportsjobidget) - Get Public Export Job Compat
+- [`exportsListPublicExportJobsCompatApiV2PublicExportsGet`](docs/sdks/exports/README.md#listpublicexportjobscompatapiv2publicexportsget) - List Public Export Jobs Compat
+- [`filesUploadPublicFileApiV2PublicFilesPost`](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
+- [`importsCancelPublicImportJobCompatApiV2PublicImportsJobIdCancelPost`](docs/sdks/imports/README.md#cancelpublicimportjobcompatapiv2publicimportsjobidcancelpost) - Cancel Public Import Job Compat
+- [`importsCreatePublicImportJobCompatApiV2PublicImportsPost`](docs/sdks/imports/README.md#createpublicimportjobcompatapiv2publicimportspost) - Create Public Import Job Compat
+- [`importsGetPublicImportJobCompatApiV2PublicImportsJobIdGet`](docs/sdks/imports/README.md#getpublicimportjobcompatapiv2publicimportsjobidget) - Get Public Import Job Compat
+- [`importsListPublicImportJobsCompatApiV2PublicImportsGet`](docs/sdks/imports/README.md#listpublicimportjobscompatapiv2publicimportsget) - List Public Import Jobs Compat
+- [`incentivesApprovePublicIncentiveApiV2PublicIncentivesIncentiveIdApprovePost`](docs/sdks/incentives/README.md#approvepublicincentiveapiv2publicincentivesincentiveidapprovepost) - Approve Public Incentive
+- [`incentivesApprovePublicIncentiveBatchApiV2PublicIncentivesBatchesBatchIdApprovePost`](docs/sdks/incentives/README.md#approvepublicincentivebatchapiv2publicincentivesbatchesbatchidapprovepost) - Approve Public Incentive Batch
+- [`incentivesApprovePublicIncentivesBulkApiV2PublicIncentivesApproveBulkPost`](docs/sdks/incentives/README.md#approvepublicincentivesbulkapiv2publicincentivesapprovebulkpost) - Approve Public Incentives Bulk
+- [`incentivesCalculatePublicIncentivesApiV2PublicIncentivesCalculatePost`](docs/sdks/incentives/README.md#calculatepublicincentivesapiv2publicincentivescalculatepost) - Calculate Public Incentives
+- [`incentivesCreatePublicIncentiveBatchApiV2PublicIncentivesBatchesPost`](docs/sdks/incentives/README.md#createpublicincentivebatchapiv2publicincentivesbatchespost) - Create Public Incentive Batch
+- [`incentivesCreatePublicIncentivePlanApiV2PublicIncentivesPlansPost`](docs/sdks/incentives/README.md#createpublicincentiveplanapiv2publicincentivesplanspost) - Create Public Incentive Plan
+- [`incentivesDeletePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdDelete`](docs/sdks/incentives/README.md#deletepublicincentiveplanapiv2publicincentivesplansplaniddelete) - Delete Public Incentive Plan
+- [`incentivesGetPublicIncentiveBatchApiV2PublicIncentivesBatchesBatchIdGet`](docs/sdks/incentives/README.md#getpublicincentivebatchapiv2publicincentivesbatchesbatchidget) - Get Public Incentive Batch
+- [`incentivesListPublicIncentiveAllocationsApiV2PublicIncentivesAllocationsGet`](docs/sdks/incentives/README.md#listpublicincentiveallocationsapiv2publicincentivesallocationsget) - List Public Incentive Allocations
+- [`incentivesListPublicIncentiveBatchesApiV2PublicIncentivesBatchesGet`](docs/sdks/incentives/README.md#listpublicincentivebatchesapiv2publicincentivesbatchesget) - List Public Incentive Batches
+- [`incentivesListPublicIncentiveCompanyOptionsApiV2PublicIncentivesCompanyOptionsGet`](docs/sdks/incentives/README.md#listpublicincentivecompanyoptionsapiv2publicincentivescompanyoptionsget) - List Public Incentive Company Options
+- [`incentivesListPublicIncentivePlansApiV2PublicIncentivesPlansGet`](docs/sdks/incentives/README.md#listpublicincentiveplansapiv2publicincentivesplansget) - List Public Incentive Plans
+- [`incentivesListPublicIncentivesApiV2PublicIncentivesGet`](docs/sdks/incentives/README.md#listpublicincentivesapiv2publicincentivesget) - List Public Incentives
+- [`incentivesMarkPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost`](docs/sdks/incentives/README.md#markpublicincentivebatchpaidapiv2publicincentivesbatchesbatchidmarkpaidpost) - Mark Public Incentive Batch Paid
+- [`incentivesReplacePublicIncentiveAllocationsApiV2PublicIncentivesAllocationsPut`](docs/sdks/incentives/README.md#replacepublicincentiveallocationsapiv2publicincentivesallocationsput) - Replace Public Incentive Allocations
+- [`incentivesUpdatePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdPatch`](docs/sdks/incentives/README.md#updatepublicincentiveplanapiv2publicincentivesplansplanidpatch) - Update Public Incentive Plan
+- [`inventoriesCreate`](docs/sdks/inventories/README.md#create) - Create Public Inventory
+- [`inventoriesDelete`](docs/sdks/inventories/README.md#delete) - Delete Public Inventory
+- [`inventoriesGet`](docs/sdks/inventories/README.md#get) - Get Public Inventory
+- [`inventoriesList`](docs/sdks/inventories/README.md#list) - List Public Inventories
+- [`inventoriesUpdate`](docs/sdks/inventories/README.md#update) - Update Public Inventory
+- [`inventoryTransactionsCreate`](docs/sdks/inventorytransactions/README.md#create) - Create Public Inventory Transaction
+- [`inventoryTransactionsDelete`](docs/sdks/inventorytransactions/README.md#delete) - Delete Public Inventory Transaction
+- [`inventoryTransactionsGet`](docs/sdks/inventorytransactions/README.md#get) - Get Public Inventory Transaction
+- [`inventoryTransactionsList`](docs/sdks/inventorytransactions/README.md#list) - List Public Inventory Transactions
+- [`inventoryTransactionsUpdate`](docs/sdks/inventorytransactions/README.md#update) - Update Public Inventory Transaction
+- [`invoicesCreate`](docs/sdks/invoices/README.md#create) - Create Public Invoice
+- [`invoicesDelete`](docs/sdks/invoices/README.md#delete) - Delete Public Invoice
+- [`invoicesDownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet`](docs/sdks/invoices/README.md#downloadpublicinvoicepdfapiv2publicinvoicesinvoiceidpdfget) - Download Public Invoice Pdf
+- [`invoicesGet`](docs/sdks/invoices/README.md#get) - Get Public Invoice
+- [`invoicesList`](docs/sdks/invoices/README.md#list) - List Public Invoices
+- [`invoicesListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet`](docs/sdks/invoices/README.md#listpublicoverdueinvoicesapiv2publicinvoicesoverdueget) - List Public Overdue Invoices
+- [`invoicesPermanentDeletePublicInvoiceApiV2PublicInvoicesInvoiceIdPermanentDeleteDelete`](docs/sdks/invoices/README.md#permanentdeletepublicinvoiceapiv2publicinvoicesinvoiceidpermanentdeletedelete) - Permanent Delete Public Invoice
+- [`invoicesSendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost`](docs/sdks/invoices/README.md#sendpublicinvoiceemailapiv2publicinvoicesinvoiceidemailpost) - Send Public Invoice Email
+- [`invoicesUpdate`](docs/sdks/invoices/README.md#update) - Update Public Invoice
+- [`invoicesUploadPublicInvoiceFileApiV2PublicInvoicesFilesPost`](docs/sdks/invoices/README.md#uploadpublicinvoicefileapiv2publicinvoicesfilespost) - Upload Public Invoice File
+- [`itemsCreate`](docs/sdks/items/README.md#create) - Create Public Item
+- [`itemsDelete`](docs/sdks/items/README.md#delete) - Delete Public Item
+- [`itemsGet`](docs/sdks/items/README.md#get) - Get Public Item
+- [`itemsList`](docs/sdks/items/README.md#list) - List Public Items
+- [`itemsUpdate`](docs/sdks/items/README.md#update) - Update Public Item
+- [`journalsCreatePublicJournalStatementViewApiV2PublicJournalsViewsPost`](docs/sdks/journals/README.md#createpublicjournalstatementviewapiv2publicjournalsviewspost) - Create Public Journal Statement View
+- [`journalsListPublicJournalsApiV2PublicJournalsGet`](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Public Journals
+- [`locationsCreate`](docs/sdks/locations/README.md#create) - Create Public Location
+- [`locationsDelete`](docs/sdks/locations/README.md#delete) - Delete Public Location
+- [`locationsGet`](docs/sdks/locations/README.md#get) - Get Public Location
+- [`locationsList`](docs/sdks/locations/README.md#list) - List Public Locations
+- [`locationsUpdate`](docs/sdks/locations/README.md#update) - Update Public Location
+- [`metersCreate`](docs/sdks/meters/README.md#create) - Create Public Meter
+- [`metersDelete`](docs/sdks/meters/README.md#delete) - Delete Public Meter
+- [`metersGet`](docs/sdks/meters/README.md#get) - Get Public Meter
+- [`metersList`](docs/sdks/meters/README.md#list) - List Public Meters
+- [`metersUpdate`](docs/sdks/meters/README.md#update) - Update Public Meter
+- [`objectSchemasListPublicObjectSchemasApiV2PublicObjectSchemasGet`](docs/sdks/objectschemas/README.md#listpublicobjectschemasapiv2publicobjectschemasget) - List Public Object Schemas
+- [`objectSchemasMutatePublicObjectSchemaApiV2PublicObjectSchemasPost`](docs/sdks/objectschemas/README.md#mutatepublicobjectschemaapiv2publicobjectschemaspost) - Mutate Public Object Schema
+- [`ordersBulkCreate`](docs/sdks/orders/README.md#bulkcreate) - Bulk Create Public Orders
+- [`ordersCreate`](docs/sdks/orders/README.md#create) - Create Public Order
+- [`ordersDelete`](docs/sdks/orders/README.md#delete) - Delete Public Order
+- [`ordersDownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet`](docs/sdks/orders/README.md#downloadpublicorderpdfapiv2publicordersorderidpdfget) - Download Public Order Pdf
+- [`ordersGet`](docs/sdks/orders/README.md#get) - Get Public Order
+- [`ordersList`](docs/sdks/orders/README.md#list) - List Public Orders
+- [`ordersUpdate`](docs/sdks/orders/README.md#update) - Update Public Order
+- [`ordersUploadPublicOrderFileApiV2PublicOrdersFilesPost`](docs/sdks/orders/README.md#uploadpublicorderfileapiv2publicordersfilespost) - Upload Public Order File
+- [`paymentsCreate`](docs/sdks/payments/README.md#create) - Create Public Payment
+- [`paymentsDelete`](docs/sdks/payments/README.md#delete) - Delete Public Payment
+- [`paymentsDownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet`](docs/sdks/payments/README.md#downloadpublicpaymentpdfapiv2publicpaymentspaymentidpdfget) - Download Public Payment Pdf
+- [`paymentsGet`](docs/sdks/payments/README.md#get) - Get Public Payment
+- [`paymentsList`](docs/sdks/payments/README.md#list) - List Public Payments
+- [`paymentsListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsGet`](docs/sdks/payments/README.md#listpublicpaymentallocationsapiv2publicpaymentspaymentidallocationsget) - List Public Payment Allocations
+- [`paymentsUpdate`](docs/sdks/payments/README.md#update) - Update Public Payment
+- [`paymentsUpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut`](docs/sdks/payments/README.md#updatepublicpaymentallocationsapiv2publicpaymentspaymentidallocationsput) - Update Public Payment Allocations
+- [`payrollApprovePublicPayrollRunApiV2PublicPayrollRunsRunIdApprovePost`](docs/sdks/payroll/README.md#approvepublicpayrollrunapiv2publicpayrollrunsrunidapprovepost) - Approve Public Payroll Run
+- [`payrollCalculatePublicPayrollRunApiV2PublicPayrollRunsCalculatePost`](docs/sdks/payroll/README.md#calculatepublicpayrollrunapiv2publicpayrollrunscalculatepost) - Calculate Public Payroll Run
+- [`payrollCreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost`](docs/sdks/payroll/README.md#createpublicpayrolljournalentryapiv2publicpayrollrunsrunidjournalentrypost) - Create Public Payroll Journal Entry
+- [`payrollDownloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet`](docs/sdks/payroll/README.md#downloadpublicpayrollpayslippdfapiv2publicpayrollrunsrunidpayslipspdfget) - Download Public Payroll Payslip Pdf
+- [`payrollGetPublicPayrollRunApiV2PublicPayrollRunsRunIdGet`](docs/sdks/payroll/README.md#getpublicpayrollrunapiv2publicpayrollrunsrunidget) - Get Public Payroll Run
+- [`payrollListPublicPayrollProfilesApiV2PublicPayrollProfilesGet`](docs/sdks/payroll/README.md#listpublicpayrollprofilesapiv2publicpayrollprofilesget) - List Public Payroll Profiles
+- [`payrollListPublicPayrollRunsApiV2PublicPayrollRunsGet`](docs/sdks/payroll/README.md#listpublicpayrollrunsapiv2publicpayrollrunsget) - List Public Payroll Runs
+- [`payrollUpsertPublicPayrollProfileApiV2PublicPayrollProfilesPost`](docs/sdks/payroll/README.md#upsertpublicpayrollprofileapiv2publicpayrollprofilespost) - Upsert Public Payroll Profile
+- [`propertiesCreate`](docs/sdks/properties/README.md#create) - Create Public Developer Property
+- [`propertiesDelete`](docs/sdks/properties/README.md#delete) - Delete Public Developer Property
+- [`propertiesGet`](docs/sdks/properties/README.md#get) - Retrieve Public Developer Property
+- [`propertiesList`](docs/sdks/properties/README.md#list) - List Public Developer Properties
+- [`propertiesUpdate`](docs/sdks/properties/README.md#update) - Update Public Developer Property
+- [`prospectCompaniesCreate`](docs/sdks/prospectcompanies/README.md#create) - Prospect Companies
+- [`publicAuthGetCurrentIdentity`](docs/sdks/publicauth/README.md#getcurrentidentity) - Get Current Public Developer Auth Identity
+- [`publicAuthGetPublicAuthSessionApiV2PublicAuthSessionGet`](docs/sdks/publicauth/README.md#getpublicauthsessionapiv2publicauthsessionget) - Get Current Public OAuth Session
+- [`publicAuthRecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPost`](docs/sdks/publicauth/README.md#recordpublicauthmcptoolcallapiv2publicauthmcpsessiontoolcalllogpost) - Record Public MCP Tool Call
+- [`publicAuthRevokePublicAuthSessionApiV2PublicAuthSessionRevokePost`](docs/sdks/publicauth/README.md#revokepublicauthsessionapiv2publicauthsessionrevokepost) - Revoke Current Public OAuth Session
+- [`publicAuthSwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost`](docs/sdks/publicauth/README.md#switchpublicauthmcpsessionworkspaceapiv2publicauthmcpsessionswitchworkspacepost) - Switch Current Public MCP OAuth Session Workspace
+- [`publicAuthSwitchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePost`](docs/sdks/publicauth/README.md#switchpublicauthsessionworkspaceapiv2publicauthsessionswitchworkspacepost) - Switch Current Public OAuth Session Workspace
+- [`purchaseOrdersCreate`](docs/sdks/purchaseorders/README.md#create) - Create Public Purchase Order
+- [`purchaseOrdersDelete`](docs/sdks/purchaseorders/README.md#delete) - Delete Public Purchase Order
+- [`purchaseOrdersDownloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGet`](docs/sdks/purchaseorders/README.md#downloadpublicpurchaseorderpdfapiv2publicpurchaseorderspurchaseorderidpdfget) - Download Public Purchase Order Pdf
+- [`purchaseOrdersGet`](docs/sdks/purchaseorders/README.md#get) - Get Public Purchase Order
+- [`purchaseOrdersList`](docs/sdks/purchaseorders/README.md#list) - List Public Purchase Orders
+- [`purchaseOrdersUpdate`](docs/sdks/purchaseorders/README.md#update) - Update Public Purchase Order
+- [`purchaseOrdersUploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPost`](docs/sdks/purchaseorders/README.md#uploadpublicpurchaseorderfileapiv2publicpurchaseordersfilespost) - Upload Public Purchase Order File
+- [`recordsAggregatePublicRecordsApiV2PublicRecordsAggregatePost`](docs/sdks/records/README.md#aggregatepublicrecordsapiv2publicrecordsaggregatepost) - Aggregate Public Records
+- [`recordsQueryPublicRecordsApiV2PublicRecordsQueryPost`](docs/sdks/records/README.md#querypublicrecordsapiv2publicrecordsquerypost) - Query Public Records
+- [`reportsCreate`](docs/sdks/reports/README.md#create) - Create Public Report
+- [`reportsDelete`](docs/sdks/reports/README.md#delete) - Delete Public Report
+- [`reportsGet`](docs/sdks/reports/README.md#get) - Get Public Report
+- [`reportsList`](docs/sdks/reports/README.md#list) - List Public Reports
+- [`reportsUpdate`](docs/sdks/reports/README.md#update) - Update Public Report
+- [`revenuesCreate`](docs/sdks/revenues/README.md#create) - Create Public Slip
+- [`revenuesDelete`](docs/sdks/revenues/README.md#delete) - Delete Public Slip
+- [`revenuesDownloadPublicSlipPdfApiV2PublicSlipsRevenueIdPdfGet`](docs/sdks/revenues/README.md#downloadpublicslippdfapiv2publicslipsrevenueidpdfget) - Download Public Slip Pdf
+- [`revenuesGet`](docs/sdks/revenues/README.md#get) - Get Public Slip
+- [`revenuesList`](docs/sdks/revenues/README.md#list) - List Public Slips
+- [`revenuesUpdate`](docs/sdks/revenues/README.md#update) - Update Public Slip
+- [`ruleSettingsDeletePublicApprovalRuleApiV2PublicApprovalRulesRuleIdDelete`](docs/sdks/rulesettings/README.md#deletepublicapprovalruleapiv2publicapprovalrulesruleiddelete) - Delete Public Approval Rule
+- [`ruleSettingsDeletePublicDeliveryRuleApiV2PublicDeliveryRulesRuleIdDelete`](docs/sdks/rulesettings/README.md#deletepublicdeliveryruleapiv2publicdeliveryrulesruleiddelete) - Delete Public Delivery Rule
+- [`ruleSettingsDeletePublicLockRuleApiV2PublicLockRulesRuleIdDelete`](docs/sdks/rulesettings/README.md#deletepubliclockruleapiv2publiclockrulesruleiddelete) - Delete Public Lock Rule
+- [`ruleSettingsGetPublicApprovalRuleOptionsApiV2PublicApprovalRulesOptionsGet`](docs/sdks/rulesettings/README.md#getpublicapprovalruleoptionsapiv2publicapprovalrulesoptionsget) - Get Public Approval Rule Options
+- [`ruleSettingsGetPublicDeliveryRuleOptionsApiV2PublicDeliveryRulesOptionsGet`](docs/sdks/rulesettings/README.md#getpublicdeliveryruleoptionsapiv2publicdeliveryrulesoptionsget) - Get Public Delivery Rule Options
+- [`ruleSettingsGetPublicLockRuleOptionsApiV2PublicLockRulesOptionsGet`](docs/sdks/rulesettings/README.md#getpubliclockruleoptionsapiv2publiclockrulesoptionsget) - Get Public Lock Rule Options
+- [`ruleSettingsListPublicApprovalRulesApiV2PublicApprovalRulesGet`](docs/sdks/rulesettings/README.md#listpublicapprovalrulesapiv2publicapprovalrulesget) - List Public Approval Rules
+- [`ruleSettingsListPublicDeliveryRulesApiV2PublicDeliveryRulesGet`](docs/sdks/rulesettings/README.md#listpublicdeliveryrulesapiv2publicdeliveryrulesget) - List Public Delivery Rules
+- [`ruleSettingsListPublicLockRulesApiV2PublicLockRulesGet`](docs/sdks/rulesettings/README.md#listpubliclockrulesapiv2publiclockrulesget) - List Public Lock Rules
+- [`ruleSettingsUpsertPublicApprovalRuleApiV2PublicApprovalRulesPost`](docs/sdks/rulesettings/README.md#upsertpublicapprovalruleapiv2publicapprovalrulespost) - Upsert Public Approval Rule
+- [`ruleSettingsUpsertPublicDeliveryRuleApiV2PublicDeliveryRulesPost`](docs/sdks/rulesettings/README.md#upsertpublicdeliveryruleapiv2publicdeliveryrulespost) - Upsert Public Delivery Rule
+- [`ruleSettingsUpsertPublicLockRuleApiV2PublicLockRulesPost`](docs/sdks/rulesettings/README.md#upsertpubliclockruleapiv2publiclockrulespost) - Upsert Public Lock Rule
+- [`subscriptionsCreate`](docs/sdks/subscriptions/README.md#create) - Create Public Subscription
+- [`subscriptionsDelete`](docs/sdks/subscriptions/README.md#delete) - Delete Public Subscription
+- [`subscriptionsGet`](docs/sdks/subscriptions/README.md#get) - Get Public Subscription
+- [`subscriptionsList`](docs/sdks/subscriptions/README.md#list) - List Public Subscriptions
+- [`subscriptionsUpdate`](docs/sdks/subscriptions/README.md#update) - Update Public Subscription
+- [`tasksCreatePublicTaskApiV2PublicTasksPost`](docs/sdks/tasks/README.md#createpublictaskapiv2publictaskspost) - Create Public Task
+- [`tasksDeletePublicTaskApiV2PublicTasksTaskIdDelete`](docs/sdks/tasks/README.md#deletepublictaskapiv2publictaskstaskiddelete) - Delete Public Task
+- [`tasksGetPublicTaskApiV2PublicTasksTaskIdGet`](docs/sdks/tasks/README.md#getpublictaskapiv2publictaskstaskidget) - Get Public Task
+- [`tasksListPublicTasksApiV2PublicTasksGet`](docs/sdks/tasks/README.md#listpublictasksapiv2publictasksget) - List Public Tasks
+- [`tasksUpdatePublicTaskApiV2PublicTasksTaskIdPut`](docs/sdks/tasks/README.md#updatepublictaskapiv2publictaskstaskidput) - Update Public Task
+- [`ticketsCreate`](docs/sdks/tickets/README.md#create) - Create Public Ticket
+- [`ticketsDelete`](docs/sdks/tickets/README.md#delete) - Delete Public Ticket
+- [`ticketsGet`](docs/sdks/tickets/README.md#get) - Get Public Ticket
+- [`ticketsList`](docs/sdks/tickets/README.md#list) - List Public Tickets
+- [`ticketsListPipelines`](docs/sdks/tickets/README.md#listpipelines) - List Public Ticket Pipelines
+- [`ticketsUpdate`](docs/sdks/tickets/README.md#update) - Update Public Ticket
+- [`ticketsUpdateStatus`](docs/sdks/tickets/README.md#updatestatus) - Update Public Ticket Status
+- [`transfersGetPublicTransferHistoryApiV2PublicTransfersHistoryIdGet`](docs/sdks/transfers/README.md#getpublictransferhistoryapiv2publictransfershistoryidget) - Get Public Transfer History
+- [`viewsCreatePublicViewApiV2PublicViewsPost`](docs/sdks/views/README.md#createpublicviewapiv2publicviewspost) - Create Public View
+- [`viewsDeletePublicViewApiV2PublicViewsViewIdDelete`](docs/sdks/views/README.md#deletepublicviewapiv2publicviewsviewiddelete) - Delete Public View
+- [`viewsGetPublicViewApiV2PublicViewsViewIdGet`](docs/sdks/views/README.md#getpublicviewapiv2publicviewsviewidget) - Get Public View
+- [`viewsGetPublicViewColumnsApiV2PublicViewsViewIdColumnsGet`](docs/sdks/views/README.md#getpublicviewcolumnsapiv2publicviewsviewidcolumnsget) - Get Public View Columns
+- [`viewsListPublicViewsApiV2PublicViewsGet`](docs/sdks/views/README.md#listpublicviewsapiv2publicviewsget) - List Public Views
+- [`viewsUpdatePublicViewApiV2PublicViewsViewIdPatch`](docs/sdks/views/README.md#updatepublicviewapiv2publicviewsviewidpatch) - Update Public View
+- [`workflowActionsListActions`](docs/sdks/workflowactions/README.md#listactions) - List Public Workflow Actions Compat
+- [`workflowRunsGetRun`](docs/sdks/workflowruns/README.md#getrun) - Get Public Workflow Run
+- [`workflowRunsPreviewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost`](docs/sdks/workflowruns/README.md#previewpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcepreviewpost) - Preview Public Salesforce Quote Readiness
+- [`workflowRunsPreviewPublicWorkflowCompatApiV2PublicWorkflowRunsPreviewPost`](docs/sdks/workflowruns/README.md#previewpublicworkflowcompatapiv2publicworkflowrunspreviewpost) - Preview Public Workflow Compat
+- [`workflowRunsResolvePublicWorkflowRecordApiV2PublicWorkflowRunsResolveRecordPost`](docs/sdks/workflowruns/README.md#resolvepublicworkflowrecordapiv2publicworkflowrunsresolverecordpost) - Resolve Public Workflow Record
+- [`workflowRunsStartPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost`](docs/sdks/workflowruns/README.md#startpublicworkflowcompatapiv2publicworkflowrunsstartpost) - Start Public Workflow Compat
+- [`workflowsCreateOrUpdate`](docs/sdks/workflows/README.md#createorupdate) - Create Public Workflow
+- [`workflowsGet`](docs/sdks/workflows/README.md#get) - Get Public Workflow
+- [`workflowsList`](docs/sdks/workflows/README.md#list) - List Public Workflows
+- [`workflowsRunByRef`](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
+- [`workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch`](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
-> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
-
-```typescript
-import { openAsBlob } from "node:fs";
-import { Sanka } from "sanka-sdk";
-
-const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await sanka.expenses.uploadFile({
-    file: await openAsBlob("example.file"),
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -526,24 +783,25 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  }, {
-    retries: {
-      strategy: "backoff",
-      backoff: {
-        initialInterval: 1,
-        maxInterval: 50,
-        exponent: 1.1,
-        maxElapsedTime: 100,
+  const result = await sanka.absences.listPublicAbsencesApiV2PublicAbsencesGet(
+    {},
+    {
+      retries: {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 1,
+          maxInterval: 50,
+          exponent: 1.1,
+          maxElapsedTime: 100,
+        },
+        retryConnectionErrors: false,
       },
-      retryConnectionErrors: false,
     },
-  });
+  );
 
   console.log(result);
 }
@@ -567,13 +825,13 @@ const sanka = new Sanka({
     },
     retryConnectionErrors: false,
   },
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  });
+  const result = await sanka.absences.listPublicAbsencesApiV2PublicAbsencesGet(
+    {},
+  );
 
   console.log(result);
 }
@@ -603,14 +861,13 @@ import { Sanka } from "sanka-sdk";
 import * as errors from "sanka-sdk/models/errors";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
   try {
-    const result = await sanka.ai.enrich({
-      objectType: "<value>",
-    });
+    const result = await sanka.absences
+      .listPublicAbsencesApiV2PublicAbsencesGet({});
 
     console.log(result);
   } catch (error) {
@@ -622,10 +879,10 @@ async function run() {
       console.log(error.headers);
 
       // Depending on the method different errors may be thrown
-      if (error instanceof errors.AIErrorResponse) {
-        console.log(error.data$.message); // string
-        console.log(error.data$.ctxId); // string
-        console.log(error.data$.errors); // { [k: string]: any }
+      if (error instanceof errors.ErrorEnvelope) {
+        console.log(error.data$.success); // boolean
+        console.log(error.data$.error); // models.ErrorBody
+        console.log(error.data$.meta); // models.EnvelopeMeta
       }
     }
   }
@@ -636,10 +893,11 @@ run();
 ```
 
 ### Error Classes
-**Primary error:**
+**Primary errors:**
 * [`SankaError`](./src/models/errors/sanka-error.ts): The base class for HTTP error responses.
+  * [`ErrorEnvelope`](./src/models/errors/error-envelope.ts): Error response.
 
-<details><summary>Less common errors (31)</summary>
+<details><summary>Less common errors (6)</summary>
 
 <br />
 
@@ -652,36 +910,9 @@ run();
 
 
 **Inherit from [`SankaError`](./src/models/errors/sanka-error.ts)**:
-* [`TicketsErrorResponse`](./src/models/errors/tickets-error-response.ts): Bad Request. Applicable to 7 of 124 methods.*
-* [`OrdersErrorResponse`](./src/models/errors/orders-error-response.ts): Bad Request. Applicable to 6 of 124 methods.*
-* [`ExpensesErrorResponse`](./src/models/errors/expenses-error-response.ts): Applicable to 6 of 124 methods.*
-* [`WorkflowsErrorResponse`](./src/models/errors/workflows-error-response.ts): Applicable to 6 of 124 methods.*
-* [`ContactsErrorResponse`](./src/models/errors/contacts-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`CompaniesErrorResponse`](./src/models/errors/companies-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`CasesErrorResponse`](./src/models/errors/cases-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`PurchaseOrdersErrorResponse`](./src/models/errors/purchase-orders-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`SlipsErrorResponse`](./src/models/errors/slips-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`BillsErrorResponse`](./src/models/errors/bills-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`DisbursementsErrorResponse`](./src/models/errors/disbursements-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`PublicPropertyErrorResponse`](./src/models/errors/public-property-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`PublicReportErrorResponse`](./src/models/errors/public-report-error-response.ts): Bad Request. Applicable to 5 of 124 methods.*
-* [`CalendarErrorResponse`](./src/models/errors/calendar-error-response.ts): Applicable to 5 of 124 methods.*
-* [`ItemsErrorResponse`](./src/models/errors/items-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`SubscriptionErrorResponse`](./src/models/errors/subscription-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`EstimatesErrorResponse`](./src/models/errors/estimates-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`InvoicesErrorResponse`](./src/models/errors/invoices-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`PaymentsErrorResponse`](./src/models/errors/payments-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`InventoriesErrorResponse`](./src/models/errors/inventories-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`LocationsErrorResponse`](./src/models/errors/locations-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`InventoryTransactionsErrorResponse`](./src/models/errors/inventory-transactions-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`MetersErrorResponse`](./src/models/errors/meters-error-response.ts): Bad Request. Applicable to 4 of 124 methods.*
-* [`AIErrorResponse`](./src/models/errors/ai-error-response.ts): Bad Request. Applicable to 2 of 124 methods.*
-* [`PublicAuthErrorResponse`](./src/models/errors/public-auth-error-response.ts): Unauthorized. Applicable to 1 of 124 methods.*
 * [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
-
-\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -695,13 +926,13 @@ import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
   serverURL: "https://api.sanka.com",
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  });
+  const result = await sanka.absences.listPublicAbsencesApiV2PublicAbsencesGet(
+    {},
+  );
 
   console.log(result);
 }

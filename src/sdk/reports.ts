@@ -8,20 +8,19 @@ import { reportsGet } from "../funcs/reports-get.js";
 import { reportsList } from "../funcs/reports-list.js";
 import { reportsUpdate } from "../funcs/reports-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Reports extends ClientSDK {
   /**
-   * List Reports
+   * List Public Reports
    */
   async list(
     request?:
-      | operations.ApiRoutersV1ReportsPublicApiListPublicReportsRequest
+      | operations.ListPublicReportsApiV2PublicReportsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.PublicReportListItemSchema>> {
+  ): Promise<operations.ListPublicReportsApiV2PublicReportsGetResponse> {
     return unwrapAsync(reportsList(
       this,
       request,
@@ -30,12 +29,12 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Create Report
+   * Create Public Report
    */
   async create(
-    request: models.PublicCreateReportRequest,
+    request: operations.CreatePublicReportApiV2PublicReportsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicCreateReportResponse> {
+  ): Promise<operations.CreatePublicReportApiV2PublicReportsPostResponse> {
     return unwrapAsync(reportsCreate(
       this,
       request,
@@ -44,12 +43,12 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Get Report
+   * Get Public Report
    */
   async get(
-    request: operations.ApiRoutersV1ReportsPublicApiGetPublicReportRequest,
+    request: operations.GetPublicReportApiV2PublicReportsReportIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicReportDetailSchema> {
+  ): Promise<operations.GetPublicReportApiV2PublicReportsReportIdGetResponse> {
     return unwrapAsync(reportsGet(
       this,
       request,
@@ -58,12 +57,14 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Update Report
+   * Update Public Report
    */
   async update(
-    request: operations.ApiRoutersV1ReportsPublicApiUpdatePublicReportRequest,
+    request: operations.UpdatePublicReportApiV2PublicReportsReportIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicCreateReportResponse> {
+  ): Promise<
+    operations.UpdatePublicReportApiV2PublicReportsReportIdPutResponse
+  > {
     return unwrapAsync(reportsUpdate(
       this,
       request,
@@ -72,12 +73,15 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Delete Report
+   * Delete Public Report
    */
   async delete(
-    request: operations.ApiRoutersV1ReportsPublicApiDeletePublicReportRequest,
+    request:
+      operations.DeletePublicReportApiV2PublicReportsReportIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicDeleteReportResponse> {
+  ): Promise<
+    operations.DeletePublicReportApiV2PublicReportsReportIdDeleteResponse
+  > {
     return unwrapAsync(reportsDelete(
       this,
       request,

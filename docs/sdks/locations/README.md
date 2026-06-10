@@ -4,28 +4,28 @@
 
 ### Available Operations
 
-* [list](#list) - List Locations
-* [create](#create) - Create Location
-* [get](#get) - Get Location
-* [update](#update) - Update Location
-* [delete](#delete) - Delete Location
+* [list](#list) - List Public Locations
+* [create](#create) - Create Public Location
+* [get](#get) - Get Public Location
+* [update](#update) - Update Public Location
+* [delete](#delete) - Delete Public Location
 
 ## list
 
-List Locations
+List Public Locations
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_locations_public_api_list_workspace_locations" method="get" path="/v1/public/locations" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_locations_api_v2_public_locations_get" method="get" path="/v2/public/locations" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.locations.list();
+  const result = await sanka.locations.list({});
 
   console.log(result);
 }
@@ -44,11 +44,11 @@ import { locationsList } from "sanka-sdk/funcs/locations-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await locationsList(sanka);
+  const res = await locationsList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -64,37 +64,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1LocationsPublicApiListWorkspaceLocationsRequest](../../models/operations/api-routers-v1-locations-public-api-list-workspace-locations-request.md)      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPublicLocationsApiV2PublicLocationsGetRequest](../../models/operations/list-public-locations-api-v2-public-locations-get-request.md)                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.InventoryWarehouseSchema[]](../../models/.md)\>**
+**Promise\<[operations.ListPublicLocationsApiV2PublicLocationsGetResponse](../../models/operations/list-public-locations-api-v2-public-locations-get-response.md)\>**
 
 ### Errors
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## create
 
-Create Location
+Create Public Location
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_locations_public_api_create_public_location" method="post" path="/v1/public/locations" -->
+<!-- UsageSnippet language="typescript" operationID="create_public_location_api_v2_public_locations_post" method="post" path="/v2/public/locations" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.locations.create({});
+  const result = await sanka.locations.create({
+    body: {},
+  });
 
   console.log(result);
 }
@@ -113,11 +116,13 @@ import { locationsCreate } from "sanka-sdk/funcs/locations-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await locationsCreate(sanka, {});
+  const res = await locationsCreate(sanka, {
+    body: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -133,35 +138,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.PublicLocationRequest](../../models/public-location-request.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePublicLocationApiV2PublicLocationsPostRequest](../../models/operations/create-public-location-api-v2-public-locations-post-request.md)                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicLocationResponse](../../models/public-location-response.md)\>**
+**Promise\<[operations.CreatePublicLocationApiV2PublicLocationsPostResponse](../../models/operations/create-public-location-api-v2-public-locations-post-response.md)\>**
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.LocationsErrorResponse | 400, 403, 404                 | application/json              |
-| errors.LocationsErrorResponse | 500                           | application/json              |
-| errors.SankaDefaultError      | 4XX, 5XX                      | \*/\*                         |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
-Get Location
+Get Public Location
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_locations_public_api_get_public_location" method="get" path="/v1/public/locations/{location_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_location_api_v2_public_locations__location_id__get" method="get" path="/v2/public/locations/{location_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -186,7 +190,7 @@ import { locationsGet } from "sanka-sdk/funcs/locations-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -208,35 +212,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1LocationsPublicApiGetPublicLocationRequest](../../models/operations/api-routers-v1-locations-public-api-get-public-location-request.md)                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPublicLocationApiV2PublicLocationsLocationIdGetRequest](../../models/operations/get-public-location-api-v2-public-locations-location-id-get-request.md)         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.InventoryWarehouseSchema](../../models/inventory-warehouse-schema.md)\>**
+**Promise\<[operations.GetPublicLocationApiV2PublicLocationsLocationIdGetResponse](../../models/operations/get-public-location-api-v2-public-locations-location-id-get-response.md)\>**
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.LocationsErrorResponse | 400, 403, 404                 | application/json              |
-| errors.LocationsErrorResponse | 500                           | application/json              |
-| errors.SankaDefaultError      | 4XX, 5XX                      | \*/\*                         |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
-Update Location
+Update Public Location
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_locations_public_api_update_public_location" method="put" path="/v1/public/locations/{location_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_location_api_v2_public_locations__location_id__put" method="put" path="/v2/public/locations/{location_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -262,7 +265,7 @@ import { locationsUpdate } from "sanka-sdk/funcs/locations-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -285,35 +288,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1LocationsPublicApiUpdatePublicLocationRequest](../../models/operations/api-routers-v1-locations-public-api-update-public-location-request.md)          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpdatePublicLocationApiV2PublicLocationsLocationIdPutRequest](../../models/operations/update-public-location-api-v2-public-locations-location-id-put-request.md)   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicLocationResponse](../../models/public-location-response.md)\>**
+**Promise\<[operations.UpdatePublicLocationApiV2PublicLocationsLocationIdPutResponse](../../models/operations/update-public-location-api-v2-public-locations-location-id-put-response.md)\>**
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.LocationsErrorResponse | 400, 403, 404, 409            | application/json              |
-| errors.LocationsErrorResponse | 500                           | application/json              |
-| errors.SankaDefaultError      | 4XX, 5XX                      | \*/\*                         |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
-Delete Location
+Delete Public Location
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_locations_public_api_delete_public_location" method="delete" path="/v1/public/locations/{location_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_location_api_v2_public_locations__location_id__delete" method="delete" path="/v2/public/locations/{location_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -338,7 +340,7 @@ import { locationsDelete } from "sanka-sdk/funcs/locations-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -358,21 +360,20 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1LocationsPublicApiDeletePublicLocationRequest](../../models/operations/api-routers-v1-locations-public-api-delete-public-location-request.md)          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                          | Type                                                                                                                                                                               | Required                                                                                                                                                                           | Description                                                                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                          | [operations.DeletePublicLocationApiV2PublicLocationsLocationIdDeleteRequest](../../models/operations/delete-public-location-api-v2-public-locations-location-id-delete-request.md) | :heavy_check_mark:                                                                                                                                                                 | The request object to use for the request.                                                                                                                                         |
+| `options`                                                                                                                                                                          | RequestOptions                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                 | Used to set various options for making HTTP requests.                                                                                                                              |
+| `options.fetchOptions`                                                                                                                                                             | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                            | :heavy_minus_sign:                                                                                                                                                                 | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.     |
+| `options.retries`                                                                                                                                                                  | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                 | Enables retrying HTTP requests under certain failure conditions.                                                                                                                   |
 
 ### Response
 
-**Promise\<[models.PublicLocationResponse](../../models/public-location-response.md)\>**
+**Promise\<[operations.DeletePublicLocationApiV2PublicLocationsLocationIdDeleteResponse](../../models/operations/delete-public-location-api-v2-public-locations-location-id-delete-response.md)\>**
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.LocationsErrorResponse | 400, 403, 404, 409            | application/json              |
-| errors.LocationsErrorResponse | 500                           | application/json              |
-| errors.SankaDefaultError      | 4XX, 5XX                      | \*/\*                         |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

@@ -4,12 +4,8 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { appendForm } from "../lib/encodings.js";
-import {
-  bytesToBlob,
-  getContentTypeFromFileName,
-  readableStreamToArrayBuffer,
-} from "../lib/files.js";
+import { appendForm, encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -27,24 +23,22 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
-import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
-import { isReadableStream } from "../types/streams.js";
 
 /**
- * Upload Expense Attachment File
+ * Upload Public Expense File
  */
 export function expensesUploadFile(
   client: SankaCore,
-  request: operations.FileParams,
+  request:
+    operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.PublicExpenseFileUploadResponse,
-    | errors.ExpensesErrorResponse
+    operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -64,13 +58,14 @@ export function expensesUploadFile(
 
 async function $do(
   client: SankaCore,
-  request: operations.FileParams,
+  request:
+    operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.PublicExpenseFileUploadResponse,
-      | errors.ExpensesErrorResponse
+      operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -85,7 +80,12 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(operations.FileParams$outboundSchema, value),
+    (value) =>
+      z.parse(
+        operations
+          .UploadPublicExpenseFileApiV2PublicExpensesFilesPostRequest$outboundSchema,
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -94,53 +94,36 @@ async function $do(
   const payload = parsed.value;
   const body = new FormData();
 
-  if (isBlobLike(payload.file)) {
-    const blob = payload.file;
-    const name = "name" in blob ? (blob.name as string) : undefined;
-    appendForm(body, "file", blob, name);
-  } else if (isReadableStream(payload.file.content)) {
-    const buffer = await readableStreamToArrayBuffer(payload.file.content);
-    const contentType = getContentTypeFromFileName(payload.file.fileName)
-      || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      bytesToBlob(buffer, contentType),
-      payload.file.fileName,
-    );
-  } else {
-    const contentType = getContentTypeFromFileName(payload.file.fileName)
-      || "application/octet-stream";
-    appendForm(
-      body,
-      "file",
-      bytesToBlob(payload.file.content, contentType),
-      payload.file.fileName,
-    );
-  }
+  appendForm(body, "file", payload.body.file);
 
-  const path = pathToFunc("/v1/public/expenses/files")();
+  const path = pathToFunc("/v2/public/expenses/files")();
+
+  const query = encodeFormQuery({
+    "workspace_id": payload.workspace_id,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID:
-      "api_routers_v1_expenses_public_api_upload_public_expense_file",
+    operationID: "upload_public_expense_file_api_v2_public_expenses_files_post",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -153,6 +136,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -164,7 +148,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["403", "404", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -178,8 +163,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.PublicExpenseFileUploadResponse,
-    | errors.ExpensesErrorResponse
+    operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -189,9 +174,13 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.PublicExpenseFileUploadResponse$inboundSchema),
-    M.jsonErr([403, 404], errors.ExpensesErrorResponse$inboundSchema),
-    M.jsonErr(500, errors.ExpensesErrorResponse$inboundSchema),
+    M.json(
+      200,
+      operations
+        .UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

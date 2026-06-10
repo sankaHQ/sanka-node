@@ -247,8 +247,7 @@ export function resolveGlobalSecurity(
       {
         fieldName: "Authorization",
         type: "http:bearer",
-        value: security?.publicOAuthOrJWTAuth
-          ?? env().SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH,
+        value: security?.bearerAuth ?? env().SANKA_BEARER_AUTH,
       },
     ],
   ];

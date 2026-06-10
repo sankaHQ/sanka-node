@@ -8,20 +8,19 @@ import { metersGet } from "../funcs/meters-get.js";
 import { metersList } from "../funcs/meters-list.js";
 import { metersUpdate } from "../funcs/meters-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Meters extends ClientSDK {
   /**
-   * List Meters
+   * List Public Meters
    */
   async list(
     request?:
-      | operations.ApiRoutersV1MetersPublicApiListWorkspaceMetersRequest
+      | operations.ListPublicMetersApiV2PublicMetersGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.CommerceMeterSchema>> {
+  ): Promise<operations.ListPublicMetersApiV2PublicMetersGetResponse> {
     return unwrapAsync(metersList(
       this,
       request,
@@ -30,12 +29,12 @@ export class Meters extends ClientSDK {
   }
 
   /**
-   * Create Meter
+   * Create Public Meter
    */
   async create(
-    request: models.PublicMeterRequest,
+    request: operations.CreatePublicMeterApiV2PublicMetersPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicMeterResponse> {
+  ): Promise<operations.CreatePublicMeterApiV2PublicMetersPostResponse> {
     return unwrapAsync(metersCreate(
       this,
       request,
@@ -44,12 +43,12 @@ export class Meters extends ClientSDK {
   }
 
   /**
-   * Get Meter
+   * Get Public Meter
    */
   async get(
-    request: operations.ApiRoutersV1MetersPublicApiGetPublicMeterRequest,
+    request: operations.GetPublicMeterApiV2PublicMetersMeterIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.CommerceMeterSchema> {
+  ): Promise<operations.GetPublicMeterApiV2PublicMetersMeterIdGetResponse> {
     return unwrapAsync(metersGet(
       this,
       request,
@@ -58,12 +57,12 @@ export class Meters extends ClientSDK {
   }
 
   /**
-   * Update Meter
+   * Update Public Meter
    */
   async update(
-    request: operations.ApiRoutersV1MetersPublicApiUpdatePublicMeterRequest,
+    request: operations.UpdatePublicMeterApiV2PublicMetersMeterIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicMeterResponse> {
+  ): Promise<operations.UpdatePublicMeterApiV2PublicMetersMeterIdPutResponse> {
     return unwrapAsync(metersUpdate(
       this,
       request,
@@ -72,12 +71,14 @@ export class Meters extends ClientSDK {
   }
 
   /**
-   * Delete Meter
+   * Delete Public Meter
    */
   async delete(
-    request: operations.ApiRoutersV1MetersPublicApiDeletePublicMeterRequest,
+    request: operations.DeletePublicMeterApiV2PublicMetersMeterIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicMeterResponse> {
+  ): Promise<
+    operations.DeletePublicMeterApiV2PublicMetersMeterIdDeleteResponse
+  > {
     return unwrapAsync(metersDelete(
       this,
       request,

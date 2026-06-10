@@ -4,24 +4,25 @@
 
 import { estimatesCreate } from "../funcs/estimates-create.js";
 import { estimatesDelete } from "../funcs/estimates-delete.js";
+import { estimatesDownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet } from "../funcs/estimates-download-public-estimate-pdf-api-v2-public-estimates-estimate-id-pdf-get.js";
 import { estimatesGet } from "../funcs/estimates-get.js";
 import { estimatesList } from "../funcs/estimates-list.js";
 import { estimatesUpdate } from "../funcs/estimates-update.js";
+import { estimatesUploadPublicEstimateFileApiV2PublicEstimatesFilesPost } from "../funcs/estimates-upload-public-estimate-file-api-v2-public-estimates-files-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Estimates extends ClientSDK {
   /**
-   * List Estimates
+   * List Public Estimates
    */
   async list(
     request?:
-      | operations.ApiRoutersV1EstimatesPublicApiListWorkspaceEstimatesRequest
+      | operations.ListPublicEstimatesApiV2PublicEstimatesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.EstimateSchema>> {
+  ): Promise<operations.ListPublicEstimatesApiV2PublicEstimatesGetResponse> {
     return unwrapAsync(estimatesList(
       this,
       request,
@@ -30,12 +31,12 @@ export class Estimates extends ClientSDK {
   }
 
   /**
-   * Create Estimate
+   * Create Public Estimate
    */
   async create(
-    request: models.PublicEstimateRequest,
+    request: operations.CreatePublicEstimateApiV2PublicEstimatesPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicEstimateResponse> {
+  ): Promise<operations.CreatePublicEstimateApiV2PublicEstimatesPostResponse> {
     return unwrapAsync(estimatesCreate(
       this,
       request,
@@ -44,12 +45,34 @@ export class Estimates extends ClientSDK {
   }
 
   /**
-   * Get Estimate
+   * Upload Public Estimate File
+   */
+  async uploadPublicEstimateFileApiV2PublicEstimatesFilesPost(
+    request:
+      operations.UploadPublicEstimateFileApiV2PublicEstimatesFilesPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UploadPublicEstimateFileApiV2PublicEstimatesFilesPostResponse
+  > {
+    return unwrapAsync(
+      estimatesUploadPublicEstimateFileApiV2PublicEstimatesFilesPost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Get Public Estimate
    */
   async get(
-    request: operations.ApiRoutersV1EstimatesPublicApiGetPublicEstimateRequest,
+    request:
+      operations.GetPublicEstimateApiV2PublicEstimatesEstimateIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.EstimateSchema> {
+  ): Promise<
+    operations.GetPublicEstimateApiV2PublicEstimatesEstimateIdGetResponse
+  > {
     return unwrapAsync(estimatesGet(
       this,
       request,
@@ -58,13 +81,15 @@ export class Estimates extends ClientSDK {
   }
 
   /**
-   * Update Estimate
+   * Update Public Estimate
    */
   async update(
     request:
-      operations.ApiRoutersV1EstimatesPublicApiUpdatePublicEstimateRequest,
+      operations.UpdatePublicEstimateApiV2PublicEstimatesEstimateIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicEstimateResponse> {
+  ): Promise<
+    operations.UpdatePublicEstimateApiV2PublicEstimatesEstimateIdPutResponse
+  > {
     return unwrapAsync(estimatesUpdate(
       this,
       request,
@@ -73,17 +98,38 @@ export class Estimates extends ClientSDK {
   }
 
   /**
-   * Delete Estimate
+   * Delete Public Estimate
    */
   async delete(
     request:
-      operations.ApiRoutersV1EstimatesPublicApiDeletePublicEstimateRequest,
+      operations.DeletePublicEstimateApiV2PublicEstimatesEstimateIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicEstimateResponse> {
+  ): Promise<
+    operations.DeletePublicEstimateApiV2PublicEstimatesEstimateIdDeleteResponse
+  > {
     return unwrapAsync(estimatesDelete(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Download Public Estimate Pdf
+   */
+  async downloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet(
+    request:
+      operations.DownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGetResponse
+  > {
+    return unwrapAsync(
+      estimatesDownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,23 +23,22 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Property
+ * Delete Public Developer Property
  */
 export function propertiesDelete(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1PropertiesPublicApiDeletePublicPropertyRequest,
+    operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.PublicPropertyMutationResponse,
-    | errors.PublicPropertyErrorResponse
+    operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -59,13 +59,13 @@ export function propertiesDelete(
 async function $do(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1PropertiesPublicApiDeletePublicPropertyRequest,
+    operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.PublicPropertyMutationResponse,
-      | errors.PublicPropertyErrorResponse
+      operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -83,7 +83,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .ApiRoutersV1PropertiesPublicApiDeletePublicPropertyRequest$outboundSchema,
+          .DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -104,29 +104,47 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/public/properties/{object_name}/{property_ref}")(
+  const path = pathToFunc("/v2/public/properties/{object_name}/{property_ref}")(
     pathParams,
   );
 
+  const query = encodeFormQuery({
+    "channel_id": payload.channel_id,
+    "confirm": payload.confirm,
+    "custom_object_id": payload.custom_object_id,
+    "dry_run": payload.dry_run,
+    "external_object_type": payload.external_object_type,
+    "language": payload.language,
+    "provider": payload.provider,
+    "scope": payload.scope,
+    "source": payload.source,
+    "target": payload.target,
+    "workspace_id": payload.workspace_id,
+  });
+
   const headers = new Headers(compactMap({
     Accept: "application/json",
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "api_routers_v1_properties_public_api_delete_public_property",
+    operationID:
+      "delete_public_developer_property_api_v2_public_properties__object_name___property_ref__delete",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -139,6 +157,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -150,7 +169,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "404", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -164,8 +184,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.PublicPropertyMutationResponse,
-    | errors.PublicPropertyErrorResponse
+    operations.DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -175,12 +195,13 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.PublicPropertyMutationResponse$inboundSchema),
-    M.jsonErr(
-      [400, 403, 404],
-      errors.PublicPropertyErrorResponse$inboundSchema,
+    M.json(
+      200,
+      operations
+        .DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropertyRefDeleteResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
     ),
-    M.jsonErr(500, errors.PublicPropertyErrorResponse$inboundSchema),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

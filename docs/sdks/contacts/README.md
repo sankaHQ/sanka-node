@@ -4,24 +4,24 @@
 
 ### Available Operations
 
-* [list](#list) - List Contacts
-* [create](#create) - Create Contact
-* [get](#get) - Get Contact
-* [update](#update) - Update Contact
-* [delete](#delete) - Delete Contact
+* [list](#list) - List Public Contacts
+* [create](#create) - Create Public Contact
+* [get](#get) - Get Public Contact
+* [update](#update) - Update Public Contact
+* [delete](#delete) - Delete Public Contact
 
 ## list
 
-List Contacts
+List Public Contacts
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_contacts_public_api_public_list_contacts" method="get" path="/v1/public/contacts" -->
+<!-- UsageSnippet language="typescript" operationID="list_public_contacts_api_v2_public_contacts_get" method="get" path="/v2/public/contacts" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { contactsList } from "sanka-sdk/funcs/contacts-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -64,39 +64,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ContactsPublicApiPublicListContactsRequest](../../models/operations/api-routers-v1-contacts-public-api-public-list-contacts-request.md)                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPublicContactsApiV2PublicContactsGetRequest](../../models/operations/list-public-contacts-api-v2-public-contacts-get-request.md)                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ContactsListResponse](../../models/contacts-list-response.md)\>**
+**Promise\<[operations.ListPublicContactsApiV2PublicContactsGetResponse](../../models/operations/list-public-contacts-api-v2-public-contacts-get-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ContactsErrorResponse | 400, 403, 404                | application/json             |
-| errors.ContactsErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## create
 
-Create Contact
+Create Public Contact
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_contacts_public_api_create_public_contact" method="post" path="/v1/public/contacts" -->
+<!-- UsageSnippet language="typescript" operationID="create_public_contact_api_v2_public_contacts_post" method="post" path="/v2/public/contacts" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const result = await sanka.contacts.create({});
+  const result = await sanka.contacts.create({
+    body: {},
+  });
 
   console.log(result);
 }
@@ -115,11 +116,13 @@ import { contactsCreate } from "sanka-sdk/funcs/contacts-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await contactsCreate(sanka, {});
+  const res = await contactsCreate(sanka, {
+    body: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -135,35 +138,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.PublicContactRequest](../../models/public-contact-request.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreatePublicContactApiV2PublicContactsPostRequest](../../models/operations/create-public-contact-api-v2-public-contacts-post-request.md)                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicContactResponse](../../models/public-contact-response.md)\>**
+**Promise\<[operations.CreatePublicContactApiV2PublicContactsPostResponse](../../models/operations/create-public-contact-api-v2-public-contacts-post-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ContactsErrorResponse | 400, 403, 404                | application/json             |
-| errors.ContactsErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
-Get Contact
+Get Public Contact
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_contacts_public_api_get_public_contact" method="get" path="/v1/public/contacts/{contact_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_contact_api_v2_public_contacts__contact_id__get" method="get" path="/v2/public/contacts/{contact_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -188,7 +190,7 @@ import { contactsGet } from "sanka-sdk/funcs/contacts-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -210,35 +212,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ContactsPublicApiGetPublicContactRequest](../../models/operations/api-routers-v1-contacts-public-api-get-public-contact-request.md)                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPublicContactApiV2PublicContactsContactIdGetRequest](../../models/operations/get-public-contact-api-v2-public-contacts-contact-id-get-request.md)               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ContactSchema](../../models/contact-schema.md)\>**
+**Promise\<[operations.GetPublicContactApiV2PublicContactsContactIdGetResponse](../../models/operations/get-public-contact-api-v2-public-contacts-contact-id-get-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ContactsErrorResponse | 400, 403, 404                | application/json             |
-| errors.ContactsErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
-Update Contact
+Update Public Contact
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_contacts_public_api_update_public_contact" method="put" path="/v1/public/contacts/{contact_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_contact_api_v2_public_contacts__contact_id__put" method="put" path="/v2/public/contacts/{contact_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -264,7 +265,7 @@ import { contactsUpdate } from "sanka-sdk/funcs/contacts-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -287,35 +288,34 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ContactsPublicApiUpdatePublicContactRequest](../../models/operations/api-routers-v1-contacts-public-api-update-public-contact-request.md)              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpdatePublicContactApiV2PublicContactsContactIdPutRequest](../../models/operations/update-public-contact-api-v2-public-contacts-contact-id-put-request.md)         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicContactResponse](../../models/public-contact-response.md)\>**
+**Promise\<[operations.UpdatePublicContactApiV2PublicContactsContactIdPutResponse](../../models/operations/update-public-contact-api-v2-public-contacts-contact-id-put-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ContactsErrorResponse | 400, 403, 404                | application/json             |
-| errors.ContactsErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
-Delete Contact
+Delete Public Contact
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="api_routers_v1_contacts_public_api_delete_public_contact" method="delete" path="/v1/public/contacts/{contact_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_contact_api_v2_public_contacts__contact_id__delete" method="delete" path="/v2/public/contacts/{contact_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { contactsDelete } from "sanka-sdk/funcs/contacts-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
@@ -362,19 +362,18 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ApiRoutersV1ContactsPublicApiDeletePublicContactRequest](../../models/operations/api-routers-v1-contacts-public-api-delete-public-contact-request.md)              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePublicContactApiV2PublicContactsContactIdDeleteRequest](../../models/operations/delete-public-contact-api-v2-public-contacts-contact-id-delete-request.md)   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PublicContactResponse](../../models/public-contact-response.md)\>**
+**Promise\<[operations.DeletePublicContactApiV2PublicContactsContactIdDeleteResponse](../../models/operations/delete-public-contact-api-v2-public-contacts-contact-id-delete-response.md)\>**
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.ContactsErrorResponse | 400, 403, 404, 409           | application/json             |
-| errors.ContactsErrorResponse | 500                          | application/json             |
-| errors.SankaDefaultError     | 4XX, 5XX                     | \*/\*                        |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

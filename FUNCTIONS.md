@@ -1,11 +1,11 @@
 # Standalone Functions
 
 > [!NOTE]
-> This section is useful if you are using a bundler and targetting browsers and
+> This section is useful if you are using a bundler and targeting browsers and
 > runtimes where the size of an application affects performance and load times. 
 
 Every method in this SDK is also available as a standalone function. This
-alternative API is suitable when targetting the browser or serverless runtimes
+alternative API is suitable when targeting the browser or serverless runtimes
 and using a bundler to build your application since all unused functionality
 will be tree-shaken away. This includes code for unused methods, Zod schemas,
 encoding helpers and response handlers. The result is dramatically smaller
@@ -20,23 +20,21 @@ specific category of applications.
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { aiEnrich } from "sanka-sdk/funcs/ai-enrich.js";
+import { absencesListPublicAbsencesApiV2PublicAbsencesGet } from "sanka-sdk/funcs/absences-list-public-absences-api-v2-public-absences-get.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  publicOAuthOrJWTAuth: process.env["SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
 async function run() {
-  const res = await aiEnrich(sanka, {
-    objectType: "<value>",
-  });
+  const res = await absencesListPublicAbsencesApiV2PublicAbsencesGet(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("aiEnrich failed:", res.error);
+    console.log("absencesListPublicAbsencesApiV2PublicAbsencesGet failed:", res.error);
   }
 }
 

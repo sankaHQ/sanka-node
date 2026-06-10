@@ -4,7 +4,8 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,23 +23,22 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create Property
+ * Create Public Developer Property
  */
 export function propertiesCreate(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1PropertiesPublicApiCreatePublicPropertyRequest,
+    operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.PublicPropertyMutationResponse,
-    | errors.PublicPropertyErrorResponse
+    operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -59,13 +59,13 @@ export function propertiesCreate(
 async function $do(
   client: SankaCore,
   request:
-    operations.ApiRoutersV1PropertiesPublicApiCreatePublicPropertyRequest,
+    operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.PublicPropertyMutationResponse,
-      | errors.PublicPropertyErrorResponse
+      operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -83,7 +83,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .ApiRoutersV1PropertiesPublicApiCreatePublicPropertyRequest$outboundSchema,
+          .CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -100,28 +100,36 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/public/properties/{object_name}")(pathParams);
+  const path = pathToFunc("/v2/public/properties/{object_name}")(pathParams);
+
+  const query = encodeFormQuery({
+    "workspace_id": payload.workspace_id,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "api_routers_v1_properties_public_api_create_public_property",
+    operationID:
+      "create_public_developer_property_api_v2_public_properties__object_name__post",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -134,6 +142,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -145,7 +154,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "404", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -159,8 +169,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.PublicPropertyMutationResponse,
-    | errors.PublicPropertyErrorResponse
+    operations.CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -170,12 +180,13 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.PublicPropertyMutationResponse$inboundSchema),
-    M.jsonErr(
-      [400, 403, 404],
-      errors.PublicPropertyErrorResponse$inboundSchema,
+    M.json(
+      200,
+      operations
+        .CreatePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePostResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
     ),
-    M.jsonErr(500, errors.PublicPropertyErrorResponse$inboundSchema),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

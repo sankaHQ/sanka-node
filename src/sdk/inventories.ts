@@ -8,20 +8,21 @@ import { inventoriesGet } from "../funcs/inventories-get.js";
 import { inventoriesList } from "../funcs/inventories-list.js";
 import { inventoriesUpdate } from "../funcs/inventories-update.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Inventories extends ClientSDK {
   /**
-   * List Inventories
+   * List Public Inventories
    */
   async list(
     request?:
-      | operations.ApiRoutersV1InventoriesPublicApiListWorkspaceInventoriesRequest
+      | operations.ListPublicInventoriesApiV2PublicInventoriesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.ShopTurboInventorySchema>> {
+  ): Promise<
+    operations.ListPublicInventoriesApiV2PublicInventoriesGetResponse
+  > {
     return unwrapAsync(inventoriesList(
       this,
       request,
@@ -30,12 +31,14 @@ export class Inventories extends ClientSDK {
   }
 
   /**
-   * Create Inventory
+   * Create Public Inventory
    */
   async create(
-    request: models.PublicInventoryRequest,
+    request: operations.CreatePublicInventoryApiV2PublicInventoriesPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryResponse> {
+  ): Promise<
+    operations.CreatePublicInventoryApiV2PublicInventoriesPostResponse
+  > {
     return unwrapAsync(inventoriesCreate(
       this,
       request,
@@ -44,13 +47,15 @@ export class Inventories extends ClientSDK {
   }
 
   /**
-   * Get Inventory
+   * Get Public Inventory
    */
   async get(
     request:
-      operations.ApiRoutersV1InventoriesPublicApiGetPublicInventoryRequest,
+      operations.GetPublicInventoryApiV2PublicInventoriesInventoryIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.ShopTurboInventorySchema> {
+  ): Promise<
+    operations.GetPublicInventoryApiV2PublicInventoriesInventoryIdGetResponse
+  > {
     return unwrapAsync(inventoriesGet(
       this,
       request,
@@ -59,13 +64,15 @@ export class Inventories extends ClientSDK {
   }
 
   /**
-   * Update Inventory
+   * Update Public Inventory
    */
   async update(
     request:
-      operations.ApiRoutersV1InventoriesPublicApiUpdatePublicInventoryRequest,
+      operations.UpdatePublicInventoryApiV2PublicInventoriesInventoryIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryResponse> {
+  ): Promise<
+    operations.UpdatePublicInventoryApiV2PublicInventoriesInventoryIdPutResponse
+  > {
     return unwrapAsync(inventoriesUpdate(
       this,
       request,
@@ -74,13 +81,15 @@ export class Inventories extends ClientSDK {
   }
 
   /**
-   * Delete Inventory
+   * Delete Public Inventory
    */
   async delete(
     request:
-      operations.ApiRoutersV1InventoriesPublicApiDeletePublicInventoryRequest,
+      operations.DeletePublicInventoryApiV2PublicInventoriesInventoryIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicInventoryResponse> {
+  ): Promise<
+    operations.DeletePublicInventoryApiV2PublicInventoriesInventoryIdDeleteResponse
+  > {
     return unwrapAsync(inventoriesDelete(
       this,
       request,

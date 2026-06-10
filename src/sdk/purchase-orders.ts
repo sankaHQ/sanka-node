@@ -4,24 +4,29 @@
 
 import { purchaseOrdersCreate } from "../funcs/purchase-orders-create.js";
 import { purchaseOrdersDelete } from "../funcs/purchase-orders-delete.js";
+import {
+  purchaseOrdersDownloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGet,
+} from "../funcs/purchase-orders-download-public-purchase-order-pdf-api-v2-public-purchase-orders-purchase-order-id-pdf-get.js";
 import { purchaseOrdersGet } from "../funcs/purchase-orders-get.js";
 import { purchaseOrdersList } from "../funcs/purchase-orders-list.js";
 import { purchaseOrdersUpdate } from "../funcs/purchase-orders-update.js";
+import { purchaseOrdersUploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPost } from "../funcs/purchase-orders-upload-public-purchase-order-file-api-v2-public-purchase-orders-files-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class PurchaseOrders extends ClientSDK {
   /**
-   * List Purchase Orders
+   * List Public Purchase Orders
    */
   async list(
     request?:
-      | operations.ApiRoutersV1PurchaseOrdersPublicApiListWorkspacePurchaseOrdersRequest
+      | operations.ListPublicPurchaseOrdersApiV2PublicPurchaseOrdersGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.PurchaseOrderSchema>> {
+  ): Promise<
+    operations.ListPublicPurchaseOrdersApiV2PublicPurchaseOrdersGetResponse
+  > {
     return unwrapAsync(purchaseOrdersList(
       this,
       request,
@@ -30,12 +35,15 @@ export class PurchaseOrders extends ClientSDK {
   }
 
   /**
-   * Create Purchase Order
+   * Create Public Purchase Order
    */
   async create(
-    request: models.PublicPurchaseOrderRequest,
+    request:
+      operations.CreatePublicPurchaseOrderApiV2PublicPurchaseOrdersPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPurchaseOrderResponse> {
+  ): Promise<
+    operations.CreatePublicPurchaseOrderApiV2PublicPurchaseOrdersPostResponse
+  > {
     return unwrapAsync(purchaseOrdersCreate(
       this,
       request,
@@ -44,13 +52,15 @@ export class PurchaseOrders extends ClientSDK {
   }
 
   /**
-   * Get Purchase Order
+   * Get Public Purchase Order
    */
   async get(
     request:
-      operations.ApiRoutersV1PurchaseOrdersPublicApiGetPublicPurchaseOrderRequest,
+      operations.GetPublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.PurchaseOrderSchema> {
+  ): Promise<
+    operations.GetPublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdGetResponse
+  > {
     return unwrapAsync(purchaseOrdersGet(
       this,
       request,
@@ -59,13 +69,15 @@ export class PurchaseOrders extends ClientSDK {
   }
 
   /**
-   * Update Purchase Order
+   * Update Public Purchase Order
    */
   async update(
     request:
-      operations.ApiRoutersV1PurchaseOrdersPublicApiUpdatePublicPurchaseOrderRequest,
+      operations.UpdatePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPurchaseOrderResponse> {
+  ): Promise<
+    operations.UpdatePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdPutResponse
+  > {
     return unwrapAsync(purchaseOrdersUpdate(
       this,
       request,
@@ -74,17 +86,57 @@ export class PurchaseOrders extends ClientSDK {
   }
 
   /**
-   * Delete Purchase Order
+   * Delete Public Purchase Order
    */
   async delete(
     request:
-      operations.ApiRoutersV1PurchaseOrdersPublicApiDeletePublicPurchaseOrderRequest,
+      operations.DeletePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicPurchaseOrderResponse> {
+  ): Promise<
+    operations.DeletePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdDeleteResponse
+  > {
     return unwrapAsync(purchaseOrdersDelete(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Upload Public Purchase Order File
+   */
+  async uploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPost(
+    request:
+      operations.UploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPostResponse
+  > {
+    return unwrapAsync(
+      purchaseOrdersUploadPublicPurchaseOrderFileApiV2PublicPurchaseOrdersFilesPost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Download Public Purchase Order Pdf
+   */
+  async downloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGet(
+    request:
+      operations.DownloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGetRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DownloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGetResponse
+  > {
+    return unwrapAsync(
+      purchaseOrdersDownloadPublicPurchaseOrderPdfApiV2PublicPurchaseOrdersPurchaseOrderIdPdfGet(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

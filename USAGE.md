@@ -7,9 +7,9 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  });
+  const result = await sanka.absences.listPublicAbsencesApiV2PublicAbsencesGet(
+    {},
+  );
 
   console.log(result);
 }

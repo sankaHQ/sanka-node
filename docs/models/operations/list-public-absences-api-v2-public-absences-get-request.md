@@ -1,0 +1,29 @@
+# ListPublicAbsencesApiV2PublicAbsencesGetRequest
+
+## Example Usage
+
+```typescript
+import { ListPublicAbsencesApiV2PublicAbsencesGetRequest } from "sanka-sdk/models/operations";
+
+let value: ListPublicAbsencesApiV2PublicAbsencesGetRequest = {};
+```
+
+## Fields
+
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `workerId`                     | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `status`                       | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `usageStatus`                  | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `startDateFrom`                | [Date](../../types/rfcdate.md) | :heavy_minus_sign:             | N/A                            |
+| `startDateTo`                  | [Date](../../types/rfcdate.md) | :heavy_minus_sign:             | N/A                            |
+| `workspaceId`                  | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `viewId`                       | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `search`                       | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `language`                     | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `page`                         | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `limit`                        | *number*                       | :heavy_minus_sign:             | N/A                            |
+| `sort`                         | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `xWorkspaceCode`               | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `xLanguage`                    | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `acceptLanguage`               | *string*                       | :heavy_minus_sign:             | N/A                            |

@@ -3,20 +3,126 @@
  */
 
 import { publicAuthGetCurrentIdentity } from "../funcs/public-auth-get-current-identity.js";
+import { publicAuthGetPublicAuthSessionApiV2PublicAuthSessionGet } from "../funcs/public-auth-get-public-auth-session-api-v2-public-auth-session-get.js";
+import { publicAuthRecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPost } from "../funcs/public-auth-record-public-auth-mcp-tool-call-api-v2-public-auth-mcp-session-tool-call-log-post.js";
+import { publicAuthRevokePublicAuthSessionApiV2PublicAuthSessionRevokePost } from "../funcs/public-auth-revoke-public-auth-session-api-v2-public-auth-session-revoke-post.js";
+import {
+  publicAuthSwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost,
+} from "../funcs/public-auth-switch-public-auth-mcp-session-workspace-api-v2-public-auth-mcp-session-switch-workspace-post.js";
+import {
+  publicAuthSwitchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePost,
+} from "../funcs/public-auth-switch-public-auth-session-workspace-api-v2-public-auth-session-switch-workspace-post.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class PublicAuth extends ClientSDK {
   /**
-   * Get Current Public Auth Identity
+   * Get Current Public Developer Auth Identity
    */
   async getCurrentIdentity(
+    request?:
+      | operations.GetPublicAuthWhoamiApiV2PublicAuthWhoamiGetRequest
+      | undefined,
     options?: RequestOptions,
-  ): Promise<models.PublicAuthWhoamiResponse> {
+  ): Promise<operations.GetPublicAuthWhoamiApiV2PublicAuthWhoamiGetResponse> {
     return unwrapAsync(publicAuthGetCurrentIdentity(
       this,
+      request,
       options,
     ));
+  }
+
+  /**
+   * Get Current Public OAuth Session
+   */
+  async getPublicAuthSessionApiV2PublicAuthSessionGet(
+    request?:
+      | operations.GetPublicAuthSessionApiV2PublicAuthSessionGetRequest
+      | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetPublicAuthSessionApiV2PublicAuthSessionGetResponse> {
+    return unwrapAsync(publicAuthGetPublicAuthSessionApiV2PublicAuthSessionGet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Switch Current Public OAuth Session Workspace
+   */
+  async switchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePost(
+    request:
+      operations.SwitchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.SwitchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePostResponse
+  > {
+    return unwrapAsync(
+      publicAuthSwitchPublicAuthSessionWorkspaceApiV2PublicAuthSessionSwitchWorkspacePost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Switch Current Public MCP OAuth Session Workspace
+   */
+  async switchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost(
+    request:
+      operations.SwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.SwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePostResponse
+  > {
+    return unwrapAsync(
+      publicAuthSwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Record Public MCP Tool Call
+   */
+  async recordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPost(
+    request:
+      operations.RecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.RecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPostResponse
+  > {
+    return unwrapAsync(
+      publicAuthRecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallLogPost(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Revoke Current Public OAuth Session
+   */
+  async revokePublicAuthSessionApiV2PublicAuthSessionRevokePost(
+    request?:
+      | operations.RevokePublicAuthSessionApiV2PublicAuthSessionRevokePostRequest
+      | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    operations.RevokePublicAuthSessionApiV2PublicAuthSessionRevokePostResponse
+  > {
+    return unwrapAsync(
+      publicAuthRevokePublicAuthSessionApiV2PublicAuthSessionRevokePost(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 }

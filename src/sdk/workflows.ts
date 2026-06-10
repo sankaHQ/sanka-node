@@ -3,26 +3,24 @@
  */
 
 import { workflowsCreateOrUpdate } from "../funcs/workflows-create-or-update.js";
-import { workflowsGetRun } from "../funcs/workflows-get-run.js";
 import { workflowsGet } from "../funcs/workflows-get.js";
-import { workflowsListActions } from "../funcs/workflows-list-actions.js";
 import { workflowsList } from "../funcs/workflows-list.js";
 import { workflowsRunByRef } from "../funcs/workflows-run-by-ref.js";
+import { workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch } from "../funcs/workflows-update-public-workflow-api-v2-public-workflows-workflow-id-patch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Workflows extends ClientSDK {
   /**
-   * List Workflows
+   * List Public Workflows
    */
   async list(
     request?:
-      | operations.ApiRoutersV1WorkflowsPublicApiListWorkflowsRequest
+      | operations.ListPublicWorkflowsApiV2PublicWorkflowsGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<models.PublicWorkflowListResponse> {
+  ): Promise<operations.ListPublicWorkflowsApiV2PublicWorkflowsGetResponse> {
     return unwrapAsync(workflowsList(
       this,
       request,
@@ -31,12 +29,12 @@ export class Workflows extends ClientSDK {
   }
 
   /**
-   * Create or Update Workflow
+   * Create Public Workflow
    */
   async createOrUpdate(
-    request: models.PublicWorkflowRequest,
+    request: operations.CreatePublicWorkflowApiV2PublicWorkflowsPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicWorkflowResponse> {
+  ): Promise<operations.CreatePublicWorkflowApiV2PublicWorkflowsPostResponse> {
     return unwrapAsync(workflowsCreateOrUpdate(
       this,
       request,
@@ -45,56 +43,52 @@ export class Workflows extends ClientSDK {
   }
 
   /**
-   * List Public Workflow Actions
-   */
-  async listActions(
-    options?: RequestOptions,
-  ): Promise<models.PublicWorkflowActionsResponse> {
-    return unwrapAsync(workflowsListActions(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Run Workflow
-   */
-  async runByRef(
-    request:
-      operations.ApiRoutersV1WorkflowsPublicApiRunPublicWorkflowByRefRequest,
-    options?: RequestOptions,
-  ): Promise<models.PublicWorkflowRunResponse> {
-    return unwrapAsync(workflowsRunByRef(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get Workflow Run
-   */
-  async getRun(
-    request:
-      operations.ApiRoutersV1WorkflowsPublicApiGetPublicWorkflowRunByIdRequest,
-    options?: RequestOptions,
-  ): Promise<models.PublicWorkflowRunResponse> {
-    return unwrapAsync(workflowsGetRun(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get Workflow
+   * Get Public Workflow
    */
   async get(
     request:
-      operations.ApiRoutersV1WorkflowsPublicApiGetPublicWorkflowByRefRequest,
+      operations.GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicWorkflowDetailResponse> {
+  ): Promise<
+    operations.GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGetResponse
+  > {
     return unwrapAsync(workflowsGet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Public Workflow
+   */
+  async updatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch(
+    request:
+      operations.UpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatchRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.UpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatchResponse
+  > {
+    return unwrapAsync(
+      workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Run Public Workflow
+   */
+  async runByRef(
+    request:
+      operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.RunPublicWorkflowApiV2PublicWorkflowsWorkflowIdRunPostResponse
+  > {
+    return unwrapAsync(workflowsRunByRef(
       this,
       request,
       options,

@@ -13,7 +13,7 @@ import {
 export type EnrichRequest = {
   objectType: string;
   recordId?: string | null | undefined;
-  seed?: EnrichCompanySeed | undefined;
+  seed?: EnrichCompanySeed | null | undefined;
   customFieldMap?: { [k: string]: string } | undefined;
   dryRun?: boolean | undefined;
   forceRefresh?: boolean | undefined;
@@ -23,7 +23,7 @@ export type EnrichRequest = {
 export type EnrichRequest$Outbound = {
   object_type: string;
   record_id?: string | null | undefined;
-  seed?: EnrichCompanySeed$Outbound | undefined;
+  seed?: EnrichCompanySeed$Outbound | null | undefined;
   custom_field_map?: { [k: string]: string } | undefined;
   dry_run: boolean;
   force_refresh: boolean;
@@ -37,7 +37,7 @@ export const EnrichRequest$outboundSchema: z.ZodMiniType<
   z.object({
     objectType: z.string(),
     recordId: z.optional(z.nullable(z.string())),
-    seed: z.optional(EnrichCompanySeed$outboundSchema),
+    seed: z.optional(z.nullable(EnrichCompanySeed$outboundSchema)),
     customFieldMap: z.optional(z.record(z.string(), z.string())),
     dryRun: z._default(z.boolean(), false),
     forceRefresh: z._default(z.boolean(), false),

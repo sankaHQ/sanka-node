@@ -5,6 +5,7 @@
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
 import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,24 +23,21 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/response-validation-error.js";
 import { SankaError } from "../models/errors/sanka-error.js";
 import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List Orders
+ * List Public Orders
  */
 export function ordersList(
   client: SankaCore,
-  request?:
-    | operations.ApiRoutersV1OrdersPublicApiPublicListOrdersRequest
-    | undefined,
+  request?: operations.ListPublicOrdersApiV2PublicOrdersGetRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.OrdersListResponse,
-    | errors.OrdersErrorResponse
+    operations.ListPublicOrdersApiV2PublicOrdersGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -59,15 +57,13 @@ export function ordersList(
 
 async function $do(
   client: SankaCore,
-  request?:
-    | operations.ApiRoutersV1OrdersPublicApiPublicListOrdersRequest
-    | undefined,
+  request?: operations.ListPublicOrdersApiV2PublicOrdersGetRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.OrdersListResponse,
-      | errors.OrdersErrorResponse
+      operations.ListPublicOrdersApiV2PublicOrdersGetResponse,
+      | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
       | ConnectionError
@@ -85,8 +81,7 @@ async function $do(
     (value) =>
       z.parse(
         z.optional(
-          operations
-            .ApiRoutersV1OrdersPublicApiPublicListOrdersRequest$outboundSchema,
+          operations.ListPublicOrdersApiV2PublicOrdersGetRequest$outboundSchema,
         ),
         value,
       ),
@@ -98,15 +93,18 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/v1/public/orders")();
+  const path = pathToFunc("/v2/public/orders")();
 
   const query = encodeFormQuery({
+    "language": payload?.language,
     "limit": payload?.limit,
     "page": payload?.page,
-    "reference_id": payload?.reference_id,
     "search": payload?.search,
     "sort": payload?.sort,
-    "view": payload?.view,
+    "status": payload?.status,
+    "usage_status": payload?.usage_status,
+    "view_id": payload?.view_id,
+    "workspace_id": payload?.workspace_id,
   });
 
   const headers = new Headers(compactMap({
@@ -116,23 +114,30 @@ async function $do(
       payload?.["Accept-Language"],
       { explode: false, charEncoding: "none" },
     ),
+    "X-Language": encodeSimple("X-Language", payload?.["X-Language"], {
+      explode: false,
+      charEncoding: "none",
+    }),
+    "X-Workspace-Code": encodeSimple(
+      "X-Workspace-Code",
+      payload?.["X-Workspace-Code"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
 
-  const secConfig = await extractSecurity(client._options.publicOAuthOrJWTAuth);
-  const securityInput = secConfig == null
-    ? {}
-    : { publicOAuthOrJWTAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.bearerAuth);
+  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "api_routers_v1_orders_public_api_public_list_orders",
+    operationID: "list_public_orders_api_v2_public_orders_get",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.publicOAuthOrJWTAuth,
+    securitySource: client._options.bearerAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -157,7 +162,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "404", "4XX", "500", "5XX"],
+    isErrorStatusCode: (statusCode: number) =>
+      matchStatusCode({ status: statusCode } as Response, ["4XX", "5XX"]),
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -171,8 +177,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.OrdersListResponse,
-    | errors.OrdersErrorResponse
+    operations.ListPublicOrdersApiV2PublicOrdersGetResponse,
+    | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
     | ConnectionError
@@ -182,9 +188,12 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.OrdersListResponse$inboundSchema),
-    M.jsonErr([400, 404], errors.OrdersErrorResponse$inboundSchema),
-    M.jsonErr(500, errors.OrdersErrorResponse$inboundSchema),
+    M.json(
+      200,
+      operations.ListPublicOrdersApiV2PublicOrdersGetResponse$inboundSchema,
+      { hdrs: true, key: "Result" },
+    ),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

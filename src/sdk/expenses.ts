@@ -9,20 +9,19 @@ import { expensesList } from "../funcs/expenses-list.js";
 import { expensesUpdate } from "../funcs/expenses-update.js";
 import { expensesUploadFile } from "../funcs/expenses-upload-file.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Expenses extends ClientSDK {
   /**
-   * List Expenses
+   * List Public Expenses
    */
   async list(
     request?:
-      | operations.ApiRoutersV1ExpensesPublicApiListWorkspaceExpensesRequest
+      | operations.ListPublicExpensesApiV2PublicExpensesGetRequest
       | undefined,
     options?: RequestOptions,
-  ): Promise<Array<models.ExpenseSchema>> {
+  ): Promise<operations.ListPublicExpensesApiV2PublicExpensesGetResponse> {
     return unwrapAsync(expensesList(
       this,
       request,
@@ -31,12 +30,12 @@ export class Expenses extends ClientSDK {
   }
 
   /**
-   * Create Expense
+   * Create Public Expense
    */
   async create(
-    request: models.PublicExpenseRequest,
+    request: operations.CreatePublicExpenseApiV2PublicExpensesPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicExpenseResponse> {
+  ): Promise<operations.CreatePublicExpenseApiV2PublicExpensesPostResponse> {
     return unwrapAsync(expensesCreate(
       this,
       request,
@@ -45,12 +44,15 @@ export class Expenses extends ClientSDK {
   }
 
   /**
-   * Upload Expense Attachment File
+   * Upload Public Expense File
    */
   async uploadFile(
-    request: operations.FileParams,
+    request:
+      operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicExpenseFileUploadResponse> {
+  ): Promise<
+    operations.UploadPublicExpenseFileApiV2PublicExpensesFilesPostResponse
+  > {
     return unwrapAsync(expensesUploadFile(
       this,
       request,
@@ -59,12 +61,14 @@ export class Expenses extends ClientSDK {
   }
 
   /**
-   * Get Expense
+   * Get Public Expense
    */
   async get(
-    request: operations.ApiRoutersV1ExpensesPublicApiGetPublicExpenseRequest,
+    request: operations.GetPublicExpenseApiV2PublicExpensesExpenseIdGetRequest,
     options?: RequestOptions,
-  ): Promise<models.ExpenseSchema> {
+  ): Promise<
+    operations.GetPublicExpenseApiV2PublicExpensesExpenseIdGetResponse
+  > {
     return unwrapAsync(expensesGet(
       this,
       request,
@@ -73,12 +77,15 @@ export class Expenses extends ClientSDK {
   }
 
   /**
-   * Update Expense
+   * Update Public Expense
    */
   async update(
-    request: operations.ApiRoutersV1ExpensesPublicApiUpdatePublicExpenseRequest,
+    request:
+      operations.UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicExpenseResponse> {
+  ): Promise<
+    operations.UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutResponse
+  > {
     return unwrapAsync(expensesUpdate(
       this,
       request,
@@ -87,12 +94,15 @@ export class Expenses extends ClientSDK {
   }
 
   /**
-   * Delete Expense
+   * Delete Public Expense
    */
   async delete(
-    request: operations.ApiRoutersV1ExpensesPublicApiDeletePublicExpenseRequest,
+    request:
+      operations.DeletePublicExpenseApiV2PublicExpensesExpenseIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<models.PublicExpenseResponse> {
+  ): Promise<
+    operations.DeletePublicExpenseApiV2PublicExpensesExpenseIdDeleteResponse
+  > {
     return unwrapAsync(expensesDelete(
       this,
       request,
