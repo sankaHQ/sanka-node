@@ -34,7 +34,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.0.2
+  version: 0.1.0
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -67,6 +67,7 @@ typescript:
     generate: ./scripts/generate.sh
     sync:openapi: ./scripts/sync-openapi.sh
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Sanka
   baseErrorName: SankaError
   clientServerStatusCodesAsErrors: true
@@ -110,6 +111,7 @@ typescript:
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

@@ -7,7 +7,12 @@ import { ListPublicWorkflowsApiV2PublicWorkflowsGet200Envelope } from "sanka-sdk
 
 let value: ListPublicWorkflowsApiV2PublicWorkflowsGet200Envelope = {
   success: true,
-  data: {},
+  data: {
+    total: 888368,
+    page: 523010,
+    pageSize: 758359,
+    hasNextPage: true,
+  },
   meta: {
     ctxId: "<id>",
   },
@@ -16,8 +21,8 @@ let value: ListPublicWorkflowsApiV2PublicWorkflowsGet200Envelope = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `success`                                         | *true*                                            | :heavy_check_mark:                                | N/A                                               |
-| `data`                                            | Record<string, *any*>                             | :heavy_check_mark:                                | N/A                                               |
-| `meta`                                            | [models.EnvelopeMeta](../models/envelope-meta.md) | :heavy_check_mark:                                | N/A                                               |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `success`                                                  | *true*                                                     | :heavy_check_mark:                                         | N/A                                                        |
+| `data`                                                     | [models.WorkflowListData](../models/workflow-list-data.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `meta`                                                     | [models.EnvelopeMeta](../models/envelope-meta.md)          | :heavy_check_mark:                                         | N/A                                                        |

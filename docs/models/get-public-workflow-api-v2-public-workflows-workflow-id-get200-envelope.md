@@ -7,7 +7,11 @@ import { GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGet200Envelope } from "s
 
 let value: GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGet200Envelope = {
   success: true,
-  data: {},
+  data: {
+    workflow: {
+      id: "<id>",
+    },
+  },
   meta: {
     ctxId: "<id>",
   },
@@ -16,8 +20,8 @@ let value: GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGet200Envelope = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `success`                                         | *true*                                            | :heavy_check_mark:                                | N/A                                               |
-| `data`                                            | Record<string, *any*>                             | :heavy_check_mark:                                | N/A                                               |
-| `meta`                                            | [models.EnvelopeMeta](../models/envelope-meta.md) | :heavy_check_mark:                                | N/A                                               |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `success`                                                      | *true*                                                         | :heavy_check_mark:                                             | N/A                                                            |
+| `data`                                                         | [models.WorkflowDetailData](../models/workflow-detail-data.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `meta`                                                         | [models.EnvelopeMeta](../models/envelope-meta.md)              | :heavy_check_mark:                                             | N/A                                                            |

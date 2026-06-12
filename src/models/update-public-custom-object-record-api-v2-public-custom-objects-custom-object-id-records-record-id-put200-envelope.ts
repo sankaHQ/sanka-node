@@ -9,7 +9,7 @@ import * as types from "../types/primitives.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 
-export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope =
+export type UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope =
   {
     success: true;
     data: { [k: string]: any };
@@ -17,9 +17,9 @@ export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envel
   };
 
 /** @internal */
-export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope$inboundSchema:
+export const UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope$inboundSchema:
   z.ZodMiniType<
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope,
+    UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope,
     unknown
   > = z.object({
     success: types.literal(true),
@@ -27,17 +27,17 @@ export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Enve
     meta: EnvelopeMeta$inboundSchema,
   });
 
-export function createPublicJournalStatementViewApiV2PublicJournalsViewsPost200EnvelopeFromJSON(
+export function updatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200EnvelopeFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope,
+  UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope$inboundSchema
+      UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope' from JSON`,
+    `Failed to parse 'UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope' from JSON`,
   );
 }

@@ -15,17 +15,19 @@ let value: GetPublicWorkflowApiV2PublicWorkflowsWorkflowIdGetResponse = {
     "key1": [
       "<value 1>",
       "<value 2>",
+      "<value 3>",
     ],
     "key2": [
       "<value 1>",
+      "<value 2>",
     ],
   },
   result: {
     success: true,
     data: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
+      workflow: {
+        id: "<id>",
+      },
     },
     meta: {
       ctxId: "<id>",

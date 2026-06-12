@@ -1,20 +1,21 @@
-# CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope
+# CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPost200Envelope
 
 ## Example Usage
 
 ```typescript
-import { CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope } from "sanka-sdk/models";
+import {
+  CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPost200Envelope,
+} from "sanka-sdk/models";
 
 let value:
-  CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope = {
-    success: true,
-    data: {
-      "key": "<value>",
-    },
-    meta: {
-      ctxId: "<id>",
-    },
-  };
+  CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPost200Envelope =
+    {
+      success: true,
+      data: {},
+      meta: {
+        ctxId: "<id>",
+      },
+    };
 ```
 
 ## Fields

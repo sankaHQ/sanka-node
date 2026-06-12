@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -28,16 +28,16 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create Public Journal Statement View
+ * Delete Journal Entry
  */
-export function journalsCreatePublicJournalStatementViewApiV2PublicJournalsViewsPost(
+export function journalsDelete(
   client: SankaCore,
   request:
-    operations.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest,
+    operations.DeletePublicJournalApiV2PublicJournalsJournalIdDeleteRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse,
+    operations.DeletePublicJournalApiV2PublicJournalsJournalIdDeleteResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -59,12 +59,12 @@ export function journalsCreatePublicJournalStatementViewApiV2PublicJournalsViews
 async function $do(
   client: SankaCore,
   request:
-    operations.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest,
+    operations.DeletePublicJournalApiV2PublicJournalsJournalIdDeleteRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse,
+      operations.DeletePublicJournalApiV2PublicJournalsJournalIdDeleteResponse,
       | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
@@ -83,7 +83,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$outboundSchema,
+          .DeletePublicJournalApiV2PublicJournalsJournalIdDeleteRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -92,24 +92,22 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.body, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/v2/public/journals/views")();
+  const pathParams = {
+    journal_id: encodeSimple("journal_id", payload.journal_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v2/public/journals/{journal_id}")(pathParams);
 
   const query = encodeFormQuery({
-    "Accept-Language": payload["Accept-LanguageQueryParameter"],
-    "language": payload.language,
     "workspace_id": payload.workspace_id,
   });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
-    "Accept-Language": encodeSimple(
-      "Accept-Language",
-      payload["Accept-Language"],
-      { explode: false, charEncoding: "none" },
-    ),
     "X-Workspace-Code": encodeSimple(
       "X-Workspace-Code",
       payload["X-Workspace-Code"],
@@ -125,7 +123,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "create_public_journal_statement_view_api_v2_public_journals_views_post",
+      "delete_public_journal_api_v2_public_journals__journal_id__delete",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -139,7 +137,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "DELETE",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -170,7 +168,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse,
+    operations.DeletePublicJournalApiV2PublicJournalsJournalIdDeleteResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -184,10 +182,12 @@ async function $do(
     M.json(
       200,
       operations
-        .CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse$inboundSchema,
+        .DeletePublicJournalApiV2PublicJournalsJournalIdDeleteResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
-    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
+    M.jsonErr([401, 403, 422], errors.ErrorEnvelope$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
