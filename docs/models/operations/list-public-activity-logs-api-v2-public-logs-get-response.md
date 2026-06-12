@@ -9,13 +9,28 @@ let value: ListPublicActivityLogsApiV2PublicLogsGetResponse = {
   headers: {
     "key": [
       "<value 1>",
-      "<value 2>",
     ],
+    "key1": [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    "key2": [],
   },
   result: {
     success: true,
     data: {
-      "key": "<value>",
+      page: 318337,
+      limit: 277609,
+      count: 501493,
+      total: 354664,
+      hasNext: false,
+      pagination: {
+        page: 63517,
+        limit: 615979,
+        hasNext: false,
+        total: 735416,
+      },
     },
     meta: {
       ctxId: "<id>",

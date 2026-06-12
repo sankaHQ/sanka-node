@@ -1,12 +1,12 @@
-# CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest
+# CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest
 
 ## Example Usage
 
 ```typescript
-import { CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest } from "sanka-sdk/models/operations";
+import { CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest } from "sanka-sdk/models/operations";
 
-let value: CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest =
-  {
+let value:
+  CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest = {
     body: {},
   };
 ```

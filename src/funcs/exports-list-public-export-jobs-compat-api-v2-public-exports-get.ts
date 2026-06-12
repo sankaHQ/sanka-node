@@ -103,6 +103,9 @@ async function $do(
   const query = encodeFormQuery({
     "limit": payload?.limit,
     "object_type": payload?.object_type,
+    "page": payload?.page,
+    "q": payload?.q,
+    "search_query": payload?.search_query,
     "workspace_id": payload?.workspace_id,
   });
 

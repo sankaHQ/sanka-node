@@ -11,7 +11,10 @@ import * as models from "../index.js";
 
 export type ListPublicImportJobsCompatApiV2PublicImportsGetRequest = {
   objectType?: string | null | undefined;
+  page?: number | undefined;
   limit?: number | undefined;
+  searchQuery?: string | null | undefined;
+  q?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
 };
@@ -24,7 +27,10 @@ export type ListPublicImportJobsCompatApiV2PublicImportsGetResponse = {
 /** @internal */
 export type ListPublicImportJobsCompatApiV2PublicImportsGetRequest$Outbound = {
   object_type?: string | null | undefined;
+  page: number;
   limit: number;
+  search_query?: string | null | undefined;
+  q?: string | null | undefined;
   workspace_id?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
 };
@@ -37,13 +43,17 @@ export const ListPublicImportJobsCompatApiV2PublicImportsGetRequest$outboundSche
   > = z.pipe(
     z.object({
       objectType: z.optional(z.nullable(z.string())),
+      page: z._default(z.int(), 1),
       limit: z._default(z.int(), 50),
+      searchQuery: z.optional(z.nullable(z.string())),
+      q: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {
         objectType: "object_type",
+        searchQuery: "search_query",
         workspaceId: "workspace_id",
         xWorkspaceCode: "X-Workspace-Code",
       });

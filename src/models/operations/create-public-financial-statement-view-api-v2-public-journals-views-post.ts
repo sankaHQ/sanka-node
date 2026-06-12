@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
-export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest =
+export type CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest =
   {
     language?: string | null | undefined;
     acceptLanguageQueryParameter?: string | null | undefined;
@@ -19,15 +19,15 @@ export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest 
     body: models.JournalStatementViewCreateRequest;
   };
 
-export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse =
+export type CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse =
   {
     headers: { [k: string]: Array<string> };
     result:
-      models.CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope;
+      models.CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost200Envelope;
   };
 
 /** @internal */
-export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$Outbound =
+export type CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest$Outbound =
   {
     language?: string | null | undefined;
     "Accept-LanguageQueryParameter"?: string | null | undefined;
@@ -38,10 +38,10 @@ export type CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$
   };
 
 /** @internal */
-export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$outboundSchema:
+export const CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest$outboundSchema:
   z.ZodMiniType<
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$Outbound,
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest$Outbound,
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest
   > = z.pipe(
     z.object({
       language: z.optional(z.nullable(z.string())),
@@ -61,29 +61,29 @@ export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest
     }),
   );
 
-export function createPublicJournalStatementViewApiV2PublicJournalsViewsPostRequestToJSON(
-  createPublicJournalStatementViewApiV2PublicJournalsViewsPostRequest:
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest,
+export function createPublicFinancialStatementViewApiV2PublicJournalsViewsPostRequestToJSON(
+  createPublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest:
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest,
 ): string {
   return JSON.stringify(
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRequest$outboundSchema
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest$outboundSchema
       .parse(
-        createPublicJournalStatementViewApiV2PublicJournalsViewsPostRequest,
+        createPublicFinancialStatementViewApiV2PublicJournalsViewsPostRequest,
       ),
   );
 }
 
 /** @internal */
-export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse$inboundSchema:
+export const CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse$inboundSchema:
   z.ZodMiniType<
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse,
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse,
     unknown
   > = z.pipe(
     z.object({
       Headers: z._default(z.record(z.string(), z.array(z.string())), {}),
       Result:
         models
-          .CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope$inboundSchema,
+          .CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost200Envelope$inboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {
@@ -93,17 +93,17 @@ export const CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostRespons
     }),
   );
 
-export function createPublicJournalStatementViewApiV2PublicJournalsViewsPostResponseFromJSON(
+export function createPublicFinancialStatementViewApiV2PublicJournalsViewsPostResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse,
+  CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse$inboundSchema
+      CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CreatePublicJournalStatementViewApiV2PublicJournalsViewsPostResponse' from JSON`,
+    `Failed to parse 'CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPostResponse' from JSON`,
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "sanka-sdk",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "Sanka",
   "bugs": {
     "url": "https://github.com/sankaHQ/sanka-node/issues"
@@ -74,8 +74,8 @@
     "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tsgo",
     "prepublishOnly": "npm run build",
-    "sync:openapi": "./scripts/sync-openapi.sh",
-    "generate": "./scripts/generate.sh"
+    "generate": "./scripts/generate.sh",
+    "sync:openapi": "./scripts/sync-openapi.sh"
   },
   "peerDependencies": {
     

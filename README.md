@@ -204,6 +204,13 @@ run();
 
 ### [CustomObjects](docs/sdks/customobjects/README.md)
 
+* [listRecords](docs/sdks/customobjects/README.md#listrecords) - List Custom Object Records
+* [createRecord](docs/sdks/customobjects/README.md#createrecord) - Create Custom Object Record
+* [getRecord](docs/sdks/customobjects/README.md#getrecord) - Get Custom Object Record
+* [updateRecord](docs/sdks/customobjects/README.md#updaterecord) - Update Custom Object Record
+* [deleteRecord](docs/sdks/customobjects/README.md#deleterecord) - Delete Custom Object Record
+* [archiveRecord](docs/sdks/customobjects/README.md#archiverecord) - Archive Custom Object Record
+* [activateRecord](docs/sdks/customobjects/README.md#activaterecord) - Activate Custom Object Record
 * [createPublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPost](docs/sdks/customobjects/README.md#createpubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordspost) - Create Public Custom Object Record Compatibility
 * [updatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost](docs/sdks/customobjects/README.md#updatepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidpost) - Update Public Custom Object Record Compatibility
 * [archivePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdArchivePost](docs/sdks/customobjects/README.md#archivepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidarchivepost) - Archive Public Custom Object Record Compatibility
@@ -328,8 +335,14 @@ run();
 
 ### [Journals](docs/sdks/journals/README.md)
 
-* [listPublicJournalsApiV2PublicJournalsGet](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Public Journals
-* [createPublicJournalStatementViewApiV2PublicJournalsViewsPost](docs/sdks/journals/README.md#createpublicjournalstatementviewapiv2publicjournalsviewspost) - Create Public Journal Statement View
+* [listPublicJournalsApiV2PublicJournalsGet](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Journal Entries
+* [createPublicJournalApiV2PublicJournalsPost](docs/sdks/journals/README.md#createpublicjournalapiv2publicjournalspost) - Create Journal Entry
+* [createPublicFinancialStatementViewApiV2PublicJournalsViewsPost](docs/sdks/journals/README.md#createpublicfinancialstatementviewapiv2publicjournalsviewspost) - Create Financial Statement View
+* [get](docs/sdks/journals/README.md#get) - Get Journal Entry
+* [update](docs/sdks/journals/README.md#update) - Update Journal Entry
+* [delete](docs/sdks/journals/README.md#delete) - Delete Journal Entry
+* [archive](docs/sdks/journals/README.md#archive) - Archive Journal Entry
+* [activate](docs/sdks/journals/README.md#activate) - Activate Journal Entry
 
 ### [Locations](docs/sdks/locations/README.md)
 
@@ -570,9 +583,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`contactsGet`](docs/sdks/contacts/README.md#get) - Get Public Contact
 - [`contactsList`](docs/sdks/contacts/README.md#list) - List Public Contacts
 - [`contactsUpdate`](docs/sdks/contacts/README.md#update) - Update Public Contact
+- [`customObjectsActivateRecord`](docs/sdks/customobjects/README.md#activaterecord) - Activate Custom Object Record
 - [`customObjectsArchivePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdArchivePost`](docs/sdks/customobjects/README.md#archivepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidarchivepost) - Archive Public Custom Object Record Compatibility
+- [`customObjectsArchiveRecord`](docs/sdks/customobjects/README.md#archiverecord) - Archive Custom Object Record
 - [`customObjectsCreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPost`](docs/sdks/customobjects/README.md#createpubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordspost) - Create Public Custom Object Record Compatibility
+- [`customObjectsCreateRecord`](docs/sdks/customobjects/README.md#createrecord) - Create Custom Object Record
+- [`customObjectsDeleteRecord`](docs/sdks/customobjects/README.md#deleterecord) - Delete Custom Object Record
+- [`customObjectsGetRecord`](docs/sdks/customobjects/README.md#getrecord) - Get Custom Object Record
+- [`customObjectsListRecords`](docs/sdks/customobjects/README.md#listrecords) - List Custom Object Records
 - [`customObjectsUpdatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost`](docs/sdks/customobjects/README.md#updatepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidpost) - Update Public Custom Object Record Compatibility
+- [`customObjectsUpdateRecord`](docs/sdks/customobjects/README.md#updaterecord) - Update Custom Object Record
 - [`dealsCreate`](docs/sdks/deals/README.md#create) - Create Public Deal
 - [`dealsDelete`](docs/sdks/deals/README.md#delete) - Delete Public Deal
 - [`dealsGet`](docs/sdks/deals/README.md#get) - Get Public Deal
@@ -652,8 +672,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`itemsGet`](docs/sdks/items/README.md#get) - Get Public Item
 - [`itemsList`](docs/sdks/items/README.md#list) - List Public Items
 - [`itemsUpdate`](docs/sdks/items/README.md#update) - Update Public Item
-- [`journalsCreatePublicJournalStatementViewApiV2PublicJournalsViewsPost`](docs/sdks/journals/README.md#createpublicjournalstatementviewapiv2publicjournalsviewspost) - Create Public Journal Statement View
-- [`journalsListPublicJournalsApiV2PublicJournalsGet`](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Public Journals
+- [`journalsActivate`](docs/sdks/journals/README.md#activate) - Activate Journal Entry
+- [`journalsArchive`](docs/sdks/journals/README.md#archive) - Archive Journal Entry
+- [`journalsCreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost`](docs/sdks/journals/README.md#createpublicfinancialstatementviewapiv2publicjournalsviewspost) - Create Financial Statement View
+- [`journalsCreatePublicJournalApiV2PublicJournalsPost`](docs/sdks/journals/README.md#createpublicjournalapiv2publicjournalspost) - Create Journal Entry
+- [`journalsDelete`](docs/sdks/journals/README.md#delete) - Delete Journal Entry
+- [`journalsGet`](docs/sdks/journals/README.md#get) - Get Journal Entry
+- [`journalsListPublicJournalsApiV2PublicJournalsGet`](docs/sdks/journals/README.md#listpublicjournalsapiv2publicjournalsget) - List Journal Entries
+- [`journalsUpdate`](docs/sdks/journals/README.md#update) - Update Journal Entry
 - [`locationsCreate`](docs/sdks/locations/README.md#create) - Create Public Location
 - [`locationsDelete`](docs/sdks/locations/README.md#delete) - Delete Public Location
 - [`locationsGet`](docs/sdks/locations/README.md#get) - Get Public Location

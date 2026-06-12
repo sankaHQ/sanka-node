@@ -856,3 +856,87 @@ actions:
   x-speakeasy-metadata:
     after: sdk.prospect.companies.create()
     type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records"]["get"]
+  update:
+    x-speakeasy-name-override: listRecords
+  x-speakeasy-metadata:
+    after: sdk.customObjects.listRecords()
+    before: sdk.CustomObjects.list_public_custom_object_records()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records"]["post"]
+  update:
+    x-speakeasy-name-override: createRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.createRecord()
+    before: sdk.CustomObjects.create_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records/{record_id}"]["get"]
+  update:
+    x-speakeasy-name-override: getRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.getRecord()
+    before: sdk.CustomObjects.get_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records/{record_id}"]["put"]
+  update:
+    x-speakeasy-name-override: updateRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.updateRecord()
+    before: sdk.CustomObjects.update_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records/{record_id}"]["delete"]
+  update:
+    x-speakeasy-name-override: deleteRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.deleteRecord()
+    before: sdk.CustomObjects.delete_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records/{record_id}/activate"]["post"]
+  update:
+    x-speakeasy-name-override: activateRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.activateRecord()
+    before: sdk.CustomObjects.activate_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/custom-objects/{custom_object_id}/records/{record_id}/archive"]["post"]
+  update:
+    x-speakeasy-name-override: archiveRecord
+  x-speakeasy-metadata:
+    after: sdk.customObjects.archiveRecord()
+    before: sdk.CustomObjects.archive_public_custom_object_record()
+    type: method-name
+- target: $["paths"]["/v2/public/journals/{journal_id}"]["get"]
+  update:
+    x-speakeasy-name-override: get
+  x-speakeasy-metadata:
+    after: sdk.journals.get()
+    before: sdk.Journals.get_public_journal()
+    type: method-name
+- target: $["paths"]["/v2/public/journals/{journal_id}"]["put"]
+  update:
+    x-speakeasy-name-override: update
+  x-speakeasy-metadata:
+    after: sdk.journals.update()
+    before: sdk.Journals.update_public_journal()
+    type: method-name
+- target: $["paths"]["/v2/public/journals/{journal_id}"]["delete"]
+  update:
+    x-speakeasy-name-override: delete
+  x-speakeasy-metadata:
+    after: sdk.journals.delete()
+    before: sdk.Journals.delete_public_journal()
+    type: method-name
+- target: $["paths"]["/v2/public/journals/{journal_id}/activate"]["post"]
+  update:
+    x-speakeasy-name-override: activate
+  x-speakeasy-metadata:
+    after: sdk.journals.activate()
+    before: sdk.Journals.activate_public_journal()
+    type: method-name
+- target: $["paths"]["/v2/public/journals/{journal_id}/archive"]["post"]
+  update:
+    x-speakeasy-name-override: archive
+  x-speakeasy-metadata:
+    after: sdk.journals.archive()
+    before: sdk.Journals.archive_public_journal()
+    type: method-name

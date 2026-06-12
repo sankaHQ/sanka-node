@@ -28,7 +28,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List Public Journals
+ * List Journal Entries
  */
 export function journalsListPublicJournalsApiV2PublicJournalsGet(
   client: SankaCore,
@@ -199,7 +199,9 @@ async function $do(
       operations.ListPublicJournalsApiV2PublicJournalsGetResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
-    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
+    M.jsonErr([401, 403, 422], errors.ErrorEnvelope$inboundSchema, {
+      hdrs: true,
+    }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

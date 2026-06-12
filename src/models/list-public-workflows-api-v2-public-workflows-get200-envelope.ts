@@ -8,10 +8,14 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import {
+  WorkflowListData,
+  WorkflowListData$inboundSchema,
+} from "./workflow-list-data.js";
 
 export type ListPublicWorkflowsApiV2PublicWorkflowsGet200Envelope = {
   success: true;
-  data: { [k: string]: any };
+  data: WorkflowListData;
   meta: EnvelopeMeta;
 };
 
@@ -22,7 +26,7 @@ export const ListPublicWorkflowsApiV2PublicWorkflowsGet200Envelope$inboundSchema
     unknown
   > = z.object({
     success: types.literal(true),
-    data: z.record(z.string(), z.any()),
+    data: WorkflowListData$inboundSchema,
     meta: EnvelopeMeta$inboundSchema,
   });
 

@@ -14,6 +14,18 @@ export type McpToolCallLogRequest = {
   durationMs?: number | null | undefined;
   clientName?: string | null | undefined;
   clientVersion?: string | null | undefined;
+  sourceIpAddress?: string | null | undefined;
+  sourceUserAgent?: string | null | undefined;
+  sourceBrowser?: string | null | undefined;
+  sourceOs?: string | null | undefined;
+  sourceDeviceType?: string | null | undefined;
+  mcpProtocolVersion?: string | null | undefined;
+  mcpServerName?: string | null | undefined;
+  mcpServerVersion?: string | null | undefined;
+  modelProvider?: string | null | undefined;
+  modelName?: string | null | undefined;
+  resultSummary?: string | null | undefined;
+  recordIds?: { [k: string]: any } | null | undefined;
   error?: string | null | undefined;
 };
 
@@ -27,6 +39,18 @@ export type McpToolCallLogRequest$Outbound = {
   duration_ms?: number | null | undefined;
   client_name?: string | null | undefined;
   client_version?: string | null | undefined;
+  source_ip_address?: string | null | undefined;
+  source_user_agent?: string | null | undefined;
+  source_browser?: string | null | undefined;
+  source_os?: string | null | undefined;
+  source_device_type?: string | null | undefined;
+  mcp_protocol_version?: string | null | undefined;
+  mcp_server_name?: string | null | undefined;
+  mcp_server_version?: string | null | undefined;
+  model_provider?: string | null | undefined;
+  model_name?: string | null | undefined;
+  result_summary?: string | null | undefined;
+  record_ids?: { [k: string]: any } | null | undefined;
   error?: string | null | undefined;
 };
 
@@ -44,6 +68,18 @@ export const McpToolCallLogRequest$outboundSchema: z.ZodMiniType<
     durationMs: z.optional(z.nullable(z.number())),
     clientName: z.optional(z.nullable(z.string())),
     clientVersion: z.optional(z.nullable(z.string())),
+    sourceIpAddress: z.optional(z.nullable(z.string())),
+    sourceUserAgent: z.optional(z.nullable(z.string())),
+    sourceBrowser: z.optional(z.nullable(z.string())),
+    sourceOs: z.optional(z.nullable(z.string())),
+    sourceDeviceType: z.optional(z.nullable(z.string())),
+    mcpProtocolVersion: z.optional(z.nullable(z.string())),
+    mcpServerName: z.optional(z.nullable(z.string())),
+    mcpServerVersion: z.optional(z.nullable(z.string())),
+    modelProvider: z.optional(z.nullable(z.string())),
+    modelName: z.optional(z.nullable(z.string())),
+    resultSummary: z.optional(z.nullable(z.string())),
+    recordIds: z.optional(z.nullable(z.record(z.string(), z.any()))),
     error: z.optional(z.nullable(z.string())),
   }),
   z.transform((v) => {
@@ -53,6 +89,18 @@ export const McpToolCallLogRequest$outboundSchema: z.ZodMiniType<
       durationMs: "duration_ms",
       clientName: "client_name",
       clientVersion: "client_version",
+      sourceIpAddress: "source_ip_address",
+      sourceUserAgent: "source_user_agent",
+      sourceBrowser: "source_browser",
+      sourceOs: "source_os",
+      sourceDeviceType: "source_device_type",
+      mcpProtocolVersion: "mcp_protocol_version",
+      mcpServerName: "mcp_server_name",
+      mcpServerVersion: "mcp_server_version",
+      modelProvider: "model_provider",
+      modelName: "model_name",
+      resultSummary: "result_summary",
+      recordIds: "record_ids",
     });
   }),
 );

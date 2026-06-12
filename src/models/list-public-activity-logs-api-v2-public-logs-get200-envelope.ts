@@ -6,12 +6,16 @@ import * as z from "zod/v4-mini";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import {
+  ActivityLogListData,
+  ActivityLogListData$inboundSchema,
+} from "./activity-log-list-data.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 
 export type ListPublicActivityLogsApiV2PublicLogsGet200Envelope = {
   success: true;
-  data: { [k: string]: any };
+  data: ActivityLogListData;
   meta: EnvelopeMeta;
 };
 
@@ -20,7 +24,7 @@ export const ListPublicActivityLogsApiV2PublicLogsGet200Envelope$inboundSchema:
   z.ZodMiniType<ListPublicActivityLogsApiV2PublicLogsGet200Envelope, unknown> =
     z.object({
       success: types.literal(true),
-      data: z.record(z.string(), z.any()),
+      data: ActivityLogListData$inboundSchema,
       meta: EnvelopeMeta$inboundSchema,
     });
 

@@ -2692,6 +2692,452 @@ paths:
       security:
         - bearerAuth: []
       x-speakeasy-name-override: delete
+  /v2/public/custom-objects/{custom_object_id}/records:
+    get:
+      tags:
+        - "custom-objects"
+      summary: "List Custom Object Records"
+      operationId: "list_public_custom_object_records_api_v2_public_custom_objects__custom_object_id__records_get"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "view_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "View Id"
+        - name: "search"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Status"
+        - name: "usage_status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Usage Status"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                maximum: 100
+                minimum: 1
+              - type: "null"
+            title: "Limit"
+        - name: "sort"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Sort"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "X-Language"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+      responses:
+        "200":
+          description: "Object record list response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicCustomObjectRecordsApiV2PublicCustomObjectsCustomObjectIdRecordsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: listRecords
+    post:
+      tags:
+        - "custom-objects"
+      summary: "Create Custom Object Record"
+      operationId: "create_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records_post"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: createRecord
+  /v2/public/custom-objects/{custom_object_id}/records/{record_id}:
+    get:
+      tags:
+        - "custom-objects"
+      summary: "Get Custom Object Record"
+      operationId: "get_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__get"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "record_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "view_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "View Id"
+        - name: "form_view_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Form View Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Object record detail response. The base detail payload is intentionally thin; drawer sections load through scoped endpoints."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: getRecord
+    put:
+      tags:
+        - "custom-objects"
+      summary: "Update Custom Object Record"
+      operationId: "update_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__put"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "record_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: updateRecord
+    delete:
+      tags:
+        - "custom-objects"
+      summary: "Delete Custom Object Record"
+      operationId: "delete_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__delete"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "record_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: deleteRecord
+  /v2/public/custom-objects/{custom_object_id}/records/{record_id}/archive:
+    post:
+      tags:
+        - "custom-objects"
+      summary: "Archive Custom Object Record"
+      operationId: "archive_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__archive_post"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "record_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArchivePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdArchivePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: archiveRecord
+  /v2/public/custom-objects/{custom_object_id}/records/{record_id}/activate:
+    post:
+      tags:
+        - "custom-objects"
+      summary: "Activate Custom Object Record"
+      operationId: "activate_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__activate_post"
+      parameters:
+        - name: "custom_object_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Custom Object Id"
+        - name: "record_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdActivatePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: activateRecord
   /v2/public/records/custom-objects/records:
     post:
       tags:
@@ -4816,6 +5262,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Object Type"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
         - name: "limit"
           in: "query"
           required: false
@@ -4825,6 +5279,22 @@ paths:
             minimum: 1
             default: 50
             title: "Limit"
+        - name: "search_query"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search Query"
+        - name: "q"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Q"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -7007,6 +7477,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Object Type"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
         - name: "limit"
           in: "query"
           required: false
@@ -7016,6 +7494,22 @@ paths:
             minimum: 1
             default: 50
             title: "Limit"
+        - name: "search_query"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search Query"
+        - name: "q"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Q"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -7502,7 +7996,7 @@ paths:
     get:
       tags:
         - "journals"
-      summary: "List Public Journals"
+      summary: "List Journal Entries"
       operationId: "list_public_journals_api_v2_public_journals_get"
       parameters:
         - name: "language"
@@ -7621,6 +8115,50 @@ paths:
           $ref: "#/components/responses/ErrorResponse"
         "401":
           $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "journals"
+      summary: "Create Journal Entry"
+      operationId: "create_public_journal_api_v2_public_journals_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JournalCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicJournalApiV2PublicJournalsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
       x-sanka-surface: "public_developer"
       x-sanka-api-version: "v2"
       x-sanka-auth: "developer_bearer"
@@ -7630,8 +8168,8 @@ paths:
     post:
       tags:
         - "journals"
-      summary: "Create Public Journal Statement View"
-      operationId: "create_public_journal_statement_view_api_v2_public_journals_views_post"
+      summary: "Create Financial Statement View"
+      operationId: "create_public_financial_statement_view_api_v2_public_journals_views_post"
       parameters:
         - name: "language"
           in: "query"
@@ -7680,7 +8218,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope"
+                $ref: "#/components/schemas/CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost200Envelope"
           headers:
             x-ctx-id:
               $ref: "#/components/headers/XCtxId"
@@ -7688,11 +8226,253 @@ paths:
           $ref: "#/components/responses/ErrorResponse"
         "401":
           $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
       x-sanka-surface: "public_developer"
       x-sanka-api-version: "v2"
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/journals/{journal_id}:
+    get:
+      tags:
+        - "journals"
+      summary: "Get Journal Entry"
+      operationId: "get_public_journal_api_v2_public_journals__journal_id__get"
+      parameters:
+        - name: "journal_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Journal Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "view_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "View Id"
+        - name: "form_view_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Form View Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Object record detail response. The base detail payload is intentionally thin; drawer sections load through scoped endpoints."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicJournalApiV2PublicJournalsJournalIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: get
+    put:
+      tags:
+        - "journals"
+      summary: "Update Journal Entry"
+      operationId: "update_public_journal_api_v2_public_journals__journal_id__put"
+      parameters:
+        - name: "journal_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Journal Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicJournalApiV2PublicJournalsJournalIdPut200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: update
+    delete:
+      tags:
+        - "journals"
+      summary: "Delete Journal Entry"
+      operationId: "delete_public_journal_api_v2_public_journals__journal_id__delete"
+      parameters:
+        - name: "journal_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Journal Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicJournalApiV2PublicJournalsJournalIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: delete
+  /v2/public/journals/{journal_id}/archive:
+    post:
+      tags:
+        - "journals"
+      summary: "Archive Journal Entry"
+      operationId: "archive_public_journal_api_v2_public_journals__journal_id__archive_post"
+      parameters:
+        - name: "journal_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Journal Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArchivePublicJournalApiV2PublicJournalsJournalIdArchivePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: archive
+  /v2/public/journals/{journal_id}/activate:
+    post:
+      tags:
+        - "journals"
+      summary: "Activate Journal Entry"
+      operationId: "activate_public_journal_api_v2_public_journals__journal_id__activate_post"
+      parameters:
+        - name: "journal_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Journal Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivatePublicJournalApiV2PublicJournalsJournalIdActivatePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+      x-speakeasy-name-override: activate
   /v2/public/locations:
     get:
       tags:
@@ -14630,6 +15410,38 @@ components:
           schema:
             $ref: "#/components/schemas/ErrorEnvelope"
   schemas:
+    ActivatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdActivatePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Activate Public Custom Object Record Api V2 Public Custom Objects  Custom Object Id  Records  Record Id  Activate Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ActivatePublicJournalApiV2PublicJournalsJournalIdActivatePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Activate Public Journal Api V2 Public Journals  Journal Id  Activate Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     AggregatePublicRecordsApiV2PublicRecordsAggregatePost200Envelope:
       type: "object"
       required:
@@ -14787,6 +15599,22 @@ components:
           title: "Response Approve Public Payroll Run Api V2 Public Payroll Runs  Run Id  Approve Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    ArchivePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdArchivePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Archive Public Custom Object Record Api V2 Public Custom Objects  Custom Object Id  Records  Record Id  Archive Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     ArchivePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdArchivePost200Envelope:
       type: "object"
       required:
@@ -14801,6 +15629,22 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Archive Public Custom Object Record Compatibility Api V2 Public Records Custom Objects Records  Record Id  Archive Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ArchivePublicJournalApiV2PublicJournalsJournalIdArchivePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Archive Public Journal Api V2 Public Journals  Journal Id  Archive Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     AuthWorkspaceSwitchRequest:
@@ -15135,6 +15979,22 @@ components:
           title: "Response Create Public Contact Api V2 Public Contacts Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Create Public Custom Object Record Api V2 Public Custom Objects  Custom Object Id  Records Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPost200Envelope:
       type: "object"
       required:
@@ -15263,6 +16123,22 @@ components:
           title: "Response Create Public Export Job Compat Api V2 Public Exports Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Create Public Financial Statement View Api V2 Public Journals Views Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CreatePublicImportJobCompatApiV2PublicImportsPost200Envelope:
       type: "object"
       required:
@@ -15375,7 +16251,7 @@ components:
           title: "Response Create Public Item Api V2 Public Items Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
-    CreatePublicJournalStatementViewApiV2PublicJournalsViewsPost200Envelope:
+    CreatePublicJournalApiV2PublicJournalsPost200Envelope:
       type: "object"
       required:
         - "success"
@@ -15388,7 +16264,7 @@ components:
         data:
           type: "object"
           additionalProperties: true
-          title: "Response Create Public Journal Statement View Api V2 Public Journals Views Post"
+          title: "Response Create Public Journal Api V2 Public Journals Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     CreatePublicLocationApiV2PublicLocationsPost200Envelope:
@@ -15709,6 +16585,22 @@ components:
           title: "Response Delete Public Contact Api V2 Public Contacts  Contact Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Delete Public Custom Object Record Api V2 Public Custom Objects  Custom Object Id  Records  Record Id  Delete"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     DeletePublicDealApiV2PublicDealsDealIdDelete200Envelope:
       type: "object"
       required:
@@ -15899,6 +16791,22 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Delete Public Item Api V2 Public Items  Item Id  Delete"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicJournalApiV2PublicJournalsJournalIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Delete Public Journal Api V2 Public Journals  Journal Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     DeletePublicLocationApiV2PublicLocationsLocationIdDelete200Envelope:
@@ -16470,6 +17378,20 @@ components:
           $ref: "#/components/schemas/ObjectRecordData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     GetPublicDealApiV2PublicDealsDealIdGet200Envelope:
       type: "object"
       required:
@@ -16633,6 +17555,20 @@ components:
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     GetPublicItemApiV2PublicItemsItemIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicJournalApiV2PublicJournalsJournalIdGet200Envelope:
       type: "object"
       required:
         - "success"
@@ -16879,9 +17815,7 @@ components:
           type: "boolean"
           const: true
         data:
-          type: "object"
-          additionalProperties: true
-          title: "Response Get Public Workflow Api V2 Public Workflows  Workflow Id  Get"
+          $ref: "#/components/schemas/WorkflowDetailData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     GetPublicWorkflowRunApiV2PublicWorkflowRunsRunIdGet200Envelope:
@@ -17259,6 +18193,32 @@ components:
           title: "Sort Direction"
       type: "object"
       title: "IncentivesListQuery"
+    JournalCreateRequest:
+      properties:
+        data:
+          additionalProperties: true
+          type: "object"
+          title: "Data"
+        journal_transactions:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Journal Transactions"
+        form_set_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Form Set Id"
+        view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "View Id"
+      type: "object"
+      title: "JournalCreateRequest"
     JournalStatementViewCreateRequest:
       properties:
         name:
@@ -17344,9 +18304,7 @@ components:
           type: "boolean"
           const: true
         data:
-          type: "object"
-          additionalProperties: true
-          title: "Response List Public Activity Logs Api V2 Public Logs Get"
+          $ref: "#/components/schemas/ActivityLogListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicApprovalRulesApiV2PublicApprovalRulesGet200Envelope:
@@ -17422,6 +18380,20 @@ components:
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicContactsApiV2PublicContactsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicCustomObjectRecordsApiV2PublicCustomObjectsCustomObjectIdRecordsGet200Envelope:
       type: "object"
       required:
         - "success"
@@ -18048,9 +19020,7 @@ components:
           type: "boolean"
           const: true
         data:
-          type: "object"
-          additionalProperties: true
-          title: "Response List Public Workflows Api V2 Public Workflows Get"
+          $ref: "#/components/schemas/WorkflowListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     MarkPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost200Envelope:
@@ -18108,6 +19078,67 @@ components:
             - type: "string"
             - type: "null"
           title: "Client Version"
+        source_ip_address:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Ip Address"
+        source_user_agent:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source User Agent"
+        source_browser:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Browser"
+        source_os:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Os"
+        source_device_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Device Type"
+        mcp_protocol_version:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Protocol Version"
+        mcp_server_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Server Name"
+        mcp_server_version:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Server Version"
+        model_provider:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Model Provider"
+        model_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Model Name"
+        result_summary:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Result Summary"
+        record_ids:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Record Ids"
         error:
           anyOf:
             - type: "string"
@@ -19763,6 +20794,22 @@ components:
           title: "Response Update Public Contact Api V2 Public Contacts  Contact Id  Put"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsRecordIdPut200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Update Public Custom Object Record Api V2 Public Custom Objects  Custom Object Id  Records  Record Id  Put"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     UpdatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost200Envelope:
       type: "object"
       required:
@@ -19953,6 +21000,22 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Update Public Item Api V2 Public Items  Item Id  Put"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicJournalApiV2PublicJournalsJournalIdPut200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Update Public Journal Api V2 Public Journals  Journal Id  Put"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     UpdatePublicLocationApiV2PublicLocationsLocationIdPut200Envelope:
@@ -20589,6 +21652,27 @@ components:
         - "record_id"
         - "object_type"
       title: "ObjectRecordData"
+    WorkflowDetailData:
+      properties:
+        workflow:
+          $ref: "#/components/schemas/WorkflowListItem"
+        permission:
+          type: "string"
+          title: "Permission"
+          default: "read"
+        classifications:
+          additionalProperties:
+            type: "string"
+          type: "object"
+          title: "Classifications"
+        message:
+          type: "string"
+          title: "Message"
+          default: "OK"
+      type: "object"
+      required:
+        - "workflow"
+      title: "WorkflowDetailData"
     TransferColumnMapping:
       properties:
         source_header:
@@ -20659,6 +21743,48 @@ components:
         - "page_size"
         - "total"
       title: "ObjectRecordListData"
+    ActivityLogListData:
+      properties:
+        logs:
+          items:
+            $ref: "#/components/schemas/ActivityLogItem"
+          type: "array"
+          title: "Logs"
+        page:
+          type: "integer"
+          title: "Page"
+        limit:
+          type: "integer"
+          title: "Limit"
+        count:
+          type: "integer"
+          title: "Count"
+        total:
+          type: "integer"
+          title: "Total"
+        has_next:
+          type: "boolean"
+          title: "Has Next"
+        next_page:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Next Page"
+        pagination:
+          $ref: "#/components/schemas/ActivityLogPagination"
+        message:
+          type: "string"
+          title: "Message"
+          default: "OK"
+      type: "object"
+      required:
+        - "page"
+        - "limit"
+        - "count"
+        - "total"
+        - "has_next"
+        - "pagination"
+      title: "ActivityLogListData"
     RecordAssociationListData:
       properties:
         record_ref:
@@ -20688,6 +21814,50 @@ components:
       required:
         - "record_ref"
       title: "RecordAssociationListData"
+    WorkflowListData:
+      properties:
+        items:
+          items:
+            $ref: "#/components/schemas/WorkflowListItem"
+          type: "array"
+          title: "Items"
+        total:
+          type: "integer"
+          title: "Total"
+        page:
+          type: "integer"
+          title: "Page"
+        page_size:
+          type: "integer"
+          title: "Page Size"
+        has_next_page:
+          type: "boolean"
+          title: "Has Next Page"
+        permission:
+          type: "string"
+          title: "Permission"
+          default: "read"
+        columns:
+          items:
+            $ref: "#/components/schemas/WorkflowColumn"
+          type: "array"
+          title: "Columns"
+        classifications:
+          additionalProperties:
+            type: "string"
+          type: "object"
+          title: "Classifications"
+        message:
+          type: "string"
+          title: "Message"
+          default: "OK"
+      type: "object"
+      required:
+        - "total"
+        - "page"
+        - "page_size"
+        - "has_next_page"
+      title: "WorkflowListData"
     OrderBulkOrderRequest:
       properties:
         external_id:
@@ -21031,6 +22201,112 @@ components:
       required:
         - "type"
       title: "ObjectRecordDisplayValue"
+    WorkflowListItem:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        workflow_id:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Workflow Id"
+        title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Title"
+        title_ja:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Title Ja"
+        description:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        description_ja:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description Ja"
+        status:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Status"
+        status_display:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Status Display"
+        emoji:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Emoji"
+        image_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Image Url"
+        is_trigger_active:
+          type: "boolean"
+          title: "Is Trigger Active"
+          default: false
+        trigger_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Trigger Type"
+        valid_to_run:
+          type: "boolean"
+          title: "Valid To Run"
+          default: false
+        created_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Created At"
+        updated_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Updated At"
+        last_run:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Last Run"
+        total_history:
+          type: "integer"
+          title: "Total History"
+          default: 0
+        total_review:
+          type: "integer"
+          title: "Total Review"
+          default: 0
+        owner:
+          anyOf:
+            - $ref: "#/components/schemas/WorkflowUserSummary"
+            - type: "null"
+        created_by:
+          anyOf:
+            - $ref: "#/components/schemas/WorkflowUserSummary"
+            - type: "null"
+        last_updated_by:
+          anyOf:
+            - $ref: "#/components/schemas/WorkflowUserSummary"
+            - type: "null"
+        trigger_node:
+          anyOf:
+            - $ref: "#/components/schemas/WorkflowTriggerNode"
+            - type: "null"
+      type: "object"
+      required:
+        - "id"
+      title: "WorkflowListItem"
     ObjectRecordViewData:
       properties:
         view_id:
@@ -21044,6 +22320,116 @@ components:
           default: "list"
       type: "object"
       title: "ObjectRecordViewData"
+    ActivityLogItem:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        display_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Display Id"
+        action:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action"
+        target:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+        object_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Object Type"
+        object_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Object Id"
+        object_display:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Object Display"
+        field_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Field Name"
+        old_value:
+          title: "Old Value"
+        new_value:
+          title: "New Value"
+        action_uid:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action Uid"
+        actor:
+          anyOf:
+            - $ref: "#/components/schemas/ActivityLogActor"
+            - type: "null"
+        environment:
+          anyOf:
+            - $ref: "#/components/schemas/ActivityLogEnvironment"
+            - type: "null"
+        governance_execution_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Governance Execution Id"
+        created_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Created At"
+      type: "object"
+      required:
+        - "id"
+      title: "ActivityLogItem"
+    ActivityLogPagination:
+      properties:
+        page:
+          type: "integer"
+          title: "Page"
+        limit:
+          type: "integer"
+          title: "Limit"
+        has_next:
+          type: "boolean"
+          title: "Has Next"
+        next_page:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Next Page"
+        total:
+          type: "integer"
+          title: "Total"
+      type: "object"
+      required:
+        - "page"
+        - "limit"
+        - "has_next"
+        - "total"
+      title: "ActivityLogPagination"
+    WorkflowColumn:
+      properties:
+        key:
+          type: "string"
+          title: "Key"
+        label:
+          type: "string"
+          title: "Label"
+      type: "object"
+      required:
+        - "key"
+        - "label"
+      title: "WorkflowColumn"
     OrderLineItemMutationRequest:
       properties:
         line_item_id:
@@ -21213,6 +22599,127 @@ components:
           title: "Provider Meta"
       type: "object"
       title: "ProspectCompanyData"
+    WorkflowTriggerNode:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        action_slug:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action Slug"
+        action_title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action Title"
+        action_title_ja:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action Title Ja"
+      type: "object"
+      required:
+        - "id"
+      title: "WorkflowTriggerNode"
+    WorkflowUserSummary:
+      properties:
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Id"
+        label:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+      type: "object"
+      title: "WorkflowUserSummary"
+    ActivityLogActor:
+      properties:
+        name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Name"
+      type: "object"
+      title: "ActivityLogActor"
+    ActivityLogEnvironment:
+      properties:
+        source:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+        ip_address:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Ip Address"
+        user_agent:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "User Agent"
+        browser:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Browser"
+        os:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Os"
+        device_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Device Type"
+        mcp_session_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Session Id"
+        mcp_protocol_version:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Protocol Version"
+        mcp_server_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Server Name"
+        mcp_server_version:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mcp Server Version"
+        client_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Client Name"
+        client_version:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Client Version"
+        model_provider:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Model Provider"
+        model_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Model Name"
+      type: "object"
+      title: "ActivityLogEnvironment"
   securitySchemes:
     bearerAuth:
       type: "http"

@@ -6,22 +6,14 @@
 import { ListPublicWorkflowsApiV2PublicWorkflowsGetResponse } from "sanka-sdk/models/operations";
 
 let value: ListPublicWorkflowsApiV2PublicWorkflowsGetResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    "key1": [
-      "<value 1>",
-    ],
-  },
+  headers: {},
   result: {
     success: true,
     data: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
+      total: 888368,
+      page: 523010,
+      pageSize: 758359,
+      hasNextPage: true,
     },
     meta: {
       ctxId: "<id>",
