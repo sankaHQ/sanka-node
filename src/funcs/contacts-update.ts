@@ -102,6 +102,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "external_id": payload.external_id,
+    "language": payload.language,
     "workspace_id": payload.workspace_id,
   });
 

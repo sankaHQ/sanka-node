@@ -8,6 +8,10 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import {
+  ObjectRecordTableCellPayload,
+  ObjectRecordTableCellPayload$inboundSchema,
+} from "./object-record-table-cell-payload.js";
 
 export type ObjectRecordDisplayValue = {
   type: string;
@@ -23,6 +27,7 @@ export type ObjectRecordDisplayValue = {
   badgeColor?: string | null | undefined;
   color?: string | null | undefined;
   meta?: { [k: string]: any } | undefined;
+  tableCell?: ObjectRecordTableCellPayload | null | undefined;
 };
 
 /** @internal */
@@ -44,11 +49,15 @@ export const ObjectRecordDisplayValue$inboundSchema: z.ZodMiniType<
     badge_color: z.optional(z.nullable(types.string())),
     color: z.optional(z.nullable(types.string())),
     meta: types.optional(z.record(z.string(), z.any())),
+    table_cell: z.optional(
+      z.nullable(ObjectRecordTableCellPayload$inboundSchema),
+    ),
   }),
   z.transform((v) => {
     return remap$(v, {
       "show_badge": "showBadge",
       "badge_color": "badgeColor",
+      "table_cell": "tableCell",
     });
   }),
 );

@@ -6,6 +6,7 @@
 
 * [list](#list) - List Public Subscriptions
 * [create](#create) - Create Public Subscription
+* [bulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost](#bulkupdatepublicsubscriptionsapiv2publicsubscriptionsbulkupdatepost) - Bulk Update Public Subscriptions
 * [get](#get) - Get Public Subscription
 * [update](#update) - Update Public Subscription
 * [delete](#delete) - Delete Public Subscription
@@ -146,6 +147,80 @@ run();
 ### Response
 
 **Promise\<[operations.CreatePublicSubscriptionApiV2PublicSubscriptionsPostResponse](../../models/operations/create-public-subscription-api-v2-public-subscriptions-post-response.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## bulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost
+
+Bulk Update Public Subscriptions
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="bulk_update_public_subscriptions_api_v2_public_subscriptions_bulk_update_post" method="post" path="/v2/public/subscriptions/bulk-update" -->
+```typescript
+import { Sanka } from "sanka-sdk";
+
+const sanka = new Sanka({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await sanka.subscriptions.bulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost({
+    body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { subscriptionsBulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost } from "sanka-sdk/funcs/subscriptions-bulk-update-public-subscriptions-api-v2-public-subscriptions-bulk-update-post.js";
+
+// Use `SankaCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const res = await subscriptionsBulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost(sanka, {
+    body: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsBulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                 | Type                                                                                                                                                                                                      | Required                                                                                                                                                                                                  | Description                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                                 | [operations.BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePostRequest](../../models/operations/bulk-update-public-subscriptions-api-v2-public-subscriptions-bulk-update-post-request.md) | :heavy_check_mark:                                                                                                                                                                                        | The request object to use for the request.                                                                                                                                                                |
+| `options`                                                                                                                                                                                                 | RequestOptions                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                        | Used to set various options for making HTTP requests.                                                                                                                                                     |
+| `options.fetchOptions`                                                                                                                                                                                    | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                        | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                            |
+| `options.retries`                                                                                                                                                                                         | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                        | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                          |
+
+### Response
+
+**Promise\<[operations.BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePostResponse](../../models/operations/bulk-update-public-subscriptions-api-v2-public-subscriptions-bulk-update-post-response.md)\>**
 
 ### Errors
 

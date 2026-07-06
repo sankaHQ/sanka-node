@@ -8,6 +8,10 @@ import { remap as remap$ } from "../lib/primitives.js";
 export type ObjectRecordUpdateRequest = {
   viewId?: string | null | undefined;
   formViewId?: string | null | undefined;
+  associations?: Array<{ [k: string]: any }> | null | undefined;
+  costLineItems?: Array<any> | null | undefined;
+  files?: Array<{ [k: string]: any }> | null | undefined;
+  lineItems?: Array<any> | null | undefined;
   properties?: { [k: string]: any | null } | undefined;
 };
 
@@ -15,6 +19,10 @@ export type ObjectRecordUpdateRequest = {
 export type ObjectRecordUpdateRequest$Outbound = {
   view_id?: string | null | undefined;
   form_view_id?: string | null | undefined;
+  associations?: Array<{ [k: string]: any }> | null | undefined;
+  cost_line_items?: Array<any> | null | undefined;
+  files?: Array<{ [k: string]: any }> | null | undefined;
+  line_items?: Array<any> | null | undefined;
   properties?: { [k: string]: any | null } | undefined;
 };
 
@@ -26,12 +34,20 @@ export const ObjectRecordUpdateRequest$outboundSchema: z.ZodMiniType<
   z.object({
     viewId: z.optional(z.nullable(z.string())),
     formViewId: z.optional(z.nullable(z.string())),
+    associations: z.optional(
+      z.nullable(z.array(z.record(z.string(), z.any()))),
+    ),
+    costLineItems: z.optional(z.nullable(z.array(z.any()))),
+    files: z.optional(z.nullable(z.array(z.record(z.string(), z.any())))),
+    lineItems: z.optional(z.nullable(z.array(z.any()))),
     properties: z.optional(z.record(z.string(), z.nullable(z.any()))),
   }),
   z.transform((v) => {
     return remap$(v, {
       viewId: "view_id",
       formViewId: "form_view_id",
+      costLineItems: "cost_line_items",
+      lineItems: "line_items",
     });
   }),
 );

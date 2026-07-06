@@ -6,7 +6,6 @@ import {
   approvalRequestsApproveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost,
 } from "../funcs/approval-requests-approve-approval-request-api-v2-public-approval-requests-history-id-approve-post.js";
 import { approvalRequestsCreateApprovalRequestApiV2PublicApprovalRequestsPost } from "../funcs/approval-requests-create-approval-request-api-v2-public-approval-requests-post.js";
-import { approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet } from "../funcs/approval-requests-list-approval-requests-api-v2-public-approval-requests-get.js";
 import {
   approvalRequestsRejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost,
 } from "../funcs/approval-requests-reject-approval-request-api-v2-public-approval-requests-history-id-reject-post.js";
@@ -15,25 +14,6 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ApprovalRequests extends ClientSDK {
-  /**
-   * List Approval Requests
-   */
-  async listApprovalRequestsApiV2PublicApprovalRequestsGet(
-    request:
-      operations.ListApprovalRequestsApiV2PublicApprovalRequestsGetRequest,
-    options?: RequestOptions,
-  ): Promise<
-    operations.ListApprovalRequestsApiV2PublicApprovalRequestsGetResponse
-  > {
-    return unwrapAsync(
-      approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet(
-        this,
-        request,
-        options,
-      ),
-    );
-  }
-
   /**
    * Create Approval Request
    */

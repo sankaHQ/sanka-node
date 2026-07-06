@@ -12,6 +12,7 @@ import * as models from "../index.js";
 export type CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPostRequest =
   {
     customObjectId: string;
+    language?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
     body: models.ObjectRecordCreateRequest;
@@ -28,6 +29,7 @@ export type CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectId
 export type CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectIdRecordsPostRequest$Outbound =
   {
     custom_object_id: string;
+    language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
     body: models.ObjectRecordCreateRequest$Outbound;
@@ -41,6 +43,7 @@ export const CreatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectI
   > = z.pipe(
     z.object({
       customObjectId: z.string(),
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       body: models.ObjectRecordCreateRequest$outboundSchema,

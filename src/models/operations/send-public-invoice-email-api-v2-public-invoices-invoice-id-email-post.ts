@@ -17,7 +17,7 @@ export type SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostRequest =
     workspaceId?: string | null | undefined;
     acceptLanguage?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PublicInvoiceEmailRequest;
   };
 
 export type SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostResponse =
@@ -36,7 +36,7 @@ export type SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostRequest$O
     workspace_id?: string | null | undefined;
     "Accept-Language"?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PublicInvoiceEmailRequest$Outbound;
   };
 
 /** @internal */
@@ -52,7 +52,7 @@ export const SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostRequest$
       workspaceId: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: z.record(z.string(), z.any()),
+      body: models.PublicInvoiceEmailRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

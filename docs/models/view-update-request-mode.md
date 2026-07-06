@@ -5,11 +5,11 @@
 ```typescript
 import { ViewUpdateRequestMode } from "sanka-sdk/models";
 
-let value: ViewUpdateRequestMode = "calendar";
+let value: ViewUpdateRequestMode = "receivable_balance";
 ```
 
 ## Values
 
 ```typescript
-"table" | "kanban" | "calendar" | "forecast"
+"table" | "component" | "component_table" | "item_list" | "kanban" | "calendar" | "project" | "forecast" | "group" | "receivable_balance" | "payable_balance" | "pnl" | "balance_sheet"
 ```

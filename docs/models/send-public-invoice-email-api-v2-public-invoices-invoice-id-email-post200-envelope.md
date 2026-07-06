@@ -9,9 +9,9 @@ let value:
   SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost200Envelope = {
     success: true,
     data: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
+      invoiceId: "<id>",
+      action: "draft",
+      status: "<value>",
     },
     meta: {
       ctxId: "<id>",
@@ -21,8 +21,8 @@ let value:
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `success`                                         | *true*                                            | :heavy_check_mark:                                | N/A                                               |
-| `data`                                            | Record<string, *any*>                             | :heavy_check_mark:                                | N/A                                               |
-| `meta`                                            | [models.EnvelopeMeta](../models/envelope-meta.md) | :heavy_check_mark:                                | N/A                                               |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `success`                                                               | *true*                                                                  | :heavy_check_mark:                                                      | N/A                                                                     |
+| `data`                                                                  | [models.PublicInvoiceEmailData](../models/public-invoice-email-data.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| `meta`                                                                  | [models.EnvelopeMeta](../models/envelope-meta.md)                       | :heavy_check_mark:                                                      | N/A                                                                     |

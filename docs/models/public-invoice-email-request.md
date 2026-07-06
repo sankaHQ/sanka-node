@@ -1,0 +1,24 @@
+# PublicInvoiceEmailRequest
+
+## Example Usage
+
+```typescript
+import { PublicInvoiceEmailRequest } from "sanka-sdk/models";
+
+let value: PublicInvoiceEmailRequest = {};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `action`                                                                                      | [models.PublicInvoiceEmailRequestAction](../models/public-invoice-email-request-action.md)    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `to`                                                                                          | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `cc`                                                                                          | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `subject`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `body`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `scheduledAt`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `templateSelect`                                                                              | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `additionalPdfAttachments`                                                                    | [models.PublicInvoiceEmailPdfAttachment](../models/public-invoice-email-pdf-attachment.md)[]  | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `channelId`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `externalId`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |

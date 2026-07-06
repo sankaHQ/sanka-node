@@ -19,6 +19,9 @@ export type ImportJobCreateRequest = {
   provider?: string | null | undefined;
   channelId?: string | null | undefined;
   recordIds?: Array<string> | null | undefined;
+  /**
+   * Provider-specific source metadata. For Stripe invoice/subscription backfills, use scope=all with optional days_ago, created_gte, and limit; bounded synchronous backfills support up to 200 records.
+   */
   sourceRecord?: { [k: string]: any } | null | undefined;
   operation?: string | undefined;
   mappingMode?: string | undefined;

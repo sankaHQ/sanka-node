@@ -27,6 +27,7 @@ export type PublicRecordQueryRequest = {
   mode?: string | null | undefined;
   page?: number | undefined;
   limit?: number | undefined;
+  cursor?: string | null | undefined;
   [additionalProperties: string]: unknown;
 };
 
@@ -48,6 +49,7 @@ export type PublicRecordQueryRequest$Outbound = {
   mode?: string | null | undefined;
   page: number;
   limit: number;
+  cursor?: string | null | undefined;
   [additionalProperties: string]: unknown;
 };
 
@@ -74,6 +76,7 @@ export const PublicRecordQueryRequest$outboundSchema: z.ZodMiniType<
       mode: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z._default(z.int(), 25),
+      cursor: z.optional(z.nullable(z.string())),
     }),
     z.any(),
   ),

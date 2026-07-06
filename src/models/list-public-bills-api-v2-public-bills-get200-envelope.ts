@@ -3,28 +3,200 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smart-union.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  ObjectRecordListData,
-  ObjectRecordListData$inboundSchema,
-} from "./object-record-list-data.js";
+  ObjectRecordData,
+  ObjectRecordData$inboundSchema,
+} from "./object-record-data.js";
+import {
+  ObjectRecordLineItemRowData,
+  ObjectRecordLineItemRowData$inboundSchema,
+} from "./object-record-line-item-row-data.js";
+import {
+  ObjectRecordViewData,
+  ObjectRecordViewData$inboundSchema,
+} from "./object-record-view-data.js";
+
+export type ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordLineItemRowData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    nextCursor?: string | null | undefined;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type Response200ListPublicBillsApiV2PublicBillsGet =
+  | ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData
+  | ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData;
 
 export type ListPublicBillsApiV2PublicBillsGet200Envelope = {
   success: true;
-  data: ObjectRecordListData;
+  data:
+    | ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData
+    | ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData;
   meta: EnvelopeMeta;
 };
+
+/** @internal */
+export const ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(
+          z.array(ObjectRecordLineItemRowData$inboundSchema),
+        ),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+      });
+    }),
+  );
+
+export function listPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(z.array(ObjectRecordData$inboundSchema)),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        next_cursor: z.optional(z.nullable(types.string())),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+        "next_cursor": "nextCursor",
+      });
+    }),
+  );
+
+export function listPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const Response200ListPublicBillsApiV2PublicBillsGet$inboundSchema:
+  z.ZodMiniType<Response200ListPublicBillsApiV2PublicBillsGet, unknown> =
+    smartUnion([
+      z.lazy(() =>
+        ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData$inboundSchema
+      ),
+      z.lazy(() =>
+        ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+      ),
+    ]);
+
+export function response200ListPublicBillsApiV2PublicBillsGetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  Response200ListPublicBillsApiV2PublicBillsGet,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      Response200ListPublicBillsApiV2PublicBillsGet$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'Response200ListPublicBillsApiV2PublicBillsGet' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListPublicBillsApiV2PublicBillsGet200Envelope$inboundSchema:
   z.ZodMiniType<ListPublicBillsApiV2PublicBillsGet200Envelope, unknown> = z
     .object({
       success: types.literal(true),
-      data: ObjectRecordListData$inboundSchema,
+      data: smartUnion([
+        z.lazy(() =>
+          ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordListData$inboundSchema
+        ),
+        z.lazy(() =>
+          ListPublicBillsApiV2PublicBillsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        ),
+      ]),
       meta: EnvelopeMeta$inboundSchema,
     });
 

@@ -81,7 +81,18 @@ run();
 
 ## createPublicExportJobCompatApiV2PublicExportsPost
 
-Create Public Export Job Compat
+Create an export job.
+
+Integration-destination exports are validated against the runnable
+delivery matrix (item/order to nextengine, and company/contact/deal/item/
+order to hubspot via the native outbound dispatcher). Provider and
+object pairs without a working delivery pipeline are rejected with HTTP
+400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` (details:
+``object_type``, ``provider``, ``reason``) before any job history row or
+outbound event is created. Empty or unknown provider slugs are rejected
+with HTTP 400 and error code ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``.
+Accepted integration exports are recorded with status ``queued`` while
+background delivery runs.
 
 ### Example Usage
 
@@ -154,7 +165,7 @@ run();
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| errors.ErrorEnvelope     | 401, 403, 422            | application/json         |
+| errors.ErrorEnvelope     | 400, 401, 403, 422       | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## getPublicExportJobCompatApiV2PublicExportsJobIdGet

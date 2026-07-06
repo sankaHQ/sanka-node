@@ -96,12 +96,19 @@ async function $do(
   const path = pathToFunc("/v2/public/tasks")();
 
   const query = encodeFormQuery({
+    "created_at_from": payload?.created_at_from,
+    "created_at_to": payload?.created_at_to,
+    "cursor": payload?.cursor,
     "language": payload?.language,
     "limit": payload?.limit,
+    "p_id": payload?.p_id,
     "page": payload?.page,
+    "project_id": payload?.project_id,
     "search": payload?.search,
     "sort": payload?.sort,
     "status": payload?.status,
+    "updated_at_from": payload?.updated_at_from,
+    "updated_at_to": payload?.updated_at_to,
     "usage_status": payload?.usage_status,
     "view_id": payload?.view_id,
     "workspace_id": payload?.workspace_id,

@@ -16,6 +16,7 @@ export type PublicAssociationMutationRequest = {
   definitionId?: string | null | undefined;
   label?: string | null | undefined;
   idempotencyKey?: string | null | undefined;
+  confirmAssociationWarnings?: boolean | undefined;
 };
 
 /** @internal */
@@ -25,6 +26,7 @@ export type PublicAssociationMutationRequest$Outbound = {
   definition_id?: string | null | undefined;
   label?: string | null | undefined;
   idempotency_key?: string | null | undefined;
+  confirm_association_warnings: boolean;
 };
 
 /** @internal */
@@ -38,6 +40,7 @@ export const PublicAssociationMutationRequest$outboundSchema: z.ZodMiniType<
     definitionId: z.optional(z.nullable(z.string())),
     label: z.optional(z.nullable(z.string())),
     idempotencyKey: z.optional(z.nullable(z.string())),
+    confirmAssociationWarnings: z._default(z.boolean(), false),
   }),
   z.transform((v) => {
     return remap$(v, {
@@ -45,6 +48,7 @@ export const PublicAssociationMutationRequest$outboundSchema: z.ZodMiniType<
       targetRef: "target_ref",
       definitionId: "definition_id",
       idempotencyKey: "idempotency_key",
+      confirmAssociationWarnings: "confirm_association_warnings",
     });
   }),
 );

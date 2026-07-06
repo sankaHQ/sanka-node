@@ -8,11 +8,15 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import {
+  PublicInvoiceEmailData,
+  PublicInvoiceEmailData$inboundSchema,
+} from "./public-invoice-email-data.js";
 
 export type SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost200Envelope =
   {
     success: true;
-    data: { [k: string]: any };
+    data: PublicInvoiceEmailData;
     meta: EnvelopeMeta;
   };
 
@@ -23,7 +27,7 @@ export const SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost200Envel
     unknown
   > = z.object({
     success: types.literal(true),
-    data: z.record(z.string(), z.any()),
+    data: PublicInvoiceEmailData$inboundSchema,
     meta: EnvelopeMeta$inboundSchema,
   });
 

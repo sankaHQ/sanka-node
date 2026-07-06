@@ -19,7 +19,12 @@ export type ListPublicJournalsApiV2PublicJournalsGetRequest = {
   usageStatus?: string | null | undefined;
   page?: number | undefined;
   limit?: number | null | undefined;
+  cursor?: string | null | undefined;
   sort?: string | null | undefined;
+  createdAtFrom?: string | null | undefined;
+  createdAtTo?: string | null | undefined;
+  updatedAtFrom?: string | null | undefined;
+  updatedAtTo?: string | null | undefined;
   acceptLanguage?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
   xLanguage?: string | null | undefined;
@@ -41,7 +46,12 @@ export type ListPublicJournalsApiV2PublicJournalsGetRequest$Outbound = {
   usage_status?: string | null | undefined;
   page: number;
   limit?: number | null | undefined;
+  cursor?: string | null | undefined;
   sort?: string | null | undefined;
+  created_at_from?: string | null | undefined;
+  created_at_to?: string | null | undefined;
+  updated_at_from?: string | null | undefined;
+  updated_at_to?: string | null | undefined;
   "Accept-Language"?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
   "X-Language"?: string | null | undefined;
@@ -63,7 +73,12 @@ export const ListPublicJournalsApiV2PublicJournalsGetRequest$outboundSchema:
       usageStatus: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z.optional(z.nullable(z.int())),
+      cursor: z.optional(z.nullable(z.string())),
       sort: z.optional(z.nullable(z.string())),
+      createdAtFrom: z.optional(z.nullable(z.string())),
+      createdAtTo: z.optional(z.nullable(z.string())),
+      updatedAtFrom: z.optional(z.nullable(z.string())),
+      updatedAtTo: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       xLanguage: z.optional(z.nullable(z.string())),
@@ -74,6 +89,10 @@ export const ListPublicJournalsApiV2PublicJournalsGetRequest$outboundSchema:
         workspaceId: "workspace_id",
         viewId: "view_id",
         usageStatus: "usage_status",
+        createdAtFrom: "created_at_from",
+        createdAtTo: "created_at_to",
+        updatedAtFrom: "updated_at_from",
+        updatedAtTo: "updated_at_to",
         acceptLanguage: "Accept-Language",
         xWorkspaceCode: "X-Workspace-Code",
         xLanguage: "X-Language",

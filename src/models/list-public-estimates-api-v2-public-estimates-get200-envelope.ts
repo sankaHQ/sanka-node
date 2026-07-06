@@ -3,21 +3,188 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smart-union.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  ObjectRecordListData,
-  ObjectRecordListData$inboundSchema,
-} from "./object-record-list-data.js";
+  ObjectRecordData,
+  ObjectRecordData$inboundSchema,
+} from "./object-record-data.js";
+import {
+  ObjectRecordLineItemRowData,
+  ObjectRecordLineItemRowData$inboundSchema,
+} from "./object-record-line-item-row-data.js";
+import {
+  ObjectRecordViewData,
+  ObjectRecordViewData$inboundSchema,
+} from "./object-record-view-data.js";
+
+export type ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordLineItemRowData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    nextCursor?: string | null | undefined;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type Response200ListPublicEstimatesApiV2PublicEstimatesGet =
+  | ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData
+  | ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData;
 
 export type ListPublicEstimatesApiV2PublicEstimatesGet200Envelope = {
   success: true;
-  data: ObjectRecordListData;
+  data:
+    | ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData
+    | ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData;
   meta: EnvelopeMeta;
 };
+
+/** @internal */
+export const ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(
+          z.array(ObjectRecordLineItemRowData$inboundSchema),
+        ),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+      });
+    }),
+  );
+
+export function listPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(z.array(ObjectRecordData$inboundSchema)),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        next_cursor: z.optional(z.nullable(types.string())),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+        "next_cursor": "nextCursor",
+      });
+    }),
+  );
+
+export function listPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const Response200ListPublicEstimatesApiV2PublicEstimatesGet$inboundSchema:
+  z.ZodMiniType<
+    Response200ListPublicEstimatesApiV2PublicEstimatesGet,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData$inboundSchema
+    ),
+    z.lazy(() =>
+      ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+    ),
+  ]);
+
+export function response200ListPublicEstimatesApiV2PublicEstimatesGetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  Response200ListPublicEstimatesApiV2PublicEstimatesGet,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      Response200ListPublicEstimatesApiV2PublicEstimatesGet$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'Response200ListPublicEstimatesApiV2PublicEstimatesGet' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListPublicEstimatesApiV2PublicEstimatesGet200Envelope$inboundSchema:
@@ -26,7 +193,14 @@ export const ListPublicEstimatesApiV2PublicEstimatesGet200Envelope$inboundSchema
     unknown
   > = z.object({
     success: types.literal(true),
-    data: ObjectRecordListData$inboundSchema,
+    data: smartUnion([
+      z.lazy(() =>
+        ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordListData$inboundSchema
+      ),
+      z.lazy(() =>
+        ListPublicEstimatesApiV2PublicEstimatesGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+      ),
+    ]),
     meta: EnvelopeMeta$inboundSchema,
   });
 

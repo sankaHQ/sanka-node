@@ -97,6 +97,7 @@ async function $do(
   const path = pathToFunc("/v2/public/records/custom-objects/records")();
 
   const query = encodeFormQuery({
+    "language": payload.language,
     "workspace_id": payload.workspace_id,
   });
 

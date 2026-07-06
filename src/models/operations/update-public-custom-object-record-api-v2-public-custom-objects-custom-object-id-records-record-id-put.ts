@@ -13,6 +13,7 @@ export type UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectId
   {
     customObjectId: string;
     recordId: string;
+    language?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
     body: models.ObjectRecordUpdateRequest;
@@ -30,6 +31,7 @@ export type UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectId
   {
     custom_object_id: string;
     record_id: string;
+    language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
     body: models.ObjectRecordUpdateRequest$Outbound;
@@ -44,6 +46,7 @@ export const UpdatePublicCustomObjectRecordApiV2PublicCustomObjectsCustomObjectI
     z.object({
       customObjectId: z.string(),
       recordId: z.string(),
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       body: models.ObjectRecordUpdateRequest$outboundSchema,

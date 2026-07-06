@@ -7,6 +7,7 @@
 * [list](#list) - List Public Invoices
 * [create](#create) - Create Public Invoice
 * [uploadPublicInvoiceFileApiV2PublicInvoicesFilesPost](#uploadpublicinvoicefileapiv2publicinvoicesfilespost) - Upload Public Invoice File
+* [bulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost](#bulkupdatepublicinvoicesapiv2publicinvoicesbulkupdatepost) - Bulk Update Public Invoices
 * [listPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet](#listpublicoverdueinvoicesapiv2publicinvoicesoverdueget) - List Public Overdue Invoices
 * [get](#get) - Get Public Invoice
 * [update](#update) - Update Public Invoice
@@ -229,6 +230,80 @@ run();
 ### Response
 
 **Promise\<[operations.UploadPublicInvoiceFileApiV2PublicInvoicesFilesPostResponse](../../models/operations/upload-public-invoice-file-api-v2-public-invoices-files-post-response.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## bulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost
+
+Bulk Update Public Invoices
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="bulk_update_public_invoices_api_v2_public_invoices_bulk_update_post" method="post" path="/v2/public/invoices/bulk-update" -->
+```typescript
+import { Sanka } from "sanka-sdk";
+
+const sanka = new Sanka({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await sanka.invoices.bulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost({
+    body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { invoicesBulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost } from "sanka-sdk/funcs/invoices-bulk-update-public-invoices-api-v2-public-invoices-bulk-update-post.js";
+
+// Use `SankaCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const res = await invoicesBulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost(sanka, {
+    body: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("invoicesBulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                             | [operations.BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePostRequest](../../models/operations/bulk-update-public-invoices-api-v2-public-invoices-bulk-update-post-request.md) | :heavy_check_mark:                                                                                                                                                                    | The request object to use for the request.                                                                                                                                            |
+| `options`                                                                                                                                                                             | RequestOptions                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                    | Used to set various options for making HTTP requests.                                                                                                                                 |
+| `options.fetchOptions`                                                                                                                                                                | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                               | :heavy_minus_sign:                                                                                                                                                                    | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.        |
+| `options.retries`                                                                                                                                                                     | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                    | Enables retrying HTTP requests under certain failure conditions.                                                                                                                      |
+
+### Response
+
+**Promise\<[operations.BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePostResponse](../../models/operations/bulk-update-public-invoices-api-v2-public-invoices-bulk-update-post-response.md)\>**
 
 ### Errors
 
@@ -622,11 +697,7 @@ const sanka = new Sanka({
 async function run() {
   const result = await sanka.invoices.sendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost({
     invoiceId: "<id>",
-    body: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
-    },
+    body: {},
   });
 
   console.log(result);
@@ -652,11 +723,7 @@ const sanka = new SankaCore({
 async function run() {
   const res = await invoicesSendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost(sanka, {
     invoiceId: "<id>",
-    body: {
-      "key": "<value>",
-      "key1": "<value>",
-      "key2": "<value>",
-    },
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;

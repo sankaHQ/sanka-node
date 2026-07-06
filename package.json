@@ -1,6 +1,6 @@
 {
   "name": "sanka-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Sanka",
   "bugs": {
     "url": "https://github.com/sankaHQ/sanka-node/issues"
@@ -26,8 +26,8 @@
     "access": "public"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sankaHQ/sanka-node.git"
+    "url": "git+https://github.com/sankaHQ/sanka-node.git",
+    "type": "git"
   },
   "type": "module",
   "main": "./esm/index.js",

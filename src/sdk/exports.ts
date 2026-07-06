@@ -31,6 +31,20 @@ export class Exports extends ClientSDK {
 
   /**
    * Create Public Export Job Compat
+   *
+   * @remarks
+   * Create an export job.
+   *
+   * Integration-destination exports are validated against the runnable
+   * delivery matrix (item/order to nextengine, and company/contact/deal/item/
+   * order to hubspot via the native outbound dispatcher). Provider and
+   * object pairs without a working delivery pipeline are rejected with HTTP
+   * 400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` (details:
+   * ``object_type``, ``provider``, ``reason``) before any job history row or
+   * outbound event is created. Empty or unknown provider slugs are rejected
+   * with HTTP 400 and error code ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``.
+   * Accepted integration exports are recorded with status ``queued`` while
+   * background delivery runs.
    */
   async createPublicExportJobCompatApiV2PublicExportsPost(
     request:

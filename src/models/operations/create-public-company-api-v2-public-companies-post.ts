@@ -10,9 +10,10 @@ import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
 export type CreatePublicCompanyApiV2PublicCompaniesPostRequest = {
+  language?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
-  body: models.PublicObjectRecordMutationRequest;
+  body: models.CompanyMutationRequest;
 };
 
 export type CreatePublicCompanyApiV2PublicCompaniesPostResponse = {
@@ -22,9 +23,10 @@ export type CreatePublicCompanyApiV2PublicCompaniesPostResponse = {
 
 /** @internal */
 export type CreatePublicCompanyApiV2PublicCompaniesPostRequest$Outbound = {
+  language?: string | null | undefined;
   workspace_id?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
-  body: models.PublicObjectRecordMutationRequest$Outbound;
+  body: models.CompanyMutationRequest$Outbound;
 };
 
 /** @internal */
@@ -34,9 +36,10 @@ export const CreatePublicCompanyApiV2PublicCompaniesPostRequest$outboundSchema:
     CreatePublicCompanyApiV2PublicCompaniesPostRequest
   > = z.pipe(
     z.object({
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: models.PublicObjectRecordMutationRequest$outboundSchema,
+      body: models.CompanyMutationRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

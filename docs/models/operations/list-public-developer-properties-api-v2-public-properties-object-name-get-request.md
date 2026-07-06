@@ -28,5 +28,7 @@ let value:
 | `provider`           | *string*             | :heavy_minus_sign:   | N/A                  |
 | `channelId`          | *string*             | :heavy_minus_sign:   | N/A                  |
 | `externalObjectType` | *string*             | :heavy_minus_sign:   | N/A                  |
+| `customObjectSlug`   | *string*             | :heavy_minus_sign:   | N/A                  |
+| `customObject`       | *string*             | :heavy_minus_sign:   | N/A                  |
 | `workspaceId`        | *string*             | :heavy_minus_sign:   | N/A                  |
 | `xWorkspaceCode`     | *string*             | :heavy_minus_sign:   | N/A                  |

@@ -15,9 +15,18 @@ export type ViewUpdateRequestVisibility = ClosedEnum<
 
 export const ViewUpdateRequestMode = {
   Table: "table",
+  Component: "component",
+  ComponentTable: "component_table",
+  ItemList: "item_list",
   Kanban: "kanban",
   Calendar: "calendar",
+  Project: "project",
   Forecast: "forecast",
+  Group: "group",
+  ReceivableBalance: "receivable_balance",
+  PayableBalance: "payable_balance",
+  Pnl: "pnl",
+  BalanceSheet: "balance_sheet",
 } as const;
 export type ViewUpdateRequestMode = ClosedEnum<typeof ViewUpdateRequestMode>;
 

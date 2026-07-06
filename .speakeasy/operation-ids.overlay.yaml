@@ -3,6 +3,41 @@ info:
   title: Speakeasy Suggestions - Sanka Public API
   version: 0.0.1
 actions:
+- target: $["paths"]["/v2/public/projects"]["get"]
+  update:
+    x-speakeasy-name-override: list
+  x-speakeasy-metadata:
+    after: sdk.projects.list()
+    before: sdk.Projects.list_public_projects_api_v2_public_projects_get()
+    type: method-name
+- target: $["paths"]["/v2/public/projects"]["post"]
+  update:
+    x-speakeasy-name-override: create
+  x-speakeasy-metadata:
+    after: sdk.projects.create()
+    before: sdk.Projects.create_public_project_api_v2_public_projects_post()
+    type: method-name
+- target: $["paths"]["/v2/public/projects/{project_id}"]["get"]
+  update:
+    x-speakeasy-name-override: get
+  x-speakeasy-metadata:
+    after: sdk.projects.get()
+    before: sdk.Projects.get_public_project_api_v2_public_projects_project_id_get()
+    type: method-name
+- target: $["paths"]["/v2/public/projects/{project_id}"]["put"]
+  update:
+    x-speakeasy-name-override: update
+  x-speakeasy-metadata:
+    after: sdk.projects.update()
+    before: sdk.Projects.update_public_project_api_v2_public_projects_project_id_put()
+    type: method-name
+- target: $["paths"]["/v2/public/projects/{project_id}"]["delete"]
+  update:
+    x-speakeasy-name-override: delete
+  x-speakeasy-metadata:
+    after: sdk.projects.delete()
+    before: sdk.Projects.delete_public_project_api_v2_public_projects_project_id_delete()
+    type: method-name
 - target: $["paths"]["/v2/public/expenses"]["post"]
   update:
     x-speakeasy-name-override: create

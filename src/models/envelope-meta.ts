@@ -12,10 +12,12 @@ import {
   PaginationMeta,
   PaginationMeta$inboundSchema,
 } from "./pagination-meta.js";
+import { ToastMessage, ToastMessage$inboundSchema } from "./toast-message.js";
 
 export type EnvelopeMeta = {
   ctxId: string;
   pagination?: PaginationMeta | undefined;
+  toast?: ToastMessage | undefined;
 };
 
 /** @internal */
@@ -24,6 +26,7 @@ export const EnvelopeMeta$inboundSchema: z.ZodMiniType<EnvelopeMeta, unknown> =
     z.object({
       ctx_id: types.string(),
       pagination: types.optional(PaginationMeta$inboundSchema),
+      toast: types.optional(ToastMessage$inboundSchema),
     }),
     z.transform((v) => {
       return remap$(v, {

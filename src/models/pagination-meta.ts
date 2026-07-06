@@ -13,6 +13,7 @@ export type PaginationMeta = {
   page: number;
   pageSize: number;
   total: number;
+  nextCursor?: string | null | undefined;
 };
 
 /** @internal */
@@ -24,10 +25,12 @@ export const PaginationMeta$inboundSchema: z.ZodMiniType<
     page: types.number(),
     page_size: types.number(),
     total: types.number(),
+    next_cursor: z.optional(z.nullable(types.string())),
   }),
   z.transform((v) => {
     return remap$(v, {
       "page_size": "pageSize",
+      "next_cursor": "nextCursor",
     });
   }),
 );

@@ -8,6 +8,8 @@ import { remap as remap$ } from "../lib/primitives.js";
 export type ObjectRecordCreateRequest = {
   viewId?: string | null | undefined;
   formViewId?: string | null | undefined;
+  costLineItems?: Array<any> | null | undefined;
+  lineItems?: Array<any> | null | undefined;
   properties?: { [k: string]: any | null } | undefined;
 };
 
@@ -15,6 +17,8 @@ export type ObjectRecordCreateRequest = {
 export type ObjectRecordCreateRequest$Outbound = {
   view_id?: string | null | undefined;
   form_view_id?: string | null | undefined;
+  cost_line_items?: Array<any> | null | undefined;
+  line_items?: Array<any> | null | undefined;
   properties?: { [k: string]: any | null } | undefined;
 };
 
@@ -26,12 +30,16 @@ export const ObjectRecordCreateRequest$outboundSchema: z.ZodMiniType<
   z.object({
     viewId: z.optional(z.nullable(z.string())),
     formViewId: z.optional(z.nullable(z.string())),
+    costLineItems: z.optional(z.nullable(z.array(z.any()))),
+    lineItems: z.optional(z.nullable(z.array(z.any()))),
     properties: z.optional(z.record(z.string(), z.nullable(z.any()))),
   }),
   z.transform((v) => {
     return remap$(v, {
       viewId: "view_id",
       formViewId: "form_view_id",
+      costLineItems: "cost_line_items",
+      lineItems: "line_items",
     });
   }),
 );

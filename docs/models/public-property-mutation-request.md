@@ -21,6 +21,7 @@ let value: PublicPropertyMutationRequest = {};
 | `target`                | *string*                | :heavy_minus_sign:      | N/A                     |
 | `language`              | *string*                | :heavy_minus_sign:      | N/A                     |
 | `customObjectId`        | *string*                | :heavy_minus_sign:      | N/A                     |
+| `customObjectSlug`      | *string*                | :heavy_minus_sign:      | N/A                     |
 | `editorVariant`         | *string*                | :heavy_minus_sign:      | N/A                     |
 | `source`                | *string*                | :heavy_minus_sign:      | N/A                     |
 | `scope`                 | *string*                | :heavy_minus_sign:      | N/A                     |
