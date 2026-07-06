@@ -11,15 +11,15 @@ let value: ListPublicOrdersApiV2PublicOrdersGetResponse = {
     success: true,
     data: {
       objectType: "<value>",
-      view: {},
+      view: {
+        viewType: "list",
+      },
       columns: [
         "<value 1>",
-        "<value 2>",
-        "<value 3>",
       ],
-      page: 649857,
-      pageSize: 653504,
-      total: 801424,
+      page: 594489,
+      pageSize: 183233,
+      total: 143809,
     },
     meta: {
       ctxId: "<id>",

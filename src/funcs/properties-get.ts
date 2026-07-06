@@ -110,7 +110,9 @@ async function $do(
 
   const query = encodeFormQuery({
     "channel_id": payload.channel_id,
+    "custom_object": payload.custom_object,
     "custom_object_id": payload.custom_object_id,
+    "custom_object_slug": payload.custom_object_slug,
     "external_object_type": payload.external_object_type,
     "lang": payload.lang,
     "language": payload.language,

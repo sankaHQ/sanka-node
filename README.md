@@ -154,7 +154,6 @@ run();
 
 ### [ApprovalRequests](docs/sdks/approvalrequests/README.md)
 
-* [listApprovalRequestsApiV2PublicApprovalRequestsGet](docs/sdks/approvalrequests/README.md#listapprovalrequestsapiv2publicapprovalrequestsget) - List Approval Requests
 * [createApprovalRequestApiV2PublicApprovalRequestsPost](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
 * [approveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost](docs/sdks/approvalrequests/README.md#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
 * [rejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost](docs/sdks/approvalrequests/README.md#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
@@ -317,6 +316,7 @@ run();
 * [list](docs/sdks/invoices/README.md#list) - List Public Invoices
 * [create](docs/sdks/invoices/README.md#create) - Create Public Invoice
 * [uploadPublicInvoiceFileApiV2PublicInvoicesFilesPost](docs/sdks/invoices/README.md#uploadpublicinvoicefileapiv2publicinvoicesfilespost) - Upload Public Invoice File
+* [bulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost](docs/sdks/invoices/README.md#bulkupdatepublicinvoicesapiv2publicinvoicesbulkupdatepost) - Bulk Update Public Invoices
 * [listPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet](docs/sdks/invoices/README.md#listpublicoverdueinvoicesapiv2publicinvoicesoverdueget) - List Public Overdue Invoices
 * [get](docs/sdks/invoices/README.md#get) - Get Public Invoice
 * [update](docs/sdks/invoices/README.md#update) - Update Public Invoice
@@ -398,6 +398,14 @@ run();
 * [createPublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost](docs/sdks/payroll/README.md#createpublicpayrolljournalentryapiv2publicpayrollrunsrunidjournalentrypost) - Create Public Payroll Journal Entry
 * [downloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet](docs/sdks/payroll/README.md#downloadpublicpayrollpayslippdfapiv2publicpayrollrunsrunidpayslipspdfget) - Download Public Payroll Payslip Pdf
 
+### [Projects](docs/sdks/projects/README.md)
+
+* [listPublicProjectsApiV2PublicProjectsGet](docs/sdks/projects/README.md#listpublicprojectsapiv2publicprojectsget) - List Public Projects
+* [createPublicProjectApiV2PublicProjectsPost](docs/sdks/projects/README.md#createpublicprojectapiv2publicprojectspost) - Create Public Project
+* [getPublicProjectApiV2PublicProjectsProjectIdGet](docs/sdks/projects/README.md#getpublicprojectapiv2publicprojectsprojectidget) - Get Public Project
+* [updatePublicProjectApiV2PublicProjectsProjectIdPut](docs/sdks/projects/README.md#updatepublicprojectapiv2publicprojectsprojectidput) - Update Public Project
+* [deletePublicProjectApiV2PublicProjectsProjectIdDelete](docs/sdks/projects/README.md#deletepublicprojectapiv2publicprojectsprojectiddelete) - Delete Public Project
+
 ### [Properties](docs/sdks/properties/README.md)
 
 * [list](docs/sdks/properties/README.md#list) - List Public Developer Properties
@@ -470,6 +478,7 @@ run();
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Public Subscriptions
 * [create](docs/sdks/subscriptions/README.md#create) - Create Public Subscription
+* [bulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost](docs/sdks/subscriptions/README.md#bulkupdatepublicsubscriptionsapiv2publicsubscriptionsbulkupdatepost) - Bulk Update Public Subscriptions
 * [get](docs/sdks/subscriptions/README.md#get) - Get Public Subscription
 * [update](docs/sdks/subscriptions/README.md#update) - Update Public Subscription
 * [delete](docs/sdks/subscriptions/README.md#delete) - Delete Public Subscription
@@ -512,10 +521,25 @@ run();
 ### [WorkflowRuns](docs/sdks/workflowruns/README.md)
 
 * [getRun](docs/sdks/workflowruns/README.md#getrun) - Get Public Workflow Run
+* [getPublicWorkflowRunNestedCompatApiV2PublicWorkflowsRunsRunIdGet](docs/sdks/workflowruns/README.md#getpublicworkflowrunnestedcompatapiv2publicworkflowsrunsrunidget) - Get Public Workflow Run Nested Compat
 * [resolvePublicWorkflowRecordApiV2PublicWorkflowRunsResolveRecordPost](docs/sdks/workflowruns/README.md#resolvepublicworkflowrecordapiv2publicworkflowrunsresolverecordpost) - Resolve Public Workflow Record
 * [previewPublicWorkflowCompatApiV2PublicWorkflowRunsPreviewPost](docs/sdks/workflowruns/README.md#previewpublicworkflowcompatapiv2publicworkflowrunspreviewpost) - Preview Public Workflow Compat
+* [previewPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPreviewPost](docs/sdks/workflowruns/README.md#previewpublichubspotinvoicedraftapiv2publicinvoicesdraftshubspotpreviewpost) - Preview Public Hubspot Invoice Draft
+* [previewPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePreviewPost](docs/sdks/workflowruns/README.md#previewpublicfreeeinvoiceexportapiv2publicinvoicesexportsfreeepreviewpost) - Preview Public Freee Invoice Export
+* [previewPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPreviewPost](docs/sdks/workflowruns/README.md#previewpublicmoneyforwardinvoiceexportapiv2publicinvoicesexportsmoneyforwardpreviewpost) - Preview Public Moneyforward Invoice Export
+* [previewPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPreviewPost](docs/sdks/workflowruns/README.md#previewpublichubspotestimatedraftapiv2publicestimatesdraftshubspotpreviewpost) - Preview Public Hubspot Estimate Draft
+* [previewPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPreviewPost](docs/sdks/workflowruns/README.md#previewpublichubspotorderhandoffapiv2publicordershandoffshubspotpreviewpost) - Preview Public Hubspot Order Handoff
+* [previewPublicHubspotCommissionIncentiveApiV2PublicIncentivesCommissionHubspotPreviewPost](docs/sdks/workflowruns/README.md#previewpublichubspotcommissionincentiveapiv2publicincentivescommissionhubspotpreviewpost) - Preview Public Hubspot Commission Incentive
 * [previewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost](docs/sdks/workflowruns/README.md#previewpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcepreviewpost) - Preview Public Salesforce Quote Readiness
+* [summarizePublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceSummaryPost](docs/sdks/workflowruns/README.md#summarizepublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcesummarypost) - Summarize Public Salesforce Quote Readiness
 * [startPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost](docs/sdks/workflowruns/README.md#startpublicworkflowcompatapiv2publicworkflowrunsstartpost) - Start Public Workflow Compat
+* [startPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPost](docs/sdks/workflowruns/README.md#startpublichubspotinvoicedraftapiv2publicinvoicesdraftshubspotpost) - Start Public Hubspot Invoice Draft
+* [startPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePost](docs/sdks/workflowruns/README.md#startpublicfreeeinvoiceexportapiv2publicinvoicesexportsfreeepost) - Start Public Freee Invoice Export
+* [startPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPost](docs/sdks/workflowruns/README.md#startpublicmoneyforwardinvoiceexportapiv2publicinvoicesexportsmoneyforwardpost) - Start Public Moneyforward Invoice Export
+* [startPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPost](docs/sdks/workflowruns/README.md#startpublichubspotestimatedraftapiv2publicestimatesdraftshubspotpost) - Start Public Hubspot Estimate Draft
+* [startPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPost](docs/sdks/workflowruns/README.md#startpublichubspotorderhandoffapiv2publicordershandoffshubspotpost) - Start Public Hubspot Order Handoff
+* [startPublicHubspotRevenueControlReportApiV2PublicReportsRevenueControlHubspotPost](docs/sdks/workflowruns/README.md#startpublichubspotrevenuecontrolreportapiv2publicreportsrevenuecontrolhubspotpost) - Start Public Hubspot Revenue Control Report
+* [writebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost](docs/sdks/workflowruns/README.md#writebackpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcewritebackpost) - Writeback Public Salesforce Quote Readiness
 
 ### [Workflows](docs/sdks/workflows/README.md)
 
@@ -523,6 +547,7 @@ run();
 * [createOrUpdate](docs/sdks/workflows/README.md#createorupdate) - Create Public Workflow
 * [get](docs/sdks/workflows/README.md#get) - Get Public Workflow
 * [updatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
+* [deletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete](docs/sdks/workflows/README.md#deletepublicworkflowapiv2publicworkflowsworkflowiddelete) - Delete Public Workflow
 * [runByRef](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
 
 </details>
@@ -553,7 +578,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`aiScore`](docs/sdks/ai/README.md#score) - Score Record
 - [`approvalRequestsApproveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost`](docs/sdks/approvalrequests/README.md#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
 - [`approvalRequestsCreateApprovalRequestApiV2PublicApprovalRequestsPost`](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
-- [`approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet`](docs/sdks/approvalrequests/README.md#listapprovalrequestsapiv2publicapprovalrequestsget) - List Approval Requests
 - [`approvalRequestsRejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost`](docs/sdks/approvalrequests/README.md#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
 - [`associationsCreatePublicAssociationApiV2PublicAssociationsPost`](docs/sdks/associations/README.md#createpublicassociationapiv2publicassociationspost) - Create Public Association
 - [`associationsDeletePublicAssociationApiV2PublicAssociationsDelete`](docs/sdks/associations/README.md#deletepublicassociationapiv2publicassociationsdelete) - Delete Public Association
@@ -657,6 +681,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`inventoryTransactionsGet`](docs/sdks/inventorytransactions/README.md#get) - Get Public Inventory Transaction
 - [`inventoryTransactionsList`](docs/sdks/inventorytransactions/README.md#list) - List Public Inventory Transactions
 - [`inventoryTransactionsUpdate`](docs/sdks/inventorytransactions/README.md#update) - Update Public Inventory Transaction
+- [`invoicesBulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost`](docs/sdks/invoices/README.md#bulkupdatepublicinvoicesapiv2publicinvoicesbulkupdatepost) - Bulk Update Public Invoices
 - [`invoicesCreate`](docs/sdks/invoices/README.md#create) - Create Public Invoice
 - [`invoicesDelete`](docs/sdks/invoices/README.md#delete) - Delete Public Invoice
 - [`invoicesDownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet`](docs/sdks/invoices/README.md#downloadpublicinvoicepdfapiv2publicinvoicesinvoiceidpdfget) - Download Public Invoice Pdf
@@ -716,6 +741,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`payrollListPublicPayrollProfilesApiV2PublicPayrollProfilesGet`](docs/sdks/payroll/README.md#listpublicpayrollprofilesapiv2publicpayrollprofilesget) - List Public Payroll Profiles
 - [`payrollListPublicPayrollRunsApiV2PublicPayrollRunsGet`](docs/sdks/payroll/README.md#listpublicpayrollrunsapiv2publicpayrollrunsget) - List Public Payroll Runs
 - [`payrollUpsertPublicPayrollProfileApiV2PublicPayrollProfilesPost`](docs/sdks/payroll/README.md#upsertpublicpayrollprofileapiv2publicpayrollprofilespost) - Upsert Public Payroll Profile
+- [`projectsCreatePublicProjectApiV2PublicProjectsPost`](docs/sdks/projects/README.md#createpublicprojectapiv2publicprojectspost) - Create Public Project
+- [`projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete`](docs/sdks/projects/README.md#deletepublicprojectapiv2publicprojectsprojectiddelete) - Delete Public Project
+- [`projectsGetPublicProjectApiV2PublicProjectsProjectIdGet`](docs/sdks/projects/README.md#getpublicprojectapiv2publicprojectsprojectidget) - Get Public Project
+- [`projectsListPublicProjectsApiV2PublicProjectsGet`](docs/sdks/projects/README.md#listpublicprojectsapiv2publicprojectsget) - List Public Projects
+- [`projectsUpdatePublicProjectApiV2PublicProjectsProjectIdPut`](docs/sdks/projects/README.md#updatepublicprojectapiv2publicprojectsprojectidput) - Update Public Project
 - [`propertiesCreate`](docs/sdks/properties/README.md#create) - Create Public Developer Property
 - [`propertiesDelete`](docs/sdks/properties/README.md#delete) - Delete Public Developer Property
 - [`propertiesGet`](docs/sdks/properties/README.md#get) - Retrieve Public Developer Property
@@ -760,6 +790,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ruleSettingsUpsertPublicApprovalRuleApiV2PublicApprovalRulesPost`](docs/sdks/rulesettings/README.md#upsertpublicapprovalruleapiv2publicapprovalrulespost) - Upsert Public Approval Rule
 - [`ruleSettingsUpsertPublicDeliveryRuleApiV2PublicDeliveryRulesPost`](docs/sdks/rulesettings/README.md#upsertpublicdeliveryruleapiv2publicdeliveryrulespost) - Upsert Public Delivery Rule
 - [`ruleSettingsUpsertPublicLockRuleApiV2PublicLockRulesPost`](docs/sdks/rulesettings/README.md#upsertpubliclockruleapiv2publiclockrulespost) - Upsert Public Lock Rule
+- [`subscriptionsBulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost`](docs/sdks/subscriptions/README.md#bulkupdatepublicsubscriptionsapiv2publicsubscriptionsbulkupdatepost) - Bulk Update Public Subscriptions
 - [`subscriptionsCreate`](docs/sdks/subscriptions/README.md#create) - Create Public Subscription
 - [`subscriptionsDelete`](docs/sdks/subscriptions/README.md#delete) - Delete Public Subscription
 - [`subscriptionsGet`](docs/sdks/subscriptions/README.md#get) - Get Public Subscription
@@ -785,12 +816,28 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`viewsListPublicViewsApiV2PublicViewsGet`](docs/sdks/views/README.md#listpublicviewsapiv2publicviewsget) - List Public Views
 - [`viewsUpdatePublicViewApiV2PublicViewsViewIdPatch`](docs/sdks/views/README.md#updatepublicviewapiv2publicviewsviewidpatch) - Update Public View
 - [`workflowActionsListActions`](docs/sdks/workflowactions/README.md#listactions) - List Public Workflow Actions Compat
+- [`workflowRunsGetPublicWorkflowRunNestedCompatApiV2PublicWorkflowsRunsRunIdGet`](docs/sdks/workflowruns/README.md#getpublicworkflowrunnestedcompatapiv2publicworkflowsrunsrunidget) - Get Public Workflow Run Nested Compat
 - [`workflowRunsGetRun`](docs/sdks/workflowruns/README.md#getrun) - Get Public Workflow Run
+- [`workflowRunsPreviewPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePreviewPost`](docs/sdks/workflowruns/README.md#previewpublicfreeeinvoiceexportapiv2publicinvoicesexportsfreeepreviewpost) - Preview Public Freee Invoice Export
+- [`workflowRunsPreviewPublicHubspotCommissionIncentiveApiV2PublicIncentivesCommissionHubspotPreviewPost`](docs/sdks/workflowruns/README.md#previewpublichubspotcommissionincentiveapiv2publicincentivescommissionhubspotpreviewpost) - Preview Public Hubspot Commission Incentive
+- [`workflowRunsPreviewPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPreviewPost`](docs/sdks/workflowruns/README.md#previewpublichubspotestimatedraftapiv2publicestimatesdraftshubspotpreviewpost) - Preview Public Hubspot Estimate Draft
+- [`workflowRunsPreviewPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPreviewPost`](docs/sdks/workflowruns/README.md#previewpublichubspotinvoicedraftapiv2publicinvoicesdraftshubspotpreviewpost) - Preview Public Hubspot Invoice Draft
+- [`workflowRunsPreviewPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPreviewPost`](docs/sdks/workflowruns/README.md#previewpublichubspotorderhandoffapiv2publicordershandoffshubspotpreviewpost) - Preview Public Hubspot Order Handoff
+- [`workflowRunsPreviewPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPreviewPost`](docs/sdks/workflowruns/README.md#previewpublicmoneyforwardinvoiceexportapiv2publicinvoicesexportsmoneyforwardpreviewpost) - Preview Public Moneyforward Invoice Export
 - [`workflowRunsPreviewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost`](docs/sdks/workflowruns/README.md#previewpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcepreviewpost) - Preview Public Salesforce Quote Readiness
 - [`workflowRunsPreviewPublicWorkflowCompatApiV2PublicWorkflowRunsPreviewPost`](docs/sdks/workflowruns/README.md#previewpublicworkflowcompatapiv2publicworkflowrunspreviewpost) - Preview Public Workflow Compat
 - [`workflowRunsResolvePublicWorkflowRecordApiV2PublicWorkflowRunsResolveRecordPost`](docs/sdks/workflowruns/README.md#resolvepublicworkflowrecordapiv2publicworkflowrunsresolverecordpost) - Resolve Public Workflow Record
+- [`workflowRunsStartPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePost`](docs/sdks/workflowruns/README.md#startpublicfreeeinvoiceexportapiv2publicinvoicesexportsfreeepost) - Start Public Freee Invoice Export
+- [`workflowRunsStartPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPost`](docs/sdks/workflowruns/README.md#startpublichubspotestimatedraftapiv2publicestimatesdraftshubspotpost) - Start Public Hubspot Estimate Draft
+- [`workflowRunsStartPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPost`](docs/sdks/workflowruns/README.md#startpublichubspotinvoicedraftapiv2publicinvoicesdraftshubspotpost) - Start Public Hubspot Invoice Draft
+- [`workflowRunsStartPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPost`](docs/sdks/workflowruns/README.md#startpublichubspotorderhandoffapiv2publicordershandoffshubspotpost) - Start Public Hubspot Order Handoff
+- [`workflowRunsStartPublicHubspotRevenueControlReportApiV2PublicReportsRevenueControlHubspotPost`](docs/sdks/workflowruns/README.md#startpublichubspotrevenuecontrolreportapiv2publicreportsrevenuecontrolhubspotpost) - Start Public Hubspot Revenue Control Report
+- [`workflowRunsStartPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPost`](docs/sdks/workflowruns/README.md#startpublicmoneyforwardinvoiceexportapiv2publicinvoicesexportsmoneyforwardpost) - Start Public Moneyforward Invoice Export
 - [`workflowRunsStartPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost`](docs/sdks/workflowruns/README.md#startpublicworkflowcompatapiv2publicworkflowrunsstartpost) - Start Public Workflow Compat
+- [`workflowRunsSummarizePublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceSummaryPost`](docs/sdks/workflowruns/README.md#summarizepublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcesummarypost) - Summarize Public Salesforce Quote Readiness
+- [`workflowRunsWritebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost`](docs/sdks/workflowruns/README.md#writebackpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcewritebackpost) - Writeback Public Salesforce Quote Readiness
 - [`workflowsCreateOrUpdate`](docs/sdks/workflows/README.md#createorupdate) - Create Public Workflow
+- [`workflowsDeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete`](docs/sdks/workflows/README.md#deletepublicworkflowapiv2publicworkflowsworkflowiddelete) - Delete Public Workflow
 - [`workflowsGet`](docs/sdks/workflows/README.md#get) - Get Public Workflow
 - [`workflowsList`](docs/sdks/workflows/README.md#list) - List Public Workflows
 - [`workflowsRunByRef`](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow

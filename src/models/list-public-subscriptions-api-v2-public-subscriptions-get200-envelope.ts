@@ -3,21 +3,187 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smart-union.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  ObjectRecordListData,
-  ObjectRecordListData$inboundSchema,
-} from "./object-record-list-data.js";
+  ObjectRecordData,
+  ObjectRecordData$inboundSchema,
+} from "./object-record-data.js";
+import {
+  ObjectRecordLineItemRowData,
+  ObjectRecordLineItemRowData$inboundSchema,
+} from "./object-record-line-item-row-data.js";
+import {
+  ObjectRecordViewData,
+  ObjectRecordViewData$inboundSchema,
+} from "./object-record-view-data.js";
+
+export type ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordLineItemRowData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    nextCursor?: string | null | undefined;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet =
+  | ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData
+  | ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData;
 
 export type ListPublicSubscriptionsApiV2PublicSubscriptionsGet200Envelope = {
   success: true;
-  data: ObjectRecordListData;
+  data:
+    | ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData
+    | ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData;
   meta: EnvelopeMeta;
 };
+
+/** @internal */
+export const ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(
+          z.array(ObjectRecordLineItemRowData$inboundSchema),
+        ),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+      });
+    }),
+  );
+
+export function listPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(z.array(ObjectRecordData$inboundSchema)),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        next_cursor: z.optional(z.nullable(types.string())),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+        "next_cursor": "nextCursor",
+      });
+    }),
+  );
+
+export function listPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet$inboundSchema:
+  z.ZodMiniType<
+    Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet,
+    unknown
+  > = smartUnion([
+    z.lazy(() =>
+      ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData$inboundSchema
+    ),
+    z.lazy(() =>
+      ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+    ),
+  ]);
+
+export function response200ListPublicSubscriptionsApiV2PublicSubscriptionsGetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'Response200ListPublicSubscriptionsApiV2PublicSubscriptionsGet' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListPublicSubscriptionsApiV2PublicSubscriptionsGet200Envelope$inboundSchema:
@@ -26,7 +192,14 @@ export const ListPublicSubscriptionsApiV2PublicSubscriptionsGet200Envelope$inbou
     unknown
   > = z.object({
     success: types.literal(true),
-    data: ObjectRecordListData$inboundSchema,
+    data: smartUnion([
+      z.lazy(() =>
+        ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordListData$inboundSchema
+      ),
+      z.lazy(() =>
+        ListPublicSubscriptionsApiV2PublicSubscriptionsGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+      ),
+    ]),
     meta: EnvelopeMeta$inboundSchema,
   });
 

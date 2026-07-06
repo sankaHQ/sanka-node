@@ -14,4 +14,6 @@ let value: ObjectRecordCreateRequest = {};
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `viewId`              | *string*              | :heavy_minus_sign:    | N/A                   |
 | `formViewId`          | *string*              | :heavy_minus_sign:    | N/A                   |
+| `costLineItems`       | *any*[]               | :heavy_minus_sign:    | N/A                   |
+| `lineItems`           | *any*[]               | :heavy_minus_sign:    | N/A                   |
 | `properties`          | Record<string, *any*> | :heavy_minus_sign:    | N/A                   |

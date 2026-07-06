@@ -21,6 +21,8 @@ export type RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNameProper
     provider?: string | null | undefined;
     channelId?: string | null | undefined;
     externalObjectType?: string | null | undefined;
+    customObjectSlug?: string | null | undefined;
+    customObject?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
   };
@@ -45,6 +47,8 @@ export type RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNameProper
     provider?: string | null | undefined;
     channel_id?: string | null | undefined;
     external_object_type?: string | null | undefined;
+    custom_object_slug?: string | null | undefined;
+    custom_object?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
   };
@@ -66,6 +70,8 @@ export const RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePrope
       provider: z.optional(z.nullable(z.string())),
       channelId: z.optional(z.nullable(z.string())),
       externalObjectType: z.optional(z.nullable(z.string())),
+      customObjectSlug: z.optional(z.nullable(z.string())),
+      customObject: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
     }),
@@ -76,6 +82,8 @@ export const RetrievePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePrope
         customObjectId: "custom_object_id",
         channelId: "channel_id",
         externalObjectType: "external_object_type",
+        customObjectSlug: "custom_object_slug",
+        customObject: "custom_object",
         workspaceId: "workspace_id",
         xWorkspaceCode: "X-Workspace-Code",
       });

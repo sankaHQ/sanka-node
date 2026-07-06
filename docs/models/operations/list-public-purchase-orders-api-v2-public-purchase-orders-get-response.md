@@ -6,32 +6,21 @@
 import { ListPublicPurchaseOrdersApiV2PublicPurchaseOrdersGetResponse } from "sanka-sdk/models/operations";
 
 let value: ListPublicPurchaseOrdersApiV2PublicPurchaseOrdersGetResponse = {
-  headers: {
-    "key": [
-      "<value 1>",
-      "<value 2>",
-    ],
-    "key1": [
-      "<value 1>",
-      "<value 2>",
-    ],
-    "key2": [
-      "<value 1>",
-    ],
-  },
+  headers: {},
   result: {
     success: true,
     data: {
       objectType: "<value>",
-      view: {},
+      view: {
+        viewType: "list",
+      },
       columns: [
         "<value 1>",
         "<value 2>",
-        "<value 3>",
       ],
-      page: 649857,
-      pageSize: 653504,
-      total: 801424,
+      page: 687543,
+      pageSize: 277009,
+      total: 195755,
     },
     meta: {
       ctxId: "<id>",

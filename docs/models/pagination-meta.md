@@ -19,3 +19,4 @@ let value: PaginationMeta = {
 | `page`             | *number*           | :heavy_check_mark: | N/A                |
 | `pageSize`         | *number*           | :heavy_check_mark: | N/A                |
 | `total`            | *number*           | :heavy_check_mark: | N/A                |
+| `nextCursor`       | *string*           | :heavy_minus_sign: | N/A                |

@@ -11,6 +11,7 @@ import * as models from "../index.js";
 
 export type CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPostRequest =
   {
+    language?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
     body: models.PublicCustomObjectRecordMutationRequest;
@@ -26,6 +27,7 @@ export type CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomO
 /** @internal */
 export type CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPostRequest$Outbound =
   {
+    language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
     body: models.PublicCustomObjectRecordMutationRequest$Outbound;
@@ -38,6 +40,7 @@ export const CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustom
     CreatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsPostRequest
   > = z.pipe(
     z.object({
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       body: models.PublicCustomObjectRecordMutationRequest$outboundSchema,

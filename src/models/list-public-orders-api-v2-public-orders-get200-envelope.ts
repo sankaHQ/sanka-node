@@ -3,28 +3,200 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smart-union.js";
 import { EnvelopeMeta, EnvelopeMeta$inboundSchema } from "./envelope-meta.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import {
-  ObjectRecordListData,
-  ObjectRecordListData$inboundSchema,
-} from "./object-record-list-data.js";
+  ObjectRecordData,
+  ObjectRecordData$inboundSchema,
+} from "./object-record-data.js";
+import {
+  ObjectRecordLineItemRowData,
+  ObjectRecordLineItemRowData$inboundSchema,
+} from "./object-record-line-item-row-data.js";
+import {
+  ObjectRecordViewData,
+  ObjectRecordViewData$inboundSchema,
+} from "./object-record-view-data.js";
+
+export type ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordLineItemRowData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData =
+  {
+    objectType: string;
+    view: ObjectRecordViewData;
+    columns: Array<string>;
+    columnLabels?: { [k: string]: string } | undefined;
+    items?: Array<ObjectRecordData> | undefined;
+    page: number;
+    pageSize: number;
+    total: number;
+    nextCursor?: string | null | undefined;
+    meta?: { [k: string]: any } | undefined;
+    [additionalProperties: string]: unknown;
+  };
+
+export type Response200ListPublicOrdersApiV2PublicOrdersGet =
+  | ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData
+  | ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData;
 
 export type ListPublicOrdersApiV2PublicOrdersGet200Envelope = {
   success: true;
-  data: ObjectRecordListData;
+  data:
+    | ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData
+    | ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData;
   meta: EnvelopeMeta;
 };
+
+/** @internal */
+export const ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(
+          z.array(ObjectRecordLineItemRowData$inboundSchema),
+        ),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+      });
+    }),
+  );
+
+export function listPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData$inboundSchema:
+  z.ZodMiniType<
+    ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData,
+    unknown
+  > = z.pipe(
+    z.catchall(
+      z.object({
+        object_type: types.string(),
+        view: ObjectRecordViewData$inboundSchema,
+        columns: z.array(types.string()),
+        column_labels: types.optional(z.record(z.string(), types.string())),
+        items: types.optional(z.array(ObjectRecordData$inboundSchema)),
+        page: types.number(),
+        page_size: types.number(),
+        total: types.number(),
+        next_cursor: z.optional(z.nullable(types.string())),
+        meta: types.optional(z.record(z.string(), z.any())),
+      }),
+      z.any(),
+    ),
+    z.transform((v) => {
+      return remap$(v, {
+        "object_type": "objectType",
+        "column_labels": "columnLabels",
+        "page_size": "pageSize",
+        "next_cursor": "nextCursor",
+      });
+    }),
+  );
+
+export function listPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListDataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData' from JSON`,
+  );
+}
+
+/** @internal */
+export const Response200ListPublicOrdersApiV2PublicOrdersGet$inboundSchema:
+  z.ZodMiniType<Response200ListPublicOrdersApiV2PublicOrdersGet, unknown> =
+    smartUnion([
+      z.lazy(() =>
+        ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData$inboundSchema
+      ),
+      z.lazy(() =>
+        ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+      ),
+    ]);
+
+export function response200ListPublicOrdersApiV2PublicOrdersGetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  Response200ListPublicOrdersApiV2PublicOrdersGet,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      Response200ListPublicOrdersApiV2PublicOrdersGet$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'Response200ListPublicOrdersApiV2PublicOrdersGet' from JSON`,
+  );
+}
 
 /** @internal */
 export const ListPublicOrdersApiV2PublicOrdersGet200Envelope$inboundSchema:
   z.ZodMiniType<ListPublicOrdersApiV2PublicOrdersGet200Envelope, unknown> = z
     .object({
       success: types.literal(true),
-      data: ObjectRecordListData$inboundSchema,
+      data: smartUnion([
+        z.lazy(() =>
+          ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordListData$inboundSchema
+        ),
+        z.lazy(() =>
+          ListPublicOrdersApiV2PublicOrdersGet200EnvelopeObjectRecordLineItemListData$inboundSchema
+        ),
+      ]),
       meta: EnvelopeMeta$inboundSchema,
     });
 

@@ -3,6 +3,7 @@
  */
 
 import { workflowsCreateOrUpdate } from "../funcs/workflows-create-or-update.js";
+import { workflowsDeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete } from "../funcs/workflows-delete-public-workflow-api-v2-public-workflows-workflow-id-delete.js";
 import { workflowsGet } from "../funcs/workflows-get.js";
 import { workflowsList } from "../funcs/workflows-list.js";
 import { workflowsRunByRef } from "../funcs/workflows-run-by-ref.js";
@@ -71,6 +72,25 @@ export class Workflows extends ClientSDK {
   > {
     return unwrapAsync(
       workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch(
+        this,
+        request,
+        options,
+      ),
+    );
+  }
+
+  /**
+   * Delete Public Workflow
+   */
+  async deletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete(
+    request:
+      operations.DeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDeleteRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.DeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDeleteResponse
+  > {
+    return unwrapAsync(
+      workflowsDeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete(
         this,
         request,
         options,

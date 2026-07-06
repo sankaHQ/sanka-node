@@ -15,6 +15,7 @@ export type OrderLineItemMutationRequest = {
   taxRate?: number | null | undefined;
   taxType?: string | null | undefined;
   totalPrice?: number | null | undefined;
+  totalPriceWithoutTax?: number | null | undefined;
   currency?: string | null | undefined;
   customFields?: { [k: string]: any } | undefined;
 };
@@ -30,6 +31,7 @@ export type OrderLineItemMutationRequest$Outbound = {
   tax_rate?: number | null | undefined;
   tax_type?: string | null | undefined;
   total_price?: number | null | undefined;
+  total_price_without_tax?: number | null | undefined;
   currency?: string | null | undefined;
   custom_fields?: { [k: string]: any } | undefined;
 };
@@ -49,6 +51,7 @@ export const OrderLineItemMutationRequest$outboundSchema: z.ZodMiniType<
     taxRate: z.optional(z.nullable(z.number())),
     taxType: z.optional(z.nullable(z.string())),
     totalPrice: z.optional(z.nullable(z.number())),
+    totalPriceWithoutTax: z.optional(z.nullable(z.number())),
     currency: z.optional(z.nullable(z.string())),
     customFields: z.optional(z.record(z.string(), z.any())),
   }),
@@ -62,6 +65,7 @@ export const OrderLineItemMutationRequest$outboundSchema: z.ZodMiniType<
       taxRate: "tax_rate",
       taxType: "tax_type",
       totalPrice: "total_price",
+      totalPriceWithoutTax: "total_price_without_tax",
       customFields: "custom_fields",
     });
   }),

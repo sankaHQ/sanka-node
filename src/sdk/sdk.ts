@@ -33,6 +33,7 @@ import { ObjectSchemas } from "./object-schemas.js";
 import { Orders } from "./orders.js";
 import { Payments } from "./payments.js";
 import { Payroll } from "./payroll.js";
+import { Projects } from "./projects.js";
 import { Properties } from "./properties.js";
 import { Prospect } from "./prospect.js";
 import { PublicAuth } from "./public-auth.js";
@@ -251,6 +252,11 @@ export class Sanka extends ClientSDK {
   private _tasks?: Tasks;
   get tasks(): Tasks {
     return (this._tasks ??= new Tasks(this._options));
+  }
+
+  private _projects?: Projects;
+  get projects(): Projects {
+    return (this._projects ??= new Projects(this._options));
   }
 
   private _tickets?: Tickets;

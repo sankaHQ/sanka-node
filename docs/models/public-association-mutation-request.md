@@ -26,3 +26,4 @@ let value: PublicAssociationMutationRequest = {
 | `definitionId`                              | *string*                                    | :heavy_minus_sign:                          | N/A                                         |
 | `label`                                     | *string*                                    | :heavy_minus_sign:                          | N/A                                         |
 | `idempotencyKey`                            | *string*                                    | :heavy_minus_sign:                          | N/A                                         |
+| `confirmAssociationWarnings`                | *boolean*                                   | :heavy_minus_sign:                          | N/A                                         |

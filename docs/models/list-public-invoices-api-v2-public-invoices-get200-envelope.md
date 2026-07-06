@@ -9,15 +9,16 @@ let value: ListPublicInvoicesApiV2PublicInvoicesGet200Envelope = {
   success: true,
   data: {
     objectType: "<value>",
-    view: {},
+    view: {
+      viewType: "list",
+    },
     columns: [
       "<value 1>",
       "<value 2>",
-      "<value 3>",
     ],
-    page: 649857,
-    pageSize: 653504,
-    total: 801424,
+    page: 49344,
+    pageSize: 835042,
+    total: 3045,
   },
   meta: {
     ctxId: "<id>",
@@ -27,8 +28,8 @@ let value: ListPublicInvoicesApiV2PublicInvoicesGet200Envelope = {
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `success`                                                           | *true*                                                              | :heavy_check_mark:                                                  | N/A                                                                 |
-| `data`                                                              | [models.ObjectRecordListData](../models/object-record-list-data.md) | :heavy_check_mark:                                                  | N/A                                                                 |
-| `meta`                                                              | [models.EnvelopeMeta](../models/envelope-meta.md)                   | :heavy_check_mark:                                                  | N/A                                                                 |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `success`                                                    | *true*                                                       | :heavy_check_mark:                                           | N/A                                                          |
+| `data`                                                       | *models.Response200ListPublicInvoicesApiV2PublicInvoicesGet* | :heavy_check_mark:                                           | N/A                                                          |
+| `meta`                                                       | [models.EnvelopeMeta](../models/envelope-meta.md)            | :heavy_check_mark:                                           | N/A                                                          |

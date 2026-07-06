@@ -101,6 +101,9 @@ async function $do(
   const path = pathToFunc("/v2/public/absences")();
 
   const query = encodeFormQuery({
+    "created_at_from": payload?.created_at_from,
+    "created_at_to": payload?.created_at_to,
+    "cursor": payload?.cursor,
     "language": payload?.language,
     "limit": payload?.limit,
     "page": payload?.page,
@@ -109,6 +112,8 @@ async function $do(
     "start_date_from": payload?.start_date_from,
     "start_date_to": payload?.start_date_to,
     "status": payload?.status,
+    "updated_at_from": payload?.updated_at_from,
+    "updated_at_to": payload?.updated_at_to,
     "usage_status": payload?.usage_status,
     "view_id": payload?.view_id,
     "worker_id": payload?.worker_id,

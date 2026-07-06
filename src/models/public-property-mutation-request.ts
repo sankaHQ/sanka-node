@@ -18,6 +18,7 @@ export type PublicPropertyMutationRequest = {
   target?: string | null | undefined;
   language?: string | null | undefined;
   customObjectId?: string | null | undefined;
+  customObjectSlug?: string | null | undefined;
   editorVariant?: string | null | undefined;
   source?: string | null | undefined;
   scope?: string | null | undefined;
@@ -57,6 +58,7 @@ export type PublicPropertyMutationRequest$Outbound = {
   target?: string | null | undefined;
   language?: string | null | undefined;
   custom_object_id?: string | null | undefined;
+  custom_object_slug?: string | null | undefined;
   editor_variant?: string | null | undefined;
   source?: string | null | undefined;
   scope?: string | null | undefined;
@@ -92,6 +94,7 @@ export const PublicPropertyMutationRequest$outboundSchema: z.ZodMiniType<
       target: z.optional(z.nullable(z.string())),
       language: z.optional(z.nullable(z.string())),
       customObjectId: z.optional(z.nullable(z.string())),
+      customObjectSlug: z.optional(z.nullable(z.string())),
       editorVariant: z.optional(z.nullable(z.string())),
       source: z.optional(z.nullable(z.string())),
       scope: z.optional(z.nullable(z.string())),
@@ -115,6 +118,7 @@ export const PublicPropertyMutationRequest$outboundSchema: z.ZodMiniType<
         choiceLabels: "choice_labels",
         choiceColors: "choice_colors",
         customObjectId: "custom_object_id",
+        customObjectSlug: "custom_object_slug",
         editorVariant: "editor_variant",
         channelId: "channel_id",
         externalObjectType: "external_object_type",

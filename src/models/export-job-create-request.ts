@@ -24,6 +24,10 @@ export type ExportJobCreateRequest = {
   exportSetItems?: boolean | undefined;
   setCodeSource?: string | null | undefined;
   mappingCustomFields?: { [k: string]: any } | null | undefined;
+  mappingCustomFieldsConditional?: { [k: string]: any } | null | undefined;
+  updateHubspot?: any | null | undefined;
+  hubspotFollowUpChannelId?: string | null | undefined;
+  hubspotFollowUpDealStage?: string | null | undefined;
   mappingType?: string | null | undefined;
   selectedCustomObject?: string | null | undefined;
 };
@@ -48,6 +52,10 @@ export type ExportJobCreateRequest$Outbound = {
   export_set_items: boolean;
   set_code_source?: string | null | undefined;
   mapping_custom_fields?: { [k: string]: any } | null | undefined;
+  mapping_custom_fields_conditional?: { [k: string]: any } | null | undefined;
+  update_hubspot?: any | null | undefined;
+  hubspot_follow_up_channel_id?: string | null | undefined;
+  hubspot_follow_up_deal_stage?: string | null | undefined;
   mapping_type?: string | null | undefined;
   selected_custom_object?: string | null | undefined;
 };
@@ -76,6 +84,12 @@ export const ExportJobCreateRequest$outboundSchema: z.ZodMiniType<
     exportSetItems: z._default(z.boolean(), false),
     setCodeSource: z.optional(z.nullable(z.string())),
     mappingCustomFields: z.optional(z.nullable(z.record(z.string(), z.any()))),
+    mappingCustomFieldsConditional: z.optional(
+      z.nullable(z.record(z.string(), z.any())),
+    ),
+    updateHubspot: z.optional(z.nullable(z.any())),
+    hubspotFollowUpChannelId: z.optional(z.nullable(z.string())),
+    hubspotFollowUpDealStage: z.optional(z.nullable(z.string())),
     mappingType: z.optional(z.nullable(z.string())),
     selectedCustomObject: z.optional(z.nullable(z.string())),
   }),
@@ -96,6 +110,10 @@ export const ExportJobCreateRequest$outboundSchema: z.ZodMiniType<
       exportSetItems: "export_set_items",
       setCodeSource: "set_code_source",
       mappingCustomFields: "mapping_custom_fields",
+      mappingCustomFieldsConditional: "mapping_custom_fields_conditional",
+      updateHubspot: "update_hubspot",
+      hubspotFollowUpChannelId: "hubspot_follow_up_channel_id",
+      hubspotFollowUpDealStage: "hubspot_follow_up_deal_stage",
       mappingType: "mapping_type",
       selectedCustomObject: "selected_custom_object",
     });

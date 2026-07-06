@@ -26,6 +26,7 @@ export type ObjectRecordListData = {
   page: number;
   pageSize: number;
   total: number;
+  nextCursor?: string | null | undefined;
   meta?: { [k: string]: any } | undefined;
 };
 
@@ -43,6 +44,7 @@ export const ObjectRecordListData$inboundSchema: z.ZodMiniType<
     page: types.number(),
     page_size: types.number(),
     total: types.number(),
+    next_cursor: z.optional(z.nullable(types.string())),
     meta: types.optional(z.record(z.string(), z.any())),
   }),
   z.transform((v) => {
@@ -50,6 +52,7 @@ export const ObjectRecordListData$inboundSchema: z.ZodMiniType<
       "object_type": "objectType",
       "column_labels": "columnLabels",
       "page_size": "pageSize",
+      "next_cursor": "nextCursor",
     });
   }),
 );

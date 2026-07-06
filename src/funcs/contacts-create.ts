@@ -95,6 +95,7 @@ async function $do(
   const path = pathToFunc("/v2/public/contacts")();
 
   const query = encodeFormQuery({
+    "language": payload.language,
     "workspace_id": payload.workspace_id,
   });
 

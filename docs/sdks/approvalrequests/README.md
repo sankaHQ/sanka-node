@@ -4,84 +4,9 @@
 
 ### Available Operations
 
-* [listApprovalRequestsApiV2PublicApprovalRequestsGet](#listapprovalrequestsapiv2publicapprovalrequestsget) - List Approval Requests
 * [createApprovalRequestApiV2PublicApprovalRequestsPost](#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
 * [approveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost](#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
 * [rejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost](#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
-
-## listApprovalRequestsApiV2PublicApprovalRequestsGet
-
-List Approval Requests
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="list_approval_requests_api_v2_public_approval_requests_get" method="get" path="/v2/public/approval-requests" -->
-```typescript
-import { Sanka } from "sanka-sdk";
-
-const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await sanka.approvalRequests.listApprovalRequestsApiV2PublicApprovalRequestsGet({
-    recordId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { SankaCore } from "sanka-sdk/core.js";
-import { approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet } from "sanka-sdk/funcs/approval-requests-list-approval-requests-api-v2-public-approval-requests-get.js";
-
-// Use `SankaCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const res = await approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet(sanka, {
-    recordId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("approvalRequestsListApprovalRequestsApiV2PublicApprovalRequestsGet failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListApprovalRequestsApiV2PublicApprovalRequestsGetRequest](../../models/operations/list-approval-requests-api-v2-public-approval-requests-get-request.md)          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.ListApprovalRequestsApiV2PublicApprovalRequestsGetResponse](../../models/operations/list-approval-requests-api-v2-public-approval-requests-get-response.md)\>**
-
-### Errors
-
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.ErrorEnvelope     | 401, 403, 422            | application/json         |
-| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
 ## createApprovalRequestApiV2PublicApprovalRequestsPost
 

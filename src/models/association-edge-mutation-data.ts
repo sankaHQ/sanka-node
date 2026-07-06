@@ -16,6 +16,7 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 export type AssociationEdgeMutationData = {
   edge?: AssociationEdge | null | undefined;
   edges?: Array<AssociationEdge> | undefined;
+  edgeIds?: Array<string> | undefined;
   created: boolean;
   deleted: boolean;
   replaced: boolean;
@@ -31,6 +32,7 @@ export const AssociationEdgeMutationData$inboundSchema: z.ZodMiniType<
   z.object({
     edge: z.optional(z.nullable(AssociationEdge$inboundSchema)),
     edges: types.optional(z.array(AssociationEdge$inboundSchema)),
+    edge_ids: types.optional(z.array(types.string())),
     created: z._default(types.boolean(), false),
     deleted: z._default(types.boolean(), false),
     replaced: z._default(types.boolean(), false),
@@ -39,6 +41,7 @@ export const AssociationEdgeMutationData$inboundSchema: z.ZodMiniType<
   }),
   z.transform((v) => {
     return remap$(v, {
+      "edge_ids": "edgeIds",
       "ctx_id": "ctxId",
     });
   }),

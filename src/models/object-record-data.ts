@@ -18,6 +18,8 @@ export type ObjectRecordData = {
   recordId: string;
   objectType: string;
   customObjectId?: string | null | undefined;
+  status?: string | null | undefined;
+  usageStatus?: string | null | undefined;
   properties?: { [k: string]: any | null } | undefined;
   displayProperties?: { [k: string]: ObjectRecordDisplayValue } | undefined;
 };
@@ -32,6 +34,8 @@ export const ObjectRecordData$inboundSchema: z.ZodMiniType<
     record_id: types.string(),
     object_type: types.string(),
     custom_object_id: z.optional(z.nullable(types.string())),
+    status: z.optional(z.nullable(types.string())),
+    usage_status: z.optional(z.nullable(types.string())),
     properties: types.optional(z.record(z.string(), types.nullable(z.any()))),
     display_properties: types.optional(
       z.record(z.string(), ObjectRecordDisplayValue$inboundSchema),
@@ -42,6 +46,7 @@ export const ObjectRecordData$inboundSchema: z.ZodMiniType<
       "record_id": "recordId",
       "object_type": "objectType",
       "custom_object_id": "customObjectId",
+      "usage_status": "usageStatus",
       "display_properties": "displayProperties",
     });
   }),

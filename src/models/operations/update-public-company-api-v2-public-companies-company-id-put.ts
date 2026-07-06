@@ -12,9 +12,10 @@ import * as models from "../index.js";
 export type UpdatePublicCompanyApiV2PublicCompaniesCompanyIdPutRequest = {
   companyId: string;
   externalId?: string | null | undefined;
+  language?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
-  body: models.PublicObjectRecordMutationRequest;
+  body: models.CompanyMutationRequest;
 };
 
 export type UpdatePublicCompanyApiV2PublicCompaniesCompanyIdPutResponse = {
@@ -27,9 +28,10 @@ export type UpdatePublicCompanyApiV2PublicCompaniesCompanyIdPutRequest$Outbound 
   {
     company_id: string;
     external_id?: string | null | undefined;
+    language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: models.PublicObjectRecordMutationRequest$Outbound;
+    body: models.CompanyMutationRequest$Outbound;
   };
 
 /** @internal */
@@ -41,9 +43,10 @@ export const UpdatePublicCompanyApiV2PublicCompaniesCompanyIdPutRequest$outbound
     z.object({
       companyId: z.string(),
       externalId: z.optional(z.nullable(z.string())),
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: models.PublicObjectRecordMutationRequest$outboundSchema,
+      body: models.CompanyMutationRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

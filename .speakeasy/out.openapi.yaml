@@ -37,6 +37,7 @@ tags:
   - name: "payments"
   - name: "payroll"
   - name: "properties"
+  - name: "projects"
   - name: "public-auth"
   - name: "purchase-orders"
   - name: "records"
@@ -151,6 +152,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -159,6 +168,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -630,64 +671,6 @@ paths:
       x-speakeasy-group: ai
       x-speakeasy-name-override: score
   /v2/public/approval-requests:
-    get:
-      tags:
-        - "approval-requests"
-      summary: "List Approval Requests"
-      operationId: "list_approval_requests_api_v2_public_approval_requests_get"
-      parameters:
-        - name: "record_id"
-          in: "query"
-          required: true
-          schema:
-            type: "string"
-            title: "Record Id"
-        - name: "object"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Object"
-        - name: "object_type"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Object Type"
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListApprovalRequestsApiV2PublicApprovalRequestsGet200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
     post:
       tags:
         - "approval-requests"
@@ -1054,6 +1037,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -1062,6 +1053,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -1379,6 +1402,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -1387,6 +1418,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -1407,7 +1470,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -1750,6 +1813,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -1758,6 +1829,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -1802,6 +1905,14 @@ paths:
       summary: "Create Public Company"
       operationId: "create_public_company_api_v2_public_companies_post"
       parameters:
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -1816,7 +1927,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PublicObjectRecordMutationRequest"
+              $ref: "#/components/schemas/CompanyMutationRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -1923,6 +2034,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "External Id"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -1937,7 +2056,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PublicObjectRecordMutationRequest"
+              $ref: "#/components/schemas/CompanyMutationRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -2388,6 +2507,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -2396,6 +2523,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -2440,6 +2599,14 @@ paths:
       summary: "Create Public Contact"
       operationId: "create_public_contact_api_v2_public_contacts_post"
       parameters:
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -2561,6 +2728,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "External Id"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -2771,6 +2946,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -2779,6 +2962,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -2831,6 +3046,14 @@ paths:
           schema:
             type: "string"
             title: "Custom Object Id"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -2952,6 +3175,14 @@ paths:
           schema:
             type: "string"
             title: "Record Id"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -3145,6 +3376,14 @@ paths:
       summary: "Create Public Custom Object Record Compatibility"
       operationId: "create_public_custom_object_record_compatibility_api_v2_public_records_custom_objects_records_post"
       parameters:
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -3192,6 +3431,14 @@ paths:
           schema:
             type: "string"
             title: "Record Id"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -3348,6 +3595,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -3356,6 +3611,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -3761,6 +4048,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -3769,6 +4064,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -4377,6 +4704,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -4385,6 +4720,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -4495,6 +4862,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -4503,6 +4878,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -4523,7 +4930,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -4948,6 +5355,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -4956,6 +5371,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -5329,6 +5776,7 @@ paths:
       tags:
         - "exports"
       summary: "Create Public Export Job Compat"
+      description: "Create an export job.\n\nIntegration-destination exports are validated against the runnable\ndelivery matrix (item/order to nextengine, and company/contact/deal/item/\norder to hubspot via the native outbound dispatcher). Provider and\nobject pairs without a working delivery pipeline are rejected with HTTP\n400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` (details:\n``object_type``, ``provider``, ``reason``) before any job history row or\noutbound event is created. Empty or unknown provider slugs are rejected\nwith HTTP 400 and error code ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``.\nAccepted integration exports are recorded with status ``queued`` while\nbackground delivery runs."
       operationId: "create_public_export_job_compat_api_v2_public_exports_post"
       parameters:
         - name: "workspace_id"
@@ -5356,6 +5804,8 @@ paths:
           headers:
             x-ctx-id:
               $ref: "#/components/headers/XCtxId"
+        "400":
+          $ref: "#/components/responses/ErrorResponse"
         "422":
           $ref: "#/components/responses/ErrorResponse"
         "401":
@@ -5577,6 +6027,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -5585,6 +6043,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -5907,6 +6397,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -5915,6 +6413,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -6218,6 +6748,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -6226,6 +6764,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -6246,7 +6816,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -6334,6 +6904,64 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UploadPublicInvoiceFileApiV2PublicInvoicesFilesPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/bulk-update:
+    post:
+      tags:
+        - "invoices"
+      summary: "Bulk Update Public Invoices"
+      operationId: "bulk_update_public_invoices_api_v2_public_invoices_bulk_update_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordBulkActionRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost202Envelope"
+          description: "Accepted"
           headers:
             x-ctx-id:
               $ref: "#/components/headers/XCtxId"
@@ -6710,9 +7338,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              additionalProperties: true
-              title: "Payload"
+              $ref: "#/components/schemas/PublicInvoiceEmailRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -7735,6 +8361,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -7743,6 +8377,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -8074,6 +8740,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -8082,6 +8756,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - name: "Accept-Language"
           in: "header"
           required: false
@@ -8546,6 +9252,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -8554,6 +9268,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -8868,6 +9614,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -8876,6 +9630,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -9315,6 +10101,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -9323,6 +10117,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -9343,7 +10169,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -9810,6 +10636,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -9818,6 +10652,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -10775,6 +11641,22 @@ paths:
               - type: "string"
               - type: "null"
             title: "External Object Type"
+        - name: "custom_object_slug"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object Slug"
+        - name: "custom_object"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -10934,6 +11816,22 @@ paths:
               - type: "string"
               - type: "null"
             title: "External Object Type"
+        - name: "custom_object_slug"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object Slug"
+        - name: "custom_object"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -11114,6 +12012,22 @@ paths:
               - type: "string"
               - type: "null"
             title: "Language"
+        - name: "custom_object_slug"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object Slug"
+        - name: "custom_object"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Custom Object"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -11708,6 +12622,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -11716,6 +12638,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -11736,7 +12690,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -12248,6 +13202,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -12256,6 +13218,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -13505,6 +14499,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -13513,6 +14515,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -13533,7 +14567,7 @@ paths:
             title: "Accept-Language"
       responses:
         "200":
-          description: "Object record list response"
+          description: "Object record list or line-item-expanded list response"
           content:
             application/json:
               schema:
@@ -13592,6 +14626,64 @@ paths:
       security:
         - bearerAuth: []
       x-speakeasy-name-override: create
+  /v2/public/subscriptions/bulk-update:
+    post:
+      tags:
+        - "subscriptions"
+      summary: "Bulk Update Public Subscriptions"
+      operationId: "bulk_update_public_subscriptions_api_v2_public_subscriptions_bulk_update_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordBulkActionRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost202Envelope"
+          description: "Accepted"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/subscriptions/{subscription_id}:
     get:
       tags:
@@ -13769,6 +14861,22 @@ paths:
       summary: "List Public Tasks"
       operationId: "list_public_tasks_api_v2_public_tasks_get"
       parameters:
+        - name: "project_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Project Id"
+        - name: "p_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "P Id"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -13835,6 +14943,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -13843,6 +14959,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -14063,6 +15211,336 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/projects:
+    get:
+      tags:
+        - "projects"
+      summary: "List Public Projects"
+      operationId: "list_public_projects_api_v2_public_projects_get"
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                minimum: 1
+              - type: "null"
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                maximum: 100
+                minimum: 1
+              - type: "null"
+            title: "Limit"
+        - name: "search"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search"
+        - name: "default"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "boolean"
+              - type: "null"
+            title: "Default"
+        - name: "lang"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Lang"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+      responses:
+        "200":
+          description: "Project list response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicProjectsApiV2PublicProjectsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "projects"
+      summary: "Create Public Project"
+      operationId: "create_public_project_api_v2_public_projects_post"
+      parameters:
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublicProjectRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicProjectApiV2PublicProjectsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/projects/{project_id}:
+    get:
+      tags:
+        - "projects"
+      summary: "Get Public Project"
+      operationId: "get_public_project_api_v2_public_projects_project_id_get"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Project Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+      responses:
+        "200":
+          description: "Project detail response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicProjectApiV2PublicProjectsProjectIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - "projects"
+      summary: "Update Public Project"
+      operationId: "update_public_project_api_v2_public_projects_project_id_put"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Project Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublicProjectRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicProjectApiV2PublicProjectsProjectIdPut200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - "projects"
+      summary: "Delete Public Project"
+      operationId: "delete_public_project_api_v2_public_projects_project_id_delete"
+      parameters:
+        - name: "project_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Project Id"
+        - name: "replacement_project_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Replacement Project Id"
+        - name: "clear_task_project"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "boolean"
+              - type: "null"
+            title: "Clear Task Project"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/PublicProjectDeleteRequest"
+                - type: "null"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicProjectApiV2PublicProjectsProjectIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "409":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/tickets:
     get:
       tags:
@@ -14136,6 +15614,14 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
+        - name: "cursor"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -14144,6 +15630,38 @@ paths:
               - type: "string"
               - type: "null"
             title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
@@ -15117,6 +16635,48 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+    delete:
+      tags:
+        - "workflows"
+      summary: "Delete Public Workflow"
+      operationId: "delete_public_workflow_api_v2_public_workflows__workflow_id__delete"
+      parameters:
+        - name: "workflow_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Workflow Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/workflows/{workflow_id}/run:
     post:
       tags:
@@ -15214,6 +16774,50 @@ paths:
       security:
         - bearerAuth: []
       x-speakeasy-name-override: getRun
+  /v2/public/workflows/runs/{run_id}:
+    get:
+      tags:
+        - "workflow-runs"
+      summary: "Get Public Workflow Run Nested Compat"
+      operationId: "get_public_workflow_run_nested_compat_api_v2_public_workflows_runs__run_id__get"
+      parameters:
+        - name: "run_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            minLength: 1
+            title: "Run Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicWorkflowRunNestedCompatApiV2PublicWorkflowsRunsRunIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/workflow-runs/resolve-record:
     post:
       tags:
@@ -15300,6 +16904,264 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/invoices/drafts/hubspot/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Hubspot Invoice Draft"
+      operationId: "preview_public_hubspot_invoice_draft_api_v2_public_invoices_drafts_hubspot_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/exports/freee/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Freee Invoice Export"
+      operationId: "preview_public_freee_invoice_export_api_v2_public_invoices_exports_freee_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/exports/moneyforward/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Moneyforward Invoice Export"
+      operationId: "preview_public_moneyforward_invoice_export_api_v2_public_invoices_exports_moneyforward_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/estimates/drafts/hubspot/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Hubspot Estimate Draft"
+      operationId: "preview_public_hubspot_estimate_draft_api_v2_public_estimates_drafts_hubspot_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/orders/handoffs/hubspot/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Hubspot Order Handoff"
+      operationId: "preview_public_hubspot_order_handoff_api_v2_public_orders_handoffs_hubspot_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/incentives/commission/hubspot/preview:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Preview Public Hubspot Commission Incentive"
+      operationId: "preview_public_hubspot_commission_incentive_api_v2_public_incentives_commission_hubspot_preview_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreviewPublicHubspotCommissionIncentiveApiV2PublicIncentivesCommissionHubspotPreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/cpq/quote-readiness/salesforce/preview:
     post:
       tags:
@@ -15331,6 +17193,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PreviewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/cpq/quote-readiness/salesforce/summary:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Summarize Public Salesforce Quote Readiness"
+      operationId: "summarize_public_salesforce_quote_readiness_api_v2_public_cpq_quote_readiness_salesforce_summary_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SummarizePublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceSummaryPost200Envelope"
           headers:
             x-ctx-id:
               $ref: "#/components/headers/XCtxId"
@@ -15380,6 +17285,309 @@ paths:
         "401":
           $ref: "#/components/responses/ErrorResponse"
         "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/drafts/hubspot:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Hubspot Invoice Draft"
+      operationId: "start_public_hubspot_invoice_draft_api_v2_public_invoices_drafts_hubspot_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/exports/freee:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Freee Invoice Export"
+      operationId: "start_public_freee_invoice_export_api_v2_public_invoices_exports_freee_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/invoices/exports/moneyforward:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Moneyforward Invoice Export"
+      operationId: "start_public_moneyforward_invoice_export_api_v2_public_invoices_exports_moneyforward_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/estimates/drafts/hubspot:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Hubspot Estimate Draft"
+      operationId: "start_public_hubspot_estimate_draft_api_v2_public_estimates_drafts_hubspot_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/orders/handoffs/hubspot:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Hubspot Order Handoff"
+      operationId: "start_public_hubspot_order_handoff_api_v2_public_orders_handoffs_hubspot_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/reports/revenue-control/hubspot:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Start Public Hubspot Revenue Control Report"
+      operationId: "start_public_hubspot_revenue_control_report_api_v2_public_reports_revenue_control_hubspot_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartPublicHubspotRevenueControlReportApiV2PublicReportsRevenueControlHubspotPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/cpq/quote-readiness/salesforce/writeback:
+    post:
+      tags:
+        - "workflow-runs"
+      summary: "Writeback Public Salesforce Quote Readiness"
+      operationId: "writeback_public_salesforce_quote_readiness_api_v2_public_cpq_quote_readiness_salesforce_writeback_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              additionalProperties: true
+              title: "Payload"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WritebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
           $ref: "#/components/responses/ErrorResponse"
       x-sanka-surface: "public_developer"
       x-sanka-api-version: "v2"
@@ -15743,6 +17951,62 @@ components:
           title: "Response Bulk Create Public Orders Api V2 Public Orders Bulk Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordBulkActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    BulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost202Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordBulkActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordBulkActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    BulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkUpdatePost202Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordBulkActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CalculatePublicIncentivesApiV2PublicIncentivesCalculatePost200Envelope:
       type: "object"
       required:
@@ -15807,6 +18071,76 @@ components:
           title: "Response Cancel Public Import Job Compat Api V2 Public Imports  Job Id  Cancel Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    CompanyMutationRequest:
+      properties:
+        view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "View Id"
+        form_view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Form View Id"
+        properties:
+          additionalProperties: true
+          type: "object"
+          title: "Properties"
+        target:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target"
+          default: "sanka"
+        provider:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Provider"
+        channel_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Id"
+        external_object_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "External Object Type"
+        external_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "External Id"
+        operation:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Operation"
+        dry_run:
+          type: "boolean"
+          title: "Dry Run"
+          default: false
+        confirm:
+          type: "boolean"
+          title: "Confirm"
+          default: false
+        billing_cycle:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Billing Cycle"
+          description: "Company billing cycle. Accepted values include 'end' for month-end or '1' through '31' for a closing day."
+        payment_cycle:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Payment Cycle"
+          description: "Company payment cycle. Accepted values include 'cmonth_end', 'nmonth_end', or net terms such as 'net_30'."
+      additionalProperties: true
+      type: "object"
+      title: "CompanyMutationRequest"
     CompanyPriceTableApplyAllRequest:
       properties:
         price_precentage:
@@ -17001,6 +19335,22 @@ components:
           title: "Response Delete Public View Api V2 Public Views  View Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Delete Public Workflow Api V2 Public Workflows  Workflow Id  Delete"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     DownloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet200Envelope:
       type: "object"
       required:
@@ -17148,6 +19498,27 @@ components:
               type: "object"
             - type: "null"
           title: "Mapping Custom Fields"
+        mapping_custom_fields_conditional:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Mapping Custom Fields Conditional"
+        update_hubspot:
+          anyOf:
+            - {}
+            - type: "null"
+          title: "Update Hubspot"
+        hubspot_follow_up_channel_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Hubspot Follow Up Channel Id"
+        hubspot_follow_up_deal_stage:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Hubspot Follow Up Deal Stage"
         mapping_type:
           anyOf:
             - type: "string"
@@ -17834,6 +20205,22 @@ components:
           title: "Response Get Public Workflow Run Api V2 Public Workflow Runs  Run Id  Get"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicWorkflowRunNestedCompatApiV2PublicWorkflowsRunsRunIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Get Public Workflow Run Nested Compat Api V2 Public Workflows Runs  Run Id  Get"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     ImportJobCreateRequest:
       properties:
         object_type:
@@ -17880,6 +20267,7 @@ components:
               type: "object"
             - type: "null"
           title: "Source Record"
+          description: "Provider-specific source metadata. For Stripe invoice/subscription backfills, use scope=all with optional days_ago, created_gte, and limit; bounded synchronous backfills support up to 200 records."
         operation:
           type: "string"
           title: "Operation"
@@ -18263,22 +20651,6 @@ components:
           default: 25
       type: "object"
       title: "JournalStatementViewCreateRequest"
-    ListApprovalRequestsApiV2PublicApprovalRequestsGet200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          type: "object"
-          additionalProperties: true
-          title: "Response List Approval Requests Api V2 Public Approval Requests Get"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicAbsencesApiV2PublicAbsencesGet200Envelope:
       type: "object"
       required:
@@ -18362,7 +20734,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Bills Api V2 Public Bills Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicCompaniesApiV2PublicCompaniesGet200Envelope:
@@ -18524,7 +20901,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Estimates Api V2 Public Estimates Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicExpensesApiV2PublicExpensesGet200Envelope:
@@ -18692,7 +21074,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Invoices Api V2 Public Invoices Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicItemsApiV2PublicItemsGet200Envelope:
@@ -18794,7 +21181,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Orders Api V2 Public Orders Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet200Envelope:
@@ -18886,7 +21278,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Purchase Orders Api V2 Public Purchase Orders Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicReportsApiV2PublicReportsGet200Envelope:
@@ -18930,7 +21327,12 @@ components:
           type: "boolean"
           const: true
         data:
-          $ref: "#/components/schemas/ObjectRecordListData"
+          type: "object"
+          additionalProperties: true
+          title: "Response 200 List Public Subscriptions Api V2 Public Subscriptions Get"
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordListData"
+            - $ref: "#/components/schemas/ObjectRecordLineItemListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicTasksApiV2PublicTasksGet200Envelope:
@@ -19164,6 +21566,43 @@ components:
           title: "Response Mutate Public Object Schema Api V2 Public Object Schemas Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    ObjectRecordBulkActionRequest:
+      properties:
+        ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Ids"
+        flag_all:
+          type: "boolean"
+          title: "Flag All"
+          default: false
+        properties:
+          additionalProperties: true
+          type: "object"
+          title: "Properties"
+        search:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Search"
+        status:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Status"
+        usage_status:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Usage Status"
+        view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "View Id"
+      type: "object"
+      title: "ObjectRecordBulkActionRequest"
     ObjectRecordCreateRequest:
       properties:
         view_id:
@@ -19176,6 +21615,18 @@ components:
             - type: "string"
             - type: "null"
           title: "Form View Id"
+        cost_line_items:
+          anyOf:
+            - items: {}
+              type: "array"
+            - type: "null"
+          title: "Cost Line Items"
+        line_items:
+          anyOf:
+            - items: {}
+              type: "array"
+            - type: "null"
+          title: "Line Items"
         properties:
           additionalProperties:
             anyOf:
@@ -19198,13 +21649,40 @@ components:
             - type: "string"
             - type: "null"
           title: "Form View Id"
+        associations:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Associations"
+        cost_line_items:
+          anyOf:
+            - items: {}
+              type: "array"
+            - type: "null"
+          title: "Cost Line Items"
+        files:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Files"
+        line_items:
+          anyOf:
+            - items: {}
+              type: "array"
+            - type: "null"
+          title: "Line Items"
         properties:
           additionalProperties:
             anyOf:
               - {}
               - type: "null"
           type: "object"
-          minProperties: 1
           title: "Properties"
       type: "object"
       title: "ObjectRecordUpdateRequest"
@@ -19389,6 +21867,102 @@ components:
           title: "Response Permanent Delete Public Invoice Api V2 Public Invoices  Invoice Id  Permanent Delete Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Freee Invoice Export Api V2 Public Invoices Exports Freee Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicHubspotCommissionIncentiveApiV2PublicIncentivesCommissionHubspotPreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Hubspot Commission Incentive Api V2 Public Incentives Commission Hubspot Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Hubspot Estimate Draft Api V2 Public Estimates Drafts Hubspot Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Hubspot Invoice Draft Api V2 Public Invoices Drafts Hubspot Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Hubspot Order Handoff Api V2 Public Orders Handoffs Hubspot Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PreviewPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPreviewPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Preview Public Moneyforward Invoice Export Api V2 Public Invoices Exports Moneyforward Preview Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     PreviewPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforcePreviewPost200Envelope:
       type: "object"
       required:
@@ -19560,6 +22134,10 @@ components:
             - type: "string"
             - type: "null"
           title: "Idempotency Key"
+        confirm_association_warnings:
+          type: "boolean"
+          title: "Confirm Association Warnings"
+          default: false
       type: "object"
       required:
         - "source_ref"
@@ -19643,6 +22221,64 @@ components:
       required:
         - "name"
       title: "PublicDeliveryRuleSaveRequest"
+    PublicInvoiceEmailRequest:
+      properties:
+        action:
+          type: "string"
+          enum:
+            - "draft"
+            - "send"
+            - "schedule"
+          title: "Action"
+          default: "send"
+        to:
+          items:
+            type: "string"
+          type: "array"
+          title: "To"
+        cc:
+          items:
+            type: "string"
+          type: "array"
+          title: "Cc"
+        subject:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Subject"
+        body:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Body"
+        scheduled_at:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Scheduled At"
+        template_select:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Template Select"
+        additional_pdf_attachments:
+          items:
+            $ref: "#/components/schemas/PublicInvoiceEmailPdfAttachment"
+          type: "array"
+          title: "Additional Pdf Attachments"
+        channel_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channel Id"
+        external_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "External Id"
+      type: "object"
+      title: "PublicInvoiceEmailRequest"
     PublicLockRuleSaveRequest:
       properties:
         object:
@@ -19809,6 +22445,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Custom Object Id"
+        custom_object_slug:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Custom Object Slug"
         editor_variant:
           anyOf:
             - type: "string"
@@ -20058,6 +22699,11 @@ components:
           minimum: 1.0
           title: "Limit"
           default: 25
+        cursor:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Cursor"
       additionalProperties: true
       type: "object"
       title: "PublicRecordQueryRequest"
@@ -20629,9 +23275,103 @@ components:
           type: "boolean"
           const: true
         data:
+          $ref: "#/components/schemas/PublicInvoiceEmailData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFreeePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
           type: "object"
           additionalProperties: true
-          title: "Response Send Public Invoice Email Api V2 Public Invoices  Invoice Id  Email Post"
+          title: "Response Start Public Freee Invoice Export Api V2 Public Invoices Exports Freee Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHubspotPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Start Public Hubspot Estimate Draft Api V2 Public Estimates Drafts Hubspot Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubspotPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Start Public Hubspot Invoice Draft Api V2 Public Invoices Drafts Hubspot Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubspotPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Start Public Hubspot Order Handoff Api V2 Public Orders Handoffs Hubspot Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicHubspotRevenueControlReportApiV2PublicReportsRevenueControlHubspotPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Start Public Hubspot Revenue Control Report Api V2 Public Reports Revenue Control Hubspot Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    StartPublicMoneyforwardInvoiceExportApiV2PublicInvoicesExportsMoneyforwardPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Start Public Moneyforward Invoice Export Api V2 Public Invoices Exports Moneyforward Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     StartPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost200Envelope:
@@ -20648,6 +23388,22 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Start Public Workflow Compat Api V2 Public Workflow Runs Start Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    SummarizePublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceSummaryPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Summarize Public Salesforce Quote Readiness Api V2 Public Cpq Quote Readiness Salesforce Summary Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     SwitchPublicAuthMcpSessionWorkspaceApiV2PublicAuthMcpSessionSwitchWorkspacePost200Envelope:
@@ -21449,9 +24205,18 @@ components:
           type: "string"
           enum:
             - "table"
+            - "component"
+            - "component_table"
+            - "item_list"
             - "kanban"
             - "calendar"
+            - "project"
             - "forecast"
+            - "group"
+            - "receivable_balance"
+            - "payable_balance"
+            - "pnl"
+            - "balance_sheet"
           title: "Mode"
           default: "table"
         column_field_ids:
@@ -21484,13 +24249,38 @@ components:
             - type: "string"
               enum:
                 - "table"
+                - "component"
+                - "component_table"
+                - "item_list"
                 - "kanban"
                 - "calendar"
+                - "project"
                 - "forecast"
+                - "group"
+                - "receivable_balance"
+                - "payable_balance"
+                - "pnl"
+                - "balance_sheet"
             - type: "null"
           title: "Mode"
       type: "object"
       title: "ViewUpdateRequest"
+    WritebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          type: "object"
+          additionalProperties: true
+          title: "Response Writeback Public Salesforce Quote Readiness Api V2 Public Cpq Quote Readiness Salesforce Writeback Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     ErrorEnvelope:
       type: "object"
       required:
@@ -21514,6 +24304,68 @@ components:
           type: "string"
         pagination:
           $ref: "#/components/schemas/PaginationMeta"
+        toast:
+          $ref: "#/components/schemas/ToastMessage"
+    ObjectRecordBulkActionData:
+      properties:
+        operation:
+          type: "string"
+          enum:
+            - "edit"
+            - "archive"
+            - "activate"
+            - "permanent_delete"
+          title: "Operation"
+        object_type:
+          type: "string"
+          title: "Object Type"
+        ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Ids"
+        affected_ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Affected Ids"
+        failed_ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Failed Ids"
+        count:
+          type: "integer"
+          title: "Count"
+          default: 0
+        failed_count:
+          type: "integer"
+          title: "Failed Count"
+          default: 0
+        queued:
+          type: "boolean"
+          title: "Queued"
+          default: false
+        background_job_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Background Job Id"
+        message:
+          type: "string"
+          title: "Message"
+        toast:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Toast"
+      type: "object"
+      required:
+        - "operation"
+        - "object_type"
+        - "message"
+      title: "ObjectRecordBulkActionData"
     AssociationEdgeMutationData:
       properties:
         edge:
@@ -21525,6 +24377,11 @@ components:
             $ref: "#/components/schemas/AssociationEdge"
           type: "array"
           title: "Edges"
+        edge_ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Edge Ids"
         created:
           type: "boolean"
           title: "Created"
@@ -21634,6 +24491,16 @@ components:
             - type: "string"
             - type: "null"
           title: "Custom Object Id"
+        status:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Status"
+        usage_status:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Usage Status"
         properties:
           additionalProperties:
             anyOf:
@@ -21730,6 +24597,11 @@ components:
         total:
           type: "integer"
           title: "Total"
+        next_cursor:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Next Cursor"
         meta:
           additionalProperties: true
           type: "object"
@@ -21814,6 +24686,50 @@ components:
       required:
         - "record_ref"
       title: "RecordAssociationListData"
+    ObjectRecordLineItemListData:
+      properties:
+        object_type:
+          type: "string"
+          title: "Object Type"
+        view:
+          $ref: "#/components/schemas/ObjectRecordViewData"
+        columns:
+          items:
+            type: "string"
+          type: "array"
+          title: "Columns"
+        column_labels:
+          additionalProperties:
+            type: "string"
+          type: "object"
+          title: "Column Labels"
+        items:
+          items:
+            $ref: "#/components/schemas/ObjectRecordLineItemRowData"
+          type: "array"
+          title: "Items"
+        page:
+          type: "integer"
+          title: "Page"
+        page_size:
+          type: "integer"
+          title: "Page Size"
+        total:
+          type: "integer"
+          title: "Total"
+        meta:
+          additionalProperties: true
+          type: "object"
+          title: "Meta"
+      type: "object"
+      required:
+        - "object_type"
+        - "view"
+        - "columns"
+        - "page"
+        - "page_size"
+        - "total"
+      title: "ObjectRecordLineItemListData"
     WorkflowListData:
       properties:
         items:
@@ -21956,6 +24872,30 @@ components:
         - "object_type"
         - "record_id"
       title: "RecordRef"
+    PublicInvoiceEmailPdfAttachment:
+      properties:
+        object_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Object Type"
+        record_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Record Id"
+        template_select:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Template Select"
+        filename:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Filename"
+      type: "object"
+      title: "PublicInvoiceEmailPdfAttachment"
     RecordFilterRequest:
       properties:
         field:
@@ -22037,6 +24977,96 @@ components:
       required:
         - "metric"
       title: "ReportMetricMutationItem"
+    PublicInvoiceEmailData:
+      properties:
+        workspace_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Workspace Id"
+        workspace_code:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Workspace Code"
+        app_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "App Url"
+        invoice_id:
+          type: "string"
+          title: "Invoice Id"
+        formatted_invoice_id:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Formatted Invoice Id"
+        action:
+          type: "string"
+          enum:
+            - "draft"
+            - "send"
+            - "schedule"
+          title: "Action"
+        status:
+          type: "string"
+          title: "Status"
+        thread_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Thread Id"
+        message_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Message Id"
+        to:
+          items:
+            type: "string"
+          type: "array"
+          title: "To"
+        cc:
+          items:
+            type: "string"
+          type: "array"
+          title: "Cc"
+        scheduled_at:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Scheduled At"
+        provider:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Provider"
+        provider_message_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Provider Message Id"
+        attachment_count:
+          type: "integer"
+          title: "Attachment Count"
+          default: 0
+        attachments:
+          items:
+            $ref: "#/components/schemas/PublicInvoiceEmailAttachmentData"
+          type: "array"
+          title: "Attachments"
+        message:
+          type: "string"
+          title: "Message"
+          default: "OK"
+      type: "object"
+      required:
+        - "invoice_id"
+        - "action"
+        - "status"
+      title: "PublicInvoiceEmailData"
     ErrorBody:
       type: "object"
       required:
@@ -22065,6 +25095,31 @@ components:
         total:
           type: "integer"
           minimum: 0
+        next_cursor:
+          anyOf:
+            - type: "string"
+            - type: "null"
+    ToastMessage:
+      type: "object"
+      required:
+        - "variant"
+        - "code"
+        - "message"
+        - "i18n"
+      properties:
+        variant:
+          type: "string"
+          enum:
+            - "success"
+            - "error"
+            - "info"
+            - "warning"
+        code:
+          type: "string"
+        message:
+          type: "string"
+        i18n:
+          $ref: "#/components/schemas/ToastMessageI18n"
     AssociationEdge:
       properties:
         id:
@@ -22197,6 +25252,10 @@ components:
           additionalProperties: true
           type: "object"
           title: "Meta"
+        table_cell:
+          anyOf:
+            - $ref: "#/components/schemas/ObjectRecordTableCellPayload"
+            - type: "null"
       type: "object"
       required:
         - "type"
@@ -22417,6 +25476,29 @@ components:
         - "has_next"
         - "total"
       title: "ActivityLogPagination"
+    ObjectRecordLineItemRowData:
+      properties:
+        row_id:
+          type: "string"
+          title: "Row Id"
+        record_id:
+          type: "string"
+          title: "Record Id"
+        record_number:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Record Number"
+        display_properties:
+          additionalProperties:
+            $ref: "#/components/schemas/ObjectRecordDisplayValue"
+          type: "object"
+          title: "Display Properties"
+      type: "object"
+      required:
+        - "row_id"
+        - "record_id"
+      title: "ObjectRecordLineItemRowData"
     WorkflowColumn:
       properties:
         key:
@@ -22477,6 +25559,11 @@ components:
             - type: "number"
             - type: "null"
           title: "Total Price"
+        total_price_without_tax:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Total Price Without Tax"
         currency:
           anyOf:
             - type: "string"
@@ -22599,6 +25686,135 @@ components:
           title: "Provider Meta"
       type: "object"
       title: "ProspectCompanyData"
+    PublicInvoiceEmailAttachmentData:
+      properties:
+        object_type:
+          type: "string"
+          title: "Object Type"
+        record_id:
+          type: "string"
+          title: "Record Id"
+        filename:
+          type: "string"
+          title: "Filename"
+        template_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Template Id"
+      type: "object"
+      required:
+        - "object_type"
+        - "record_id"
+        - "filename"
+      title: "PublicInvoiceEmailAttachmentData"
+    ToastMessageI18n:
+      type: "object"
+      required:
+        - "en"
+        - "ja"
+      properties:
+        en:
+          type: "string"
+        ja:
+          type: "string"
+    ObjectRecordTableCellPayload:
+      properties:
+        cell_type:
+          type: "string"
+          title: "Cell Type"
+        renderer_type:
+          type: "string"
+          title: "Renderer Type"
+        field_id:
+          type: "string"
+          title: "Field Id"
+        property_key:
+          type: "string"
+          title: "Property Key"
+        source:
+          type: "string"
+          title: "Source"
+        property_type:
+          type: "string"
+          title: "Property Type"
+        custom_property_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Custom Property Type"
+        raw_value:
+          title: "Raw Value"
+        display:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Display"
+        label:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Label"
+        values:
+          items:
+            additionalProperties: true
+            type: "object"
+          type: "array"
+          title: "Values"
+        files:
+          items:
+            additionalProperties: true
+            type: "object"
+          type: "array"
+          title: "Files"
+        images:
+          items:
+            additionalProperties: true
+            type: "object"
+          type: "array"
+          title: "Images"
+        count:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Count"
+        multiple:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Multiple"
+        empty:
+          type: "boolean"
+          title: "Empty"
+          default: false
+        show_badge:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Show Badge"
+        badge_color:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Badge Color"
+        color:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Color"
+        meta:
+          additionalProperties: true
+          type: "object"
+          title: "Meta"
+      type: "object"
+      required:
+        - "cell_type"
+        - "renderer_type"
+        - "field_id"
+        - "property_key"
+        - "source"
+        - "property_type"
+      title: "ObjectRecordTableCellPayload"
     WorkflowTriggerNode:
       properties:
         id:
@@ -22720,6 +25936,300 @@ components:
           title: "Model Name"
       type: "object"
       title: "ActivityLogEnvironment"
+    PublicProjectStatus:
+      type: "object"
+      title: "PublicProjectStatus"
+      required:
+        - "name"
+        - "internal_value"
+      properties:
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        name:
+          type: "string"
+          title: "Name"
+        internal_value:
+          type: "string"
+          title: "Internal Value"
+        order:
+          type: "integer"
+          title: "Order"
+          default: 0
+    PublicProject:
+      type: "object"
+      title: "PublicProject"
+      required:
+        - "id"
+        - "project_id"
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        project_id:
+          type: "string"
+          title: "Project Id"
+        title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        default:
+          type: "boolean"
+          title: "Default"
+          default: false
+        statuses:
+          type: "array"
+          title: "Statuses"
+          items:
+            $ref: "#/components/schemas/PublicProjectStatus"
+        task_count:
+          type: "integer"
+          title: "Task Count"
+          default: 0
+        active_task_count:
+          type: "integer"
+          title: "Active Task Count"
+          default: 0
+        created_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        updated_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+    PublicProjectStatusRequest:
+      type: "object"
+      title: "PublicProjectStatusRequest"
+      properties:
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        internal_value:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        order:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+    PublicProjectRequest:
+      type: "object"
+      title: "PublicProjectRequest"
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        default:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+        statuses:
+          anyOf:
+            - type: "array"
+              items:
+                $ref: "#/components/schemas/PublicProjectStatusRequest"
+            - type: "null"
+    PublicProjectListData:
+      type: "object"
+      title: "PublicProjectListData"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total"
+      properties:
+        items:
+          type: "array"
+          title: "Items"
+          items:
+            $ref: "#/components/schemas/PublicProject"
+        page:
+          type: "integer"
+          title: "Page"
+        page_size:
+          type: "integer"
+          title: "Page Size"
+        total:
+          type: "integer"
+          title: "Total"
+        next_cursor:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        meta:
+          type: "object"
+          title: "Meta"
+          additionalProperties: true
+    PublicProjectMutationData:
+      type: "object"
+      title: "PublicProjectMutationData"
+      required:
+        - "ok"
+        - "status"
+      properties:
+        ok:
+          type: "boolean"
+          title: "Ok"
+        status:
+          type: "string"
+          title: "Status"
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        project:
+          anyOf:
+            - $ref: "#/components/schemas/PublicProject"
+            - type: "null"
+        ctx_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        advisories:
+          anyOf:
+            - type: "array"
+              items:
+                type: "object"
+                additionalProperties: true
+            - type: "null"
+    PublicProjectDeleteData:
+      type: "object"
+      title: "PublicProjectDeleteData"
+      required:
+        - "ok"
+        - "status"
+      properties:
+        ok:
+          type: "boolean"
+          title: "Ok"
+        status:
+          type: "string"
+          title: "Status"
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        replacement_project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        cleared_task_count:
+          type: "integer"
+          title: "Cleared Task Count"
+          default: 0
+        reassigned_task_count:
+          type: "integer"
+          title: "Reassigned Task Count"
+          default: 0
+        ctx_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        advisories:
+          anyOf:
+            - type: "array"
+              items:
+                type: "object"
+                additionalProperties: true
+            - type: "null"
+    PublicProjectDeleteRequest:
+      type: "object"
+      title: "PublicProjectDeleteRequest"
+      properties:
+        replacement_project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+        clear_task_project:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+    ListPublicProjectsApiV2PublicProjectsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicProjectApiV2PublicProjectsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectMutationData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicProjectApiV2PublicProjectsProjectIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProject"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicProjectApiV2PublicProjectsProjectIdPut200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectMutationData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicProjectApiV2PublicProjectsProjectIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectDeleteData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
   securitySchemes:
     bearerAuth:
       type: "http"

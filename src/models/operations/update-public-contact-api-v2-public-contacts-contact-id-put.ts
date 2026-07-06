@@ -12,6 +12,7 @@ import * as models from "../index.js";
 export type UpdatePublicContactApiV2PublicContactsContactIdPutRequest = {
   contactId: string;
   externalId?: string | null | undefined;
+  language?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
   body: models.PublicObjectRecordMutationRequest;
@@ -27,6 +28,7 @@ export type UpdatePublicContactApiV2PublicContactsContactIdPutRequest$Outbound =
   {
     contact_id: string;
     external_id?: string | null | undefined;
+    language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
     body: models.PublicObjectRecordMutationRequest$Outbound;
@@ -41,6 +43,7 @@ export const UpdatePublicContactApiV2PublicContactsContactIdPutRequest$outboundS
     z.object({
       contactId: z.string(),
       externalId: z.optional(z.nullable(z.string())),
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       body: models.PublicObjectRecordMutationRequest$outboundSchema,

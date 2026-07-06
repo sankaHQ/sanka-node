@@ -10,7 +10,11 @@ let value: SendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPostResponse =
     headers: {},
     result: {
       success: true,
-      data: {},
+      data: {
+        invoiceId: "<id>",
+        action: "draft",
+        status: "<value>",
+      },
       meta: {
         ctxId: "<id>",
       },

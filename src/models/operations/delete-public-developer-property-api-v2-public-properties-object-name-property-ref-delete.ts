@@ -23,6 +23,8 @@ export type DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNameProperty
     dryRun?: boolean | null | undefined;
     confirm?: boolean | null | undefined;
     language?: string | null | undefined;
+    customObjectSlug?: string | null | undefined;
+    customObject?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
   };
@@ -49,6 +51,8 @@ export type DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNameProperty
     dry_run?: boolean | null | undefined;
     confirm?: boolean | null | undefined;
     language?: string | null | undefined;
+    custom_object_slug?: string | null | undefined;
+    custom_object?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
   };
@@ -72,6 +76,8 @@ export const DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropert
       dryRun: z.optional(z.nullable(z.boolean())),
       confirm: z.optional(z.nullable(z.boolean())),
       language: z.optional(z.nullable(z.string())),
+      customObjectSlug: z.optional(z.nullable(z.string())),
+      customObject: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
     }),
@@ -83,6 +89,8 @@ export const DeletePublicDeveloperPropertyApiV2PublicPropertiesObjectNamePropert
         channelId: "channel_id",
         externalObjectType: "external_object_type",
         dryRun: "dry_run",
+        customObjectSlug: "custom_object_slug",
+        customObject: "custom_object",
         workspaceId: "workspace_id",
         xWorkspaceCode: "X-Workspace-Code",
       });

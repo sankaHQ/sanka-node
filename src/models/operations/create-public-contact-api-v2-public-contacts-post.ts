@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
 export type CreatePublicContactApiV2PublicContactsPostRequest = {
+  language?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
   body: models.PublicObjectRecordMutationRequest;
@@ -22,6 +23,7 @@ export type CreatePublicContactApiV2PublicContactsPostResponse = {
 
 /** @internal */
 export type CreatePublicContactApiV2PublicContactsPostRequest$Outbound = {
+  language?: string | null | undefined;
   workspace_id?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
   body: models.PublicObjectRecordMutationRequest$Outbound;
@@ -34,6 +36,7 @@ export const CreatePublicContactApiV2PublicContactsPostRequest$outboundSchema:
     CreatePublicContactApiV2PublicContactsPostRequest
   > = z.pipe(
     z.object({
+      language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       body: models.PublicObjectRecordMutationRequest$outboundSchema,

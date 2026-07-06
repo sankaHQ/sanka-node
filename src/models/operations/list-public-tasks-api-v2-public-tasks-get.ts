@@ -10,6 +10,8 @@ import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
 export type ListPublicTasksApiV2PublicTasksGetRequest = {
+  projectId?: string | null | undefined;
+  pId?: string | null | undefined;
   workspaceId?: string | null | undefined;
   viewId?: string | null | undefined;
   search?: string | null | undefined;
@@ -18,7 +20,12 @@ export type ListPublicTasksApiV2PublicTasksGetRequest = {
   usageStatus?: string | null | undefined;
   page?: number | undefined;
   limit?: number | null | undefined;
+  cursor?: string | null | undefined;
   sort?: string | null | undefined;
+  createdAtFrom?: string | null | undefined;
+  createdAtTo?: string | null | undefined;
+  updatedAtFrom?: string | null | undefined;
+  updatedAtTo?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
   xLanguage?: string | null | undefined;
   acceptLanguage?: string | null | undefined;
@@ -31,6 +38,8 @@ export type ListPublicTasksApiV2PublicTasksGetResponse = {
 
 /** @internal */
 export type ListPublicTasksApiV2PublicTasksGetRequest$Outbound = {
+  project_id?: string | null | undefined;
+  p_id?: string | null | undefined;
   workspace_id?: string | null | undefined;
   view_id?: string | null | undefined;
   search?: string | null | undefined;
@@ -39,7 +48,12 @@ export type ListPublicTasksApiV2PublicTasksGetRequest$Outbound = {
   usage_status?: string | null | undefined;
   page: number;
   limit?: number | null | undefined;
+  cursor?: string | null | undefined;
   sort?: string | null | undefined;
+  created_at_from?: string | null | undefined;
+  created_at_to?: string | null | undefined;
+  updated_at_from?: string | null | undefined;
+  updated_at_to?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
   "X-Language"?: string | null | undefined;
   "Accept-Language"?: string | null | undefined;
@@ -52,6 +66,8 @@ export const ListPublicTasksApiV2PublicTasksGetRequest$outboundSchema:
     ListPublicTasksApiV2PublicTasksGetRequest
   > = z.pipe(
     z.object({
+      projectId: z.optional(z.nullable(z.string())),
+      pId: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       viewId: z.optional(z.nullable(z.string())),
       search: z.optional(z.nullable(z.string())),
@@ -60,16 +76,27 @@ export const ListPublicTasksApiV2PublicTasksGetRequest$outboundSchema:
       usageStatus: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z.optional(z.nullable(z.int())),
+      cursor: z.optional(z.nullable(z.string())),
       sort: z.optional(z.nullable(z.string())),
+      createdAtFrom: z.optional(z.nullable(z.string())),
+      createdAtTo: z.optional(z.nullable(z.string())),
+      updatedAtFrom: z.optional(z.nullable(z.string())),
+      updatedAtTo: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
       xLanguage: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
     }),
     z.transform((v) => {
       return remap$(v, {
+        projectId: "project_id",
+        pId: "p_id",
         workspaceId: "workspace_id",
         viewId: "view_id",
         usageStatus: "usage_status",
+        createdAtFrom: "created_at_from",
+        createdAtTo: "created_at_to",
+        updatedAtFrom: "updated_at_from",
+        updatedAtTo: "updated_at_to",
         xWorkspaceCode: "X-Workspace-Code",
         xLanguage: "X-Language",
         acceptLanguage: "Accept-Language",

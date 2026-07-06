@@ -7,26 +7,29 @@ import { ListPublicBillsApiV2PublicBillsGetResponse } from "sanka-sdk/models/ope
 
 let value: ListPublicBillsApiV2PublicBillsGetResponse = {
   headers: {
-    "key": [],
+    "key": [
+      "<value 1>",
+      "<value 2>",
+    ],
     "key1": [
       "<value 1>",
       "<value 2>",
     ],
-    "key2": [],
+    "key2": [
+      "<value 1>",
+    ],
   },
   result: {
     success: true,
     data: {
       objectType: "<value>",
-      view: {},
-      columns: [
-        "<value 1>",
-        "<value 2>",
-        "<value 3>",
-      ],
-      page: 649857,
-      pageSize: 653504,
-      total: 801424,
+      view: {
+        viewType: "list",
+      },
+      columns: [],
+      page: 725074,
+      pageSize: 30463,
+      total: 493345,
     },
     meta: {
       ctxId: "<id>",
