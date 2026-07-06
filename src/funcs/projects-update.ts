@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -28,17 +28,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List Public Projects
+ * Update Public Project
  */
-export function projectsListPublicProjectsApiV2PublicProjectsGet(
+export function projectsUpdate(
   client: SankaCore,
-  request?:
-    | operations.ListPublicProjectsApiV2PublicProjectsGetRequest
-    | undefined,
+  request: operations.UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.ListPublicProjectsApiV2PublicProjectsGetResponse,
+    operations.UpdatePublicProjectApiV2PublicProjectsProjectIdPutResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -59,14 +57,12 @@ export function projectsListPublicProjectsApiV2PublicProjectsGet(
 
 async function $do(
   client: SankaCore,
-  request?:
-    | operations.ListPublicProjectsApiV2PublicProjectsGetRequest
-    | undefined,
+  request: operations.UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.ListPublicProjectsApiV2PublicProjectsGetResponse,
+      operations.UpdatePublicProjectApiV2PublicProjectsProjectIdPutResponse,
       | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
@@ -84,10 +80,8 @@ async function $do(
     request,
     (value) =>
       z.parse(
-        z.optional(
-          operations
-            .ListPublicProjectsApiV2PublicProjectsGetRequest$outboundSchema,
-        ),
+        operations
+          .UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -96,34 +90,31 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.body, { explode: true });
 
-  const path = pathToFunc("/v2/public/projects")();
-
-  const query = encodeFormQuery({
-    "default": payload?.default,
-    "lang": payload?.lang,
-    "language": payload?.language,
-    "limit": payload?.limit,
-    "page": payload?.page,
-    "search": payload?.search,
-    "workspace_id": payload?.workspace_id,
-  });
+  const pathParams = {
+    project_id: encodeSimple("project_id", payload.project_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v2/public/projects/{project_id}")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
     "Accept-Language": encodeSimple(
       "Accept-Language",
-      payload?.["Accept-Language"],
+      payload["Accept-Language"],
       { explode: false, charEncoding: "none" },
     ),
-    "X-Language": encodeSimple("X-Language", payload?.["X-Language"], {
+    "X-Language": encodeSimple("X-Language", payload["X-Language"], {
       explode: false,
       charEncoding: "none",
     }),
     "X-Workspace-Code": encodeSimple(
       "X-Workspace-Code",
-      payload?.["X-Workspace-Code"],
+      payload["X-Workspace-Code"],
       { explode: false, charEncoding: "none" },
     ),
   }));
@@ -135,7 +126,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "list_public_projects_api_v2_public_projects_get",
+    operationID: "update_public_project_api_v2_public_projects_project_id_put",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -149,11 +140,10 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -180,7 +170,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.ListPublicProjectsApiV2PublicProjectsGetResponse,
+    operations.UpdatePublicProjectApiV2PublicProjectsProjectIdPutResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -193,7 +183,8 @@ async function $do(
   >(
     M.json(
       200,
-      operations.ListPublicProjectsApiV2PublicProjectsGetResponse$inboundSchema,
+      operations
+        .UpdatePublicProjectApiV2PublicProjectsProjectIdPutResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
     M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),

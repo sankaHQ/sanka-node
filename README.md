@@ -400,11 +400,11 @@ run();
 
 ### [Projects](docs/sdks/projects/README.md)
 
-* [listPublicProjectsApiV2PublicProjectsGet](docs/sdks/projects/README.md#listpublicprojectsapiv2publicprojectsget) - List Public Projects
-* [createPublicProjectApiV2PublicProjectsPost](docs/sdks/projects/README.md#createpublicprojectapiv2publicprojectspost) - Create Public Project
-* [getPublicProjectApiV2PublicProjectsProjectIdGet](docs/sdks/projects/README.md#getpublicprojectapiv2publicprojectsprojectidget) - Get Public Project
-* [updatePublicProjectApiV2PublicProjectsProjectIdPut](docs/sdks/projects/README.md#updatepublicprojectapiv2publicprojectsprojectidput) - Update Public Project
-* [deletePublicProjectApiV2PublicProjectsProjectIdDelete](docs/sdks/projects/README.md#deletepublicprojectapiv2publicprojectsprojectiddelete) - Delete Public Project
+* [list](docs/sdks/projects/README.md#list) - List Public Projects
+* [create](docs/sdks/projects/README.md#create) - Create Public Project
+* [get](docs/sdks/projects/README.md#get) - Get Public Project
+* [update](docs/sdks/projects/README.md#update) - Update Public Project
+* [delete](docs/sdks/projects/README.md#delete) - Delete Public Project
 
 ### [Properties](docs/sdks/properties/README.md)
 
@@ -741,11 +741,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`payrollListPublicPayrollProfilesApiV2PublicPayrollProfilesGet`](docs/sdks/payroll/README.md#listpublicpayrollprofilesapiv2publicpayrollprofilesget) - List Public Payroll Profiles
 - [`payrollListPublicPayrollRunsApiV2PublicPayrollRunsGet`](docs/sdks/payroll/README.md#listpublicpayrollrunsapiv2publicpayrollrunsget) - List Public Payroll Runs
 - [`payrollUpsertPublicPayrollProfileApiV2PublicPayrollProfilesPost`](docs/sdks/payroll/README.md#upsertpublicpayrollprofileapiv2publicpayrollprofilespost) - Upsert Public Payroll Profile
-- [`projectsCreatePublicProjectApiV2PublicProjectsPost`](docs/sdks/projects/README.md#createpublicprojectapiv2publicprojectspost) - Create Public Project
-- [`projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete`](docs/sdks/projects/README.md#deletepublicprojectapiv2publicprojectsprojectiddelete) - Delete Public Project
-- [`projectsGetPublicProjectApiV2PublicProjectsProjectIdGet`](docs/sdks/projects/README.md#getpublicprojectapiv2publicprojectsprojectidget) - Get Public Project
-- [`projectsListPublicProjectsApiV2PublicProjectsGet`](docs/sdks/projects/README.md#listpublicprojectsapiv2publicprojectsget) - List Public Projects
-- [`projectsUpdatePublicProjectApiV2PublicProjectsProjectIdPut`](docs/sdks/projects/README.md#updatepublicprojectapiv2publicprojectsprojectidput) - Update Public Project
+- [`projectsCreate`](docs/sdks/projects/README.md#create) - Create Public Project
+- [`projectsDelete`](docs/sdks/projects/README.md#delete) - Delete Public Project
+- [`projectsGet`](docs/sdks/projects/README.md#get) - Get Public Project
+- [`projectsList`](docs/sdks/projects/README.md#list) - List Public Projects
+- [`projectsUpdate`](docs/sdks/projects/README.md#update) - Update Public Project
 - [`propertiesCreate`](docs/sdks/properties/README.md#create) - Create Public Developer Property
 - [`propertiesDelete`](docs/sdks/properties/README.md#delete) - Delete Public Developer Property
 - [`propertiesGet`](docs/sdks/properties/README.md#get) - Retrieve Public Developer Property

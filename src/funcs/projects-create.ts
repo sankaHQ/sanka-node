@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -28,16 +28,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Public Project
+ * Create Public Project
  */
-export function projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete(
+export function projectsCreate(
   client: SankaCore,
-  request:
-    operations.DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest,
+  request: operations.CreatePublicProjectApiV2PublicProjectsPostRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse,
+    operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -58,13 +57,12 @@ export function projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete(
 
 async function $do(
   client: SankaCore,
-  request:
-    operations.DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest,
+  request: operations.CreatePublicProjectApiV2PublicProjectsPostRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse,
+      operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
       | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
@@ -83,7 +81,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest$outboundSchema,
+          .CreatePublicProjectApiV2PublicProjectsPostRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -94,18 +92,7 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload.body, { explode: true });
 
-  const pathParams = {
-    project_id: encodeSimple("project_id", payload.project_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-  const path = pathToFunc("/v2/public/projects/{project_id}")(pathParams);
-
-  const query = encodeFormQuery({
-    "clear_task_project": payload.clear_task_project,
-    "replacement_project_id": payload.replacement_project_id,
-  });
+  const path = pathToFunc("/v2/public/projects")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -133,8 +120,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID:
-      "delete_public_project_api_v2_public_projects_project_id_delete",
+    operationID: "create_public_project_api_v2_public_projects_post",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -148,11 +134,10 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "DELETE",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -179,7 +164,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse,
+    operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -193,12 +178,10 @@ async function $do(
     M.json(
       200,
       operations
-        .DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse$inboundSchema,
+        .CreatePublicProjectApiV2PublicProjectsPostResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
-    M.jsonErr([401, 409, 422], errors.ErrorEnvelope$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

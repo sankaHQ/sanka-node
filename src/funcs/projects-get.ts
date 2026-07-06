@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -28,15 +28,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create Public Project
+ * Get Public Project
  */
-export function projectsCreatePublicProjectApiV2PublicProjectsPost(
+export function projectsGet(
   client: SankaCore,
-  request: operations.CreatePublicProjectApiV2PublicProjectsPostRequest,
+  request: operations.GetPublicProjectApiV2PublicProjectsProjectIdGetRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
+    operations.GetPublicProjectApiV2PublicProjectsProjectIdGetResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -57,12 +57,12 @@ export function projectsCreatePublicProjectApiV2PublicProjectsPost(
 
 async function $do(
   client: SankaCore,
-  request: operations.CreatePublicProjectApiV2PublicProjectsPostRequest,
+  request: operations.GetPublicProjectApiV2PublicProjectsProjectIdGetRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
+      operations.GetPublicProjectApiV2PublicProjectsProjectIdGetResponse,
       | errors.ErrorEnvelope
       | SankaError
       | ResponseValidationError
@@ -81,7 +81,7 @@ async function $do(
     (value) =>
       z.parse(
         operations
-          .CreatePublicProjectApiV2PublicProjectsPostRequest$outboundSchema,
+          .GetPublicProjectApiV2PublicProjectsProjectIdGetRequest$outboundSchema,
         value,
       ),
     "Input validation failed",
@@ -90,12 +90,21 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.body, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/v2/public/projects")();
+  const pathParams = {
+    project_id: encodeSimple("project_id", payload.project_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v2/public/projects/{project_id}")(pathParams);
+
+  const query = encodeFormQuery({
+    "workspace_id": payload.workspace_id,
+  });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
     "Accept-Language": encodeSimple(
       "Accept-Language",
@@ -120,7 +129,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "create_public_project_api_v2_public_projects_post",
+    operationID: "get_public_project_api_v2_public_projects_project_id_get",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -134,10 +143,11 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -164,7 +174,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.CreatePublicProjectApiV2PublicProjectsPostResponse,
+    operations.GetPublicProjectApiV2PublicProjectsProjectIdGetResponse,
     | errors.ErrorEnvelope
     | SankaError
     | ResponseValidationError
@@ -178,7 +188,7 @@ async function $do(
     M.json(
       200,
       operations
-        .CreatePublicProjectApiV2PublicProjectsPostResponse$inboundSchema,
+        .GetPublicProjectApiV2PublicProjectsProjectIdGetResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
     M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),

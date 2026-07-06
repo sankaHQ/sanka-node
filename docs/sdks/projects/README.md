@@ -4,13 +4,13 @@
 
 ### Available Operations
 
-* [listPublicProjectsApiV2PublicProjectsGet](#listpublicprojectsapiv2publicprojectsget) - List Public Projects
-* [createPublicProjectApiV2PublicProjectsPost](#createpublicprojectapiv2publicprojectspost) - Create Public Project
-* [getPublicProjectApiV2PublicProjectsProjectIdGet](#getpublicprojectapiv2publicprojectsprojectidget) - Get Public Project
-* [updatePublicProjectApiV2PublicProjectsProjectIdPut](#updatepublicprojectapiv2publicprojectsprojectidput) - Update Public Project
-* [deletePublicProjectApiV2PublicProjectsProjectIdDelete](#deletepublicprojectapiv2publicprojectsprojectiddelete) - Delete Public Project
+* [list](#list) - List Public Projects
+* [create](#create) - Create Public Project
+* [get](#get) - Get Public Project
+* [update](#update) - Update Public Project
+* [delete](#delete) - Delete Public Project
 
-## listPublicProjectsApiV2PublicProjectsGet
+## list
 
 List Public Projects
 
@@ -25,7 +25,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.listPublicProjectsApiV2PublicProjectsGet();
+  const result = await sanka.projects.list();
 
   console.log(result);
 }
@@ -39,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { projectsListPublicProjectsApiV2PublicProjectsGet } from "sanka-sdk/funcs/projects-list-public-projects-api-v2-public-projects-get.js";
+import { projectsList } from "sanka-sdk/funcs/projects-list.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -48,12 +48,12 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsListPublicProjectsApiV2PublicProjectsGet(sanka);
+  const res = await projectsList(sanka);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsListPublicProjectsApiV2PublicProjectsGet failed:", res.error);
+    console.log("projectsList failed:", res.error);
   }
 }
 
@@ -80,7 +80,7 @@ run();
 | errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## createPublicProjectApiV2PublicProjectsPost
+## create
 
 Create Public Project
 
@@ -95,7 +95,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.createPublicProjectApiV2PublicProjectsPost({
+  const result = await sanka.projects.create({
     body: {},
   });
 
@@ -111,7 +111,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { projectsCreatePublicProjectApiV2PublicProjectsPost } from "sanka-sdk/funcs/projects-create-public-project-api-v2-public-projects-post.js";
+import { projectsCreate } from "sanka-sdk/funcs/projects-create.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -120,14 +120,14 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsCreatePublicProjectApiV2PublicProjectsPost(sanka, {
+  const res = await projectsCreate(sanka, {
     body: {},
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsCreatePublicProjectApiV2PublicProjectsPost failed:", res.error);
+    console.log("projectsCreate failed:", res.error);
   }
 }
 
@@ -154,7 +154,7 @@ run();
 | errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## getPublicProjectApiV2PublicProjectsProjectIdGet
+## get
 
 Get Public Project
 
@@ -169,7 +169,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.getPublicProjectApiV2PublicProjectsProjectIdGet({
+  const result = await sanka.projects.get({
     projectId: "<id>",
   });
 
@@ -185,7 +185,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { projectsGetPublicProjectApiV2PublicProjectsProjectIdGet } from "sanka-sdk/funcs/projects-get-public-project-api-v2-public-projects-project-id-get.js";
+import { projectsGet } from "sanka-sdk/funcs/projects-get.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -194,14 +194,14 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsGetPublicProjectApiV2PublicProjectsProjectIdGet(sanka, {
+  const res = await projectsGet(sanka, {
     projectId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsGetPublicProjectApiV2PublicProjectsProjectIdGet failed:", res.error);
+    console.log("projectsGet failed:", res.error);
   }
 }
 
@@ -228,7 +228,7 @@ run();
 | errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## updatePublicProjectApiV2PublicProjectsProjectIdPut
+## update
 
 Update Public Project
 
@@ -243,7 +243,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.updatePublicProjectApiV2PublicProjectsProjectIdPut({
+  const result = await sanka.projects.update({
     projectId: "<id>",
     body: {},
   });
@@ -260,7 +260,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { projectsUpdatePublicProjectApiV2PublicProjectsProjectIdPut } from "sanka-sdk/funcs/projects-update-public-project-api-v2-public-projects-project-id-put.js";
+import { projectsUpdate } from "sanka-sdk/funcs/projects-update.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -269,7 +269,7 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsUpdatePublicProjectApiV2PublicProjectsProjectIdPut(sanka, {
+  const res = await projectsUpdate(sanka, {
     projectId: "<id>",
     body: {},
   });
@@ -277,7 +277,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsUpdatePublicProjectApiV2PublicProjectsProjectIdPut failed:", res.error);
+    console.log("projectsUpdate failed:", res.error);
   }
 }
 
@@ -304,7 +304,7 @@ run();
 | errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## deletePublicProjectApiV2PublicProjectsProjectIdDelete
+## delete
 
 Delete Public Project
 
@@ -319,7 +319,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.deletePublicProjectApiV2PublicProjectsProjectIdDelete({
+  const result = await sanka.projects.delete({
     projectId: "<id>",
   });
 
@@ -335,7 +335,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SankaCore } from "sanka-sdk/core.js";
-import { projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete } from "sanka-sdk/funcs/projects-delete-public-project-api-v2-public-projects-project-id-delete.js";
+import { projectsDelete } from "sanka-sdk/funcs/projects-delete.js";
 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -344,14 +344,14 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete(sanka, {
+  const res = await projectsDelete(sanka, {
     projectId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("projectsDeletePublicProjectApiV2PublicProjectsProjectIdDelete failed:", res.error);
+    console.log("projectsDelete failed:", res.error);
   }
 }
 

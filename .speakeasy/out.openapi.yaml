@@ -15217,6 +15217,8 @@ paths:
         - "projects"
       summary: "List Public Projects"
       operationId: "list_public_projects_api_v2_public_projects_get"
+      x-fern-sdk-group-name: "projects"
+      x-fern-sdk-method-name: "list"
       parameters:
         - name: "page"
           in: "query"
@@ -15312,11 +15314,14 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+      x-speakeasy-name-override: list
     post:
       tags:
         - "projects"
       summary: "Create Public Project"
       operationId: "create_public_project_api_v2_public_projects_post"
+      x-fern-sdk-group-name: "projects"
+      x-fern-sdk-method-name: "create"
       parameters:
         - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
@@ -15359,12 +15364,15 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+      x-speakeasy-name-override: create
   /v2/public/projects/{project_id}:
     get:
       tags:
         - "projects"
       summary: "Get Public Project"
       operationId: "get_public_project_api_v2_public_projects_project_id_get"
+      x-fern-sdk-group-name: "projects"
+      x-fern-sdk-method-name: "retrieve"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15415,11 +15423,14 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+      x-speakeasy-name-override: get
     put:
       tags:
         - "projects"
       summary: "Update Public Project"
       operationId: "update_public_project_api_v2_public_projects_project_id_put"
+      x-fern-sdk-group-name: "projects"
+      x-fern-sdk-method-name: "update"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15468,11 +15479,14 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "projects"
       summary: "Delete Public Project"
       operationId: "delete_public_project_api_v2_public_projects_project_id_delete"
+      x-fern-sdk-group-name: "projects"
+      x-fern-sdk-method-name: "delete"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15541,6 +15555,7 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+      x-speakeasy-name-override: delete
   /v2/public/tickets:
     get:
       tags:

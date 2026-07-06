@@ -27165,6 +27165,8 @@
         ],
         "summary": "List Public Projects",
         "operationId": "list_public_projects_api_v2_public_projects_get",
+        "x-fern-sdk-group-name": "projects",
+        "x-fern-sdk-method-name": "list",
         "parameters": [
           {
             "name": "page",
@@ -27354,6 +27356,8 @@
         ],
         "summary": "Create Public Project",
         "operationId": "create_public_project_api_v2_public_projects_post",
+        "x-fern-sdk-group-name": "projects",
+        "x-fern-sdk-method-name": "create",
         "parameters": [
           {
             "$ref": "#/components/parameters/XWorkspaceCode"
@@ -27440,6 +27444,8 @@
         ],
         "summary": "Get Public Project",
         "operationId": "get_public_project_api_v2_public_projects_project_id_get",
+        "x-fern-sdk-group-name": "projects",
+        "x-fern-sdk-method-name": "retrieve",
         "parameters": [
           {
             "name": "project_id",
@@ -27539,6 +27545,8 @@
         ],
         "summary": "Update Public Project",
         "operationId": "update_public_project_api_v2_public_projects_project_id_put",
+        "x-fern-sdk-group-name": "projects",
+        "x-fern-sdk-method-name": "update",
         "parameters": [
           {
             "name": "project_id",
@@ -27632,6 +27640,8 @@
         ],
         "summary": "Delete Public Project",
         "operationId": "delete_public_project_api_v2_public_projects_project_id_delete",
+        "x-fern-sdk-group-name": "projects",
+        "x-fern-sdk-method-name": "delete",
         "parameters": [
           {
             "name": "project_id",
