@@ -148,6 +148,9 @@
     },
     {
       "name": "workflows"
+    },
+    {
+      "name": "ferry-diagrams"
     }
   ],
   "paths": {
@@ -31321,6 +31324,367 @@
           }
         ]
       }
+    },
+    "/v2/public/ferry/diagrams": {
+      "get": {
+        "tags": [
+          "ferry-diagrams"
+        ],
+        "summary": "List Public Ferry Diagrams",
+        "operationId": "list_public_ferry_diagrams_api_v2_public_ferry_diagrams_get",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "403": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-surface": "public_developer",
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ferry-diagrams"
+        ],
+        "summary": "Create Public Ferry Diagram",
+        "operationId": "create_public_ferry_diagram_api_v2_public_ferry_diagrams_post",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FerryDiagramCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "403": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-surface": "public_developer",
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/public/ferry/diagrams/{diagram_id}": {
+      "get": {
+        "tags": [
+          "ferry-diagrams"
+        ],
+        "summary": "Get Public Ferry Diagram",
+        "operationId": "get_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__get",
+        "parameters": [
+          {
+            "name": "diagram_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Diagram Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "403": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-surface": "public_developer",
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "ferry-diagrams"
+        ],
+        "summary": "Update Public Ferry Diagram",
+        "operationId": "update_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__put",
+        "parameters": [
+          {
+            "name": "diagram_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Diagram Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FerryDiagramUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "403": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-surface": "public_developer",
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ferry-diagrams"
+        ],
+        "summary": "Delete Public Ferry Diagram",
+        "operationId": "delete_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__delete",
+        "parameters": [
+          {
+            "name": "diagram_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Diagram Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "403": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-surface": "public_developer",
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -45132,6 +45496,663 @@
             "$ref": "#/components/schemas/EnvelopeMeta"
           }
         }
+      },
+      "DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramDeleteData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "FerryDiagramDeleteData": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "deleted": {
+            "type": "boolean",
+            "title": "Deleted"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "deleted"
+        ],
+        "title": "FerryDiagramDeleteData"
+      },
+      "UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "FerryDiagramData": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Description",
+            "default": ""
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramNode"
+            },
+            "type": "array",
+            "maxItems": 250,
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramEdge"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "title": "Edges"
+          },
+          "viewport": {
+            "$ref": "#/components/schemas/FerryDiagramViewport"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "workspaceId": {
+            "type": "string",
+            "title": "Workspaceid"
+          },
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "createdById": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Createdbyid"
+          },
+          "updatedById": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedbyid"
+          },
+          "createdAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Createdat"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "id",
+          "workspaceId",
+          "revision"
+        ],
+        "title": "FerryDiagramData"
+      },
+      "FerryDiagramViewport": {
+        "properties": {
+          "x": {
+            "type": "number",
+            "maximum": 1000000.0,
+            "minimum": -1000000.0,
+            "title": "X",
+            "default": 0
+          },
+          "y": {
+            "type": "number",
+            "maximum": 1000000.0,
+            "minimum": -1000000.0,
+            "title": "Y",
+            "default": 0
+          },
+          "zoom": {
+            "type": "number",
+            "maximum": 4.0,
+            "minimum": 0.1,
+            "title": "Zoom",
+            "default": 1
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "FerryDiagramViewport"
+      },
+      "FerryDiagramEdge": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Target"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "Label",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "default",
+              "smoothstep"
+            ],
+            "title": "Type",
+            "default": "smoothstep"
+          },
+          "sourceHandle": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sourcehandle"
+          },
+          "targetHandle": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targethandle"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "source",
+          "target"
+        ],
+        "title": "FerryDiagramEdge"
+      },
+      "FerryDiagramNode": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "objectTable",
+              "process",
+              "note"
+            ],
+            "title": "Type"
+          },
+          "position": {
+            "$ref": "#/components/schemas/FerryDiagramPosition"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramNodeData"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "position",
+          "data"
+        ],
+        "title": "FerryDiagramNode"
+      },
+      "FerryDiagramNodeData": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Label"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Description",
+            "default": ""
+          },
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Fields"
+          },
+          "moduleName": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Modulename"
+          },
+          "objectKey": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Objectkey"
+          },
+          "objectSlug": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Objectslug"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "default",
+              "brand",
+              "success",
+              "warning",
+              "danger"
+            ],
+            "title": "Color",
+            "default": "default"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "label"
+        ],
+        "title": "FerryDiagramNodeData"
+      },
+      "FerryDiagramPosition": {
+        "properties": {
+          "x": {
+            "type": "number",
+            "maximum": 1000000.0,
+            "minimum": -1000000.0,
+            "title": "X"
+          },
+          "y": {
+            "type": "number",
+            "maximum": 1000000.0,
+            "minimum": -1000000.0,
+            "title": "Y"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "x",
+          "y"
+        ],
+        "title": "FerryDiagramPosition"
+      },
+      "FerryDiagramUpdateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Description",
+            "default": ""
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramNode"
+            },
+            "type": "array",
+            "maxItems": 250,
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramEdge"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "title": "Edges"
+          },
+          "viewport": {
+            "$ref": "#/components/schemas/FerryDiagramViewport"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "revision"
+        ],
+        "title": "FerryDiagramUpdateRequest"
+      },
+      "GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "FerryDiagramCreateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Description",
+            "default": ""
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramNode"
+            },
+            "type": "array",
+            "maxItems": 250,
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramEdge"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "title": "Edges"
+          },
+          "viewport": {
+            "$ref": "#/components/schemas/FerryDiagramViewport"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "FerryDiagramCreateRequest"
+      },
+      "ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/FerryDiagramListData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "FerryDiagramListData": {
+        "properties": {
+          "diagrams": {
+            "items": {
+              "$ref": "#/components/schemas/FerryDiagramSummary"
+            },
+            "type": "array",
+            "title": "Diagrams"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "diagrams",
+          "count"
+        ],
+        "title": "FerryDiagramListData"
+      },
+      "FerryDiagramSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "default": ""
+          },
+          "nodeCount": {
+            "type": "integer",
+            "title": "Nodecount",
+            "default": 0
+          },
+          "edgeCount": {
+            "type": "integer",
+            "title": "Edgecount",
+            "default": 0
+          },
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "createdById": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Createdbyid"
+          },
+          "updatedById": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedbyid"
+          },
+          "createdAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Createdat"
+          },
+          "updatedAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatedat"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "revision"
+        ],
+        "title": "FerryDiagramSummary"
       }
     },
     "securitySchemes": {

@@ -19,6 +19,7 @@ import { Employees } from "./employees.js";
 import { Estimates } from "./estimates.js";
 import { Expenses } from "./expenses.js";
 import { Exports } from "./exports.js";
+import { FerryDiagrams } from "./ferry-diagrams.js";
 import { Files } from "./files.js";
 import { Imports } from "./imports.js";
 import { Incentives } from "./incentives.js";
@@ -287,5 +288,10 @@ export class Sanka extends ClientSDK {
   private _workflowRuns?: WorkflowRuns;
   get workflowRuns(): WorkflowRuns {
     return (this._workflowRuns ??= new WorkflowRuns(this._options));
+  }
+
+  private _ferryDiagrams?: FerryDiagrams;
+  get ferryDiagrams(): FerryDiagrams {
+    return (this._ferryDiagrams ??= new FerryDiagrams(this._options));
   }
 }

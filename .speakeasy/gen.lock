@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 171da541-da80-4bd4-bbe2-f14bf09377bb
 management:
-  docChecksum: 4ba2a3169f90d68b2cbe78f6d69419c9
+  docChecksum: 1a6d3eddf553d620e3898b74c721f975
   docVersion: 0.1.0
   speakeasyVersion: 1.789.3
   generationVersion: 2.916.4
-  releaseVersion: 0.1.1
-  configChecksum: 80b8994047d4e4f1d2bc0c804c29c047
+  releaseVersion: 0.1.3
+  configChecksum: 6579a087d3aec30656685edfbee57d22
 persistentEdits:
-  generation_id: c01ab5d4-717e-4ae8-879b-d3f71b3521be
-  pristine_commit_hash: 2cd47697ee35379602024ae399b493e38e2d8434
-  pristine_tree_hash: 07681a31a6aceb5a0df55ee50e9ad5e21f5b87d9
+  generation_id: 2284246a-e276-48cc-bf7b-75689878865c
+  pristine_commit_hash: c63a3f39941b0d922c5c674438b3ce7ec08ba799
+  pristine_tree_hash: 6cbe698b353cb7142cd41e2af92864f2501072b1
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -231,6 +231,10 @@ trackedFiles:
     id: 1b6bbd262b0f
     last_write_checksum: sha1:a7ed612793d1af178db5174dcca8e9ebf67b8c7d
     pristine_git_object: 75d38cf4e6f5fdc2fe30c947d5d55798c77ed0db
+  docs/models/color.md:
+    id: 4fe4973a3b87
+    last_write_checksum: sha1:331b8793ab84be2f688d20b6b790535de3b42531
+    pristine_git_object: dd2475ddfd826ccef937a0bd2eab61155f85381e
   docs/models/company-mutation-request.md:
     id: "104976780951"
     last_write_checksum: sha1:66e8f7b193bd47fb291a455e70531f535df3132f
@@ -311,6 +315,10 @@ trackedFiles:
     id: 861c03d45b69
     last_write_checksum: sha1:e0bdbbd6a71a871d724cf6c14f9dc710cdd4e8d6
     pristine_git_object: 682b21c5c6c01a5add86de76a6e0675fd13c8936
+  docs/models/create-public-ferry-diagram-api-v2-public-ferry-diagrams-post200-envelope.md:
+    id: b91be6b09479
+    last_write_checksum: sha1:b75a89c062c60775dc46330b396f8c473d00e0dd
+    pristine_git_object: 813d44952c4c31a5f93c6e638bbdad6c354c40fb
   docs/models/create-public-financial-statement-view-api-v2-public-journals-views-post200-envelope.md:
     id: 59a0f2c77173
     last_write_checksum: sha1:c13e8f957710c15aa536409a9f49a1266ffbeb1a
@@ -463,6 +471,10 @@ trackedFiles:
     id: d2e60618691a
     last_write_checksum: sha1:2fd9ea00fb4ca574e25504a90001afed46dc5df0
     pristine_git_object: d39269c6816295f3ea61baba27293b4078cddc46
+  docs/models/delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete200-envelope.md:
+    id: bf515c87357f
+    last_write_checksum: sha1:77d8d43a5341f72605293ae05d6cb6c0ca0e1fdb
+    pristine_git_object: 19521991f1273aba5631761c04dde61e2ea2b9f2
   docs/models/delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete200-envelope.md:
     id: 05585afa752c
     last_write_checksum: sha1:727009c0f15b99d6ecebad62d0c3dabd3957bbc7
@@ -583,6 +595,58 @@ trackedFiles:
     id: 55d613e807ea
     last_write_checksum: sha1:f32b3acb8df75910bfcd92300ef653446292f015
     pristine_git_object: 00d8c6b168f56465a1595fc208a224f284f1dcee
+  docs/models/ferry-diagram-create-request.md:
+    id: 29bd699cd93e
+    last_write_checksum: sha1:37bae68164d309e8b29bffa6786a3494c1ae861f
+    pristine_git_object: 8d3e920529fbaa2cbb468db06cb97bc159ca3dfc
+  docs/models/ferry-diagram-data.md:
+    id: 810a57c02abf
+    last_write_checksum: sha1:b426ea43cd551c37faa6b268fb96c0c28c5bd402
+    pristine_git_object: 45ea317bb361452cf13d1e2545b90e18d89fa825
+  docs/models/ferry-diagram-delete-data.md:
+    id: b9337ca9c505
+    last_write_checksum: sha1:9ceae6029e5968fde5a5bf2ad195c3462b1ad59a
+    pristine_git_object: 0bfc4f4e9202e74d4f1b0f783a8e4f2cba09ee83
+  docs/models/ferry-diagram-edge-type.md:
+    id: 82275a32c439
+    last_write_checksum: sha1:1bb4886d49f3f143ea55b97043cbc5e71ac970f7
+    pristine_git_object: 286835a1017a8449be61bc759dfc2e94213908f5
+  docs/models/ferry-diagram-edge.md:
+    id: 62eb0bcbe21c
+    last_write_checksum: sha1:612e2e4c848dbf65a6853661e1d013123a7d8c43
+    pristine_git_object: 72bfba080cc3a430b700b64a2b4d88f8bb38a3b1
+  docs/models/ferry-diagram-list-data.md:
+    id: 6798a3be6045
+    last_write_checksum: sha1:5cf03451cbf13f4613e8c10dda0814bfd8fa27ac
+    pristine_git_object: daf84be93d289d41f7650820da8ea7088b6c0b07
+  docs/models/ferry-diagram-node-data.md:
+    id: 59b9a9a0abac
+    last_write_checksum: sha1:705ec480dafd4a7a15ded8b7b528f22e6d544d7c
+    pristine_git_object: 33e3d41cbd3f0c733a92a6b2a43eb2e96bddb4b8
+  docs/models/ferry-diagram-node-type.md:
+    id: 22207d1b4131
+    last_write_checksum: sha1:ed81d2f1e3ced403329c568d4c5c51729f647cb3
+    pristine_git_object: 47d6487e65a9edb6f8a2a5fe15accf4eb8bfdea3
+  docs/models/ferry-diagram-node.md:
+    id: 7024b9fc99f2
+    last_write_checksum: sha1:6d5b4308ec9a2dcd2a12cc37eb15a0f9f8539561
+    pristine_git_object: 70881c902cd3f2f63802bcd546d1034d4aa35fb3
+  docs/models/ferry-diagram-position.md:
+    id: 8e0dfa4bca63
+    last_write_checksum: sha1:861ce8e6e1a1e0787ad5ff089b07f0b42154b58a
+    pristine_git_object: be09443e0eb732fe6c1a98f96d56e2deacac223c
+  docs/models/ferry-diagram-summary.md:
+    id: 9de8d1c2cf58
+    last_write_checksum: sha1:21b35b73f447cf71fff77378d654aeac2ca0f905
+    pristine_git_object: e0bb474164cd624633ce5e9a409e30de8c20815b
+  docs/models/ferry-diagram-update-request.md:
+    id: bb06da227fa3
+    last_write_checksum: sha1:8f4ac55d2fae2089ef73055a9512af68c7f2ec1b
+    pristine_git_object: 521d704b19f6aa7a8b5d942622440e643f36a61b
+  docs/models/ferry-diagram-viewport.md:
+    id: 1b3bf9638c17
+    last_write_checksum: sha1:c07fec8392f716e2fd1f76f72db919d03dde2213
+    pristine_git_object: 35c788b85b13b2bdc62cda7eb238ed2542fe0034
   docs/models/get-public-absence-api-v2-public-absences-absence-id-get200-envelope.md:
     id: 46dffcdae768
     last_write_checksum: sha1:4df867e4cfd857ff4db3c4810629c3fa01b79f38
@@ -647,6 +711,10 @@ trackedFiles:
     id: 7f849c28db75
     last_write_checksum: sha1:f1f2450b33eefe79b9aaf690a882f6bbc6ee4ce1
     pristine_git_object: 862ff73c417014fcd76c8887904a230b1f1039ff
+  docs/models/get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get200-envelope.md:
+    id: cf87da9dc30a
+    last_write_checksum: sha1:80a1520e932212707371f8f8e96cb600009b7a92
+    pristine_git_object: 558906e5eb193756c3385bb5d3590d9f24e1ae7d
   docs/models/get-public-import-job-compat-api-v2-public-imports-job-id-get200-envelope.md:
     id: f118d5f55b36
     last_write_checksum: sha1:16350907997625293c177aa22e5dcc2612d46da9
@@ -891,6 +959,10 @@ trackedFiles:
     id: 8980ec1793c5
     last_write_checksum: sha1:62e2d5608dac76bc621d81ac4f3b2fa2fcff9c7e
     pristine_git_object: bef89b2a7553e21f2f7afab21b7f1fde834bf1e2
+  docs/models/list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get200-envelope.md:
+    id: 3958d32f52f4
+    last_write_checksum: sha1:d959f8b4e728aa4bcfd6a91332f00469d4dbb1ce
+    pristine_git_object: 6bdcb1213cc944be9614c8d98ea2881b9ad530cf
   docs/models/list-public-import-jobs-compat-api-v2-public-imports-get200-envelope.md:
     id: 3aa54f152a74
     last_write_checksum: sha1:eac03473fe17a36790939f5db2dcb9c786952c86
@@ -1399,6 +1471,14 @@ trackedFiles:
     id: 6411dd24cc37
     last_write_checksum: sha1:f3ecb31314bb8e69b92692a828fa5f681e213940
     pristine_git_object: dad959cd5f941958258e136d02a9323751cd01e7
+  docs/models/operations/create-public-ferry-diagram-api-v2-public-ferry-diagrams-post-request.md:
+    id: 8b753ee600aa
+    last_write_checksum: sha1:333edde6b9041ff7e1b4c54abc4e41898e12ab21
+    pristine_git_object: 07d9cdd628786bcb897b1d8519300aa7d4985975
+  docs/models/operations/create-public-ferry-diagram-api-v2-public-ferry-diagrams-post-response.md:
+    id: 7929ea2e8157
+    last_write_checksum: sha1:fd8c4b267cccbec8d75eba845951ffd2226053c9
+    pristine_git_object: 5138c9f651ae24a3de6719afb732f94cdbe237e0
   docs/models/operations/create-public-financial-statement-view-api-v2-public-journals-views-post-request.md:
     id: d369e7fcd60e
     last_write_checksum: sha1:6076c9457a945d3b1af28f796abf8eddca68e7fd
@@ -1703,6 +1783,14 @@ trackedFiles:
     id: 4135cc075f03
     last_write_checksum: sha1:3c5438937b695bdc2b80ebe546ebf6c2d50a934d
     pristine_git_object: 49917ec48f7c2d17508caa6bc339e239981a1e28
+  docs/models/operations/delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete-request.md:
+    id: 59727dc6920c
+    last_write_checksum: sha1:b196c26d91097a49f1c08552e91f89eaa19725b8
+    pristine_git_object: fc02b54c0fe9a9188a41a67783f6f142ee27991b
+  docs/models/operations/delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete-response.md:
+    id: c9d9a4cd7a1a
+    last_write_checksum: sha1:29eece6ccdf469bba6e227332ada1047beed98d7
+    pristine_git_object: 37f02a24c30a0e00fc00a010f292a2c1a774b740
   docs/models/operations/delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete-request.md:
     id: 1d49aaad9a73
     last_write_checksum: sha1:43b3a56230f9e64c5ed187474d0fc4a07f4bcc3a
@@ -2055,6 +2143,14 @@ trackedFiles:
     id: 164632d6fd0f
     last_write_checksum: sha1:79561d99e581cc6cebffa8f25d5cbc14c8442878
     pristine_git_object: 02bb47dae5bd403c781d133742b05e8c7391562c
+  docs/models/operations/get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get-request.md:
+    id: f7cafbd8a337
+    last_write_checksum: sha1:9d5c3e192422885f3fb10dcea0931176cc115b00
+    pristine_git_object: 30e25d345eebb9856cd9df3a9a49030dae4feffb
+  docs/models/operations/get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get-response.md:
+    id: 29fbc5da9654
+    last_write_checksum: sha1:fa1ec06a74293bc5dc18723f567d6d8e77aa9065
+    pristine_git_object: 312dfaaf1c18718772b84b193485a5e365d61985
   docs/models/operations/get-public-import-job-compat-api-v2-public-imports-job-id-get-request.md:
     id: fdb90d8a1144
     last_write_checksum: sha1:b3da6c5288d50011eb81edee64d180fc45a53e31
@@ -2415,6 +2511,14 @@ trackedFiles:
     id: ac533202be96
     last_write_checksum: sha1:043c3a572845e7610606c8cd3ba67e3c13ac0ebe
     pristine_git_object: 6a14edfcd38c307626ad390b885506397e36f6f5
+  docs/models/operations/list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get-request.md:
+    id: 9b24e4005391
+    last_write_checksum: sha1:7cb612f110c5559f750d80a4dc990cc115754ecf
+    pristine_git_object: 3458459d1938084d34f399ca70105c293de1adce
+  docs/models/operations/list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get-response.md:
+    id: 7a04f99846b7
+    last_write_checksum: sha1:a9be664c9fb2bce18b9c345aaad6b8fea47d148d
+    pristine_git_object: ffab7e3ae73ce0b3c0547fbc83bdd8486420d350
   docs/models/operations/list-public-import-jobs-compat-api-v2-public-imports-get-request.md:
     id: af214ea4e841
     last_write_checksum: sha1:79bd17101dfd8e5b7619631287b99384e7c2904d
@@ -3047,6 +3151,14 @@ trackedFiles:
     id: 4990b48a9bb4
     last_write_checksum: sha1:c1fdb12c5191bb5dc1aad93de2fde09fccc28f2c
     pristine_git_object: 99828da2ead2acf88de98f9c15b0ac1636c9696b
+  docs/models/operations/update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put-request.md:
+    id: 7a23451e0ede
+    last_write_checksum: sha1:c1b49794abaa76663c0d8e79de3146b1fdb374dd
+    pristine_git_object: 6b7d29071cd5347ff1c3a9a31253fa65a5452ff4
+  docs/models/operations/update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put-response.md:
+    id: 5b29667dd6c7
+    last_write_checksum: sha1:68d74a790c32b07e93610b04e017281c60791528
+    pristine_git_object: 94932a6ed7e5fbbb96126adac2321508c5ff8f69
   docs/models/operations/update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch-request.md:
     id: 8c3b3c862207
     last_write_checksum: sha1:28351a167a7ea31bc547b7fd2d9fa6405155f8ec
@@ -3715,6 +3827,10 @@ trackedFiles:
     id: 93b0edd02a82
     last_write_checksum: sha1:ea1bc8992c5181b9fff98a3d0eba75af2c2fcc9b
     pristine_git_object: 1668ba0b14bd1dc31ad9e366d8ce71781c9f7b1a
+  docs/models/update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put200-envelope.md:
+    id: fc2bebc9ccf9
+    last_write_checksum: sha1:ab0c4247b21c61b990afcfb41704c0d85917dddb
+    pristine_git_object: 008936dc80b0979d4084afe1a39f098f0639ee20
   docs/models/update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch200-envelope.md:
     id: 71ad2a2e660e
     last_write_checksum: sha1:efa8c4911e3c2ad364c63ab113595f3790645c17
@@ -3963,6 +4079,10 @@ trackedFiles:
     id: 31b6f3b68d3c
     last_write_checksum: sha1:79bc624a269ac8bbcbdee08379957681e9025e23
     pristine_git_object: b2b37b48434e88f1beee293db29a62a719b4a8c4
+  docs/sdks/ferrydiagrams/README.md:
+    id: cc62e4188f0f
+    last_write_checksum: sha1:53570df1bc77bd4235d677ce9210debce3592f33
+    pristine_git_object: cd5773071158bc43770db4a6c69bc466dd09c5f4
   docs/sdks/files/README.md:
     id: e576d7a117f0
     last_write_checksum: sha1:084e57650f01c6f5114a1a84de1308f9fd518994
@@ -4109,12 +4229,12 @@ trackedFiles:
     pristine_git_object: 34efdc6d65c813c9148748b11cdaed7c8e77715a
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:9152bd81878db7d5b780a3df970f0f8d4cebbebc
-    pristine_git_object: eb8e5236c7119d23c536abf3df5108907226f7a3
+    last_write_checksum: sha1:86ad8ea9b423df49107977e934033edd244f77f6
+    pristine_git_object: ebdc4b294e03133b312409ad858ba8c5e8fb8ecf
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:5acd0efa152d588e4980c27fb7dabe304288d6b5
-    pristine_git_object: 45566f2359017831863c0546988bd245d686a89e
+    last_write_checksum: sha1:5c35de149d97b297a4ed999b4b2e4b3f8e9d9df9
+    pristine_git_object: a819826b3a522fdae4be872c6bf938c332dd42d9
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:34efef7138a379cbd77b0a55255e8478b8bc54f9
@@ -4447,6 +4567,26 @@ trackedFiles:
     id: 8f0a1006305c
     last_write_checksum: sha1:c8b2b9088927e55563a0aef608055b9bcd6b7f7a
     pristine_git_object: 301ee3e63b796efa0034641daae36e29e8d35186
+  src/funcs/ferry-diagrams-create-public-ferry-diagram-api-v2-public-ferry-diagrams-post.ts:
+    id: 54232f0caa4b
+    last_write_checksum: sha1:00cfa4a9b21bfdc61e973e4c21b1216ef85d21e5
+    pristine_git_object: fcbf3333c981da4cb51e6908932722bd9ce43eac
+  src/funcs/ferry-diagrams-delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete.ts:
+    id: 3c26fa9b1063
+    last_write_checksum: sha1:19331d6e76b785209f474438143fe40e076adefd
+    pristine_git_object: 5fd0ccdba4645ff2a96a943911bedf878280fd81
+  src/funcs/ferry-diagrams-get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get.ts:
+    id: 13ac7490972d
+    last_write_checksum: sha1:5959c9c60e0e37594ed555926d2a3d853f6f4908
+    pristine_git_object: 90729fa3d3cd692c03818aceb229a0818878ee5d
+  src/funcs/ferry-diagrams-list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get.ts:
+    id: e72e1b29d4b1
+    last_write_checksum: sha1:516c6b63913316ec845b25fd7b45c6bd1dda871a
+    pristine_git_object: 5740bace68e6f4293e146dd392bcd1de45c47d5c
+  src/funcs/ferry-diagrams-update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put.ts:
+    id: 67f939815fdf
+    last_write_checksum: sha1:3d4c6672f26b2fa67f4620a55b7cfe64adacc90f
+    pristine_git_object: ba77027d8417f26c288d9c3131492251d9d29996
   src/funcs/files-upload-public-file-api-v2-public-files-post.ts:
     id: 0efcc1822a50
     last_write_checksum: sha1:fe012154c975716a8b1e8eefb68597defbff6478
@@ -5237,8 +5377,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6663518ae838901d97d298883cc231f64103adc4
-    pristine_git_object: 2f89079665ffce9180a2fb3b927468e9e2dde440
+    last_write_checksum: sha1:a2d28e962cfb0f7f74ad697e7dc670eddae608ae
+    pristine_git_object: a21d4fa1b93468740e0d99d45b8eae1a60a7f75e
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:7533dcb79b22b8c84ac7b90aec94317d12bad5f8
@@ -5515,6 +5655,10 @@ trackedFiles:
     id: 1f1875fbede0
     last_write_checksum: sha1:a926916526de84edadfdfbd160537c14d2946094
     pristine_git_object: 244792c1c67ce72057e010ae2cde837f9955861c
+  src/models/create-public-ferry-diagram-api-v2-public-ferry-diagrams-post200-envelope.ts:
+    id: e6639fe5ec92
+    last_write_checksum: sha1:e262659e199fba944c8922160e74b769c97c9341
+    pristine_git_object: 3e2c6de72877f9ba156ea0c2b7ec89bb78c66391
   src/models/create-public-financial-statement-view-api-v2-public-journals-views-post200-envelope.ts:
     id: 8a10deea0f8a
     last_write_checksum: sha1:6f6a2e3cfef8032100cf605f7579933e129b03bb
@@ -5667,6 +5811,10 @@ trackedFiles:
     id: c4ead6cb03d8
     last_write_checksum: sha1:b73024dcae372a1be469a2bfbad679186b844967
     pristine_git_object: 4a781e13de8e9f4e1582b0413c1241358219d975
+  src/models/delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete200-envelope.ts:
+    id: 8fa3fef45898
+    last_write_checksum: sha1:cfe7e1c2eac05d5ebe84d0090f02b0a10b867d21
+    pristine_git_object: 20f91f6f339e4f8b9ff85ee3d44a8dac3222f31b
   src/models/delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete200-envelope.ts:
     id: 67d1fe8c6dc5
     last_write_checksum: sha1:0742168380c1fa757afe67da7e7ea536090fd7ff
@@ -5807,6 +5955,50 @@ trackedFiles:
     id: 290368f428de
     last_write_checksum: sha1:6df36c0514588b1bb193de4718753fca147a3d77
     pristine_git_object: 5390aaebc68f66464a4cee08bdc15ad47ece0588
+  src/models/ferry-diagram-create-request.ts:
+    id: 2e49a5edfc1e
+    last_write_checksum: sha1:6b52bc87a6210f042370bf5d715ec57f771dd0b0
+    pristine_git_object: 6ed314b464b621be1796bb8ef563e889f05109eb
+  src/models/ferry-diagram-data.ts:
+    id: 56e320b6a942
+    last_write_checksum: sha1:83fca306ffbc3d0a8bb57c4d5d72141d3bf49bda
+    pristine_git_object: 54fab2de29e0cc86e1ff797886f403109d6ff7ac
+  src/models/ferry-diagram-delete-data.ts:
+    id: c65899921b66
+    last_write_checksum: sha1:dc7199e8a4863d085cd206ca1c2986c31581a728
+    pristine_git_object: 5704d1227dc39ccaf03e5ececda7e0269eea62fa
+  src/models/ferry-diagram-edge.ts:
+    id: bdf77871e423
+    last_write_checksum: sha1:e37364a058d287057e40d0d2a973a39166663bad
+    pristine_git_object: 9ed3bd27ef219c33281d312f09a21a18d0a92741
+  src/models/ferry-diagram-list-data.ts:
+    id: 1c6dcbd5786e
+    last_write_checksum: sha1:8205f3a689af5a7661ba7cb0746fcbeae38c55ef
+    pristine_git_object: 0d4b94112bcd876cde2ad63a0543665e7e5eb759
+  src/models/ferry-diagram-node-data.ts:
+    id: cf35aae02185
+    last_write_checksum: sha1:3ca36fa5811a7acb5255b96f3dbb904e5c15ee4f
+    pristine_git_object: fb6e064a537892ee02cb514ec2fb349c32f20822
+  src/models/ferry-diagram-node.ts:
+    id: 2742dcb2f90f
+    last_write_checksum: sha1:374e39c33216bc86312d3fbc9d083886f836c924
+    pristine_git_object: ca40eba2e41d623070092bedfddeb210fc6718d7
+  src/models/ferry-diagram-position.ts:
+    id: 548de355d670
+    last_write_checksum: sha1:955175efa0c3d95f867afb17ce7f623989be213e
+    pristine_git_object: a0146d74483b04f173f7e17ea39443591a9464dc
+  src/models/ferry-diagram-summary.ts:
+    id: 76129ad54fc5
+    last_write_checksum: sha1:98cc9076997ada0555042aa69b871c0822d7a140
+    pristine_git_object: ce50bc27a1b54aecce6e4a32297ca8ec781d4a52
+  src/models/ferry-diagram-update-request.ts:
+    id: bef5f6d800c3
+    last_write_checksum: sha1:52b22977bdc4e6df1321579fface30f9517c5ed4
+    pristine_git_object: 00fab19ef524519a3f6c76cc4f71c4f91759b1db
+  src/models/ferry-diagram-viewport.ts:
+    id: d3039f581610
+    last_write_checksum: sha1:2d4fd11e1db687a6d558f507a322819bfa45ecd0
+    pristine_git_object: 451b1ad888fbd5363ecf0e33e04b7e8c68342288
   src/models/get-public-absence-api-v2-public-absences-absence-id-get200-envelope.ts:
     id: dc8b5f058eed
     last_write_checksum: sha1:61cf4d6e045637022f1f917dd21103f4b4d5518e
@@ -5871,6 +6063,10 @@ trackedFiles:
     id: 371645720d4c
     last_write_checksum: sha1:f577a5d8a613abcc9f57dafac708e23ea1d18e73
     pristine_git_object: 7adc60cd59bcffc0305ffd79f94c1cb7d05d0113
+  src/models/get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get200-envelope.ts:
+    id: 7507812ccc93
+    last_write_checksum: sha1:eab3cdf455793539412895821f4632b973ef5262
+    pristine_git_object: 1719098138a4d2b075764edddfd7463485f38489
   src/models/get-public-import-job-compat-api-v2-public-imports-job-id-get200-envelope.ts:
     id: 35dfbacaea4a
     last_write_checksum: sha1:509e3f0ab4b2035ef61b11f7d582ae6c5aef9ee9
@@ -6017,8 +6213,8 @@ trackedFiles:
     pristine_git_object: 351a407ba2dde5441d011825a62e0ed778ebf59b
   src/models/index.ts:
     id: f93644b0f37e
-    last_write_checksum: sha1:3be20b580249b9cddb33e3dfc165a9840167554a
-    pristine_git_object: b51ba673f27692b66c069f0dfee32ac6d5731a9e
+    last_write_checksum: sha1:fce5ada820048cfca77dfc9f39d7808f768e7a97
+    pristine_git_object: 0bdecb1e3e60f594ca4e1df7e92388c0c162cb89
   src/models/journal-create-request.ts:
     id: d59f180e3f10
     last_write_checksum: sha1:88014a946b314086bd9854b7ad3f26deb87486d7
@@ -6103,6 +6299,10 @@ trackedFiles:
     id: d0c83f5283c9
     last_write_checksum: sha1:33e562028773604c061e715373ebf37df0bf7cfe
     pristine_git_object: 8f13123681f0bbc9b79e6c8068723b06ce0a7b2a
+  src/models/list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get200-envelope.ts:
+    id: e813545805f5
+    last_write_checksum: sha1:359e1d4f08247c5c6ee71a3ef4dd03f96119d194
+    pristine_git_object: 9fe1e6745837c98a14d86d4762df80e579bdb3fb
   src/models/list-public-import-jobs-compat-api-v2-public-imports-get200-envelope.ts:
     id: 9c38ac66a405
     last_write_checksum: sha1:047d48f52f4ce5fb45cdb4a6092e63c1663d852e
@@ -6427,6 +6627,10 @@ trackedFiles:
     id: 82a5c4e1cf30
     last_write_checksum: sha1:b8ee60a27e80a54ee5c1344f8c08b0f0199f59df
     pristine_git_object: 443c871ed7f335d53092ebe61f83aa4d612a0c14
+  src/models/operations/create-public-ferry-diagram-api-v2-public-ferry-diagrams-post.ts:
+    id: 9ff599b6ed63
+    last_write_checksum: sha1:fa2c3c30a4ed5be0f58e0f6bf895d6a0fa4f039c
+    pristine_git_object: 7a5fcc7cd8e9d77bb543ce0b7ad32ab6bf9b30a5
   src/models/operations/create-public-financial-statement-view-api-v2-public-journals-views-post.ts:
     id: 76fc08a8b5f3
     last_write_checksum: sha1:90e1434a9df3efa4b41d011ea1f267469f6f39ba
@@ -6579,6 +6783,10 @@ trackedFiles:
     id: 210038cb4362
     last_write_checksum: sha1:d4d525f50447ec47dd45094ca967d87c61394555
     pristine_git_object: 2b764144d66b2918b52e3a85115a9a5e23d2c914
+  src/models/operations/delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete.ts:
+    id: 7cb2c73becba
+    last_write_checksum: sha1:35ce5a79bf975af559de27b201f3070a513f3041
+    pristine_git_object: 3b5bceb5a208c0e83d6d55a4309f5be0c680ddae
   src/models/operations/delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete.ts:
     id: 66067151f3a2
     last_write_checksum: sha1:7dedf47ff60302c12ce823ad0a7703dfbc87b922
@@ -6755,6 +6963,10 @@ trackedFiles:
     id: 4b85728d86b0
     last_write_checksum: sha1:f9cd0e7435a2af6aa503d66f1cec91551e520fd1
     pristine_git_object: 05881c15559f012b8a29b4d5f4526c1585511aaf
+  src/models/operations/get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get.ts:
+    id: 924027575f5e
+    last_write_checksum: sha1:a280204336bf3a950adeaa1fde0968a30f38e855
+    pristine_git_object: 45f2e2545c236ee4b5b565a55e38c6a918daba6a
   src/models/operations/get-public-import-job-compat-api-v2-public-imports-job-id-get.ts:
     id: c6c60f391448
     last_write_checksum: sha1:a8f29fa1fa0453dedc081ece8cb75d50fca0c68e
@@ -6861,8 +7073,8 @@ trackedFiles:
     pristine_git_object: 4c614f4c9e36e6e4c175707c4b2332f26b138e5f
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:43ff9e2e6c4b7aae9f1b5932c5ac076e637a5ec3
-    pristine_git_object: ed299450b7629c3b83c48088ec53eb9b8e047553
+    last_write_checksum: sha1:7b4d3c3cf8ac6dcf9c5926d0b359d242f6c5bbc9
+    pristine_git_object: 0b629cf3bb051c8c64c97312896f305ec9bb71ad
   src/models/operations/list-public-absences-api-v2-public-absences-get.ts:
     id: d4852ae54f6a
     last_write_checksum: sha1:b01a3bf8d4ce72a72683680c24bdb9200dd3b36b
@@ -6939,6 +7151,10 @@ trackedFiles:
     id: 05beacee6918
     last_write_checksum: sha1:eac4e13f0b0208670c328fb887b6122c4a3bf654
     pristine_git_object: b078e3530c09c1983d8b98ceadfb74831ac9f6fc
+  src/models/operations/list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get.ts:
+    id: 1f8ca1ec62c3
+    last_write_checksum: sha1:e165c52d45b10bbbd108328202c721ac991aa6ac
+    pristine_git_object: 3c854973d1825ecc4faea951370253f384274fdf
   src/models/operations/list-public-import-jobs-compat-api-v2-public-imports-get.ts:
     id: a426f8fdae4b
     last_write_checksum: sha1:9909a77870c6392e49e600fb132fd470b1372eeb
@@ -7255,6 +7471,10 @@ trackedFiles:
     id: 5f1416e28c15
     last_write_checksum: sha1:e9deb09a994dbee351d5969804d349dc076094fb
     pristine_git_object: 9b72e50c2e981549f68831eb590d0bfdeb4ec903
+  src/models/operations/update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put.ts:
+    id: b7045b83068e
+    last_write_checksum: sha1:d2f1f647880070855a023425e90e516a071bb3dd
+    pristine_git_object: a142297afa7a0001fb65cbe549795ef8494f616b
   src/models/operations/update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch.ts:
     id: 2282d739b804
     last_write_checksum: sha1:c22c375f36033abd86a51673cecfcaa39a110c19
@@ -7751,6 +7971,10 @@ trackedFiles:
     id: 74f55d596d5d
     last_write_checksum: sha1:0e7ee8d0ef2b2d7e054b83c6127c17d5dbc3163a
     pristine_git_object: 77febbe49e25ea7199061fe445aa34c109dc11dc
+  src/models/update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put200-envelope.ts:
+    id: 9de724b38bfb
+    last_write_checksum: sha1:6e908dd4c917be0f699e34739d6347aa8a414692
+    pristine_git_object: d83e160429f4a9b8cee8736b3fad723f802b387f
   src/models/update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch200-envelope.ts:
     id: 282ed29a7740
     last_write_checksum: sha1:3ee112f4de656815d7bdfb85f9a009b52b45e2b9
@@ -7979,6 +8203,10 @@ trackedFiles:
     id: 6bc297521eaa
     last_write_checksum: sha1:89d5f88a59c0158efa14940b950fa345f314bb96
     pristine_git_object: 36ff285825cecbe414e7b4bf12ab6f1d54c4a6cb
+  src/sdk/ferry-diagrams.ts:
+    id: 0f1edf489a81
+    last_write_checksum: sha1:bf334f51c8ceaa3610be0a3664a7c302ce332f56
+    pristine_git_object: ea464e128a81f7d5a348ff6216efef455c0579cf
   src/sdk/files.ts:
     id: bb9172f41ecb
     last_write_checksum: sha1:339ae6533e9618a77a52b3d6bad4efc550024c93
@@ -8081,8 +8309,8 @@ trackedFiles:
     pristine_git_object: e0567e6a9fbc5ab0aacb75b93b8503d0fe2fcc54
   src/sdk/sdk.ts:
     id: 784571af2f69
-    last_write_checksum: sha1:8a8e8826c5ebec36b65f373e0a5052815bb8d83a
-    pristine_git_object: cdb19e6ae30790bdf2e02a9727d817bbad550958
+    last_write_checksum: sha1:3091a1eccdd000d3853b32792523d0a0fbe9ebc2
+    pristine_git_object: 7ed69db740a47b17489ae6382f2ce53a0426137a
   src/sdk/subscriptions.ts:
     id: fb904d08fb20
     last_write_checksum: sha1:6dc57af0c6c4d786692ed6aff89510a405caf6ae
@@ -12326,6 +12554,54 @@ examples:
       responses:
         "200":
           application/json: {"success": true, "data": {"key": "<value>", "key1": "<value>"}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  list_public_ferry_diagrams_api_v2_public_ferry_diagrams_get:
+    speakeasy-default-list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get:
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"diagrams": [], "count": 868308}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  create_public_ferry_diagram_api_v2_public_ferry_diagrams_post:
+    speakeasy-default-create-public-ferry-diagram-api-v2-public-ferry-diagrams-post:
+      requestBody:
+        application/json: {"name": "<value>", "description": ""}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"name": "<value>", "description": "", "id": "<id>", "workspaceId": "<id>", "revision": 400204}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  get_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__get:
+    speakeasy-default-get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get:
+      parameters:
+        path:
+          diagram_id: "<id>"
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"name": "<value>", "description": "", "id": "<id>", "workspaceId": "<id>", "revision": 200548}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  update_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__put:
+    speakeasy-default-update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put:
+      parameters:
+        path:
+          diagram_id: "<id>"
+      requestBody:
+        application/json: {"name": "<value>", "description": "", "revision": 179232}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"name": "<value>", "description": "", "id": "<id>", "workspaceId": "<id>", "revision": 358994}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  delete_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__delete:
+    speakeasy-default-delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete:
+      parameters:
+        path:
+          diagram_id: "<id>"
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"id": "<id>", "deleted": false}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
 examplesVersion: 1.0.2
