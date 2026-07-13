@@ -59,6 +59,7 @@ export * from "./create-public-disbursement-api-v2-public-disbursements-post200-
 export * from "./create-public-estimate-api-v2-public-estimates-post200-envelope.js";
 export * from "./create-public-expense-api-v2-public-expenses-post200-envelope.js";
 export * from "./create-public-export-job-compat-api-v2-public-exports-post200-envelope.js";
+export * from "./create-public-ferry-diagram-api-v2-public-ferry-diagrams-post200-envelope.js";
 export * from "./create-public-financial-statement-view-api-v2-public-journals-views-post200-envelope.js";
 export * from "./create-public-import-job-compat-api-v2-public-imports-post200-envelope.js";
 export * from "./create-public-incentive-batch-api-v2-public-incentives-batches-post200-envelope.js";
@@ -97,6 +98,7 @@ export * from "./delete-public-disbursement-allocation-api-v2-public-disbursemen
 export * from "./delete-public-disbursement-api-v2-public-disbursements-disbursement-id-delete200-envelope.js";
 export * from "./delete-public-estimate-api-v2-public-estimates-estimate-id-delete200-envelope.js";
 export * from "./delete-public-expense-api-v2-public-expenses-expense-id-delete200-envelope.js";
+export * from "./delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete200-envelope.js";
 export * from "./delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete200-envelope.js";
 export * from "./delete-public-inventory-api-v2-public-inventories-inventory-id-delete200-envelope.js";
 export * from "./delete-public-inventory-transaction-api-v2-public-inventory-transactions-transaction-id-delete200-envelope.js";
@@ -125,6 +127,17 @@ export * from "./enrich-request.js";
 export * from "./envelope-meta.js";
 export * from "./error-body.js";
 export * from "./export-job-create-request.js";
+export * from "./ferry-diagram-create-request.js";
+export * from "./ferry-diagram-data.js";
+export * from "./ferry-diagram-delete-data.js";
+export * from "./ferry-diagram-edge.js";
+export * from "./ferry-diagram-list-data.js";
+export * from "./ferry-diagram-node-data.js";
+export * from "./ferry-diagram-node.js";
+export * from "./ferry-diagram-position.js";
+export * from "./ferry-diagram-summary.js";
+export * from "./ferry-diagram-update-request.js";
+export * from "./ferry-diagram-viewport.js";
 export * from "./get-public-absence-api-v2-public-absences-absence-id-get200-envelope.js";
 export * from "./get-public-approval-rule-options-api-v2-public-approval-rules-options-get200-envelope.js";
 export * from "./get-public-attendance-record-api-v2-public-attendance-records-attendance-record-id-get200-envelope.js";
@@ -141,6 +154,7 @@ export * from "./get-public-disbursement-api-v2-public-disbursements-disbursemen
 export * from "./get-public-estimate-api-v2-public-estimates-estimate-id-get200-envelope.js";
 export * from "./get-public-expense-api-v2-public-expenses-expense-id-get200-envelope.js";
 export * from "./get-public-export-job-compat-api-v2-public-exports-job-id-get200-envelope.js";
+export * from "./get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get200-envelope.js";
 export * from "./get-public-import-job-compat-api-v2-public-imports-job-id-get200-envelope.js";
 export * from "./get-public-incentive-batch-api-v2-public-incentives-batches-batch-id-get200-envelope.js";
 export * from "./get-public-inventory-api-v2-public-inventories-inventory-id-get200-envelope.js";
@@ -198,6 +212,7 @@ export * from "./list-public-employees-api-v2-public-employees-get200-envelope.j
 export * from "./list-public-estimates-api-v2-public-estimates-get200-envelope.js";
 export * from "./list-public-expenses-api-v2-public-expenses-get200-envelope.js";
 export * from "./list-public-export-jobs-compat-api-v2-public-exports-get200-envelope.js";
+export * from "./list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get200-envelope.js";
 export * from "./list-public-import-jobs-compat-api-v2-public-imports-get200-envelope.js";
 export * from "./list-public-incentive-allocations-api-v2-public-incentives-allocations-get200-envelope.js";
 export * from "./list-public-incentive-batches-api-v2-public-incentives-batches-get200-envelope.js";
@@ -335,6 +350,7 @@ export * from "./update-public-disbursement-allocation-api-v2-public-disbursemen
 export * from "./update-public-disbursement-api-v2-public-disbursements-disbursement-id-put200-envelope.js";
 export * from "./update-public-estimate-api-v2-public-estimates-estimate-id-put200-envelope.js";
 export * from "./update-public-expense-api-v2-public-expenses-expense-id-put200-envelope.js";
+export * from "./update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put200-envelope.js";
 export * from "./update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch200-envelope.js";
 export * from "./update-public-inventory-api-v2-public-inventories-inventory-id-put200-envelope.js";
 export * from "./update-public-inventory-transaction-api-v2-public-inventory-transactions-transaction-id-put200-envelope.js";

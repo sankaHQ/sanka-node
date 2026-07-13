@@ -37,6 +37,7 @@ export * from "./create-public-disbursement-api-v2-public-disbursements-post.js"
 export * from "./create-public-estimate-api-v2-public-estimates-post.js";
 export * from "./create-public-expense-api-v2-public-expenses-post.js";
 export * from "./create-public-export-job-compat-api-v2-public-exports-post.js";
+export * from "./create-public-ferry-diagram-api-v2-public-ferry-diagrams-post.js";
 export * from "./create-public-financial-statement-view-api-v2-public-journals-views-post.js";
 export * from "./create-public-import-job-compat-api-v2-public-imports-post.js";
 export * from "./create-public-incentive-batch-api-v2-public-incentives-batches-post.js";
@@ -75,6 +76,7 @@ export * from "./delete-public-disbursement-allocation-api-v2-public-disbursemen
 export * from "./delete-public-disbursement-api-v2-public-disbursements-disbursement-id-delete.js";
 export * from "./delete-public-estimate-api-v2-public-estimates-estimate-id-delete.js";
 export * from "./delete-public-expense-api-v2-public-expenses-expense-id-delete.js";
+export * from "./delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete.js";
 export * from "./delete-public-incentive-plan-api-v2-public-incentives-plans-plan-id-delete.js";
 export * from "./delete-public-inventory-api-v2-public-inventories-inventory-id-delete.js";
 export * from "./delete-public-inventory-transaction-api-v2-public-inventory-transactions-transaction-id-delete.js";
@@ -119,6 +121,7 @@ export * from "./get-public-disbursement-api-v2-public-disbursements-disbursemen
 export * from "./get-public-estimate-api-v2-public-estimates-estimate-id-get.js";
 export * from "./get-public-expense-api-v2-public-expenses-expense-id-get.js";
 export * from "./get-public-export-job-compat-api-v2-public-exports-job-id-get.js";
+export * from "./get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get.js";
 export * from "./get-public-import-job-compat-api-v2-public-imports-job-id-get.js";
 export * from "./get-public-incentive-batch-api-v2-public-incentives-batches-batch-id-get.js";
 export * from "./get-public-inventory-api-v2-public-inventories-inventory-id-get.js";
@@ -164,6 +167,7 @@ export * from "./list-public-employees-api-v2-public-employees-get.js";
 export * from "./list-public-estimates-api-v2-public-estimates-get.js";
 export * from "./list-public-expenses-api-v2-public-expenses-get.js";
 export * from "./list-public-export-jobs-compat-api-v2-public-exports-get.js";
+export * from "./list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get.js";
 export * from "./list-public-import-jobs-compat-api-v2-public-imports-get.js";
 export * from "./list-public-incentive-allocations-api-v2-public-incentives-allocations-get.js";
 export * from "./list-public-incentive-batches-api-v2-public-incentives-batches-get.js";
@@ -243,6 +247,7 @@ export * from "./update-public-disbursement-allocation-api-v2-public-disbursemen
 export * from "./update-public-disbursement-api-v2-public-disbursements-disbursement-id-put.js";
 export * from "./update-public-estimate-api-v2-public-estimates-estimate-id-put.js";
 export * from "./update-public-expense-api-v2-public-expenses-expense-id-put.js";
+export * from "./update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put.js";
 export * from "./update-public-incentive-plan-api-v2-public-incentives-plans-plan-id-patch.js";
 export * from "./update-public-inventory-api-v2-public-inventories-inventory-id-put.js";
 export * from "./update-public-inventory-transaction-api-v2-public-inventory-transactions-transaction-id-put.js";

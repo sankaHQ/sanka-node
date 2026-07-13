@@ -265,6 +265,14 @@ run();
 * [getPublicExportJobCompatApiV2PublicExportsJobIdGet](docs/sdks/exports/README.md#getpublicexportjobcompatapiv2publicexportsjobidget) - Get Public Export Job Compat
 * [cancelPublicExportJobCompatApiV2PublicExportsJobIdCancelPost](docs/sdks/exports/README.md#cancelpublicexportjobcompatapiv2publicexportsjobidcancelpost) - Cancel Public Export Job Compat
 
+### [FerryDiagrams](docs/sdks/ferrydiagrams/README.md)
+
+* [listPublicFerryDiagramsApiV2PublicFerryDiagramsGet](docs/sdks/ferrydiagrams/README.md#listpublicferrydiagramsapiv2publicferrydiagramsget) - List Public Ferry Diagrams
+* [createPublicFerryDiagramApiV2PublicFerryDiagramsPost](docs/sdks/ferrydiagrams/README.md#createpublicferrydiagramapiv2publicferrydiagramspost) - Create Public Ferry Diagram
+* [getPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramapiv2publicferrydiagramsdiagramidget) - Get Public Ferry Diagram
+* [updatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
+* [deletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete](docs/sdks/ferrydiagrams/README.md#deletepublicferrydiagramapiv2publicferrydiagramsdiagramiddelete) - Delete Public Ferry Diagram
+
 ### [Files](docs/sdks/files/README.md)
 
 * [uploadPublicFileApiV2PublicFilesPost](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
@@ -650,6 +658,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`exportsCreatePublicExportJobCompatApiV2PublicExportsPost`](docs/sdks/exports/README.md#createpublicexportjobcompatapiv2publicexportspost) - Create Public Export Job Compat
 - [`exportsGetPublicExportJobCompatApiV2PublicExportsJobIdGet`](docs/sdks/exports/README.md#getpublicexportjobcompatapiv2publicexportsjobidget) - Get Public Export Job Compat
 - [`exportsListPublicExportJobsCompatApiV2PublicExportsGet`](docs/sdks/exports/README.md#listpublicexportjobscompatapiv2publicexportsget) - List Public Export Jobs Compat
+- [`ferryDiagramsCreatePublicFerryDiagramApiV2PublicFerryDiagramsPost`](docs/sdks/ferrydiagrams/README.md#createpublicferrydiagramapiv2publicferrydiagramspost) - Create Public Ferry Diagram
+- [`ferryDiagramsDeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete`](docs/sdks/ferrydiagrams/README.md#deletepublicferrydiagramapiv2publicferrydiagramsdiagramiddelete) - Delete Public Ferry Diagram
+- [`ferryDiagramsGetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet`](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramapiv2publicferrydiagramsdiagramidget) - Get Public Ferry Diagram
+- [`ferryDiagramsListPublicFerryDiagramsApiV2PublicFerryDiagramsGet`](docs/sdks/ferrydiagrams/README.md#listpublicferrydiagramsapiv2publicferrydiagramsget) - List Public Ferry Diagrams
+- [`ferryDiagramsUpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut`](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
 - [`filesUploadPublicFileApiV2PublicFilesPost`](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
 - [`importsCancelPublicImportJobCompatApiV2PublicImportsJobIdCancelPost`](docs/sdks/imports/README.md#cancelpublicimportjobcompatapiv2publicimportsjobidcancelpost) - Cancel Public Import Job Compat
 - [`importsCreatePublicImportJobCompatApiV2PublicImportsPost`](docs/sdks/imports/README.md#createpublicimportjobcompatapiv2publicimportspost) - Create Public Import Job Compat
