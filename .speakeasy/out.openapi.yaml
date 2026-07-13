@@ -25989,6 +25989,11 @@ components:
           anyOf:
             - type: "string"
             - type: "null"
+        description:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
         default:
           type: "boolean"
           title: "Default"
@@ -26042,6 +26047,11 @@ components:
           anyOf:
             - type: "string"
             - type: "null"
+        description:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
         default:
           anyOf:
             - type: "boolean"

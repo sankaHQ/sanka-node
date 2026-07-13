@@ -44656,6 +44656,17 @@
               }
             ]
           },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
           "default": {
             "type": "boolean",
             "title": "Default",
@@ -44759,6 +44770,17 @@
                 "type": "null"
               }
             ]
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
           },
           "default": {
             "anyOf": [

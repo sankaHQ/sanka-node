@@ -11,6 +11,7 @@ import {
 
 export type PublicProjectRequest = {
   title?: string | null | undefined;
+  description?: string | null | undefined;
   default?: boolean | null | undefined;
   statuses?: Array<PublicProjectStatusRequest> | null | undefined;
 };
@@ -18,6 +19,7 @@ export type PublicProjectRequest = {
 /** @internal */
 export type PublicProjectRequest$Outbound = {
   title?: string | null | undefined;
+  description?: string | null | undefined;
   default?: boolean | null | undefined;
   statuses?: Array<PublicProjectStatusRequest$Outbound> | null | undefined;
 };
@@ -28,6 +30,7 @@ export const PublicProjectRequest$outboundSchema: z.ZodMiniType<
   PublicProjectRequest
 > = z.object({
   title: z.optional(z.nullable(z.string())),
+  description: z.optional(z.nullable(z.string())),
   default: z.optional(z.nullable(z.boolean())),
   statuses: z.optional(
     z.nullable(z.array(PublicProjectStatusRequest$outboundSchema)),
