@@ -26,8 +26,8 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+https://github.com/sankaHQ/sanka-node.git",
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/sankaHQ/sanka-node.git"
   },
   "type": "module",
   "main": "./esm/index.js",

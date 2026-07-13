@@ -17,6 +17,7 @@ export type PublicProject = {
   id: string;
   projectId: string;
   title?: string | null | undefined;
+  description?: string | null | undefined;
   default: boolean;
   statuses?: Array<PublicProjectStatus> | undefined;
   taskCount: number;
@@ -34,6 +35,7 @@ export const PublicProject$inboundSchema: z.ZodMiniType<
     id: types.string(),
     project_id: types.string(),
     title: z.optional(z.nullable(types.string())),
+    description: z.optional(z.nullable(types.string())),
     default: z._default(types.boolean(), false),
     statuses: types.optional(z.array(PublicProjectStatus$inboundSchema)),
     task_count: z._default(types.number(), 0),
