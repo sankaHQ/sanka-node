@@ -17822,6 +17822,433 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/ferry/programs:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "List Public Ferry Programs"
+      operationId: "list_public_ferry_programs_api_v2_public_ferry_programs_get"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicFerryProgramsApiV2PublicFerryProgramsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "Get Public Ferry Program"
+      operationId: "get_public_ferry_program_api_v2_public_ferry_programs__program_id__get"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/meetings:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "List Public Ferry Program Meetings"
+      operationId: "list_public_ferry_program_meetings_api_v2_public_ferry_programs__program_id__meetings_get"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Create Public Ferry Program Meeting"
+      operationId: "create_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramMeetingCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/meetings/{meeting_id}:
+    patch:
+      tags:
+        - "ferry-programs"
+      summary: "Update Public Ferry Program Meeting"
+      operationId: "update_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings__meeting_id__patch"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "meeting_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Meeting Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramMeetingUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos:
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Create Public Ferry Program Todo"
+      operationId: "create_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos/batch-upsert:
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Batch Upsert Public Ferry Program Todos"
+      operationId: "batch_upsert_public_ferry_program_todos_api_v2_public_ferry_programs__program_id__todos_batch_upsert_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoBatchUpsertRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos/{todo_id}:
+    patch:
+      tags:
+        - "ferry-programs"
+      summary: "Update Public Ferry Program Todo"
+      operationId: "update_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__patch"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "todo_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Todo Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - "ferry-programs"
+      summary: "Delete Public Ferry Program Todo"
+      operationId: "delete_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__delete"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "todo_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Todo Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
 components:
   headers:
     XCtxId:
@@ -26919,6 +27346,827 @@ components:
         - "name"
         - "revision"
       title: "FerryDiagramSummary"
+    DeletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        workspaceId:
+          type: "string"
+          title: "Workspaceid"
+        templateSlug:
+          type: "string"
+          title: "Templateslug"
+        status:
+          type: "string"
+          enum:
+            - "draft"
+            - "active"
+            - "ready"
+            - "completed"
+            - "archived"
+          title: "Status"
+        plan:
+          type: "string"
+          enum:
+            - "self_serve"
+            - "sakura_led"
+            - "expert_led"
+          title: "Plan"
+          default: "self_serve"
+        planChangeLocked:
+          type: "boolean"
+          title: "Planchangelocked"
+          default: false
+        paymentState:
+          type: "string"
+          enum:
+            - "draft"
+            - "awaiting_payment"
+            - "active"
+          title: "Paymentstate"
+          default: "active"
+        billingCurrency:
+          type: "string"
+          enum:
+            - "jpy"
+            - "usd"
+          title: "Billingcurrency"
+          default: "jpy"
+        recordCount:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Recordcount"
+        listPrice:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Listprice"
+        quotedPrice:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Quotedprice"
+        feeWaived:
+          type: "boolean"
+          title: "Feewaived"
+          default: false
+        feeWaiverReason:
+          type: "string"
+          title: "Feewaiverreason"
+          default: ""
+        expertUserId:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Expertuserid"
+        expertReviewThreadId:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Expertreviewthreadid"
+        expertSettings:
+          additionalProperties: true
+          type: "object"
+          title: "Expertsettings"
+        entitlements:
+          additionalProperties: true
+          type: "object"
+          title: "Entitlements"
+        name:
+          type: "string"
+          title: "Name"
+        description:
+          type: "string"
+          title: "Description"
+          default: ""
+        updatesMarkdown:
+          type: "string"
+          title: "Updatesmarkdown"
+          default: ""
+        sources:
+          items:
+            $ref: "#/components/schemas/FerryProgramEndpoint"
+          type: "array"
+          title: "Sources"
+        destinations:
+          items:
+            $ref: "#/components/schemas/FerryProgramEndpoint"
+          type: "array"
+          title: "Destinations"
+        todos:
+          items:
+            $ref: "#/components/schemas/FerryProgramTodo"
+          type: "array"
+          title: "Todos"
+        linkedRunIds:
+          items:
+            type: "string"
+          type: "array"
+          title: "Linkedrunids"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      type: "object"
+      required:
+        - "id"
+        - "workspaceId"
+        - "templateSlug"
+        - "status"
+        - "name"
+      title: "FerryProgramData"
+    FerryProgramTodo:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        title:
+          type: "string"
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          title: "Category"
+          default: "planning"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: true
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+      type: "object"
+      required:
+        - "id"
+        - "title"
+      title: "FerryProgramTodo"
+    FerryProgramEndpoint:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        kind:
+          type: "string"
+          title: "Kind"
+        label:
+          type: "string"
+          title: "Label"
+        labelJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Labelja"
+        role:
+          type: "string"
+          enum:
+            - "source"
+            - "destination"
+          title: "Role"
+        integrationSlug:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Integrationslug"
+        channelId:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channelid"
+        sourceType:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Sourcetype"
+        objectTypes:
+          items:
+            type: "string"
+          type: "array"
+          title: "Objecttypes"
+        metadata:
+          additionalProperties: true
+          type: "object"
+          title: "Metadata"
+      type: "object"
+      required:
+        - "id"
+        - "kind"
+        - "label"
+        - "role"
+      title: "FerryProgramEndpoint"
+    UpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramTodoUpdateRequest:
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+              minLength: 1
+            - type: "null"
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Description"
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Category"
+        required:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Required"
+        status:
+          anyOf:
+            - type: "string"
+              enum:
+                - "not_started"
+                - "in_progress"
+                - "completed"
+                - "blocked"
+            - type: "null"
+          title: "Status"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          anyOf:
+            - type: "string"
+              enum:
+                - "P0"
+                - "P1"
+                - "P2"
+                - "P3"
+                - "P4"
+            - type: "null"
+          title: "Priority"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+      type: "object"
+      title: "FerryProgramTodoUpdateRequest"
+    BatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramTodoBatchUpsertData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramTodoBatchUpsertData:
+      properties:
+        program:
+          $ref: "#/components/schemas/FerryProgramData"
+        createdCount:
+          type: "integer"
+          title: "Createdcount"
+        updatedCount:
+          type: "integer"
+          title: "Updatedcount"
+      type: "object"
+      required:
+        - "program"
+        - "createdCount"
+        - "updatedCount"
+      title: "FerryProgramTodoBatchUpsertData"
+    FerryProgramTodoBatchUpsertRequest:
+      properties:
+        todos:
+          items:
+            $ref: "#/components/schemas/FerryProgramTodoBatchUpsertItem"
+          type: "array"
+          maxItems: 100
+          minItems: 1
+          title: "Todos"
+      type: "object"
+      required:
+        - "todos"
+      title: "FerryProgramTodoBatchUpsertRequest"
+    FerryProgramTodoBatchUpsertItem:
+      properties:
+        title:
+          type: "string"
+          maxLength: 500
+          minLength: 1
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          maxLength: 20000
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          maxLength: 100
+          title: "Category"
+          default: "custom"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: false
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+        id:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Id"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramTodoBatchUpsertItem"
+    CreatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramTodoCreateRequest:
+      properties:
+        title:
+          type: "string"
+          maxLength: 500
+          minLength: 1
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          maxLength: 20000
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          maxLength: 100
+          title: "Category"
+          default: "custom"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: false
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramTodoCreateRequest"
+    UpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramMeetingData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        programId:
+          type: "string"
+          title: "Programid"
+        workspaceId:
+          type: "string"
+          title: "Workspaceid"
+        title:
+          type: "string"
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          type: "string"
+          title: "Contentmarkdown"
+          default: ""
+        sourceRef:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Sourceref"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      type: "object"
+      required:
+        - "id"
+        - "programId"
+        - "workspaceId"
+        - "title"
+      title: "FerryProgramMeetingData"
+    FerryProgramMeetingUpdateRequest:
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+              minLength: 1
+            - type: "null"
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          anyOf:
+            - type: "string"
+              maxLength: 200000
+            - type: "null"
+          title: "Contentmarkdown"
+      type: "object"
+      title: "FerryProgramMeetingUpdateRequest"
+    CreatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramMeetingCreateRequest:
+      properties:
+        title:
+          type: "string"
+          maxLength: 255
+          minLength: 1
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          type: "string"
+          maxLength: 200000
+          title: "Contentmarkdown"
+          default: ""
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramMeetingCreateRequest"
+    ListPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramMeetingListData:
+      properties:
+        meetings:
+          items:
+            $ref: "#/components/schemas/FerryProgramMeetingData"
+          type: "array"
+          title: "Meetings"
+        count:
+          type: "integer"
+          title: "Count"
+      type: "object"
+      required:
+        - "meetings"
+        - "count"
+      title: "FerryProgramMeetingListData"
+    GetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicFerryProgramsApiV2PublicFerryProgramsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    FerryProgramListData:
+      properties:
+        programs:
+          items:
+            $ref: "#/components/schemas/FerryProgramData"
+          type: "array"
+          title: "Programs"
+        count:
+          type: "integer"
+          title: "Count"
+      type: "object"
+      required:
+        - "programs"
+        - "count"
+      title: "FerryProgramListData"
   securitySchemes:
     bearerAuth:
       type: "http"

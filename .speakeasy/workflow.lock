@@ -1,9 +1,9 @@
-speakeasyVersion: 1.789.3
+speakeasyVersion: 1.790.2
 sources:
     SankaPublicAPI:
         sourceNamespace: sanka-public-api
-        sourceRevisionDigest: sha256:33a7d1d2667e49d6ab2979d57e99057e5f2b6d10b4e44269a8214cff34a266af
-        sourceBlobDigest: sha256:65f3b58646e2167b045613c45f2dbbd745703713547a165633ac8b4ad7c3429e
+        sourceRevisionDigest: sha256:ef0c6b36a23590dacbb962c682dda2c760e1f9f0720c1043b8548a07aecc1aff
+        sourceBlobDigest: sha256:8645103fb77222a983af8c4290087e8fbba960f431275e016be5571f4bc01c9c
         tags:
             - latest
             - 0.1.0
@@ -11,10 +11,10 @@ targets:
     sanka-sdk:
         source: SankaPublicAPI
         sourceNamespace: sanka-public-api
-        sourceRevisionDigest: sha256:33a7d1d2667e49d6ab2979d57e99057e5f2b6d10b4e44269a8214cff34a266af
-        sourceBlobDigest: sha256:65f3b58646e2167b045613c45f2dbbd745703713547a165633ac8b4ad7c3429e
+        sourceRevisionDigest: sha256:ef0c6b36a23590dacbb962c682dda2c760e1f9f0720c1043b8548a07aecc1aff
+        sourceBlobDigest: sha256:8645103fb77222a983af8c4290087e8fbba960f431275e016be5571f4bc01c9c
         codeSamplesNamespace: sanka-public-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:3ff6ea627b0892b74da9eb77829d693d5aa1d144fe9587b249c4484e9e5d2560
+        codeSamplesRevisionDigest: sha256:9d6ae949beef8fab7d5b9921f73359bebb5e1bad3e93ede5e9f8f93383cf67be
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

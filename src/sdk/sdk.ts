@@ -20,6 +20,7 @@ import { Estimates } from "./estimates.js";
 import { Expenses } from "./expenses.js";
 import { Exports } from "./exports.js";
 import { FerryDiagrams } from "./ferry-diagrams.js";
+import { FerryPrograms } from "./ferry-programs.js";
 import { Files } from "./files.js";
 import { Imports } from "./imports.js";
 import { Incentives } from "./incentives.js";
@@ -293,5 +294,10 @@ export class Sanka extends ClientSDK {
   private _ferryDiagrams?: FerryDiagrams;
   get ferryDiagrams(): FerryDiagrams {
     return (this._ferryDiagrams ??= new FerryDiagrams(this._options));
+  }
+
+  private _ferryPrograms?: FerryPrograms;
+  get ferryPrograms(): FerryPrograms {
+    return (this._ferryPrograms ??= new FerryPrograms(this._options));
   }
 }
