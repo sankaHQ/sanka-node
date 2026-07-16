@@ -273,6 +273,18 @@ run();
 * [updatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
 * [deletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete](docs/sdks/ferrydiagrams/README.md#deletepublicferrydiagramapiv2publicferrydiagramsdiagramiddelete) - Delete Public Ferry Diagram
 
+### [FerryPrograms](docs/sdks/ferryprograms/README.md)
+
+* [listPublicFerryProgramsApiV2PublicFerryProgramsGet](docs/sdks/ferryprograms/README.md#listpublicferryprogramsapiv2publicferryprogramsget) - List Public Ferry Programs
+* [getPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet](docs/sdks/ferryprograms/README.md#getpublicferryprogramapiv2publicferryprogramsprogramidget) - Get Public Ferry Program
+* [listPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet](docs/sdks/ferryprograms/README.md#listpublicferryprogrammeetingsapiv2publicferryprogramsprogramidmeetingsget) - List Public Ferry Program Meetings
+* [createPublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost](docs/sdks/ferryprograms/README.md#createpublicferryprogrammeetingapiv2publicferryprogramsprogramidmeetingspost) - Create Public Ferry Program Meeting
+* [updatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch](docs/sdks/ferryprograms/README.md#updatepublicferryprogrammeetingapiv2publicferryprogramsprogramidmeetingsmeetingidpatch) - Update Public Ferry Program Meeting
+* [createPublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost](docs/sdks/ferryprograms/README.md#createpublicferryprogramtodoapiv2publicferryprogramsprogramidtodospost) - Create Public Ferry Program Todo
+* [batchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost](docs/sdks/ferryprograms/README.md#batchupsertpublicferryprogramtodosapiv2publicferryprogramsprogramidtodosbatchupsertpost) - Batch Upsert Public Ferry Program Todos
+* [updatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch](docs/sdks/ferryprograms/README.md#updatepublicferryprogramtodoapiv2publicferryprogramsprogramidtodostodoidpatch) - Update Public Ferry Program Todo
+* [deletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete](docs/sdks/ferryprograms/README.md#deletepublicferryprogramtodoapiv2publicferryprogramsprogramidtodostodoiddelete) - Delete Public Ferry Program Todo
+
 ### [Files](docs/sdks/files/README.md)
 
 * [uploadPublicFileApiV2PublicFilesPost](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
@@ -663,6 +675,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ferryDiagramsGetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet`](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramapiv2publicferrydiagramsdiagramidget) - Get Public Ferry Diagram
 - [`ferryDiagramsListPublicFerryDiagramsApiV2PublicFerryDiagramsGet`](docs/sdks/ferrydiagrams/README.md#listpublicferrydiagramsapiv2publicferrydiagramsget) - List Public Ferry Diagrams
 - [`ferryDiagramsUpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut`](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
+- [`ferryProgramsBatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost`](docs/sdks/ferryprograms/README.md#batchupsertpublicferryprogramtodosapiv2publicferryprogramsprogramidtodosbatchupsertpost) - Batch Upsert Public Ferry Program Todos
+- [`ferryProgramsCreatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost`](docs/sdks/ferryprograms/README.md#createpublicferryprogrammeetingapiv2publicferryprogramsprogramidmeetingspost) - Create Public Ferry Program Meeting
+- [`ferryProgramsCreatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost`](docs/sdks/ferryprograms/README.md#createpublicferryprogramtodoapiv2publicferryprogramsprogramidtodospost) - Create Public Ferry Program Todo
+- [`ferryProgramsDeletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete`](docs/sdks/ferryprograms/README.md#deletepublicferryprogramtodoapiv2publicferryprogramsprogramidtodostodoiddelete) - Delete Public Ferry Program Todo
+- [`ferryProgramsGetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet`](docs/sdks/ferryprograms/README.md#getpublicferryprogramapiv2publicferryprogramsprogramidget) - Get Public Ferry Program
+- [`ferryProgramsListPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet`](docs/sdks/ferryprograms/README.md#listpublicferryprogrammeetingsapiv2publicferryprogramsprogramidmeetingsget) - List Public Ferry Program Meetings
+- [`ferryProgramsListPublicFerryProgramsApiV2PublicFerryProgramsGet`](docs/sdks/ferryprograms/README.md#listpublicferryprogramsapiv2publicferryprogramsget) - List Public Ferry Programs
+- [`ferryProgramsUpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch`](docs/sdks/ferryprograms/README.md#updatepublicferryprogrammeetingapiv2publicferryprogramsprogramidmeetingsmeetingidpatch) - Update Public Ferry Program Meeting
+- [`ferryProgramsUpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch`](docs/sdks/ferryprograms/README.md#updatepublicferryprogramtodoapiv2publicferryprogramsprogramidtodostodoidpatch) - Update Public Ferry Program Todo
 - [`filesUploadPublicFileApiV2PublicFilesPost`](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
 - [`importsCancelPublicImportJobCompatApiV2PublicImportsJobIdCancelPost`](docs/sdks/imports/README.md#cancelpublicimportjobcompatapiv2publicimportsjobidcancelpost) - Cancel Public Import Job Compat
 - [`importsCreatePublicImportJobCompatApiV2PublicImportsPost`](docs/sdks/imports/README.md#createpublicimportjobcompatapiv2publicimportspost) - Create Public Import Job Compat
