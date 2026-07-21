@@ -474,9 +474,7 @@ const sanka = new Sanka({
 async function run() {
   const result = await sanka.payroll.createPublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost({
     runId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
 
   console.log(result);
@@ -504,9 +502,7 @@ const sanka = new SankaCore({
 async function run() {
   const res = await payrollCreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost(sanka, {
     runId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;

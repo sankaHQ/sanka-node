@@ -19,6 +19,7 @@ export type ListPublicAbsencesApiV2PublicAbsencesGetRequest = {
   viewId?: string | null | undefined;
   search?: string | null | undefined;
   language?: string | null | undefined;
+  filters?: string | null | undefined;
   page?: number | undefined;
   limit?: number | null | undefined;
   cursor?: string | null | undefined;
@@ -48,6 +49,7 @@ export type ListPublicAbsencesApiV2PublicAbsencesGetRequest$Outbound = {
   view_id?: string | null | undefined;
   search?: string | null | undefined;
   language?: string | null | undefined;
+  filters?: string | null | undefined;
   page: number;
   limit?: number | null | undefined;
   cursor?: string | null | undefined;
@@ -83,6 +85,7 @@ export const ListPublicAbsencesApiV2PublicAbsencesGetRequest$outboundSchema:
       viewId: z.optional(z.nullable(z.string())),
       search: z.optional(z.nullable(z.string())),
       language: z.optional(z.nullable(z.string())),
+      filters: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z.optional(z.nullable(z.int())),
       cursor: z.optional(z.nullable(z.string())),

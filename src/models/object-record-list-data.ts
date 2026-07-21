@@ -13,6 +13,10 @@ import {
   ObjectRecordData$inboundSchema,
 } from "./object-record-data.js";
 import {
+  ObjectRecordSubtotalResult,
+  ObjectRecordSubtotalResult$inboundSchema,
+} from "./object-record-subtotal-result.js";
+import {
   ObjectRecordViewData,
   ObjectRecordViewData$inboundSchema,
 } from "./object-record-view-data.js";
@@ -27,6 +31,7 @@ export type ObjectRecordListData = {
   pageSize: number;
   total: number;
   nextCursor?: string | null | undefined;
+  subtotals?: Array<ObjectRecordSubtotalResult> | undefined;
   meta?: { [k: string]: any } | undefined;
 };
 
@@ -45,6 +50,9 @@ export const ObjectRecordListData$inboundSchema: z.ZodMiniType<
     page_size: types.number(),
     total: types.number(),
     next_cursor: z.optional(z.nullable(types.string())),
+    subtotals: types.optional(
+      z.array(ObjectRecordSubtotalResult$inboundSchema),
+    ),
     meta: types.optional(z.record(z.string(), z.any())),
   }),
   z.transform((v) => {

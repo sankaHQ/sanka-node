@@ -20,6 +20,7 @@ import { Estimates } from "./estimates.js";
 import { Expenses } from "./expenses.js";
 import { Exports } from "./exports.js";
 import { FerryDiagrams } from "./ferry-diagrams.js";
+import { FerryPrograms } from "./ferry-programs.js";
 import { Files } from "./files.js";
 import { Imports } from "./imports.js";
 import { Incentives } from "./incentives.js";
@@ -29,6 +30,7 @@ import { Invoices } from "./invoices.js";
 import { Items } from "./items.js";
 import { Journals } from "./journals.js";
 import { Locations } from "./locations.js";
+import { Lookout } from "./lookout.js";
 import { Meters } from "./meters.js";
 import { ObjectSchemas } from "./object-schemas.js";
 import { Orders } from "./orders.js";
@@ -43,6 +45,7 @@ import { Records } from "./records.js";
 import { Reports } from "./reports.js";
 import { Revenues } from "./revenues.js";
 import { RuleSettings } from "./rule-settings.js";
+import { SankaBuy } from "./sanka-buy.js";
 import { Subscriptions } from "./subscriptions.js";
 import { Tasks } from "./tasks.js";
 import { Tickets } from "./tickets.js";
@@ -86,6 +89,16 @@ export class Sanka extends ClientSDK {
   private _attendanceRecords?: AttendanceRecords;
   get attendanceRecords(): AttendanceRecords {
     return (this._attendanceRecords ??= new AttendanceRecords(this._options));
+  }
+
+  private _sankaBuy?: SankaBuy;
+  get sankaBuy(): SankaBuy {
+    return (this._sankaBuy ??= new SankaBuy(this._options));
+  }
+
+  private _lookout?: Lookout;
+  get lookout(): Lookout {
+    return (this._lookout ??= new Lookout(this._options));
   }
 
   private _bills?: Bills;
@@ -136,6 +149,16 @@ export class Sanka extends ClientSDK {
   private _exports?: Exports;
   get exports(): Exports {
     return (this._exports ??= new Exports(this._options));
+  }
+
+  private _ferryDiagrams?: FerryDiagrams;
+  get ferryDiagrams(): FerryDiagrams {
+    return (this._ferryDiagrams ??= new FerryDiagrams(this._options));
+  }
+
+  private _ferryPrograms?: FerryPrograms;
+  get ferryPrograms(): FerryPrograms {
+    return (this._ferryPrograms ??= new FerryPrograms(this._options));
   }
 
   private _files?: Files;
@@ -288,10 +311,5 @@ export class Sanka extends ClientSDK {
   private _workflowRuns?: WorkflowRuns;
   get workflowRuns(): WorkflowRuns {
     return (this._workflowRuns ??= new WorkflowRuns(this._options));
-  }
-
-  private _ferryDiagrams?: FerryDiagrams;
-  get ferryDiagrams(): FerryDiagrams {
-    return (this._ferryDiagrams ??= new FerryDiagrams(this._options));
   }
 }

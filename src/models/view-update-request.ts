@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const ViewUpdateRequestVisibility = {
@@ -34,6 +35,7 @@ export type ViewUpdateRequest = {
   title?: string | null | undefined;
   visibility?: ViewUpdateRequestVisibility | null | undefined;
   mode?: ViewUpdateRequestMode | null | undefined;
+  groupFieldId?: string | null | undefined;
 };
 
 /** @internal */
@@ -51,19 +53,28 @@ export type ViewUpdateRequest$Outbound = {
   title?: string | null | undefined;
   visibility?: string | null | undefined;
   mode?: string | null | undefined;
+  group_field_id?: string | null | undefined;
 };
 
 /** @internal */
 export const ViewUpdateRequest$outboundSchema: z.ZodMiniType<
   ViewUpdateRequest$Outbound,
   ViewUpdateRequest
-> = z.object({
-  title: z.optional(z.nullable(z.string())),
-  visibility: z.optional(
-    z.nullable(ViewUpdateRequestVisibility$outboundSchema),
-  ),
-  mode: z.optional(z.nullable(ViewUpdateRequestMode$outboundSchema)),
-});
+> = z.pipe(
+  z.object({
+    title: z.optional(z.nullable(z.string())),
+    visibility: z.optional(
+      z.nullable(ViewUpdateRequestVisibility$outboundSchema),
+    ),
+    mode: z.optional(z.nullable(ViewUpdateRequestMode$outboundSchema)),
+    groupFieldId: z.optional(z.nullable(z.string())),
+  }),
+  z.transform((v) => {
+    return remap$(v, {
+      groupFieldId: "group_field_id",
+    });
+  }),
+);
 
 export function viewUpdateRequestToJSON(
   viewUpdateRequest: ViewUpdateRequest,

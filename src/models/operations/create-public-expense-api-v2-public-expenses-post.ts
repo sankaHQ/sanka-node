@@ -12,7 +12,7 @@ import * as models from "../index.js";
 export type CreatePublicExpenseApiV2PublicExpensesPostRequest = {
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
-  body: models.ObjectRecordCreateRequest;
+  body: models.PublicExpenseMutationRequest;
 };
 
 export type CreatePublicExpenseApiV2PublicExpensesPostResponse = {
@@ -24,7 +24,7 @@ export type CreatePublicExpenseApiV2PublicExpensesPostResponse = {
 export type CreatePublicExpenseApiV2PublicExpensesPostRequest$Outbound = {
   workspace_id?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
-  body: models.ObjectRecordCreateRequest$Outbound;
+  body: models.PublicExpenseMutationRequest$Outbound;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const CreatePublicExpenseApiV2PublicExpensesPostRequest$outboundSchema:
     z.object({
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: models.ObjectRecordCreateRequest$outboundSchema,
+      body: models.PublicExpenseMutationRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

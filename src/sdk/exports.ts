@@ -36,15 +36,16 @@ export class Exports extends ClientSDK {
    * Create an export job.
    *
    * Integration-destination exports are validated against the runnable
-   * delivery matrix (item/order to nextengine, and company/contact/deal/item/
-   * order to hubspot via the native outbound dispatcher). Provider and
+   * delivery matrix. HubSpot Company, Contact, Custom Object, Deal, Invoice,
+   * Item, Order, Subscription, and Ticket exports use the dedicated Hatchet
+   * bulk workflow, bounded CSV chunks, and HubSpot's Imports API. Invoice
+   * requires an explicitly selected HubSpot custom-object type id. NextEngine
+   * Item and Order exports keep their dedicated Hatchet pipelines. Provider and
    * object pairs without a working delivery pipeline are rejected with HTTP
-   * 400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` (details:
-   * ``object_type``, ``provider``, ``reason``) before any job history row or
-   * outbound event is created. Empty or unknown provider slugs are rejected
-   * with HTTP 400 and error code ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``.
-   * Accepted integration exports are recorded with status ``queued`` while
-   * background delivery runs.
+   * 400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` before any job
+   * history row is created. Empty or unknown provider slugs are rejected with
+   * ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``. Accepted jobs stay queued or
+   * running until provider completion and required post-processing finish.
    */
   async createPublicExportJobCompatApiV2PublicExportsPost(
     request:

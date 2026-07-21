@@ -25,7 +25,7 @@ const sanka = new Sanka({
 });
 
 async function run() {
-  const result = await sanka.projects.list();
+  const result = await sanka.projects.list({});
 
   console.log(result);
 }
@@ -48,7 +48,7 @@ const sanka = new SankaCore({
 });
 
 async function run() {
-  const res = await projectsList(sanka);
+  const res = await projectsList(sanka, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -160,7 +160,7 @@ Get Public Project
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_public_project_api_v2_public_projects_project_id_get" method="get" path="/v2/public/projects/{project_id}" -->
+<!-- UsageSnippet language="typescript" operationID="get_public_project_api_v2_public_projects__project_id__get" method="get" path="/v2/public/projects/{project_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
@@ -234,7 +234,7 @@ Update Public Project
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="update_public_project_api_v2_public_projects_project_id_put" method="put" path="/v2/public/projects/{project_id}" -->
+<!-- UsageSnippet language="typescript" operationID="update_public_project_api_v2_public_projects__project_id__put" method="put" path="/v2/public/projects/{project_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
@@ -310,7 +310,7 @@ Delete Public Project
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_public_project_api_v2_public_projects_project_id_delete" method="delete" path="/v2/public/projects/{project_id}" -->
+<!-- UsageSnippet language="typescript" operationID="delete_public_project_api_v2_public_projects__project_id__delete" method="delete" path="/v2/public/projects/{project_id}" -->
 ```typescript
 import { Sanka } from "sanka-sdk";
 
@@ -375,5 +375,5 @@ run();
 
 | Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| errors.ErrorEnvelope     | 401, 409, 422            | application/json         |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
 | errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |

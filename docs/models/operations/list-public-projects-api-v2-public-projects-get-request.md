@@ -19,6 +19,6 @@ let value: ListPublicProjectsApiV2PublicProjectsGetRequest = {};
 | `lang`             | *string*           | :heavy_minus_sign: | N/A                |
 | `language`         | *string*           | :heavy_minus_sign: | N/A                |
 | `workspaceId`      | *string*           | :heavy_minus_sign: | N/A                |
-| `xWorkspaceCode`   | *string*           | :heavy_minus_sign: | N/A                |
 | `xLanguage`        | *string*           | :heavy_minus_sign: | N/A                |
 | `acceptLanguage`   | *string*           | :heavy_minus_sign: | N/A                |
+| `xWorkspaceCode`   | *string*           | :heavy_minus_sign: | N/A                |

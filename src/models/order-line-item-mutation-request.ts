@@ -17,6 +17,9 @@ export type OrderLineItemMutationRequest = {
   totalPrice?: number | null | undefined;
   totalPriceWithoutTax?: number | null | undefined;
   currency?: string | null | undefined;
+  rowType?: string | null | undefined;
+  sectionLabel?: string | null | undefined;
+  sectionType?: string | null | undefined;
   customFields?: { [k: string]: any } | undefined;
 };
 
@@ -33,6 +36,9 @@ export type OrderLineItemMutationRequest$Outbound = {
   total_price?: number | null | undefined;
   total_price_without_tax?: number | null | undefined;
   currency?: string | null | undefined;
+  row_type?: string | null | undefined;
+  section_label?: string | null | undefined;
+  section_type?: string | null | undefined;
   custom_fields?: { [k: string]: any } | undefined;
 };
 
@@ -53,6 +59,9 @@ export const OrderLineItemMutationRequest$outboundSchema: z.ZodMiniType<
     totalPrice: z.optional(z.nullable(z.number())),
     totalPriceWithoutTax: z.optional(z.nullable(z.number())),
     currency: z.optional(z.nullable(z.string())),
+    rowType: z.optional(z.nullable(z.string())),
+    sectionLabel: z.optional(z.nullable(z.string())),
+    sectionType: z.optional(z.nullable(z.string())),
     customFields: z.optional(z.record(z.string(), z.any())),
   }),
   z.transform((v) => {
@@ -66,6 +75,9 @@ export const OrderLineItemMutationRequest$outboundSchema: z.ZodMiniType<
       taxType: "tax_type",
       totalPrice: "total_price",
       totalPriceWithoutTax: "total_price_without_tax",
+      rowType: "row_type",
+      sectionLabel: "section_label",
+      sectionType: "section_type",
       customFields: "custom_fields",
     });
   }),

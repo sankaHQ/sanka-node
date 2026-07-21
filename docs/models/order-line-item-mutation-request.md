@@ -23,4 +23,7 @@ let value: OrderLineItemMutationRequest = {};
 | `totalPrice`           | *number*               | :heavy_minus_sign:     | N/A                    |
 | `totalPriceWithoutTax` | *number*               | :heavy_minus_sign:     | N/A                    |
 | `currency`             | *string*               | :heavy_minus_sign:     | N/A                    |
+| `rowType`              | *string*               | :heavy_minus_sign:     | N/A                    |
+| `sectionLabel`         | *string*               | :heavy_minus_sign:     | N/A                    |
+| `sectionType`          | *string*               | :heavy_minus_sign:     | N/A                    |
 | `customFields`         | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

@@ -109,6 +109,7 @@ async function $do(
     "created_at_from": payload.created_at_from,
     "created_at_to": payload.created_at_to,
     "cursor": payload.cursor,
+    "filters": payload.filters,
     "language": payload.language,
     "limit": payload.limit,
     "page": payload.page,

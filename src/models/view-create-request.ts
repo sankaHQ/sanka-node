@@ -5,6 +5,11 @@
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
+import {
+  ViewSubtotalCalculation,
+  ViewSubtotalCalculation$Outbound,
+  ViewSubtotalCalculation$outboundSchema,
+} from "./view-subtotal-calculation.js";
 
 export const ViewCreateRequestVisibility = {
   Workspace: "workspace",
@@ -38,7 +43,9 @@ export type ViewCreateRequest = {
   formViewId?: string | null | undefined;
   visibility?: ViewCreateRequestVisibility | undefined;
   mode?: ViewCreateRequestMode | undefined;
+  groupFieldId?: string | null | undefined;
   columnFieldIds?: Array<string> | undefined;
+  subtotalCalculations?: Array<ViewSubtotalCalculation> | undefined;
 };
 
 /** @internal */
@@ -59,7 +66,9 @@ export type ViewCreateRequest$Outbound = {
   form_view_id?: string | null | undefined;
   visibility: string;
   mode: string;
+  group_field_id?: string | null | undefined;
   column_field_ids?: Array<string> | undefined;
+  subtotal_calculations?: Array<ViewSubtotalCalculation$Outbound> | undefined;
 };
 
 /** @internal */
@@ -77,14 +86,20 @@ export const ViewCreateRequest$outboundSchema: z.ZodMiniType<
       "workspace",
     ),
     mode: z._default(ViewCreateRequestMode$outboundSchema, "table"),
+    groupFieldId: z.optional(z.nullable(z.string())),
     columnFieldIds: z.optional(z.array(z.string())),
+    subtotalCalculations: z.optional(
+      z.array(ViewSubtotalCalculation$outboundSchema),
+    ),
   }),
   z.transform((v) => {
     return remap$(v, {
       objectType: "object_type",
       customObjectId: "custom_object_id",
       formViewId: "form_view_id",
+      groupFieldId: "group_field_id",
       columnFieldIds: "column_field_ids",
+      subtotalCalculations: "subtotal_calculations",
     });
   }),
 );

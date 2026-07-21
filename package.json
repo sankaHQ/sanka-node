@@ -26,8 +26,8 @@
     "access": "public"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sankaHQ/sanka-node.git"
+    "url": "git+https://github.com/sankaHQ/sanka-node.git",
+    "type": "git"
   },
   "type": "module",
   "main": "./esm/index.js",
@@ -74,8 +74,8 @@
     "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tsgo",
     "prepublishOnly": "npm run build",
-    "sync:openapi": "./scripts/sync-openapi.sh",
-    "generate": "./scripts/generate.sh"
+    "generate": "./scripts/generate.sh",
+    "sync:openapi": "./scripts/sync-openapi.sh"
   },
   "peerDependencies": {
     

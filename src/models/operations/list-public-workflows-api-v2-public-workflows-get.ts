@@ -14,6 +14,7 @@ export type ListPublicWorkflowsApiV2PublicWorkflowsGetRequest = {
   limit?: number | undefined;
   q?: string | null | undefined;
   status?: string | null | undefined;
+  includeLookout?: boolean | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
 };
@@ -29,6 +30,7 @@ export type ListPublicWorkflowsApiV2PublicWorkflowsGetRequest$Outbound = {
   limit: number;
   q?: string | null | undefined;
   status?: string | null | undefined;
+  include_lookout: boolean;
   workspace_id?: string | null | undefined;
   "X-Workspace-Code"?: string | undefined;
 };
@@ -44,11 +46,13 @@ export const ListPublicWorkflowsApiV2PublicWorkflowsGetRequest$outboundSchema:
       limit: z._default(z.int(), 25),
       q: z.optional(z.nullable(z.string())),
       status: z.optional(z.nullable(z.string())),
+      includeLookout: z._default(z.boolean(), false),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {
+        includeLookout: "include_lookout",
         workspaceId: "workspace_id",
         xWorkspaceCode: "X-Workspace-Code",
       });

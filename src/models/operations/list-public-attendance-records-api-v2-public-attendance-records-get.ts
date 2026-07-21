@@ -17,6 +17,7 @@ export type ListPublicAttendanceRecordsApiV2PublicAttendanceRecordsGetRequest =
     search?: string | null | undefined;
     language?: string | null | undefined;
     status?: string | null | undefined;
+    filters?: string | null | undefined;
     page?: number | undefined;
     limit?: number | null | undefined;
     cursor?: string | null | undefined;
@@ -46,6 +47,7 @@ export type ListPublicAttendanceRecordsApiV2PublicAttendanceRecordsGetRequest$Ou
     search?: string | null | undefined;
     language?: string | null | undefined;
     status?: string | null | undefined;
+    filters?: string | null | undefined;
     page: number;
     limit?: number | null | undefined;
     cursor?: string | null | undefined;
@@ -72,6 +74,7 @@ export const ListPublicAttendanceRecordsApiV2PublicAttendanceRecordsGetRequest$o
       search: z.optional(z.nullable(z.string())),
       language: z.optional(z.nullable(z.string())),
       status: z.optional(z.nullable(z.string())),
+      filters: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z.optional(z.nullable(z.int())),
       cursor: z.optional(z.nullable(z.string())),

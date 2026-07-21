@@ -22,6 +22,8 @@ tags:
   - name: "estimates"
   - name: "expenses"
   - name: "exports"
+  - name: "ferry-diagrams"
+  - name: "ferry-programs"
   - name: "files"
   - name: "imports"
   - name: "incentives"
@@ -31,19 +33,21 @@ tags:
   - name: "items"
   - name: "journals"
   - name: "locations"
+  - name: "lookout"
   - name: "meters"
   - name: "object-schemas"
   - name: "orders"
   - name: "payments"
   - name: "payroll"
-  - name: "properties"
   - name: "projects"
+  - name: "properties"
   - name: "public-auth"
   - name: "purchase-orders"
   - name: "records"
   - name: "reports"
   - name: "revenues"
   - name: "rule-settings"
+  - name: "sanka-buy"
   - name: "subscriptions"
   - name: "tasks"
   - name: "tickets"
@@ -52,7 +56,6 @@ tags:
   - name: "workflow-actions"
   - name: "workflow-runs"
   - name: "workflows"
-  - name: "ferry-diagrams"
 paths:
   /v2/public/absences:
     get:
@@ -135,6 +138,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Language"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -1020,6 +1031,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -1330,6 +1349,486 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/buy/offers:
+    get:
+      tags:
+        - "sanka-buy"
+      summary: "List Public Buy Offers"
+      operationId: "list_public_buy_offers_api_v2_public_buy_offers_get"
+      parameters:
+        - name: "request_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Request Id"
+        - name: "provider"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Provider"
+        - name: "latest_only"
+          in: "query"
+          required: false
+          schema:
+            type: "boolean"
+            default: true
+            title: "Latest Only"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
+        - name: "page_size"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            maximum: 100
+            minimum: 1
+            default: 50
+            title: "Page Size"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicBuyOffersApiV2PublicBuyOffersGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/connectors/clay/signals:
+    post:
+      tags:
+        - "lookout"
+      summary: "Ingest Clay Signal"
+      operationId: "ingest_clay_signal_api_v2_lookout_connectors_clay_signals_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookoutSignalRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngestClaySignalApiV2LookoutConnectorsClaySignalsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/connectors/{provider}/signals:
+    post:
+      tags:
+        - "lookout"
+      summary: "Ingest Provider Signal"
+      operationId: "ingest_provider_signal_api_v2_lookout_connectors__provider__signals_post"
+      parameters:
+        - name: "provider"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Provider"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookoutSignalRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngestProviderSignalApiV2LookoutConnectorsProviderSignalsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/ad-actions:
+    get:
+      tags:
+        - "lookout"
+      summary: "List Provider Actions"
+      operationId: "list_provider_actions_api_v2_lookout_ad_actions_get"
+      deprecated: true
+      parameters:
+        - name: "provider"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Provider"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            default: "queued"
+            title: "Status"
+        - name: "run_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Run Id"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            maximum: 100
+            minimum: 1
+            default: 50
+            title: "Limit"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListProviderActionsApiV2LookoutAdActionsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/provider-actions:
+    get:
+      tags:
+        - "lookout"
+      summary: "List Provider Actions"
+      operationId: "list_provider_actions_api_v2_lookout_provider_actions_get"
+      parameters:
+        - name: "provider"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Provider"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            default: "queued"
+            title: "Status"
+        - name: "run_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Run Id"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            maximum: 100
+            minimum: 1
+            default: 50
+            title: "Limit"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListProviderActionsApiV2LookoutProviderActionsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/ad-actions/{action_id}/claim:
+    post:
+      tags:
+        - "lookout"
+      summary: "Claim Provider Action"
+      operationId: "claim_provider_action_api_v2_lookout_ad_actions__action_id__claim_post"
+      deprecated: true
+      parameters:
+        - name: "action_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Action Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClaimProviderActionApiV2LookoutAdActionsActionIdClaimPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/provider-actions/{action_id}/claim:
+    post:
+      tags:
+        - "lookout"
+      summary: "Claim Provider Action"
+      operationId: "claim_provider_action_api_v2_lookout_provider_actions__action_id__claim_post"
+      parameters:
+        - name: "action_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Action Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClaimProviderActionApiV2LookoutProviderActionsActionIdClaimPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/ad-actions/{action_id}/complete:
+    post:
+      tags:
+        - "lookout"
+      summary: "Complete Provider Action"
+      operationId: "complete_provider_action_api_v2_lookout_ad_actions__action_id__complete_post"
+      deprecated: true
+      parameters:
+        - name: "action_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Action Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookoutProviderActionCompleteRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompleteProviderActionApiV2LookoutAdActionsActionIdCompletePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/lookout/provider-actions/{action_id}/complete:
+    post:
+      tags:
+        - "lookout"
+      summary: "Complete Provider Action"
+      operationId: "complete_provider_action_api_v2_lookout_provider_actions__action_id__complete_post"
+      parameters:
+        - name: "action_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Action Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookoutProviderActionCompleteRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompleteProviderActionApiV2LookoutProviderActionsActionIdCompletePost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/bills:
     get:
       tags:
@@ -1385,6 +1884,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -1796,6 +2303,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -2490,6 +3005,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -2929,6 +3452,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -3578,6 +4109,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -4031,6 +4570,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -4461,9 +5008,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              additionalProperties: true
-              title: "Payload"
+              $ref: "#/components/schemas/DisbursementAllocationCreateRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -4540,9 +5085,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              additionalProperties: true
-              title: "Payload"
+              $ref: "#/components/schemas/DisbursementAllocationPatchRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -4687,6 +5230,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -4845,6 +5396,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -5338,6 +5897,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -5462,7 +6029,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ObjectRecordCreateRequest"
+              $ref: "#/components/schemas/PublicExpenseMutationRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -5625,7 +6192,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+              $ref: "#/components/schemas/PublicExpenseMutationRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -5777,7 +6344,7 @@ paths:
       tags:
         - "exports"
       summary: "Create Public Export Job Compat"
-      description: "Create an export job.\n\nIntegration-destination exports are validated against the runnable\ndelivery matrix (item/order to nextengine, and company/contact/deal/item/\norder to hubspot via the native outbound dispatcher). Provider and\nobject pairs without a working delivery pipeline are rejected with HTTP\n400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` (details:\n``object_type``, ``provider``, ``reason``) before any job history row or\noutbound event is created. Empty or unknown provider slugs are rejected\nwith HTTP 400 and error code ``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``.\nAccepted integration exports are recorded with status ``queued`` while\nbackground delivery runs."
+      description: "Create an export job.\n\nIntegration-destination exports are validated against the runnable\ndelivery matrix. HubSpot Company, Contact, Custom Object, Deal, Invoice,\nItem, Order, Subscription, and Ticket exports use the dedicated Hatchet\nbulk workflow, bounded CSV chunks, and HubSpot's Imports API. Invoice\nrequires an explicitly selected HubSpot custom-object type id. NextEngine\nItem and Order exports keep their dedicated Hatchet pipelines. Provider and\nobject pairs without a working delivery pipeline are rejected with HTTP\n400 and error code ``INTEGRATION_EXPORT_NOT_SUPPORTED`` before any job\nhistory row is created. Empty or unknown provider slugs are rejected with\n``INTEGRATION_EXPORT_UNKNOWN_PROVIDER``. Accepted jobs stay queued or\nrunning until provider completion and required post-processing finish."
       operationId: "create_public_export_job_compat_api_v2_public_exports_post"
       parameters:
         - name: "workspace_id"
@@ -5906,6 +6473,645 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/ferry/diagrams:
+    get:
+      tags:
+        - "ferry-diagrams"
+      summary: "List Public Ferry Diagrams"
+      operationId: "list_public_ferry_diagrams_api_v2_public_ferry_diagrams_get"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "ferry-diagrams"
+      summary: "Create Public Ferry Diagram"
+      operationId: "create_public_ferry_diagram_api_v2_public_ferry_diagrams_post"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryDiagramCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/diagrams/{diagram_id}:
+    get:
+      tags:
+        - "ferry-diagrams"
+      summary: "Get Public Ferry Diagram"
+      operationId: "get_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__get"
+      parameters:
+        - name: "diagram_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Diagram Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - "ferry-diagrams"
+      summary: "Update Public Ferry Diagram"
+      operationId: "update_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__put"
+      parameters:
+        - name: "diagram_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Diagram Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryDiagramUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - "ferry-diagrams"
+      summary: "Delete Public Ferry Diagram"
+      operationId: "delete_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__delete"
+      parameters:
+        - name: "diagram_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Diagram Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "List Public Ferry Programs"
+      operationId: "list_public_ferry_programs_api_v2_public_ferry_programs_get"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicFerryProgramsApiV2PublicFerryProgramsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "Get Public Ferry Program"
+      operationId: "get_public_ferry_program_api_v2_public_ferry_programs__program_id__get"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/meetings:
+    get:
+      tags:
+        - "ferry-programs"
+      summary: "List Public Ferry Program Meetings"
+      operationId: "list_public_ferry_program_meetings_api_v2_public_ferry_programs__program_id__meetings_get"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Create Public Ferry Program Meeting"
+      operationId: "create_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramMeetingCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/meetings/{meeting_id}:
+    patch:
+      tags:
+        - "ferry-programs"
+      summary: "Update Public Ferry Program Meeting"
+      operationId: "update_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings__meeting_id__patch"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "meeting_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Meeting Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramMeetingUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos:
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Create Public Ferry Program Todo"
+      operationId: "create_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos/batch-upsert:
+    post:
+      tags:
+        - "ferry-programs"
+      summary: "Batch Upsert Public Ferry Program Todos"
+      operationId: "batch_upsert_public_ferry_program_todos_api_v2_public_ferry_programs__program_id__todos_batch_upsert_post"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoBatchUpsertRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/ferry/programs/{program_id}/todos/{todo_id}:
+    patch:
+      tags:
+        - "ferry-programs"
+      summary: "Update Public Ferry Program Todo"
+      operationId: "update_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__patch"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "todo_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Todo Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FerryProgramTodoUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - "ferry-programs"
+      summary: "Delete Public Ferry Program Todo"
+      operationId: "delete_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__delete"
+      parameters:
+        - name: "program_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Program Id"
+        - name: "todo_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Todo Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+        "403":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
   /v2/public/files:
     post:
       tags:
@@ -6010,6 +7216,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -6380,6 +7594,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -6731,6 +7953,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -8344,6 +9574,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -8723,6 +9961,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -9235,6 +10481,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -9597,6 +10851,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -10084,6 +11346,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -10619,6 +11889,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -11147,9 +12425,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              additionalProperties: true
-              title: "Payload"
+              $ref: "#/components/schemas/PaymentAllocationsUpdateRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -11445,9 +12721,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              additionalProperties: true
-              title: "Payload"
+              $ref: "#/components/schemas/PayrollJournalEntryRequest"
       responses:
         "200":
           description: "Successful Response"
@@ -12605,6 +13879,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -13185,6 +14467,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -14482,6 +15772,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -14926,6 +16224,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -15218,27 +16524,23 @@ paths:
         - "projects"
       summary: "List Public Projects"
       operationId: "list_public_projects_api_v2_public_projects_get"
-      x-fern-sdk-group-name: "projects"
-      x-fern-sdk-method-name: "list"
       parameters:
         - name: "page"
           in: "query"
           required: false
           schema:
-            anyOf:
-              - type: "integer"
-                minimum: 1
-              - type: "null"
+            type: "integer"
+            minimum: 1
+            default: 1
             title: "Page"
         - name: "limit"
           in: "query"
           required: false
           schema:
-            anyOf:
-              - type: "integer"
-                maximum: 100
-                minimum: 1
-              - type: "null"
+            type: "integer"
+            maximum: 100
+            minimum: 1
+            default: 100
             title: "Limit"
         - name: "search"
           in: "query"
@@ -15280,7 +16582,6 @@ paths:
               - type: "string"
               - type: "null"
             title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
           required: false
@@ -15288,6 +16589,7 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "X-Language"
           x-fern-parameter-name: "x_language"
         - name: "Accept-Language"
           in: "header"
@@ -15296,9 +16598,11 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
       responses:
         "200":
-          description: "Project list response"
+          description: "Successful Response"
           content:
             application/json:
               schema:
@@ -15321,10 +16625,15 @@ paths:
         - "projects"
       summary: "Create Public Project"
       operationId: "create_public_project_api_v2_public_projects_post"
-      x-fern-sdk-group-name: "projects"
-      x-fern-sdk-method-name: "create"
       parameters:
-        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
         - name: "X-Language"
           in: "header"
           required: false
@@ -15332,6 +16641,7 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "X-Language"
           x-fern-parameter-name: "x_language"
         - name: "Accept-Language"
           in: "header"
@@ -15340,6 +16650,8 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
       requestBody:
         required: true
         content:
@@ -15371,9 +16683,7 @@ paths:
       tags:
         - "projects"
       summary: "Get Public Project"
-      operationId: "get_public_project_api_v2_public_projects_project_id_get"
-      x-fern-sdk-group-name: "projects"
-      x-fern-sdk-method-name: "retrieve"
+      operationId: "get_public_project_api_v2_public_projects__project_id__get"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15389,7 +16699,6 @@ paths:
               - type: "string"
               - type: "null"
             title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
         - name: "X-Language"
           in: "header"
           required: false
@@ -15397,6 +16706,7 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "X-Language"
           x-fern-parameter-name: "x_language"
         - name: "Accept-Language"
           in: "header"
@@ -15405,9 +16715,11 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
       responses:
         "200":
-          description: "Project detail response"
+          description: "Successful Response"
           content:
             application/json:
               schema:
@@ -15429,9 +16741,7 @@ paths:
       tags:
         - "projects"
       summary: "Update Public Project"
-      operationId: "update_public_project_api_v2_public_projects_project_id_put"
-      x-fern-sdk-group-name: "projects"
-      x-fern-sdk-method-name: "update"
+      operationId: "update_public_project_api_v2_public_projects__project_id__put"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15439,7 +16749,14 @@ paths:
           schema:
             type: "string"
             title: "Project Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
         - name: "X-Language"
           in: "header"
           required: false
@@ -15447,6 +16764,7 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "X-Language"
           x-fern-parameter-name: "x_language"
         - name: "Accept-Language"
           in: "header"
@@ -15455,6 +16773,8 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
       requestBody:
         required: true
         content:
@@ -15485,9 +16805,7 @@ paths:
       tags:
         - "projects"
       summary: "Delete Public Project"
-      operationId: "delete_public_project_api_v2_public_projects_project_id_delete"
-      x-fern-sdk-group-name: "projects"
-      x-fern-sdk-method-name: "delete"
+      operationId: "delete_public_project_api_v2_public_projects__project_id__delete"
       parameters:
         - name: "project_id"
           in: "path"
@@ -15507,11 +16825,17 @@ paths:
           in: "query"
           required: false
           schema:
-            anyOf:
-              - type: "boolean"
-              - type: "null"
+            type: "boolean"
+            default: false
             title: "Clear Task Project"
-        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
         - name: "X-Language"
           in: "header"
           required: false
@@ -15519,6 +16843,7 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
+            title: "X-Language"
           x-fern-parameter-name: "x_language"
         - name: "Accept-Language"
           in: "header"
@@ -15527,14 +16852,8 @@ paths:
             anyOf:
               - type: "string"
               - type: "null"
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              anyOf:
-                - $ref: "#/components/schemas/PublicProjectDeleteRequest"
-                - type: "null"
+            title: "Accept-Language"
+        - $ref: "#/components/parameters/XWorkspaceCode"
       responses:
         "200":
           description: "Successful Response"
@@ -15548,8 +16867,6 @@ paths:
         "422":
           $ref: "#/components/responses/ErrorResponse"
         "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "409":
           $ref: "#/components/responses/ErrorResponse"
       x-sanka-surface: "public_developer"
       x-sanka-api-version: "v2"
@@ -15612,6 +16929,14 @@ paths:
               - type: "string"
               - type: "null"
             title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
         - name: "page"
           in: "query"
           required: false
@@ -16485,6 +17810,13 @@ paths:
               - type: "string"
               - type: "null"
             title: "Status"
+        - name: "include_lookout"
+          in: "query"
+          required: false
+          schema:
+            type: "boolean"
+            default: false
+            title: "Include Lookout"
         - name: "workspace_id"
           in: "query"
           required: false
@@ -17610,218 +18942,6 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
-  /v2/public/ferry/diagrams:
-    get:
-      tags:
-        - "ferry-diagrams"
-      summary: "List Public Ferry Diagrams"
-      operationId: "list_public_ferry_diagrams_api_v2_public_ferry_diagrams_get"
-      parameters:
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
-    post:
-      tags:
-        - "ferry-diagrams"
-      summary: "Create Public Ferry Diagram"
-      operationId: "create_public_ferry_diagram_api_v2_public_ferry_diagrams_post"
-      parameters:
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/FerryDiagramCreateRequest"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
-  /v2/public/ferry/diagrams/{diagram_id}:
-    get:
-      tags:
-        - "ferry-diagrams"
-      summary: "Get Public Ferry Diagram"
-      operationId: "get_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__get"
-      parameters:
-        - name: "diagram_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Diagram Id"
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
-    put:
-      tags:
-        - "ferry-diagrams"
-      summary: "Update Public Ferry Diagram"
-      operationId: "update_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__put"
-      parameters:
-        - name: "diagram_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Diagram Id"
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/FerryDiagramUpdateRequest"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
-    delete:
-      tags:
-        - "ferry-diagrams"
-      summary: "Delete Public Ferry Diagram"
-      operationId: "delete_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__delete"
-      parameters:
-        - name: "diagram_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-            title: "Diagram Id"
-        - name: "workspace_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Workspace Id"
-        - $ref: "#/components/parameters/XWorkspaceCode"
-      responses:
-        "200":
-          description: "Successful Response"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope"
-          headers:
-            x-ctx-id:
-              $ref: "#/components/headers/XCtxId"
-        "422":
-          $ref: "#/components/responses/ErrorResponse"
-        "401":
-          $ref: "#/components/responses/ErrorResponse"
-        "403":
-          $ref: "#/components/responses/ErrorResponse"
-      x-sanka-surface: "public_developer"
-      x-sanka-api-version: "v2"
-      x-sanka-auth: "developer_bearer"
-      security:
-        - bearerAuth: []
 components:
   headers:
     XCtxId:
@@ -18093,6 +19213,20 @@ components:
       required:
         - "workspace_id"
       title: "AuthWorkspaceSwitchRequest"
+    BatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramTodoBatchUpsertData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     Body_upload_public_bill_file_api_v2_public_bills_files_post:
       properties:
         file:
@@ -18299,6 +19433,34 @@ components:
           title: "Response Cancel Public Import Job Compat Api V2 Public Imports  Job Id  Cancel Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    ClaimProviderActionApiV2LookoutAdActionsActionIdClaimPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ClaimProviderActionApiV2LookoutProviderActionsActionIdClaimPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CompanyMutationRequest:
       properties:
         view_id:
@@ -18431,6 +19593,34 @@ components:
           title: "Discount Price"
       type: "object"
       title: "CompanyPriceTableItemUpdateRequest"
+    CompleteProviderActionApiV2LookoutAdActionsActionIdCompletePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CompleteProviderActionApiV2LookoutProviderActionsActionIdCompletePost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CreateApprovalRequestApiV2PublicApprovalRequestsPost200Envelope:
       type: "object"
       required:
@@ -18685,6 +19875,48 @@ components:
           title: "Response Create Public Export Job Compat Api V2 Public Exports Post"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryDiagramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     CreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost200Envelope:
       type: "object"
       required:
@@ -18907,6 +20139,20 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Create Public Payroll Journal Entry Api V2 Public Payroll Runs  Run Id  Journal Entry Post"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicProjectApiV2PublicProjectsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectMutationData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     CreatePublicPurchaseOrderApiV2PublicPurchaseOrdersPost200Envelope:
@@ -19275,6 +20521,34 @@ components:
           title: "Response Delete Public Expense Api V2 Public Expenses  Expense Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryDiagramDeleteData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     DeletePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdDelete200Envelope:
       type: "object"
       required:
@@ -19451,6 +20725,20 @@ components:
           title: "Response Delete Public Payment Api V2 Public Payments  Payment Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    DeletePublicProjectApiV2PublicProjectsProjectIdDelete200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectDeleteData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     DeletePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdDelete200Envelope:
       type: "object"
       required:
@@ -19579,6 +20867,110 @@ components:
           title: "Response Delete Public Workflow Api V2 Public Workflows  Workflow Id  Delete"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    DisbursementAllocationCreateRequest:
+      properties:
+        payable_type:
+          anyOf:
+            - type: "string"
+              enum:
+                - "bill"
+                - "expense"
+            - type: "null"
+          title: "Payable Type"
+        payable_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Payable Id"
+        bill_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Bill Id"
+        expense_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Expense Id"
+        amount:
+          type: "number"
+          exclusiveMinimum: 0.0
+          title: "Amount"
+        currency:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Currency"
+        source:
+          type: "string"
+          enum:
+            - "manual"
+            - "bank_statement"
+            - "api"
+            - "migration"
+          title: "Source"
+          default: "manual"
+        notes:
+          type: "string"
+          title: "Notes"
+          default: ""
+      type: "object"
+      required:
+        - "amount"
+      title: "DisbursementAllocationCreateRequest"
+    DisbursementAllocationPatchRequest:
+      properties:
+        payable_type:
+          anyOf:
+            - type: "string"
+              enum:
+                - "bill"
+                - "expense"
+            - type: "null"
+          title: "Payable Type"
+        payable_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Payable Id"
+        bill_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Bill Id"
+        expense_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Expense Id"
+        amount:
+          anyOf:
+            - type: "number"
+              exclusiveMinimum: 0.0
+            - type: "null"
+          title: "Amount"
+        currency:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Currency"
+        source:
+          anyOf:
+            - type: "string"
+              enum:
+                - "manual"
+                - "bank_statement"
+                - "api"
+                - "migration"
+            - type: "null"
+          title: "Source"
+        notes:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Notes"
+      type: "object"
+      title: "DisbursementAllocationPatchRequest"
     DownloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet200Envelope:
       type: "object"
       required:
@@ -19662,10 +21054,31 @@ components:
             - type: "string"
             - type: "null"
           title: "Channel Id"
+        mapping_template_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mapping Template Id"
+        mapping_template_revision:
+          anyOf:
+            - type: "integer"
+              minimum: 1.0
+            - type: "null"
+          title: "Mapping Template Revision"
+        mapping_template_state:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Mapping Template State"
         operation:
           type: "string"
           title: "Operation"
           default: "update"
+        request_invoice:
+          type: "boolean"
+          title: "Request Invoice"
+          default: false
         record_ids:
           anyOf:
             - items:
@@ -19678,6 +21091,26 @@ components:
             - type: "string"
             - type: "null"
           title: "Workspace Scope"
+        view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "View Id"
+        search_query:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Search Query"
+        filter_fields:
+          items:
+            $ref: "#/components/schemas/ExportTemplateFilterFieldInput"
+          type: "array"
+          title: "Filter Fields"
+        idempotency_key:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Idempotency Key"
         custom_object_id:
           anyOf:
             - type: "string"
@@ -19706,6 +21139,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Action Tracker Id"
+        workflow_language:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Workflow Language"
         key_field:
           anyOf:
             - type: "string"
@@ -19761,6 +21199,334 @@ components:
       required:
         - "object_type"
       title: "ExportJobCreateRequest"
+    FerryDiagramCreateRequest:
+      properties:
+        name:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Name"
+        description:
+          type: "string"
+          maxLength: 500
+          title: "Description"
+          default: ""
+        nodes:
+          items:
+            $ref: "#/components/schemas/FerryDiagramNode"
+          type: "array"
+          maxItems: 250
+          title: "Nodes"
+        edges:
+          items:
+            $ref: "#/components/schemas/FerryDiagramEdge"
+          type: "array"
+          maxItems: 500
+          title: "Edges"
+        viewport:
+          $ref: "#/components/schemas/FerryDiagramViewport"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "name"
+      title: "FerryDiagramCreateRequest"
+    FerryDiagramUpdateRequest:
+      properties:
+        name:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Name"
+        description:
+          type: "string"
+          maxLength: 500
+          title: "Description"
+          default: ""
+        nodes:
+          items:
+            $ref: "#/components/schemas/FerryDiagramNode"
+          type: "array"
+          maxItems: 250
+          title: "Nodes"
+        edges:
+          items:
+            $ref: "#/components/schemas/FerryDiagramEdge"
+          type: "array"
+          maxItems: 500
+          title: "Edges"
+        viewport:
+          $ref: "#/components/schemas/FerryDiagramViewport"
+        revision:
+          type: "integer"
+          minimum: 1.0
+          title: "Revision"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "name"
+        - "revision"
+      title: "FerryDiagramUpdateRequest"
+    FerryProgramMeetingCreateRequest:
+      properties:
+        title:
+          type: "string"
+          maxLength: 255
+          minLength: 1
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          type: "string"
+          maxLength: 200000
+          title: "Contentmarkdown"
+          default: ""
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramMeetingCreateRequest"
+    FerryProgramMeetingUpdateRequest:
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+              minLength: 1
+            - type: "null"
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          anyOf:
+            - type: "string"
+              maxLength: 200000
+            - type: "null"
+          title: "Contentmarkdown"
+      type: "object"
+      title: "FerryProgramMeetingUpdateRequest"
+    FerryProgramTodoBatchUpsertRequest:
+      properties:
+        todos:
+          items:
+            $ref: "#/components/schemas/FerryProgramTodoBatchUpsertItem"
+          type: "array"
+          maxItems: 100
+          minItems: 1
+          title: "Todos"
+      type: "object"
+      required:
+        - "todos"
+      title: "FerryProgramTodoBatchUpsertRequest"
+    FerryProgramTodoCreateRequest:
+      properties:
+        title:
+          type: "string"
+          maxLength: 500
+          minLength: 1
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          maxLength: 20000
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          maxLength: 100
+          title: "Category"
+          default: "custom"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: false
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+        phaseId:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Phaseid"
+        parentTodoId:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Parenttodoid"
+        sortOrder:
+          anyOf:
+            - type: "integer"
+              minimum: 0.0
+            - type: "null"
+          title: "Sortorder"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramTodoCreateRequest"
+    FerryProgramTodoUpdateRequest:
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+              minLength: 1
+            - type: "null"
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Description"
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Category"
+        required:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Required"
+        status:
+          anyOf:
+            - type: "string"
+              enum:
+                - "not_started"
+                - "in_progress"
+                - "completed"
+                - "blocked"
+            - type: "null"
+          title: "Status"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          anyOf:
+            - type: "string"
+              enum:
+                - "P0"
+                - "P1"
+                - "P2"
+                - "P3"
+                - "P4"
+            - type: "null"
+          title: "Priority"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+        phaseId:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Phaseid"
+        parentTodoId:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Parenttodoid"
+        sortOrder:
+          anyOf:
+            - type: "integer"
+              minimum: 0.0
+            - type: "null"
+          title: "Sortorder"
+      type: "object"
+      title: "FerryProgramTodoUpdateRequest"
     GetPublicAbsenceApiV2PublicAbsencesAbsenceIdGet200Envelope:
       type: "object"
       required:
@@ -20079,6 +21845,34 @@ components:
           title: "Response Get Public Export Job Compat Api V2 Public Exports  Job Id  Get"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryDiagramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     GetPublicImportJobCompatApiV2PublicImportsJobIdGet200Envelope:
       type: "object"
       required:
@@ -20267,6 +22061,20 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Get Public Payroll Run Api V2 Public Payroll Runs  Run Id  Get"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicProjectApiV2PublicProjectsProjectIdGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProject"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     GetPublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdGet200Envelope:
@@ -20482,6 +22290,23 @@ components:
             - type: "string"
             - type: "null"
           title: "Channel Id"
+        mapping_template_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Mapping Template Id"
+        mapping_template_revision:
+          anyOf:
+            - type: "integer"
+              minimum: 1.0
+            - type: "null"
+          title: "Mapping Template Revision"
+        mapping_template_state:
+          anyOf:
+            - additionalProperties: true
+              type: "object"
+            - type: "null"
+          title: "Mapping Template State"
         record_ids:
           anyOf:
             - items:
@@ -20523,6 +22348,27 @@ components:
           type: "boolean"
           title: "Dry Run"
           default: false
+        idempotency_key:
+          anyOf:
+            - type: "string"
+              maxLength: 200
+            - type: "null"
+          title: "Idempotency Key"
+        workflow_action_tracker_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Workflow Action Tracker Id"
+        action_tracker_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Action Tracker Id"
+        workflow_language:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Workflow Language"
       type: "object"
       required:
         - "object_type"
@@ -20809,6 +22655,34 @@ components:
           title: "Sort Direction"
       type: "object"
       title: "IncentivesListQuery"
+    IngestClaySignalApiV2LookoutConnectorsClaySignalsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutSignalData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    IngestProviderSignalApiV2LookoutConnectorsProviderSignalsPost200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutSignalData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     JournalCreateRequest:
       properties:
         data:
@@ -20879,6 +22753,34 @@ components:
           default: 25
       type: "object"
       title: "JournalStatementViewCreateRequest"
+    ListProviderActionsApiV2LookoutAdActionsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListProviderActionsApiV2LookoutProviderActionsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/LookoutProviderActionListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicAbsencesApiV2PublicAbsencesGet200Envelope:
       type: "object"
       required:
@@ -20968,6 +22870,20 @@ components:
           anyOf:
             - $ref: "#/components/schemas/ObjectRecordListData"
             - $ref: "#/components/schemas/ObjectRecordLineItemListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicBuyOffersApiV2PublicBuyOffersGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/OfferSnapshotListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicCompaniesApiV2PublicCompaniesGet200Envelope:
@@ -21165,6 +23081,48 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response List Public Export Jobs Compat Api V2 Public Exports Get"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryDiagramListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicFerryProgramMeetingsApiV2PublicFerryProgramsProgramIdMeetingsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicFerryProgramsApiV2PublicFerryProgramsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicImportJobsCompatApiV2PublicImportsGet200Envelope:
@@ -21495,6 +23453,20 @@ components:
           title: "Response List Public Payroll Runs Api V2 Public Payroll Runs Get"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicProjectsApiV2PublicProjectsGet200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     ListPublicPurchaseOrdersApiV2PublicPurchaseOrdersGet200Envelope:
       type: "object"
       required:
@@ -21653,6 +23625,78 @@ components:
           $ref: "#/components/schemas/WorkflowListData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    LookoutProviderActionCompleteRequest:
+      properties:
+        status:
+          type: "string"
+          enum:
+            - "succeeded"
+            - "failed"
+          title: "Status"
+        provider_response:
+          additionalProperties: true
+          type: "object"
+          title: "Provider Response"
+        error:
+          anyOf:
+            - type: "string"
+              maxLength: 4000
+            - type: "null"
+          title: "Error"
+      type: "object"
+      required:
+        - "status"
+      title: "LookoutProviderActionCompleteRequest"
+    LookoutSignalRequest:
+      properties:
+        provider:
+          type: "string"
+          title: "Provider"
+          default: "lookout"
+        signal_type:
+          type: "string"
+          title: "Signal Type"
+        dedupe_key:
+          type: "string"
+          title: "Dedupe Key"
+        occurred_at:
+          type: "string"
+          format: "date-time"
+          title: "Occurred At"
+        account:
+          additionalProperties: true
+          type: "object"
+          title: "Account"
+        contact:
+          additionalProperties: true
+          type: "object"
+          title: "Contact"
+        attributes:
+          additionalProperties: true
+          type: "object"
+          title: "Attributes"
+        source_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Url"
+        confidence:
+          anyOf:
+            - type: "number"
+              maximum: 1.0
+              minimum: 0.0
+            - type: "null"
+          title: "Confidence"
+        raw_payload:
+          additionalProperties: true
+          type: "object"
+          title: "Raw Payload"
+      additionalProperties: true
+      type: "object"
+      required:
+        - "signal_type"
+        - "dedupe_key"
+      title: "LookoutSignalRequest"
     MarkPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost200Envelope:
       type: "object"
       required:
@@ -21973,6 +24017,39 @@ components:
           default: false
       type: "object"
       title: "OrderBulkCreateRequest"
+    PaymentAllocationsUpdateRequest:
+      properties:
+        allocations:
+          items:
+            $ref: "#/components/schemas/PaymentAllocationSaveInput"
+          type: "array"
+          title: "Allocations"
+      type: "object"
+      title: "PaymentAllocationsUpdateRequest"
+    PayrollJournalEntryRequest:
+      properties:
+        debit_account:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Debit Account"
+        credit_account:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Credit Account"
+        deductions_account:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Deductions Account"
+        notes:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Notes"
+      type: "object"
+      title: "PayrollJournalEntryRequest"
     PayrollProfileUpsertRequest:
       properties:
         employee_id:
@@ -22449,6 +24526,33 @@ components:
       required:
         - "name"
       title: "PublicDeliveryRuleSaveRequest"
+    PublicExpenseMutationRequest:
+      properties:
+        view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "View Id"
+        form_view_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Form View Id"
+        properties:
+          additionalProperties: true
+          type: "object"
+          title: "Properties"
+        base_currency:
+          anyOf:
+            - type: "number"
+              minimum: 0.0
+            - type: "null"
+          title: "Base Currency"
+          description: "Explicit amount in the workspace base currency. When omitted, Sanka calculates the value from the expense amount and currency. A provided value takes precedence over automatic conversion."
+      additionalProperties: true
+      type: "object"
+      title: "PublicExpenseMutationRequest"
+      description: "Public expense mutation envelope with typed SDK-friendly overrides."
     PublicInvoiceEmailRequest:
       properties:
         action:
@@ -22616,6 +24720,32 @@ components:
       additionalProperties: true
       type: "object"
       title: "PublicObjectRecordMutationRequest"
+    PublicProjectRequest:
+      properties:
+        title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Title"
+        description:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        default:
+          anyOf:
+            - type: "boolean"
+            - type: "null"
+          title: "Default"
+        statuses:
+          anyOf:
+            - items:
+                $ref: "#/components/schemas/PublicProjectStatusRequest"
+              type: "array"
+            - type: "null"
+          title: "Statuses"
+      type: "object"
+      title: "PublicProjectRequest"
     PublicPropertyMutationRequest:
       properties:
         name:
@@ -23906,6 +26036,48 @@ components:
           title: "Response Update Public Expense Api V2 Public Expenses  Expense Id  Put"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryDiagramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramMeetingData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/FerryProgramData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
     UpdatePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdPatch200Envelope:
       type: "object"
       required:
@@ -24080,6 +26252,20 @@ components:
           type: "object"
           additionalProperties: true
           title: "Response Update Public Payment Api V2 Public Payments  Payment Id  Put"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicProjectApiV2PublicProjectsProjectIdPut200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/PublicProjectMutationData"
         meta:
           $ref: "#/components/schemas/EnvelopeMeta"
     UpdatePublicPurchaseOrderApiV2PublicPurchaseOrdersPurchaseOrderIdPut200Envelope:
@@ -24447,12 +26633,23 @@ components:
             - "balance_sheet"
           title: "Mode"
           default: "table"
+        group_field_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Group Field Id"
         column_field_ids:
           items:
             type: "string"
           type: "array"
           maxItems: 100
           title: "Column Field Ids"
+        subtotal_calculations:
+          items:
+            $ref: "#/components/schemas/ViewSubtotalCalculation"
+          type: "array"
+          maxItems: 100
+          title: "Subtotal Calculations"
       type: "object"
       required:
         - "title"
@@ -24491,6 +26688,11 @@ components:
                 - "balance_sheet"
             - type: "null"
           title: "Mode"
+        group_field_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Group Field Id"
       type: "object"
       title: "ViewUpdateRequest"
     WritebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost200Envelope:
@@ -24534,6 +26736,22 @@ components:
           $ref: "#/components/schemas/PaginationMeta"
         toast:
           $ref: "#/components/schemas/ToastMessage"
+    FerryProgramTodoBatchUpsertData:
+      properties:
+        program:
+          $ref: "#/components/schemas/FerryProgramData"
+        createdCount:
+          type: "integer"
+          title: "Createdcount"
+        updatedCount:
+          type: "integer"
+          title: "Updatedcount"
+      type: "object"
+      required:
+        - "program"
+        - "createdCount"
+        - "updatedCount"
+      title: "FerryProgramTodoBatchUpsertData"
     ObjectRecordBulkActionData:
       properties:
         operation:
@@ -24594,6 +26812,93 @@ components:
         - "object_type"
         - "message"
       title: "ObjectRecordBulkActionData"
+    LookoutProviderActionData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        workspace_id:
+          type: "string"
+          title: "Workspace Id"
+        run_id:
+          type: "string"
+          title: "Run Id"
+        provider:
+          type: "string"
+          enum:
+            - "google_ads"
+            - "meta_ads"
+            - "hubspot"
+          title: "Provider"
+        action_slug:
+          type: "string"
+          title: "Action Slug"
+        target_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Target Id"
+        campaign_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Campaign Id"
+        input_data:
+          additionalProperties: true
+          type: "object"
+          title: "Input Data"
+        safety:
+          additionalProperties: true
+          type: "object"
+          title: "Safety"
+        status:
+          type: "string"
+          enum:
+            - "queued"
+            - "claimed"
+            - "succeeded"
+            - "failed"
+          title: "Status"
+        provider_response:
+          additionalProperties: true
+          type: "object"
+          title: "Provider Response"
+        error:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Error"
+        claimed_at:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Claimed At"
+        completed_at:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Completed At"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+        updated_at:
+          type: "string"
+          format: "date-time"
+          title: "Updated At"
+      type: "object"
+      required:
+        - "id"
+        - "workspace_id"
+        - "run_id"
+        - "provider"
+        - "action_slug"
+        - "status"
+        - "created_at"
+        - "updated_at"
+      title: "LookoutProviderActionData"
     AssociationEdgeMutationData:
       properties:
         edge:
@@ -24633,6 +26938,392 @@ components:
           title: "Meta"
       type: "object"
       title: "AssociationEdgeMutationData"
+    FerryDiagramData:
+      properties:
+        name:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Name"
+        description:
+          type: "string"
+          maxLength: 500
+          title: "Description"
+          default: ""
+        nodes:
+          items:
+            $ref: "#/components/schemas/FerryDiagramNode"
+          type: "array"
+          maxItems: 250
+          title: "Nodes"
+        edges:
+          items:
+            $ref: "#/components/schemas/FerryDiagramEdge"
+          type: "array"
+          maxItems: 500
+          title: "Edges"
+        viewport:
+          $ref: "#/components/schemas/FerryDiagramViewport"
+        id:
+          type: "string"
+          title: "Id"
+        workspaceId:
+          type: "string"
+          title: "Workspaceid"
+        revision:
+          type: "integer"
+          title: "Revision"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "name"
+        - "id"
+        - "workspaceId"
+        - "revision"
+      title: "FerryDiagramData"
+    FerryProgramMeetingData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        programId:
+          type: "string"
+          title: "Programid"
+        workspaceId:
+          type: "string"
+          title: "Workspaceid"
+        title:
+          type: "string"
+          title: "Title"
+        meetingAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Meetingat"
+        contentMarkdown:
+          type: "string"
+          title: "Contentmarkdown"
+          default: ""
+        sourceRef:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Sourceref"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      type: "object"
+      required:
+        - "id"
+        - "programId"
+        - "workspaceId"
+        - "title"
+      title: "FerryProgramMeetingData"
+    FerryProgramData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        workspaceId:
+          type: "string"
+          title: "Workspaceid"
+        templateSlug:
+          type: "string"
+          title: "Templateslug"
+        status:
+          type: "string"
+          enum:
+            - "draft"
+            - "active"
+            - "ready"
+            - "completed"
+            - "archived"
+          title: "Status"
+        plan:
+          type: "string"
+          enum:
+            - "self_serve"
+            - "sakura_led"
+            - "expert_led"
+          title: "Plan"
+          default: "self_serve"
+        planChangeLocked:
+          type: "boolean"
+          title: "Planchangelocked"
+          default: false
+        paymentState:
+          type: "string"
+          enum:
+            - "draft"
+            - "awaiting_payment"
+            - "active"
+          title: "Paymentstate"
+          default: "active"
+        billingCurrency:
+          type: "string"
+          enum:
+            - "jpy"
+            - "usd"
+          title: "Billingcurrency"
+          default: "jpy"
+        recordCount:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Recordcount"
+        listPrice:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Listprice"
+        quotedPrice:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Quotedprice"
+        feeWaived:
+          type: "boolean"
+          title: "Feewaived"
+          default: false
+        feeWaiverReason:
+          type: "string"
+          title: "Feewaiverreason"
+          default: ""
+        description:
+          type: "string"
+          title: "Description"
+          default: ""
+        expertUserId:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Expertuserid"
+        expertReviewThreadId:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Expertreviewthreadid"
+        expertSettings:
+          additionalProperties: true
+          type: "object"
+          title: "Expertsettings"
+        entitlements:
+          additionalProperties: true
+          type: "object"
+          title: "Entitlements"
+        name:
+          type: "string"
+          title: "Name"
+        updatesMarkdown:
+          type: "string"
+          title: "Updatesmarkdown"
+          default: ""
+        sources:
+          items:
+            $ref: "#/components/schemas/FerryProgramEndpoint"
+          type: "array"
+          title: "Sources"
+        destinations:
+          items:
+            $ref: "#/components/schemas/FerryProgramEndpoint"
+          type: "array"
+          title: "Destinations"
+        todos:
+          items:
+            $ref: "#/components/schemas/FerryProgramTodo"
+          type: "array"
+          title: "Todos"
+        taskPhases:
+          items:
+            $ref: "#/components/schemas/FerryProgramPhase"
+          type: "array"
+          title: "Taskphases"
+        linkedRunIds:
+          items:
+            type: "string"
+          type: "array"
+          title: "Linkedrunids"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      type: "object"
+      required:
+        - "id"
+        - "workspaceId"
+        - "templateSlug"
+        - "status"
+        - "name"
+      title: "FerryProgramData"
+    PublicProjectMutationData:
+      properties:
+        ok:
+          type: "boolean"
+          title: "Ok"
+        status:
+          type: "string"
+          title: "Status"
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Id"
+        project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Project Id"
+        project:
+          anyOf:
+            - $ref: "#/components/schemas/PublicProject"
+            - type: "null"
+        ctx_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Ctx Id"
+        advisories:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Advisories"
+      type: "object"
+      required:
+        - "ok"
+        - "status"
+      title: "PublicProjectMutationData"
+    FerryDiagramDeleteData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        deleted:
+          type: "boolean"
+          title: "Deleted"
+      type: "object"
+      required:
+        - "id"
+        - "deleted"
+      title: "FerryDiagramDeleteData"
+    PublicProjectDeleteData:
+      properties:
+        ok:
+          type: "boolean"
+          title: "Ok"
+        status:
+          type: "string"
+          title: "Status"
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Id"
+        project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Project Id"
+        replacement_project_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Replacement Project Id"
+        cleared_task_count:
+          type: "integer"
+          title: "Cleared Task Count"
+          default: 0
+        reassigned_task_count:
+          type: "integer"
+          title: "Reassigned Task Count"
+          default: 0
+        ctx_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Ctx Id"
+        advisories:
+          anyOf:
+            - items:
+                additionalProperties: true
+                type: "object"
+              type: "array"
+            - type: "null"
+          title: "Advisories"
+      type: "object"
+      required:
+        - "ok"
+        - "status"
+      title: "PublicProjectDeleteData"
     EnrichData:
       properties:
         company_id:
@@ -24703,6 +27394,222 @@ components:
           title: "External Id"
       type: "object"
       title: "EnrichCompanySeed"
+    ExportTemplateFilterFieldInput:
+      properties:
+        filter_type:
+          type: "string"
+          title: "Filter Type"
+          default: ""
+        filter_option:
+          type: "string"
+          title: "Filter Option"
+          default: "is"
+        filter_value:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Filter Value"
+      type: "object"
+      title: "ExportTemplateFilterFieldInput"
+    FerryDiagramEdge:
+      properties:
+        id:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Id"
+        source:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Source"
+        target:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Target"
+        label:
+          type: "string"
+          maxLength: 255
+          title: "Label"
+          default: ""
+        type:
+          type: "string"
+          enum:
+            - "default"
+            - "smoothstep"
+          title: "Type"
+          default: "smoothstep"
+        sourceHandle:
+          anyOf:
+            - type: "string"
+              maxLength: 120
+            - type: "null"
+          title: "Sourcehandle"
+        targetHandle:
+          anyOf:
+            - type: "string"
+              maxLength: 120
+            - type: "null"
+          title: "Targethandle"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "id"
+        - "source"
+        - "target"
+      title: "FerryDiagramEdge"
+    FerryDiagramNode:
+      properties:
+        id:
+          type: "string"
+          maxLength: 120
+          minLength: 1
+          title: "Id"
+        type:
+          type: "string"
+          enum:
+            - "objectTable"
+            - "process"
+            - "note"
+          title: "Type"
+        position:
+          $ref: "#/components/schemas/FerryDiagramPosition"
+        data:
+          $ref: "#/components/schemas/FerryDiagramNodeData"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "id"
+        - "type"
+        - "position"
+        - "data"
+      title: "FerryDiagramNode"
+    FerryDiagramViewport:
+      properties:
+        x:
+          type: "number"
+          maximum: 1000000.0
+          minimum: -1000000.0
+          title: "X"
+          default: 0
+        y:
+          type: "number"
+          maximum: 1000000.0
+          minimum: -1000000.0
+          title: "Y"
+          default: 0
+        zoom:
+          type: "number"
+          maximum: 4.0
+          minimum: 0.1
+          title: "Zoom"
+          default: 1
+      additionalProperties: false
+      type: "object"
+      title: "FerryDiagramViewport"
+    FerryProgramTodoBatchUpsertItem:
+      properties:
+        title:
+          type: "string"
+          maxLength: 500
+          minLength: 1
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          maxLength: 20000
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          maxLength: 100
+          title: "Category"
+          default: "custom"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: false
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+              maxLength: 20000
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+        phaseId:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Phaseid"
+        parentTodoId:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Parenttodoid"
+        sortOrder:
+          anyOf:
+            - type: "integer"
+              minimum: 0.0
+            - type: "null"
+          title: "Sortorder"
+        id:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Id"
+      type: "object"
+      required:
+        - "title"
+      title: "FerryProgramTodoBatchUpsertItem"
     ObjectRecordData:
       properties:
         id:
@@ -24747,6 +27654,56 @@ components:
         - "record_id"
         - "object_type"
       title: "ObjectRecordData"
+    PublicProject:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        project_id:
+          type: "string"
+          title: "Project Id"
+        title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Title"
+        description:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Description"
+        default:
+          type: "boolean"
+          title: "Default"
+          default: false
+        statuses:
+          items:
+            $ref: "#/components/schemas/PublicProjectStatus"
+          type: "array"
+          title: "Statuses"
+        task_count:
+          type: "integer"
+          title: "Task Count"
+          default: 0
+        active_task_count:
+          type: "integer"
+          title: "Active Task Count"
+          default: 0
+        created_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Created At"
+        updated_at:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Updated At"
+      type: "object"
+      required:
+        - "id"
+        - "project_id"
+      title: "PublicProject"
     WorkflowDetailData:
       properties:
         workflow:
@@ -24794,6 +27751,95 @@ components:
         - "owner_id"
         - "allocation_percent"
       title: "IncentiveAllocationLine"
+    LookoutSignalData:
+      properties:
+        provider:
+          type: "string"
+          title: "Provider"
+          default: "lookout"
+        signal_type:
+          type: "string"
+          title: "Signal Type"
+        dedupe_key:
+          type: "string"
+          title: "Dedupe Key"
+        occurred_at:
+          type: "string"
+          format: "date-time"
+          title: "Occurred At"
+        account:
+          additionalProperties: true
+          type: "object"
+          title: "Account"
+        contact:
+          additionalProperties: true
+          type: "object"
+          title: "Contact"
+        attributes:
+          additionalProperties: true
+          type: "object"
+          title: "Attributes"
+        source_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source Url"
+        confidence:
+          anyOf:
+            - type: "number"
+              maximum: 1.0
+              minimum: 0.0
+            - type: "null"
+          title: "Confidence"
+        raw_payload:
+          additionalProperties: true
+          type: "object"
+          title: "Raw Payload"
+        id:
+          type: "string"
+          title: "Id"
+        workspace_id:
+          type: "string"
+          title: "Workspace Id"
+        status:
+          type: "string"
+          title: "Status"
+          default: "received"
+        received_at:
+          type: "string"
+          format: "date-time"
+          title: "Received At"
+        duplicate:
+          type: "boolean"
+          title: "Duplicate"
+          default: false
+        dispatched_motion_ids:
+          items:
+            type: "string"
+          type: "array"
+          title: "Dispatched Motion Ids"
+      additionalProperties: true
+      type: "object"
+      required:
+        - "signal_type"
+        - "dedupe_key"
+        - "id"
+        - "workspace_id"
+        - "received_at"
+      title: "LookoutSignalData"
+    LookoutProviderActionListData:
+      properties:
+        items:
+          items:
+            $ref: "#/components/schemas/LookoutProviderActionData"
+          type: "array"
+          title: "Items"
+        total:
+          type: "integer"
+          title: "Total"
+          default: 0
+      type: "object"
+      title: "LookoutProviderActionListData"
     ObjectRecordListData:
       properties:
         object_type:
@@ -24830,6 +27876,11 @@ components:
             - type: "string"
             - type: "null"
           title: "Next Cursor"
+        subtotals:
+          items:
+            $ref: "#/components/schemas/ObjectRecordSubtotalResult"
+          type: "array"
+          title: "Subtotals"
         meta:
           additionalProperties: true
           type: "object"
@@ -24958,6 +28009,110 @@ components:
         - "page_size"
         - "total"
       title: "ObjectRecordLineItemListData"
+    OfferSnapshotListData:
+      properties:
+        items:
+          items:
+            $ref: "#/components/schemas/OfferSnapshotData"
+          type: "array"
+          title: "Items"
+        page:
+          type: "integer"
+          title: "Page"
+        page_size:
+          type: "integer"
+          title: "Page Size"
+        total:
+          type: "integer"
+          title: "Total"
+        message:
+          type: "string"
+          title: "Message"
+          default: "OK"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total"
+      title: "OfferSnapshotListData"
+    FerryDiagramListData:
+      properties:
+        diagrams:
+          items:
+            $ref: "#/components/schemas/FerryDiagramSummary"
+          type: "array"
+          title: "Diagrams"
+        count:
+          type: "integer"
+          title: "Count"
+      type: "object"
+      required:
+        - "diagrams"
+        - "count"
+      title: "FerryDiagramListData"
+    FerryProgramMeetingListData:
+      properties:
+        meetings:
+          items:
+            $ref: "#/components/schemas/FerryProgramMeetingData"
+          type: "array"
+          title: "Meetings"
+        count:
+          type: "integer"
+          title: "Count"
+      type: "object"
+      required:
+        - "meetings"
+        - "count"
+      title: "FerryProgramMeetingListData"
+    FerryProgramListData:
+      properties:
+        programs:
+          items:
+            $ref: "#/components/schemas/FerryProgramData"
+          type: "array"
+          title: "Programs"
+        count:
+          type: "integer"
+          title: "Count"
+      type: "object"
+      required:
+        - "programs"
+        - "count"
+      title: "FerryProgramListData"
+    PublicProjectListData:
+      properties:
+        items:
+          items:
+            $ref: "#/components/schemas/PublicProject"
+          type: "array"
+          title: "Items"
+        page:
+          type: "integer"
+          title: "Page"
+        page_size:
+          type: "integer"
+          title: "Page Size"
+        total:
+          type: "integer"
+          title: "Total"
+        next_cursor:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Next Cursor"
+        meta:
+          additionalProperties: true
+          type: "object"
+          title: "Meta"
+      type: "object"
+      required:
+        - "items"
+        - "page"
+        - "page_size"
+        - "total"
+      title: "PublicProjectListData"
     WorkflowListData:
       properties:
         items:
@@ -25056,6 +28211,47 @@ components:
       required:
         - "external_id"
       title: "OrderBulkOrderRequest"
+    PaymentAllocationSaveInput:
+      properties:
+        invoice_id:
+          type: "string"
+          title: "Invoice Id"
+        amount:
+          type: "number"
+          title: "Amount"
+        adjustment_amount:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Adjustment Amount"
+          default: 0
+        adjustment_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Adjustment Type"
+        currency:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Currency"
+        source:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Source"
+          default: "manual"
+        notes:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Notes"
+          default: ""
+      type: "object"
+      required:
+        - "invoice_id"
+        - "amount"
+      title: "PaymentAllocationSaveInput"
     ProspectCompaniesData:
       properties:
         query:
@@ -25124,6 +28320,30 @@ components:
           title: "Filename"
       type: "object"
       title: "PublicInvoiceEmailPdfAttachment"
+    PublicProjectStatusRequest:
+      properties:
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Id"
+        name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Name"
+        internal_value:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Internal Value"
+        order:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Order"
+      type: "object"
+      title: "PublicProjectStatusRequest"
     RecordFilterRequest:
       properties:
         field:
@@ -25295,6 +28515,33 @@ components:
         - "action"
         - "status"
       title: "PublicInvoiceEmailData"
+    ViewSubtotalCalculation:
+      properties:
+        field_id:
+          type: "string"
+          title: "Field Id"
+        operation:
+          type: "string"
+          enum:
+            - "count"
+            - "sum"
+            - "avg"
+            - "median"
+            - "min"
+            - "max"
+          title: "Operation"
+        scope:
+          type: "string"
+          enum:
+            - "page"
+            - "view"
+          title: "Scope"
+          default: "view"
+      type: "object"
+      required:
+        - "field_id"
+        - "operation"
+      title: "ViewSubtotalCalculation"
     ErrorBody:
       type: "object"
       required:
@@ -25416,6 +28663,249 @@ components:
         - "source_ref"
         - "target_ref"
       title: "AssociationEdge"
+    FerryProgramEndpoint:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        kind:
+          type: "string"
+          title: "Kind"
+        label:
+          type: "string"
+          title: "Label"
+        labelJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Labelja"
+        role:
+          type: "string"
+          enum:
+            - "source"
+            - "destination"
+          title: "Role"
+        integrationSlug:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Integrationslug"
+        channelId:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Channelid"
+        sourceType:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Sourcetype"
+        objectTypes:
+          items:
+            type: "string"
+          type: "array"
+          title: "Objecttypes"
+        metadata:
+          additionalProperties: true
+          type: "object"
+          title: "Metadata"
+      type: "object"
+      required:
+        - "id"
+        - "kind"
+        - "label"
+        - "role"
+      title: "FerryProgramEndpoint"
+    FerryProgramPhase:
+      properties:
+        id:
+          type: "string"
+          maxLength: 100
+          minLength: 1
+          title: "Id"
+        name:
+          type: "string"
+          maxLength: 200
+          minLength: 1
+          title: "Name"
+        nameJa:
+          anyOf:
+            - type: "string"
+              maxLength: 200
+            - type: "null"
+          title: "Nameja"
+        sortOrder:
+          type: "integer"
+          minimum: 0.0
+          title: "Sortorder"
+          default: 0
+      type: "object"
+      required:
+        - "id"
+        - "name"
+      title: "FerryProgramPhase"
+    FerryProgramTodo:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        title:
+          type: "string"
+          title: "Title"
+        titleJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Titleja"
+        description:
+          type: "string"
+          title: "Description"
+          default: ""
+        descriptionJa:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Descriptionja"
+        category:
+          type: "string"
+          title: "Category"
+          default: "planning"
+        required:
+          type: "boolean"
+          title: "Required"
+          default: true
+        status:
+          type: "string"
+          enum:
+            - "not_started"
+            - "in_progress"
+            - "completed"
+            - "blocked"
+          title: "Status"
+          default: "not_started"
+        notes:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Notes"
+        startDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Startdate"
+        dueDate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Duedate"
+        priority:
+          type: "string"
+          enum:
+            - "P0"
+            - "P1"
+            - "P2"
+            - "P3"
+            - "P4"
+          title: "Priority"
+          default: "P2"
+        sourceRef:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Sourceref"
+        phaseId:
+          anyOf:
+            - type: "string"
+              maxLength: 100
+            - type: "null"
+          title: "Phaseid"
+        parentTodoId:
+          anyOf:
+            - type: "string"
+              maxLength: 500
+            - type: "null"
+          title: "Parenttodoid"
+        sortOrder:
+          anyOf:
+            - type: "integer"
+              minimum: 0.0
+            - type: "null"
+          title: "Sortorder"
+      type: "object"
+      required:
+        - "id"
+        - "title"
+      title: "FerryProgramTodo"
+    FerryDiagramNodeData:
+      properties:
+        label:
+          type: "string"
+          maxLength: 255
+          minLength: 1
+          title: "Label"
+        description:
+          type: "string"
+          maxLength: 4000
+          title: "Description"
+          default: ""
+        fields:
+          items:
+            type: "string"
+          type: "array"
+          maxItems: 100
+          title: "Fields"
+        moduleName:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Modulename"
+        objectKey:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Objectkey"
+        objectSlug:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Objectslug"
+        color:
+          type: "string"
+          enum:
+            - "default"
+            - "brand"
+            - "success"
+            - "warning"
+            - "danger"
+          title: "Color"
+          default: "default"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "label"
+      title: "FerryDiagramNodeData"
+    FerryDiagramPosition:
+      properties:
+        x:
+          type: "number"
+          maximum: 1000000.0
+          minimum: -1000000.0
+          title: "X"
+        y:
+          type: "number"
+          maximum: 1000000.0
+          minimum: -1000000.0
+          title: "Y"
+      additionalProperties: false
+      type: "object"
+      required:
+        - "x"
+        - "y"
+      title: "FerryDiagramPosition"
     ObjectRecordDisplayValue:
       properties:
         type:
@@ -25488,6 +28978,28 @@ components:
       required:
         - "type"
       title: "ObjectRecordDisplayValue"
+    PublicProjectStatus:
+      properties:
+        id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        internal_value:
+          type: "string"
+          title: "Internal Value"
+        order:
+          type: "integer"
+          title: "Order"
+          default: 0
+      type: "object"
+      required:
+        - "name"
+        - "internal_value"
+      title: "PublicProjectStatus"
     WorkflowListItem:
       properties:
         id:
@@ -25594,6 +29106,48 @@ components:
       required:
         - "id"
       title: "WorkflowListItem"
+    ObjectRecordSubtotalResult:
+      properties:
+        field_id:
+          type: "string"
+          title: "Field Id"
+        operation:
+          type: "string"
+          enum:
+            - "count"
+            - "sum"
+            - "avg"
+            - "median"
+            - "min"
+            - "max"
+          title: "Operation"
+        value:
+          title: "Value"
+        value_type:
+          type: "string"
+          title: "Value Type"
+        count:
+          type: "integer"
+          title: "Count"
+          default: 0
+        formatted:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Formatted"
+        scope:
+          type: "string"
+          enum:
+            - "page"
+            - "view"
+          title: "Scope"
+          default: "page"
+      type: "object"
+      required:
+        - "field_id"
+        - "operation"
+        - "value_type"
+      title: "ObjectRecordSubtotalResult"
     ObjectRecordViewData:
       properties:
         view_id:
@@ -25727,6 +29281,189 @@ components:
         - "row_id"
         - "record_id"
       title: "ObjectRecordLineItemRowData"
+    OfferSnapshotData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        buy_request_id:
+          type: "string"
+          title: "Buy Request Id"
+        buy_request_line_id:
+          type: "string"
+          title: "Buy Request Line Id"
+        sourcing_run_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Sourcing Run Id"
+        provider:
+          type: "string"
+          title: "Provider"
+        merchant_key:
+          type: "string"
+          title: "Merchant Key"
+        merchant_name:
+          type: "string"
+          title: "Merchant Name"
+        merchant_domain:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Merchant Domain"
+        provider_product_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Provider Product Id"
+        upid:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Upid"
+        title:
+          type: "string"
+          title: "Title"
+        variant_title:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Variant Title"
+        product_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Product Url"
+        image_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Image Url"
+        quantity:
+          type: "number"
+          title: "Quantity"
+        unit_price:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Unit Price"
+        shipping_amount:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Shipping Amount"
+        tax_amount:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Tax Amount"
+        total_amount:
+          anyOf:
+            - type: "number"
+            - type: "null"
+          title: "Total Amount"
+        currency:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Currency"
+        availability:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Availability"
+        delivery_estimate:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Delivery Estimate"
+        raw_snapshot:
+          additionalProperties: true
+          type: "object"
+          title: "Raw Snapshot"
+        snapshot_hash:
+          type: "string"
+          title: "Snapshot Hash"
+        snapshot_version:
+          type: "integer"
+          title: "Snapshot Version"
+        captured_at:
+          type: "string"
+          format: "date-time"
+          title: "Captured At"
+        expires_at:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "null"
+          title: "Expires At"
+      type: "object"
+      required:
+        - "id"
+        - "buy_request_id"
+        - "buy_request_line_id"
+        - "provider"
+        - "merchant_key"
+        - "merchant_name"
+        - "title"
+        - "quantity"
+        - "snapshot_hash"
+        - "snapshot_version"
+        - "captured_at"
+      title: "OfferSnapshotData"
+    FerryDiagramSummary:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        description:
+          type: "string"
+          title: "Description"
+          default: ""
+        nodeCount:
+          type: "integer"
+          title: "Nodecount"
+          default: 0
+        edgeCount:
+          type: "integer"
+          title: "Edgecount"
+          default: 0
+        revision:
+          type: "integer"
+          title: "Revision"
+        createdById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Createdbyid"
+        updatedById:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Updatedbyid"
+        createdAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Createdat"
+        updatedAt:
+          anyOf:
+            - type: "string"
+              format: "date-time"
+            - type: "string"
+            - type: "null"
+          title: "Updatedat"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "revision"
+      title: "FerryDiagramSummary"
     WorkflowColumn:
       properties:
         key:
@@ -25797,6 +29534,21 @@ components:
             - type: "string"
             - type: "null"
           title: "Currency"
+        row_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Row Type"
+        section_label:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Section Label"
+        section_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Section Type"
         custom_fields:
           additionalProperties: true
           type: "object"
@@ -26164,761 +29916,6 @@ components:
           title: "Model Name"
       type: "object"
       title: "ActivityLogEnvironment"
-    PublicProjectStatus:
-      type: "object"
-      title: "PublicProjectStatus"
-      required:
-        - "name"
-        - "internal_value"
-      properties:
-        id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        name:
-          type: "string"
-          title: "Name"
-        internal_value:
-          type: "string"
-          title: "Internal Value"
-        order:
-          type: "integer"
-          title: "Order"
-          default: 0
-    PublicProject:
-      type: "object"
-      title: "PublicProject"
-      required:
-        - "id"
-        - "project_id"
-      properties:
-        id:
-          type: "string"
-          title: "Id"
-        project_id:
-          type: "string"
-          title: "Project Id"
-        title:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        description:
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-        default:
-          type: "boolean"
-          title: "Default"
-          default: false
-        statuses:
-          type: "array"
-          title: "Statuses"
-          items:
-            $ref: "#/components/schemas/PublicProjectStatus"
-        task_count:
-          type: "integer"
-          title: "Task Count"
-          default: 0
-        active_task_count:
-          type: "integer"
-          title: "Active Task Count"
-          default: 0
-        created_at:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        updated_at:
-          anyOf:
-            - type: "string"
-            - type: "null"
-    PublicProjectStatusRequest:
-      type: "object"
-      title: "PublicProjectStatusRequest"
-      properties:
-        id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        name:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        internal_value:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        order:
-          anyOf:
-            - type: "integer"
-            - type: "null"
-    PublicProjectRequest:
-      type: "object"
-      title: "PublicProjectRequest"
-      properties:
-        title:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        description:
-          anyOf:
-            - type: "string"
-            - type: "null"
-          title: "Description"
-        default:
-          anyOf:
-            - type: "boolean"
-            - type: "null"
-        statuses:
-          anyOf:
-            - type: "array"
-              items:
-                $ref: "#/components/schemas/PublicProjectStatusRequest"
-            - type: "null"
-    PublicProjectListData:
-      type: "object"
-      title: "PublicProjectListData"
-      required:
-        - "items"
-        - "page"
-        - "page_size"
-        - "total"
-      properties:
-        items:
-          type: "array"
-          title: "Items"
-          items:
-            $ref: "#/components/schemas/PublicProject"
-        page:
-          type: "integer"
-          title: "Page"
-        page_size:
-          type: "integer"
-          title: "Page Size"
-        total:
-          type: "integer"
-          title: "Total"
-        next_cursor:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        meta:
-          type: "object"
-          title: "Meta"
-          additionalProperties: true
-    PublicProjectMutationData:
-      type: "object"
-      title: "PublicProjectMutationData"
-      required:
-        - "ok"
-        - "status"
-      properties:
-        ok:
-          type: "boolean"
-          title: "Ok"
-        status:
-          type: "string"
-          title: "Status"
-        id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        project_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        project:
-          anyOf:
-            - $ref: "#/components/schemas/PublicProject"
-            - type: "null"
-        ctx_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        advisories:
-          anyOf:
-            - type: "array"
-              items:
-                type: "object"
-                additionalProperties: true
-            - type: "null"
-    PublicProjectDeleteData:
-      type: "object"
-      title: "PublicProjectDeleteData"
-      required:
-        - "ok"
-        - "status"
-      properties:
-        ok:
-          type: "boolean"
-          title: "Ok"
-        status:
-          type: "string"
-          title: "Status"
-        id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        project_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        replacement_project_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        cleared_task_count:
-          type: "integer"
-          title: "Cleared Task Count"
-          default: 0
-        reassigned_task_count:
-          type: "integer"
-          title: "Reassigned Task Count"
-          default: 0
-        ctx_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        advisories:
-          anyOf:
-            - type: "array"
-              items:
-                type: "object"
-                additionalProperties: true
-            - type: "null"
-    PublicProjectDeleteRequest:
-      type: "object"
-      title: "PublicProjectDeleteRequest"
-      properties:
-        replacement_project_id:
-          anyOf:
-            - type: "string"
-            - type: "null"
-        clear_task_project:
-          anyOf:
-            - type: "boolean"
-            - type: "null"
-    ListPublicProjectsApiV2PublicProjectsGet200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/PublicProjectListData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    CreatePublicProjectApiV2PublicProjectsPost200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/PublicProjectMutationData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    GetPublicProjectApiV2PublicProjectsProjectIdGet200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/PublicProject"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    UpdatePublicProjectApiV2PublicProjectsProjectIdPut200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/PublicProjectMutationData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    DeletePublicProjectApiV2PublicProjectsProjectIdDelete200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/PublicProjectDeleteData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    DeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/FerryDiagramDeleteData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    FerryDiagramDeleteData:
-      properties:
-        id:
-          type: "string"
-          title: "Id"
-        deleted:
-          type: "boolean"
-          title: "Deleted"
-      type: "object"
-      required:
-        - "id"
-        - "deleted"
-      title: "FerryDiagramDeleteData"
-    UpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/FerryDiagramData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    FerryDiagramData:
-      properties:
-        name:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Name"
-        description:
-          type: "string"
-          maxLength: 500
-          title: "Description"
-          default: ""
-        nodes:
-          items:
-            $ref: "#/components/schemas/FerryDiagramNode"
-          type: "array"
-          maxItems: 250
-          title: "Nodes"
-        edges:
-          items:
-            $ref: "#/components/schemas/FerryDiagramEdge"
-          type: "array"
-          maxItems: 500
-          title: "Edges"
-        viewport:
-          $ref: "#/components/schemas/FerryDiagramViewport"
-        id:
-          type: "string"
-          title: "Id"
-        workspaceId:
-          type: "string"
-          title: "Workspaceid"
-        revision:
-          type: "integer"
-          title: "Revision"
-        createdById:
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Createdbyid"
-        updatedById:
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Updatedbyid"
-        createdAt:
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "string"
-            - type: "null"
-          title: "Createdat"
-        updatedAt:
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "string"
-            - type: "null"
-          title: "Updatedat"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "name"
-        - "id"
-        - "workspaceId"
-        - "revision"
-      title: "FerryDiagramData"
-    FerryDiagramViewport:
-      properties:
-        x:
-          type: "number"
-          maximum: 1000000.0
-          minimum: -1000000.0
-          title: "X"
-          default: 0
-        y:
-          type: "number"
-          maximum: 1000000.0
-          minimum: -1000000.0
-          title: "Y"
-          default: 0
-        zoom:
-          type: "number"
-          maximum: 4.0
-          minimum: 0.1
-          title: "Zoom"
-          default: 1
-      additionalProperties: false
-      type: "object"
-      title: "FerryDiagramViewport"
-    FerryDiagramEdge:
-      properties:
-        id:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Id"
-        source:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Source"
-        target:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Target"
-        label:
-          type: "string"
-          maxLength: 255
-          title: "Label"
-          default: ""
-        type:
-          type: "string"
-          enum:
-            - "default"
-            - "smoothstep"
-          title: "Type"
-          default: "smoothstep"
-        sourceHandle:
-          anyOf:
-            - type: "string"
-              maxLength: 120
-            - type: "null"
-          title: "Sourcehandle"
-        targetHandle:
-          anyOf:
-            - type: "string"
-              maxLength: 120
-            - type: "null"
-          title: "Targethandle"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "id"
-        - "source"
-        - "target"
-      title: "FerryDiagramEdge"
-    FerryDiagramNode:
-      properties:
-        id:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Id"
-        type:
-          type: "string"
-          enum:
-            - "objectTable"
-            - "process"
-            - "note"
-          title: "Type"
-        position:
-          $ref: "#/components/schemas/FerryDiagramPosition"
-        data:
-          $ref: "#/components/schemas/FerryDiagramNodeData"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "id"
-        - "type"
-        - "position"
-        - "data"
-      title: "FerryDiagramNode"
-    FerryDiagramNodeData:
-      properties:
-        label:
-          type: "string"
-          maxLength: 255
-          minLength: 1
-          title: "Label"
-        description:
-          type: "string"
-          maxLength: 4000
-          title: "Description"
-          default: ""
-        fields:
-          items:
-            type: "string"
-          type: "array"
-          maxItems: 100
-          title: "Fields"
-        moduleName:
-          anyOf:
-            - type: "string"
-              maxLength: 255
-            - type: "null"
-          title: "Modulename"
-        objectKey:
-          anyOf:
-            - type: "string"
-              maxLength: 255
-            - type: "null"
-          title: "Objectkey"
-        objectSlug:
-          anyOf:
-            - type: "string"
-              maxLength: 255
-            - type: "null"
-          title: "Objectslug"
-        color:
-          type: "string"
-          enum:
-            - "default"
-            - "brand"
-            - "success"
-            - "warning"
-            - "danger"
-          title: "Color"
-          default: "default"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "label"
-      title: "FerryDiagramNodeData"
-    FerryDiagramPosition:
-      properties:
-        x:
-          type: "number"
-          maximum: 1000000.0
-          minimum: -1000000.0
-          title: "X"
-        y:
-          type: "number"
-          maximum: 1000000.0
-          minimum: -1000000.0
-          title: "Y"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "x"
-        - "y"
-      title: "FerryDiagramPosition"
-    FerryDiagramUpdateRequest:
-      properties:
-        name:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Name"
-        description:
-          type: "string"
-          maxLength: 500
-          title: "Description"
-          default: ""
-        nodes:
-          items:
-            $ref: "#/components/schemas/FerryDiagramNode"
-          type: "array"
-          maxItems: 250
-          title: "Nodes"
-        edges:
-          items:
-            $ref: "#/components/schemas/FerryDiagramEdge"
-          type: "array"
-          maxItems: 500
-          title: "Edges"
-        viewport:
-          $ref: "#/components/schemas/FerryDiagramViewport"
-        revision:
-          type: "integer"
-          minimum: 1.0
-          title: "Revision"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "name"
-        - "revision"
-      title: "FerryDiagramUpdateRequest"
-    GetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/FerryDiagramData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    CreatePublicFerryDiagramApiV2PublicFerryDiagramsPost200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/FerryDiagramData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    FerryDiagramCreateRequest:
-      properties:
-        name:
-          type: "string"
-          maxLength: 120
-          minLength: 1
-          title: "Name"
-        description:
-          type: "string"
-          maxLength: 500
-          title: "Description"
-          default: ""
-        nodes:
-          items:
-            $ref: "#/components/schemas/FerryDiagramNode"
-          type: "array"
-          maxItems: 250
-          title: "Nodes"
-        edges:
-          items:
-            $ref: "#/components/schemas/FerryDiagramEdge"
-          type: "array"
-          maxItems: 500
-          title: "Edges"
-        viewport:
-          $ref: "#/components/schemas/FerryDiagramViewport"
-      additionalProperties: false
-      type: "object"
-      required:
-        - "name"
-      title: "FerryDiagramCreateRequest"
-    ListPublicFerryDiagramsApiV2PublicFerryDiagramsGet200Envelope:
-      type: "object"
-      required:
-        - "success"
-        - "data"
-        - "meta"
-      properties:
-        success:
-          type: "boolean"
-          const: true
-        data:
-          $ref: "#/components/schemas/FerryDiagramListData"
-        meta:
-          $ref: "#/components/schemas/EnvelopeMeta"
-    FerryDiagramListData:
-      properties:
-        diagrams:
-          items:
-            $ref: "#/components/schemas/FerryDiagramSummary"
-          type: "array"
-          title: "Diagrams"
-        count:
-          type: "integer"
-          title: "Count"
-      type: "object"
-      required:
-        - "diagrams"
-        - "count"
-      title: "FerryDiagramListData"
-    FerryDiagramSummary:
-      properties:
-        id:
-          type: "string"
-          title: "Id"
-        name:
-          type: "string"
-          title: "Name"
-        description:
-          type: "string"
-          title: "Description"
-          default: ""
-        nodeCount:
-          type: "integer"
-          title: "Nodecount"
-          default: 0
-        edgeCount:
-          type: "integer"
-          title: "Edgecount"
-          default: 0
-        revision:
-          type: "integer"
-          title: "Revision"
-        createdById:
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Createdbyid"
-        updatedById:
-          anyOf:
-            - type: "integer"
-            - type: "null"
-          title: "Updatedbyid"
-        createdAt:
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "string"
-            - type: "null"
-          title: "Createdat"
-        updatedAt:
-          anyOf:
-            - type: "string"
-              format: "date-time"
-            - type: "string"
-            - type: "null"
-          title: "Updatedat"
-      type: "object"
-      required:
-        - "id"
-        - "name"
-        - "revision"
-      title: "FerryDiagramSummary"
   securitySchemes:
     bearerAuth:
       type: "http"

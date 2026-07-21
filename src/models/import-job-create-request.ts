@@ -18,6 +18,9 @@ export type ImportJobCreateRequest = {
   customObjectId?: string | null | undefined;
   provider?: string | null | undefined;
   channelId?: string | null | undefined;
+  mappingTemplateId?: string | null | undefined;
+  mappingTemplateRevision?: number | null | undefined;
+  mappingTemplateState?: { [k: string]: any } | null | undefined;
   recordIds?: Array<string> | null | undefined;
   /**
    * Provider-specific source metadata. For Stripe invoice/subscription backfills, use scope=all with optional days_ago, created_gte, and limit; bounded synchronous backfills support up to 200 records.
@@ -29,6 +32,10 @@ export type ImportJobCreateRequest = {
   relationKeyMap?: { [k: string]: string } | undefined;
   columnMappings?: Array<TransferColumnMapping> | undefined;
   dryRun?: boolean | undefined;
+  idempotencyKey?: string | null | undefined;
+  workflowActionTrackerId?: string | null | undefined;
+  actionTrackerId?: string | null | undefined;
+  workflowLanguage?: string | null | undefined;
 };
 
 /** @internal */
@@ -40,6 +47,9 @@ export type ImportJobCreateRequest$Outbound = {
   custom_object_id?: string | null | undefined;
   provider?: string | null | undefined;
   channel_id?: string | null | undefined;
+  mapping_template_id?: string | null | undefined;
+  mapping_template_revision?: number | null | undefined;
+  mapping_template_state?: { [k: string]: any } | null | undefined;
   record_ids?: Array<string> | null | undefined;
   source_record?: { [k: string]: any } | null | undefined;
   operation: string;
@@ -48,6 +58,10 @@ export type ImportJobCreateRequest$Outbound = {
   relation_key_map?: { [k: string]: string } | undefined;
   column_mappings?: Array<TransferColumnMapping$Outbound> | undefined;
   dry_run: boolean;
+  idempotency_key?: string | null | undefined;
+  workflow_action_tracker_id?: string | null | undefined;
+  action_tracker_id?: string | null | undefined;
+  workflow_language?: string | null | undefined;
 };
 
 /** @internal */
@@ -63,6 +77,9 @@ export const ImportJobCreateRequest$outboundSchema: z.ZodMiniType<
     customObjectId: z.optional(z.nullable(z.string())),
     provider: z.optional(z.nullable(z.string())),
     channelId: z.optional(z.nullable(z.string())),
+    mappingTemplateId: z.optional(z.nullable(z.string())),
+    mappingTemplateRevision: z.optional(z.nullable(z.int())),
+    mappingTemplateState: z.optional(z.nullable(z.record(z.string(), z.any()))),
     recordIds: z.optional(z.nullable(z.array(z.string()))),
     sourceRecord: z.optional(z.nullable(z.record(z.string(), z.any()))),
     operation: z._default(z.string(), "upsert"),
@@ -71,6 +88,10 @@ export const ImportJobCreateRequest$outboundSchema: z.ZodMiniType<
     relationKeyMap: z.optional(z.record(z.string(), z.string())),
     columnMappings: z.optional(z.array(TransferColumnMapping$outboundSchema)),
     dryRun: z._default(z.boolean(), false),
+    idempotencyKey: z.optional(z.nullable(z.string())),
+    workflowActionTrackerId: z.optional(z.nullable(z.string())),
+    actionTrackerId: z.optional(z.nullable(z.string())),
+    workflowLanguage: z.optional(z.nullable(z.string())),
   }),
   z.transform((v) => {
     return remap$(v, {
@@ -80,6 +101,9 @@ export const ImportJobCreateRequest$outboundSchema: z.ZodMiniType<
       fileId: "file_id",
       customObjectId: "custom_object_id",
       channelId: "channel_id",
+      mappingTemplateId: "mapping_template_id",
+      mappingTemplateRevision: "mapping_template_revision",
+      mappingTemplateState: "mapping_template_state",
       recordIds: "record_ids",
       sourceRecord: "source_record",
       mappingMode: "mapping_mode",
@@ -87,6 +111,10 @@ export const ImportJobCreateRequest$outboundSchema: z.ZodMiniType<
       relationKeyMap: "relation_key_map",
       columnMappings: "column_mappings",
       dryRun: "dry_run",
+      idempotencyKey: "idempotency_key",
+      workflowActionTrackerId: "workflow_action_tracker_id",
+      actionTrackerId: "action_tracker_id",
+      workflowLanguage: "workflow_language",
     });
   }),
 );

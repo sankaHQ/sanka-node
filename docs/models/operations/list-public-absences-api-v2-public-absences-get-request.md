@@ -21,6 +21,7 @@ let value: ListPublicAbsencesApiV2PublicAbsencesGetRequest = {};
 | `viewId`                       | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `search`                       | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `language`                     | *string*                       | :heavy_minus_sign:             | N/A                            |
+| `filters`                      | *string*                       | :heavy_minus_sign:             | N/A                            |
 | `page`                         | *number*                       | :heavy_minus_sign:             | N/A                            |
 | `limit`                        | *number*                       | :heavy_minus_sign:             | N/A                            |
 | `cursor`                       | *string*                       | :heavy_minus_sign:             | N/A                            |

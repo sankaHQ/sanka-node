@@ -101,6 +101,7 @@ async function $do(
   const path = pathToFunc("/v2/public/workflows")();
 
   const query = encodeFormQuery({
+    "include_lookout": payload?.include_lookout,
     "limit": payload?.limit,
     "page": payload?.page,
     "q": payload?.q,

@@ -129,7 +129,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "get_public_project_api_v2_public_projects_project_id_get",
+    operationID: "get_public_project_api_v2_public_projects__project_id__get",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

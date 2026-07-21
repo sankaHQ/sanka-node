@@ -546,9 +546,7 @@ const sanka = new Sanka({
 async function run() {
   const result = await sanka.payments.updatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut({
     paymentId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
 
   console.log(result);
@@ -574,9 +572,7 @@ const sanka = new SankaCore({
 async function run() {
   const res = await paymentsUpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPut(sanka, {
     paymentId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;

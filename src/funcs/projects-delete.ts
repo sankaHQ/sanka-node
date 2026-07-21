@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { SankaCore } from "../core.js";
-import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -92,7 +92,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.body, { explode: true });
+  const body = null;
 
   const pathParams = {
     project_id: encodeSimple("project_id", payload.project_id, {
@@ -105,10 +105,10 @@ async function $do(
   const query = encodeFormQuery({
     "clear_task_project": payload.clear_task_project,
     "replacement_project_id": payload.replacement_project_id,
+    "workspace_id": payload.workspace_id,
   });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
     "Accept-Language": encodeSimple(
       "Accept-Language",
@@ -134,7 +134,7 @@ async function $do(
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID:
-      "delete_public_project_api_v2_public_projects_project_id_delete",
+      "delete_public_project_api_v2_public_projects__project_id__delete",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -196,9 +196,7 @@ async function $do(
         .DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse$inboundSchema,
       { hdrs: true, key: "Result" },
     ),
-    M.jsonErr([401, 409, 422], errors.ErrorEnvelope$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr([401, 422], errors.ErrorEnvelope$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

@@ -12,11 +12,11 @@ import * as models from "../index.js";
 export type DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest = {
   projectId: string;
   replacementProjectId?: string | null | undefined;
-  clearTaskProject?: boolean | null | undefined;
-  xWorkspaceCode?: string | undefined;
+  clearTaskProject?: boolean | undefined;
+  workspaceId?: string | null | undefined;
   xLanguage?: string | null | undefined;
   acceptLanguage?: string | null | undefined;
-  body?: models.PublicProjectDeleteRequest | null | undefined;
+  xWorkspaceCode?: string | undefined;
 };
 
 export type DeletePublicProjectApiV2PublicProjectsProjectIdDeleteResponse = {
@@ -30,11 +30,11 @@ export type DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest$Outboun
   {
     project_id: string;
     replacement_project_id?: string | null | undefined;
-    clear_task_project?: boolean | null | undefined;
-    "X-Workspace-Code"?: string | undefined;
+    clear_task_project: boolean;
+    workspace_id?: string | null | undefined;
     "X-Language"?: string | null | undefined;
     "Accept-Language"?: string | null | undefined;
-    body?: models.PublicProjectDeleteRequest$Outbound | null | undefined;
+    "X-Workspace-Code"?: string | undefined;
   };
 
 /** @internal */
@@ -46,22 +46,21 @@ export const DeletePublicProjectApiV2PublicProjectsProjectIdDeleteRequest$outbou
     z.object({
       projectId: z.string(),
       replacementProjectId: z.optional(z.nullable(z.string())),
-      clearTaskProject: z.optional(z.nullable(z.boolean())),
-      xWorkspaceCode: z.optional(z.string()),
+      clearTaskProject: z._default(z.boolean(), false),
+      workspaceId: z.optional(z.nullable(z.string())),
       xLanguage: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
-      body: z.optional(
-        z.nullable(models.PublicProjectDeleteRequest$outboundSchema),
-      ),
+      xWorkspaceCode: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {
         projectId: "project_id",
         replacementProjectId: "replacement_project_id",
         clearTaskProject: "clear_task_project",
-        xWorkspaceCode: "X-Workspace-Code",
+        workspaceId: "workspace_id",
         xLanguage: "X-Language",
         acceptLanguage: "Accept-Language",
+        xWorkspaceCode: "X-Workspace-Code",
       });
     }),
   );

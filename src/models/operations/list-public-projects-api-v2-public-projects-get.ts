@@ -10,16 +10,16 @@ import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
 export type ListPublicProjectsApiV2PublicProjectsGetRequest = {
-  page?: number | null | undefined;
-  limit?: number | null | undefined;
+  page?: number | undefined;
+  limit?: number | undefined;
   search?: string | null | undefined;
   default?: boolean | null | undefined;
   lang?: string | null | undefined;
   language?: string | null | undefined;
   workspaceId?: string | null | undefined;
-  xWorkspaceCode?: string | undefined;
   xLanguage?: string | null | undefined;
   acceptLanguage?: string | null | undefined;
+  xWorkspaceCode?: string | undefined;
 };
 
 export type ListPublicProjectsApiV2PublicProjectsGetResponse = {
@@ -29,16 +29,16 @@ export type ListPublicProjectsApiV2PublicProjectsGetResponse = {
 
 /** @internal */
 export type ListPublicProjectsApiV2PublicProjectsGetRequest$Outbound = {
-  page?: number | null | undefined;
-  limit?: number | null | undefined;
+  page: number;
+  limit: number;
   search?: string | null | undefined;
   default?: boolean | null | undefined;
   lang?: string | null | undefined;
   language?: string | null | undefined;
   workspace_id?: string | null | undefined;
-  "X-Workspace-Code"?: string | undefined;
   "X-Language"?: string | null | undefined;
   "Accept-Language"?: string | null | undefined;
+  "X-Workspace-Code"?: string | undefined;
 };
 
 /** @internal */
@@ -48,23 +48,23 @@ export const ListPublicProjectsApiV2PublicProjectsGetRequest$outboundSchema:
     ListPublicProjectsApiV2PublicProjectsGetRequest
   > = z.pipe(
     z.object({
-      page: z.optional(z.nullable(z.int())),
-      limit: z.optional(z.nullable(z.int())),
+      page: z._default(z.int(), 1),
+      limit: z._default(z.int(), 100),
       search: z.optional(z.nullable(z.string())),
       default: z.optional(z.nullable(z.boolean())),
       lang: z.optional(z.nullable(z.string())),
       language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
-      xWorkspaceCode: z.optional(z.string()),
       xLanguage: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
+      xWorkspaceCode: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {
         workspaceId: "workspace_id",
-        xWorkspaceCode: "X-Workspace-Code",
         xLanguage: "X-Language",
         acceptLanguage: "Accept-Language",
+        xWorkspaceCode: "X-Workspace-Code",
       });
     }),
   );

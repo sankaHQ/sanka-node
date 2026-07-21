@@ -11,9 +11,10 @@ import * as models from "../index.js";
 
 export type UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest = {
   projectId: string;
-  xWorkspaceCode?: string | undefined;
+  workspaceId?: string | null | undefined;
   xLanguage?: string | null | undefined;
   acceptLanguage?: string | null | undefined;
+  xWorkspaceCode?: string | undefined;
   body: models.PublicProjectRequest;
 };
 
@@ -26,9 +27,10 @@ export type UpdatePublicProjectApiV2PublicProjectsProjectIdPutResponse = {
 export type UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest$Outbound =
   {
     project_id: string;
-    "X-Workspace-Code"?: string | undefined;
+    workspace_id?: string | null | undefined;
     "X-Language"?: string | null | undefined;
     "Accept-Language"?: string | null | undefined;
+    "X-Workspace-Code"?: string | undefined;
     body: models.PublicProjectRequest$Outbound;
   };
 
@@ -40,17 +42,19 @@ export const UpdatePublicProjectApiV2PublicProjectsProjectIdPutRequest$outboundS
   > = z.pipe(
     z.object({
       projectId: z.string(),
-      xWorkspaceCode: z.optional(z.string()),
+      workspaceId: z.optional(z.nullable(z.string())),
       xLanguage: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
+      xWorkspaceCode: z.optional(z.string()),
       body: models.PublicProjectRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {
         projectId: "project_id",
-        xWorkspaceCode: "X-Workspace-Code",
+        workspaceId: "workspace_id",
         xLanguage: "X-Language",
         acceptLanguage: "Accept-Language",
+        xWorkspaceCode: "X-Workspace-Code",
       });
     }),
   );

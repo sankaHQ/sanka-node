@@ -16,5 +16,6 @@ let value: ListPublicWorkflowsApiV2PublicWorkflowsGetRequest = {};
 | `limit`            | *number*           | :heavy_minus_sign: | N/A                |
 | `q`                | *string*           | :heavy_minus_sign: | N/A                |
 | `status`           | *string*           | :heavy_minus_sign: | N/A                |
+| `includeLookout`   | *boolean*          | :heavy_minus_sign: | N/A                |
 | `workspaceId`      | *string*           | :heavy_minus_sign: | N/A                |
 | `xWorkspaceCode`   | *string*           | :heavy_minus_sign: | N/A                |
