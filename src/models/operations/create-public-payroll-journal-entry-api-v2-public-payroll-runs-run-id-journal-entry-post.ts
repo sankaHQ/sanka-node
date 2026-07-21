@@ -14,7 +14,7 @@ export type CreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEnt
     runId: string;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PayrollJournalEntryRequest;
   };
 
 export type CreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPostResponse =
@@ -30,7 +30,7 @@ export type CreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEnt
     run_id: string;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PayrollJournalEntryRequest$Outbound;
   };
 
 /** @internal */
@@ -43,7 +43,7 @@ export const CreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEn
       runId: z.string(),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: z.record(z.string(), z.any()),
+      body: models.PayrollJournalEntryRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

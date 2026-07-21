@@ -18,7 +18,7 @@ export type UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocation
     workspaceId?: string | null | undefined;
     acceptLanguage?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PaymentAllocationsUpdateRequest;
   };
 
 export type UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocationsPutResponse =
@@ -38,7 +38,7 @@ export type UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocation
     workspace_id?: string | null | undefined;
     "Accept-Language"?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: { [k: string]: any };
+    body: models.PaymentAllocationsUpdateRequest$Outbound;
   };
 
 /** @internal */
@@ -55,7 +55,7 @@ export const UpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocatio
       workspaceId: z.optional(z.nullable(z.string())),
       acceptLanguage: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: z.record(z.string(), z.any()),
+      body: models.PaymentAllocationsUpdateRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

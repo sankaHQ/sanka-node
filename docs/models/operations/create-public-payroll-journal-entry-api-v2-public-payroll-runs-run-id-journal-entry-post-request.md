@@ -11,18 +11,15 @@ let value:
   CreatePublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPostRequest =
     {
       runId: "<id>",
-      body: {
-        "key": "<value>",
-        "key1": "<value>",
-      },
+      body: {},
     };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `runId`               | *string*              | :heavy_check_mark:    | N/A                   |
-| `workspaceId`         | *string*              | :heavy_minus_sign:    | N/A                   |
-| `xWorkspaceCode`      | *string*              | :heavy_minus_sign:    | N/A                   |
-| `body`                | Record<string, *any*> | :heavy_check_mark:    | N/A                   |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `runId`                                                                            | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `workspaceId`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `xWorkspaceCode`                                                                   | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `body`                                                                             | [models.PayrollJournalEntryRequest](../../models/payroll-journal-entry-request.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

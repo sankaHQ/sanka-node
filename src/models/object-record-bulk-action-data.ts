@@ -11,16 +11,18 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 
-export const Operation = {
+export const ObjectRecordBulkActionDataOperation = {
   Edit: "edit",
   Archive: "archive",
   Activate: "activate",
   PermanentDelete: "permanent_delete",
 } as const;
-export type Operation = OpenEnum<typeof Operation>;
+export type ObjectRecordBulkActionDataOperation = OpenEnum<
+  typeof ObjectRecordBulkActionDataOperation
+>;
 
 export type ObjectRecordBulkActionData = {
-  operation: Operation;
+  operation: ObjectRecordBulkActionDataOperation;
   objectType: string;
   ids?: Array<string> | undefined;
   affectedIds?: Array<string> | undefined;
@@ -34,8 +36,10 @@ export type ObjectRecordBulkActionData = {
 };
 
 /** @internal */
-export const Operation$inboundSchema: z.ZodMiniType<Operation, unknown> =
-  openEnums.inboundSchema(Operation);
+export const ObjectRecordBulkActionDataOperation$inboundSchema: z.ZodMiniType<
+  ObjectRecordBulkActionDataOperation,
+  unknown
+> = openEnums.inboundSchema(ObjectRecordBulkActionDataOperation);
 
 /** @internal */
 export const ObjectRecordBulkActionData$inboundSchema: z.ZodMiniType<
@@ -43,7 +47,7 @@ export const ObjectRecordBulkActionData$inboundSchema: z.ZodMiniType<
   unknown
 > = z.pipe(
   z.object({
-    operation: Operation$inboundSchema,
+    operation: ObjectRecordBulkActionDataOperation$inboundSchema,
     object_type: types.string(),
     ids: types.optional(z.array(types.string())),
     affected_ids: types.optional(z.array(types.string())),

@@ -16,6 +16,7 @@ export type ListPublicLocationsApiV2PublicLocationsGetRequest = {
   language?: string | null | undefined;
   status?: string | null | undefined;
   usageStatus?: string | null | undefined;
+  filters?: string | null | undefined;
   page?: number | undefined;
   limit?: number | null | undefined;
   cursor?: string | null | undefined;
@@ -42,6 +43,7 @@ export type ListPublicLocationsApiV2PublicLocationsGetRequest$Outbound = {
   language?: string | null | undefined;
   status?: string | null | undefined;
   usage_status?: string | null | undefined;
+  filters?: string | null | undefined;
   page: number;
   limit?: number | null | undefined;
   cursor?: string | null | undefined;
@@ -68,6 +70,7 @@ export const ListPublicLocationsApiV2PublicLocationsGetRequest$outboundSchema:
       language: z.optional(z.nullable(z.string())),
       status: z.optional(z.nullable(z.string())),
       usageStatus: z.optional(z.nullable(z.string())),
+      filters: z.optional(z.nullable(z.string())),
       page: z._default(z.int(), 1),
       limit: z.optional(z.nullable(z.int())),
       cursor: z.optional(z.nullable(z.string())),

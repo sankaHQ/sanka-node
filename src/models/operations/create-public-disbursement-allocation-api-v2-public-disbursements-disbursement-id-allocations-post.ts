@@ -17,7 +17,7 @@ export type CreatePublicDisbursementAllocationApiV2PublicDisbursementsDisburseme
     language?: string | null | undefined;
     workspaceId?: string | null | undefined;
     xWorkspaceCode?: string | undefined;
-    body: { [k: string]: any };
+    body: models.DisbursementAllocationCreateRequest;
   };
 
 export type CreatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPostResponse =
@@ -36,7 +36,7 @@ export type CreatePublicDisbursementAllocationApiV2PublicDisbursementsDisburseme
     language?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: { [k: string]: any };
+    body: models.DisbursementAllocationCreateRequest$Outbound;
   };
 
 /** @internal */
@@ -52,7 +52,7 @@ export const CreatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursem
       language: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: z.record(z.string(), z.any()),
+      body: models.DisbursementAllocationCreateRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

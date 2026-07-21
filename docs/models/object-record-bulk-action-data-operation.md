@@ -1,11 +1,11 @@
-# Operation
+# ObjectRecordBulkActionDataOperation
 
 ## Example Usage
 
 ```typescript
-import { Operation } from "sanka-sdk/models";
+import { ObjectRecordBulkActionDataOperation } from "sanka-sdk/models";
 
-let value: Operation = "activate";
+let value: ObjectRecordBulkActionDataOperation = "edit";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```

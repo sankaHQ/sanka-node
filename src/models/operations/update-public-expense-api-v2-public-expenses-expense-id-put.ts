@@ -14,7 +14,7 @@ export type UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutRequest = {
   externalId?: string | null | undefined;
   workspaceId?: string | null | undefined;
   xWorkspaceCode?: string | undefined;
-  body: models.ObjectRecordUpdateRequest;
+  body: models.PublicExpenseMutationRequest;
 };
 
 export type UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutResponse = {
@@ -29,7 +29,7 @@ export type UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutRequest$Outbound =
     external_id?: string | null | undefined;
     workspace_id?: string | null | undefined;
     "X-Workspace-Code"?: string | undefined;
-    body: models.ObjectRecordUpdateRequest$Outbound;
+    body: models.PublicExpenseMutationRequest$Outbound;
   };
 
 /** @internal */
@@ -43,7 +43,7 @@ export const UpdatePublicExpenseApiV2PublicExpensesExpenseIdPutRequest$outboundS
       externalId: z.optional(z.nullable(z.string())),
       workspaceId: z.optional(z.nullable(z.string())),
       xWorkspaceCode: z.optional(z.string()),
-      body: models.ObjectRecordUpdateRequest$outboundSchema,
+      body: models.PublicExpenseMutationRequest$outboundSchema,
     }),
     z.transform((v) => {
       return remap$(v, {

@@ -4,6 +4,11 @@
 
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
+import {
+  ExportTemplateFilterFieldInput,
+  ExportTemplateFilterFieldInput$Outbound,
+  ExportTemplateFilterFieldInput$outboundSchema,
+} from "./export-template-filter-field-input.js";
 
 export type ExportJobCreateRequest = {
   objectType: string;
@@ -11,15 +16,24 @@ export type ExportJobCreateRequest = {
   provider?: string | null | undefined;
   targetSystem?: string | null | undefined;
   channelId?: string | null | undefined;
+  mappingTemplateId?: string | null | undefined;
+  mappingTemplateRevision?: number | null | undefined;
+  mappingTemplateState?: { [k: string]: any } | null | undefined;
   operation?: string | undefined;
+  requestInvoice?: boolean | undefined;
   recordIds?: Array<string> | null | undefined;
   workspaceScope?: string | null | undefined;
+  viewId?: string | null | undefined;
+  searchQuery?: string | null | undefined;
+  filterFields?: Array<ExportTemplateFilterFieldInput> | undefined;
+  idempotencyKey?: string | null | undefined;
   customObjectId?: string | null | undefined;
   limit?: number | undefined;
   fileFormat?: string | null | undefined;
   dryRun?: boolean | undefined;
   workflowActionTrackerId?: string | null | undefined;
   actionTrackerId?: string | null | undefined;
+  workflowLanguage?: string | null | undefined;
   keyField?: string | null | undefined;
   exportSetItems?: boolean | undefined;
   setCodeSource?: string | null | undefined;
@@ -39,15 +53,24 @@ export type ExportJobCreateRequest$Outbound = {
   provider?: string | null | undefined;
   target_system?: string | null | undefined;
   channel_id?: string | null | undefined;
+  mapping_template_id?: string | null | undefined;
+  mapping_template_revision?: number | null | undefined;
+  mapping_template_state?: { [k: string]: any } | null | undefined;
   operation: string;
+  request_invoice: boolean;
   record_ids?: Array<string> | null | undefined;
   workspace_scope?: string | null | undefined;
+  view_id?: string | null | undefined;
+  search_query?: string | null | undefined;
+  filter_fields?: Array<ExportTemplateFilterFieldInput$Outbound> | undefined;
+  idempotency_key?: string | null | undefined;
   custom_object_id?: string | null | undefined;
   limit: number;
   file_format?: string | null | undefined;
   dry_run: boolean;
   workflow_action_tracker_id?: string | null | undefined;
   action_tracker_id?: string | null | undefined;
+  workflow_language?: string | null | undefined;
   key_field?: string | null | undefined;
   export_set_items: boolean;
   set_code_source?: string | null | undefined;
@@ -71,15 +94,26 @@ export const ExportJobCreateRequest$outboundSchema: z.ZodMiniType<
     provider: z.optional(z.nullable(z.string())),
     targetSystem: z.optional(z.nullable(z.string())),
     channelId: z.optional(z.nullable(z.string())),
+    mappingTemplateId: z.optional(z.nullable(z.string())),
+    mappingTemplateRevision: z.optional(z.nullable(z.int())),
+    mappingTemplateState: z.optional(z.nullable(z.record(z.string(), z.any()))),
     operation: z._default(z.string(), "update"),
+    requestInvoice: z._default(z.boolean(), false),
     recordIds: z.optional(z.nullable(z.array(z.string()))),
     workspaceScope: z.optional(z.nullable(z.string())),
+    viewId: z.optional(z.nullable(z.string())),
+    searchQuery: z.optional(z.nullable(z.string())),
+    filterFields: z.optional(
+      z.array(ExportTemplateFilterFieldInput$outboundSchema),
+    ),
+    idempotencyKey: z.optional(z.nullable(z.string())),
     customObjectId: z.optional(z.nullable(z.string())),
     limit: z._default(z.int(), 200),
     fileFormat: z.optional(z.nullable(z.string())),
     dryRun: z._default(z.boolean(), false),
     workflowActionTrackerId: z.optional(z.nullable(z.string())),
     actionTrackerId: z.optional(z.nullable(z.string())),
+    workflowLanguage: z.optional(z.nullable(z.string())),
     keyField: z.optional(z.nullable(z.string())),
     exportSetItems: z._default(z.boolean(), false),
     setCodeSource: z.optional(z.nullable(z.string())),
@@ -99,13 +133,22 @@ export const ExportJobCreateRequest$outboundSchema: z.ZodMiniType<
       destinationKind: "destination_kind",
       targetSystem: "target_system",
       channelId: "channel_id",
+      mappingTemplateId: "mapping_template_id",
+      mappingTemplateRevision: "mapping_template_revision",
+      mappingTemplateState: "mapping_template_state",
+      requestInvoice: "request_invoice",
       recordIds: "record_ids",
       workspaceScope: "workspace_scope",
+      viewId: "view_id",
+      searchQuery: "search_query",
+      filterFields: "filter_fields",
+      idempotencyKey: "idempotency_key",
       customObjectId: "custom_object_id",
       fileFormat: "file_format",
       dryRun: "dry_run",
       workflowActionTrackerId: "workflow_action_tracker_id",
       actionTrackerId: "action_tracker_id",
+      workflowLanguage: "workflow_language",
       keyField: "key_field",
       exportSetItems: "export_set_items",
       setCodeSource: "set_code_source",

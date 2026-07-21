@@ -476,8 +476,7 @@ async function run() {
   const result = await sanka.disbursements.createPublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPost({
     disbursementId: "<id>",
     body: {
-      "key": "<value>",
-      "key1": "<value>",
+      amount: 7388.72,
     },
   });
 
@@ -507,8 +506,7 @@ async function run() {
   const res = await disbursementsCreatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPost(sanka, {
     disbursementId: "<id>",
     body: {
-      "key": "<value>",
-      "key1": "<value>",
+      amount: 7388.72,
     },
   });
   if (res.ok) {
@@ -560,9 +558,7 @@ async function run() {
   const result = await sanka.disbursements.updatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdPatch({
     disbursementId: "<id>",
     allocationId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
 
   console.log(result);
@@ -591,9 +587,7 @@ async function run() {
   const res = await disbursementsUpdatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsAllocationIdPatch(sanka, {
     disbursementId: "<id>",
     allocationId: "<id>",
-    body: {
-      "key": "<value>",
-    },
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;
