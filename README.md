@@ -1114,7 +1114,7 @@ The default server can be overridden globally by passing a URL to the `serverURL
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  serverURL: "https://api.sanka.com",
+  serverURL: "https://api-v2.sanka.com/api",
   bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
