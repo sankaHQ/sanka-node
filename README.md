@@ -152,6 +152,15 @@ run();
 * [enrich](docs/sdks/ai/README.md#enrich) - Enrich Record
 * [score](docs/sdks/ai/README.md#score) - Score Record
 
+### [Applicants](docs/sdks/applicants/README.md)
+
+* [listPublicApplicants](docs/sdks/applicants/README.md#listpublicapplicants) - List Records
+* [createPublicApplicant](docs/sdks/applicants/README.md#createpublicapplicant) - Create Record
+* [getPublicApplicant](docs/sdks/applicants/README.md#getpublicapplicant) - Get Record
+* [updatePublicApplicant](docs/sdks/applicants/README.md#updatepublicapplicant) - Update Record
+* [archivePublicApplicant](docs/sdks/applicants/README.md#archivepublicapplicant) - Archive Record
+* [activatePublicApplicant](docs/sdks/applicants/README.md#activatepublicapplicant) - Activate Record
+
 ### [ApprovalRequests](docs/sdks/approvalrequests/README.md)
 
 * [createApprovalRequestApiV2PublicApprovalRequestsPost](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
@@ -315,6 +324,15 @@ run();
 * [markPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost](docs/sdks/incentives/README.md#markpublicincentivebatchpaidapiv2publicincentivesbatchesbatchidmarkpaidpost) - Mark Public Incentive Batch Paid
 * [approvePublicIncentiveApiV2PublicIncentivesIncentiveIdApprovePost](docs/sdks/incentives/README.md#approvepublicincentiveapiv2publicincentivesincentiveidapprovepost) - Approve Public Incentive
 
+### [Interviews](docs/sdks/interviews/README.md)
+
+* [listPublicInterviews](docs/sdks/interviews/README.md#listpublicinterviews) - List Records
+* [createPublicInterview](docs/sdks/interviews/README.md#createpublicinterview) - Create Record
+* [getPublicInterview](docs/sdks/interviews/README.md#getpublicinterview) - Get Record
+* [updatePublicInterview](docs/sdks/interviews/README.md#updatepublicinterview) - Update Record
+* [archivePublicInterview](docs/sdks/interviews/README.md#archivepublicinterview) - Archive Record
+* [activatePublicInterview](docs/sdks/interviews/README.md#activatepublicinterview) - Activate Record
+
 ### [Inventories](docs/sdks/inventories/README.md)
 
 * [list](docs/sdks/inventories/README.md#list) - List Public Inventories
@@ -352,6 +370,15 @@ run();
 * [get](docs/sdks/items/README.md#get) - Get Public Item
 * [update](docs/sdks/items/README.md#update) - Update Public Item
 * [delete](docs/sdks/items/README.md#delete) - Delete Public Item
+
+### [JobPostings](docs/sdks/jobpostings/README.md)
+
+* [listPublicJobPostings](docs/sdks/jobpostings/README.md#listpublicjobpostings) - List Records
+* [createPublicJobPosting](docs/sdks/jobpostings/README.md#createpublicjobposting) - Create Record
+* [getPublicJobPosting](docs/sdks/jobpostings/README.md#getpublicjobposting) - Get Record
+* [updatePublicJobPosting](docs/sdks/jobpostings/README.md#updatepublicjobposting) - Update Record
+* [archivePublicJobPosting](docs/sdks/jobpostings/README.md#archivepublicjobposting) - Archive Record
+* [activatePublicJobPosting](docs/sdks/jobpostings/README.md#activatepublicjobposting) - Activate Record
 
 ### [Journals](docs/sdks/journals/README.md)
 
@@ -585,6 +612,14 @@ run();
 * [deletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete](docs/sdks/workflows/README.md#deletepublicworkflowapiv2publicworkflowsworkflowiddelete) - Delete Public Workflow
 * [runByRef](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
 
+### [WorkforcePlanning](docs/sdks/workforceplanning/README.md)
+
+* [getPublicWorkforceOrganization](docs/sdks/workforceplanning/README.md#getpublicworkforceorganization) - Get Public Workforce Organization
+* [createPublicWorkforcePosition](docs/sdks/workforceplanning/README.md#createpublicworkforceposition) - Create Public Workforce Position
+* [updatePublicWorkforcePosition](docs/sdks/workforceplanning/README.md#updatepublicworkforceposition) - Update Public Workforce Position
+* [setPublicWorkforcePositionJob](docs/sdks/workforceplanning/README.md#setpublicworkforcepositionjob) - Set Public Workforce Position Job
+* [setPublicWorkforcePositionOccupant](docs/sdks/workforceplanning/README.md#setpublicworkforcepositionoccupant) - Set Public Workforce Position Occupant
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -611,6 +646,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`activityLogsListPublicActivityLogsApiV2PublicLogsGet`](docs/sdks/activitylogs/README.md#listpublicactivitylogsapiv2publiclogsget) - List Public Activity Logs
 - [`aiEnrich`](docs/sdks/ai/README.md#enrich) - Enrich Record
 - [`aiScore`](docs/sdks/ai/README.md#score) - Score Record
+- [`applicantsActivatePublicApplicant`](docs/sdks/applicants/README.md#activatepublicapplicant) - Activate Record
+- [`applicantsArchivePublicApplicant`](docs/sdks/applicants/README.md#archivepublicapplicant) - Archive Record
+- [`applicantsCreatePublicApplicant`](docs/sdks/applicants/README.md#createpublicapplicant) - Create Record
+- [`applicantsGetPublicApplicant`](docs/sdks/applicants/README.md#getpublicapplicant) - Get Record
+- [`applicantsListPublicApplicants`](docs/sdks/applicants/README.md#listpublicapplicants) - List Records
+- [`applicantsUpdatePublicApplicant`](docs/sdks/applicants/README.md#updatepublicapplicant) - Update Record
 - [`approvalRequestsApproveApprovalRequestApiV2PublicApprovalRequestsHistoryIdApprovePost`](docs/sdks/approvalrequests/README.md#approveapprovalrequestapiv2publicapprovalrequestshistoryidapprovepost) - Approve Approval Request
 - [`approvalRequestsCreateApprovalRequestApiV2PublicApprovalRequestsPost`](docs/sdks/approvalrequests/README.md#createapprovalrequestapiv2publicapprovalrequestspost) - Create Approval Request
 - [`approvalRequestsRejectApprovalRequestApiV2PublicApprovalRequestsHistoryIdRejectPost`](docs/sdks/approvalrequests/README.md#rejectapprovalrequestapiv2publicapprovalrequestshistoryidrejectpost) - Reject Approval Request
@@ -720,6 +761,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incentivesMarkPublicIncentiveBatchPaidApiV2PublicIncentivesBatchesBatchIdMarkPaidPost`](docs/sdks/incentives/README.md#markpublicincentivebatchpaidapiv2publicincentivesbatchesbatchidmarkpaidpost) - Mark Public Incentive Batch Paid
 - [`incentivesReplacePublicIncentiveAllocationsApiV2PublicIncentivesAllocationsPut`](docs/sdks/incentives/README.md#replacepublicincentiveallocationsapiv2publicincentivesallocationsput) - Replace Public Incentive Allocations
 - [`incentivesUpdatePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdPatch`](docs/sdks/incentives/README.md#updatepublicincentiveplanapiv2publicincentivesplansplanidpatch) - Update Public Incentive Plan
+- [`interviewsActivatePublicInterview`](docs/sdks/interviews/README.md#activatepublicinterview) - Activate Record
+- [`interviewsArchivePublicInterview`](docs/sdks/interviews/README.md#archivepublicinterview) - Archive Record
+- [`interviewsCreatePublicInterview`](docs/sdks/interviews/README.md#createpublicinterview) - Create Record
+- [`interviewsGetPublicInterview`](docs/sdks/interviews/README.md#getpublicinterview) - Get Record
+- [`interviewsListPublicInterviews`](docs/sdks/interviews/README.md#listpublicinterviews) - List Records
+- [`interviewsUpdatePublicInterview`](docs/sdks/interviews/README.md#updatepublicinterview) - Update Record
 - [`inventoriesCreate`](docs/sdks/inventories/README.md#create) - Create Public Inventory
 - [`inventoriesDelete`](docs/sdks/inventories/README.md#delete) - Delete Public Inventory
 - [`inventoriesGet`](docs/sdks/inventories/README.md#get) - Get Public Inventory
@@ -746,6 +793,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`itemsGet`](docs/sdks/items/README.md#get) - Get Public Item
 - [`itemsList`](docs/sdks/items/README.md#list) - List Public Items
 - [`itemsUpdate`](docs/sdks/items/README.md#update) - Update Public Item
+- [`jobPostingsActivatePublicJobPosting`](docs/sdks/jobpostings/README.md#activatepublicjobposting) - Activate Record
+- [`jobPostingsArchivePublicJobPosting`](docs/sdks/jobpostings/README.md#archivepublicjobposting) - Archive Record
+- [`jobPostingsCreatePublicJobPosting`](docs/sdks/jobpostings/README.md#createpublicjobposting) - Create Record
+- [`jobPostingsGetPublicJobPosting`](docs/sdks/jobpostings/README.md#getpublicjobposting) - Get Record
+- [`jobPostingsListPublicJobPostings`](docs/sdks/jobpostings/README.md#listpublicjobpostings) - List Records
+- [`jobPostingsUpdatePublicJobPosting`](docs/sdks/jobpostings/README.md#updatepublicjobposting) - Update Record
 - [`journalsActivate`](docs/sdks/journals/README.md#activate) - Activate Journal Entry
 - [`journalsArchive`](docs/sdks/journals/README.md#archive) - Archive Journal Entry
 - [`journalsCreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost`](docs/sdks/journals/README.md#createpublicfinancialstatementviewapiv2publicjournalsviewspost) - Create Financial Statement View
@@ -897,6 +950,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`workflowsList`](docs/sdks/workflows/README.md#list) - List Public Workflows
 - [`workflowsRunByRef`](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
 - [`workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch`](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
+- [`workforcePlanningCreatePublicWorkforcePosition`](docs/sdks/workforceplanning/README.md#createpublicworkforceposition) - Create Public Workforce Position
+- [`workforcePlanningGetPublicWorkforceOrganization`](docs/sdks/workforceplanning/README.md#getpublicworkforceorganization) - Get Public Workforce Organization
+- [`workforcePlanningSetPublicWorkforcePositionJob`](docs/sdks/workforceplanning/README.md#setpublicworkforcepositionjob) - Set Public Workforce Position Job
+- [`workforcePlanningSetPublicWorkforcePositionOccupant`](docs/sdks/workforceplanning/README.md#setpublicworkforcepositionoccupant) - Set Public Workforce Position Occupant
+- [`workforcePlanningUpdatePublicWorkforcePosition`](docs/sdks/workforceplanning/README.md#updatepublicworkforceposition) - Update Public Workforce Position
 - ~~[`lookoutClaimProviderActionApiV2LookoutAdActionsActionIdClaimPost`](docs/sdks/lookout/README.md#claimprovideractionapiv2lookoutadactionsactionidclaimpost)~~ - Claim Provider Action :warning: **Deprecated**
 - ~~[`lookoutCompleteProviderActionApiV2LookoutAdActionsActionIdCompletePost`](docs/sdks/lookout/README.md#completeprovideractionapiv2lookoutadactionsactionidcompletepost)~~ - Complete Provider Action :warning: **Deprecated**
 - ~~[`lookoutListProviderActionsApiV2LookoutAdActionsGet`](docs/sdks/lookout/README.md#listprovideractionsapiv2lookoutadactionsget)~~ - List Provider Actions :warning: **Deprecated**

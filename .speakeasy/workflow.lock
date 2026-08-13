@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:32c2fc6838e59662be5f4bfbc37f1c75a8614cf5fbd07446564ef08042d5e179
         sourceBlobDigest: sha256:4449296a9f43c626107546a6f2faeea18f74a8c2fb3facc1aab7a2e259807189
         codeSamplesNamespace: sanka-public-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:9e536846070c08cd87a95b76d14a91c555a06212b5def155a812d85882a543f9
+        codeSamplesRevisionDigest: sha256:b0011abbd011510b85857f7b85184165588957884541ccde208ee4c79b1c545f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

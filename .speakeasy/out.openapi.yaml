@@ -56,6 +56,10 @@ tags:
   - name: "workflow-actions"
   - name: "workflow-runs"
   - name: "workflows"
+  - name: "applicants"
+  - name: "interviews"
+  - name: "job-postings"
+  - name: "workforce-planning"
 paths:
   /v2/public/absences:
     get:
@@ -18942,6 +18946,1303 @@ paths:
       x-sanka-auth: "developer_bearer"
       security:
         - bearerAuth: []
+  /v2/public/job-postings:
+    get:
+      tags:
+        - "job-postings"
+      summary: "List Records"
+      operationId: "list_public_job_postings"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "search"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Status"
+        - name: "usage_status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                maximum: 100
+                minimum: 1
+              - type: "null"
+            title: "Limit"
+        - name: "sort"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "X-Language"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicJobPostings200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "job-postings"
+      summary: "Create Record"
+      operationId: "create_public_job_posting"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicJobPosting200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/job-postings/{record_ref}:
+    get:
+      tags:
+        - "job-postings"
+      summary: "Get Record"
+      operationId: "get_public_job_posting"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicJobPosting200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    patch:
+      tags:
+        - "job-postings"
+      summary: "Update Record"
+      operationId: "update_public_job_posting"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicJobPosting200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/job-postings/{record_ref}/archive:
+    post:
+      tags:
+        - "job-postings"
+      summary: "Archive Record"
+      operationId: "archive_public_job_posting"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArchivePublicJobPosting200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/job-postings/{record_ref}/activate:
+    post:
+      tags:
+        - "job-postings"
+      summary: "Activate Record"
+      operationId: "activate_public_job_posting"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivatePublicJobPosting200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/applicants:
+    get:
+      tags:
+        - "applicants"
+      summary: "List Records"
+      operationId: "list_public_applicants"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "search"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Status"
+        - name: "usage_status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                maximum: 100
+                minimum: 1
+              - type: "null"
+            title: "Limit"
+        - name: "sort"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "X-Language"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicApplicants200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "applicants"
+      summary: "Create Record"
+      operationId: "create_public_applicant"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicApplicant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/applicants/{record_ref}:
+    get:
+      tags:
+        - "applicants"
+      summary: "Get Record"
+      operationId: "get_public_applicant"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicApplicant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    patch:
+      tags:
+        - "applicants"
+      summary: "Update Record"
+      operationId: "update_public_applicant"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicApplicant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/applicants/{record_ref}/archive:
+    post:
+      tags:
+        - "applicants"
+      summary: "Archive Record"
+      operationId: "archive_public_applicant"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArchivePublicApplicant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/applicants/{record_ref}/activate:
+    post:
+      tags:
+        - "applicants"
+      summary: "Activate Record"
+      operationId: "activate_public_applicant"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivatePublicApplicant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/interviews:
+    get:
+      tags:
+        - "interviews"
+      summary: "List Records"
+      operationId: "list_public_interviews"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - name: "search"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Search"
+        - name: "language"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Language"
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Status"
+        - name: "usage_status"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Usage Status"
+        - name: "filters"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Filters"
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            minimum: 1
+            default: 1
+            title: "Page"
+        - name: "limit"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "integer"
+                maximum: 100
+                minimum: 1
+              - type: "null"
+            title: "Limit"
+        - name: "sort"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Sort"
+        - name: "created_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At From"
+        - name: "created_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Created At To"
+        - name: "updated_at_from"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At From"
+        - name: "updated_at_to"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Updated At To"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+        - name: "X-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "X-Language"
+          x-fern-parameter-name: "x_language"
+        - name: "Accept-Language"
+          in: "header"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Accept-Language"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPublicInterviews200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    post:
+      tags:
+        - "interviews"
+      summary: "Create Record"
+      operationId: "create_public_interview"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicInterview200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/interviews/{record_ref}:
+    get:
+      tags:
+        - "interviews"
+      summary: "Get Record"
+      operationId: "get_public_interview"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicInterview200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+    patch:
+      tags:
+        - "interviews"
+      summary: "Update Record"
+      operationId: "update_public_interview"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ObjectRecordUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicInterview200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/interviews/{record_ref}/archive:
+    post:
+      tags:
+        - "interviews"
+      summary: "Archive Record"
+      operationId: "archive_public_interview"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ArchivePublicInterview200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/interviews/{record_ref}/activate:
+    post:
+      tags:
+        - "interviews"
+      summary: "Activate Record"
+      operationId: "activate_public_interview"
+      parameters:
+        - name: "record_ref"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            title: "Record Ref"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActivatePublicInterview200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/workforce-planning/organization:
+    get:
+      tags:
+        - "workforce-planning"
+      summary: "Get Public Workforce Organization"
+      operationId: "get_public_workforce_organization"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPublicWorkforceOrganization200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/workforce-planning/positions:
+    post:
+      tags:
+        - "workforce-planning"
+      summary: "Create Public Workforce Position"
+      operationId: "create_public_workforce_position"
+      parameters:
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PositionCreateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePublicWorkforcePosition200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/workforce-planning/positions/{position_id}:
+    patch:
+      tags:
+        - "workforce-planning"
+      summary: "Update Public Workforce Position"
+      operationId: "update_public_workforce_position"
+      parameters:
+        - name: "position_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Position Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PositionUpdateRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePublicWorkforcePosition200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/workforce-planning/positions/{position_id}/job:
+    put:
+      tags:
+        - "workforce-planning"
+      summary: "Set Public Workforce Position Job"
+      operationId: "set_public_workforce_position_job"
+      parameters:
+        - name: "position_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Position Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PositionJobRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SetPublicWorkforcePositionJob200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
+  /v2/public/workforce-planning/positions/{position_id}/occupant:
+    put:
+      tags:
+        - "workforce-planning"
+      summary: "Set Public Workforce Position Occupant"
+      operationId: "set_public_workforce_position_occupant"
+      parameters:
+        - name: "position_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+            format: "uuid"
+            title: "Position Id"
+        - name: "workspace_id"
+          in: "query"
+          required: false
+          schema:
+            anyOf:
+              - type: "string"
+              - type: "null"
+            title: "Workspace Id"
+        - $ref: "#/components/parameters/XWorkspaceCode"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PositionOccupantRequest"
+      responses:
+        "200":
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SetPublicWorkforcePositionOccupant200Envelope"
+          headers:
+            x-ctx-id:
+              $ref: "#/components/headers/XCtxId"
+        "422":
+          $ref: "#/components/responses/ErrorResponse"
+        "401":
+          $ref: "#/components/responses/ErrorResponse"
+      x-sanka-surface: "public_developer"
+      x-sanka-api-version: "v2"
+      x-sanka-auth: "developer_bearer"
+      security:
+        - bearerAuth: []
 components:
   headers:
     XCtxId:
@@ -29916,6 +31217,756 @@ components:
           title: "Model Name"
       type: "object"
       title: "ActivityLogEnvironment"
+    ListPublicJobPostings200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicJobPosting200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicJobPosting200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicJobPosting200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ArchivePublicJobPosting200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ActivatePublicJobPosting200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicApplicants200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicApplicant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicApplicant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicApplicant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ArchivePublicApplicant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ActivatePublicApplicant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ListPublicInterviews200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordListData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    CreatePublicInterview200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicInterview200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    UpdatePublicInterview200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ArchivePublicInterview200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    ActivatePublicInterview200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/ObjectRecordData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    GetPublicWorkforceOrganization200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/WorkforceOrganizationData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PositionCreateRequest:
+      properties:
+        title:
+          type: "string"
+          maxLength: 255
+          minLength: 1
+          title: "Title"
+        parent_position_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Parent Position Id"
+        department:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Department"
+        team:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Team"
+        level:
+          anyOf:
+            - type: "string"
+              maxLength: 128
+            - type: "null"
+          title: "Level"
+        location:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Location"
+        employment_type:
+          anyOf:
+            - type: "string"
+              maxLength: 64
+            - type: "null"
+          title: "Employment Type"
+        fte:
+          type: "number"
+          maximum: 10.0
+          exclusiveMinimum: 0.0
+          title: "Fte"
+          default: 1
+        target_start_date:
+          anyOf:
+            - type: "string"
+              format: "date"
+            - type: "null"
+          title: "Target Start Date"
+        planning_status:
+          type: "string"
+          enum:
+            - "draft"
+            - "approved"
+            - "cancelled"
+          title: "Planning Status"
+          default: "draft"
+        job_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Job Id"
+        employee_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Employee Id"
+      type: "object"
+      required:
+        - "title"
+      title: "PositionCreateRequest"
+    CreatePublicWorkforcePosition200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/WorkforcePositionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PositionUpdateRequest:
+      properties:
+        expected_version:
+          type: "integer"
+          minimum: 1.0
+          title: "Expected Version"
+        title:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+              minLength: 1
+            - type: "null"
+          title: "Title"
+        parent_position_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Parent Position Id"
+        department:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Department"
+        team:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Team"
+        level:
+          anyOf:
+            - type: "string"
+              maxLength: 128
+            - type: "null"
+          title: "Level"
+        location:
+          anyOf:
+            - type: "string"
+              maxLength: 255
+            - type: "null"
+          title: "Location"
+        employment_type:
+          anyOf:
+            - type: "string"
+              maxLength: 64
+            - type: "null"
+          title: "Employment Type"
+        fte:
+          anyOf:
+            - type: "number"
+              maximum: 10.0
+              exclusiveMinimum: 0.0
+            - type: "null"
+          title: "Fte"
+        target_start_date:
+          anyOf:
+            - type: "string"
+              format: "date"
+            - type: "null"
+          title: "Target Start Date"
+        planning_status:
+          anyOf:
+            - type: "string"
+              enum:
+                - "draft"
+                - "approved"
+                - "cancelled"
+            - type: "null"
+          title: "Planning Status"
+        job_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Job Id"
+        employee_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Employee Id"
+      type: "object"
+      required:
+        - "expected_version"
+      title: "PositionUpdateRequest"
+    UpdatePublicWorkforcePosition200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/WorkforcePositionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PositionJobRequest:
+      properties:
+        expected_version:
+          type: "integer"
+          minimum: 1.0
+          title: "Expected Version"
+        job_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Job Id"
+      type: "object"
+      required:
+        - "expected_version"
+        - "job_id"
+      title: "PositionJobRequest"
+    SetPublicWorkforcePositionJob200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/WorkforcePositionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    PositionOccupantRequest:
+      properties:
+        expected_version:
+          type: "integer"
+          minimum: 1.0
+          title: "Expected Version"
+        employee_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Employee Id"
+        source_applicant_id:
+          anyOf:
+            - type: "string"
+              format: "uuid"
+            - type: "null"
+          title: "Source Applicant Id"
+      type: "object"
+      required:
+        - "expected_version"
+        - "employee_id"
+      title: "PositionOccupantRequest"
+    SetPublicWorkforcePositionOccupant200Envelope:
+      type: "object"
+      required:
+        - "success"
+        - "data"
+        - "meta"
+      properties:
+        success:
+          type: "boolean"
+          const: true
+        data:
+          $ref: "#/components/schemas/WorkforcePositionData"
+        meta:
+          $ref: "#/components/schemas/EnvelopeMeta"
+    WorkforceOrganizationData:
+      properties:
+        can_manage_occupants:
+          type: "boolean"
+          title: "Can Manage Occupants"
+          default: false
+        nodes:
+          items:
+            $ref: "#/components/schemas/WorkforcePositionData"
+          type: "array"
+          title: "Nodes"
+        unassigned_jobs:
+          items:
+            $ref: "#/components/schemas/UnassignedJobData"
+          type: "array"
+          title: "Unassigned Jobs"
+        summary:
+          $ref: "#/components/schemas/WorkforceOrganizationSummary"
+      type: "object"
+      title: "WorkforceOrganizationData"
+    WorkforcePositionData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        display_id:
+          type: "integer"
+          title: "Display Id"
+        parent_position_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Parent Position Id"
+        title:
+          type: "string"
+          title: "Title"
+        department:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Department"
+        team:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Team"
+        level:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Level"
+        location:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Location"
+        employment_type:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Employment Type"
+        fte:
+          type: "number"
+          title: "Fte"
+          default: 1
+        target_start_date:
+          anyOf:
+            - type: "string"
+              format: "date"
+            - type: "null"
+          title: "Target Start Date"
+        planning_status:
+          type: "string"
+          enum:
+            - "draft"
+            - "approved"
+            - "cancelled"
+          title: "Planning Status"
+        staffing_phase:
+          type: "string"
+          enum:
+            - "planned"
+            - "ready_to_hire"
+            - "recruiting"
+            - "interviewing"
+            - "offer"
+            - "filled"
+          title: "Staffing Phase"
+        version:
+          type: "integer"
+          title: "Version"
+        occupant:
+          anyOf:
+            - $ref: "#/components/schemas/PositionOccupantData"
+            - type: "null"
+        job:
+          anyOf:
+            - $ref: "#/components/schemas/PositionJobData"
+            - type: "null"
+      type: "object"
+      required:
+        - "id"
+        - "display_id"
+        - "title"
+        - "planning_status"
+        - "staffing_phase"
+        - "version"
+      title: "WorkforcePositionData"
+    UnassignedJobData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        display_id:
+          type: "integer"
+          title: "Display Id"
+        name:
+          type: "string"
+          title: "Name"
+        status:
+          type: "string"
+          title: "Status"
+        applicant_count:
+          type: "integer"
+          title: "Applicant Count"
+          default: 0
+        interview_count:
+          type: "integer"
+          title: "Interview Count"
+          default: 0
+      type: "object"
+      required:
+        - "id"
+        - "display_id"
+        - "name"
+        - "status"
+      title: "UnassignedJobData"
+    WorkforceOrganizationSummary:
+      properties:
+        positions:
+          type: "integer"
+          title: "Positions"
+          default: 0
+        planned:
+          type: "integer"
+          title: "Planned"
+          default: 0
+        ready_to_hire:
+          type: "integer"
+          title: "Ready To Hire"
+          default: 0
+        recruiting:
+          type: "integer"
+          title: "Recruiting"
+          default: 0
+        interviewing:
+          type: "integer"
+          title: "Interviewing"
+          default: 0
+        offer:
+          type: "integer"
+          title: "Offer"
+          default: 0
+        filled:
+          type: "integer"
+          title: "Filled"
+          default: 0
+        unassigned_jobs:
+          type: "integer"
+          title: "Unassigned Jobs"
+          default: 0
+      type: "object"
+      title: "WorkforceOrganizationSummary"
+    PositionOccupantData:
+      properties:
+        employee_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Employee Id"
+        display_name:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Display Name"
+        profile_photo_url:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Profile Photo Url"
+        redacted:
+          type: "boolean"
+          title: "Redacted"
+          default: false
+      type: "object"
+      title: "PositionOccupantData"
+    PositionJobData:
+      properties:
+        id:
+          type: "string"
+          title: "Id"
+        display_id:
+          type: "integer"
+          title: "Display Id"
+        name:
+          type: "string"
+          title: "Name"
+        status:
+          type: "string"
+          title: "Status"
+        applicant_count:
+          type: "integer"
+          title: "Applicant Count"
+          default: 0
+        interview_count:
+          type: "integer"
+          title: "Interview Count"
+          default: 0
+      type: "object"
+      required:
+        - "id"
+        - "display_id"
+        - "name"
+        - "status"
+      title: "PositionJobData"
   securitySchemes:
     bearerAuth:
       type: "http"
