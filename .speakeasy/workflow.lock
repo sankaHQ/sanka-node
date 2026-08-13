@@ -1,4 +1,4 @@
-speakeasyVersion: 1.790.3
+speakeasyVersion: 1.793.1
 sources:
     SankaPublicAPI:
         sourceNamespace: sanka-public-api

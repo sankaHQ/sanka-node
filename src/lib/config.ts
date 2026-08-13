@@ -11,7 +11,7 @@ import { Params, pathToFunc } from "./url.js";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  "https://api.sanka.com",
+  "https://api-v2.sanka.com/api",
 ] as const;
 
 export type SDKOptions = {
@@ -58,7 +58,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.1.0",
-  sdkVersion: "0.1.4",
-  genVersion: "2.918.4",
-  userAgent: "speakeasy-sdk/typescript 0.1.4 2.918.4 0.1.0 sanka-sdk",
+  sdkVersion: "0.1.5",
+  genVersion: "2.928.0",
+  userAgent: "speakeasy-sdk/typescript 0.1.5 2.928.0 0.1.0 sanka-sdk",
 } as const;

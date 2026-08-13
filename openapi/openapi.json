@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.sanka.com"
+      "url": "https://api-v2.sanka.com/api"
     }
   ],
   "tags": [

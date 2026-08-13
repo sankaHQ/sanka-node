@@ -4,7 +4,7 @@ info:
   version: "0.1.0"
   description: "Public developer API contract for external integrations."
 servers:
-  - url: "https://api.sanka.com"
+  - url: "https://api-v2.sanka.com/api"
 tags:
   - name: "absences"
   - name: "activity-logs"
