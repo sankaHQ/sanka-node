@@ -11,7 +11,6 @@ import * as models from "../index.js";
 
 export type ListPublicJobPostingsRequest = {
   workspaceId?: string | null | undefined;
-  viewId?: string | null | undefined;
   search?: string | null | undefined;
   language?: string | null | undefined;
   status?: string | null | undefined;
@@ -19,7 +18,6 @@ export type ListPublicJobPostingsRequest = {
   filters?: string | null | undefined;
   page?: number | undefined;
   limit?: number | null | undefined;
-  cursor?: string | null | undefined;
   sort?: string | null | undefined;
   createdAtFrom?: string | null | undefined;
   createdAtTo?: string | null | undefined;
@@ -38,7 +36,6 @@ export type ListPublicJobPostingsResponse = {
 /** @internal */
 export type ListPublicJobPostingsRequest$Outbound = {
   workspace_id?: string | null | undefined;
-  view_id?: string | null | undefined;
   search?: string | null | undefined;
   language?: string | null | undefined;
   status?: string | null | undefined;
@@ -46,7 +43,6 @@ export type ListPublicJobPostingsRequest$Outbound = {
   filters?: string | null | undefined;
   page: number;
   limit?: number | null | undefined;
-  cursor?: string | null | undefined;
   sort?: string | null | undefined;
   created_at_from?: string | null | undefined;
   created_at_to?: string | null | undefined;
@@ -64,7 +60,6 @@ export const ListPublicJobPostingsRequest$outboundSchema: z.ZodMiniType<
 > = z.pipe(
   z.object({
     workspaceId: z.optional(z.nullable(z.string())),
-    viewId: z.optional(z.nullable(z.string())),
     search: z.optional(z.nullable(z.string())),
     language: z.optional(z.nullable(z.string())),
     status: z.optional(z.nullable(z.string())),
@@ -72,7 +67,6 @@ export const ListPublicJobPostingsRequest$outboundSchema: z.ZodMiniType<
     filters: z.optional(z.nullable(z.string())),
     page: z._default(z.int(), 1),
     limit: z.optional(z.nullable(z.int())),
-    cursor: z.optional(z.nullable(z.string())),
     sort: z.optional(z.nullable(z.string())),
     createdAtFrom: z.optional(z.nullable(z.string())),
     createdAtTo: z.optional(z.nullable(z.string())),
@@ -85,7 +79,6 @@ export const ListPublicJobPostingsRequest$outboundSchema: z.ZodMiniType<
   z.transform((v) => {
     return remap$(v, {
       workspaceId: "workspace_id",
-      viewId: "view_id",
       usageStatus: "usage_status",
       createdAtFrom: "created_at_from",
       createdAtTo: "created_at_to",

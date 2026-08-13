@@ -7,13 +7,13 @@ import { remap as remap$ } from "../lib/primitives.js";
 
 export type PositionJobRequest = {
   expectedVersion: number;
-  jobId?: string | null | undefined;
+  jobId: string | null;
 };
 
 /** @internal */
 export type PositionJobRequest$Outbound = {
   expected_version: number;
-  job_id?: string | null | undefined;
+  job_id: string | null;
 };
 
 /** @internal */
@@ -23,7 +23,7 @@ export const PositionJobRequest$outboundSchema: z.ZodMiniType<
 > = z.pipe(
   z.object({
     expectedVersion: z.int(),
-    jobId: z.optional(z.nullable(z.string())),
+    jobId: z.nullable(z.string()),
   }),
   z.transform((v) => {
     return remap$(v, {

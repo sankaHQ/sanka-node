@@ -7,6 +7,7 @@ import { PositionJobRequest } from "sanka-sdk/models";
 
 let value: PositionJobRequest = {
   expectedVersion: 9408,
+  jobId: "635761c8-9fc0-4f45-846c-b904b6850b8e",
 };
 ```
 
@@ -15,4 +16,4 @@ let value: PositionJobRequest = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `expectedVersion`  | *number*           | :heavy_check_mark: | N/A                |
-| `jobId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `jobId`            | *string*           | :heavy_check_mark: | N/A                |

@@ -18961,14 +18961,6 @@ paths:
               - type: "string"
               - type: "null"
             title: "Workspace Id"
-        - name: "view_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "View Id"
         - name: "search"
           in: "query"
           required: false
@@ -19027,14 +19019,6 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
-        - name: "cursor"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -19336,14 +19320,6 @@ paths:
               - type: "string"
               - type: "null"
             title: "Workspace Id"
-        - name: "view_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "View Id"
         - name: "search"
           in: "query"
           required: false
@@ -19402,14 +19378,6 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
-        - name: "cursor"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -19711,14 +19679,6 @@ paths:
               - type: "string"
               - type: "null"
             title: "Workspace Id"
-        - name: "view_id"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "View Id"
         - name: "search"
           in: "query"
           required: false
@@ -19777,14 +19737,6 @@ paths:
                 minimum: 1
               - type: "null"
             title: "Limit"
-        - name: "cursor"
-          in: "query"
-          required: false
-          schema:
-            anyOf:
-              - type: "string"
-              - type: "null"
-            title: "Cursor"
         - name: "sort"
           in: "query"
           required: false
@@ -31738,6 +31690,7 @@ components:
       type: "object"
       required:
         - "expected_version"
+        - "job_id"
       title: "PositionJobRequest"
     SetPublicWorkforcePositionJob200Envelope:
       type: "object"
@@ -31773,6 +31726,7 @@ components:
       type: "object"
       required:
         - "expected_version"
+        - "employee_id"
       title: "PositionOccupantRequest"
     SetPublicWorkforcePositionOccupant200Envelope:
       type: "object"

@@ -33689,22 +33689,6 @@
             }
           },
           {
-            "name": "view_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "View Id"
-            }
-          },
-          {
             "name": "search",
             "in": "query",
             "required": false,
@@ -33811,22 +33795,6 @@
                 }
               ],
               "title": "Limit"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Cursor"
             }
           },
           {
@@ -34361,22 +34329,6 @@
             }
           },
           {
-            "name": "view_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "View Id"
-            }
-          },
-          {
             "name": "search",
             "in": "query",
             "required": false,
@@ -34483,22 +34435,6 @@
                 }
               ],
               "title": "Limit"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Cursor"
             }
           },
           {
@@ -35033,22 +34969,6 @@
             }
           },
           {
-            "name": "view_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "View Id"
-            }
-          },
-          {
             "name": "search",
             "in": "query",
             "required": false,
@@ -35155,22 +35075,6 @@
                 }
               ],
               "title": "Limit"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Cursor"
             }
           },
           {
@@ -54343,7 +54247,8 @@
         },
         "type": "object",
         "required": [
-          "expected_version"
+          "expected_version",
+          "job_id"
         ],
         "title": "PositionJobRequest"
       },
@@ -54400,7 +54305,8 @@
         },
         "type": "object",
         "required": [
-          "expected_version"
+          "expected_version",
+          "employee_id"
         ],
         "title": "PositionOccupantRequest"
       },

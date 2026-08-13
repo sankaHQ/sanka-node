@@ -257,6 +257,7 @@ async function run() {
     positionId: "ab777ff3-6ba9-4d6a-b5ab-68c80fcc83ea",
     body: {
       expectedVersion: 865513,
+      jobId: "ab777ff3-6ba9-4d6a-b5ab-68c80fcc83ea",
     },
   });
 
@@ -285,6 +286,7 @@ async function run() {
     positionId: "ab777ff3-6ba9-4d6a-b5ab-68c80fcc83ea",
     body: {
       expectedVersion: 865513,
+      jobId: "ab777ff3-6ba9-4d6a-b5ab-68c80fcc83ea",
     },
   });
   if (res.ok) {
@@ -337,6 +339,7 @@ async function run() {
     positionId: "6a19a268-e588-4f8e-8f61-6f2e26bfcd41",
     body: {
       expectedVersion: 953547,
+      employeeId: "<id>",
     },
   });
 
@@ -365,6 +368,7 @@ async function run() {
     positionId: "6a19a268-e588-4f8e-8f61-6f2e26bfcd41",
     body: {
       expectedVersion: 953547,
+      employeeId: "<id>",
     },
   });
   if (res.ok) {

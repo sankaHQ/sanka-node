@@ -9,6 +9,7 @@ let value: SetPublicWorkforcePositionOccupantRequest = {
   positionId: "bb545e16-4e91-4519-ab83-b1bbd60bdbde",
   body: {
     expectedVersion: 320782,
+    employeeId: "<id>",
   },
 };
 ```

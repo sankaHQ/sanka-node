@@ -96,7 +96,6 @@ async function $do(
   const query = encodeFormQuery({
     "created_at_from": payload?.created_at_from,
     "created_at_to": payload?.created_at_to,
-    "cursor": payload?.cursor,
     "filters": payload?.filters,
     "language": payload?.language,
     "limit": payload?.limit,
@@ -107,7 +106,6 @@ async function $do(
     "updated_at_from": payload?.updated_at_from,
     "updated_at_to": payload?.updated_at_to,
     "usage_status": payload?.usage_status,
-    "view_id": payload?.view_id,
     "workspace_id": payload?.workspace_id,
   });
 
