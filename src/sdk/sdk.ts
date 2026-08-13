@@ -6,6 +6,7 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Absences } from "./absences.js";
 import { ActivityLogs } from "./activity-logs.js";
 import { Ai } from "./ai.js";
+import { Applicants } from "./applicants.js";
 import { ApprovalRequests } from "./approval-requests.js";
 import { Associations } from "./associations.js";
 import { AttendanceRecords } from "./attendance-records.js";
@@ -24,10 +25,12 @@ import { FerryPrograms } from "./ferry-programs.js";
 import { Files } from "./files.js";
 import { Imports } from "./imports.js";
 import { Incentives } from "./incentives.js";
+import { Interviews } from "./interviews.js";
 import { Inventories } from "./inventories.js";
 import { InventoryTransactions } from "./inventory-transactions.js";
 import { Invoices } from "./invoices.js";
 import { Items } from "./items.js";
+import { JobPostings } from "./job-postings.js";
 import { Journals } from "./journals.js";
 import { Locations } from "./locations.js";
 import { Lookout } from "./lookout.js";
@@ -54,6 +57,7 @@ import { Views } from "./views.js";
 import { WorkflowActions } from "./workflow-actions.js";
 import { WorkflowRuns } from "./workflow-runs.js";
 import { Workflows } from "./workflows.js";
+import { WorkforcePlanning } from "./workforce-planning.js";
 
 export class Sanka extends ClientSDK {
   private _absences?: Absences;
@@ -311,5 +315,25 @@ export class Sanka extends ClientSDK {
   private _workflowRuns?: WorkflowRuns;
   get workflowRuns(): WorkflowRuns {
     return (this._workflowRuns ??= new WorkflowRuns(this._options));
+  }
+
+  private _jobPostings?: JobPostings;
+  get jobPostings(): JobPostings {
+    return (this._jobPostings ??= new JobPostings(this._options));
+  }
+
+  private _applicants?: Applicants;
+  get applicants(): Applicants {
+    return (this._applicants ??= new Applicants(this._options));
+  }
+
+  private _interviews?: Interviews;
+  get interviews(): Interviews {
+    return (this._interviews ??= new Interviews(this._options));
+  }
+
+  private _workforcePlanning?: WorkforcePlanning;
+  get workforcePlanning(): WorkforcePlanning {
+    return (this._workforcePlanning ??= new WorkforcePlanning(this._options));
   }
 }
