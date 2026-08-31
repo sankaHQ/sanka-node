@@ -97,6 +97,35 @@ run();
 ```
 <!-- End SDK Example Usage [usage] -->
 
+<!-- Start Local Migration [local-migration] -->
+## Local migration
+
+Install the migration runtime separately, then import the tokenless Node-only subpath:
+
+```bash
+uv tool install sanka-migrate
+```
+
+```typescript
+import { SankaMigrate } from "sanka-sdk/migrate";
+
+const migrate = new SankaMigrate({ cwd: "./django-app" });
+
+const scan = await migrate.scan();
+const plan = await migrate.plan({
+  to: "fastapi",
+  generation: "full",
+  strategy: "native",
+  packageManager: "uv",
+});
+const applied = await migrate.apply({ planHash: plan.data.plan_hash });
+const tested = await migrate.test();
+const verified = await migrate.verify();
+```
+
+The five methods mirror the functional arguments of `sanka-migrate scan`, `plan`, `apply`, `test`, and `verify`. Defaults, validation, framework detection, generated-target environments, and plan-hash safety remain owned by the runtime. See the [Sanka developer documentation](https://sanka.com/docs/developers/) for the CLI lifecycle.
+<!-- End Local Migration [local-migration] -->
+
 <!-- Start Authentication [security] -->
 ## Authentication
 

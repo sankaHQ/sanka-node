@@ -34,7 +34,42 @@ Official Node.js and TypeScript SDK for the Sanka API.
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-1f6feb?style=for-the-badge)](LICENSE)
 `;
 
+const migrationReadme = [
+  "<!-- Start Local Migration [local-migration] -->",
+  "## Local migration",
+  "",
+  "Install the migration runtime separately, then import the tokenless Node-only subpath:",
+  "",
+  "```bash",
+  "uv tool install sanka-migrate",
+  "```",
+  "",
+  "```typescript",
+  'import { SankaMigrate } from "sanka-sdk/migrate";',
+  "",
+  'const migrate = new SankaMigrate({ cwd: "./django-app" });',
+  "",
+  "const scan = await migrate.scan();",
+  "const plan = await migrate.plan({",
+  '  to: "fastapi",',
+  '  generation: "full",',
+  '  strategy: "native",',
+  '  packageManager: "uv",',
+  "});",
+  "const applied = await migrate.apply({ planHash: plan.data.plan_hash });",
+  "const tested = await migrate.test();",
+  "const verified = await migrate.verify();",
+  "```",
+  "",
+  "The five methods mirror the functional arguments of `sanka-migrate scan`, `plan`, `apply`, `test`, and `verify`. Defaults, validation, framework detection, generated-target environments, and plan-hash safety remain owned by the runtime. See the [Sanka developer documentation](https://sanka.com/docs/developers/) for the CLI lifecycle.",
+  "<!-- End Local Migration [local-migration] -->",
+].join("\n");
+
 async function main() {
+  await fs.copyFile(
+    path.join(repoDir, "handwritten/migrate.ts"),
+    path.join(repoDir, "src/migrate.ts"),
+  );
   await fs.writeFile(path.join(repoDir, "src/index.ts"), entrypoint);
 
   const files = [
@@ -78,6 +113,10 @@ async function patchFile(filePath) {
 
 function patchRootReadme(content) {
   let next = content;
+  next = next.replace(
+    /\n<!-- Start Local Migration \[local-migration\] -->[\s\S]*?<!-- End Local Migration \[local-migration\] -->\n*/m,
+    "\n",
+  );
 
   next = next.replace(
     /^# sanka-sdk[\s\S]*?<!-- Start Summary \[summary\] -->/m,
@@ -122,6 +161,10 @@ async function run() {
 run();
 \`\`\`
 <!-- End SDK Example Usage [usage] -->`,
+  );
+  next = next.replace(
+    "<!-- End SDK Example Usage [usage] -->",
+    "<!-- End SDK Example Usage [usage] -->\n\n" + migrationReadme,
   );
 
   next = next.replace(
