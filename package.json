@@ -58,6 +58,11 @@
       "types": "./esm/models/operations/index.d.ts",
       "default": "./esm/models/operations/index.js"
     },
+    "./migrate": {
+      "source": "./src/migrate.ts",
+      "types": "./esm/migrate.d.ts",
+      "default": "./esm/migrate.js"
+    },
     "./*.js": {
       "source": "./src/*.ts",
       "types": "./esm/*.d.ts",
@@ -73,6 +78,7 @@
   "scripts": {
     "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tsgo",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "prepublishOnly": "npm run build",
     "generate": "./scripts/generate.sh",
     "sync:openapi": "./scripts/sync-openapi.sh"
@@ -81,6 +87,7 @@
     
   },
   "devDependencies": {
+    "@types/node": "^24.13.3",
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
     "oxlint": "^1.60.0",
     "typescript": "~5.8.3"
