@@ -101,37 +101,105 @@ run();
 <!-- Start Local Migration [local-migration] -->
 ## Local migration
 
-The hosted API client and local migration adapter are separate surfaces:
+The hosted API client and local migration runtime are separate:
 
 | Import | What runs | Authentication |
 |---|---|---|
 | `import Sanka from "sanka-sdk"` | Sanka's hosted HTTP API | API token |
 | `import { SankaMigrate } from "sanka-sdk/migrate"` | A local `sanka-migrate` subprocess | None |
 
-Install the migration runtime separately, then import the tokenless Node-only subpath:
+Install `sanka-migrate` separately. The Node adapter does not bundle the runtime or call the hosted API.
 
 ```bash
 uv tool install sanka-migrate
 ```
 
+Use a runtime release that includes the extension marketplace commands and
+the published default DRF extension dependency.
+
 ```typescript
 import { SankaMigrate } from "sanka-sdk/migrate";
 
-const migrate = new SankaMigrate({ cwd: "./django-app" });
+const migrate = new SankaMigrate({
+  cwd: "./django-app",
+  env: { DJANGO_SECRET_KEY: process.env["DJANGO_SECRET_KEY"] },
+});
+
+await migrate.extensions.marketplaces.add(
+  "git@github.com:sankaHQ/extensions.git",
+  { name: "sanka" },
+);
+const extensions = await migrate.extensions.list();
+console.log(extensions.data);
+await migrate.extensions.add("sanka/drf-to-fastapi", {
+  marketplace: "sanka",
+});
 
 const scan = await migrate.scan();
+for (const recommendation of scan.data.recommendations ?? []) {
+  console.log(
+    recommendation.id,
+    recommendation.targets,
+    recommendation.status,
+    recommendation.add_command,
+  );
+}
+
 const plan = await migrate.plan({
   to: "fastapi",
   generation: "full",
   strategy: "native",
   packageManager: "uv",
+  extensionConfig: { output: "target" },
+  extensionEnvironment: ["DJANGO_SECRET_KEY"],
 });
 const applied = await migrate.apply({ planHash: plan.data.plan_hash });
 const tested = await migrate.test();
 const verified = await migrate.verify();
 ```
 
-Each method maps directly to the local runtime:
+`scan.data.recommendations` contains typed extension IDs, versions, marketplace
+names, targets, static evidence, status, and the exact add command. `plan({ to })`
+selects one enabled extension that advertises that target. SDK calls are
+non-interactive, so pass `to`. A missing, incompatible, or ambiguous extension
+fails instead of choosing one silently. For `SANKA_EXTENSION_REQUIRED`, read
+the same recommendation data from
+`error.parsedError?.details?.["recommendations"]`.
+
+`extensionConfig` and `extensionEnvironment` are available on `scan`, `plan`,
+`apply`, `test`, and `verify`. Configuration must be a plain JSON object. The
+adapter snapshots and serializes it before spawning. `extensionEnvironment`
+accepts names such as `DJANGO_SECRET_KEY`, not secret values. Values come from
+`process.env` plus the constructor's `env` overrides and are forwarded only
+when named.
+
+### Manage extensions and marketplaces
+
+```typescript
+await migrate.extensions.marketplaces.add("./marketplace", {
+  name: "third-party",
+  trust: true,
+});
+await migrate.extensions.marketplaces.list();
+await migrate.extensions.marketplaces.upgrade("third-party");
+await migrate.extensions.marketplaces.upgrade(); // Upgrade every marketplace.
+
+await migrate.extensions.add("example/demo", {
+  marketplace: "third-party",
+});
+await migrate.extensions.list();
+await migrate.extensions.remove("example/demo");
+
+await migrate.extensions.marketplaces.remove("third-party");
+```
+
+The Node adapter does not make trust or snapshot decisions. `sanka-migrate`
+owns marketplace trust checks, immutable snapshots, artifact validation,
+installed caches, and project extension locks. Adding an untrusted marketplace
+requires `trust: true`. Upgrading reads a new immutable snapshot. Removing a
+marketplace fails while a project extension still depends on it.
+
+### Command and result contract
 
 | Node.js method | Runtime command | Purpose |
 |---|---|---|
@@ -140,10 +208,37 @@ Each method maps directly to the local runtime:
 | `apply()` | `sanka-migrate apply ... --json` | Generate only from the supplied reviewed plan hash |
 | `test()` | `sanka-migrate test ... --json` | Prepare the generated target environment and run its tests |
 | `verify()` | `sanka-migrate verify ... --json` | Verify integrity and configured behavior |
+| `extensions.list/add/remove` | `sanka-migrate extension ... --json` | Inspect, pin, or unpin project extensions |
+| `extensions.marketplaces.list/add/upgrade/remove` | `sanka-migrate extension marketplace ... --json` | Manage trusted marketplace snapshots |
 
-The adapter uses a shell-free argument vector and never calls Sanka's hosted API. It forwards only options you provide; defaults, validation, framework detection, generated-target environments, and plan-hash safety remain owned by `sanka-migrate`. Every call returns a typed `SankaMigrateResult` with the `sanka-cli/v1` fields `data`, `artifacts`, `limitations`, and `next_actions`.
+Every subprocess receives an argument array with `shell: false` and `--json`.
+Invalid extension configuration or environment names throw before the process
+starts. String arguments are never interpreted as shell commands.
 
-Failures reject with `SankaMigrateError`. Its `command`, `exitCode`, `parsedError`, and `stderr` fields distinguish a migration failure (exit `1`), invalid usage (exit `2`), a missing executable, and an invalid protocol response. Exported classes, methods, and option types include JSDoc for IDE hover.
+Successful calls return a typed `SankaMigrateResult` only after the adapter
+validates one complete `sanka-cli/v1` document. It requires the matching
+command, a `success` outcome with exit `0`, object `data`, string-array
+`artifacts`, `limitations`, and `next_actions`, and a string `migration_state`.
+
+Failures reject with `SankaMigrateError`. A valid CLI failure has an `error`
+outcome with exit `1` for a migration or verification failure, or exit `2` for
+invalid usage. `parsedError` contains its stable `code`, `message`, and optional
+`details`. `result` keeps the complete validated envelope. Missing executables,
+signals, malformed JSON, unsupported schemas, command mismatches, malformed
+error data, and inconsistent outcome/exit pairs fail closed without a `result`.
+
+```typescript
+import { SankaMigrateError } from "sanka-sdk/migrate";
+
+try {
+  await migrate.plan({ to: "fastapi" });
+} catch (error) {
+  if (error instanceof SankaMigrateError) {
+    console.error(error.parsedError?.code, error.parsedError?.details);
+    console.error(error.exitCode, error.stderr);
+  }
+}
+```
 
 See the [CLI execution model](https://github.com/sankaHQ/sanka/blob/main/docs/django-to-fastapi.md#cli-and-sdk-execution-model) and [Sanka developer documentation](https://sanka.com/docs/developers/).
 <!-- End Local Migration [local-migration] -->
