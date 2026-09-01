@@ -13,6 +13,10 @@ const isError = mode === "error" || mode === "trust-error" || mode === "signal";
 if (process.env.FAKE_SANKA_INVOKED) {
   require("node:fs").writeFileSync(process.env.FAKE_SANKA_INVOKED, "invoked");
 }
+if (process.env.FAKE_SANKA_JSON !== undefined) {
+  console.log(process.env.FAKE_SANKA_JSON);
+  process.exit(Number(process.env.FAKE_SANKA_EXIT ?? "0"));
+}
 if (mode === "malformed") {
   console.log("progress before json");
   console.log("{}");
@@ -576,7 +580,7 @@ test("recommendations expose typed evidence", async (t) => {
 
   const recommendation = (await migrate.scan()).data.recommendations[0];
   assert.deepEqual(recommendation.targets, ["fastapi"]);
-  assert.deepEqual(recommendation.evidence, [
+  assert.deepEqual(structuredClone(recommendation.evidence), [
     {
       kind: "declared_dependency",
       value: "djangorestframework",
@@ -599,7 +603,7 @@ test("third-party trust failures keep the complete valid result", async (t) => {
       assert.ok(error instanceof SankaMigrateError);
       assert.equal(error.parsedError.code, "SANKA_MARKETPLACE_TRUST_REQUIRED");
       assert.equal(error.result.command, "extension");
-      assert.deepEqual(error.result.data.error.details, {
+      assert.deepEqual(structuredClone(error.result.data.error.details), {
         identity: "local:/third-party",
       });
       return true;
@@ -718,8 +722,8 @@ test("protocol preserves valid failure results for exits one and two", async (t)
       });
       await assert.rejects(migrate.scan(), (error) => {
         assert.ok(error instanceof SankaMigrateError);
-        assert.deepEqual(error.parsedError, expected);
-        assert.deepEqual(error.result.data.error, expected);
+        assert.deepEqual(structuredClone(error.parsedError), expected);
+        assert.deepEqual(structuredClone(error.result.data.error), expected);
         assert.equal(error.result.outcome, "error");
         assert.equal(error.exitCode, Number(exitCode));
         return true;
@@ -758,6 +762,64 @@ test("protocol rejects malformed structured errors without a result", async (t) 
         assert.equal(error.result, undefined);
         return true;
       });
+    }
+  }
+});
+
+test("protocol rejects inherited envelope fields without a result", async (t) => {
+  const { root, executable } = await fixture(t);
+  const pollution = {
+    schema_version: "sanka-cli/v1",
+    command: "scan",
+    outcome: "error",
+    migration_state: "failed",
+    data: { error: {} },
+    artifacts: [],
+    limitations: [],
+    next_actions: [],
+    code: "SANKA_POLLUTED",
+    message: "polluted failure",
+    details: [],
+  };
+  const previous = new Map(
+    Object.keys(pollution).map((name) => [
+      name,
+      Object.getOwnPropertyDescriptor(Object.prototype, name),
+    ]),
+  );
+
+  try {
+    for (const [name, value] of Object.entries(pollution)) {
+      Object.defineProperty(Object.prototype, name, {
+        configurable: true,
+        enumerable: true,
+        value,
+        writable: true,
+      });
+    }
+    for (const payload of ["{}", '{"data":{"error":{}}}']) {
+      const migrate = new SankaMigrate({
+        cwd: root,
+        executable,
+        env: { FAKE_SANKA_JSON: payload, FAKE_SANKA_EXIT: "1" },
+      });
+      await assert.rejects(migrate.scan(), (error) => {
+        assert.ok(error instanceof SankaMigrateError);
+        assert.match(
+          error.message,
+          /invalid sanka-cli\/v1 field schema_version/,
+        );
+        assert.equal(error.result, undefined);
+        return true;
+      });
+    }
+  } finally {
+    for (const [name, descriptor] of previous) {
+      if (descriptor === undefined) {
+        Reflect.deleteProperty(Object.prototype, name);
+      } else {
+        Object.defineProperty(Object.prototype, name, descriptor);
+      }
     }
   }
 });

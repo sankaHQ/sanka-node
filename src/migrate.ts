@@ -803,7 +803,11 @@ function decodeResult<TData extends Record<string, unknown>>(
 ): SankaMigrateResult<TData> {
   let parsed: unknown;
   try {
-    parsed = JSON.parse(stdout);
+    parsed = JSON.parse(stdout, (_key, value: unknown) =>
+      isRecord(value)
+        ? Object.assign(Object.create(null) as Record<string, unknown>, value)
+        : value,
+    );
   } catch {
     throw new SankaMigrateError(
       "sanka-migrate " + command + " did not return one valid JSON document",
@@ -816,22 +820,33 @@ function decodeResult<TData extends Record<string, unknown>>(
       { command, exitCode, stderr },
     );
   }
-  if (parsed["schema_version"] !== CLI_SCHEMA_VERSION) {
+  const schemaVersion = ownField(parsed, "schema_version");
+  if (schemaVersion !== CLI_SCHEMA_VERSION) {
+    if (schemaVersion === undefined) {
+      throw invalidField(
+        command,
+        exitCode,
+        stderr,
+        "schema_version",
+        '"sanka-cli/v1"',
+      );
+    }
     throw new SankaMigrateError(
-      "unsupported sanka-migrate protocol: " + String(parsed["schema_version"]),
+      "unsupported sanka-migrate protocol: " + String(schemaVersion),
       { command, exitCode, stderr },
     );
   }
-  if (parsed["command"] !== command) {
+  const parsedCommand = ownField(parsed, "command");
+  if (parsedCommand !== command) {
     throw new SankaMigrateError(
       "sanka-migrate returned command " +
-        String(parsed["command"]) +
+        String(parsedCommand) +
         ", expected " +
         command,
       { command, exitCode, stderr },
     );
   }
-  const outcome = parsed["outcome"];
+  const outcome = ownField(parsed, "outcome");
   if (outcome !== "success" && outcome !== "error") {
     throw invalidField(
       command,
@@ -857,11 +872,11 @@ function decodeResult<TData extends Record<string, unknown>>(
     );
   }
 
-  const data = parsed["data"];
+  const data = ownField(parsed, "data");
   if (!isRecord(data)) {
     throw invalidField(command, exitCode, stderr, "data", "an object");
   }
-  const errorData = data["error"];
+  const errorData = ownField(data, "error");
   if (outcome === "success") {
     if (Object.hasOwn(data, "error")) {
       throw invalidField(
@@ -877,7 +892,7 @@ function decodeResult<TData extends Record<string, unknown>>(
       throw invalidField(command, exitCode, stderr, "data.error", "an object");
     }
     for (const name of ["code", "message"] as const) {
-      if (typeof errorData[name] !== "string") {
+      if (typeof ownField(errorData, name) !== "string") {
         throw invalidField(
           command,
           exitCode,
@@ -887,7 +902,10 @@ function decodeResult<TData extends Record<string, unknown>>(
         );
       }
     }
-    if (Object.hasOwn(errorData, "details") && !isRecord(errorData["details"])) {
+    if (
+      Object.hasOwn(errorData, "details") &&
+      !isRecord(ownField(errorData, "details"))
+    ) {
       throw invalidField(
         command,
         exitCode,
@@ -897,29 +915,33 @@ function decodeResult<TData extends Record<string, unknown>>(
       );
     }
   }
-  if (!isStringArray(parsed["artifacts"])) {
+  const artifacts = ownField(parsed, "artifacts");
+  if (!isStringArray(artifacts)) {
     throw invalidField(command, exitCode, stderr, "artifacts", "a string array");
   }
-  if (!isStringArray(parsed["limitations"])) {
+  const limitations = ownField(parsed, "limitations");
+  if (!isStringArray(limitations)) {
     throw invalidField(command, exitCode, stderr, "limitations", "a string array");
   }
-  if (!isStringArray(parsed["next_actions"])) {
+  const nextActions = ownField(parsed, "next_actions");
+  if (!isStringArray(nextActions)) {
     throw invalidField(command, exitCode, stderr, "next_actions", "a string array");
   }
-  if (typeof parsed["migration_state"] !== "string") {
+  const migrationState = ownField(parsed, "migration_state");
+  if (typeof migrationState !== "string") {
     throw invalidField(command, exitCode, stderr, "migration_state", "a string");
   }
 
-  return {
+  return Object.assign(Object.create(null), {
     schema_version: CLI_SCHEMA_VERSION,
     command,
     outcome,
-    migration_state: parsed["migration_state"],
+    migration_state: migrationState,
     data: data as TData,
-    artifacts: parsed["artifacts"],
-    limitations: parsed["limitations"],
-    next_actions: parsed["next_actions"],
-  };
+    artifacts,
+    limitations,
+    next_actions: nextActions,
+  }) as SankaMigrateResult<TData>;
 }
 
 function invalidField(
@@ -937,6 +959,10 @@ function invalidField(
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function ownField(record: Record<string, unknown>, name: string): unknown {
+  return Object.hasOwn(record, name) ? record[name] : undefined;
 }
 
 function isStringArray(value: unknown): value is string[] {
