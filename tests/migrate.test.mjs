@@ -369,6 +369,96 @@ test("extension lifecycle options use exact stable argv for every command", asyn
   );
 });
 
+test("extension config rejects non-canonical array state before spawning", async (t) => {
+  const { root, executable } = await fixture(t);
+  const invoked = path.join(root, "invoked");
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_INVOKED: invoked },
+  });
+  const overriddenMap = [1];
+  overriddenMap.map = () => [999];
+  const overriddenIterator = [1];
+  overriddenIterator[Symbol.iterator] = function* () {
+    yield 999;
+  };
+  const nonCanonicalIndex = [1];
+  nonCanonicalIndex["01"] = 2;
+  const sparse = new Array(1);
+  const accessor = [1];
+  Object.defineProperty(accessor, "0", { enumerable: true, get: () => 1 });
+  const nonEnumerable = [1];
+  Object.defineProperty(nonEnumerable, "0", { enumerable: false, value: 1 });
+  const customPrototype = [1];
+  Object.setPrototypeOf(customPrototype, {});
+  const invalid = [
+    overriddenMap,
+    overriddenIterator,
+    nonCanonicalIndex,
+    sparse,
+    accessor,
+    nonEnumerable,
+    customPrototype,
+  ];
+
+  for (let index = 0; index < invalid.length; index += 1) {
+    await assert.rejects(
+      async () => migrate.plan({ extensionConfig: { values: invalid[index] } }),
+      /extensionConfig.*JSON-compatible/,
+    );
+  }
+  await assert.rejects(readFile(invoked), { code: "ENOENT" });
+});
+
+test("extension config rejects accessors without invoking them or spawning", async (t) => {
+  const { root, executable } = await fixture(t);
+  const invoked = path.join(root, "invoked");
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_INVOKED: invoked },
+  });
+  let reads = 0;
+  const extensionConfig = {};
+  Object.defineProperty(extensionConfig, "value", {
+    enumerable: true,
+    get() {
+      reads += 1;
+      return reads === 1 ? "ok" : undefined;
+    },
+  });
+
+  await assert.rejects(
+    async () => migrate.plan({ extensionConfig }),
+    /extensionConfig.*JSON-compatible/,
+  );
+  assert.equal(reads, 0);
+  await assert.rejects(readFile(invoked), { code: "ENOENT" });
+});
+
+test("extension config accepts null-prototype records and own __proto__ data", async (t) => {
+  const { migrate } = await fixture(t);
+  const nested = Object.create(null);
+  nested.value = "ok";
+  const extensionConfig = Object.create(null);
+  Object.defineProperty(extensionConfig, "__proto__", {
+    enumerable: true,
+    value: "literal",
+  });
+  extensionConfig.nested = nested;
+
+  assert.deepEqual(
+    argv(await migrate.plan({ extensionConfig })),
+    [
+      "plan",
+      "--extension-config",
+      '{"__proto__":"literal","nested":{"value":"ok"}}',
+      "--json",
+    ],
+  );
+});
+
 test("extension config rejects values outside JsonValue before spawning", async (t) => {
   const { root, executable } = await fixture(t);
   const invoked = path.join(root, "invoked");
@@ -395,7 +485,6 @@ test("extension config rejects values outside JsonValue before spawning", async 
     { value: new Date() },
     { value: new Set(["bad"]) },
     { value: new (class NonPlain {})() },
-    { value: Object.create(null) },
     { value: [{ nested: undefined }] },
     { value: cyclicArray },
     { value: cyclicObject },

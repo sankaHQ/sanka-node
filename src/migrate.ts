@@ -628,13 +628,11 @@ function extensionOptions(
     if (
       configuration === null ||
       typeof configuration !== "object" ||
-      Array.isArray(configuration) ||
-      Object.getPrototypeOf(configuration) !== Object.prototype
+      Array.isArray(configuration)
     ) {
       throw invalidJsonValue();
     }
-    validateJsonValue(configuration);
-    args.push("--extension-config", stableJson(configuration));
+    args.push("--extension-config", stableJson(snapshotJsonValue(configuration)));
   }
   if (environment === undefined) {
     return;
@@ -644,7 +642,8 @@ function extensionOptions(
       "extensionEnvironment must be an array of environment variable names",
     );
   }
-  for (const name of environment) {
+  for (let index = 0; index < environment.length; index += 1) {
+    const name = environment[index];
     if (
       typeof name !== "string" ||
       !/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)
@@ -657,54 +656,104 @@ function extensionOptions(
   }
 }
 
-function validateJsonValue(
+function snapshotJsonValue(
   value: unknown,
   active: WeakSet<object> = new WeakSet(),
-): asserts value is JsonValue {
+  completed: WeakMap<object, JsonValue> = new WeakMap(),
+): JsonValue {
   if (
     value === null ||
     typeof value === "boolean" ||
     typeof value === "string"
   ) {
-    return;
+    return value;
   }
   if (typeof value === "number") {
     if (Number.isFinite(value)) {
-      return;
+      return value;
     }
     throw invalidJsonValue();
   }
-  if (
-    typeof value !== "object" ||
-    (!Array.isArray(value) && Object.getPrototypeOf(value) !== Object.prototype)
-  ) {
+  if (typeof value !== "object") {
     throw invalidJsonValue();
   }
   if (active.has(value)) {
     throw invalidJsonValue();
   }
+  const existing = completed.get(value);
+  if (existing !== undefined) {
+    return existing;
+  }
+  const isArray = Array.isArray(value);
+  const prototype = Object.getPrototypeOf(value);
+  if (
+    (isArray && prototype !== Array.prototype) ||
+    (!isArray && prototype !== Object.prototype && prototype !== null)
+  ) {
+    throw invalidJsonValue();
+  }
   active.add(value);
   try {
-    if (Array.isArray(value)) {
-      for (const item of value) {
-        validateJsonValue(item, active);
+    const descriptors = Object.getOwnPropertyDescriptors(value);
+    const keys = Reflect.ownKeys(descriptors);
+    let snapshot: JsonValue;
+    if (isArray) {
+      const lengthDescriptor = Object.getOwnPropertyDescriptor(
+        descriptors,
+        "length",
+      )?.value as PropertyDescriptor | undefined;
+      if (
+        lengthDescriptor === undefined ||
+        !Object.hasOwn(lengthDescriptor, "value") ||
+        lengthDescriptor.enumerable !== false
+      ) {
+        throw invalidJsonValue();
       }
-      return;
+      const length = lengthDescriptor.value as number;
+      if (!Number.isInteger(length) || length < 0 || keys.length !== length + 1) {
+        throw invalidJsonValue();
+      }
+      const items: JsonValue[] = new Array(length);
+      for (let index = 0; index < length; index += 1) {
+        const descriptor = Object.getOwnPropertyDescriptor(
+          descriptors,
+          String(index),
+        )?.value as PropertyDescriptor | undefined;
+        if (
+          descriptor === undefined ||
+          !Object.hasOwn(descriptor, "value") ||
+          descriptor.enumerable !== true
+        ) {
+          throw invalidJsonValue();
+        }
+        items[index] = snapshotJsonValue(descriptor.value, active, completed);
+      }
+      snapshot = items;
+    } else {
+      const record = Object.create(null) as Record<string, JsonValue>;
+      for (let index = 0; index < keys.length; index += 1) {
+        const key = keys[index];
+        if (typeof key !== "string") {
+          throw invalidJsonValue();
+        }
+        const descriptor = Object.getOwnPropertyDescriptor(
+          descriptors,
+          key,
+        )?.value as PropertyDescriptor | undefined;
+        if (
+          descriptor === undefined ||
+          !Object.hasOwn(descriptor, "value") ||
+          descriptor.enumerable !== true
+        ) {
+          throw invalidJsonValue();
+        }
+        record[key] = snapshotJsonValue(descriptor.value, active, completed);
+      }
+      snapshot = record;
     }
-    const record = value as Record<PropertyKey, unknown>;
-    const keys = Reflect.ownKeys(record);
-    if (
-      keys.some(
-        (key) =>
-          typeof key !== "string" ||
-          !Object.prototype.propertyIsEnumerable.call(value, key),
-      )
-    ) {
-      throw invalidJsonValue();
-    }
-    for (const key of keys) {
-      validateJsonValue(record[key], active);
-    }
+    Object.freeze(snapshot);
+    completed.set(value, snapshot);
+    return snapshot;
   } finally {
     active.delete(value);
   }
@@ -712,20 +761,30 @@ function validateJsonValue(
 
 function stableJson(value: JsonValue): string {
   if (Array.isArray(value)) {
-    return "[" + value.map(stableJson).join(",") + "]";
+    let json = "[";
+    for (let index = 0; index < value.length; index += 1) {
+      if (index !== 0) {
+        json += ",";
+      }
+      const item = Object.getOwnPropertyDescriptor(value, String(index))
+        ?.value as JsonValue;
+      json += stableJson(item);
+    }
+    return json + "]";
   }
   if (value !== null && typeof value === "object") {
-    return (
-      "{" +
-      Object.keys(value)
-        .sort()
-        .map(
-          (key) =>
-            JSON.stringify(key) + ":" + stableJson(value[key] as JsonValue),
-        )
-        .join(",") +
-      "}"
-    );
+    const keys = Object.keys(value).sort();
+    let json = "{";
+    for (let index = 0; index < keys.length; index += 1) {
+      if (index !== 0) {
+        json += ",";
+      }
+      const key = keys[index] as string;
+      const item = Object.getOwnPropertyDescriptor(value, key)
+        ?.value as JsonValue;
+      json += JSON.stringify(key) + ":" + stableJson(item);
+    }
+    return json + "}";
   }
   return JSON.stringify(value) as string;
 }
