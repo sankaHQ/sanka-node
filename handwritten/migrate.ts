@@ -12,10 +12,65 @@ import { existsSync } from "node:fs";
 const CLI_SCHEMA_VERSION = "sanka-cli/v1";
 
 /** A generic local migration command supported by the SDK adapter. */
-export type SankaMigrateCommand = "scan" | "plan" | "apply" | "test" | "verify";
+export type SankaMigrateCommand =
+  | "scan"
+  | "plan"
+  | "apply"
+  | "test"
+  | "verify"
+  | "extension";
+
+/** A value accepted by JSON and extension configuration. */
+export type JsonValue =
+  | null
+  | boolean
+  | number
+  | string
+  | JsonValue[]
+  | { [key: string]: JsonValue };
+
+/** Static project evidence that matched an extension recommendation. */
+export interface ExtensionEvidence {
+  /** Matcher that produced the evidence. */
+  kind: string;
+  /** Static value that matched. */
+  value: string;
+  /** Source-relative evidence path. */
+  path: string;
+}
+
+/** One compatible extension recommended by sanka-migrate. */
+export interface ExtensionRecommendation {
+  /** Logical owner/name extension identifier. */
+  id: string;
+  /** Recommended extension version. */
+  version: string;
+  /** Marketplace containing the extension. */
+  marketplace: string;
+  /** Migration targets advertised by the extension. */
+  targets: string[];
+  /** Static evidence supporting the recommendation. */
+  evidence: ExtensionEvidence[];
+  /** Availability, installation, and compatibility states. */
+  status: string[];
+  /** Exact command that installs the recommendation. */
+  add_command: string;
+}
+
+/** Structured extension or marketplace failure returned by the CLI. */
+export interface ExtensionFailure {
+  /** Stable machine-readable failure code. */
+  code: string;
+  /** Human-readable failure message. */
+  message: string;
+  /** Optional structured failure evidence. */
+  details?: Record<string, JsonValue>;
+}
 
 /** Command-specific scan data returned by sanka-migrate. */
 export interface ScanData {
+  /** Compatible extensions discovered from static project evidence. */
+  recommendations?: ExtensionRecommendation[];
   [key: string]: unknown;
 }
 
@@ -47,14 +102,14 @@ export interface VerifyData {
   [key: string]: unknown;
 }
 
-/** A successful sanka-cli/v1 command result. */
+/** A valid sanka-cli/v1 command result. */
 export interface SankaMigrateResult<TData extends Record<string, unknown>> {
   /** Version of the CLI-to-SDK protocol. */
   schema_version: "sanka-cli/v1";
   /** Generic command that produced this result. */
   command: SankaMigrateCommand;
-  /** CLI verdict, normally "success". */
-  outcome: string;
+  /** CLI verdict. */
+  outcome: "success" | "error";
   /** Lifecycle state after the command completed. */
   migration_state: string;
   /** Command-specific machine-readable data. */
@@ -90,6 +145,10 @@ export interface ScanOptions {
   settings?: string;
   /** Directory for the semantic scan artifact. */
   artifactDir?: string;
+  /** JSON-compatible settings for the selected extension. */
+  extensionConfig?: Record<string, JsonValue>;
+  /** Ambient environment variable names to forward explicitly. */
+  extensionEnvironment?: readonly string[];
 }
 
 /** Functional arguments accepted by sanka-migrate plan. */
@@ -100,8 +159,8 @@ export interface PlanOptions {
   file?: string;
   /** Run-state SQLite file passed as --state. */
   state?: string;
-  /** Target framework, currently "fastapi" for application migration. */
-  to?: "fastapi";
+  /** Target advertised by an installed extension. */
+  to?: string;
   /** Runtime strategy, currently "native" or "compatibility". */
   strategy?: "native" | "compatibility";
   /** Directory containing scan and plan artifacts. */
@@ -114,6 +173,10 @@ export interface PlanOptions {
   packageManager?: "uv" | "pip";
   /** ORM selected when the scan detects database-backed routes. */
   orm?: "tortoise" | "sqlalchemy" | "psycopg";
+  /** JSON-compatible settings for the selected extension. */
+  extensionConfig?: Record<string, JsonValue>;
+  /** Ambient environment variable names to forward explicitly. */
+  extensionEnvironment?: readonly string[];
 }
 
 /** Functional arguments accepted by sanka-migrate apply. */
@@ -126,8 +189,8 @@ export interface ApplyOptions {
   file?: string;
   /** Run-state SQLite file passed as --state. */
   state?: string;
-  /** Target framework selector. */
-  to?: "fastapi";
+  /** Target advertised by an installed extension. */
+  to?: string;
   /** Directory containing the reviewed plan. */
   artifactDir?: string;
   /** Generated target directory reviewed by the plan. */
@@ -142,6 +205,10 @@ export interface ApplyOptions {
   gapReportOnly?: boolean;
   /** Also write a Migration Bench candidate here. */
   benchCandidate?: string;
+  /** JSON-compatible settings for the selected extension. */
+  extensionConfig?: Record<string, JsonValue>;
+  /** Ambient environment variable names to forward explicitly. */
+  extensionEnvironment?: readonly string[];
 }
 
 /** Functional arguments accepted by sanka-migrate test. */
@@ -152,12 +219,16 @@ export interface TestOptions {
   file?: string;
   /** Run-state SQLite file passed as --state. */
   state?: string;
-  /** Target framework selector. */
-  to?: "fastapi";
+  /** Target advertised by an installed extension. */
+  to?: string;
   /** Directory containing the applied plan. */
   artifactDir?: string;
   /** Generated target directory. */
   output?: string;
+  /** JSON-compatible settings for the selected extension. */
+  extensionConfig?: Record<string, JsonValue>;
+  /** Ambient environment variable names to forward explicitly. */
+  extensionEnvironment?: readonly string[];
 }
 
 /** Functional arguments accepted by sanka-migrate verify. */
@@ -168,8 +239,8 @@ export interface VerifyOptions {
   file?: string;
   /** Run-state SQLite file passed as --state. */
   state?: string;
-  /** Target framework selector. */
-  to?: "fastapi";
+  /** Target advertised by an installed extension. */
+  to?: string;
   /** Directory containing the applied plan. */
   artifactDir?: string;
   /** Generated target directory. */
@@ -178,6 +249,46 @@ export interface VerifyOptions {
   cases?: string;
   /** Skip HTTP probes when structural verification is sufficient. */
   noHttp?: boolean;
+  /** JSON-compatible settings for the selected extension. */
+  extensionConfig?: Record<string, JsonValue>;
+  /** Ambient environment variable names to forward explicitly. */
+  extensionEnvironment?: readonly string[];
+}
+
+/** Marketplace management commands exposed under migrate.extensions. */
+export interface SankaMigrateMarketplaces {
+  /** Add an immutable marketplace snapshot. */
+  add: (
+    source: string,
+    options?: { name?: string; trust?: boolean },
+  ) => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** List configured marketplace snapshots. */
+  list: () => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** Upgrade one marketplace, or every marketplace when name is omitted. */
+  upgrade: (
+    name?: string,
+  ) => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** Remove an unused marketplace snapshot. */
+  remove: (
+    name: string,
+  ) => Promise<SankaMigrateResult<Record<string, unknown>>>;
+}
+
+/** Extension management commands exposed by SankaMigrate. */
+export interface SankaMigrateExtensions {
+  /** Install and lock an extension. */
+  add: (
+    extensionId: string,
+    options?: { marketplace?: string },
+  ) => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** List available and installed extensions. */
+  list: () => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** Unpin or disable an extension in the current project. */
+  remove: (
+    extensionId: string,
+  ) => Promise<SankaMigrateResult<Record<string, unknown>>>;
+  /** Nested marketplace management commands. */
+  marketplaces: SankaMigrateMarketplaces;
 }
 
 /** A local migration command or protocol failure. */
@@ -187,7 +298,11 @@ export class SankaMigrateError extends Error {
   /** Process exit code, or undefined when the CLI could not start. */
   readonly exitCode: number | undefined;
   /** Structured CLI error from data.error, when available. */
-  readonly parsedError: Record<string, unknown> | undefined;
+  readonly parsedError: ExtensionFailure | undefined;
+  /** Complete valid failure envelope returned by the CLI, when available. */
+  readonly result:
+    | SankaMigrateResult<Record<string, unknown>>
+    | undefined;
   /** Diagnostic text written by the CLI. */
   readonly stderr: string;
 
@@ -197,7 +312,8 @@ export class SankaMigrateError extends Error {
     options: {
       command: SankaMigrateCommand;
       exitCode?: number | undefined;
-      parsedError?: Record<string, unknown> | undefined;
+      parsedError?: ExtensionFailure | undefined;
+      result?: SankaMigrateResult<Record<string, unknown>> | undefined;
       stderr?: string | undefined;
     },
   ) {
@@ -206,6 +322,7 @@ export class SankaMigrateError extends Error {
     this.command = options.command;
     this.exitCode = options.exitCode;
     this.parsedError = options.parsedError;
+    this.result = options.result;
     this.stderr = options.stderr ?? "";
   }
 }
@@ -214,8 +331,8 @@ export class SankaMigrateError extends Error {
  * Run local Sanka migration commands without a Sanka API token.
  *
  * The adapter is non-interactive and always requests one sanka-cli/v1 JSON
- * document. Framework detection, defaults, validation, and execution remain
- * owned by the CLI.
+ * document. It validates extension JSON and environment names before spawning;
+ * framework detection, migration defaults, and execution remain owned by the CLI.
  *
  * @example
  * const migrate = new SankaMigrate({ cwd: "./django-app" });
@@ -224,6 +341,8 @@ export class SankaMigrate {
   private readonly cwd: string | undefined;
   private readonly executable: string;
   private readonly env: Readonly<Record<string, string | undefined>>;
+  /** Extension and marketplace management commands. */
+  readonly extensions: SankaMigrateExtensions;
 
   /**
    * Create a local migration adapter.
@@ -239,6 +358,33 @@ export class SankaMigrate {
     this.cwd = options.cwd;
     this.executable = executable;
     this.env = options.env ?? {};
+    this.extensions = {
+      add: (extensionId, extensionOptions = {}) => {
+        const args = ["extension", "add", extensionId];
+        option(args, "--marketplace", extensionOptions.marketplace);
+        return this.run("extension", args);
+      },
+      list: () => this.run("extension", ["extension", "list"]),
+      remove: (extensionId) =>
+        this.run("extension", ["extension", "remove", extensionId]),
+      marketplaces: {
+        add: (source, marketplaceOptions = {}) => {
+          const args = ["extension", "marketplace", "add", source];
+          option(args, "--name", marketplaceOptions.name);
+          flag(args, "--trust", marketplaceOptions.trust);
+          return this.run("extension", args);
+        },
+        list: () =>
+          this.run("extension", ["extension", "marketplace", "list"]),
+        upgrade: (name) => {
+          const args = ["extension", "marketplace", "upgrade"];
+          positional(args, name);
+          return this.run("extension", args);
+        },
+        remove: (name) =>
+          this.run("extension", ["extension", "marketplace", "remove", name]),
+      },
+    };
   }
 
   /**
@@ -258,6 +404,7 @@ export class SankaMigrate {
     positional(args, options.root);
     option(args, "--settings", options.settings);
     option(args, "--artifact-dir", options.artifactDir);
+    extensionOptions(args, options.extensionConfig, options.extensionEnvironment);
     return this.run("scan", args);
   }
 
@@ -285,6 +432,7 @@ export class SankaMigrate {
     option(args, "--generation", options.generation);
     option(args, "--package-manager", options.packageManager);
     option(args, "--orm", options.orm);
+    extensionOptions(args, options.extensionConfig, options.extensionEnvironment);
     return this.run("plan", args);
   }
 
@@ -317,6 +465,7 @@ export class SankaMigrate {
     option(args, "--min-readiness", options.minReadiness);
     flag(args, "--gap-report-only", options.gapReportOnly);
     option(args, "--bench-candidate", options.benchCandidate);
+    extensionOptions(args, options.extensionConfig, options.extensionEnvironment);
     return this.run("apply", args);
   }
 
@@ -341,6 +490,7 @@ export class SankaMigrate {
     option(args, "--to", options.to);
     option(args, "--artifact-dir", options.artifactDir);
     option(args, "--output", options.output);
+    extensionOptions(args, options.extensionConfig, options.extensionEnvironment);
     return this.run("test", args);
   }
 
@@ -367,6 +517,7 @@ export class SankaMigrate {
     option(args, "--output", options.output);
     option(args, "--cases", options.cases);
     flag(args, "--no-http", options.noHttp);
+    extensionOptions(args, options.extensionConfig, options.extensionEnvironment);
     return this.run("verify", args);
   }
 
@@ -408,8 +559,17 @@ export class SankaMigrate {
             : "could not execute sanka-migrate: " + error.message;
         reject(new SankaMigrateError(message, { command, stderr }));
       });
-      child.once("close", (code) => {
-        const exitCode = code ?? 1;
+      child.once("close", (code, signal) => {
+        if (code === null) {
+          reject(
+            new SankaMigrateError(
+              "sanka-migrate " + command + " was terminated by " + String(signal),
+              { command, stderr },
+            ),
+          );
+          return;
+        }
+        const exitCode = code;
         let result: SankaMigrateResult<TData>;
         try {
           result = decodeResult<TData>(stdout, command, exitCode, stderr);
@@ -418,18 +578,14 @@ export class SankaMigrate {
           return;
         }
 
-        if (exitCode !== 0 || result.outcome === "error") {
-          const candidate = result.data["error"];
-          const parsedError = isRecord(candidate) ? candidate : undefined;
-          const message =
-            typeof parsedError?.["message"] === "string"
-              ? parsedError["message"]
-              : "sanka-migrate " + command + " failed with exit code " + exitCode;
+        if (result.outcome === "error") {
+          const parsedError = result.data["error"] as unknown as ExtensionFailure;
           reject(
-            new SankaMigrateError(message, {
+            new SankaMigrateError(parsedError.message, {
               command,
               exitCode,
               parsedError,
+              result: result as SankaMigrateResult<Record<string, unknown>>,
               stderr,
             }),
           );
@@ -461,6 +617,123 @@ function flag(args: string[], name: string, enabled: boolean | undefined): void 
   if (enabled === true) {
     args.push(name);
   }
+}
+
+function extensionOptions(
+  args: string[],
+  configuration: Record<string, JsonValue> | undefined,
+  environment: readonly string[] | undefined,
+): void {
+  if (configuration !== undefined) {
+    if (
+      configuration === null ||
+      typeof configuration !== "object" ||
+      Array.isArray(configuration) ||
+      Object.getPrototypeOf(configuration) !== Object.prototype
+    ) {
+      throw invalidJsonValue();
+    }
+    validateJsonValue(configuration);
+    args.push("--extension-config", stableJson(configuration));
+  }
+  if (environment === undefined) {
+    return;
+  }
+  if (!Array.isArray(environment)) {
+    throw new TypeError(
+      "extensionEnvironment must be an array of environment variable names",
+    );
+  }
+  for (const name of environment) {
+    if (
+      typeof name !== "string" ||
+      !/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)
+    ) {
+      throw new TypeError(
+        "extensionEnvironment must contain valid environment variable names",
+      );
+    }
+    args.push("--extension-env", name);
+  }
+}
+
+function validateJsonValue(
+  value: unknown,
+  active: WeakSet<object> = new WeakSet(),
+): asserts value is JsonValue {
+  if (
+    value === null ||
+    typeof value === "boolean" ||
+    typeof value === "string"
+  ) {
+    return;
+  }
+  if (typeof value === "number") {
+    if (Number.isFinite(value)) {
+      return;
+    }
+    throw invalidJsonValue();
+  }
+  if (
+    typeof value !== "object" ||
+    (!Array.isArray(value) && Object.getPrototypeOf(value) !== Object.prototype)
+  ) {
+    throw invalidJsonValue();
+  }
+  if (active.has(value)) {
+    throw invalidJsonValue();
+  }
+  active.add(value);
+  try {
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        validateJsonValue(item, active);
+      }
+      return;
+    }
+    const record = value as Record<PropertyKey, unknown>;
+    const keys = Reflect.ownKeys(record);
+    if (
+      keys.some(
+        (key) =>
+          typeof key !== "string" ||
+          !Object.prototype.propertyIsEnumerable.call(value, key),
+      )
+    ) {
+      throw invalidJsonValue();
+    }
+    for (const key of keys) {
+      validateJsonValue(record[key], active);
+    }
+  } finally {
+    active.delete(value);
+  }
+}
+
+function stableJson(value: JsonValue): string {
+  if (Array.isArray(value)) {
+    return "[" + value.map(stableJson).join(",") + "]";
+  }
+  if (value !== null && typeof value === "object") {
+    return (
+      "{" +
+      Object.keys(value)
+        .sort()
+        .map(
+          (key) =>
+            JSON.stringify(key) + ":" + stableJson(value[key] as JsonValue),
+        )
+        .join(",") +
+      "}"
+    );
+  }
+  return JSON.stringify(value) as string;
+}
+
+function invalidJsonValue(): TypeError {
+  return new TypeError(
+    "extensionConfig must contain only JSON-compatible plain values",
+  );
 }
 
 function decodeResult<TData extends Record<string, unknown>>(
@@ -499,8 +772,71 @@ function decodeResult<TData extends Record<string, unknown>>(
       { command, exitCode, stderr },
     );
   }
-  if (!isRecord(parsed["data"])) {
+  const outcome = parsed["outcome"];
+  if (outcome !== "success" && outcome !== "error") {
+    throw invalidField(
+      command,
+      exitCode,
+      stderr,
+      "outcome",
+      '"success" or "error"',
+    );
+  }
+  if (exitCode !== 0 && exitCode !== 1 && exitCode !== 2) {
+    throw new SankaMigrateError(
+      "invalid sanka-migrate exit code " + exitCode + "; expected 0, 1, or 2",
+      { command, exitCode, stderr },
+    );
+  }
+  if ((outcome === "success") !== (exitCode === 0)) {
+    throw new SankaMigrateError(
+      "sanka-migrate outcome " +
+        outcome +
+        " is inconsistent with exit code " +
+        exitCode,
+      { command, exitCode, stderr },
+    );
+  }
+
+  const data = parsed["data"];
+  if (!isRecord(data)) {
     throw invalidField(command, exitCode, stderr, "data", "an object");
+  }
+  const errorData = data["error"];
+  if (outcome === "success") {
+    if (Object.hasOwn(data, "error")) {
+      throw invalidField(
+        command,
+        exitCode,
+        stderr,
+        "data.error",
+        "absent on success",
+      );
+    }
+  } else {
+    if (!isRecord(errorData)) {
+      throw invalidField(command, exitCode, stderr, "data.error", "an object");
+    }
+    for (const name of ["code", "message"] as const) {
+      if (typeof errorData[name] !== "string") {
+        throw invalidField(
+          command,
+          exitCode,
+          stderr,
+          "data.error." + name,
+          "a string",
+        );
+      }
+    }
+    if (Object.hasOwn(errorData, "details") && !isRecord(errorData["details"])) {
+      throw invalidField(
+        command,
+        exitCode,
+        stderr,
+        "data.error.details",
+        "an object",
+      );
+    }
   }
   if (!isStringArray(parsed["artifacts"])) {
     throw invalidField(command, exitCode, stderr, "artifacts", "a string array");
@@ -511,9 +847,6 @@ function decodeResult<TData extends Record<string, unknown>>(
   if (!isStringArray(parsed["next_actions"])) {
     throw invalidField(command, exitCode, stderr, "next_actions", "a string array");
   }
-  if (typeof parsed["outcome"] !== "string") {
-    throw invalidField(command, exitCode, stderr, "outcome", "a string");
-  }
   if (typeof parsed["migration_state"] !== "string") {
     throw invalidField(command, exitCode, stderr, "migration_state", "a string");
   }
@@ -521,9 +854,9 @@ function decodeResult<TData extends Record<string, unknown>>(
   return {
     schema_version: CLI_SCHEMA_VERSION,
     command,
-    outcome: parsed["outcome"],
+    outcome,
     migration_state: parsed["migration_state"],
-    data: parsed["data"] as TData,
+    data: data as TData,
     artifacts: parsed["artifacts"],
     limitations: parsed["limitations"],
     next_actions: parsed["next_actions"],

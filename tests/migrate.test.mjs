@@ -9,6 +9,10 @@ import { SankaMigrate, SankaMigrateError } from "sanka-sdk/migrate";
 const fakeSource = String.raw`#!/usr/bin/env node
 const command = process.argv[2];
 const mode = process.env.FAKE_SANKA_MODE ?? "success";
+const isError = mode === "error" || mode === "trust-error" || mode === "signal";
+if (process.env.FAKE_SANKA_INVOKED) {
+  require("node:fs").writeFileSync(process.env.FAKE_SANKA_INVOKED, "invoked");
+}
 if (mode === "malformed") {
   console.log("progress before json");
   console.log("{}");
@@ -17,20 +21,59 @@ if (mode === "malformed") {
 const payload = {
   schema_version: mode === "wrong-schema" ? "wrong/v1" : "sanka-cli/v1",
   command: mode === "wrong-command" ? "wrong" : command,
-  outcome: mode === "error" ? "error" : "success",
-  migration_state: mode === "error" ? "failed" : "complete",
+  outcome: process.env.FAKE_SANKA_OUTCOME ?? (isError ? "error" : "success"),
+  migration_state: isError ? "failed" : "complete",
   data: {
     argv: process.argv.slice(2),
-    ...(mode === "error"
+    ...(mode === "trust-error"
+      ? {
+          error: {
+            code: "SANKA_MARKETPLACE_TRUST_REQUIRED",
+            message: "explicit trust is required",
+            details: { identity: "local:/third-party" },
+          },
+        }
+      : mode === "error" || mode === "signal"
       ? { error: { code: "SANKA_USAGE", message: "bad option" } }
+      : {}),
+    ...(mode === "recommendations"
+      ? {
+          recommendations: [
+            {
+              id: "sanka/drf-to-fastapi",
+              version: "0.1.0a1",
+              marketplace: "official",
+              targets: ["fastapi"],
+              evidence: [
+                {
+                  kind: "declared_dependency",
+                  value: "djangorestframework",
+                  path: "requirements.txt",
+                },
+              ],
+              status: ["available"],
+              add_command: "sanka-migrate extension add sanka/drf-to-fastapi",
+            },
+          ],
+        }
       : {}),
   },
   artifacts: [],
   limitations: [],
   next_actions: [],
 };
-console.log(JSON.stringify(payload));
-process.exit(Number(process.env.FAKE_SANKA_EXIT ?? (mode === "error" ? "2" : "0")));
+const errorCase = process.env.FAKE_SANKA_ERROR_CASE;
+if (errorCase === "missing") {
+  delete payload.data.error;
+} else if (errorCase) {
+  payload.data.error = JSON.parse(errorCase);
+}
+if (mode === "signal") {
+  process.stdout.write(JSON.stringify(payload), () => process.kill(process.pid, "SIGTERM"));
+} else {
+  console.log(JSON.stringify(payload));
+  process.exit(Number(process.env.FAKE_SANKA_EXIT ?? (isError ? "2" : "0")));
+}
 `;
 
 async function fixture(t) {
@@ -226,6 +269,255 @@ test("arguments are not interpreted by a shell", async (t) => {
   await assert.rejects(readFile(marker), { code: "ENOENT" });
 });
 
+test("extension lifecycle options use exact stable argv for every command", async (t) => {
+  const { migrate } = await fixture(t);
+  const shared = { "日本語": "値" };
+
+  assert.deepEqual(
+    argv(
+      await migrate.scan({
+        extensionConfig: { shared },
+        extensionEnvironment: ["SCAN_TOKEN"],
+      }),
+    ),
+    [
+      "scan",
+      "--extension-config",
+      '{"shared":{"日本語":"値"}}',
+      "--extension-env",
+      "SCAN_TOKEN",
+      "--json",
+    ],
+  );
+  assert.deepEqual(
+    argv(
+      await migrate.plan({
+        to: "vendor/flask-v2",
+        extensionConfig: {
+          z: { "β": 2, "α": 1 },
+          shared,
+          copy: shared,
+          "2": "two",
+          "10": "ten",
+        },
+        extensionEnvironment: ["DJANGO_SECRET_KEY", "API_TOKEN"],
+      }),
+    ),
+    [
+      "plan",
+      "--to",
+      "vendor/flask-v2",
+      "--extension-config",
+      '{"10":"ten","2":"two","copy":{"日本語":"値"},"shared":{"日本語":"値"},"z":{"α":1,"β":2}}',
+      "--extension-env",
+      "DJANGO_SECRET_KEY",
+      "--extension-env",
+      "API_TOKEN",
+      "--json",
+    ],
+  );
+  assert.deepEqual(
+    argv(
+      await migrate.apply({
+        planHash: "sha256:reviewed",
+        extensionConfig: { generation: "full" },
+        extensionEnvironment: ["APPLY_TOKEN"],
+      }),
+    ),
+    [
+      "apply",
+      "--plan-hash",
+      "sha256:reviewed",
+      "--extension-config",
+      '{"generation":"full"}',
+      "--extension-env",
+      "APPLY_TOKEN",
+      "--json",
+    ],
+  );
+  assert.deepEqual(
+    argv(
+      await migrate.test({
+        extensionConfig: { generation: "full" },
+        extensionEnvironment: ["TEST_TOKEN"],
+      }),
+    ),
+    [
+      "test",
+      "--extension-config",
+      '{"generation":"full"}',
+      "--extension-env",
+      "TEST_TOKEN",
+      "--json",
+    ],
+  );
+  assert.deepEqual(
+    argv(
+      await migrate.verify({
+        extensionConfig: { generation: "full" },
+        extensionEnvironment: ["VERIFY_TOKEN"],
+      }),
+    ),
+    [
+      "verify",
+      "--extension-config",
+      '{"generation":"full"}',
+      "--extension-env",
+      "VERIFY_TOKEN",
+      "--json",
+    ],
+  );
+});
+
+test("extension config rejects values outside JsonValue before spawning", async (t) => {
+  const { root, executable } = await fixture(t);
+  const invoked = path.join(root, "invoked");
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_INVOKED: invoked },
+  });
+  const cyclicArray = [];
+  cyclicArray.push(cyclicArray);
+  const cyclicObject = {};
+  cyclicObject.self = cyclicObject;
+  const invalid = [
+    [],
+    null,
+    "not-an-object",
+    { value: Number.NaN },
+    { value: Number.POSITIVE_INFINITY },
+    { value: Number.NEGATIVE_INFINITY },
+    { value: undefined },
+    { value: () => undefined },
+    { value: Symbol("bad") },
+    { value: 1n },
+    { value: new Date() },
+    { value: new Set(["bad"]) },
+    { value: new (class NonPlain {})() },
+    { value: Object.create(null) },
+    { value: [{ nested: undefined }] },
+    { value: cyclicArray },
+    { value: cyclicObject },
+  ];
+
+  for (const extensionConfig of invalid) {
+    await assert.rejects(
+      async () => migrate.plan({ extensionConfig }),
+      /extensionConfig.*JSON-compatible/,
+    );
+  }
+  await assert.rejects(readFile(invoked), { code: "ENOENT" });
+});
+
+test("extension environment validates its container and members before spawning", async (t) => {
+  const { root, executable } = await fixture(t);
+  const invoked = path.join(root, "invoked");
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_INVOKED: invoked },
+  });
+
+  for (const extensionEnvironment of [
+    "API_TOKEN",
+    new Set(["API_TOKEN"]),
+    { 0: "API_TOKEN", length: 1 },
+    [42],
+    ["API-TOKEN"],
+    ["9API_TOKEN"],
+    ["API_TÖKEN"],
+  ]) {
+    await assert.rejects(
+      async () => migrate.plan({ extensionEnvironment }),
+      /extensionEnvironment/,
+    );
+  }
+  await assert.rejects(readFile(invoked), { code: "ENOENT" });
+});
+
+test("extension management has full grouped parity without a shell", async (t) => {
+  const { root, migrate } = await fixture(t);
+  const marker = path.join(root, "unexpected-extension");
+  const source = "$(touch " + marker + ")";
+  const results = [
+    await migrate.extensions.add("example/demo", { marketplace: "third-party" }),
+    await migrate.extensions.list(),
+    await migrate.extensions.remove("example/demo"),
+    await migrate.extensions.marketplaces.add(source, {
+      name: "third-party",
+      trust: true,
+    }),
+    await migrate.extensions.marketplaces.list(),
+    await migrate.extensions.marketplaces.upgrade("third-party"),
+    await migrate.extensions.marketplaces.remove("third-party"),
+  ];
+
+  assert.deepEqual(
+    results.map(argv),
+    [
+      ["extension", "add", "example/demo", "--marketplace", "third-party", "--json"],
+      ["extension", "list", "--json"],
+      ["extension", "remove", "example/demo", "--json"],
+      [
+        "extension",
+        "marketplace",
+        "add",
+        source,
+        "--name",
+        "third-party",
+        "--trust",
+        "--json",
+      ],
+      ["extension", "marketplace", "list", "--json"],
+      ["extension", "marketplace", "upgrade", "third-party", "--json"],
+      ["extension", "marketplace", "remove", "third-party", "--json"],
+    ],
+  );
+  await assert.rejects(readFile(marker), { code: "ENOENT" });
+});
+
+test("recommendations expose typed evidence", async (t) => {
+  const { root, executable } = await fixture(t);
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_MODE: "recommendations" },
+  });
+
+  const recommendation = (await migrate.scan()).data.recommendations[0];
+  assert.deepEqual(recommendation.targets, ["fastapi"]);
+  assert.deepEqual(recommendation.evidence, [
+    {
+      kind: "declared_dependency",
+      value: "djangorestframework",
+      path: "requirements.txt",
+    },
+  ]);
+});
+
+test("third-party trust failures keep the complete valid result", async (t) => {
+  const { root, executable } = await fixture(t);
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_MODE: "trust-error" },
+  });
+
+  await assert.rejects(
+    migrate.extensions.marketplaces.add("/third-party", { name: "third-party" }),
+    (error) => {
+      assert.ok(error instanceof SankaMigrateError);
+      assert.equal(error.parsedError.code, "SANKA_MARKETPLACE_TRUST_REQUIRED");
+      assert.equal(error.result.command, "extension");
+      assert.deepEqual(error.result.data.error.details, {
+        identity: "local:/third-party",
+      });
+      return true;
+    },
+  );
+});
+
 test("structured failures keep exit and CLI details", async (t) => {
   const { root, executable } = await fixture(t);
   const migrate = new SankaMigrate({
@@ -259,8 +551,143 @@ test("protocol rejects malformed schema and command", async (t) => {
       executable,
       env: { FAKE_SANKA_MODE: mode },
     });
-    await assert.rejects(migrate.scan(), new RegExp(message));
+    await assert.rejects(migrate.scan(), (error) => {
+      assert.match(error.message, new RegExp(message));
+      assert.equal(error.result, undefined);
+      return true;
+    });
   }
+});
+
+test("protocol rejects invalid outcome and exit pairs without a result", async (t) => {
+  const { root, executable } = await fixture(t);
+  const invalid = [
+    ["bogus", "0"],
+    ["bogus", "1"],
+    ["bogus", "2"],
+    ["bogus", "99"],
+    ["success", "1"],
+    ["success", "2"],
+    ["success", "99"],
+    ["error", "0"],
+    ["error", "99"],
+  ];
+
+  for (const [outcome, exitCode] of invalid) {
+    const migrate = new SankaMigrate({
+      cwd: root,
+      executable,
+      env: {
+        FAKE_SANKA_MODE: outcome === "error" ? "error" : "success",
+        FAKE_SANKA_OUTCOME: outcome,
+        FAKE_SANKA_EXIT: exitCode,
+      },
+    });
+    await assert.rejects(migrate.scan(), (error) => {
+      assert.ok(error instanceof SankaMigrateError);
+      assert.equal(error.result, undefined);
+      return true;
+    });
+  }
+});
+
+test("protocol rejects signal termination without inventing an exit code", async (t) => {
+  const { root, executable } = await fixture(t);
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: { FAKE_SANKA_MODE: "signal" },
+  });
+
+  await assert.rejects(migrate.scan(), (error) => {
+    assert.ok(error instanceof SankaMigrateError);
+    assert.equal(error.exitCode, undefined);
+    assert.equal(error.result, undefined);
+    return true;
+  });
+});
+
+test("protocol preserves valid failure results for exits one and two", async (t) => {
+  const { root, executable } = await fixture(t);
+
+  for (const exitCode of ["1", "2"]) {
+    for (const [mode, expected] of [
+      ["error", { code: "SANKA_USAGE", message: "bad option" }],
+      [
+        "trust-error",
+        {
+          code: "SANKA_MARKETPLACE_TRUST_REQUIRED",
+          message: "explicit trust is required",
+          details: { identity: "local:/third-party" },
+        },
+      ],
+    ]) {
+      const migrate = new SankaMigrate({
+        cwd: root,
+        executable,
+        env: { FAKE_SANKA_MODE: mode, FAKE_SANKA_EXIT: exitCode },
+      });
+      await assert.rejects(migrate.scan(), (error) => {
+        assert.ok(error instanceof SankaMigrateError);
+        assert.deepEqual(error.parsedError, expected);
+        assert.deepEqual(error.result.data.error, expected);
+        assert.equal(error.result.outcome, "error");
+        assert.equal(error.exitCode, Number(exitCode));
+        return true;
+      });
+    }
+  }
+});
+
+test("protocol rejects malformed structured errors without a result", async (t) => {
+  const { root, executable } = await fixture(t);
+  const malformed = [
+    ["missing", "missing"],
+    ["string", '"failure"'],
+    ["empty", "{}"],
+    ["numeric-code", '{"code":7,"message":"bad option"}'],
+    ["numeric-message", '{"code":"SANKA_USAGE","message":7}'],
+    [
+      "non-object-details",
+      '{"code":"SANKA_USAGE","message":"bad option","details":[]}',
+    ],
+  ];
+
+  for (const exitCode of ["1", "2"]) {
+    for (const [, errorCase] of malformed) {
+      const migrate = new SankaMigrate({
+        cwd: root,
+        executable,
+        env: {
+          FAKE_SANKA_MODE: "error",
+          FAKE_SANKA_EXIT: exitCode,
+          FAKE_SANKA_ERROR_CASE: errorCase,
+        },
+      });
+      await assert.rejects(migrate.scan(), (error) => {
+        assert.ok(error instanceof SankaMigrateError);
+        assert.equal(error.result, undefined);
+        return true;
+      });
+    }
+  }
+});
+
+test("protocol rejects an error payload on success without a result", async (t) => {
+  const { root, executable } = await fixture(t);
+  const migrate = new SankaMigrate({
+    cwd: root,
+    executable,
+    env: {
+      FAKE_SANKA_ERROR_CASE: '{"code":"SANKA_FAILED","message":"not failed"}',
+    },
+  });
+
+  await assert.rejects(migrate.scan(), (error) => {
+    assert.ok(error instanceof SankaMigrateError);
+    assert.equal(error.result, undefined);
+    return true;
+  });
 });
 
 test("apply requires a reviewed plan hash", () => {
@@ -284,6 +711,10 @@ test("built declarations retain public hover documentation", async () => {
   );
   for (const symbol of [
     "SankaMigrateCommand",
+    "JsonValue",
+    "ExtensionEvidence",
+    "ExtensionRecommendation",
+    "ExtensionFailure",
     "SankaMigrateResult",
     "SankaMigrateOptions",
     "ScanOptions",
@@ -291,6 +722,8 @@ test("built declarations retain public hover documentation", async () => {
     "ApplyOptions",
     "TestOptions",
     "VerifyOptions",
+    "SankaMigrateMarketplaces",
+    "SankaMigrateExtensions",
     "SankaMigrateError",
     "SankaMigrate",
   ]) {
@@ -307,6 +740,11 @@ test("built declarations retain public hover documentation", async () => {
       method,
     );
   }
+  assert.match(declaration, /to\?: string;/);
+  assert.match(declaration, /extensionConfig\?: Record<string, JsonValue>;/);
+  assert.match(declaration, /extensionEnvironment\?: readonly string\[\];/);
+  assert.match(declaration, /readonly result: SankaMigrateResult<Record<string, unknown>> \| undefined;/);
+  assert.match(declaration, /readonly extensions: SankaMigrateExtensions;/);
 });
 
 test("packaged source matches the regeneration source", async () => {
@@ -317,4 +755,3 @@ test("packaged source matches the regeneration source", async () => {
   );
   assert.equal(packaged, handwritten);
 });
-
