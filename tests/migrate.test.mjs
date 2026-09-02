@@ -56,7 +56,7 @@ const payload = {
                 },
               ],
               status: ["available"],
-              add_command: "sanka-migrate extension add sanka/drf-to-fastapi",
+              add_command: "sanka extension add sanka/drf-to-fastapi",
             },
           ],
         }
@@ -83,7 +83,7 @@ if (mode === "signal") {
 async function fixture(t) {
   const root = await mkdtemp(path.join(os.tmpdir(), "sanka-node-migrate-"));
   t.after(() => rm(root, { recursive: true, force: true }));
-  const executable = path.join(root, "fake-sanka-migrate");
+  const executable = path.join(root, "fake-sanka");
   await writeFile(executable, fakeSource, "utf8");
   await chmod(executable, 0o755);
   return {
@@ -96,6 +96,10 @@ async function fixture(t) {
 function argv(result) {
   return result.data.argv;
 }
+
+test("defaults to the unified executable", () => {
+  assert.equal(new SankaMigrate().executable, "sanka");
+});
 
 test("every command forwards every functional option", async (t) => {
   const { migrate } = await fixture(t);
@@ -636,7 +640,7 @@ test("protocol rejects malformed schema and command", async (t) => {
   const { root, executable } = await fixture(t);
   for (const [mode, message] of [
     ["malformed", "one valid JSON document"],
-    ["wrong-schema", "unsupported sanka-migrate protocol"],
+    ["wrong-schema", "unsupported sanka protocol"],
     ["wrong-command", "expected scan"],
   ]) {
     const migrate = new SankaMigrate({
@@ -846,13 +850,25 @@ test("apply requires a reviewed plan hash", () => {
   assert.throws(() => migrate.apply({ planHash: "" }), /planHash/);
 });
 
-test("missing executable has an install hint", async (t) => {
+test("missing executable has the unified install hint", async (t) => {
   const { root } = await fixture(t);
   const migrate = new SankaMigrate({
     cwd: root,
     executable: path.join(root, "missing"),
   });
-  await assert.rejects(migrate.scan(), /uv tool install sanka-migrate/);
+  await assert.rejects(migrate.scan(), /uv tool install sanka-cli/);
+});
+
+test("generated migration guidance points to the unified CLI", async () => {
+  const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
+  const migration = readme.match(
+    /<!-- Start Local Migration \[local-migration\] -->[\s\S]*?<!-- End Local Migration \[local-migration\] -->/,
+  )?.[0];
+
+  assert.ok(migration);
+  assert.match(migration, /A local `sanka` subprocess/);
+  assert.match(migration, /uv tool install sanka-cli/);
+  assert.doesNotMatch(migration, /sanka-migrate/);
 });
 
 test("built declarations retain public hover documentation", async () => {

@@ -2,7 +2,7 @@
  * Local Sanka migration commands for Node.js.
  *
  * This module exposes the generic scan, plan, apply, test, and verify lifecycle
- * by running the separately installed sanka-migrate CLI in JSON mode. It does
+ * by running the separately installed sanka CLI in JSON mode. It does
  * not call Sanka's hosted API.
  */
 
@@ -39,7 +39,7 @@ export interface ExtensionEvidence {
   path: string;
 }
 
-/** One compatible extension recommended by sanka-migrate. */
+/** One compatible extension recommended by sanka. */
 export interface ExtensionRecommendation {
   /** Logical owner/name extension identifier. */
   id: string;
@@ -67,7 +67,7 @@ export interface ExtensionFailure {
   details?: Record<string, JsonValue>;
 }
 
-/** Command-specific scan data returned by sanka-migrate. */
+/** Command-specific scan data returned by sanka. */
 export interface ScanData {
   /** Compatible extensions discovered from static project evidence. */
   recommendations?: ExtensionRecommendation[];
@@ -124,20 +124,20 @@ export interface SankaMigrateResult<TData extends Record<string, unknown>> {
 
 /** Construction options for the local migration adapter. */
 export interface SankaMigrateOptions {
-  /** Working directory used by sanka-migrate. */
+  /** Working directory used by sanka. */
   cwd?: string;
   /**
    * CLI executable name or path.
    *
    * Install the default executable separately with:
-   * uv tool install sanka-migrate
+   * uv tool install sanka-cli
    */
   executable?: string;
   /** Environment variables merged over the current process environment. */
   env?: Readonly<Record<string, string | undefined>>;
 }
 
-/** Functional arguments accepted by sanka-migrate scan. */
+/** Functional arguments accepted by sanka scan. */
 export interface ScanOptions {
   /** Source repository root. Omit it to use the adapter cwd. */
   root?: string;
@@ -151,7 +151,7 @@ export interface ScanOptions {
   extensionEnvironment?: readonly string[];
 }
 
-/** Functional arguments accepted by sanka-migrate plan. */
+/** Functional arguments accepted by sanka plan. */
 export interface PlanOptions {
   /** Source repository root. Omit it to use the adapter cwd. */
   root?: string;
@@ -179,7 +179,7 @@ export interface PlanOptions {
   extensionEnvironment?: readonly string[];
 }
 
-/** Functional arguments accepted by sanka-migrate apply. */
+/** Functional arguments accepted by sanka apply. */
 export interface ApplyOptions {
   /** Non-empty hash returned by plan(); writes are bound to it. */
   planHash: string;
@@ -211,7 +211,7 @@ export interface ApplyOptions {
   extensionEnvironment?: readonly string[];
 }
 
-/** Functional arguments accepted by sanka-migrate test. */
+/** Functional arguments accepted by sanka test. */
 export interface TestOptions {
   /** Source repository root. Omit it to use the adapter cwd. */
   root?: string;
@@ -231,7 +231,7 @@ export interface TestOptions {
   extensionEnvironment?: readonly string[];
 }
 
-/** Functional arguments accepted by sanka-migrate verify. */
+/** Functional arguments accepted by sanka verify. */
 export interface VerifyOptions {
   /** Source repository root. Omit it to use the adapter cwd. */
   root?: string;
@@ -348,10 +348,10 @@ export class SankaMigrate {
    * Create a local migration adapter.
    *
    * @param options - Working directory, executable override, and environment
-   * overrides. Install sanka-migrate separately before running a command.
+   * overrides. Install sanka separately before running a command.
    */
   constructor(options: SankaMigrateOptions = {}) {
-    const executable = options.executable ?? "sanka-migrate";
+    const executable = options.executable ?? "sanka";
     if (executable.trim() === "") {
       throw new TypeError("executable must not be empty");
     }
@@ -388,7 +388,7 @@ export class SankaMigrate {
   }
 
   /**
-   * Inspect a source application with sanka-migrate scan.
+   * Inspect a source application with sanka scan.
    *
    * @param options - Source root, settings module, and artifact directory.
    * @returns Discovered application data, risks, and scan artifact paths.
@@ -409,7 +409,7 @@ export class SankaMigrate {
   }
 
   /**
-   * Create a reviewable, hash-bound plan with sanka-migrate plan.
+   * Create a reviewable, hash-bound plan with sanka plan.
    *
    * @param options - Functional plan arguments matching the CLI flags.
    * @returns The plan and plan_hash required by apply().
@@ -437,7 +437,7 @@ export class SankaMigrate {
   }
 
   /**
-   * Apply exactly one reviewed plan with sanka-migrate apply.
+   * Apply exactly one reviewed plan with sanka apply.
    *
    * @param options - Reviewed plan hash and functional apply arguments.
    * @returns Paths and evidence written from the reviewed plan.
@@ -470,7 +470,7 @@ export class SankaMigrate {
   }
 
   /**
-   * Run generated-target tests with sanka-migrate test.
+   * Run generated-target tests with sanka test.
    *
    * @param options - Functional test arguments matching the CLI flags.
    * @returns Test verdict, target interpreter, dependencies, and test artifact.
@@ -495,7 +495,7 @@ export class SankaMigrate {
   }
 
   /**
-   * Verify the selected migration with sanka-migrate verify.
+   * Verify the selected migration with sanka verify.
    *
    * @param options - Functional verification arguments matching the CLI flags.
    * @returns Verification verdict, checked scope, artifacts, and limitations.
@@ -528,7 +528,7 @@ export class SankaMigrate {
     if (this.cwd !== undefined && !existsSync(this.cwd)) {
       return Promise.reject(
         new SankaMigrateError(
-          "sanka-migrate working directory was not found: " + this.cwd,
+          "sanka working directory was not found: " + this.cwd,
           { command },
         ),
       );
@@ -554,16 +554,16 @@ export class SankaMigrate {
       child.once("error", (error: NodeJS.ErrnoException) => {
         const message =
           error.code === "ENOENT"
-            ? "sanka-migrate executable was not found; install it with " +
-              "uv tool install sanka-migrate or pass executable"
-            : "could not execute sanka-migrate: " + error.message;
+            ? "sanka executable was not found; install it with " +
+              "uv tool install sanka-cli or pass executable"
+            : "could not execute sanka: " + error.message;
         reject(new SankaMigrateError(message, { command, stderr }));
       });
       child.once("close", (code, signal) => {
         if (code === null) {
           reject(
             new SankaMigrateError(
-              "sanka-migrate " + command + " was terminated by " + String(signal),
+              "sanka " + command + " was terminated by " + String(signal),
               { command, stderr },
             ),
           );
@@ -810,13 +810,13 @@ function decodeResult<TData extends Record<string, unknown>>(
     );
   } catch {
     throw new SankaMigrateError(
-      "sanka-migrate " + command + " did not return one valid JSON document",
+      "sanka " + command + " did not return one valid JSON document",
       { command, exitCode, stderr },
     );
   }
   if (!isRecord(parsed)) {
     throw new SankaMigrateError(
-      "sanka-migrate " + command + " returned a non-object JSON document",
+      "sanka " + command + " returned a non-object JSON document",
       { command, exitCode, stderr },
     );
   }
@@ -832,14 +832,14 @@ function decodeResult<TData extends Record<string, unknown>>(
       );
     }
     throw new SankaMigrateError(
-      "unsupported sanka-migrate protocol: " + String(schemaVersion),
+      "unsupported sanka protocol: " + String(schemaVersion),
       { command, exitCode, stderr },
     );
   }
   const parsedCommand = ownField(parsed, "command");
   if (parsedCommand !== command) {
     throw new SankaMigrateError(
-      "sanka-migrate returned command " +
+      "sanka returned command " +
         String(parsedCommand) +
         ", expected " +
         command,
@@ -858,13 +858,13 @@ function decodeResult<TData extends Record<string, unknown>>(
   }
   if (exitCode !== 0 && exitCode !== 1 && exitCode !== 2) {
     throw new SankaMigrateError(
-      "invalid sanka-migrate exit code " + exitCode + "; expected 0, 1, or 2",
+      "invalid sanka exit code " + exitCode + "; expected 0, 1, or 2",
       { command, exitCode, stderr },
     );
   }
   if ((outcome === "success") !== (exitCode === 0)) {
     throw new SankaMigrateError(
-      "sanka-migrate outcome " +
+      "sanka outcome " +
         outcome +
         " is inconsistent with exit code " +
         exitCode,
