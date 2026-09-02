@@ -106,12 +106,12 @@ The hosted API client and local migration runtime are separate:
 | Import | What runs | Authentication |
 |---|---|---|
 | `import Sanka from "sanka-sdk"` | Sanka's hosted HTTP API | API token |
-| `import { SankaMigrate } from "sanka-sdk/migrate"` | A local `sanka-migrate` subprocess | None |
+| `import { SankaMigrate } from "sanka-sdk/migrate"` | A local `sanka` subprocess | None |
 
-Install `sanka-migrate` separately. The Node adapter does not bundle the runtime or call the hosted API.
+Install `sanka` separately. The Node adapter does not bundle the runtime or call the hosted API.
 
 ```bash
-uv tool install sanka-migrate
+uv tool install sanka-cli
 ```
 
 Use a runtime release that includes the extension marketplace commands and
@@ -193,7 +193,7 @@ await migrate.extensions.remove("example/demo");
 await migrate.extensions.marketplaces.remove("third-party");
 ```
 
-The Node adapter does not make trust or snapshot decisions. `sanka-migrate`
+The Node adapter does not make trust or snapshot decisions. `sanka`
 owns marketplace trust checks, immutable snapshots, artifact validation,
 installed caches, and project extension locks. Adding an untrusted marketplace
 requires `trust: true`. Upgrading reads a new immutable snapshot. Removing a
@@ -203,13 +203,13 @@ marketplace fails while a project extension still depends on it.
 
 | Node.js method | Runtime command | Purpose |
 |---|---|---|
-| `scan()` | `sanka-migrate scan ... --json` | Inspect the source and write the scan artifact |
-| `plan()` | `sanka-migrate plan ... --json` | Create a reviewable plan and plan hash |
-| `apply()` | `sanka-migrate apply ... --json` | Generate only from the supplied reviewed plan hash |
-| `test()` | `sanka-migrate test ... --json` | Prepare the generated target environment and run its tests |
-| `verify()` | `sanka-migrate verify ... --json` | Verify integrity and configured behavior |
-| `extensions.list/add/remove` | `sanka-migrate extension ... --json` | Inspect, pin, or unpin project extensions |
-| `extensions.marketplaces.list/add/upgrade/remove` | `sanka-migrate extension marketplace ... --json` | Manage trusted marketplace snapshots |
+| `scan()` | `sanka scan ... --json` | Inspect the source and write the scan artifact |
+| `plan()` | `sanka plan ... --json` | Create a reviewable plan and plan hash |
+| `apply()` | `sanka apply ... --json` | Generate only from the supplied reviewed plan hash |
+| `test()` | `sanka test ... --json` | Prepare the generated target environment and run its tests |
+| `verify()` | `sanka verify ... --json` | Verify integrity and configured behavior |
+| `extensions.add/list/remove` | `sanka extension ... --json` | Manage project extension pins |
+| `extensions.marketplaces.add/list/upgrade/remove` | `sanka extension marketplace ... --json` | Manage immutable marketplace snapshots |
 
 Every subprocess receives an argument array with `shell: false` and `--json`.
 Invalid extension configuration or environment names throw before the process
