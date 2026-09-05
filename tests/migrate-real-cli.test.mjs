@@ -63,7 +63,7 @@ test(
       [
         "extension",
         "SANKA_EXTENSION_NOT_FOUND",
-        () => migrate.extensions.add("sanka/drf-to-fastapi"),
+        () => migrate.extensions.add("sanka-sdk-test/does-not-exist"),
       ],
       [
         "plan",
