@@ -1,33 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUTPUT_FILE="$REPO_DIR/openapi/openapi.json"
-
-find_source() {
-  if [[ -n "${SANKA_OPENAPI_SOURCE:-}" ]]; then
-    printf '%s\n' "$SANKA_OPENAPI_SOURCE"
-    return
-  fi
-
-  local dir="$REPO_DIR"
-  while [[ "$dir" != "/" ]]; do
-    for candidate in "$dir/sanka-sdks/openapi.json" "$dir/../sanka-sdks/openapi.json"; do
-      if [[ -f "$candidate" ]]; then
-        printf '%s\n' "$candidate"
-        return
-      fi
-    done
-    dir="$(dirname "$dir")"
-  done
-}
-
-SOURCE_FILE="$(find_source)"
-if [[ -z "$SOURCE_FILE" || ! -f "$SOURCE_FILE" ]]; then
-  echo "Could not find Sanka public OpenAPI source. Set SANKA_OPENAPI_SOURCE=/path/to/openapi.json." >&2
-  exit 1
-fi
-
-mkdir -p "$(dirname "$OUTPUT_FILE")"
-cp "$SOURCE_FILE" "$OUTPUT_FILE"
-echo "Copied $SOURCE_FILE to $OUTPUT_FILE"
+SOURCE="${SANKA_API_SPEC_SOURCE:-$REPO_DIR/../sanka-sdks/openapi.json}"
+python3 - "$SOURCE" "$REPO_DIR/openapi/openapi.json" <<'PYTHON'
+import json,sys
+from pathlib import Path
+source=Path(sys.argv[1]); target=Path(sys.argv[2])
+schema=json.loads(source.read_text())
+assert schema['openapi'].startswith('3.')
+assert schema['servers']==[{'url':'https://api.sanka.com'}]
+assert all(path.startswith('/v2/') for path in schema['paths'])
+target.parent.mkdir(parents=True,exist_ok=True)
+target.write_text(json.dumps(schema,ensure_ascii=False,indent=2)+'\n')
+print(f'Synced maintained V2 contract from {source}')
+PYTHON

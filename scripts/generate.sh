@@ -8,5 +8,5 @@ if [[ "${SYNC_OPENAPI:-1}" != "0" ]]; then
 fi
 
 cd "$REPO_DIR"
-speakeasy run -y -o console -t sanka-sdk --skip-versioning
+speakeasy run -y -o console -t sanka-sdk --skip-versioning --skip-upload-spec --skip-compile
 node "$REPO_DIR/scripts/post-generate.mjs"

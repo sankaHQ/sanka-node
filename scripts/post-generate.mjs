@@ -229,6 +229,8 @@ async function patchFile(filePath) {
 
 function patchRootReadme(content) {
   let next = content;
+  const cloudLink = "[Developer Cloud release candidate](docs/developer-cloud.md)";
+  if (!next.includes(cloudLink)) next += `\n\n${cloudLink}: bounded execution, Repair, certificates and Fleet.\n`;
   next = next.replace(
     /\n<!-- Start Local Migration \[local-migration\] -->[\s\S]*?<!-- End Local Migration \[local-migration\] -->\n*/m,
     "\n",
@@ -339,7 +341,16 @@ function patchUsageSnippet(content) {
   return next;
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+await main();
+
+// Preserve the hand-written local migration adapter across regeneration.
+const packagePath = path.join(repoDir, "package.json");
+const packageJson = JSON.parse(await fs.readFile(packagePath, "utf8"));
+packageJson.exports["./migrate"] = {
+  source: "./src/migrate.ts",
+  types: "./esm/migrate.d.ts",
+  default: "./esm/migrate.js",
+};
+packageJson.scripts.test = "npm run build && node --test tests/*.test.mjs";
+packageJson.devDependencies["@types/node"] = "^24.13.3";
+await fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2) + "\n");
