@@ -378,6 +378,27 @@ run();
 * [update](docs/sdks/deals/README.md#update) - Update Public Deal
 * [delete](docs/sdks/deals/README.md#delete) - Delete Public Deal
 
+### [DeveloperCloud](docs/sdks/developercloud/README.md)
+
+* [listFleets](docs/sdks/developercloud/README.md#listfleets) - List Fleets
+* [createFleet](docs/sdks/developercloud/README.md#createfleet) - Create Fleet
+* [getFleet](docs/sdks/developercloud/README.md#getfleet) - Get Fleet
+* [cancelFleet](docs/sdks/developercloud/README.md#cancelfleet) - Cancel Fleet
+* [retryFleet](docs/sdks/developercloud/README.md#retryfleet) - Retry Fleet
+* [getAvailability](docs/sdks/developercloud/README.md#getavailability) - Cloud Availability
+* [uploadSource](docs/sdks/developercloud/README.md#uploadsource) - Upload Cloud Source
+* [listRuns](docs/sdks/developercloud/README.md#listruns) - List Cloud Runs
+* [createRun](docs/sdks/developercloud/README.md#createrun) - Create Cloud Run
+* [listCertificateKeys](docs/sdks/developercloud/README.md#listcertificatekeys) - Cloud Certificate Keys
+* [getCertificate](docs/sdks/developercloud/README.md#getcertificate) - Cloud Certificate
+* [revokeCertificate](docs/sdks/developercloud/README.md#revokecertificate) - Revoke Cloud Certificate
+* [getRun](docs/sdks/developercloud/README.md#getrun) - Get Cloud Run
+* [cancelRun](docs/sdks/developercloud/README.md#cancelrun) - Cancel Cloud Run
+* [listEvents](docs/sdks/developercloud/README.md#listevents) - Cloud Run Events
+* [getReceipt](docs/sdks/developercloud/README.md#getreceipt) - Cloud Run Receipt
+* [listArtifacts](docs/sdks/developercloud/README.md#listartifacts) - Cloud Run Artifacts
+* [getArtifact](docs/sdks/developercloud/README.md#getartifact) - Download Cloud Artifact
+
 ### [Disbursements](docs/sdks/disbursements/README.md)
 
 * [list](docs/sdks/disbursements/README.md#list) - List Public Disbursements
@@ -845,6 +866,24 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`dealsList`](docs/sdks/deals/README.md#list) - List Public Deals
 - [`dealsListPipelines`](docs/sdks/deals/README.md#listpipelines) - List Public Deal Pipelines
 - [`dealsUpdate`](docs/sdks/deals/README.md#update) - Update Public Deal
+- [`developerCloudCancelFleet`](docs/sdks/developercloud/README.md#cancelfleet) - Cancel Fleet
+- [`developerCloudCancelRun`](docs/sdks/developercloud/README.md#cancelrun) - Cancel Cloud Run
+- [`developerCloudCreateFleet`](docs/sdks/developercloud/README.md#createfleet) - Create Fleet
+- [`developerCloudCreateRun`](docs/sdks/developercloud/README.md#createrun) - Create Cloud Run
+- [`developerCloudGetArtifact`](docs/sdks/developercloud/README.md#getartifact) - Download Cloud Artifact
+- [`developerCloudGetAvailability`](docs/sdks/developercloud/README.md#getavailability) - Cloud Availability
+- [`developerCloudGetCertificate`](docs/sdks/developercloud/README.md#getcertificate) - Cloud Certificate
+- [`developerCloudGetFleet`](docs/sdks/developercloud/README.md#getfleet) - Get Fleet
+- [`developerCloudGetReceipt`](docs/sdks/developercloud/README.md#getreceipt) - Cloud Run Receipt
+- [`developerCloudGetRun`](docs/sdks/developercloud/README.md#getrun) - Get Cloud Run
+- [`developerCloudListArtifacts`](docs/sdks/developercloud/README.md#listartifacts) - Cloud Run Artifacts
+- [`developerCloudListCertificateKeys`](docs/sdks/developercloud/README.md#listcertificatekeys) - Cloud Certificate Keys
+- [`developerCloudListEvents`](docs/sdks/developercloud/README.md#listevents) - Cloud Run Events
+- [`developerCloudListFleets`](docs/sdks/developercloud/README.md#listfleets) - List Fleets
+- [`developerCloudListRuns`](docs/sdks/developercloud/README.md#listruns) - List Cloud Runs
+- [`developerCloudRetryFleet`](docs/sdks/developercloud/README.md#retryfleet) - Retry Fleet
+- [`developerCloudRevokeCertificate`](docs/sdks/developercloud/README.md#revokecertificate) - Revoke Cloud Certificate
+- [`developerCloudUploadSource`](docs/sdks/developercloud/README.md#uploadsource) - Upload Cloud Source
 - [`disbursementsCreate`](docs/sdks/disbursements/README.md#create) - Create Public Disbursement
 - [`disbursementsCreatePublicDisbursementAllocationApiV2PublicDisbursementsDisbursementIdAllocationsPost`](docs/sdks/disbursements/README.md#createpublicdisbursementallocationapiv2publicdisbursementsdisbursementidallocationspost) - Create Public Disbursement Allocation
 - [`disbursementsDelete`](docs/sdks/disbursements/README.md#delete) - Delete Public Disbursement
@@ -1260,7 +1299,7 @@ The default server can be overridden globally by passing a URL to the `serverURL
 import { Sanka } from "sanka-sdk";
 
 const sanka = new Sanka({
-  serverURL: "https://api-v2.sanka.com/api",
+  serverURL: "https://api.sanka.com",
   bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
 });
 
@@ -1365,3 +1404,6 @@ While we value open-source contributions to this SDK, this library is generated 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
 ### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=sanka-sdk&utm_campaign=typescript)
+
+
+[Developer Cloud release candidate](docs/developer-cloud.md): bounded execution, Repair, certificates and Fleet.

@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api-v2.sanka.com/api"
+      "url": "https://api.sanka.com"
     }
   ],
   "tags": [
@@ -172,6 +172,10 @@
     },
     {
       "name": "workforce-planning"
+    },
+    {
+      "name": "developer_cloud",
+      "description": "Bounded cloud execution; check availability before submitting paid work."
     }
   ],
   "paths": {
@@ -35958,6 +35962,1466 @@
           }
         ]
       }
+    },
+    "/v2/migrate/cloud-fleets": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "List Fleets",
+        "operationId": "list_fleets",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 10,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudListFleetsApiV2MigrateCloudFleetsGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "list_fleets"
+      },
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Create Fleet",
+        "operationId": "create_fleet",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 200,
+              "title": "Idempotency-Key"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeveloperCloudFleetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCreateFleetApiV2MigrateCloudFleetsPost201Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "create_fleet"
+      }
+    },
+    "/v2/migrate/cloud-fleets/{fleet_id}": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Get Fleet",
+        "operationId": "get_fleet",
+        "parameters": [
+          {
+            "name": "fleet_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Fleet Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudGetFleetApiV2MigrateCloudFleetsFleetIdGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_fleet"
+      }
+    },
+    "/v2/migrate/cloud-fleets/{fleet_id}/cancel": {
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cancel Fleet",
+        "operationId": "cancel_fleet",
+        "parameters": [
+          {
+            "name": "fleet_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Fleet Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCancelFleetApiV2MigrateCloudFleetsFleetIdCancelPost200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "cancel_fleet"
+      }
+    },
+    "/v2/migrate/cloud-fleets/{fleet_id}/retry": {
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Retry Fleet",
+        "operationId": "retry_fleet",
+        "parameters": [
+          {
+            "name": "fleet_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Fleet Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 200,
+              "title": "Idempotency-Key"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeveloperCloudFleetRetryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudRetryFleetApiV2MigrateCloudFleetsFleetIdRetryPost201Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "retry_fleet"
+      }
+    },
+    "/v2/migrate/cloud-runs/availability": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Availability",
+        "operationId": "get_availability",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudAvailabilityApiV2MigrateCloudRunsAvailabilityGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_availability"
+      }
+    },
+    "/v2/migrate/cloud-sources": {
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Upload Cloud Source",
+        "operationId": "upload_source",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeveloperCloudSourceUploadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudUploadCloudSourceApiV2MigrateCloudSourcesPost201Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "upload_source"
+      }
+    },
+    "/v2/migrate/cloud-runs": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "List Cloud Runs",
+        "operationId": "list_runs",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudListCloudRunsApiV2MigrateCloudRunsGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "list_runs"
+      },
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Create Cloud Run",
+        "operationId": "create_run",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 200,
+              "title": "Idempotency-Key"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeveloperCloudCloudRunRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCreateCloudRunApiV2MigrateCloudRunsPost201Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "create_run"
+      }
+    },
+    "/v2/migrate/cloud-runs/certificate-keys": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Certificate Keys",
+        "operationId": "list_certificate_keys",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudCertificateKeysApiV2MigrateCloudRunsCertificateKeysGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "list_certificate_keys"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/certificate": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Certificate",
+        "operationId": "get_certificate",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudCertificateApiV2MigrateCloudRunsRunIdCertificateGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_certificate"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/certificate/revoke": {
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Revoke Cloud Certificate",
+        "operationId": "revoke_certificate",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeveloperCloudCertificateRevokeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudRevokeCloudCertificateApiV2MigrateCloudRunsRunIdCertificateRevokePost200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "revoke_certificate"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Get Cloud Run",
+        "operationId": "get_run",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudGetCloudRunApiV2MigrateCloudRunsRunIdGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_run"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/cancel": {
+      "post": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cancel Cloud Run",
+        "operationId": "cancel_run",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCancelCloudRunApiV2MigrateCloudRunsRunIdCancelPost200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:write"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "cancel_run"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/events": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Run Events",
+        "operationId": "list_events",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudRunEventsApiV2MigrateCloudRunsRunIdEventsGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "list_events"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/receipt": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Run Receipt",
+        "operationId": "get_receipt",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudRunReceiptApiV2MigrateCloudRunsRunIdReceiptGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_receipt"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/artifacts": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Cloud Run Artifacts",
+        "operationId": "list_artifacts",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudCloudRunArtifactsApiV2MigrateCloudRunsRunIdArtifactsGet200Envelope"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "list_artifacts"
+      }
+    },
+    "/v2/migrate/cloud-runs/{run_id}/artifacts/{name}": {
+      "get": {
+        "tags": [
+          "developer_cloud"
+        ],
+        "summary": "Download Cloud Artifact",
+        "operationId": "get_artifact",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": [
+                "output.zip",
+                "logs.txt",
+                "repair-response.json"
+              ],
+              "type": "string",
+              "title": "Name"
+            }
+          },
+          {
+            "name": "workspace_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XWorkspaceCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeveloperCloudDownloadCloudArtifactApiV2MigrateCloudRunsRunIdArtifactsNameGet200Envelope"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "x-ctx-id": {
+                "$ref": "#/components/headers/XCtxId"
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ErrorResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/ErrorResponse"
+          }
+        },
+        "x-sanka-api-version": "v2",
+        "x-sanka-auth": "developer_bearer",
+        "x-sanka-required-scopes": [
+          "migrate:cloud:read"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-speakeasy-group": "developerCloud",
+        "x-speakeasy-name-override": "get_artifact"
+      }
     }
   },
   "components": {
@@ -54677,6 +56141,2038 @@
           "status"
         ],
         "title": "PositionJobData"
+      },
+      "DeveloperCloudDownloadCloudArtifactApiV2MigrateCloudRunsRunIdArtifactsNameGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {},
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudRunArtifactsApiV2MigrateCloudRunsRunIdArtifactsGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudArtifactListData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudArtifactListData": {
+        "properties": {
+          "artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudCloudArtifactData"
+            },
+            "type": "array",
+            "title": "Artifacts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "artifacts"
+        ],
+        "title": "CloudArtifactListData"
+      },
+      "DeveloperCloudCloudArtifactData": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "output.zip",
+              "logs.txt",
+              "repair-response.json"
+            ],
+            "title": "DeveloperCloudCloudArtifactDataPropertiesName"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Sha256"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "title": "Size Bytes"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "sha256",
+          "size_bytes",
+          "expires_at"
+        ],
+        "title": "CloudArtifactData"
+      },
+      "DeveloperCloudCloudRunReceiptApiV2MigrateCloudRunsRunIdReceiptGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudReceiptData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudReceiptData": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Run Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Input Sha256"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Source Sha256"
+          },
+          "source_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Revision"
+          },
+          "runner_image": {
+            "type": "string",
+            "title": "Runner Image"
+          },
+          "extension_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Extension Sha256"
+          },
+          "rate_version": {
+            "type": "string",
+            "const": "developer-cloud-2026-09-07",
+            "title": "Rate Version",
+            "default": "developer-cloud-2026-09-07"
+          },
+          "worker_class": {
+            "type": "string",
+            "const": "standard-2cpu-4gib",
+            "title": "Worker Class",
+            "default": "standard-2cpu-4gib"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "developer_cloud_compute",
+              "developer_cloud_repair",
+              "developer_cloud_certificate"
+            ],
+            "title": "DeveloperCloudCloudReceiptDataPropertiesOperation",
+            "default": "developer_cloud_compute"
+          },
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudUsageAttempt"
+            },
+            "type": "array",
+            "title": "Attempts"
+          },
+          "held_credits": {
+            "type": "integer",
+            "title": "Held Credits"
+          },
+          "compute_credits": {
+            "type": "integer",
+            "title": "Compute Credits"
+          },
+          "premium_credits": {
+            "type": "integer",
+            "maximum": 2000.0,
+            "minimum": 0.0,
+            "title": "Premium Credits",
+            "default": 0
+          },
+          "released_credits": {
+            "type": "integer",
+            "title": "Released Credits"
+          },
+          "billing_currency": {
+            "type": "string",
+            "enum": [
+              "USD",
+              "JPY"
+            ],
+            "title": "DeveloperCloudCloudReceiptDataPropertiesBillingCurrency"
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "succeeded",
+              "failed",
+              "cancelled"
+            ],
+            "title": "DeveloperCloudCloudReceiptDataPropertiesOutcome"
+          },
+          "verification_scope": {
+            "type": "string",
+            "enum": [
+              "generated-tests-static-v1",
+              "independent-http-replay-v1"
+            ],
+            "title": "DeveloperCloudCloudReceiptDataPropertiesVerificationScope",
+            "default": "generated-tests-static-v1"
+          },
+          "artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudCloudArtifactData"
+            },
+            "type": "array",
+            "title": "Artifacts"
+          },
+          "settled_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Settled At"
+          },
+          "repair_evidence": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeveloperCloudRepairEvidence"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "certificate_evidence": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeveloperCloudCertificateEvidence"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "repair_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repair Model"
+          },
+          "certificate_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certificate Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "workspace_id",
+          "input_sha256",
+          "source_sha256",
+          "runner_image",
+          "extension_sha256",
+          "attempts",
+          "held_credits",
+          "compute_credits",
+          "released_credits",
+          "billing_currency",
+          "outcome",
+          "artifacts",
+          "settled_at"
+        ],
+        "title": "CloudReceiptData"
+      },
+      "DeveloperCloudCertificateEvidence": {
+        "properties": {
+          "profile": {
+            "type": "string",
+            "const": "independent-http-replay-v1",
+            "title": "Profile",
+            "default": "independent-http-replay-v1"
+          },
+          "candidate_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Candidate Sha256"
+          },
+          "plan_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Plan Sha256"
+          },
+          "dependency_lock_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Dependency Lock Sha256"
+          },
+          "generated_tests": {
+            "type": "integer",
+            "maximum": 10000.0,
+            "minimum": 1.0,
+            "title": "Generated Tests"
+          },
+          "generated_checks_passed": {
+            "type": "boolean",
+            "title": "Generated Checks Passed"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudScenarioEvidence"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "minItems": 1,
+            "title": "Scenarios"
+          },
+          "declared_routes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Declared Routes"
+          },
+          "tested_routes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "minItems": 1,
+            "title": "Tested Routes"
+          },
+          "untested_routes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 500,
+            "title": "Untested Routes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidate_sha256",
+          "plan_sha256",
+          "dependency_lock_sha256",
+          "generated_tests",
+          "generated_checks_passed",
+          "scenarios",
+          "declared_routes",
+          "tested_routes",
+          "untested_routes"
+        ],
+        "title": "CertificateEvidence"
+      },
+      "DeveloperCloudScenarioEvidence": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 64,
+            "title": "Id"
+          },
+          "request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Request Sha256"
+          },
+          "route_key": {
+            "type": "string",
+            "maxLength": 1100,
+            "minLength": 1,
+            "pattern": "^(?:GET|POST|PUT|PATCH|DELETE) /[\\x21-\\x7e]{0,1000}$",
+            "title": "Route Key"
+          },
+          "source": {
+            "$ref": "#/components/schemas/DeveloperCloudHttpObservation"
+          },
+          "candidate": {
+            "$ref": "#/components/schemas/DeveloperCloudHttpObservation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "request_sha256",
+          "route_key",
+          "source",
+          "candidate"
+        ],
+        "title": "ScenarioEvidence"
+      },
+      "DeveloperCloudHttpObservation": {
+        "properties": {
+          "status": {
+            "type": "integer",
+            "maximum": 599.0,
+            "minimum": 100.0,
+            "title": "Status"
+          },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Body Sha256"
+          },
+          "body_format": {
+            "type": "string",
+            "enum": [
+              "json",
+              "bytes"
+            ],
+            "title": "DeveloperCloudHttpObservationPropertiesBodyFormat"
+          },
+          "content_type": {
+            "type": "string",
+            "maxLength": 200,
+            "title": "Content Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "body_sha256",
+          "body_format",
+          "content_type"
+        ],
+        "title": "HttpObservation"
+      },
+      "DeveloperCloudRepairEvidence": {
+        "properties": {
+          "candidate_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Candidate Sha256"
+          },
+          "patch_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Patch Sha256"
+          },
+          "target_gate": {
+            "type": "string",
+            "enum": [
+              "test",
+              "verify"
+            ],
+            "title": "DeveloperCloudRepairEvidencePropertiesTargetGate"
+          },
+          "before_passed": {
+            "type": "boolean",
+            "title": "Before Passed"
+          },
+          "after_passed": {
+            "type": "boolean",
+            "title": "After Passed"
+          },
+          "regression_passed": {
+            "type": "boolean",
+            "title": "Regression Passed"
+          },
+          "regression_tests": {
+            "type": "integer",
+            "maximum": 10000.0,
+            "minimum": 0.0,
+            "title": "Regression Tests"
+          },
+          "checks_unchanged": {
+            "type": "boolean",
+            "title": "Checks Unchanged"
+          },
+          "edit_scope_respected": {
+            "type": "boolean",
+            "title": "Edit Scope Respected"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidate_sha256",
+          "patch_sha256",
+          "target_gate",
+          "before_passed",
+          "after_passed",
+          "regression_passed",
+          "regression_tests",
+          "checks_unchanged",
+          "edit_scope_respected"
+        ],
+        "title": "RepairEvidence"
+      },
+      "DeveloperCloudUsageAttempt": {
+        "properties": {
+          "attempt_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Attempt Id"
+          },
+          "active_ms": {
+            "type": "integer",
+            "maximum": 3600000.0,
+            "minimum": 0.0,
+            "title": "Active Ms"
+          },
+          "trusted": {
+            "type": "boolean",
+            "title": "Trusted",
+            "default": true
+          },
+          "infrastructure_failure": {
+            "type": "boolean",
+            "title": "Infrastructure Failure",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "attempt_id",
+          "active_ms"
+        ],
+        "title": "UsageAttempt"
+      },
+      "DeveloperCloudCloudRunEventsApiV2MigrateCloudRunsRunIdEventsGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudEventListData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudEventListData": {
+        "properties": {
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudCloudEventData"
+            },
+            "type": "array",
+            "title": "Events"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "events"
+        ],
+        "title": "CloudEventListData"
+      },
+      "DeveloperCloudCloudEventData": {
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "title": "Sequence"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sequence",
+          "kind",
+          "message",
+          "created_at"
+        ],
+        "title": "CloudEventData"
+      },
+      "DeveloperCloudCancelCloudRunApiV2MigrateCloudRunsRunIdCancelPost200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudRunData": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "request": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunRequest"
+          },
+          "billing_currency": {
+            "type": "string",
+            "enum": [
+              "USD",
+              "JPY"
+            ],
+            "title": "DeveloperCloudCloudRunDataPropertiesBillingCurrency"
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Input Sha256"
+          },
+          "source_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Revision"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "cancelling",
+              "succeeded",
+              "failed",
+              "cancelled"
+            ],
+            "title": "DeveloperCloudCloudRunDataPropertiesStatus"
+          },
+          "worker_class": {
+            "type": "string",
+            "const": "standard-2cpu-4gib",
+            "title": "Worker Class",
+            "default": "standard-2cpu-4gib"
+          },
+          "rate_version": {
+            "type": "string",
+            "const": "developer-cloud-2026-09-07",
+            "title": "Rate Version",
+            "default": "developer-cloud-2026-09-07"
+          },
+          "runner_image": {
+            "type": "string",
+            "title": "Runner Image"
+          },
+          "extension_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Extension Sha256"
+          },
+          "execution_budget_ms": {
+            "type": "integer",
+            "title": "Execution Budget Ms"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "failure_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Failure Code"
+          },
+          "repair_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repair Model"
+          },
+          "fleet_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fleet Id"
+          },
+          "fleet_item_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fleet Item Key"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "workspace_id",
+          "request",
+          "billing_currency",
+          "input_sha256",
+          "status",
+          "runner_image",
+          "extension_sha256",
+          "execution_budget_ms",
+          "created_at"
+        ],
+        "title": "CloudRunData"
+      },
+      "DeveloperCloudCloudRunRequest": {
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Source Id"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Source Sha256"
+          },
+          "max_credits": {
+            "type": "integer",
+            "maximum": 8000.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Max Credits"
+          },
+          "timeout_seconds": {
+            "type": "integer",
+            "maximum": 3600.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Timeout Seconds",
+            "default": 3600
+          },
+          "recipe": {
+            "type": "string",
+            "const": "drf-to-fastapi",
+            "title": "Recipe",
+            "default": "drf-to-fastapi"
+          },
+          "verification_profile": {
+            "type": "string",
+            "enum": [
+              "generated-tests-static-v1",
+              "independent-http-replay-v1"
+            ],
+            "title": "DeveloperCloudCloudRunRequestPropertiesVerificationProfile",
+            "default": "generated-tests-static-v1"
+          },
+          "settings_module": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "pattern": "^[A-Za-z_]\\w*(?:\\.[A-Za-z_]\\w*)*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Settings Module"
+          },
+          "rerun_of": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rerun Of"
+          },
+          "repair": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeveloperCloudRepairSpec"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "certification": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeveloperCloudCertificationSpec"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_sha256",
+          "max_credits"
+        ],
+        "title": "CloudRunRequest"
+      },
+      "DeveloperCloudCertificationSpec": {
+        "properties": {
+          "parent_run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Parent Run Id"
+          },
+          "candidate_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Candidate Sha256"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudHttpScenario"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "minItems": 1,
+            "title": "Scenarios"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "parent_run_id",
+          "candidate_sha256",
+          "scenarios"
+        ],
+        "title": "CertificationSpec"
+      },
+      "DeveloperCloudHttpScenario": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "title": "Id"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ],
+            "title": "DeveloperCloudHttpScenarioPropertiesMethod"
+          },
+          "path": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 1,
+            "title": "Path"
+          },
+          "json_body": {
+            "$ref": "#/components/schemas/DeveloperCloudJsonValue"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "method",
+          "path"
+        ],
+        "title": "HttpScenario"
+      },
+      "DeveloperCloudJsonValue": {},
+      "DeveloperCloudRepairSpec": {
+        "properties": {
+          "parent_run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Parent Run Id"
+          },
+          "candidate_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Candidate Sha256"
+          },
+          "target_gate": {
+            "type": "string",
+            "enum": [
+              "test",
+              "verify"
+            ],
+            "title": "DeveloperCloudRepairSpecPropertiesTargetGate"
+          },
+          "allowed_paths": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Allowed Paths"
+          },
+          "model_policy": {
+            "type": "string",
+            "const": "bounded-patch-v1",
+            "title": "Model Policy",
+            "default": "bounded-patch-v1"
+          },
+          "max_attempts": {
+            "type": "integer",
+            "const": 1,
+            "title": "Max Attempts",
+            "default": 1
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "parent_run_id",
+          "candidate_sha256",
+          "target_gate",
+          "allowed_paths"
+        ],
+        "title": "RepairSpec"
+      },
+      "DeveloperCloudGetCloudRunApiV2MigrateCloudRunsRunIdGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudRevokeCloudCertificateApiV2MigrateCloudRunsRunIdCertificateRevokePost200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCertificateData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCertificateData": {
+        "properties": {
+          "certificate": {
+            "$ref": "#/components/schemas/DeveloperCloudSignedCertificate"
+          },
+          "revoked_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revoked At"
+          },
+          "revocation_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revocation Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "certificate"
+        ],
+        "title": "CertificateData"
+      },
+      "DeveloperCloudSignedCertificate": {
+        "properties": {
+          "algorithm": {
+            "type": "string",
+            "const": "Ed25519",
+            "title": "Algorithm",
+            "default": "Ed25519"
+          },
+          "encoding": {
+            "type": "string",
+            "const": "sorted-ascii-json-v1",
+            "title": "Encoding",
+            "default": "sorted-ascii-json-v1"
+          },
+          "key_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "title": "Key Id"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/DeveloperCloudCertificatePayload"
+          },
+          "signature_base64": {
+            "type": "string",
+            "maxLength": 88,
+            "minLength": 88,
+            "title": "Signature Base64"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key_id",
+          "payload",
+          "signature_base64"
+        ],
+        "title": "SignedCertificate"
+      },
+      "DeveloperCloudCertificatePayload": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "developer-certificate-v1",
+            "title": "Schema Version",
+            "default": "developer-certificate-v1"
+          },
+          "issuer": {
+            "type": "string",
+            "const": "https://api-v2.sanka.com",
+            "title": "Issuer",
+            "default": "https://api-v2.sanka.com"
+          },
+          "certificate_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Certificate Id"
+          },
+          "run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Run Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "parent_run_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Parent Run Id"
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Input Sha256"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Source Sha256"
+          },
+          "source_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Revision"
+          },
+          "runner_image": {
+            "type": "string",
+            "title": "Runner Image"
+          },
+          "extension_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Extension Sha256"
+          },
+          "issued_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Issued At"
+          },
+          "evidence": {
+            "$ref": "#/components/schemas/DeveloperCloudCertificateEvidence"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "certificate_id",
+          "run_id",
+          "workspace_id",
+          "parent_run_id",
+          "input_sha256",
+          "source_sha256",
+          "runner_image",
+          "extension_sha256",
+          "issued_at",
+          "evidence",
+          "limitations"
+        ],
+        "title": "CertificatePayload"
+      },
+      "DeveloperCloudCertificateRevokeRequest": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "title": "CertificateRevokeRequest"
+      },
+      "DeveloperCloudCloudCertificateApiV2MigrateCloudRunsRunIdCertificateGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCertificateData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudCertificateKeysApiV2MigrateCloudRunsCertificateKeysGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCertificateKeysData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCertificateKeysData": {
+        "properties": {
+          "issuer": {
+            "type": "string",
+            "const": "https://api-v2.sanka.com",
+            "title": "Issuer",
+            "default": "https://api-v2.sanka.com"
+          },
+          "keys": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudCertificatePublicKey"
+            },
+            "type": "array",
+            "title": "Keys"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "keys"
+        ],
+        "title": "CertificateKeysData"
+      },
+      "DeveloperCloudCertificatePublicKey": {
+        "properties": {
+          "key_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "title": "Key Id"
+          },
+          "algorithm": {
+            "type": "string",
+            "const": "Ed25519",
+            "title": "Algorithm",
+            "default": "Ed25519"
+          },
+          "public_key_base64": {
+            "type": "string",
+            "title": "Public Key Base64"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key_id",
+          "public_key_base64"
+        ],
+        "title": "CertificatePublicKey"
+      },
+      "DeveloperCloudCreateCloudRunApiV2MigrateCloudRunsPost201Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudListCloudRunsApiV2MigrateCloudRunsGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunListData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudRunListData": {
+        "properties": {
+          "runs": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudCloudRunData"
+            },
+            "type": "array",
+            "title": "Runs"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "runs"
+        ],
+        "title": "CloudRunListData"
+      },
+      "DeveloperCloudUploadCloudSourceApiV2MigrateCloudSourcesPost201Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudSourceData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudSourceData": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Sha256"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "title": "Size Bytes"
+          },
+          "expanded_bytes": {
+            "type": "integer",
+            "title": "Expanded Bytes"
+          },
+          "file_count": {
+            "type": "integer",
+            "title": "File Count"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "sha256",
+          "size_bytes",
+          "expanded_bytes",
+          "file_count",
+          "expires_at"
+        ],
+        "title": "CloudSourceData"
+      },
+      "DeveloperCloudSourceUploadRequest": {
+        "properties": {
+          "archive_base64": {
+            "type": "string",
+            "maxLength": 11184812,
+            "minLength": 1,
+            "title": "Archive Base64"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Sha256"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "archive_base64",
+          "sha256"
+        ],
+        "title": "SourceUploadRequest"
+      },
+      "DeveloperCloudCloudAvailabilityApiV2MigrateCloudRunsAvailabilityGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudAvailabilityData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCloudAvailabilityData": {
+        "properties": {
+          "fleet_enabled": {
+            "type": "boolean",
+            "title": "Fleet Enabled",
+            "default": false
+          },
+          "certification_enabled": {
+            "type": "boolean",
+            "title": "Certification Enabled",
+            "default": false
+          },
+          "certificate_premium_credits": {
+            "type": "integer",
+            "const": 2000,
+            "title": "Certificate Premium Credits",
+            "default": 2000
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "worker_class": {
+            "type": "string",
+            "title": "Worker Class",
+            "default": "standard-2cpu-4gib"
+          },
+          "credits_per_worker_minute": {
+            "type": "integer",
+            "const": 100,
+            "title": "Credits Per Worker Minute",
+            "default": 100
+          },
+          "max_timeout_seconds": {
+            "type": "integer",
+            "const": 3600,
+            "title": "Max Timeout Seconds",
+            "default": 3600
+          },
+          "max_source_bytes": {
+            "type": "integer",
+            "title": "Max Source Bytes",
+            "default": 8388608
+          },
+          "verification_scope": {
+            "type": "string",
+            "title": "Verification Scope",
+            "default": "generated-tests-static-v1"
+          },
+          "repair_enabled": {
+            "type": "boolean",
+            "title": "Repair Enabled",
+            "default": false
+          },
+          "repair_premium_credits": {
+            "type": "integer",
+            "const": 1000,
+            "title": "Repair Premium Credits",
+            "default": 1000
+          },
+          "repair_model_policy": {
+            "type": "string",
+            "const": "bounded-patch-v1",
+            "title": "Repair Model Policy",
+            "default": "bounded-patch-v1"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "title": "CloudAvailabilityData"
+      },
+      "DeveloperCloudRetryFleetApiV2MigrateCloudFleetsFleetIdRetryPost201Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudFleetData": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "workspace_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Workspace Id"
+          },
+          "request": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetRequest"
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Input Sha256"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "cancelling",
+              "succeeded",
+              "partial",
+              "failed",
+              "cancelled"
+            ],
+            "title": "DeveloperCloudFleetDataPropertiesStatus"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Expires At"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "cancel_requested_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cancel Requested At"
+          },
+          "retry_of": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retry Of"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudFleetItemData"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "held_credits": {
+            "type": "integer",
+            "title": "Held Credits"
+          },
+          "compute_credits": {
+            "type": "integer",
+            "title": "Compute Credits"
+          },
+          "premium_credits": {
+            "type": "integer",
+            "title": "Premium Credits"
+          },
+          "released_credits": {
+            "type": "integer",
+            "title": "Released Credits"
+          },
+          "outstanding_credits": {
+            "type": "integer",
+            "title": "Outstanding Credits"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "workspace_id",
+          "request",
+          "input_sha256",
+          "status",
+          "created_at",
+          "expires_at",
+          "items",
+          "held_credits",
+          "compute_credits",
+          "premium_credits",
+          "released_credits",
+          "outstanding_credits"
+        ],
+        "title": "FleetData"
+      },
+      "DeveloperCloudFleetItemData": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "title": "Key"
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository"
+          },
+          "revision": {
+            "type": "string",
+            "title": "Revision"
+          },
+          "waiting_for_capacity": {
+            "type": "boolean",
+            "title": "Waiting For Capacity"
+          },
+          "run": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunData"
+          },
+          "receipt": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeveloperCloudCloudReceiptData"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "retried_run_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Retried Run Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "repository",
+          "revision",
+          "waiting_for_capacity",
+          "run"
+        ],
+        "title": "FleetItemData"
+      },
+      "DeveloperCloudFleetRequest": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudFleetItemRequest"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Items"
+          },
+          "max_credits": {
+            "type": "integer",
+            "maximum": 160000.0,
+            "minimum": 1.0,
+            "title": "Max Credits"
+          },
+          "concurrency": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Concurrency"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "max_credits",
+          "concurrency"
+        ],
+        "title": "FleetRequest"
+      },
+      "DeveloperCloudFleetItemRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$",
+            "title": "Key"
+          },
+          "repository": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$",
+            "title": "Repository"
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$",
+            "title": "Revision"
+          },
+          "request": {
+            "$ref": "#/components/schemas/DeveloperCloudCloudRunRequest"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "repository",
+          "revision",
+          "request"
+        ],
+        "title": "FleetItemRequest"
+      },
+      "DeveloperCloudFleetRetryRequest": {
+        "properties": {
+          "item_keys": {
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+            },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Item Keys"
+          },
+          "max_credits": {
+            "type": "integer",
+            "maximum": 160000.0,
+            "minimum": 1.0,
+            "title": "Max Credits"
+          },
+          "concurrency": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Concurrency"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "item_keys",
+          "max_credits",
+          "concurrency"
+        ],
+        "title": "FleetRetryRequest"
+      },
+      "DeveloperCloudCancelFleetApiV2MigrateCloudFleetsFleetIdCancelPost200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudGetFleetApiV2MigrateCloudFleetsFleetIdGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudCreateFleetApiV2MigrateCloudFleetsPost201Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudListFleetsApiV2MigrateCloudFleetsGet200Envelope": {
+        "type": "object",
+        "required": [
+          "success",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeveloperCloudFleetListData"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/EnvelopeMeta"
+          }
+        }
+      },
+      "DeveloperCloudFleetListData": {
+        "properties": {
+          "fleets": {
+            "items": {
+              "$ref": "#/components/schemas/DeveloperCloudFleetData"
+            },
+            "type": "array",
+            "title": "Fleets"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fleets"
+        ],
+        "title": "FleetListData"
       }
     },
     "securitySchemes": {

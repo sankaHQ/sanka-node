@@ -15,6 +15,7 @@ import { Companies } from "./companies.js";
 import { Contacts } from "./contacts.js";
 import { CustomObjects } from "./custom-objects.js";
 import { Deals } from "./deals.js";
+import { DeveloperCloud } from "./developer-cloud.js";
 import { Disbursements } from "./disbursements.js";
 import { Employees } from "./employees.js";
 import { Estimates } from "./estimates.js";
@@ -335,5 +336,10 @@ export class Sanka extends ClientSDK {
   private _workforcePlanning?: WorkforcePlanning;
   get workforcePlanning(): WorkforcePlanning {
     return (this._workforcePlanning ??= new WorkforcePlanning(this._options));
+  }
+
+  private _developerCloud?: DeveloperCloud;
+  get developerCloud(): DeveloperCloud {
+    return (this._developerCloud ??= new DeveloperCloud(this._options));
   }
 }

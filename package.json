@@ -1,6 +1,6 @@
 {
   "name": "sanka-sdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "Sanka",
   "bugs": {
     "url": "https://github.com/sankaHQ/sanka-node/issues"
@@ -26,8 +26,8 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+https://github.com/sankaHQ/sanka-node.git",
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/sankaHQ/sanka-node.git"
   },
   "type": "module",
   "main": "./esm/index.js",
@@ -58,11 +58,6 @@
       "types": "./esm/models/operations/index.d.ts",
       "default": "./esm/models/operations/index.js"
     },
-    "./migrate": {
-      "source": "./src/migrate.ts",
-      "types": "./esm/migrate.d.ts",
-      "default": "./esm/migrate.js"
-    },
     "./*.js": {
       "source": "./src/*.ts",
       "types": "./esm/*.d.ts",
@@ -72,25 +67,28 @@
       "source": "./src/*.ts",
       "types": "./esm/*.d.ts",
       "default": "./esm/*.js"
+    },
+    "./migrate": {
+      "source": "./src/migrate.ts",
+      "types": "./esm/migrate.d.ts",
+      "default": "./esm/migrate.js"
     }
   },
   "sideEffects": false,
   "scripts": {
-    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
+    "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",
-    "test": "npm run build && node --test tests/*.test.mjs",
     "prepublishOnly": "npm run build",
     "generate": "./scripts/generate.sh",
-    "sync:openapi": "./scripts/sync-openapi.sh"
+    "sync:openapi": "./scripts/sync-openapi.sh",
+    "test": "npm run build && node --test tests/*.test.mjs"
   },
-  "peerDependencies": {
-    
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "@types/node": "^24.13.3",
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
     "oxlint": "^1.60.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "@types/node": "^24.13.3"
   },
   "dependencies": {
     "zod": "^3.25.65 || ^4.0.0"

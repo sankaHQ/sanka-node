@@ -713,7 +713,7 @@ function snapshotJsonValue(
       if (!Number.isInteger(length) || length < 0 || keys.length !== length + 1) {
         throw invalidJsonValue();
       }
-      const items: JsonValue[] = new Array(length);
+      const items: JsonValue[] = [];
       for (let index = 0; index < length; index += 1) {
         const descriptor = Object.getOwnPropertyDescriptor(
           descriptors,
