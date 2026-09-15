@@ -34,6 +34,7 @@ export * from "./claim-provider-action-api-v2-lookout-ad-actions-action-id-claim
 export * from "./claim-provider-action-api-v2-lookout-provider-actions-action-id-claim-post.js";
 export * from "./complete-provider-action-api-v2-lookout-ad-actions-action-id-complete-post.js";
 export * from "./complete-provider-action-api-v2-lookout-provider-actions-action-id-complete-post.js";
+export * from "./construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post.js";
 export * from "./create-approval-request-api-v2-public-approval-requests-post.js";
 export * from "./create-fleet.js";
 export * from "./create-public-absence-api-v2-public-absences-post.js";
@@ -176,6 +177,7 @@ export * from "./get-public-transfer-history-api-v2-public-transfers-history-id-
 export * from "./get-public-view-api-v2-public-views-view-id-get.js";
 export * from "./get-public-view-columns-api-v2-public-views-view-id-columns-get.js";
 export * from "./get-public-workflow-api-v2-public-workflows-workflow-id-get.js";
+export * from "./get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get.js";
 export * from "./get-public-workflow-run-api-v2-public-workflow-runs-run-id-get.js";
 export * from "./get-public-workflow-run-nested-compat-api-v2-public-workflows-runs-run-id-get.js";
 export * from "./get-public-workforce-organization.js";
@@ -251,6 +253,7 @@ export * from "./list-runs.js";
 export * from "./mark-public-incentive-batch-paid-api-v2-public-incentives-batches-batch-id-mark-paid-post.js";
 export * from "./mutate-public-object-schema-api-v2-public-object-schemas-post.js";
 export * from "./permanent-delete-public-invoice-api-v2-public-invoices-invoice-id-permanent-delete-delete.js";
+export * from "./plan-public-workflow-template-api-v2-public-workflows-templates-plan-post.js";
 export * from "./preview-public-freee-invoice-export-api-v2-public-invoices-exports-freee-preview-post.js";
 export * from "./preview-public-hubspot-commission-incentive-api-v2-public-incentives-commission-hubspot-preview-post.js";
 export * from "./preview-public-hubspot-estimate-draft-api-v2-public-estimates-drafts-hubspot-preview-post.js";
@@ -339,4 +342,5 @@ export * from "./upsert-public-approval-rule-api-v2-public-approval-rules-post.j
 export * from "./upsert-public-delivery-rule-api-v2-public-delivery-rules-post.js";
 export * from "./upsert-public-lock-rule-api-v2-public-lock-rules-post.js";
 export * from "./upsert-public-payroll-profile-api-v2-public-payroll-profiles-post.js";
+export * from "./use-public-workflow-template-api-v2-public-workflows-templates-use-post.js";
 export * from "./writeback-public-salesforce-quote-readiness-api-v2-public-cpq-quote-readiness-salesforce-writeback-post.js";

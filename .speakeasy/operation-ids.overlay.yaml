@@ -975,3 +975,15 @@ actions:
     after: sdk.journals.archive()
     before: sdk.Journals.archive_public_journal()
     type: method-name
+- target: $["paths"]["/v2/public/workflows/templates/plan"]["post"]
+  update:
+    x-speakeasy-name-override: planTemplate
+- target: $["paths"]["/v2/public/workflows/templates/use"]["post"]
+  update:
+    x-speakeasy-name-override: useTemplate
+- target: $["paths"]["/v2/public/workflows/{workflow_id}/flow"]["get"]
+  update:
+    x-speakeasy-name-override: getFlow
+- target: $["paths"]["/v2/public/workflows/{workflow_id}/flow/construct"]["post"]
+  update:
+    x-speakeasy-name-override: constructFlow

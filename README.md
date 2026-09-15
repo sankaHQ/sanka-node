@@ -778,6 +778,10 @@ run();
 * [updatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
 * [deletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete](docs/sdks/workflows/README.md#deletepublicworkflowapiv2publicworkflowsworkflowiddelete) - Delete Public Workflow
 * [runByRef](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
+* [planTemplate](docs/sdks/workflows/README.md#plantemplate) - Plan Public Workflow Template
+* [useTemplate](docs/sdks/workflows/README.md#usetemplate) - Use Public Workflow Template
+* [getFlow](docs/sdks/workflows/README.md#getflow) - Get Public Workflow Flow
+* [constructFlow](docs/sdks/workflows/README.md#constructflow) - Construct Public Workflow Flow
 
 ### [WorkforcePlanning](docs/sdks/workforceplanning/README.md)
 
@@ -1129,12 +1133,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`workflowRunsStartPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost`](docs/sdks/workflowruns/README.md#startpublicworkflowcompatapiv2publicworkflowrunsstartpost) - Start Public Workflow Compat
 - [`workflowRunsSummarizePublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceSummaryPost`](docs/sdks/workflowruns/README.md#summarizepublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcesummarypost) - Summarize Public Salesforce Quote Readiness
 - [`workflowRunsWritebackPublicSalesforceQuoteReadinessApiV2PublicCpqQuoteReadinessSalesforceWritebackPost`](docs/sdks/workflowruns/README.md#writebackpublicsalesforcequotereadinessapiv2publiccpqquotereadinesssalesforcewritebackpost) - Writeback Public Salesforce Quote Readiness
+- [`workflowsConstructFlow`](docs/sdks/workflows/README.md#constructflow) - Construct Public Workflow Flow
 - [`workflowsCreateOrUpdate`](docs/sdks/workflows/README.md#createorupdate) - Create Public Workflow
 - [`workflowsDeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete`](docs/sdks/workflows/README.md#deletepublicworkflowapiv2publicworkflowsworkflowiddelete) - Delete Public Workflow
 - [`workflowsGet`](docs/sdks/workflows/README.md#get) - Get Public Workflow
+- [`workflowsGetFlow`](docs/sdks/workflows/README.md#getflow) - Get Public Workflow Flow
 - [`workflowsList`](docs/sdks/workflows/README.md#list) - List Public Workflows
+- [`workflowsPlanTemplate`](docs/sdks/workflows/README.md#plantemplate) - Plan Public Workflow Template
 - [`workflowsRunByRef`](docs/sdks/workflows/README.md#runbyref) - Run Public Workflow
 - [`workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch`](docs/sdks/workflows/README.md#updatepublicworkflowapiv2publicworkflowsworkflowidpatch) - Update Public Workflow
+- [`workflowsUseTemplate`](docs/sdks/workflows/README.md#usetemplate) - Use Public Workflow Template
 - [`workforcePlanningCreatePublicWorkforcePosition`](docs/sdks/workforceplanning/README.md#createpublicworkforceposition) - Create Public Workforce Position
 - [`workforcePlanningGetPublicWorkforceOrganization`](docs/sdks/workforceplanning/README.md#getpublicworkforceorganization) - Get Public Workforce Organization
 - [`workforcePlanningSetPublicWorkforcePositionJob`](docs/sdks/workforceplanning/README.md#setpublicworkforcepositionjob) - Set Public Workforce Position Job
