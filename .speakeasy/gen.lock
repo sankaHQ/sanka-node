@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 171da541-da80-4bd4-bbe2-f14bf09377bb
 management:
-  docChecksum: ef24a778b83a8f6a70910b96d2030447
+  docChecksum: bf691fc0ff189884ec9224086d29f84d
   docVersion: 0.1.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
   releaseVersion: 0.1.7
   configChecksum: 4ea50ebd886b32ace69f10ad23c494e1
 persistentEdits:
-  generation_id: 6e667fe1-04ba-4a9e-b39c-be2b26b12889
-  pristine_commit_hash: 9030081500c0f9a43fd0b722efd750f908cc56de
-  pristine_tree_hash: 07c7fba7a4cb11a2522072b6285e85ef316d7579
+  generation_id: 17ed7985-6957-4625-8d0e-bab97ff83575
+  pristine_commit_hash: 9f6a4819ccd56aa1fd260390919b61acfd2a9aa7
+  pristine_tree_hash: c87b119209595e3230e4507f0f2c376837f8d779
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -117,6 +117,10 @@ trackedFiles:
     id: f56656579850
     last_write_checksum: sha1:cf90bb74e2b4105da256c79296a7187d31de3def
     pristine_git_object: fb2a35213207cbd8cc297dec6af308b9865b0784
+  docs/models/after.md:
+    id: 1b974440f874
+    last_write_checksum: sha1:f9ddf27bb00790f311c27598e038af82c68b7cca
+    pristine_git_object: 22374e2b15f4e7c47007fe638de6995c993423c2
   docs/models/aggregate-public-records-api-v2-public-records-aggregate-post200-envelope.md:
     id: d4cc44d67825
     last_write_checksum: sha1:a566aa47c7cb3e9842248721de434a03dcb0d054
@@ -193,6 +197,10 @@ trackedFiles:
   : id: e32b1749c413
     last_write_checksum: sha1:dde0e002c7edd64aaa13aad45717eb2389b7f5c3
     pristine_git_object: 4455e6b8d366af211b5c3e9c96a4d75f23568f74
+  docs/models/before.md:
+    id: 24aa41215c5a
+    last_write_checksum: sha1:a532ef2ba7924a920635ca8bcbd973ffc9a220ab
+    pristine_git_object: 6cfae5c5e0549f359ac3c0bfbc5d9d9131ccaa88
   docs/models/billingcurrency.md:
     id: c9d9df2e5358
     last_write_checksum: sha1:2f21564313c2c14d88295158614dab57c140dfa6
@@ -301,6 +309,10 @@ trackedFiles:
     id: e07a510c02cf
     last_write_checksum: sha1:af5e0cad6235d0f42c52ec9f724b648363809443
     pristine_git_object: 23f56e199e2cc6834b5f5833f0caf5e488bf652c
+  docs/models/construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post200-envelope.md:
+    id: a8f5fc7ccff4
+    last_write_checksum: sha1:3a14a8f9c7294a49d0348186c611e4c15487a1fc
+    pristine_git_object: 5c737baeabc7470c82028bbd5c71576a0613d03a
   docs/models/create-approval-request-api-v2-public-approval-requests-post200-envelope.md:
     id: 47a5fec5f27e
     last_write_checksum: sha1:8c9f3a5505af323f8fd3736a95348d4c0406159f
@@ -1273,6 +1285,10 @@ trackedFiles:
     id: 760404a1ce2b
     last_write_checksum: sha1:8daf82caec9a0b69332934287ef20a2fe6a5ecb9
     pristine_git_object: 27d54ff7041a8284c643554f1d0e201671df5324
+  docs/models/get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get200-envelope.md:
+    id: 0a2e5bb4053b
+    last_write_checksum: sha1:66d87dcb8a5d41042a96a563e259f12be7fa0abf
+    pristine_git_object: 4db8c40e5c368d2fca503a6763246c06cc89ee6f
   docs/models/get-public-workflow-run-api-v2-public-workflow-runs-run-id-get200-envelope.md:
     id: 20d936780cdc
     last_write_checksum: sha1:fff0592bd721bd4da65863cd1ad35b767cf79b02
@@ -2001,6 +2017,14 @@ trackedFiles:
     id: ba116052851c
     last_write_checksum: sha1:54b13246b15d217c117218848c05904dfe57d843
     pristine_git_object: 0b81c35b9a799871b9ae7706bd27b697d589848e
+  docs/models/operations/construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post-request.md:
+    id: f802a43471b6
+    last_write_checksum: sha1:07b0516d7ff341b46c762fdef1ab356958ff62da
+    pristine_git_object: 7112600ccb2269e52249dbf049e48ca0a591bd28
+  docs/models/operations/construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post-response.md:
+    id: b4072f93ee17
+    last_write_checksum: sha1:329745b612b90ea3e33c868b83d61a50d39dd546
+    pristine_git_object: 9c5d33007be891e660ae8924a5c9448c56c38705
   docs/models/operations/create-approval-request-api-v2-public-approval-requests-post-request.md:
     id: c5dde13e99b3
     last_write_checksum: sha1:951c3b828050e68e653a6141ed5deb4d5dabf0ef
@@ -3141,6 +3165,14 @@ trackedFiles:
     id: 0b53dd01c63a
     last_write_checksum: sha1:cb85394437ed551234676615a57323fe9a681259
     pristine_git_object: e0fd00a3520e3c8a8b34cde6025849c690a73e73
+  docs/models/operations/get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get-request.md:
+    id: a18c9e50a91c
+    last_write_checksum: sha1:f548afdfd7cd4ecbc542b257a3a447edc56b7b1c
+    pristine_git_object: 16709bae6780cbdac7262ce837670b45fe0ee687
+  docs/models/operations/get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get-response.md:
+    id: f765de9191f6
+    last_write_checksum: sha1:0bbfdba6b835ee03c100a2597569ac52027163d8
+    pristine_git_object: d2405432fc8ba3ed23a15837f4abd82426cb0972
   docs/models/operations/get-public-workflow-run-api-v2-public-workflow-runs-run-id-get-request.md:
     id: 82a418349544
     last_write_checksum: sha1:90e823f36e1ca7429198fa2318a967a8d5d0a18e
@@ -3745,6 +3777,14 @@ trackedFiles:
     id: d4764fd84d4b
     last_write_checksum: sha1:6b10eacf6840ab1693203a03f1e6619d16154f62
     pristine_git_object: 73a1321bba1c877741ecd6c983de1ed8d9acd31e
+  docs/models/operations/plan-public-workflow-template-api-v2-public-workflows-templates-plan-post-request.md:
+    id: 69abfa1a15b0
+    last_write_checksum: sha1:f8821a35bc5532a5360074fb65b06b756091ce1c
+    pristine_git_object: 4d9f7a9de4531b86dd11cdcdfd181e5e65eacb25
+  docs/models/operations/plan-public-workflow-template-api-v2-public-workflows-templates-plan-post-response.md:
+    id: a89c73743f28
+    last_write_checksum: sha1:08c343d8301a971b5dd8d1f5207524c75df7da0f
+    pristine_git_object: c262422c9dc17282ea31734551214b6b773dcfef
   docs/models/operations/preview-public-freee-invoice-export-api-v2-public-invoices-exports-freee-preview-post-request.md:
     id: f15a9704c033
     last_write_checksum: sha1:a16caee8ab5f12d3ac70e366d1c8691324979cfe
@@ -4449,6 +4489,14 @@ trackedFiles:
     id: 3c4c1ecb20e6
     last_write_checksum: sha1:70561f3c44f49959994b7a3a9f94d113713c8e4f
     pristine_git_object: a7690e203dc5fddd97e60f0c9984403cc8720582
+  docs/models/operations/use-public-workflow-template-api-v2-public-workflows-templates-use-post-request.md:
+    id: f0769a9d4e77
+    last_write_checksum: sha1:5c191d9f8d1888f52eda0f32bfd11c05f16d9b45
+    pristine_git_object: 00c3c39cb288425b09b476397ed4ee6ef22e1354
+  docs/models/operations/use-public-workflow-template-api-v2-public-workflows-templates-use-post-response.md:
+    id: 6e487289be22
+    last_write_checksum: sha1:da1a3f0060359cee8d7360222a5a9a424762e7b9
+    pristine_git_object: 7fd87215f7963a431d4f16ccecc7a240eec8f487
   ? docs/models/operations/writeback-public-salesforce-quote-readiness-api-v2-public-cpq-quote-readiness-salesforce-writeback-post-request.md
   : id: 07fd3a18eabd
     last_write_checksum: sha1:a517b28eb5d0ff1b397555915f69f67d7924f360
@@ -4501,6 +4549,10 @@ trackedFiles:
     id: 61889401bf6e
     last_write_checksum: sha1:011cdefee5035b028ecdff6b2a4f0a6f467b6f3b
     pristine_git_object: 42e958c36138cb618283fca72f89c75a057192f9
+  docs/models/plan-public-workflow-template-api-v2-public-workflows-templates-plan-post200-envelope.md:
+    id: 96841c762830
+    last_write_checksum: sha1:e79eb0a37e8ed0145ae0b80a905a3937d931db5c
+    pristine_git_object: 5eabce53f368c6f7e68d98e155f5387278474dc7
   docs/models/plan.md:
     id: 900c4149ef4b
     last_write_checksum: sha1:3e407144712f50920b4d71d05e57c15bf78186d9
@@ -4617,6 +4669,66 @@ trackedFiles:
     id: ec3b541edb46
     last_write_checksum: sha1:4d4382ae7d315077cacbda1482c07350b1a36187
     pristine_git_object: be3b2b5cc4f436675a3b625e9ef68beff00aa2f0
+  docs/models/public-flow-conflict.md:
+    id: aee56a8dca52
+    last_write_checksum: sha1:ffa3ec8d077045fcc23fcd8f2a231104d402ad3a
+    pristine_git_object: 0db27bbbd71ae095204db6b6baafe3dba2118244
+  docs/models/public-flow-construct-data-status.md:
+    id: 9c2441938b61
+    last_write_checksum: sha1:0f27035ad05f89ec078ce21eb44ac005276f383f
+    pristine_git_object: 8d366997799802f430288a6ff966d37fb0f1ea80
+  docs/models/public-flow-construct-data.md:
+    id: 0f0afed63b2e
+    last_write_checksum: sha1:9b8baf19dbbd8cc9358f7e8e6414b4d8855a00b9
+    pristine_git_object: e9a927e551ac5e7ace26bd6d4ecc1b2aea865450
+  docs/models/public-flow-construct-request.md:
+    id: 574eda1e6dec
+    last_write_checksum: sha1:67876ef63322a9d4b58fe0cbb6bab0d65c196be9
+    pristine_git_object: bc0bafef1647604b1a3047e25115fc9cb0b5eb4a
+  docs/models/public-flow-field-change.md:
+    id: d1dbab44ef75
+    last_write_checksum: sha1:08bb11e9f6cff98d392371d089da7a85cadbdc80
+    pristine_git_object: 857e7d7a9534e3217966009bbc17e45a48751227
+  docs/models/public-flow-field-state.md:
+    id: 1c78c7d827ca
+    last_write_checksum: sha1:8ff7d9619d59f7aae65fb4b75355e1098aa7a760
+    pristine_git_object: 08a512ab720a2f8ecfd937c962b1b2247ded0a0b
+  docs/models/public-flow-plan-data-operation.md:
+    id: 8890d1a15da6
+    last_write_checksum: sha1:e4fd86e710e74957ed5fa274ade9468edcb58adc
+    pristine_git_object: b7eec8cfd422484256c0e9224fea611b4459bdc4
+  docs/models/public-flow-plan-data-parameters.md:
+    id: 9a1c18094beb
+    last_write_checksum: sha1:635f44c7ae4bb83cc619ab5ddad0332d7c5e148a
+    pristine_git_object: 8e4e601a1930399225a79222f36d5093ffd18427
+  docs/models/public-flow-plan-data.md:
+    id: 23c199477ddc
+    last_write_checksum: sha1:bc9a9f49482bfc7bfc21e225b66629d4dacd6006
+    pristine_git_object: 496464ee9c02e242b2821df084767e33cf794de6
+  docs/models/public-flow-state-data-parameters.md:
+    id: b988ea40dead
+    last_write_checksum: sha1:d867d44c4734e8f04f9550a48d8a3197760559ef
+    pristine_git_object: 0a5349ff844fc02129ed2e7e2dc84c1d861c0f87
+  docs/models/public-flow-state-data-status.md:
+    id: 9f8484884eb0
+    last_write_checksum: sha1:ba75f6c8abb106500d35a129b7c1f53470fe4cbb
+    pristine_git_object: 5c3ea10e28fc82ef492d9b53b5561573223d1c8f
+  docs/models/public-flow-state-data.md:
+    id: 530f5e4b1c20
+    last_write_checksum: sha1:d3cea4d1127d217c87b71ebfce4b615cff6b0ddb
+    pristine_git_object: 035c92093357e2cd0dce6a66074c3a829c7e5f6e
+  docs/models/public-flow-template-plan-request-parameters.md:
+    id: 4d544a73ded4
+    last_write_checksum: sha1:dda79be6fa33d77e97197c47a7762ba48e6fddb8
+    pristine_git_object: 50391b882d13d02a76feb4189a8f5ae35cf48c2b
+  docs/models/public-flow-template-plan-request.md:
+    id: 5b3e4e614639
+    last_write_checksum: sha1:dd7bf6603bd5adfcf59637a0b73fe6a9b5f54e07
+    pristine_git_object: 5e5b2b6c1a0dbfd10e5f245e68ac19ad7a7ee7e9
+  docs/models/public-flow-template-use-request.md:
+    id: e88b4d33f55f
+    last_write_checksum: sha1:d6a820fd563cc77eafa740de0b092f5e3479b9b6
+    pristine_git_object: 42c4ae8afdbdeb596b7cfbf271520406bc8fb9d4
   docs/models/public-invoice-email-attachment-data.md:
     id: 2671b4b396e5
     last_write_checksum: sha1:7396b7f43bf8ddce818932d98dfea7d5a6c60f62
@@ -4861,6 +4973,10 @@ trackedFiles:
     id: dc882d3c5832
     last_write_checksum: sha1:3e0ae01f5be7c46a0932cb1d1333f35f7f2e710c
     pristine_git_object: 167545116f3f9a3618f8452060f6e7ac51badbaa
+  docs/models/template-parameters.md:
+    id: ca07fdfd12d1
+    last_write_checksum: sha1:ede7dc46284c7a0945914aabc01bf7036492e26c
+    pristine_git_object: 26270f01ef76950f8cc5104eb5b3b90a7fb9f5ce
   docs/models/toast-message-i18n.md:
     id: ff88e2fd3662
     last_write_checksum: sha1:082291ab311b3fa14a4a1f19aaf67310ffb16cb7
@@ -5093,6 +5209,14 @@ trackedFiles:
     id: e4ad042f1ecf
     last_write_checksum: sha1:3e54e2fdfd72fcca61e32e5a58da46de41087a61
     pristine_git_object: 90f9dfa20a210ada34760df8095454d86bf38203
+  docs/models/use-public-workflow-template-api-v2-public-workflows-templates-use-post200-envelope.md:
+    id: 71613c176b4e
+    last_write_checksum: sha1:6614171d975151757da208a13bfef2b29196ab89
+    pristine_git_object: 01490257fe65fd11ef01279508f6d84b829ed40f
+  docs/models/value.md:
+    id: 1d69c8103b96
+    last_write_checksum: sha1:cdd447dff6ba2482d9213a996de7d20c0de397a8
+    pristine_git_object: 6b43a93828987a8f248b1d280c8c13e2a4dfa881
   docs/models/variant.md:
     id: aa16bd97d58b
     last_write_checksum: sha1:6bf369bab4a78842d4a812b450aebc7be0c8e50f
@@ -5395,8 +5519,8 @@ trackedFiles:
     pristine_git_object: 7cd5982601f54bec4d09a25d31d8f7144b6807e1
   docs/sdks/workflows/README.md:
     id: 80c76ce944c0
-    last_write_checksum: sha1:a098807eda0c85b7757413a9a0cd99ec5f06c0ac
-    pristine_git_object: 7e6022ee64ce1178988a93a09943eb4efda9d441
+    last_write_checksum: sha1:d054d4ba67b027a3f67bea4a936940c53319a8a2
+    pristine_git_object: c71f7eeb9b82498f2a52c88afd427b5d3f0f8bf8
   docs/sdks/workforceplanning/README.md:
     id: 502e147a75e9
     last_write_checksum: sha1:0c074d57c99ad63fe682cbbb93a618779d455bb8
@@ -6741,6 +6865,10 @@ trackedFiles:
   : id: b449ee0d14f4
     last_write_checksum: sha1:84ffae1fce07c7ec9b1de5b4cf65464942d8c764
     pristine_git_object: 83fc5c50ba01425adae205fd41d5516c425d7878
+  src/funcs/workflows-construct-flow.ts:
+    id: 77203912f1aa
+    last_write_checksum: sha1:bdb5d33592efaedc60a766ba5595bcee8fc6801f
+    pristine_git_object: 43ca0c3df6d0ce3491ce6f24b726cf92d1a2bcd5
   src/funcs/workflows-create-or-update.ts:
     id: 7cb809f36a44
     last_write_checksum: sha1:76bdf21f84668ef78bdafd0550f9d13979d34d98
@@ -6749,6 +6877,10 @@ trackedFiles:
     id: 4a8f8a55c105
     last_write_checksum: sha1:f0007809d3dc6b23a1d1a2dc2ff285413f013391
     pristine_git_object: 0331a1850d3fe04e00f284cfecb71c3d7282bde0
+  src/funcs/workflows-get-flow.ts:
+    id: add600c6e5e0
+    last_write_checksum: sha1:d4adcbd74d0d3a300aa2cc1a9196e69ef63476dd
+    pristine_git_object: ea32a034fa836d013394d3f3f1d2cb518ea91037
   src/funcs/workflows-get.ts:
     id: 894b2ec7b937
     last_write_checksum: sha1:ab1b89920191f7686c0903773a2c8fa569a34d92
@@ -6757,6 +6889,10 @@ trackedFiles:
     id: 18d983830bb5
     last_write_checksum: sha1:2a23fae92c53f478a72346d848081c09ee9f22b6
     pristine_git_object: 3ac754e2a16910fba0fef68a7e69e14966509a03
+  src/funcs/workflows-plan-template.ts:
+    id: a5f3cde9e972
+    last_write_checksum: sha1:c96e4dccd7ce979fca4f0dff77136eaadd643f69
+    pristine_git_object: 30fb20ad0c00a0639828f7775b3f5d17654a0689
   src/funcs/workflows-run-by-ref.ts:
     id: 717ab21a77c1
     last_write_checksum: sha1:ddf0fb5819c8ea05d1c172fa7d80bd58a73560ec
@@ -6765,6 +6901,10 @@ trackedFiles:
     id: 784870fde2be
     last_write_checksum: sha1:9c7040ef714921a2d3320100044fb85cbb867806
     pristine_git_object: 321943046c78de1706b5dadfa457f87ad5d5f2bd
+  src/funcs/workflows-use-template.ts:
+    id: 3fddebf03eac
+    last_write_checksum: sha1:c667437f046eb986dd743f3a1d2a615df0c99f0e
+    pristine_git_object: cba939e2b767144639c8c74acaf51727ed22109e
   src/funcs/workforce-planning-create-public-workforce-position.ts:
     id: 9a49c8db42a9
     last_write_checksum: sha1:29ba9e2f5ea8f43ddf74a974ee35fdf75a0b9267
@@ -7065,6 +7205,10 @@ trackedFiles:
     id: 03590888b8db
     last_write_checksum: sha1:a3db99cee1794d3056b4a3d2f65453b4a05d708e
     pristine_git_object: e6deba6467453e03e169e8cea543cf04a4f20543
+  src/models/construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post200-envelope.ts:
+    id: 444ae859fb71
+    last_write_checksum: sha1:5dedba8bff4165b7d837c08bcbf2d4496c307e37
+    pristine_git_object: 542355afd76c1dd98a75e9cd0a1c5bc7e7ed5890
   src/models/create-approval-request-api-v2-public-approval-requests-post200-envelope.ts:
     id: 93d1a5dfe096
     last_write_checksum: sha1:331fd04339b7680de30ce01cd0905fea308204bd
@@ -7945,6 +8089,10 @@ trackedFiles:
     id: 93123fe95247
     last_write_checksum: sha1:49bb9ce1419aedab3d8e1b7441b0c78681305426
     pristine_git_object: 2f14c9efd8e2ecac9fc0782b5b683ca5d706e3b9
+  src/models/get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get200-envelope.ts:
+    id: b36aaf83093f
+    last_write_checksum: sha1:9f27f6c8b36f9597cb99c859a13568f26b8a4260
+    pristine_git_object: 80f5d94e63701268b3c35302ccd445d57686b1eb
   src/models/get-public-workflow-run-api-v2-public-workflow-runs-run-id-get200-envelope.ts:
     id: 4e3e3a3ddc9b
     last_write_checksum: sha1:87409fd0a4a66cf3d85864f6f5a895b469eff670
@@ -7999,8 +8147,8 @@ trackedFiles:
     pristine_git_object: 351a407ba2dde5441d011825a62e0ed778ebf59b
   src/models/index.ts:
     id: f93644b0f37e
-    last_write_checksum: sha1:e9d74cdc263516b33195935a8eef21d26167b7f2
-    pristine_git_object: 73ac923ff7f134589c6dc2b86ceb44fb9dc65e13
+    last_write_checksum: sha1:c17b15f3b29723deabd4d83550f1d8416c584afa
+    pristine_git_object: be660863e72809f567fbb10a5e90fadd0d9133b6
   src/models/ingest-clay-signal-api-v2-lookout-connectors-clay-signals-post200-envelope.ts:
     id: 56df172afb0c
     last_write_checksum: sha1:146ed7ece89ac500bc661880f7fa11fb6e810433
@@ -8473,6 +8621,10 @@ trackedFiles:
     id: 1da8dbd65994
     last_write_checksum: sha1:d49910c3b712e20dc06b2cdbc7e6e6b56dd1759d
     pristine_git_object: d7954dcd33f820a23930b8f3a9cb9d7e6ea0c764
+  src/models/operations/construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post.ts:
+    id: 91bce9ef0b64
+    last_write_checksum: sha1:ee837d9fe8ff4e83f21b75c2c15df4d9cd576b40
+    pristine_git_object: d9503ea335ecc4b24daee6f88875c1f087a8adf4
   src/models/operations/create-approval-request-api-v2-public-approval-requests-post.ts:
     id: 39075a229fce
     last_write_checksum: sha1:416968c63a7506a23cbb0b3543c08e905266d8f5
@@ -9041,6 +9193,10 @@ trackedFiles:
     id: 999b2b7b8451
     last_write_checksum: sha1:19e99d523c3cafea8d26ba9cc9fb60dedcca25ae
     pristine_git_object: 5582d5bdbdbe9b5e544c2fa44dfb6801290ca0c2
+  src/models/operations/get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get.ts:
+    id: 3e5d80b4362b
+    last_write_checksum: sha1:6ec44c0774da5477ba7da3fece94f4a719643d94
+    pristine_git_object: 7b68f15fea816f9a690641a9e451128ff018584e
   src/models/operations/get-public-workflow-run-api-v2-public-workflow-runs-run-id-get.ts:
     id: ddac727339cf
     last_write_checksum: sha1:419d822ae624530bde73d3503492b6148bd31791
@@ -9063,8 +9219,8 @@ trackedFiles:
     pristine_git_object: 6b4c5f2e4ee37bc1e1cd2a18e11acceadd626ea4
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:1f661485628b006d7686106cf94a9edf49fb9550
-    pristine_git_object: b1a680c552dc217a776030e5db7aa3c82eb0cd68
+    last_write_checksum: sha1:c25f28d3f186173de53b36806725b8014dce9325
+    pristine_git_object: a9b1a65028672266ec3f85e93910608abc295fa3
   src/models/operations/ingest-clay-signal-api-v2-lookout-connectors-clay-signals-post.ts:
     id: 2abe97434d45
     last_write_checksum: sha1:ac75e335c6111f7248e27600c8f40b70f0ec1331
@@ -9345,6 +9501,10 @@ trackedFiles:
     id: 4d08261d35b9
     last_write_checksum: sha1:18d7359419f917fe2b02a7635a9905e029822bee
     pristine_git_object: 919e4e13fedf659be99714fa80ae7edb803d978a
+  src/models/operations/plan-public-workflow-template-api-v2-public-workflows-templates-plan-post.ts:
+    id: 8d6396914192
+    last_write_checksum: sha1:6c4d1d20f01ec75aacc1d916df0b27508926d506
+    pristine_git_object: 8e5746e625aa6060ca7610558010c43061db16a5
   src/models/operations/preview-public-freee-invoice-export-api-v2-public-invoices-exports-freee-preview-post.ts:
     id: 679dbb058f44
     last_write_checksum: sha1:7e6a52359a12d1bedbf575d1103cf8653680af7e
@@ -9697,6 +9857,10 @@ trackedFiles:
     id: aae860dc4bee
     last_write_checksum: sha1:72de36e73d8f00032e29e4335638c3093fab66a5
     pristine_git_object: 0f59cf1b8f3dca39722169a44246a1d3fc3f41f5
+  src/models/operations/use-public-workflow-template-api-v2-public-workflows-templates-use-post.ts:
+    id: 6bd7924dc45b
+    last_write_checksum: sha1:8aa4b97c4470f3e18f13fbe0601ac7588db22c1d
+    pristine_git_object: 15ee4fbb3d5945c16c96c4d840103cf0e0f63163
   src/models/operations/writeback-public-salesforce-quote-readiness-api-v2-public-cpq-quote-readiness-salesforce-writeback-post.ts:
     id: 787a03dff92b
     last_write_checksum: sha1:079dafe1238efa9ad912cdcfc3b845bc9e5a9e4c
@@ -9741,6 +9905,10 @@ trackedFiles:
     id: 7649fc419d07
     last_write_checksum: sha1:9cce5628be884c5cf00317ad4a5ebfb55f2d5731
     pristine_git_object: ef461d38b00e87b65a8089d0eda367cff9f0deb6
+  src/models/plan-public-workflow-template-api-v2-public-workflows-templates-plan-post200-envelope.ts:
+    id: 322d60b416e7
+    last_write_checksum: sha1:10a0e0c98a8284c05ab7a7f0f27b2f6046f97809
+    pristine_git_object: 1594224e75c13d728a8bb4880afd02a40b6f3761
   src/models/position-create-request.ts:
     id: 634256fa0443
     last_write_checksum: sha1:59457930ea88f119bd3797906c54df02254d43b6
@@ -9837,6 +10005,42 @@ trackedFiles:
     id: c6511f705d2b
     last_write_checksum: sha1:5ea3c987e1c6c9b22fcb83b2e3c1306eef3ecfcb
     pristine_git_object: 0fb427d71e3859e516e1b7bef471c21c707a2f9d
+  src/models/public-flow-conflict.ts:
+    id: ea6880c51508
+    last_write_checksum: sha1:d6f89c40013c254e0344b9dc6e9fc7f9a579947b
+    pristine_git_object: f33596a0723f8d01d812bdfb911e3cabaf999133
+  src/models/public-flow-construct-data.ts:
+    id: 8ae8e7688cf2
+    last_write_checksum: sha1:3930521f3f624fca0cc0784c00166af56d43bf68
+    pristine_git_object: 32a9c138953daaf72f9a58100c2d32c25cbe6673
+  src/models/public-flow-construct-request.ts:
+    id: d7e01dbac837
+    last_write_checksum: sha1:b597e31510a61345d6b2d82e20f24d13e2643937
+    pristine_git_object: dcbdf2377b54881c989487908aabeecf85b033fa
+  src/models/public-flow-field-change.ts:
+    id: d7ee2a3495dc
+    last_write_checksum: sha1:b6a46cf5911534af7809f871d15ae50672359caa
+    pristine_git_object: 1f4d49ad831d72aac5b55d402e7784aba1aac544
+  src/models/public-flow-field-state.ts:
+    id: 3c5272016e49
+    last_write_checksum: sha1:00cd501685910b05b4fd911dbc2206b82988c101
+    pristine_git_object: a072dd14a00f028fcf94109ed81850055d2f9682
+  src/models/public-flow-plan-data.ts:
+    id: 69f16dd2a028
+    last_write_checksum: sha1:520994d7355158d8da32133394702af9b421a474
+    pristine_git_object: c2571b65cf99b828f99fe3b4b99bac7bdf201211
+  src/models/public-flow-state-data.ts:
+    id: ddf2818148a5
+    last_write_checksum: sha1:97da51610d5055fe192d63f43446c47c7f117b2e
+    pristine_git_object: 079f0e7d4b9a63ee5485707419fb422b3d259289
+  src/models/public-flow-template-plan-request.ts:
+    id: dca854e9926d
+    last_write_checksum: sha1:dd06ebf8d66c50ec40c65702cee8bbc37feab675
+    pristine_git_object: 9e2be8e534a8fccba3c659d938334459d49800f4
+  src/models/public-flow-template-use-request.ts:
+    id: 54db8f44a127
+    last_write_checksum: sha1:731a4c8b678a71d57cbc1916032eaff9a614a533
+    pristine_git_object: aade23fb4209f3e5730b6db49d41c46856c39116
   src/models/public-invoice-email-attachment-data.ts:
     id: 5cc76b0a4615
     last_write_checksum: sha1:0d3ce7b4141dcf0cb3da7e2a1dc24547886bd7c2
@@ -10269,6 +10473,10 @@ trackedFiles:
     id: c8bcdab89190
     last_write_checksum: sha1:fa5d26599d55bce7669a510c0d060d5e85d5b20b
     pristine_git_object: e4e287adf294291e11dd90bcef08960075392548
+  src/models/use-public-workflow-template-api-v2-public-workflows-templates-use-post200-envelope.ts:
+    id: 7bfc7bfe5d51
+    last_write_checksum: sha1:1d28792e9d56764f9381c0f8c8a37671f89c55fd
+    pristine_git_object: 2cb5634e0fe3602d617d10efa2077dc78adb3631
   src/models/view-create-request.ts:
     id: d8d7c2bbd155
     last_write_checksum: sha1:e420b8885c6119ef1358b31f4bddaf0003fb6c4d
@@ -10551,8 +10759,8 @@ trackedFiles:
     pristine_git_object: 302ea924d60efeed0e2497ba32b20e3400c468a5
   src/sdk/workflows.ts:
     id: e5d888426b1c
-    last_write_checksum: sha1:1e021767f7292086ad2beee6a4da76afc981e131
-    pristine_git_object: 5b9b89ede4f6f8348480ec7d8a3bb962d7b3b0a9
+    last_write_checksum: sha1:cec0aa451a88535f0bca9d869e2a090f43715175
+    pristine_git_object: 1f26c8c19fa9d76eaa8b301c8f464e61c9af7f73
   src/sdk/workforce-planning.ts:
     id: 9d20cd642c69
     last_write_checksum: sha1:23d1f2a8ab3dd23a676e4432ca5c8429af624df2
@@ -15475,6 +15683,46 @@ examples:
         "200":
           application/json: {"success": true, "data": "<value>", "meta": {"ctx_id": "<id>"}}
           application/octet-stream: "x-file: example.file"
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  plan_public_workflow_template_api_v2_public_workflows_templates_plan_post:
+    speakeasy-default-plan-public-workflow-template-api-v2-public-workflows-templates-plan-post:
+      requestBody:
+        application/json: {"request_id": "af38247d-51df-4490-a089-518c969d7267", "template_id": "<id>", "template_version": 730850}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"workspace_id": "6adca3cc-58a6-44c4-aedd-7cb025819881", "request_id": "f7b5fdab-bea7-48f6-aeb9-ed6186aab0e2", "plan_digest": "<value>", "template_id": "<id>", "template_version": 382472, "operation": "update", "applicable": false, "parameters": {}, "construction": "inactive"}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  use_public_workflow_template_api_v2_public_workflows_templates_use_post:
+    speakeasy-default-use-public-workflow-template-api-v2-public-workflows-templates-use-post:
+      requestBody:
+        application/json: {"request_id": "4c96ca59-6285-4c20-b9f6-25e611872cdb", "plan_digest": "<value>"}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"workspace_id": "86f7a56d-4045-4d82-be1e-04468f5823a4", "workflow_id": "364d33f8-51ad-47ce-b272-df224e03f3bd", "request_id": "fe4b5d9b-acd9-44f0-9a38-17048f155aae", "plan_digest": "<value>", "definition_digest": "<value>", "status": "constructed"}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  get_public_workflow_flow_api_v2_public_workflows__workflow_id__flow_get:
+    speakeasy-default-get-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-get:
+      parameters:
+        path:
+          workflow_id: "30e34679-fad0-400b-8120-f98445464172"
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"workspace_id": "522d6336-9b37-494e-8df0-60649db6c733", "workflow_id": "60e63558-4586-4b05-955c-792d81e829fa", "status": "managed", "active": false}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  construct_public_workflow_flow_api_v2_public_workflows__workflow_id__flow_construct_post:
+    speakeasy-default-construct-public-workflow-flow-api-v2-public-workflows-workflow-id-flow-construct-post:
+      parameters:
+        path:
+          workflow_id: "87215ad2-8a02-4771-aec3-a642755e5230"
+      requestBody:
+        application/json: {"plan_digest": "<value>", "attempt_id": "b892d7d9-c92a-4ad7-8a74-47a9ae98d63a"}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"workspace_id": "c6f1b9b0-0ea6-49e0-b6e8-b6033388a14e", "workflow_id": "dd5950b1-6792-49a2-8c08-aecaadd5db9d", "request_id": "9c340500-561b-48b6-ac69-4d99de1bfaa7", "plan_digest": "<value>", "definition_digest": "<value>", "status": "already_constructed"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
 examplesVersion: 1.0.2
