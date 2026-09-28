@@ -47,6 +47,7 @@ export * from "./create-public-contact-api-v2-public-contacts-post.js";
 export * from "./create-public-custom-object-record-api-v2-public-custom-objects-custom-object-id-records-post.js";
 export * from "./create-public-custom-object-record-compatibility-api-v2-public-records-custom-objects-records-post.js";
 export * from "./create-public-deal-api-v2-public-deals-post.js";
+export * from "./create-public-deal-pipeline-api-v2-public-deals-pipelines-post.js";
 export * from "./create-public-developer-property-api-v2-public-properties-object-name-post.js";
 export * from "./create-public-disbursement-allocation-api-v2-public-disbursements-disbursement-id-allocations-post.js";
 export * from "./create-public-disbursement-api-v2-public-disbursements-post.js";
@@ -298,6 +299,7 @@ export * from "./update-public-contact-api-v2-public-contacts-contact-id-put.js"
 export * from "./update-public-custom-object-record-api-v2-public-custom-objects-custom-object-id-records-record-id-put.js";
 export * from "./update-public-custom-object-record-compatibility-api-v2-public-records-custom-objects-records-record-id-post.js";
 export * from "./update-public-deal-api-v2-public-deals-deal-id-put.js";
+export * from "./update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch.js";
 export * from "./update-public-developer-property-api-v2-public-properties-object-name-property-ref-put.js";
 export * from "./update-public-disbursement-allocation-api-v2-public-disbursements-disbursement-id-allocations-allocation-id-patch.js";
 export * from "./update-public-disbursement-api-v2-public-disbursements-disbursement-id-put.js";

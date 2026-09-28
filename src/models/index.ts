@@ -66,6 +66,7 @@ export * from "./create-public-contact-api-v2-public-contacts-post200-envelope.j
 export * from "./create-public-custom-object-record-api-v2-public-custom-objects-custom-object-id-records-post200-envelope.js";
 export * from "./create-public-custom-object-record-compatibility-api-v2-public-records-custom-objects-records-post200-envelope.js";
 export * from "./create-public-deal-api-v2-public-deals-post200-envelope.js";
+export * from "./create-public-deal-pipeline-api-v2-public-deals-pipelines-post201-envelope.js";
 export * from "./create-public-developer-property-api-v2-public-properties-object-name-post200-envelope.js";
 export * from "./create-public-disbursement-allocation-api-v2-public-disbursements-disbursement-id-allocations-post200-envelope.js";
 export * from "./create-public-disbursement-api-v2-public-disbursements-post200-envelope.js";
@@ -101,6 +102,13 @@ export * from "./create-public-ticket-api-v2-public-tickets-post200-envelope.js"
 export * from "./create-public-view-api-v2-public-views-post200-envelope.js";
 export * from "./create-public-workflow-api-v2-public-workflows-post200-envelope.js";
 export * from "./create-public-workforce-position200-envelope.js";
+export * from "./deal-pipeline-create-request.js";
+export * from "./deal-pipeline-data.js";
+export * from "./deal-pipeline-stage-create.js";
+export * from "./deal-pipeline-stage-data.js";
+export * from "./deal-pipeline-stage-removal.js";
+export * from "./deal-pipeline-stage-update.js";
+export * from "./deal-pipeline-update-request.js";
 export * from "./delete-public-absence-api-v2-public-absences-absence-id-delete200-envelope.js";
 export * from "./delete-public-approval-rule-api-v2-public-approval-rules-rule-id-delete200-envelope.js";
 export * from "./delete-public-association-api-v2-public-associations-delete200-envelope.js";
@@ -477,6 +485,7 @@ export * from "./update-public-contact-api-v2-public-contacts-contact-id-put200-
 export * from "./update-public-custom-object-record-api-v2-public-custom-objects-custom-object-id-records-record-id-put200-envelope.js";
 export * from "./update-public-custom-object-record-compatibility-api-v2-public-records-custom-objects-records-record-id-post200-envelope.js";
 export * from "./update-public-deal-api-v2-public-deals-deal-id-put200-envelope.js";
+export * from "./update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch200-envelope.js";
 export * from "./update-public-developer-property-api-v2-public-properties-object-name-property-ref-put200-envelope.js";
 export * from "./update-public-disbursement-allocation-api-v2-public-disbursements-disbursement-id-allocations-allocation-id-patch200-envelope.js";
 export * from "./update-public-disbursement-api-v2-public-disbursements-disbursement-id-put200-envelope.js";

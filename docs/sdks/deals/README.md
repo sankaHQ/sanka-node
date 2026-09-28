@@ -7,6 +7,8 @@
 * [list](#list) - List Public Deals
 * [create](#create) - Create Public Deal
 * [listPipelines](#listpipelines) - List Public Deal Pipelines
+* [createPipeline](#createpipeline) - Create Public Deal Pipeline
+* [updatePipeline](#updatepipeline) - Update Public Deal Pipeline
 * [get](#get) - Get Public Deal
 * [update](#update) - Update Public Deal
 * [delete](#delete) - Delete Public Deal
@@ -217,6 +219,160 @@ run();
 ### Response
 
 **Promise\<[operations.ListPublicDealPipelinesApiV2PublicDealsPipelinesGetResponse](../../models/operations/list-public-deal-pipelines-api-v2-public-deals-pipelines-get-response.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## createPipeline
+
+Create Public Deal Pipeline
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="create_public_deal_pipeline_api_v2_public_deals_pipelines_post" method="post" path="/v2/public/deals/pipelines" -->
+```typescript
+import { Sanka } from "sanka-sdk";
+
+const sanka = new Sanka({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await sanka.deals.createPipeline({
+    body: {
+      name: "<value>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { dealsCreatePipeline } from "sanka-sdk/funcs/deals-create-pipeline.js";
+
+// Use `SankaCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const res = await dealsCreatePipeline(sanka, {
+    body: {
+      name: "<value>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dealsCreatePipeline failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreatePublicDealPipelineApiV2PublicDealsPipelinesPostRequest](../../models/operations/create-public-deal-pipeline-api-v2-public-deals-pipelines-post-request.md)   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.CreatePublicDealPipelineApiV2PublicDealsPipelinesPostResponse](../../models/operations/create-public-deal-pipeline-api-v2-public-deals-pipelines-post-response.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 422                 | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## updatePipeline
+
+Update Public Deal Pipeline
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="update_public_deal_pipeline_api_v2_public_deals_pipelines__pipeline_id__patch" method="patch" path="/v2/public/deals/pipelines/{pipeline_id}" -->
+```typescript
+import { Sanka } from "sanka-sdk";
+
+const sanka = new Sanka({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await sanka.deals.updatePipeline({
+    pipelineId: "<id>",
+    body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { dealsUpdatePipeline } from "sanka-sdk/funcs/deals-update-pipeline.js";
+
+// Use `SankaCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const res = await dealsUpdatePipeline(sanka, {
+    pipelineId: "<id>",
+    body: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dealsUpdatePipeline failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                            | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                                            | [operations.UpdatePublicDealPipelineApiV2PublicDealsPipelinesPipelineIdPatchRequest](../../models/operations/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch-request.md) | :heavy_check_mark:                                                                                                                                                                                   | The request object to use for the request.                                                                                                                                                           |
+| `options`                                                                                                                                                                                            | RequestOptions                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                   | Used to set various options for making HTTP requests.                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                                               | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                   | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                       |
+| `options.retries`                                                                                                                                                                                    | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                   | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                     |
+
+### Response
+
+**Promise\<[operations.UpdatePublicDealPipelineApiV2PublicDealsPipelinesPipelineIdPatchResponse](../../models/operations/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch-response.md)\>**
 
 ### Errors
 
