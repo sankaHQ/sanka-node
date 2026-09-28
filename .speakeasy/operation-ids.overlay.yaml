@@ -987,3 +987,9 @@ actions:
 - target: $["paths"]["/v2/public/workflows/{workflow_id}/flow/construct"]["post"]
   update:
     x-speakeasy-name-override: constructFlow
+- target: $["paths"]["/v2/public/deals/pipelines"]["post"]
+  update:
+    x-speakeasy-name-override: createPipeline
+- target: $["paths"]["/v2/public/deals/pipelines/{pipeline_id}"]["patch"]
+  update:
+    x-speakeasy-name-override: updatePipeline

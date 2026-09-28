@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 171da541-da80-4bd4-bbe2-f14bf09377bb
 management:
-  docChecksum: bf691fc0ff189884ec9224086d29f84d
+  docChecksum: 816be0f85e602f3e64497c29a7b0e1fa
   docVersion: 0.1.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
   releaseVersion: 0.1.7
   configChecksum: 4ea50ebd886b32ace69f10ad23c494e1
 persistentEdits:
-  generation_id: 17ed7985-6957-4625-8d0e-bab97ff83575
-  pristine_commit_hash: 9f6a4819ccd56aa1fd260390919b61acfd2a9aa7
-  pristine_tree_hash: c87b119209595e3230e4507f0f2c376837f8d779
+  generation_id: d0ca5630-32f7-48f2-9ca5-bb23f3f3eaf1
+  pristine_commit_hash: 0361c9a2c4ab6c0b392a9874571b96406a99ff1d
+  pristine_tree_hash: 84c20554f5b8f431e2cacb373df7d090ef17fefd
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -357,6 +357,10 @@ trackedFiles:
     id: 8f0fef1479ae
     last_write_checksum: sha1:a69f4daa26dfaef6f2f9f3a2b8d4a4ae885df6bb
     pristine_git_object: dd821c415b3b100fc4e9c8fab39d968fc09d8fb9
+  docs/models/create-public-deal-pipeline-api-v2-public-deals-pipelines-post201-envelope.md:
+    id: 51da1660a499
+    last_write_checksum: sha1:da1fd4b7050bd057814978ba607ea81daf2f6550
+    pristine_git_object: ab9144497f086b741596d6d213324f238b2fc7a4
   docs/models/create-public-developer-property-api-v2-public-properties-object-name-post200-envelope.md:
     id: 1a12f9cd40a3
     last_write_checksum: sha1:1186ca3b15c70c96b1d2119292351dc9ae255774
@@ -497,6 +501,34 @@ trackedFiles:
     id: 6829622c4fef
     last_write_checksum: sha1:43c0dc84fc310c4b2a7e63295f9a43e04287c96e
     pristine_git_object: 86e2d071ec9a5472fda7d79b42495b8c2fc4dfae
+  docs/models/deal-pipeline-create-request.md:
+    id: 6fdf270eeb65
+    last_write_checksum: sha1:c692f61232e447d4ebdaf82b7411093336fc22e6
+    pristine_git_object: c0cb2e3272517587767f394133dbb94eb059ed9b
+  docs/models/deal-pipeline-data.md:
+    id: 17a3ff1dd748
+    last_write_checksum: sha1:3dae440c00e15637a94ee60c11c68f70992f629d
+    pristine_git_object: 29fd6c58e97ff64d0c88f43a8d8a634d7b84e50d
+  docs/models/deal-pipeline-stage-create.md:
+    id: 240e0e4a3771
+    last_write_checksum: sha1:920450a50db027e04e18ade71af0228335fe8f9c
+    pristine_git_object: 8b07b6956a145a88de1fb8582f8b528adf125718
+  docs/models/deal-pipeline-stage-data.md:
+    id: 78b7ec27408c
+    last_write_checksum: sha1:4c0554db720745ad58ccd07daf45a975967a1dcc
+    pristine_git_object: d6e14c4ed6972a435e686680251e2c09aa855c26
+  docs/models/deal-pipeline-stage-removal.md:
+    id: b2fb917edd36
+    last_write_checksum: sha1:c74f68d2de957f514d675cd2eb4a719d6a8c72d0
+    pristine_git_object: 04bc7f8383d933bf89a5686615fda8dc8150fdf6
+  docs/models/deal-pipeline-stage-update.md:
+    id: 5dacc3266b76
+    last_write_checksum: sha1:a1725ee27fbebf61a274bfb1e0ba700b5b09ddb2
+    pristine_git_object: 30b459f65550fb41057864cb69c5cd1cadd1b32c
+  docs/models/deal-pipeline-update-request.md:
+    id: 92749516246b
+    last_write_checksum: sha1:8ce25ea6aecde08823969677fc3375d8c0331a63
+    pristine_git_object: f5d4743fa840218e451c74a224f8043686f32baa
   docs/models/delete-public-absence-api-v2-public-absences-absence-id-delete200-envelope.md:
     id: 8825aa39127e
     last_write_checksum: sha1:b71ce2509d282d8b0d5e0e0f329e51492d0cf81c
@@ -2121,6 +2153,14 @@ trackedFiles:
     id: 9f9bd4842c42
     last_write_checksum: sha1:1b60d79ba4b028eaa377aef8fc9eb9d0d1773baf
     pristine_git_object: 760b13607b365094e0bed1eb62797e2657a436d9
+  docs/models/operations/create-public-deal-pipeline-api-v2-public-deals-pipelines-post-request.md:
+    id: f4067ec693ea
+    last_write_checksum: sha1:1096ed59900c21451da15cef3c5e62155d5564a5
+    pristine_git_object: 9ae8d4e900ac6df74ebe8e8dd2514353639708e0
+  docs/models/operations/create-public-deal-pipeline-api-v2-public-deals-pipelines-post-response.md:
+    id: 849bd6b5d648
+    last_write_checksum: sha1:7215d778f42fdd4668ee55ae3403ccf09ab37cf2
+    pristine_git_object: c77e46742cb6fd9b8b3fd336ca33599a1388c06a
   docs/models/operations/create-public-developer-property-api-v2-public-properties-object-name-post-request.md:
     id: 8fa31c70dc4d
     last_write_checksum: sha1:46d5ed9c98f23e0a4e5ea0d71d14c5d9322478d7
@@ -4137,6 +4177,14 @@ trackedFiles:
     id: 545e2c9cfcb6
     last_write_checksum: sha1:1d4aa36a37ee217c574c48871cf378ec1039fa41
     pristine_git_object: 1dc8520f68b507ebf6823192a0cb88024c23ec05
+  docs/models/operations/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch-request.md:
+    id: 0a15d587483d
+    last_write_checksum: sha1:e5b40e9b67645f7856220ad913f9cd9aec0bb5fe
+    pristine_git_object: be4da2ce0600a5ee395d3b78cad61ad0e1db45ca
+  docs/models/operations/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch-response.md:
+    id: ab9d19bf1455
+    last_write_checksum: sha1:3eea4c99dd0a2a12add3714fd2e85894f41a76fc
+    pristine_git_object: 11ef3925607e4fb6d5049d19c7543dd78327885e
   docs/models/operations/update-public-developer-property-api-v2-public-properties-object-name-property-ref-put-request.md:
     id: 2f4b9170ae74
     last_write_checksum: sha1:69b48a3c2a47a0ae84cfa137002ade767f0b2ec0
@@ -5037,6 +5085,10 @@ trackedFiles:
     id: 19d3727bde75
     last_write_checksum: sha1:da260ba4136b43ed93850597bfa3add312cb89d4
     pristine_git_object: ada5f6307e7791b8e67d2bbe3bb6b8e6d70f99a9
+  docs/models/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch200-envelope.md:
+    id: bfef605b2f0b
+    last_write_checksum: sha1:95345a6b3f47b9a6bef940bea666923e3301fb6a
+    pristine_git_object: f5b8a39d25e1e11fa0073d6207b72418f10c3e00
   docs/models/update-public-developer-property-api-v2-public-properties-object-name-property-ref-put200-envelope.md:
     id: 785c2c99c60e
     last_write_checksum: sha1:8132a6d763635d88d01fc1fd030ffe1c5135b4cd
@@ -5347,8 +5399,8 @@ trackedFiles:
     pristine_git_object: 4d7a509d4446a0cd3fc7427aa10248afcafe519d
   docs/sdks/deals/README.md:
     id: 2b7e8eae3e33
-    last_write_checksum: sha1:04d7baf814f9888f769603a2495a558ee2fd2d97
-    pristine_git_object: 398544eb00d9651bb68e94522de8da99e832c1fb
+    last_write_checksum: sha1:004512cc34eb1c0a6cc5e30de335ba50688037eb
+    pristine_git_object: 41c23d4097eb93cd28e3800bf5993c09949bbce7
   docs/sdks/developercloud/README.md:
     id: cf49389ff827
     last_write_checksum: sha1:acc794b9b4052bb3d84cfdd563ac9aa63fc1f372
@@ -5777,6 +5829,10 @@ trackedFiles:
     id: c4c6a6fc3ad7
     last_write_checksum: sha1:7e6757fc59acdec64a514c299a15113eed2cb0da
     pristine_git_object: 10983f1ae1736355fc4487454f78b3eda453a285
+  src/funcs/deals-create-pipeline.ts:
+    id: d5d31425fd6f
+    last_write_checksum: sha1:193d17937ca1eefb86c11808641d70c26b29fc73
+    pristine_git_object: a957fb811e9ecfe1df8fbaeb71120196da36d61d
   src/funcs/deals-create.ts:
     id: 44fa7fa2f944
     last_write_checksum: sha1:24abe45badc2bd3cbb4e828a6e0f25e9e6934820
@@ -5797,6 +5853,10 @@ trackedFiles:
     id: 4fe2f8744f3d
     last_write_checksum: sha1:938e888abc25931b8595a0bf1e09b03dbeaf4a3b
     pristine_git_object: 4cad29b9f74fb03f949f5a449fbdfff99a5ef48c
+  src/funcs/deals-update-pipeline.ts:
+    id: 83839831111a
+    last_write_checksum: sha1:f1ccb8c59aea85e18f71e1bf38dc2c8c6380737d
+    pristine_git_object: b29d83f7468378927d19bcbd6d2b15584e4760ab
   src/funcs/deals-update.ts:
     id: a154296b5bb9
     last_write_checksum: sha1:de9d29fabb284c0b5677392ed589daf9daa827b7
@@ -7253,6 +7313,10 @@ trackedFiles:
     id: 5c14551d26c5
     last_write_checksum: sha1:ee51d0f993c93b2fe5afaf1a58aa65ffd459672a
     pristine_git_object: caac0fa4448fa8b231ae5d2331b3424a35fba9ae
+  src/models/create-public-deal-pipeline-api-v2-public-deals-pipelines-post201-envelope.ts:
+    id: 8e92bd451448
+    last_write_checksum: sha1:20dd3fd898b6c68981f56542086e389319245da5
+    pristine_git_object: 424b0c9f0d84fbee031c71ddc8e1c30ea8e2efa1
   src/models/create-public-developer-property-api-v2-public-properties-object-name-post200-envelope.ts:
     id: 66f0df835c18
     last_write_checksum: sha1:a21408563f3c4e921fab67bacfb3300904f59300
@@ -7393,6 +7457,34 @@ trackedFiles:
     id: 0eda2e42d82d
     last_write_checksum: sha1:1ca42792755f2530f159c244d24f98da281ee396
     pristine_git_object: 0cb6da6e359ed1bd1fb853f8e7c7fc5cea74f556
+  src/models/deal-pipeline-create-request.ts:
+    id: cd5083279262
+    last_write_checksum: sha1:2d30155b2afe27ee4b703dae2144bd0372cb8a8d
+    pristine_git_object: 00ad6e0483e9b2c4aef9dab66347835fbb468858
+  src/models/deal-pipeline-data.ts:
+    id: d602e7fb1b79
+    last_write_checksum: sha1:2d9b8cd46854b8397fca81a612911c3481c24553
+    pristine_git_object: e4302e20fb02dafe60309201e002d8d1301608b1
+  src/models/deal-pipeline-stage-create.ts:
+    id: d7e75cd416cc
+    last_write_checksum: sha1:e36b941f952964d302bac7a9ce8784883a5a3664
+    pristine_git_object: 4732af7e1a415ff9e081c4449be9c5f741437282
+  src/models/deal-pipeline-stage-data.ts:
+    id: 45815e0e7bfd
+    last_write_checksum: sha1:91467a9a84dab3e36011b3de8114813c1c0c1961
+    pristine_git_object: 414a892492e7608d0fc535d365ee21191c8e0dee
+  src/models/deal-pipeline-stage-removal.ts:
+    id: "499200287e76"
+    last_write_checksum: sha1:bb4be42b3479bd44f965d81aa83ad446644071e8
+    pristine_git_object: d17a0d5d9bb3fd0915e46de13e3e22cc7b54404a
+  src/models/deal-pipeline-stage-update.ts:
+    id: a77e2dc82185
+    last_write_checksum: sha1:2a1be1bf1fccda7b3e9d2c2d57da7190ac72c600
+    pristine_git_object: 0042e81927a9591f0b8d9ba8aec5ab361fdbaa4b
+  src/models/deal-pipeline-update-request.ts:
+    id: 310a97bf4cbb
+    last_write_checksum: sha1:3d0864dca9f6456ceb1c4d6a5f9d197587559260
+    pristine_git_object: 68d4dfd17b9ebad4ed90f00f74c5ec2bad8e4135
   src/models/delete-public-absence-api-v2-public-absences-absence-id-delete200-envelope.ts:
     id: f4ce0e30c8da
     last_write_checksum: sha1:0919df1b57fae8944dc66a8d081b02308657bcd2
@@ -8147,8 +8239,8 @@ trackedFiles:
     pristine_git_object: 351a407ba2dde5441d011825a62e0ed778ebf59b
   src/models/index.ts:
     id: f93644b0f37e
-    last_write_checksum: sha1:c17b15f3b29723deabd4d83550f1d8416c584afa
-    pristine_git_object: be660863e72809f567fbb10a5e90fadd0d9133b6
+    last_write_checksum: sha1:4bae966c6839a6ba789acff4f09a244482f7b765
+    pristine_git_object: 177e7c42c22622650bcfa59573bae57e3813bd77
   src/models/ingest-clay-signal-api-v2-lookout-connectors-clay-signals-post200-envelope.ts:
     id: 56df172afb0c
     last_write_checksum: sha1:146ed7ece89ac500bc661880f7fa11fb6e810433
@@ -8673,6 +8765,10 @@ trackedFiles:
     id: be1599bddc91
     last_write_checksum: sha1:2e0171a94aaa7246d8dda77ec353bf82857d5c25
     pristine_git_object: 229f41ad3d1dcc73f9340f204ecf8376d37f46cc
+  src/models/operations/create-public-deal-pipeline-api-v2-public-deals-pipelines-post.ts:
+    id: b29713cb0e8a
+    last_write_checksum: sha1:8ecdc421569041b529cc87e1932c75dd7ad2e4d5
+    pristine_git_object: 56af2268d01dc8ff6402d706cf1a992e3f627e39
   src/models/operations/create-public-developer-property-api-v2-public-properties-object-name-post.ts:
     id: 0c583e54ff64
     last_write_checksum: sha1:b50cd9ab22bb5173957594f71c860851b6ba5bcd
@@ -9219,8 +9315,8 @@ trackedFiles:
     pristine_git_object: 6b4c5f2e4ee37bc1e1cd2a18e11acceadd626ea4
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:c25f28d3f186173de53b36806725b8014dce9325
-    pristine_git_object: a9b1a65028672266ec3f85e93910608abc295fa3
+    last_write_checksum: sha1:41572239ac4e3a1f69e43d5632d7ad8a9bde87f8
+    pristine_git_object: 5a1e52c1307b6d410b2d227eb3e52754dafab514
   src/models/operations/ingest-clay-signal-api-v2-lookout-connectors-clay-signals-post.ts:
     id: 2abe97434d45
     last_write_checksum: sha1:ac75e335c6111f7248e27600c8f40b70f0ec1331
@@ -9681,6 +9777,10 @@ trackedFiles:
     id: b79d74e508c0
     last_write_checksum: sha1:18b07ca9843360d907a156a9450fcb2827f36609
     pristine_git_object: 1bdae3e9886b2514846f4c7084bd0bd9846bbaf7
+  src/models/operations/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch.ts:
+    id: 10f27267e316
+    last_write_checksum: sha1:ffdbb4826fcf5ffc809657db41b97a120fcbbe76
+    pristine_git_object: 19ec101c14ac8abb26985bdb58b440507c4318d2
   src/models/operations/update-public-developer-property-api-v2-public-properties-object-name-property-ref-put.ts:
     id: 5942848f2b0a
     last_write_checksum: sha1:7c3852d0178186e8f00d877ef840876ea0ade8f4
@@ -10301,6 +10401,10 @@ trackedFiles:
     id: f842b1ebe4a1
     last_write_checksum: sha1:407036e1871df1884dbf5d4099dc0155cdd990b9
     pristine_git_object: 4158a8d695ae26a2133198041e7494216fec60e4
+  src/models/update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch200-envelope.ts:
+    id: 080852d31577
+    last_write_checksum: sha1:75c2d3ee272323532b9bd3d5973c8deddb9769c5
+    pristine_git_object: aebaf29472dec82e1effcbae08becf3327666ba2
   src/models/update-public-developer-property-api-v2-public-properties-object-name-property-ref-put200-envelope.ts:
     id: 0acabb456937
     last_write_checksum: sha1:3c9c73bdfd23a8a7f4927b4467b97b9cb1534ac1
@@ -10575,8 +10679,8 @@ trackedFiles:
     pristine_git_object: 23968f411a0580971c78ec6f008b79dbda8191b0
   src/sdk/deals.ts:
     id: 8c5698fcd11c
-    last_write_checksum: sha1:0b7b48ba27d6ff3000e40db7b102466037cc5420
-    pristine_git_object: 3beafc9ed2e6df6e12d83a198b4e7aa0ba126f1b
+    last_write_checksum: sha1:639fb0085218418fef82916f82093e6d36db1ac4
+    pristine_git_object: cf873aad28859000fef94210860715a3e66a1f68
   src/sdk/developer-cloud.ts:
     id: 10a5737e1166
     last_write_checksum: sha1:e4d9bef3ba8dd8d0ef05f0ff915b80878004a8f2
@@ -15723,6 +15827,27 @@ examples:
       responses:
         "200":
           application/json: {"success": true, "data": {"workspace_id": "c6f1b9b0-0ea6-49e0-b6e8-b6033388a14e", "workflow_id": "dd5950b1-6792-49a2-8c08-aecaadd5db9d", "request_id": "9c340500-561b-48b6-ac69-4d99de1bfaa7", "plan_digest": "<value>", "definition_digest": "<value>", "status": "already_constructed"}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  create_public_deal_pipeline_api_v2_public_deals_pipelines_post:
+    speakeasy-default-create-public-deal-pipeline-api-v2-public-deals-pipelines-post:
+      requestBody:
+        application/json: {"name": "<value>", "is_default": false}
+      responses:
+        "201":
+          application/json: {"success": true, "data": {"id": "<id>", "name": "<value>", "internal_name": "<value>", "is_default": false, "order": 0}, "meta": {"ctx_id": "<id>"}}
+        "401":
+          application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
+  update_public_deal_pipeline_api_v2_public_deals_pipelines__pipeline_id__patch:
+    speakeasy-default-update-public-deal-pipeline-api-v2-public-deals-pipelines-pipeline-id-patch:
+      parameters:
+        path:
+          pipeline_id: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"success": true, "data": {"id": "<id>", "name": "<value>", "internal_name": "<value>", "is_default": false, "order": 0}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
 examplesVersion: 1.0.2

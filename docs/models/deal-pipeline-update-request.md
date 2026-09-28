@@ -1,0 +1,18 @@
+# DealPipelineUpdateRequest
+
+## Example Usage
+
+```typescript
+import { DealPipelineUpdateRequest } from "sanka-sdk/models";
+
+let value: DealPipelineUpdateRequest = {};
+```
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                                                       | *string*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `isDefault`                                                                                                                                  | *boolean*                                                                                                                                    | :heavy_minus_sign:                                                                                                                           | Set true to make this the workspace's default Deal pipeline.                                                                                 |
+| `stages`                                                                                                                                     | [models.DealPipelineStageUpdate](../models/deal-pipeline-stage-update.md)[]                                                                  | :heavy_minus_sign:                                                                                                                           | Complete ordered stage list. Every existing stage must appear here by id or in removed_stages. Omit it to keep the current stages and order. |
+| `removedStages`                                                                                                                              | [models.DealPipelineStageRemoval](../models/deal-pipeline-stage-removal.md)[]                                                                | :heavy_minus_sign:                                                                                                                           | Stages to delete. A stage is only deleted when listed here.                                                                                  |

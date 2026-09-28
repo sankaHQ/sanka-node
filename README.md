@@ -374,6 +374,8 @@ run();
 * [list](docs/sdks/deals/README.md#list) - List Public Deals
 * [create](docs/sdks/deals/README.md#create) - Create Public Deal
 * [listPipelines](docs/sdks/deals/README.md#listpipelines) - List Public Deal Pipelines
+* [createPipeline](docs/sdks/deals/README.md#createpipeline) - Create Public Deal Pipeline
+* [updatePipeline](docs/sdks/deals/README.md#updatepipeline) - Update Public Deal Pipeline
 * [get](docs/sdks/deals/README.md#get) - Get Public Deal
 * [update](docs/sdks/deals/README.md#update) - Update Public Deal
 * [delete](docs/sdks/deals/README.md#delete) - Delete Public Deal
@@ -865,11 +867,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customObjectsUpdatePublicCustomObjectRecordCompatibilityApiV2PublicRecordsCustomObjectsRecordsRecordIdPost`](docs/sdks/customobjects/README.md#updatepubliccustomobjectrecordcompatibilityapiv2publicrecordscustomobjectsrecordsrecordidpost) - Update Public Custom Object Record Compatibility
 - [`customObjectsUpdateRecord`](docs/sdks/customobjects/README.md#updaterecord) - Update Custom Object Record
 - [`dealsCreate`](docs/sdks/deals/README.md#create) - Create Public Deal
+- [`dealsCreatePipeline`](docs/sdks/deals/README.md#createpipeline) - Create Public Deal Pipeline
 - [`dealsDelete`](docs/sdks/deals/README.md#delete) - Delete Public Deal
 - [`dealsGet`](docs/sdks/deals/README.md#get) - Get Public Deal
 - [`dealsList`](docs/sdks/deals/README.md#list) - List Public Deals
 - [`dealsListPipelines`](docs/sdks/deals/README.md#listpipelines) - List Public Deal Pipelines
 - [`dealsUpdate`](docs/sdks/deals/README.md#update) - Update Public Deal
+- [`dealsUpdatePipeline`](docs/sdks/deals/README.md#updatepipeline) - Update Public Deal Pipeline
 - [`developerCloudCancelFleet`](docs/sdks/developercloud/README.md#cancelfleet) - Cancel Fleet
 - [`developerCloudCancelRun`](docs/sdks/developercloud/README.md#cancelrun) - Cancel Cloud Run
 - [`developerCloudCreateFleet`](docs/sdks/developercloud/README.md#createfleet) - Create Fleet
