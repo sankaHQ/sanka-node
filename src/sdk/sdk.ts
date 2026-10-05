@@ -24,6 +24,7 @@ import { Exports } from "./exports.js";
 import { FerryDiagrams } from "./ferry-diagrams.js";
 import { FerryPrograms } from "./ferry-programs.js";
 import { Files } from "./files.js";
+import { Goals } from "./goals.js";
 import { Imports } from "./imports.js";
 import { Incentives } from "./incentives.js";
 import { Interviews } from "./interviews.js";
@@ -124,6 +125,11 @@ export class Sanka extends ClientSDK {
   private _customObjects?: CustomObjects;
   get customObjects(): CustomObjects {
     return (this._customObjects ??= new CustomObjects(this._options));
+  }
+
+  private _goals?: Goals;
+  get goals(): Goals {
+    return (this._goals ??= new Goals(this._options));
   }
 
   private _deals?: Deals;

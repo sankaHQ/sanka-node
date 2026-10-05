@@ -993,3 +993,27 @@ actions:
 - target: $["paths"]["/v2/public/deals/pipelines/{pipeline_id}"]["patch"]
   update:
     x-speakeasy-name-override: updatePipeline
+- target: $["paths"]["/v2/public/goals"]["get"]
+  update:
+    x-speakeasy-name-override: list
+- target: $["paths"]["/v2/public/goals"]["post"]
+  update:
+    x-speakeasy-name-override: create
+- target: $["paths"]["/v2/public/goals/metrics"]["get"]
+  update:
+    x-speakeasy-name-override: listMetrics
+- target: $["paths"]["/v2/public/goals/{goal_id}"]["get"]
+  update:
+    x-speakeasy-name-override: get
+- target: $["paths"]["/v2/public/goals/{goal_id}"]["patch"]
+  update:
+    x-speakeasy-name-override: update
+- target: $["paths"]["/v2/public/goals/{goal_id}"]["delete"]
+  update:
+    x-speakeasy-name-override: delete
+- target: $["paths"]["/v2/public/goals/{goal_id}/targets"]["put"]
+  update:
+    x-speakeasy-name-override: setTargets
+- target: $["paths"]["/v2/public/goals/{goal_id}/progress"]["get"]
+  update:
+    x-speakeasy-name-override: getProgress
