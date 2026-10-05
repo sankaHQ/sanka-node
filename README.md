@@ -467,6 +467,17 @@ run();
 
 * [uploadPublicFileApiV2PublicFilesPost](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
 
+### [Goals](docs/sdks/goals/README.md)
+
+* [list](docs/sdks/goals/README.md#list) - List Public Goals
+* [create](docs/sdks/goals/README.md#create) - Create Public Goal
+* [listMetrics](docs/sdks/goals/README.md#listmetrics) - List Public Goal Metrics
+* [get](docs/sdks/goals/README.md#get) - Get Public Goal
+* [update](docs/sdks/goals/README.md#update) - Update Public Goal
+* [delete](docs/sdks/goals/README.md#delete) - Delete Public Goal
+* [setTargets](docs/sdks/goals/README.md#settargets) - Set Public Goal Targets
+* [getProgress](docs/sdks/goals/README.md#getprogress) - Get Public Goal Progress
+
 ### [Imports](docs/sdks/imports/README.md)
 
 * [listPublicImportJobsCompatApiV2PublicImportsGet](docs/sdks/imports/README.md#listpublicimportjobscompatapiv2publicimportsget) - List Public Import Jobs Compat
@@ -934,6 +945,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ferryProgramsUpdatePublicFerryProgramMeetingApiV2PublicFerryProgramsProgramIdMeetingsMeetingIdPatch`](docs/sdks/ferryprograms/README.md#updatepublicferryprogrammeetingapiv2publicferryprogramsprogramidmeetingsmeetingidpatch) - Update Public Ferry Program Meeting
 - [`ferryProgramsUpdatePublicFerryProgramTodoApiV2PublicFerryProgramsProgramIdTodosTodoIdPatch`](docs/sdks/ferryprograms/README.md#updatepublicferryprogramtodoapiv2publicferryprogramsprogramidtodostodoidpatch) - Update Public Ferry Program Todo
 - [`filesUploadPublicFileApiV2PublicFilesPost`](docs/sdks/files/README.md#uploadpublicfileapiv2publicfilespost) - Upload Public File
+- [`goalsCreate`](docs/sdks/goals/README.md#create) - Create Public Goal
+- [`goalsDelete`](docs/sdks/goals/README.md#delete) - Delete Public Goal
+- [`goalsGet`](docs/sdks/goals/README.md#get) - Get Public Goal
+- [`goalsGetProgress`](docs/sdks/goals/README.md#getprogress) - Get Public Goal Progress
+- [`goalsList`](docs/sdks/goals/README.md#list) - List Public Goals
+- [`goalsListMetrics`](docs/sdks/goals/README.md#listmetrics) - List Public Goal Metrics
+- [`goalsSetTargets`](docs/sdks/goals/README.md#settargets) - Set Public Goal Targets
+- [`goalsUpdate`](docs/sdks/goals/README.md#update) - Update Public Goal
 - [`importsCancelPublicImportJobCompatApiV2PublicImportsJobIdCancelPost`](docs/sdks/imports/README.md#cancelpublicimportjobcompatapiv2publicimportsjobidcancelpost) - Cancel Public Import Job Compat
 - [`importsCreatePublicImportJobCompatApiV2PublicImportsPost`](docs/sdks/imports/README.md#createpublicimportjobcompatapiv2publicimportspost) - Create Public Import Job Compat
 - [`importsGetPublicImportJobCompatApiV2PublicImportsJobIdGet`](docs/sdks/imports/README.md#getpublicimportjobcompatapiv2publicimportsjobidget) - Get Public Import Job Compat
