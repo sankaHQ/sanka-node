@@ -636,6 +636,37 @@ run();
 * [createPublicPayrollJournalEntryApiV2PublicPayrollRunsRunIdJournalEntryPost](docs/sdks/payroll/README.md#createpublicpayrolljournalentryapiv2publicpayrollrunsrunidjournalentrypost) - Create Public Payroll Journal Entry
 * [downloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPayslipsPdfGet](docs/sdks/payroll/README.md#downloadpublicpayrollpayslippdfapiv2publicpayrollrunsrunidpayslipspdfget) - Download Public Payroll Payslip Pdf
 
+### [Presentations](docs/sdks/presentations/README.md)
+
+* [catalog](docs/sdks/presentations/README.md#catalog) - Get Public Presentation Catalog
+* [list](docs/sdks/presentations/README.md#list) - List Public Flow Presentations
+* [create](docs/sdks/presentations/README.md#create) - Create Public Flow Presentation
+* [get](docs/sdks/presentations/README.md#get) - Get Public Flow Presentation
+* [replace](docs/sdks/presentations/README.md#replace) - Replace Public Flow Presentation
+* [update](docs/sdks/presentations/README.md#update) - Update Public Flow Presentation
+* [uploadImage](docs/sdks/presentations/README.md#uploadimage) - Upload Public Flow Presentation Image
+* [importImage](docs/sdks/presentations/README.md#importimage) - Import Public Flow Presentation Image
+* [preview](docs/sdks/presentations/README.md#preview) - Preview Public Flow Presentation
+* [createExport](docs/sdks/presentations/README.md#createexport) - Create Public Flow Presentation Export
+* [getExport](docs/sdks/presentations/README.md#getexport) - Get Public Flow Presentation Export
+* [downloadExport](docs/sdks/presentations/README.md#downloadexport) - Download Public Flow Presentation Export
+* [cancelExport](docs/sdks/presentations/README.md#cancelexport) - Cancel Public Flow Presentation Export
+
+### [ProgramPresentations](docs/sdks/programpresentations/README.md)
+
+* [list](docs/sdks/programpresentations/README.md#list) - List Public Program Presentations
+* [create](docs/sdks/programpresentations/README.md#create) - Create Public Program Presentation
+* [get](docs/sdks/programpresentations/README.md#get) - Get Public Program Presentation
+* [replace](docs/sdks/programpresentations/README.md#replace) - Replace Public Program Presentation
+* [update](docs/sdks/programpresentations/README.md#update) - Update Public Program Presentation
+* [uploadImage](docs/sdks/programpresentations/README.md#uploadimage) - Upload Public Program Presentation Image
+* [importImage](docs/sdks/programpresentations/README.md#importimage) - Import Public Program Presentation Image
+* [preview](docs/sdks/programpresentations/README.md#preview) - Preview Public Program Presentation
+* [createExport](docs/sdks/programpresentations/README.md#createexport) - Create Public Program Presentation Export
+* [getExport](docs/sdks/programpresentations/README.md#getexport) - Get Public Program Presentation Export
+* [downloadExport](docs/sdks/programpresentations/README.md#downloadexport) - Download Public Program Presentation Export
+* [cancelExport](docs/sdks/programpresentations/README.md#cancelexport) - Cancel Public Program Presentation Export
+
 ### [Projects](docs/sdks/projects/README.md)
 
 * [list](docs/sdks/projects/README.md#list) - List Public Projects
@@ -1060,6 +1091,31 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`payrollListPublicPayrollProfilesApiV2PublicPayrollProfilesGet`](docs/sdks/payroll/README.md#listpublicpayrollprofilesapiv2publicpayrollprofilesget) - List Public Payroll Profiles
 - [`payrollListPublicPayrollRunsApiV2PublicPayrollRunsGet`](docs/sdks/payroll/README.md#listpublicpayrollrunsapiv2publicpayrollrunsget) - List Public Payroll Runs
 - [`payrollUpsertPublicPayrollProfileApiV2PublicPayrollProfilesPost`](docs/sdks/payroll/README.md#upsertpublicpayrollprofileapiv2publicpayrollprofilespost) - Upsert Public Payroll Profile
+- [`presentationsCancelExport`](docs/sdks/presentations/README.md#cancelexport) - Cancel Public Flow Presentation Export
+- [`presentationsCatalog`](docs/sdks/presentations/README.md#catalog) - Get Public Presentation Catalog
+- [`presentationsCreate`](docs/sdks/presentations/README.md#create) - Create Public Flow Presentation
+- [`presentationsCreateExport`](docs/sdks/presentations/README.md#createexport) - Create Public Flow Presentation Export
+- [`presentationsDownloadExport`](docs/sdks/presentations/README.md#downloadexport) - Download Public Flow Presentation Export
+- [`presentationsGet`](docs/sdks/presentations/README.md#get) - Get Public Flow Presentation
+- [`presentationsGetExport`](docs/sdks/presentations/README.md#getexport) - Get Public Flow Presentation Export
+- [`presentationsImportImage`](docs/sdks/presentations/README.md#importimage) - Import Public Flow Presentation Image
+- [`presentationsList`](docs/sdks/presentations/README.md#list) - List Public Flow Presentations
+- [`presentationsPreview`](docs/sdks/presentations/README.md#preview) - Preview Public Flow Presentation
+- [`presentationsReplace`](docs/sdks/presentations/README.md#replace) - Replace Public Flow Presentation
+- [`presentationsUpdate`](docs/sdks/presentations/README.md#update) - Update Public Flow Presentation
+- [`presentationsUploadImage`](docs/sdks/presentations/README.md#uploadimage) - Upload Public Flow Presentation Image
+- [`programPresentationsCancelExport`](docs/sdks/programpresentations/README.md#cancelexport) - Cancel Public Program Presentation Export
+- [`programPresentationsCreate`](docs/sdks/programpresentations/README.md#create) - Create Public Program Presentation
+- [`programPresentationsCreateExport`](docs/sdks/programpresentations/README.md#createexport) - Create Public Program Presentation Export
+- [`programPresentationsDownloadExport`](docs/sdks/programpresentations/README.md#downloadexport) - Download Public Program Presentation Export
+- [`programPresentationsGet`](docs/sdks/programpresentations/README.md#get) - Get Public Program Presentation
+- [`programPresentationsGetExport`](docs/sdks/programpresentations/README.md#getexport) - Get Public Program Presentation Export
+- [`programPresentationsImportImage`](docs/sdks/programpresentations/README.md#importimage) - Import Public Program Presentation Image
+- [`programPresentationsList`](docs/sdks/programpresentations/README.md#list) - List Public Program Presentations
+- [`programPresentationsPreview`](docs/sdks/programpresentations/README.md#preview) - Preview Public Program Presentation
+- [`programPresentationsReplace`](docs/sdks/programpresentations/README.md#replace) - Replace Public Program Presentation
+- [`programPresentationsUpdate`](docs/sdks/programpresentations/README.md#update) - Update Public Program Presentation
+- [`programPresentationsUploadImage`](docs/sdks/programpresentations/README.md#uploadimage) - Upload Public Program Presentation Image
 - [`projectsCreate`](docs/sdks/projects/README.md#create) - Create Public Project
 - [`projectsDelete`](docs/sdks/projects/README.md#delete) - Delete Public Project
 - [`projectsGet`](docs/sdks/projects/README.md#get) - Get Public Project

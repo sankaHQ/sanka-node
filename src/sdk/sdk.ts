@@ -41,6 +41,8 @@ import { ObjectSchemas } from "./object-schemas.js";
 import { Orders } from "./orders.js";
 import { Payments } from "./payments.js";
 import { Payroll } from "./payroll.js";
+import { Presentations } from "./presentations.js";
+import { ProgramPresentations } from "./program-presentations.js";
 import { Projects } from "./projects.js";
 import { Properties } from "./properties.js";
 import { Prospect } from "./prospect.js";
@@ -165,6 +167,18 @@ export class Sanka extends ClientSDK {
   private _ferryDiagrams?: FerryDiagrams;
   get ferryDiagrams(): FerryDiagrams {
     return (this._ferryDiagrams ??= new FerryDiagrams(this._options));
+  }
+
+  private _presentations?: Presentations;
+  get presentations(): Presentations {
+    return (this._presentations ??= new Presentations(this._options));
+  }
+
+  private _programPresentations?: ProgramPresentations;
+  get programPresentations(): ProgramPresentations {
+    return (this._programPresentations ??= new ProgramPresentations(
+      this._options,
+    ));
   }
 
   private _ferryPrograms?: FerryPrograms;
