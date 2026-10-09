@@ -1017,3 +1017,98 @@ actions:
 - target: $["paths"]["/v2/public/goals/{goal_id}/progress"]["get"]
   update:
     x-speakeasy-name-override: getProgress
+- target: $["paths"]["/v2/public/presentations/catalog"]["get"]
+  update:
+    x-speakeasy-name-override: catalog
+- target: $["paths"]["/v2/public/documents/presentations"]["get"]
+  update:
+    x-speakeasy-name-override: list
+- target: $["paths"]["/v2/public/documents/presentations"]["post"]
+  update:
+    x-speakeasy-name-override: create
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}"]["get"]
+  update:
+    x-speakeasy-name-override: get
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}"]["put"]
+  update:
+    x-speakeasy-name-override: replace
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}"]["patch"]
+  update:
+    x-speakeasy-name-override: update
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/images"]["post"]
+  update:
+    x-speakeasy-name-override: uploadImage
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/images/import"]["post"]
+  update:
+    x-speakeasy-name-override: importImage
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/previews"]["post"]
+  update:
+    x-speakeasy-name-override: preview
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/exports"]["post"]
+  update:
+    x-speakeasy-name-override: createExport
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/exports/{export_id}"]["get"]
+  update:
+    x-speakeasy-name-override: getExport
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/exports/{export_id}/download"]["get"]
+  update:
+    x-speakeasy-name-override: downloadExport
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/exports/{export_id}/cancel"]["post"]
+  update:
+    x-speakeasy-name-override: cancelExport
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations"]["get"]
+  update:
+    x-speakeasy-name-override: list
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations"]["post"]
+  update:
+    x-speakeasy-name-override: create
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}"]["get"]
+  update:
+    x-speakeasy-name-override: get
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}"]["put"]
+  update:
+    x-speakeasy-name-override: replace
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}"]["patch"]
+  update:
+    x-speakeasy-name-override: update
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images"]["post"]
+  update:
+    x-speakeasy-name-override: uploadImage
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images/import"]["post"]
+  update:
+    x-speakeasy-name-override: importImage
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/previews"]["post"]
+  update:
+    x-speakeasy-name-override: preview
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports"]["post"]
+  update:
+    x-speakeasy-name-override: createExport
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}"]["get"]
+  update:
+    x-speakeasy-name-override: getExport
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}/download"]["get"]
+  update:
+    x-speakeasy-name-override: downloadExport
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}/cancel"]["post"]
+  update:
+    x-speakeasy-name-override: cancelExport
+    x-speakeasy-group: programPresentations
+# Name the deck block direction enums so the existing models.Direction
+# (AssociationEdge.direction) keeps its published name.
+- target: $["components"]["schemas"]["StepsBlock"]["properties"]["direction"]["anyOf"][0]
+  update:
+    title: StepsBlockDirection
+- target: $["components"]["schemas"]["TimelineBlock"]["properties"]["direction"]["anyOf"][0]
+  update:
+    title: TimelineBlockDirection

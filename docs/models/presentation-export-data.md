@@ -1,0 +1,38 @@
+# PresentationExportData
+
+## Example Usage
+
+```typescript
+import { PresentationExportData } from "sanka-sdk/models";
+
+let value: PresentationExportData = {
+  id: "<id>",
+  documentId: "<id>",
+  product: "flow",
+  revision: 722118,
+  format: "pdf",
+  status: "cancelled",
+};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `id`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `documentId`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `product`                                                                                     | [models.PresentationExportDataProduct](../models/presentation-export-data-product.md)         | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `revision`                                                                                    | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `format`                                                                                      | [models.PresentationExportDataFormat](../models/presentation-export-data-format.md)           | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `status`                                                                                      | [models.PresentationExportDataStatus](../models/presentation-export-data-status.md)           | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `progress`                                                                                    | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `filename`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `sizeBytes`                                                                                   | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `warnings`                                                                                    | Record<string, *any*>[]                                                                       | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `errorCode`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `errorMessage`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `downloadPath`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | App-relative download route; present once the export completed.                               |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `startedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `finishedAt`                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `expiresAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
