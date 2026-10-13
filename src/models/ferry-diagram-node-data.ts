@@ -19,6 +19,20 @@ export const Color = {
 } as const;
 export type Color = OpenEnum<typeof Color>;
 
+export const Shape = {
+  Rectangle: "rectangle",
+  RoundedRectangle: "roundedRectangle",
+  Square: "square",
+  Circle: "circle",
+  Diamond: "diamond",
+  Triangle: "triangle",
+  InvertedTriangle: "invertedTriangle",
+  Oval: "oval",
+  Cylinder: "cylinder",
+  Pill: "pill",
+} as const;
+export type Shape = OpenEnum<typeof Shape>;
+
 export type FerryDiagramNodeData = {
   label: string;
   description?: string | undefined;
@@ -27,6 +41,23 @@ export type FerryDiagramNodeData = {
   objectKey?: string | null | undefined;
   objectSlug?: string | null | undefined;
   color?: Color | undefined;
+  shape?: Shape | null | undefined;
+  /**
+   * Label font size in CSS pixels. Omit it to use the node type's default size.
+   */
+  fontSize?: number | null | undefined;
+  /**
+   * Custom fill color as #RRGGBB. It overrides the fill of the `color` preset. Without a custom text color, clients choose a readable dark or light text color.
+   */
+  fillColor?: string | null | undefined;
+  /**
+   * Custom outline color as #RRGGBB. It overrides the `color` preset outline.
+   */
+  strokeColor?: string | null | undefined;
+  /**
+   * Custom label color as #RRGGBB. Without a custom fill, clients draw a white fill so the text stays readable in light and dark themes.
+   */
+  textColor?: string | null | undefined;
 };
 
 /** @internal */
@@ -35,6 +66,13 @@ export const Color$inboundSchema: z.ZodMiniType<Color, unknown> = openEnums
 /** @internal */
 export const Color$outboundSchema: z.ZodMiniType<string, Color> = openEnums
   .outboundSchema(Color);
+
+/** @internal */
+export const Shape$inboundSchema: z.ZodMiniType<Shape, unknown> = openEnums
+  .inboundSchema(Shape);
+/** @internal */
+export const Shape$outboundSchema: z.ZodMiniType<string, Shape> = openEnums
+  .outboundSchema(Shape);
 
 /** @internal */
 export const FerryDiagramNodeData$inboundSchema: z.ZodMiniType<
@@ -48,6 +86,11 @@ export const FerryDiagramNodeData$inboundSchema: z.ZodMiniType<
   objectKey: z.optional(z.nullable(types.string())),
   objectSlug: z.optional(z.nullable(types.string())),
   color: z._default(Color$inboundSchema, "default"),
+  shape: z.optional(z.nullable(Shape$inboundSchema)),
+  fontSize: z.optional(z.nullable(types.number())),
+  fillColor: z.optional(z.nullable(types.string())),
+  strokeColor: z.optional(z.nullable(types.string())),
+  textColor: z.optional(z.nullable(types.string())),
 });
 /** @internal */
 export type FerryDiagramNodeData$Outbound = {
@@ -58,6 +101,11 @@ export type FerryDiagramNodeData$Outbound = {
   objectKey?: string | null | undefined;
   objectSlug?: string | null | undefined;
   color: string;
+  shape?: string | null | undefined;
+  fontSize?: number | null | undefined;
+  fillColor?: string | null | undefined;
+  strokeColor?: string | null | undefined;
+  textColor?: string | null | undefined;
 };
 
 /** @internal */
@@ -72,6 +120,11 @@ export const FerryDiagramNodeData$outboundSchema: z.ZodMiniType<
   objectKey: z.optional(z.nullable(z.string())),
   objectSlug: z.optional(z.nullable(z.string())),
   color: z._default(Color$outboundSchema, "default"),
+  shape: z.optional(z.nullable(Shape$outboundSchema)),
+  fontSize: z.optional(z.nullable(z.number())),
+  fillColor: z.optional(z.nullable(z.string())),
+  strokeColor: z.optional(z.nullable(z.string())),
+  textColor: z.optional(z.nullable(z.string())),
 });
 
 export function ferryDiagramNodeDataToJSON(

@@ -13,5 +13,5 @@ let value: FerryDiagramEdgeType = "smoothstep";
 ## Values
 
 ```typescript
-"default" | "smoothstep" | Unrecognized<string>
+"default" | "smoothstep" | "straight" | Unrecognized<string>
 ```

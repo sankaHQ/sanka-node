@@ -13,5 +13,5 @@ let value: FerryDiagramNodeType = "objectTable";
 ## Values
 
 ```typescript
-"objectTable" | "process" | "note" | Unrecognized<string>
+"objectTable" | "process" | "note" | "section" | Unrecognized<string>
 ```
