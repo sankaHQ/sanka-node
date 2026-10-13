@@ -32698,7 +32698,7 @@ components:
               minimum: 96.0
             - type: "null"
           title: "Width"
-          description: "Frame width in CSS pixels, supplied together with height. Sections require it (up to 8,000); shaped process nodes may set it (up to 1,600)."
+          description: "Frame width in CSS pixels, supplied together with height. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,600)."
         height:
           anyOf:
             - type: "number"
@@ -32706,7 +32706,7 @@ components:
               minimum: 64.0
             - type: "null"
           title: "Height"
-          description: "Frame height in CSS pixels, supplied together with width. Sections require it (up to 8,000); shaped process nodes may set it (up to 1,200)."
+          description: "Frame height in CSS pixels, supplied together with width. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,200)."
       additionalProperties: false
       type: "object"
       required:

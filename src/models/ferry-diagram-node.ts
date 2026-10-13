@@ -36,11 +36,11 @@ export type FerryDiagramNode = {
   position: FerryDiagramPosition;
   data: FerryDiagramNodeData;
   /**
-   * Frame width in CSS pixels, supplied together with height. Sections require it (up to 8,000); shaped process nodes may set it (up to 1,600).
+   * Frame width in CSS pixels, supplied together with height. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,600).
    */
   width?: number | null | undefined;
   /**
-   * Frame height in CSS pixels, supplied together with width. Sections require it (up to 8,000); shaped process nodes may set it (up to 1,200).
+   * Frame height in CSS pixels, supplied together with width. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,200).
    */
   height?: number | null | undefined;
 };

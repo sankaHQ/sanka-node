@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 171da541-da80-4bd4-bbe2-f14bf09377bb
 management:
-  docChecksum: 949f4d4c184918fea3976439cf62190a
+  docChecksum: f259a9f5ddcd9416929fceb74d5282cd
   docVersion: 0.1.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
   releaseVersion: 0.1.9
   configChecksum: bca212d1d5f0487407cdc9b38863b287
 persistentEdits:
-  generation_id: 929471d2-cdb0-44cd-9402-a5977babad95
-  pristine_commit_hash: 39d0649e70fb338331c16104b4da62292304a68a
-  pristine_tree_hash: 77b35e60c0777b10c8de3e6f042af5c477afd0aa
+  generation_id: ea8e87ce-3309-4d89-b7e5-c86dc99a40a8
+  pristine_commit_hash: e1803cf41b9a09d23281ba58dd7b355eb2610cc7
+  pristine_tree_hash: 10f7f44a86550052d599236f80efa344a677bf4c
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -1163,8 +1163,8 @@ trackedFiles:
     pristine_git_object: d720078bdb9394566a5ef2286d8f63b28fac88e6
   docs/models/ferry-diagram-node.md:
     id: 7024b9fc99f2
-    last_write_checksum: sha1:797550ed334f254da009dd53f8a6e16dc53f4523
-    pristine_git_object: 8a71635e1d2ddea698c4d40287321934151d37f0
+    last_write_checksum: sha1:e33f9b980bf5705c3c8c7e7065287b319de64ffc
+    pristine_git_object: 06b92a214896c7db3ebeee96224cba1ee6b8b31f
   docs/models/ferry-diagram-position.md:
     id: 8e0dfa4bca63
     last_write_checksum: sha1:861ce8e6e1a1e0787ad5ff089b07f0b42154b58a
@@ -9147,8 +9147,8 @@ trackedFiles:
     pristine_git_object: 3cd434e7570f13e4f5364afe95e2b485de62df42
   src/models/ferry-diagram-node.ts:
     id: 2742dcb2f90f
-    last_write_checksum: sha1:3dab4322feef4d1dda881668d427eaaf0ed6984c
-    pristine_git_object: bb08f1ae18ea97f214b06cf3faa990f76b36a194
+    last_write_checksum: sha1:8db579352d0562d7c4a40d7e47fcc04a69c22342
+    pristine_git_object: 2d2cd83bb4a4d69a3b1f304d3593a3f1ea23e330
   src/models/ferry-diagram-position.ts:
     id: 548de355d670
     last_write_checksum: sha1:955175efa0c3d95f867afb17ce7f623989be213e
