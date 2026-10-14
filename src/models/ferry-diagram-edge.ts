@@ -13,8 +13,32 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 export const FerryDiagramEdgeType = {
   Default: "default",
   Smoothstep: "smoothstep",
+  Straight: "straight",
 } as const;
 export type FerryDiagramEdgeType = OpenEnum<typeof FerryDiagramEdgeType>;
+
+export const SourceCardinality = {
+  One: "one",
+  ZeroOrOne: "zero_or_one",
+  OneOrMany: "one_or_many",
+  ZeroOrMany: "zero_or_many",
+} as const;
+export type SourceCardinality = OpenEnum<typeof SourceCardinality>;
+
+export const TargetCardinality = {
+  One: "one",
+  ZeroOrOne: "zero_or_one",
+  OneOrMany: "one_or_many",
+  ZeroOrMany: "zero_or_many",
+} as const;
+export type TargetCardinality = OpenEnum<typeof TargetCardinality>;
+
+export const StrokeStyle = {
+  Solid: "solid",
+  Dashed: "dashed",
+  Dotted: "dotted",
+} as const;
+export type StrokeStyle = OpenEnum<typeof StrokeStyle>;
 
 export type FerryDiagramEdge = {
   id: string;
@@ -23,7 +47,39 @@ export type FerryDiagramEdge = {
   label?: string | undefined;
   type?: FerryDiagramEdgeType | undefined;
   sourceHandle?: string | null | undefined;
+  /**
+   * Connector stroke width in CSS pixels.
+   */
+  strokeWidth?: number | null | undefined;
   targetHandle?: string | null | undefined;
+  /**
+   * Render an arrowhead at the connector source endpoint.
+   */
+  sourceArrow?: boolean | undefined;
+  /**
+   * Optional ER cardinality at the connector source endpoint. Clients render it as one bar, circle plus bar, bar plus Crow's Foot, or circle plus Crow's Foot.
+   */
+  sourceCardinality?: SourceCardinality | null | undefined;
+  /**
+   * Render an arrowhead at the connector target endpoint.
+   */
+  targetArrow?: boolean | undefined;
+  /**
+   * Optional ER cardinality at the connector target endpoint. Clients render it as one bar, circle plus bar, bar plus Crow's Foot, or circle plus Crow's Foot.
+   */
+  targetCardinality?: TargetCardinality | null | undefined;
+  /**
+   * Connector line pattern. Omit it for a solid line.
+   */
+  strokeStyle?: StrokeStyle | null | undefined;
+  /**
+   * Custom connector and arrowhead color as #RRGGBB.
+   */
+  strokeColor?: string | null | undefined;
+  /**
+   * Connector label font size in CSS pixels. Labels keep explicit line breaks. Omit it to use the default size.
+   */
+  fontSize?: number | null | undefined;
 };
 
 /** @internal */
@@ -38,6 +94,35 @@ export const FerryDiagramEdgeType$outboundSchema: z.ZodMiniType<
 > = openEnums.outboundSchema(FerryDiagramEdgeType);
 
 /** @internal */
+export const SourceCardinality$inboundSchema: z.ZodMiniType<
+  SourceCardinality,
+  unknown
+> = openEnums.inboundSchema(SourceCardinality);
+/** @internal */
+export const SourceCardinality$outboundSchema: z.ZodMiniType<
+  string,
+  SourceCardinality
+> = openEnums.outboundSchema(SourceCardinality);
+
+/** @internal */
+export const TargetCardinality$inboundSchema: z.ZodMiniType<
+  TargetCardinality,
+  unknown
+> = openEnums.inboundSchema(TargetCardinality);
+/** @internal */
+export const TargetCardinality$outboundSchema: z.ZodMiniType<
+  string,
+  TargetCardinality
+> = openEnums.outboundSchema(TargetCardinality);
+
+/** @internal */
+export const StrokeStyle$inboundSchema: z.ZodMiniType<StrokeStyle, unknown> =
+  openEnums.inboundSchema(StrokeStyle);
+/** @internal */
+export const StrokeStyle$outboundSchema: z.ZodMiniType<string, StrokeStyle> =
+  openEnums.outboundSchema(StrokeStyle);
+
+/** @internal */
 export const FerryDiagramEdge$inboundSchema: z.ZodMiniType<
   FerryDiagramEdge,
   unknown
@@ -48,7 +133,15 @@ export const FerryDiagramEdge$inboundSchema: z.ZodMiniType<
   label: z._default(types.string(), ""),
   type: z._default(FerryDiagramEdgeType$inboundSchema, "smoothstep"),
   sourceHandle: z.optional(z.nullable(types.string())),
+  strokeWidth: z.optional(z.nullable(types.number())),
   targetHandle: z.optional(z.nullable(types.string())),
+  sourceArrow: z._default(types.boolean(), false),
+  sourceCardinality: z.optional(z.nullable(SourceCardinality$inboundSchema)),
+  targetArrow: z._default(types.boolean(), false),
+  targetCardinality: z.optional(z.nullable(TargetCardinality$inboundSchema)),
+  strokeStyle: z.optional(z.nullable(StrokeStyle$inboundSchema)),
+  strokeColor: z.optional(z.nullable(types.string())),
+  fontSize: z.optional(z.nullable(types.number())),
 });
 /** @internal */
 export type FerryDiagramEdge$Outbound = {
@@ -58,7 +151,15 @@ export type FerryDiagramEdge$Outbound = {
   label: string;
   type: string;
   sourceHandle?: string | null | undefined;
+  strokeWidth?: number | null | undefined;
   targetHandle?: string | null | undefined;
+  sourceArrow: boolean;
+  sourceCardinality?: string | null | undefined;
+  targetArrow: boolean;
+  targetCardinality?: string | null | undefined;
+  strokeStyle?: string | null | undefined;
+  strokeColor?: string | null | undefined;
+  fontSize?: number | null | undefined;
 };
 
 /** @internal */
@@ -72,7 +173,15 @@ export const FerryDiagramEdge$outboundSchema: z.ZodMiniType<
   label: z._default(z.string(), ""),
   type: z._default(FerryDiagramEdgeType$outboundSchema, "smoothstep"),
   sourceHandle: z.optional(z.nullable(z.string())),
+  strokeWidth: z.optional(z.nullable(z.number())),
   targetHandle: z.optional(z.nullable(z.string())),
+  sourceArrow: z._default(z.boolean(), false),
+  sourceCardinality: z.optional(z.nullable(SourceCardinality$outboundSchema)),
+  targetArrow: z._default(z.boolean(), false),
+  targetCardinality: z.optional(z.nullable(TargetCardinality$outboundSchema)),
+  strokeStyle: z.optional(z.nullable(StrokeStyle$outboundSchema)),
+  strokeColor: z.optional(z.nullable(z.string())),
+  fontSize: z.optional(z.nullable(z.number())),
 });
 
 export function ferryDiagramEdgeToJSON(

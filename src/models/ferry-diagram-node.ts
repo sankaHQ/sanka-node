@@ -26,6 +26,7 @@ export const FerryDiagramNodeType = {
   ObjectTable: "objectTable",
   Process: "process",
   Note: "note",
+  Section: "section",
 } as const;
 export type FerryDiagramNodeType = OpenEnum<typeof FerryDiagramNodeType>;
 
@@ -34,6 +35,14 @@ export type FerryDiagramNode = {
   type: FerryDiagramNodeType;
   position: FerryDiagramPosition;
   data: FerryDiagramNodeData;
+  /**
+   * Frame width in CSS pixels, supplied together with height. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,600).
+   */
+  width?: number | null | undefined;
+  /**
+   * Frame height in CSS pixels, supplied together with width. Sections require it (up to 8,000); shaped process nodes and notes may set it (up to 1,200).
+   */
+  height?: number | null | undefined;
 };
 
 /** @internal */
@@ -56,6 +65,8 @@ export const FerryDiagramNode$inboundSchema: z.ZodMiniType<
   type: FerryDiagramNodeType$inboundSchema,
   position: FerryDiagramPosition$inboundSchema,
   data: FerryDiagramNodeData$inboundSchema,
+  width: z.optional(z.nullable(types.number())),
+  height: z.optional(z.nullable(types.number())),
 });
 /** @internal */
 export type FerryDiagramNode$Outbound = {
@@ -63,6 +74,8 @@ export type FerryDiagramNode$Outbound = {
   type: string;
   position: FerryDiagramPosition$Outbound;
   data: FerryDiagramNodeData$Outbound;
+  width?: number | null | undefined;
+  height?: number | null | undefined;
 };
 
 /** @internal */
@@ -74,6 +87,8 @@ export const FerryDiagramNode$outboundSchema: z.ZodMiniType<
   type: FerryDiagramNodeType$outboundSchema,
   position: FerryDiagramPosition$outboundSchema,
   data: FerryDiagramNodeData$outboundSchema,
+  width: z.optional(z.nullable(z.number())),
+  height: z.optional(z.nullable(z.number())),
 });
 
 export function ferryDiagramNodeToJSON(
