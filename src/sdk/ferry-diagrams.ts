@@ -5,6 +5,7 @@
 import { ferryDiagramsCreatePublicFerryDiagramApiV2PublicFerryDiagramsPost } from "../funcs/ferry-diagrams-create-public-ferry-diagram-api-v2-public-ferry-diagrams-post.js";
 import { ferryDiagramsDeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete } from "../funcs/ferry-diagrams-delete-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-delete.js";
 import { ferryDiagramsGetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet } from "../funcs/ferry-diagrams-get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get.js";
+import { ferryDiagramsGetPublicFerryDiagramImage } from "../funcs/ferry-diagrams-get-public-ferry-diagram-image.js";
 import { ferryDiagramsListPublicFerryDiagramsApiV2PublicFerryDiagramsGet } from "../funcs/ferry-diagrams-list-public-ferry-diagrams-api-v2-public-ferry-diagrams-get.js";
 import { ferryDiagramsUpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut } from "../funcs/ferry-diagrams-update-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-put.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -106,5 +107,24 @@ export class FerryDiagrams extends ClientSDK {
         options,
       ),
     );
+  }
+
+  /**
+   * Get Public Ferry Diagram Image
+   *
+   * @remarks
+   * The diagram's latest revision as a PNG at twice its size, exactly as the diagram editor
+   * draws it. `X-Sanka-Diagram-Revision` names the revision. 422 `DIAGRAM_EMPTY` for a diagram
+   * without nodes; 503 when the renderer is unavailable.
+   */
+  async getPublicFerryDiagramImage(
+    request: operations.GetPublicFerryDiagramImageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetPublicFerryDiagramImageResponse> {
+    return unwrapAsync(ferryDiagramsGetPublicFerryDiagramImage(
+      this,
+      request,
+      options,
+    ));
   }
 }

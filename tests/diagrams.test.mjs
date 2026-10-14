@@ -31,3 +31,27 @@ test('sections, pills, colors, font sizes and dashed connectors reach the API an
   assert.equal(saved.edges[0].strokeStyle, 'dashed');
   assert.equal(saved.edges[0].fontSize, 22);
 });
+
+test('the diagram image comes back as the raw PNG bytes with its revision header', async () => {
+  const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0xff]);
+  class PngResponse extends Response {
+    async json() { throw new Error('the PNG body was parsed as JSON'); }
+    async text() { throw new Error('the PNG body was read as text'); }
+  }
+  const requests = [];
+  const sdk = new Sanka({ apiKey: 'synthetic-token', httpClient: new HTTPClient({ fetcher: async input => {
+    requests.push(new Request(input));
+    return new PngResponse(png, { headers: { 'content-type': 'image/png', 'x-sanka-diagram-revision': '7' } });
+  } }) });
+
+  const image = await sdk.ferryDiagrams.getPublicFerryDiagramImage({ diagramId: 'diagram-1', workspaceId });
+
+  assert.deepEqual(Buffer.from(await new Response(image.result).arrayBuffer()), png);
+  assert.deepEqual(image.headers['x-sanka-diagram-revision'], ['7']);
+  const [request] = requests;
+  const url = new URL(request.url);
+  assert.equal(request.method, 'GET');
+  assert.equal(url.pathname, '/v2/public/ferry/diagrams/diagram-1/image');
+  assert.equal(url.searchParams.get('workspace_id'), workspaceId);
+  assert.equal(request.headers.get('Accept'), 'image/png');
+});

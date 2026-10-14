@@ -450,6 +450,7 @@ run();
 * [getPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramapiv2publicferrydiagramsdiagramidget) - Get Public Ferry Diagram
 * [updatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
 * [deletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete](docs/sdks/ferrydiagrams/README.md#deletepublicferrydiagramapiv2publicferrydiagramsdiagramiddelete) - Delete Public Ferry Diagram
+* [getPublicFerryDiagramImage](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramimage) - Get Public Ferry Diagram Image
 
 ### [FerryPrograms](docs/sdks/ferryprograms/README.md)
 
@@ -964,6 +965,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`ferryDiagramsCreatePublicFerryDiagramApiV2PublicFerryDiagramsPost`](docs/sdks/ferrydiagrams/README.md#createpublicferrydiagramapiv2publicferrydiagramspost) - Create Public Ferry Diagram
 - [`ferryDiagramsDeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdDelete`](docs/sdks/ferrydiagrams/README.md#deletepublicferrydiagramapiv2publicferrydiagramsdiagramiddelete) - Delete Public Ferry Diagram
 - [`ferryDiagramsGetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet`](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramapiv2publicferrydiagramsdiagramidget) - Get Public Ferry Diagram
+- [`ferryDiagramsGetPublicFerryDiagramImage`](docs/sdks/ferrydiagrams/README.md#getpublicferrydiagramimage) - Get Public Ferry Diagram Image
 - [`ferryDiagramsListPublicFerryDiagramsApiV2PublicFerryDiagramsGet`](docs/sdks/ferrydiagrams/README.md#listpublicferrydiagramsapiv2publicferrydiagramsget) - List Public Ferry Diagrams
 - [`ferryDiagramsUpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdPut`](docs/sdks/ferrydiagrams/README.md#updatepublicferrydiagramapiv2publicferrydiagramsdiagramidput) - Update Public Ferry Diagram
 - [`ferryProgramsBatchUpsertPublicFerryProgramTodosApiV2PublicFerryProgramsProgramIdTodosBatchUpsertPost`](docs/sdks/ferryprograms/README.md#batchupsertpublicferryprogramtodosapiv2publicferryprogramsprogramidtodosbatchupsertpost) - Batch Upsert Public Ferry Program Todos

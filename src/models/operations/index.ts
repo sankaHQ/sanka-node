@@ -161,6 +161,7 @@ export * from "./get-public-estimate-api-v2-public-estimates-estimate-id-get.js"
 export * from "./get-public-expense-api-v2-public-expenses-expense-id-get.js";
 export * from "./get-public-export-job-compat-api-v2-public-exports-job-id-get.js";
 export * from "./get-public-ferry-diagram-api-v2-public-ferry-diagrams-diagram-id-get.js";
+export * from "./get-public-ferry-diagram-image.js";
 export * from "./get-public-ferry-program-api-v2-public-ferry-programs-program-id-get.js";
 export * from "./get-public-goal-progress.js";
 export * from "./get-public-goal.js";
