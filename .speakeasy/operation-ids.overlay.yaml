@@ -1041,6 +1041,9 @@ actions:
 - target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/images/import"]["post"]
   update:
     x-speakeasy-name-override: importImage
+- target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/images/diagram"]["post"]
+  update:
+    x-speakeasy-name-override: importDiagramImage
 - target: $["paths"]["/v2/public/documents/presentations/{presentation_id}/previews"]["post"]
   update:
     x-speakeasy-name-override: preview
@@ -1083,6 +1086,10 @@ actions:
 - target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images/import"]["post"]
   update:
     x-speakeasy-name-override: importImage
+    x-speakeasy-group: programPresentations
+- target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images/diagram"]["post"]
+  update:
+    x-speakeasy-name-override: importDiagramImage
     x-speakeasy-group: programPresentations
 - target: $["paths"]["/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/previews"]["post"]
   update:

@@ -12,6 +12,7 @@
 * [update](#update) - Update Public Flow Presentation
 * [uploadImage](#uploadimage) - Upload Public Flow Presentation Image
 * [importImage](#importimage) - Import Public Flow Presentation Image
+* [importDiagramImage](#importdiagramimage) - Import Public Flow Presentation Diagram Image
 * [preview](#preview) - Preview Public Flow Presentation
 * [createExport](#createexport) - Create Public Flow Presentation Export
 * [getExport](#getexport) - Get Public Flow Presentation Export
@@ -642,6 +643,87 @@ run();
 ### Response
 
 **Promise\<[operations.ImportPublicPresentationImageResponse](../../models/operations/import-public-presentation-image-response.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorEnvelope     | 401, 403, 422            | application/json         |
+| errors.SankaDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## importDiagramImage
+
+Store a Sanka diagram's latest image as an image of the presentation, for an image block
+or accent. It stays as it is when the diagram changes; a `sankaDiagram` block follows it.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="import_public_presentation_diagram_image" method="post" path="/v2/public/documents/presentations/{presentation_id}/images/diagram" -->
+```typescript
+import { Sanka } from "sanka-sdk";
+
+const sanka = new Sanka({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const result = await sanka.presentations.importDiagramImage({
+    presentationId: "<id>",
+    body: {
+      diagramId: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { presentationsImportDiagramImage } from "sanka-sdk/funcs/presentations-import-diagram-image.js";
+
+// Use `SankaCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+});
+
+async function run() {
+  const res = await presentationsImportDiagramImage(sanka, {
+    presentationId: "<id>",
+    body: {
+      diagramId: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("presentationsImportDiagramImage failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ImportPublicPresentationDiagramImageRequest](../../models/operations/import-public-presentation-diagram-image-request.md)                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ImportPublicPresentationDiagramImageResponse](../../models/operations/import-public-presentation-diagram-image-response.md)\>**
 
 ### Errors
 

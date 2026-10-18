@@ -13,5 +13,5 @@ let value: PresentationExportDataFormat = "pptx";
 ## Values
 
 ```typescript
-"pptx" | "pdf" | Unrecognized<string>
+"pptx" | "pdf" | "google_slides" | Unrecognized<string>
 ```

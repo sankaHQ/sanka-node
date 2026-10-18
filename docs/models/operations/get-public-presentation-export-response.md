@@ -16,7 +16,7 @@ let value: GetPublicPresentationExportResponse = {
       documentId: "<id>",
       product: "sanka",
       revision: 919055,
-      format: "pdf",
+      format: "google_slides",
       status: "uploading",
     },
     meta: {

@@ -21,6 +21,7 @@ export type PresentationExportDataProduct = OpenEnum<
 export const PresentationExportDataFormat = {
   Pptx: "pptx",
   Pdf: "pdf",
+  GoogleSlides: "google_slides",
 } as const;
 export type PresentationExportDataFormat = OpenEnum<
   typeof PresentationExportDataFormat
@@ -52,6 +53,7 @@ export type PresentationExportData = {
   warnings?: Array<{ [k: string]: any }> | undefined;
   errorCode?: string | null | undefined;
   errorMessage?: string | null | undefined;
+  googleSlidesUrl?: string | null | undefined;
   /**
    * App-relative download route; present once the export completed.
    */
@@ -97,6 +99,7 @@ export const PresentationExportData$inboundSchema: z.ZodMiniType<
   warnings: types.optional(z.array(z.record(z.string(), z.any()))),
   errorCode: z.optional(z.nullable(types.string())),
   errorMessage: z.optional(z.nullable(types.string())),
+  googleSlidesUrl: z.optional(z.nullable(types.string())),
   downloadPath: z.optional(z.nullable(types.string())),
   createdAt: z.optional(z.nullable(types.date())),
   startedAt: z.optional(z.nullable(types.date())),

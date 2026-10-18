@@ -10,7 +10,7 @@ let value: PresentationExportData = {
   documentId: "<id>",
   product: "flow",
   revision: 722118,
-  format: "pdf",
+  format: "google_slides",
   status: "cancelled",
 };
 ```
@@ -31,6 +31,7 @@ let value: PresentationExportData = {
 | `warnings`                                                                                    | Record<string, *any*>[]                                                                       | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `errorCode`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `errorMessage`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `googleSlidesUrl`                                                                             | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `downloadPath`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | App-relative download route; present once the export completed.                               |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `startedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |

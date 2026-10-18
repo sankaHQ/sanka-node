@@ -202,7 +202,9 @@ export * from "./get-public-workflow-run-nested-compat-api-v2-public-workflows-r
 export * from "./get-public-workforce-organization.js";
 export * from "./get-receipt.js";
 export * from "./get-run.js";
+export * from "./import-public-presentation-diagram-image.js";
 export * from "./import-public-presentation-image.js";
+export * from "./import-public-program-presentation-diagram-image.js";
 export * from "./import-public-program-presentation-image.js";
 export * from "./ingest-clay-signal-api-v2-lookout-connectors-clay-signals-post.js";
 export * from "./ingest-provider-signal-api-v2-lookout-connectors-provider-signals-post.js";

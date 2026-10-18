@@ -8,6 +8,7 @@ import { programPresentationsCreate } from "../funcs/program-presentations-creat
 import { programPresentationsDownloadExport } from "../funcs/program-presentations-download-export.js";
 import { programPresentationsGetExport } from "../funcs/program-presentations-get-export.js";
 import { programPresentationsGet } from "../funcs/program-presentations-get.js";
+import { programPresentationsImportDiagramImage } from "../funcs/program-presentations-import-diagram-image.js";
 import { programPresentationsImportImage } from "../funcs/program-presentations-import-image.js";
 import { programPresentationsList } from "../funcs/program-presentations-list.js";
 import { programPresentationsPreview } from "../funcs/program-presentations-preview.js";
@@ -132,6 +133,24 @@ export class ProgramPresentations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ImportPublicProgramPresentationImageResponse> {
     return unwrapAsync(programPresentationsImportImage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Import Public Program Presentation Diagram Image
+   *
+   * @remarks
+   * Store a Sanka diagram's latest image as an image of the presentation, for an image block
+   * or accent. It stays as it is when the diagram changes; a `sankaDiagram` block follows it.
+   */
+  async importDiagramImage(
+    request: operations.ImportPublicProgramPresentationDiagramImageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ImportPublicProgramPresentationDiagramImageResponse> {
+    return unwrapAsync(programPresentationsImportDiagramImage(
       this,
       request,
       options,

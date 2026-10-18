@@ -8,6 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 export const PresentationExportRequestFormat = {
   Pptx: "pptx",
   Pdf: "pdf",
+  GoogleSlides: "google_slides",
 } as const;
 export type PresentationExportRequestFormat = ClosedEnum<
   typeof PresentationExportRequestFormat

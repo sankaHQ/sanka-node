@@ -9,6 +9,7 @@ import { presentationsCreate } from "../funcs/presentations-create.js";
 import { presentationsDownloadExport } from "../funcs/presentations-download-export.js";
 import { presentationsGetExport } from "../funcs/presentations-get-export.js";
 import { presentationsGet } from "../funcs/presentations-get.js";
+import { presentationsImportDiagramImage } from "../funcs/presentations-import-diagram-image.js";
 import { presentationsImportImage } from "../funcs/presentations-import-image.js";
 import { presentationsList } from "../funcs/presentations-list.js";
 import { presentationsPreview } from "../funcs/presentations-preview.js";
@@ -150,6 +151,24 @@ export class Presentations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ImportPublicPresentationImageResponse> {
     return unwrapAsync(presentationsImportImage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Import Public Flow Presentation Diagram Image
+   *
+   * @remarks
+   * Store a Sanka diagram's latest image as an image of the presentation, for an image block
+   * or accent. It stays as it is when the diagram changes; a `sankaDiagram` block follows it.
+   */
+  async importDiagramImage(
+    request: operations.ImportPublicPresentationDiagramImageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.ImportPublicPresentationDiagramImageResponse> {
+    return unwrapAsync(presentationsImportDiagramImage(
       this,
       request,
       options,
