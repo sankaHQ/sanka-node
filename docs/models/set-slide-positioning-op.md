@@ -1,0 +1,23 @@
+# SetSlidePositioningOp
+
+## Example Usage
+
+```typescript
+import { SetSlidePositioningOp } from "sanka-sdk/models";
+
+let value: SetSlidePositioningOp = {
+  op: "set_slide_positioning",
+  slideId: "<id>",
+  positioning: "free",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `op`                                                                                                                                                          | *"set_slide_positioning"*                                                                                                                                     | :heavy_check_mark:                                                                                                                                            | N/A                                                                                                                                                           |
+| `slideId`                                                                                                                                                     | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | N/A                                                                                                                                                           |
+| `positioning`                                                                                                                                                 | [models.SetSlidePositioningOpPositioning](../models/set-slide-positioning-op-positioning.md)                                                                  | :heavy_check_mark:                                                                                                                                            | N/A                                                                                                                                                           |
+| `frames`                                                                                                                                                      | Record<string, Record<string, *any*>>                                                                                                                         | :heavy_minus_sign:                                                                                                                                            | To free: a frame per block ID (blocks in columns become top-level boxes; sizing defaults to fixed). Omit to keep every block where the renderer draws it now. |
+| `dropShapesAndLines`                                                                                                                                          | *boolean*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                            | To flow: delete the slide's shape and line blocks, which a stack cannot hold.                                                                                 |

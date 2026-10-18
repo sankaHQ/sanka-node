@@ -10,6 +10,10 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 
 export type PresentationCatalogData = {
   schemaVersions: Array<string>;
+  /**
+   * Optional capabilities this workspace may use, e.g. `freeform`.
+   */
+  features?: Array<string> | undefined;
   pageSizes: Array<{ [k: string]: any }>;
   layouts: Array<{ [k: string]: any }>;
   blocks: Array<{ [k: string]: any }>;
@@ -23,6 +27,10 @@ export type PresentationCatalogData = {
   guidance: Array<string>;
   deckJsonSchema: { [k: string]: any };
   example: { [k: string]: any };
+  /**
+   * Free placement (`positioning: free` slides): units, safe areas, grid, minimum and default frames, text sizes, shape tones and guidance.
+   */
+  freeform?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -31,6 +39,7 @@ export const PresentationCatalogData$inboundSchema: z.ZodMiniType<
   unknown
 > = z.object({
   schemaVersions: z.array(types.string()),
+  features: types.optional(z.array(types.string())),
   pageSizes: z.array(z.record(z.string(), z.any())),
   layouts: z.array(z.record(z.string(), z.any())),
   blocks: z.array(z.record(z.string(), z.any())),
@@ -41,6 +50,7 @@ export const PresentationCatalogData$inboundSchema: z.ZodMiniType<
   guidance: z.array(types.string()),
   deckJsonSchema: z.record(z.string(), z.any()),
   example: z.record(z.string(), z.any()),
+  freeform: types.optional(z.record(z.string(), z.any())),
 });
 
 export function presentationCatalogDataFromJSON(

@@ -7,10 +7,12 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export type DividerBlock = {
   type: "divider";
   id?: string | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -18,6 +20,7 @@ export const DividerBlock$inboundSchema: z.ZodMiniType<DividerBlock, unknown> =
   z.object({
     type: types.literal("divider"),
     id: z.optional(z.nullable(types.string())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function dividerBlockFromJSON(

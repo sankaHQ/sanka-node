@@ -12,7 +12,8 @@ let value: DividerBlock = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"divider"*        | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `type`                             | *"divider"*                        | :heavy_check_mark:                 | N/A                                |
+| `id`                               | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `frame`                            | [models.Frame](../models/frame.md) | :heavy_minus_sign:                 | N/A                                |

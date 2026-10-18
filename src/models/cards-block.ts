@@ -10,6 +10,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { CardItem, CardItem$inboundSchema } from "./card-item.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export const Columns = {
   Auto: "auto",
@@ -32,6 +33,11 @@ export type CardsBlock = {
   items: Array<CardItem>;
   columns?: Columns | null | undefined;
   style?: Style | null | undefined;
+  /**
+   * Multiplier on the block's whole type scale (free slides only).
+   */
+  textScale?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -50,6 +56,8 @@ export const CardsBlock$inboundSchema: z.ZodMiniType<CardsBlock, unknown> = z
     items: z.array(CardItem$inboundSchema),
     columns: z.optional(z.nullable(Columns$inboundSchema)),
     style: z.optional(z.nullable(Style$inboundSchema)),
+    textScale: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function cardsBlockFromJSON(

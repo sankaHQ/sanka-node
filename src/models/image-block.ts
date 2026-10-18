@@ -10,6 +10,7 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import { Focus, Focus$inboundSchema } from "./focus.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export const ImageBlockFit = {
   Cover: "cover",
@@ -36,6 +37,7 @@ export type ImageBlock = {
   focus?: Focus | null | undefined;
   aspect?: Aspect | null | undefined;
   rounded?: boolean | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -60,6 +62,7 @@ export const ImageBlock$inboundSchema: z.ZodMiniType<ImageBlock, unknown> = z
     focus: z.optional(z.nullable(Focus$inboundSchema)),
     aspect: z.optional(z.nullable(Aspect$inboundSchema)),
     rounded: z.optional(z.nullable(types.boolean())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function imageBlockFromJSON(

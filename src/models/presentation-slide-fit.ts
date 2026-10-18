@@ -11,6 +11,10 @@ import {
   PresentationFitOverflow,
   PresentationFitOverflow$inboundSchema,
 } from "./presentation-fit-overflow.js";
+import {
+  PresentationFrameFit,
+  PresentationFrameFit$inboundSchema,
+} from "./presentation-frame-fit.js";
 
 export type PresentationSlideFit = {
   scale: number;
@@ -18,6 +22,10 @@ export type PresentationSlideFit = {
    * Set when content does not fit even at the theme's minimum.
    */
   overflow?: PresentationFitOverflow | null | undefined;
+  /**
+   * Free slides: each box's own fit scale and overflow.
+   */
+  frames?: Array<PresentationFrameFit> | null | undefined;
 };
 
 /** @internal */
@@ -27,6 +35,7 @@ export const PresentationSlideFit$inboundSchema: z.ZodMiniType<
 > = z.object({
   scale: z._default(types.number(), 1),
   overflow: z.optional(z.nullable(PresentationFitOverflow$inboundSchema)),
+  frames: z.optional(z.nullable(z.array(PresentationFrameFit$inboundSchema))),
 });
 
 export function presentationSlideFitFromJSON(

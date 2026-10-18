@@ -19,7 +19,13 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import { HeadingBlock, HeadingBlock$inboundSchema } from "./heading-block.js";
 import { ImageAccent, ImageAccent$inboundSchema } from "./image-accent.js";
 import { ImageBlock, ImageBlock$inboundSchema } from "./image-block.js";
+import { LineBlock, LineBlock$inboundSchema } from "./line-block.js";
 import { QuoteBlock, QuoteBlock$inboundSchema } from "./quote-block.js";
+import {
+  SankaDiagramBlock,
+  SankaDiagramBlock$inboundSchema,
+} from "./sanka-diagram-block.js";
+import { ShapeBlock, ShapeBlock$inboundSchema } from "./shape-block.js";
 import { SlideAlign, SlideAlign$inboundSchema } from "./slide-align.js";
 import { StatsBlock, StatsBlock$inboundSchema } from "./stats-block.js";
 import { StepsBlock, StepsBlock$inboundSchema } from "./steps-block.js";
@@ -30,6 +36,18 @@ import {
   TimelineBlock$inboundSchema,
 } from "./timeline-block.js";
 import { ToneAccent, ToneAccent$inboundSchema } from "./tone-accent.js";
+
+/**
+ * `flow` stacks blocks in the layout's body; `free` places every top-level block in its `frame` (array order is stacking order, bottom first).
+ */
+export const SlidePositioning = {
+  Flow: "flow",
+  Free: "free",
+} as const;
+/**
+ * `flow` stacks blocks in the layout's body; `free` places every top-level block in its `frame` (array order is stacking order, bottom first).
+ */
+export type SlidePositioning = OpenEnum<typeof SlidePositioning>;
 
 export const Layout = {
   None: "none",
@@ -75,7 +93,10 @@ export type SlideBlock =
   | DividerBlock
   | HeadingBlock
   | ImageBlock
+  | LineBlock
   | QuoteBlock
+  | SankaDiagramBlock
+  | ShapeBlock
   | StatsBlock
   | StepsBlock
   | TableBlock
@@ -85,6 +106,10 @@ export type SlideBlock =
 
 export type Slide = {
   id?: string | null | undefined;
+  /**
+   * `flow` stacks blocks in the layout's body; `free` places every top-level block in its `frame` (array order is stacking order, bottom first).
+   */
+  positioning: SlidePositioning;
   layout: Layout;
   accent?:
     | ImageAccent
@@ -108,7 +133,10 @@ export type Slide = {
       | DividerBlock
       | HeadingBlock
       | ImageBlock
+      | LineBlock
       | QuoteBlock
+      | SankaDiagramBlock
+      | ShapeBlock
       | StatsBlock
       | StepsBlock
       | TableBlock
@@ -120,6 +148,12 @@ export type Slide = {
   notes: string;
   hidden: boolean;
 };
+
+/** @internal */
+export const SlidePositioning$inboundSchema: z.ZodMiniType<
+  SlidePositioning,
+  unknown
+> = openEnums.inboundSchema(SlidePositioning);
 
 /** @internal */
 export const Layout$inboundSchema: z.ZodMiniType<Layout, unknown> = openEnums
@@ -164,7 +198,10 @@ export const SlideBlock$inboundSchema: z.ZodMiniType<SlideBlock, unknown> =
     divider: DividerBlock$inboundSchema,
     heading: HeadingBlock$inboundSchema,
     image: ImageBlock$inboundSchema,
+    line: LineBlock$inboundSchema,
     quote: QuoteBlock$inboundSchema,
+    sankaDiagram: SankaDiagramBlock$inboundSchema,
+    shape: ShapeBlock$inboundSchema,
     stats: StatsBlock$inboundSchema,
     steps: StepsBlock$inboundSchema,
     table: TableBlock$inboundSchema,
@@ -185,6 +222,7 @@ export function slideBlockFromJSON(
 /** @internal */
 export const Slide$inboundSchema: z.ZodMiniType<Slide, unknown> = z.object({
   id: z.optional(z.nullable(types.string())),
+  positioning: z._default(SlidePositioning$inboundSchema, "flow"),
   layout: z._default(Layout$inboundSchema, "none"),
   accent: z.optional(
     z.nullable(
@@ -206,7 +244,10 @@ export const Slide$inboundSchema: z.ZodMiniType<Slide, unknown> = z.object({
     divider: DividerBlock$inboundSchema,
     heading: HeadingBlock$inboundSchema,
     image: ImageBlock$inboundSchema,
+    line: LineBlock$inboundSchema,
     quote: QuoteBlock$inboundSchema,
+    sankaDiagram: SankaDiagramBlock$inboundSchema,
+    shape: ShapeBlock$inboundSchema,
     stats: StatsBlock$inboundSchema,
     steps: StepsBlock$inboundSchema,
     table: TableBlock$inboundSchema,

@@ -19,11 +19,13 @@ let value: TableBlock = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `type`                                            | *"table"*                                         | :heavy_check_mark:                                | N/A                                               |
-| `id`                                              | *string*                                          | :heavy_minus_sign:                                | N/A                                               |
-| `columns`                                         | [models.TableColumn](../models/table-column.md)[] | :heavy_check_mark:                                | N/A                                               |
-| `header`                                          | *boolean*                                         | :heavy_minus_sign:                                | N/A                                               |
-| `rows`                                            | *string*[][]                                      | :heavy_check_mark:                                | N/A                                               |
-| `emphasizeFirstColumn`                            | *boolean*                                         | :heavy_minus_sign:                                | N/A                                               |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `type`                                                         | *"table"*                                                      | :heavy_check_mark:                                             | N/A                                                            |
+| `id`                                                           | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `columns`                                                      | [models.TableColumn](../models/table-column.md)[]              | :heavy_check_mark:                                             | N/A                                                            |
+| `header`                                                       | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `rows`                                                         | *string*[][]                                                   | :heavy_check_mark:                                             | N/A                                                            |
+| `emphasizeFirstColumn`                                         | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `textScale`                                                    | *number*                                                       | :heavy_minus_sign:                                             | Multiplier on the block's whole type scale (free slides only). |
+| `frame`                                                        | [models.Frame](../models/frame.md)                             | :heavy_minus_sign:                                             | N/A                                                            |

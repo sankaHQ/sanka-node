@@ -114,6 +114,25 @@ const value: models.SetFooterOp = {
 };
 ```
 
+### `models.SetPageSizeOp`
+
+```typescript
+const value: models.SetPageSizeOp = {
+  op: "set_page_size",
+  size: "a4-landscape",
+};
+```
+
+### `models.SetSlidePositioningOp`
+
+```typescript
+const value: models.SetSlidePositioningOp = {
+  op: "set_slide_positioning",
+  slideId: "<id>",
+  positioning: "free",
+};
+```
+
 ### `models.SetThemeOp`
 
 ```typescript

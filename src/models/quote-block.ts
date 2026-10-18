@@ -7,12 +7,18 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export type QuoteBlock = {
   type: "quote";
   id?: string | null | undefined;
   text: string;
   attribution?: string | null | undefined;
+  /**
+   * Main text size in stage px (free slides only); 1 px = 0.75 pt.
+   */
+  fontSize?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -22,6 +28,8 @@ export const QuoteBlock$inboundSchema: z.ZodMiniType<QuoteBlock, unknown> = z
     id: z.optional(z.nullable(types.string())),
     text: types.string(),
     attribution: z.optional(z.nullable(types.string())),
+    fontSize: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function quoteBlockFromJSON(

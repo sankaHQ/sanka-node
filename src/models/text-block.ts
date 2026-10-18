@@ -9,6 +9,7 @@ import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export const TextBlockSize = {
   S: "s",
@@ -29,6 +30,11 @@ export type TextBlock = {
   markdown: string;
   size?: TextBlockSize | null | undefined;
   tone?: TextBlockTone | null | undefined;
+  /**
+   * Main text size in stage px (free slides only); 1 px = 0.75 pt.
+   */
+  fontSize?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -51,6 +57,8 @@ export const TextBlock$inboundSchema: z.ZodMiniType<TextBlock, unknown> = z
     markdown: types.string(),
     size: z.optional(z.nullable(TextBlockSize$inboundSchema)),
     tone: z.optional(z.nullable(TextBlockTone$inboundSchema)),
+    fontSize: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function textBlockFromJSON(

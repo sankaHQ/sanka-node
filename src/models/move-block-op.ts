@@ -18,9 +18,13 @@ export type MoveBlockOp = {
    */
   parent?: BlockParent | null | undefined;
   /**
-   * Block to move after; null moves first; omit to move last.
+   * Block to move after; null moves first; omit to move last. On a free slide the order is the stacking order (bottom first).
    */
   after?: string | null | undefined;
+  /**
+   * Where the block goes on a free target slide (required when it moves to another free slide; a line keeps its endpoints). Not allowed for a flow target.
+   */
+  frame?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -30,6 +34,7 @@ export type MoveBlockOp$Outbound = {
   toSlideId: string;
   parent?: BlockParent$Outbound | null | undefined;
   after?: string | null | undefined;
+  frame?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -42,6 +47,7 @@ export const MoveBlockOp$outboundSchema: z.ZodMiniType<
   toSlideId: z.string(),
   parent: z.optional(z.nullable(BlockParent$outboundSchema)),
   after: z.optional(z.nullable(z.string())),
+  frame: z.optional(z.nullable(z.record(z.string(), z.any()))),
 });
 
 export function moveBlockOpToJSON(moveBlockOp: MoveBlockOp): string {

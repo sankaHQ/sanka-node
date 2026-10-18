@@ -49,6 +49,16 @@ import {
   SetFooterOp$outboundSchema,
 } from "./set-footer-op.js";
 import {
+  SetPageSizeOp,
+  SetPageSizeOp$Outbound,
+  SetPageSizeOp$outboundSchema,
+} from "./set-page-size-op.js";
+import {
+  SetSlidePositioningOp,
+  SetSlidePositioningOp$Outbound,
+  SetSlidePositioningOp$outboundSchema,
+} from "./set-slide-positioning-op.js";
+import {
   SetThemeOp,
   SetThemeOp$Outbound,
   SetThemeOp$outboundSchema,
@@ -79,6 +89,8 @@ export type Op =
   | ReplaceBlockOp
   | ReplaceSlideOp
   | SetFooterOp
+  | SetPageSizeOp
+  | SetSlidePositioningOp
   | SetThemeOp
   | SetTitleOp
   | UpdateBlockOp
@@ -96,6 +108,8 @@ export type PresentationPatchRequest = {
     | ReplaceBlockOp
     | ReplaceSlideOp
     | SetFooterOp
+    | SetPageSizeOp
+    | SetSlidePositioningOp
     | SetThemeOp
     | SetTitleOp
     | UpdateBlockOp
@@ -114,6 +128,8 @@ export type Op$Outbound =
   | ReplaceBlockOp$Outbound
   | ReplaceSlideOp$Outbound
   | SetFooterOp$Outbound
+  | SetPageSizeOp$Outbound
+  | SetSlidePositioningOp$Outbound
   | SetThemeOp$Outbound
   | SetTitleOp$Outbound
   | UpdateBlockOp$Outbound
@@ -130,6 +146,8 @@ export const Op$outboundSchema: z.ZodMiniType<Op$Outbound, Op> = z.union([
   ReplaceBlockOp$outboundSchema,
   ReplaceSlideOp$outboundSchema,
   SetFooterOp$outboundSchema,
+  SetPageSizeOp$outboundSchema,
+  SetSlidePositioningOp$outboundSchema,
   SetThemeOp$outboundSchema,
   SetTitleOp$outboundSchema,
   UpdateBlockOp$outboundSchema,
@@ -153,6 +171,8 @@ export type PresentationPatchRequest$Outbound = {
     | ReplaceBlockOp$Outbound
     | ReplaceSlideOp$Outbound
     | SetFooterOp$Outbound
+    | SetPageSizeOp$Outbound
+    | SetSlidePositioningOp$Outbound
     | SetThemeOp$Outbound
     | SetTitleOp$Outbound
     | UpdateBlockOp$Outbound
@@ -177,6 +197,8 @@ export const PresentationPatchRequest$outboundSchema: z.ZodMiniType<
       ReplaceBlockOp$outboundSchema,
       ReplaceSlideOp$outboundSchema,
       SetFooterOp$outboundSchema,
+      SetPageSizeOp$outboundSchema,
+      SetSlidePositioningOp$outboundSchema,
       SetThemeOp$outboundSchema,
       SetTitleOp$outboundSchema,
       UpdateBlockOp$outboundSchema,

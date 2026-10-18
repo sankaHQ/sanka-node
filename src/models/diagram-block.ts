@@ -7,6 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export type DiagramBlock = {
   type: "diagram";
@@ -14,6 +15,7 @@ export type DiagramBlock = {
   mermaid: string;
   alt: string;
   caption?: string | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -24,6 +26,7 @@ export const DiagramBlock$inboundSchema: z.ZodMiniType<DiagramBlock, unknown> =
     mermaid: types.string(),
     alt: z._default(types.string(), ""),
     caption: z.optional(z.nullable(types.string())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function diagramBlockFromJSON(

@@ -24,13 +24,15 @@ export class Presentations extends ClientSDK {
    * Get Public Presentation Catalog
    *
    * @remarks
-   * Layouts, blocks with JSON Schemas and limits, themes, icons and authoring guidance.
+   * Layouts, blocks with JSON Schemas and limits, themes, icons, guidance and features.
    */
   async catalog(
+    request?: operations.GetPublicPresentationCatalogRequest | undefined,
     options?: RequestOptions,
   ): Promise<operations.GetPublicPresentationCatalogResponse> {
     return unwrapAsync(presentationsCatalog(
       this,
+      request,
       options,
     ));
   }

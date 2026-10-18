@@ -7,12 +7,18 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 import { StatItem, StatItem$inboundSchema } from "./stat-item.js";
 
 export type StatsBlock = {
   type: "stats";
   id?: string | null | undefined;
   items: Array<StatItem>;
+  /**
+   * Multiplier on the block's whole type scale (free slides only).
+   */
+  textScale?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -21,6 +27,8 @@ export const StatsBlock$inboundSchema: z.ZodMiniType<StatsBlock, unknown> = z
     type: types.literal("stats"),
     id: z.optional(z.nullable(types.string())),
     items: z.array(StatItem$inboundSchema),
+    textScale: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function statsBlockFromJSON(

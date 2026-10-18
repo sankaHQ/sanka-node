@@ -13,10 +13,11 @@ let value: DiagramBlock = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"diagram"*        | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
-| `mermaid`          | *string*           | :heavy_check_mark: | N/A                |
-| `alt`              | *string*           | :heavy_minus_sign: | N/A                |
-| `caption`          | *string*           | :heavy_minus_sign: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `type`                             | *"diagram"*                        | :heavy_check_mark:                 | N/A                                |
+| `id`                               | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `mermaid`                          | *string*                           | :heavy_check_mark:                 | N/A                                |
+| `alt`                              | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `caption`                          | *string*                           | :heavy_minus_sign:                 | N/A                                |
+| `frame`                            | [models.Frame](../models/frame.md) | :heavy_minus_sign:                 | N/A                                |
