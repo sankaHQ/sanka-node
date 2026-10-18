@@ -7,6 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 import { TableColumn, TableColumn$inboundSchema } from "./table-column.js";
 
 export type TableBlock = {
@@ -16,6 +17,11 @@ export type TableBlock = {
   header: boolean;
   rows: Array<Array<string>>;
   emphasizeFirstColumn?: boolean | null | undefined;
+  /**
+   * Multiplier on the block's whole type scale (free slides only).
+   */
+  textScale?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -27,6 +33,8 @@ export const TableBlock$inboundSchema: z.ZodMiniType<TableBlock, unknown> = z
     header: z._default(types.boolean(), true),
     rows: z.array(z.array(types.string())),
     emphasizeFirstColumn: z.optional(z.nullable(types.boolean())),
+    textScale: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function tableBlockFromJSON(

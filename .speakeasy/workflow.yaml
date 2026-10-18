@@ -6,6 +6,7 @@ sources:
             - location: openapi/openapi.json
         overlays:
             - location: .speakeasy/operation-ids.overlay.yaml
+            - location: .speakeasy/model-names.overlay.yaml
         output: .speakeasy/out.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/sanka/sanka/sanka-public-api

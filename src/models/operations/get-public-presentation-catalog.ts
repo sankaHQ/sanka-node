@@ -9,10 +9,48 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import * as models from "../index.js";
 
+export type GetPublicPresentationCatalogRequest = {
+  workspaceId?: string | null | undefined;
+  xWorkspaceCode?: string | undefined;
+};
+
 export type GetPublicPresentationCatalogResponse = {
   headers: { [k: string]: Array<string> };
   result: models.GetPublicPresentationCatalog200Envelope;
 };
+
+/** @internal */
+export type GetPublicPresentationCatalogRequest$Outbound = {
+  workspace_id?: string | null | undefined;
+  "X-Workspace-Code"?: string | undefined;
+};
+
+/** @internal */
+export const GetPublicPresentationCatalogRequest$outboundSchema: z.ZodMiniType<
+  GetPublicPresentationCatalogRequest$Outbound,
+  GetPublicPresentationCatalogRequest
+> = z.pipe(
+  z.object({
+    workspaceId: z.optional(z.nullable(z.string())),
+    xWorkspaceCode: z.optional(z.string()),
+  }),
+  z.transform((v) => {
+    return remap$(v, {
+      workspaceId: "workspace_id",
+      xWorkspaceCode: "X-Workspace-Code",
+    });
+  }),
+);
+
+export function getPublicPresentationCatalogRequestToJSON(
+  getPublicPresentationCatalogRequest: GetPublicPresentationCatalogRequest,
+): string {
+  return JSON.stringify(
+    GetPublicPresentationCatalogRequest$outboundSchema.parse(
+      getPublicPresentationCatalogRequest,
+    ),
+  );
+}
 
 /** @internal */
 export const GetPublicPresentationCatalogResponse$inboundSchema: z.ZodMiniType<

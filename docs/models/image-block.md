@@ -24,3 +24,4 @@ let value: ImageBlock = {
 | `focus`                                              | [models.Focus](../models/focus.md)                   | :heavy_minus_sign:                                   | N/A                                                  |
 | `aspect`                                             | [models.Aspect](../models/aspect.md)                 | :heavy_minus_sign:                                   | N/A                                                  |
 | `rounded`                                            | *boolean*                                            | :heavy_minus_sign:                                   | N/A                                                  |
+| `frame`                                              | [models.Frame](../models/frame.md)                   | :heavy_minus_sign:                                   | N/A                                                  |

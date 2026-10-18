@@ -9,6 +9,7 @@ import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 
 export const Level = {
   One: 1,
@@ -23,6 +24,11 @@ export type HeadingBlock = {
   level: Level;
   text: string;
   kicker?: string | null | undefined;
+  /**
+   * Main text size in stage px (free slides only); 1 px = 0.75 pt.
+   */
+  fontSize?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -37,6 +43,8 @@ export const HeadingBlock$inboundSchema: z.ZodMiniType<HeadingBlock, unknown> =
     level: z._default(Level$inboundSchema, 1),
     text: types.string(),
     kicker: z.optional(z.nullable(types.string())),
+    fontSize: z.optional(z.nullable(types.number())),
+    frame: z.optional(z.nullable(Frame$inboundSchema)),
   });
 
 export function headingBlockFromJSON(

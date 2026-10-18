@@ -69,12 +69,49 @@ const value: models.ImageBlock = {
 };
 ```
 
+### `models.LineBlock`
+
+```typescript
+const value: models.LineBlock = {
+  type: "line",
+  from: {
+    x: 1556.12,
+    y: 1011.9,
+  },
+  to: {
+    x: 667.06,
+    y: 5264.05,
+  },
+  stroke: {
+    tone: "none",
+  },
+};
+```
+
 ### `models.QuoteBlock`
 
 ```typescript
 const value: models.QuoteBlock = {
   type: "quote",
   text: "<value>",
+};
+```
+
+### `models.SankaDiagramBlock`
+
+```typescript
+const value: models.SankaDiagramBlock = {
+  type: "sankaDiagram",
+  diagramId: "<id>",
+};
+```
+
+### `models.ShapeBlock`
+
+```typescript
+const value: models.ShapeBlock = {
+  type: "shape",
+  shapeBlockShape: "triangle",
 };
 ```
 

@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: Stable model names - Sanka Public API
+  version: 0.0.1
+# Schemas added to the contract must not take the generated names of existing models.
+actions:
+- target: $["components"]["schemas"]["FerryDiagramNodeData"]["properties"]["shape"]
+  update:
+    x-speakeasy-name-override: Shape
+- target: $["components"]["schemas"]["FerryDiagramEdge"]["properties"]["strokeStyle"]
+  update:
+    x-speakeasy-name-override: StrokeStyle
+- target: $["components"]["schemas"]["ShapeBlock"]["properties"]["shape"]
+  update:
+    x-speakeasy-name-override: ShapeBlockShape
+- target: $["components"]["schemas"]["StrokeStyle"]
+  update:
+    x-speakeasy-name-override: Stroke

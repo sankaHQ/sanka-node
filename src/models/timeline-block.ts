@@ -9,6 +9,7 @@ import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./errors/sdk-validation-error.js";
+import { Frame, Frame$inboundSchema } from "./frame.js";
 import { TimelineItem, TimelineItem$inboundSchema } from "./timeline-item.js";
 
 export const TimelineBlockDirection = {
@@ -22,6 +23,11 @@ export type TimelineBlock = {
   id?: string | null | undefined;
   items: Array<TimelineItem>;
   direction?: TimelineBlockDirection | null | undefined;
+  /**
+   * Multiplier on the block's whole type scale (free slides only).
+   */
+  textScale?: number | null | undefined;
+  frame?: Frame | null | undefined;
 };
 
 /** @internal */
@@ -39,6 +45,8 @@ export const TimelineBlock$inboundSchema: z.ZodMiniType<
   id: z.optional(z.nullable(types.string())),
   items: z.array(TimelineItem$inboundSchema),
   direction: z.optional(z.nullable(TimelineBlockDirection$inboundSchema)),
+  textScale: z.optional(z.nullable(types.number())),
+  frame: z.optional(z.nullable(Frame$inboundSchema)),
 });
 
 export function timelineBlockFromJSON(

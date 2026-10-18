@@ -39,6 +39,8 @@ test('generated update sends discriminated edit ops at the expected revision', a
     { op: 'set_title', title: 'Q4 board review' },
     { op: 'insert_blocks', slideId: 's1', after: 'h1', blocks: [{ type: 'callout', markdown: 'Ship it' }] },
     { op: 'delete_slides', slideIds: ['s9'] },
+    { op: 'set_page_size', size: 'a4-landscape' },
+    { op: 'set_slide_positioning', slideId: 's1', positioning: 'free', frames: { h1: { x: 72, y: 56, w: 640, h: 80 } }, dropShapesAndLines: false },
   ];
   const { sdk, requests } = client(() => Response.json(envelope(presentation({ revision: 4 }))));
   const result = await sdk.presentations.update({ workspaceId, presentationId, body: { expectedRevision: 3, ops } });
@@ -53,6 +55,22 @@ test('a stale replace fails once with the revision conflict', async () => {
   await assert.rejects(sdk.presentations.replace({ presentationId, body: { expectedRevision: 3, deck } }), error => error.statusCode === 409 && error.body.includes('PRESENTATION_REVISION_CONFLICT'));
   assert.equal(requests.length, 1);
   assert.equal(requests[0].method, 'PUT');
+});
+
+test('a free slide keeps its placement, shapes and lines through a read and replace', async () => {
+  const free = { ...deck, slides: [{ id: 's1', positioning: 'free', blocks: [
+    { type: 'heading', id: 'h1', level: 1, text: 'Q4 review', fontSize: 48, frame: { x: 72, y: 56, w: 640, h: 80, sizing: 'auto', rotation: 350 } },
+    { type: 'shape', id: 'b1', shape: 'roundRect', fill: 'accent', text: 'New', frame: { x: 900, y: 64, w: 120, h: 44, sizing: 'fixed', anchor: 'middle' } },
+    { type: 'line', id: 'l1', from: { x: 72, y: 160 }, to: { x: 712, y: 160 }, stroke: { tone: 'accent', width: 2 }, endArrow: true },
+  ] }] };
+  const { sdk, requests } = client(() => Response.json(envelope(presentation({ deck: free }))));
+  const read = await sdk.presentations.get({ presentationId });
+  await sdk.presentations.replace({ presentationId, body: { expectedRevision: 3, deck: read.result.data.deck } });
+  const [slide] = requests[1].body.deck.slides;
+  assert.equal(slide.positioning, 'free');
+  assert.deepEqual(slide.blocks.map(block => [block.type, block.frame ?? { from: block.from, to: block.to }]), free.slides[0].blocks.map(block => [block.type, block.frame ?? { from: block.from, to: block.to }]));
+  assert.equal(slide.blocks[0].fontSize, 48);
+  assert.deepEqual(slide.blocks[2].stroke, { tone: 'accent', width: 2 });
 });
 
 test('a block type from a newer server stays readable', async () => {
