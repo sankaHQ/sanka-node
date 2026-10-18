@@ -5,11 +5,11 @@
 ```typescript
 import { PresentationExportRequestFormat } from "sanka-sdk/models";
 
-let value: PresentationExportRequestFormat = "pdf";
+let value: PresentationExportRequestFormat = "google_slides";
 ```
 
 ## Values
 
 ```typescript
-"pptx" | "pdf"
+"pptx" | "pdf" | "google_slides"
 ```

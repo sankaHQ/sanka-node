@@ -647,6 +647,7 @@ run();
 * [update](docs/sdks/presentations/README.md#update) - Update Public Flow Presentation
 * [uploadImage](docs/sdks/presentations/README.md#uploadimage) - Upload Public Flow Presentation Image
 * [importImage](docs/sdks/presentations/README.md#importimage) - Import Public Flow Presentation Image
+* [importDiagramImage](docs/sdks/presentations/README.md#importdiagramimage) - Import Public Flow Presentation Diagram Image
 * [preview](docs/sdks/presentations/README.md#preview) - Preview Public Flow Presentation
 * [createExport](docs/sdks/presentations/README.md#createexport) - Create Public Flow Presentation Export
 * [getExport](docs/sdks/presentations/README.md#getexport) - Get Public Flow Presentation Export
@@ -662,6 +663,7 @@ run();
 * [update](docs/sdks/programpresentations/README.md#update) - Update Public Program Presentation
 * [uploadImage](docs/sdks/programpresentations/README.md#uploadimage) - Upload Public Program Presentation Image
 * [importImage](docs/sdks/programpresentations/README.md#importimage) - Import Public Program Presentation Image
+* [importDiagramImage](docs/sdks/programpresentations/README.md#importdiagramimage) - Import Public Program Presentation Diagram Image
 * [preview](docs/sdks/programpresentations/README.md#preview) - Preview Public Program Presentation
 * [createExport](docs/sdks/programpresentations/README.md#createexport) - Create Public Program Presentation Export
 * [getExport](docs/sdks/programpresentations/README.md#getexport) - Get Public Program Presentation Export
@@ -1100,6 +1102,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`presentationsDownloadExport`](docs/sdks/presentations/README.md#downloadexport) - Download Public Flow Presentation Export
 - [`presentationsGet`](docs/sdks/presentations/README.md#get) - Get Public Flow Presentation
 - [`presentationsGetExport`](docs/sdks/presentations/README.md#getexport) - Get Public Flow Presentation Export
+- [`presentationsImportDiagramImage`](docs/sdks/presentations/README.md#importdiagramimage) - Import Public Flow Presentation Diagram Image
 - [`presentationsImportImage`](docs/sdks/presentations/README.md#importimage) - Import Public Flow Presentation Image
 - [`presentationsList`](docs/sdks/presentations/README.md#list) - List Public Flow Presentations
 - [`presentationsPreview`](docs/sdks/presentations/README.md#preview) - Preview Public Flow Presentation
@@ -1112,6 +1115,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`programPresentationsDownloadExport`](docs/sdks/programpresentations/README.md#downloadexport) - Download Public Program Presentation Export
 - [`programPresentationsGet`](docs/sdks/programpresentations/README.md#get) - Get Public Program Presentation
 - [`programPresentationsGetExport`](docs/sdks/programpresentations/README.md#getexport) - Get Public Program Presentation Export
+- [`programPresentationsImportDiagramImage`](docs/sdks/programpresentations/README.md#importdiagramimage) - Import Public Program Presentation Diagram Image
 - [`programPresentationsImportImage`](docs/sdks/programpresentations/README.md#importimage) - Import Public Program Presentation Image
 - [`programPresentationsList`](docs/sdks/programpresentations/README.md#list) - List Public Program Presentations
 - [`programPresentationsPreview`](docs/sdks/programpresentations/README.md#preview) - Preview Public Program Presentation

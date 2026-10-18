@@ -16,6 +16,10 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 import { HeadingBlock, HeadingBlock$inboundSchema } from "./heading-block.js";
 import { ImageBlock, ImageBlock$inboundSchema } from "./image-block.js";
 import { QuoteBlock, QuoteBlock$inboundSchema } from "./quote-block.js";
+import {
+  SankaDiagramBlock,
+  SankaDiagramBlock$inboundSchema,
+} from "./sanka-diagram-block.js";
 import { StatsBlock, StatsBlock$inboundSchema } from "./stats-block.js";
 import { StepsBlock, StepsBlock$inboundSchema } from "./steps-block.js";
 import { TableBlock, TableBlock$inboundSchema } from "./table-block.js";
@@ -33,6 +37,7 @@ export type ColumnBlock =
   | HeadingBlock
   | ImageBlock
   | QuoteBlock
+  | SankaDiagramBlock
   | StatsBlock
   | StepsBlock
   | TableBlock
@@ -52,6 +57,7 @@ export type Column = {
       | HeadingBlock
       | ImageBlock
       | QuoteBlock
+      | SankaDiagramBlock
       | StatsBlock
       | StepsBlock
       | TableBlock
@@ -72,6 +78,7 @@ export const ColumnBlock$inboundSchema: z.ZodMiniType<ColumnBlock, unknown> =
     heading: HeadingBlock$inboundSchema,
     image: ImageBlock$inboundSchema,
     quote: QuoteBlock$inboundSchema,
+    sankaDiagram: SankaDiagramBlock$inboundSchema,
     stats: StatsBlock$inboundSchema,
     steps: StepsBlock$inboundSchema,
     table: TableBlock$inboundSchema,
@@ -101,6 +108,7 @@ export const Column$inboundSchema: z.ZodMiniType<Column, unknown> = z.object({
     heading: HeadingBlock$inboundSchema,
     image: ImageBlock$inboundSchema,
     quote: QuoteBlock$inboundSchema,
+    sankaDiagram: SankaDiagramBlock$inboundSchema,
     stats: StatsBlock$inboundSchema,
     steps: StepsBlock$inboundSchema,
     table: TableBlock$inboundSchema,

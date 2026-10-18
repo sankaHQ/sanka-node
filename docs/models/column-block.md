@@ -65,6 +65,15 @@ const value: models.QuoteBlock = {
 };
 ```
 
+### `models.SankaDiagramBlock`
+
+```typescript
+const value: models.SankaDiagramBlock = {
+  type: "sankaDiagram",
+  diagramId: "<id>",
+};
+```
+
 ### `models.StatsBlock`
 
 ```typescript

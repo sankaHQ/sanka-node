@@ -6,6 +6,7 @@ const workspaceId = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
 const presentationId = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb';
 const programId = 'cccccccc-cccc-4ccc-8ccc-cccccccccccc';
 const exportId = 'dddddddd-dddd-4ddd-8ddd-dddddddddddd';
+const diagramId = 'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee';
 const envelope = data => ({ success: true, data, meta: { ctx_id: 'presentations-sdk-test' } });
 const deck = { schema: 'sanka.deck/v1', page: { size: '16:9' }, theme: { id: 'sanka-paper' }, footer: { pageNumbers: true, text: 'Sanka' }, slides: [{ id: 's1', blocks: [{ type: 'heading', id: 'h1', level: 1, text: 'Q4 review' }, { type: 'text', id: 't1', markdown: '- Revenue up' }] }] };
 const presentation = (overrides = {}) => ({ id: presentationId, workspaceId, product: 'flow', kind: 'presentation', title: 'Q4 review', revision: 3, deck, slideCount: 1, outline: '# Q4 review', updatedVia: 'api', appPath: `/docs?presentation=${presentationId}`, ...overrides });
@@ -71,6 +72,43 @@ test('a free slide keeps its placement, shapes and lines through a read and repl
   assert.deepEqual(slide.blocks.map(block => [block.type, block.frame ?? { from: block.from, to: block.to }]), free.slides[0].blocks.map(block => [block.type, block.frame ?? { from: block.from, to: block.to }]));
   assert.equal(slide.blocks[0].fontSize, 48);
   assert.deepEqual(slide.blocks[2].stroke, { tone: 'accent', width: 2 });
+});
+
+test('a diagram inside columns reads as a typed sankaDiagram block', async () => {
+  const withColumns = { ...deck, slides: [{ id: 's1', blocks: [{ type: 'columns', id: 'c1', columns: [
+    { width: 7, blocks: [{ type: 'sankaDiagram', id: 'd1', diagramId, alt: 'Order flow', fit: 'contain' }] },
+    { width: 5, blocks: [{ type: 'text', id: 't1', markdown: 'Notes' }] },
+  ] }] }] };
+  const { sdk } = client(() => Response.json(envelope(presentation({ deck: withColumns }))));
+  const result = await sdk.presentations.get({ presentationId });
+  const [diagram] = result.result.data.deck.slides[0].blocks[0].columns[0].blocks;
+  assert.equal(diagram.isUnknown, undefined);
+  assert.deepEqual(diagram, { type: 'sankaDiagram', id: 'd1', diagramId, alt: 'Order flow', fit: 'contain' });
+});
+
+test('diagram image import posts the diagram to each presentation route', async () => {
+  const image = { assetId: 'asset_diagram', contentType: 'image/png', sizeBytes: 2048, width: 1600, height: 900, alt: 'Order flow' };
+  const { sdk, requests } = client(() => Response.json(envelope(image), { status: 201 }));
+  const flow = await sdk.presentations.importDiagramImage({ workspaceId, presentationId, body: { diagramId, alt: 'Order flow' } });
+  const program = await sdk.programPresentations.importDiagramImage({ workspaceId, programId, presentationId, body: { diagramId } });
+  assert.deepEqual(flow.result.data, image);
+  assert.equal(program.result.data.assetId, 'asset_diagram');
+  assert.deepEqual(requests.map(request => [request.method, request.url.pathname, request.body]), [
+    ['POST', `/v2/public/documents/presentations/${presentationId}/images/diagram`, { diagramId, alt: 'Order flow' }],
+    ['POST', `/v2/public/ferry/programs/${programId}/presentations/${presentationId}/images/diagram`, { diagramId }],
+  ]);
+});
+
+test('a Google Slides export sends the format and reads back the Slides link', async () => {
+  const queued = { id: exportId, documentId: presentationId, product: 'flow', revision: 3, format: 'google_slides', status: 'queued' };
+  const completed = { ...queued, status: 'completed', progress: 100, googleSlidesUrl: 'https://docs.google.com/presentation/d/q4-review/edit' };
+  const responses = [Response.json(envelope(queued), { status: 202 }), Response.json(envelope(completed))];
+  const { sdk, requests } = client(() => responses.shift());
+  await sdk.presentations.createExport({ workspaceId, presentationId, body: { format: 'google_slides' } });
+  const result = await sdk.presentations.getExport({ workspaceId, presentationId, exportId });
+  assert.deepEqual(requests[0].body, { format: 'google_slides', includeHidden: false, includeNotes: true });
+  assert.equal(result.result.data.format, 'google_slides');
+  assert.equal(result.result.data.googleSlidesUrl, completed.googleSlidesUrl);
 });
 
 test('a block type from a newer server stays readable', async () => {
