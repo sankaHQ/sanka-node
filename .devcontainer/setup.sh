@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Fail setup if the configured runtime was not installed.
+node -e "require('node:assert/strict').equal(process.versions.node, '24.22.1')" || exit 1
+
 # Install the speakeasy CLI
 curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | sh
 
