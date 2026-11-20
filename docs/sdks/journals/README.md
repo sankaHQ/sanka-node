@@ -21,10 +21,10 @@ List Journal Entries
 
 <!-- UsageSnippet language="typescript" operationID="list_public_journals_api_v2_public_journals_get" method="get" path="/v2/public/journals" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -47,7 +47,7 @@ import { journalsListPublicJournalsApiV2PublicJournalsGet } from "sanka-sdk/func
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -91,10 +91,10 @@ Create Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="create_public_journal_api_v2_public_journals_post" method="post" path="/v2/public/journals" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { journalsCreatePublicJournalApiV2PublicJournalsPost } from "sanka-sdk/fu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -165,10 +165,10 @@ Create Financial Statement View
 
 <!-- UsageSnippet language="typescript" operationID="create_public_financial_statement_view_api_v2_public_journals_views_post" method="post" path="/v2/public/journals/views" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -193,7 +193,7 @@ import { journalsCreatePublicFinancialStatementViewApiV2PublicJournalsViewsPost 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -239,10 +239,10 @@ Get Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="get_public_journal_api_v2_public_journals__journal_id__get" method="get" path="/v2/public/journals/{journal_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -267,7 +267,7 @@ import { journalsGet } from "sanka-sdk/funcs/journals-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -313,10 +313,10 @@ Update Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="update_public_journal_api_v2_public_journals__journal_id__put" method="put" path="/v2/public/journals/{journal_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -342,7 +342,7 @@ import { journalsUpdate } from "sanka-sdk/funcs/journals-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -389,10 +389,10 @@ Delete Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_journal_api_v2_public_journals__journal_id__delete" method="delete" path="/v2/public/journals/{journal_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -417,7 +417,7 @@ import { journalsDelete } from "sanka-sdk/funcs/journals-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -463,10 +463,10 @@ Archive Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="archive_public_journal_api_v2_public_journals__journal_id__archive_post" method="post" path="/v2/public/journals/{journal_id}/archive" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -491,7 +491,7 @@ import { journalsArchive } from "sanka-sdk/funcs/journals-archive.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -537,10 +537,10 @@ Activate Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="activate_public_journal_api_v2_public_journals__journal_id__activate_post" method="post" path="/v2/public/journals/{journal_id}/activate" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -565,7 +565,7 @@ import { journalsActivate } from "sanka-sdk/funcs/journals-activate.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

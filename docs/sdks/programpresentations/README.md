@@ -26,10 +26,10 @@ The Sanka program's presentations, most recently updated first (metadata only, n
 
 <!-- UsageSnippet language="typescript" operationID="list_public_program_presentations" method="get" path="/v2/public/ferry/programs/{program_id}/presentations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -54,7 +54,7 @@ import { programPresentationsList } from "sanka-sdk/funcs/program-presentations-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -100,10 +100,10 @@ Create a presentation from deck JSON, Markdown, a Markdown Doc, or just a title.
 
 <!-- UsageSnippet language="typescript" operationID="create_public_program_presentation" method="post" path="/v2/public/ferry/programs/{program_id}/presentations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -131,7 +131,7 @@ import { programPresentationsCreate } from "sanka-sdk/funcs/program-presentation
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -180,10 +180,10 @@ The deck with its slide and block IDs, its revision and a read-only outline.
 
 <!-- UsageSnippet language="typescript" operationID="get_public_program_presentation" method="get" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -209,7 +209,7 @@ import { programPresentationsGet } from "sanka-sdk/funcs/program-presentations-g
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -256,10 +256,10 @@ Replace the whole deck at `expectedRevision` (409 PRESENTATION_REVISION_CONFLICT
 
 <!-- UsageSnippet language="typescript" operationID="replace_public_program_presentation" method="put" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -292,7 +292,7 @@ import { programPresentationsReplace } from "sanka-sdk/funcs/program-presentatio
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -346,10 +346,10 @@ Apply edit operations at `expectedRevision`, all or nothing.
 
 <!-- UsageSnippet language="typescript" operationID="update_public_program_presentation" method="patch" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -379,7 +379,7 @@ import { programPresentationsUpdate } from "sanka-sdk/funcs/program-presentation
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -430,10 +430,10 @@ Upload an image to the presentation; reference its `assetId` in the deck.
 
 <!-- UsageSnippet language="typescript" operationID="upload_public_program_presentation_image" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -462,7 +462,7 @@ import { programPresentationsUploadImage } from "sanka-sdk/funcs/program-present
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -512,10 +512,10 @@ Fetch a public https:// image into the presentation (metadata stripped).
 
 <!-- UsageSnippet language="typescript" operationID="import_public_program_presentation_image" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images/import" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -544,7 +544,7 @@ import { programPresentationsImportImage } from "sanka-sdk/funcs/program-present
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -595,10 +595,10 @@ or accent. It stays as it is when the diagram changes; a `sankaDiagram` block fo
 
 <!-- UsageSnippet language="typescript" operationID="import_public_program_presentation_diagram_image" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/images/diagram" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -627,7 +627,7 @@ import { programPresentationsImportDiagramImage } from "sanka-sdk/funcs/program-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -677,10 +677,10 @@ Slide images (base64) with each slide's fit; overflow means the content did not 
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_program_presentation" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/previews" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -707,7 +707,7 @@ import { programPresentationsPreview } from "sanka-sdk/funcs/program-presentatio
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -755,10 +755,10 @@ Start a PowerPoint or PDF export of the current revision; poll it until complete
 
 <!-- UsageSnippet language="typescript" operationID="create_public_program_presentation_export" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -787,7 +787,7 @@ import { programPresentationsCreateExport } from "sanka-sdk/funcs/program-presen
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -837,10 +837,10 @@ Get Public Program Presentation Export
 
 <!-- UsageSnippet language="typescript" operationID="get_public_program_presentation_export" method="get" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -867,7 +867,7 @@ import { programPresentationsGetExport } from "sanka-sdk/funcs/program-presentat
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -915,10 +915,10 @@ The exported `.pptx` or `.pdf` file, while it has not expired (7 days).
 
 <!-- UsageSnippet language="typescript" operationID="download_public_program_presentation_export" method="get" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}/download" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -945,7 +945,7 @@ import { programPresentationsDownloadExport } from "sanka-sdk/funcs/program-pres
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -993,10 +993,10 @@ Cancel Public Program Presentation Export
 
 <!-- UsageSnippet language="typescript" operationID="cancel_public_program_presentation_export" method="post" path="/v2/public/ferry/programs/{program_id}/presentations/{presentation_id}/exports/{export_id}/cancel" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1023,7 +1023,7 @@ import { programPresentationsCancelExport } from "sanka-sdk/funcs/program-presen
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

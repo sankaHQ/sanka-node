@@ -20,10 +20,10 @@ List Public Estimates
 
 <!-- UsageSnippet language="typescript" operationID="list_public_estimates_api_v2_public_estimates_get" method="get" path="/v2/public/estimates" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -46,7 +46,7 @@ import { estimatesList } from "sanka-sdk/funcs/estimates-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -90,10 +90,10 @@ Create Public Estimate
 
 <!-- UsageSnippet language="typescript" operationID="create_public_estimate_api_v2_public_estimates_post" method="post" path="/v2/public/estimates" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -118,7 +118,7 @@ import { estimatesCreate } from "sanka-sdk/funcs/estimates-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -164,10 +164,10 @@ Upload Public Estimate File
 
 <!-- UsageSnippet language="typescript" operationID="upload_public_estimate_file_api_v2_public_estimates_files_post" method="post" path="/v2/public/estimates/files" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -194,7 +194,7 @@ import { estimatesUploadPublicEstimateFileApiV2PublicEstimatesFilesPost } from "
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -242,10 +242,10 @@ Get Public Estimate
 
 <!-- UsageSnippet language="typescript" operationID="get_public_estimate_api_v2_public_estimates__estimate_id__get" method="get" path="/v2/public/estimates/{estimate_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -270,7 +270,7 @@ import { estimatesGet } from "sanka-sdk/funcs/estimates-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -316,10 +316,10 @@ Update Public Estimate
 
 <!-- UsageSnippet language="typescript" operationID="update_public_estimate_api_v2_public_estimates__estimate_id__put" method="put" path="/v2/public/estimates/{estimate_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -345,7 +345,7 @@ import { estimatesUpdate } from "sanka-sdk/funcs/estimates-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -392,10 +392,10 @@ Delete Public Estimate
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_estimate_api_v2_public_estimates__estimate_id__delete" method="delete" path="/v2/public/estimates/{estimate_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -420,7 +420,7 @@ import { estimatesDelete } from "sanka-sdk/funcs/estimates-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -466,10 +466,10 @@ Download Public Estimate Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_estimate_pdf_api_v2_public_estimates__estimate_id__pdf_get" method="get" path="/v2/public/estimates/{estimate_id}/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -494,7 +494,7 @@ import { estimatesDownloadPublicEstimatePdfApiV2PublicEstimatesEstimateIdPdfGet 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

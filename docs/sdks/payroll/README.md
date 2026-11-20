@@ -21,10 +21,10 @@ List Public Payroll Profiles
 
 <!-- UsageSnippet language="typescript" operationID="list_public_payroll_profiles_api_v2_public_payroll_profiles_get" method="get" path="/v2/public/payroll/profiles" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -47,7 +47,7 @@ import { payrollListPublicPayrollProfilesApiV2PublicPayrollProfilesGet } from "s
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -91,10 +91,10 @@ Upsert Public Payroll Profile
 
 <!-- UsageSnippet language="typescript" operationID="upsert_public_payroll_profile_api_v2_public_payroll_profiles_post" method="post" path="/v2/public/payroll/profiles" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -121,7 +121,7 @@ import { payrollUpsertPublicPayrollProfileApiV2PublicPayrollProfilesPost } from 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -169,10 +169,10 @@ List Public Payroll Runs
 
 <!-- UsageSnippet language="typescript" operationID="list_public_payroll_runs_api_v2_public_payroll_runs_get" method="get" path="/v2/public/payroll/runs" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -195,7 +195,7 @@ import { payrollListPublicPayrollRunsApiV2PublicPayrollRunsGet } from "sanka-sdk
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -239,10 +239,10 @@ Calculate Public Payroll Run
 
 <!-- UsageSnippet language="typescript" operationID="calculate_public_payroll_run_api_v2_public_payroll_runs_calculate_post" method="post" path="/v2/public/payroll/runs/calculate" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -269,7 +269,7 @@ import { payrollCalculatePublicPayrollRunApiV2PublicPayrollRunsCalculatePost } f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -317,10 +317,10 @@ Get Public Payroll Run
 
 <!-- UsageSnippet language="typescript" operationID="get_public_payroll_run_api_v2_public_payroll_runs__run_id__get" method="get" path="/v2/public/payroll/runs/{run_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -345,7 +345,7 @@ import { payrollGetPublicPayrollRunApiV2PublicPayrollRunsRunIdGet } from "sanka-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -391,10 +391,10 @@ Approve Public Payroll Run
 
 <!-- UsageSnippet language="typescript" operationID="approve_public_payroll_run_api_v2_public_payroll_runs__run_id__approve_post" method="post" path="/v2/public/payroll/runs/{run_id}/approve" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -419,7 +419,7 @@ import { payrollApprovePublicPayrollRunApiV2PublicPayrollRunsRunIdApprovePost } 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -465,10 +465,10 @@ Create Public Payroll Journal Entry
 
 <!-- UsageSnippet language="typescript" operationID="create_public_payroll_journal_entry_api_v2_public_payroll_runs__run_id__journal_entry_post" method="post" path="/v2/public/payroll/runs/{run_id}/journal-entry" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -496,7 +496,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -543,10 +543,10 @@ Download Public Payroll Payslip Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_payroll_payslip_pdf_api_v2_public_payroll_runs__run_id__payslips_pdf_get" method="get" path="/v2/public/payroll/runs/{run_id}/payslips/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -571,7 +571,7 @@ import { payrollDownloadPublicPayrollPayslipPdfApiV2PublicPayrollRunsRunIdPaysli
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

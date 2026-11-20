@@ -19,10 +19,10 @@ List Public Subscriptions
 
 <!-- UsageSnippet language="typescript" operationID="list_public_subscriptions_api_v2_public_subscriptions_get" method="get" path="/v2/public/subscriptions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { subscriptionsList } from "sanka-sdk/funcs/subscriptions-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Create Public Subscription
 
 <!-- UsageSnippet language="typescript" operationID="create_public_subscription_api_v2_public_subscriptions_post" method="post" path="/v2/public/subscriptions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -117,7 +117,7 @@ import { subscriptionsCreate } from "sanka-sdk/funcs/subscriptions-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -163,10 +163,10 @@ Bulk Update Public Subscriptions
 
 <!-- UsageSnippet language="typescript" operationID="bulk_update_public_subscriptions_api_v2_public_subscriptions_bulk_update_post" method="post" path="/v2/public/subscriptions/bulk-update" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -191,7 +191,7 @@ import { subscriptionsBulkUpdatePublicSubscriptionsApiV2PublicSubscriptionsBulkU
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -237,10 +237,10 @@ Get Public Subscription
 
 <!-- UsageSnippet language="typescript" operationID="get_public_subscription_api_v2_public_subscriptions__subscription_id__get" method="get" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { subscriptionsGet } from "sanka-sdk/funcs/subscriptions-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -311,10 +311,10 @@ Update Public Subscription
 
 <!-- UsageSnippet language="typescript" operationID="update_public_subscription_api_v2_public_subscriptions__subscription_id__put" method="put" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { subscriptionsUpdate } from "sanka-sdk/funcs/subscriptions-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -387,10 +387,10 @@ Delete Public Subscription
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_subscription_api_v2_public_subscriptions__subscription_id__delete" method="delete" path="/v2/public/subscriptions/{subscription_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -415,7 +415,7 @@ import { subscriptionsDelete } from "sanka-sdk/funcs/subscriptions-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

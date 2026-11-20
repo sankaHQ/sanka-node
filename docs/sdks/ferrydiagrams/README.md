@@ -19,10 +19,10 @@ List Public Ferry Diagrams
 
 <!-- UsageSnippet language="typescript" operationID="list_public_ferry_diagrams_api_v2_public_ferry_diagrams_get" method="get" path="/v2/public/ferry/diagrams" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { ferryDiagramsListPublicFerryDiagramsApiV2PublicFerryDiagramsGet } from 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Create Public Ferry Diagram
 
 <!-- UsageSnippet language="typescript" operationID="create_public_ferry_diagram_api_v2_public_ferry_diagrams_post" method="post" path="/v2/public/ferry/diagrams" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { ferryDiagramsCreatePublicFerryDiagramApiV2PublicFerryDiagramsPost } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -167,10 +167,10 @@ Get Public Ferry Diagram
 
 <!-- UsageSnippet language="typescript" operationID="get_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__get" method="get" path="/v2/public/ferry/diagrams/{diagram_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -195,7 +195,7 @@ import { ferryDiagramsGetPublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdGet 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -241,10 +241,10 @@ Update Public Ferry Diagram
 
 <!-- UsageSnippet language="typescript" operationID="update_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__put" method="put" path="/v2/public/ferry/diagrams/{diagram_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -273,7 +273,7 @@ import { ferryDiagramsUpdatePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdP
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -323,10 +323,10 @@ Delete Public Ferry Diagram
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_ferry_diagram_api_v2_public_ferry_diagrams__diagram_id__delete" method="delete" path="/v2/public/ferry/diagrams/{diagram_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -351,7 +351,7 @@ import { ferryDiagramsDeletePublicFerryDiagramApiV2PublicFerryDiagramsDiagramIdD
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -399,10 +399,10 @@ without nodes; 503 when the renderer is unavailable.
 
 <!-- UsageSnippet language="typescript" operationID="get_public_ferry_diagram_image" method="get" path="/v2/public/ferry/diagrams/{diagram_id}/image" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -427,7 +427,7 @@ import { ferryDiagramsGetPublicFerryDiagramImage } from "sanka-sdk/funcs/ferry-d
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

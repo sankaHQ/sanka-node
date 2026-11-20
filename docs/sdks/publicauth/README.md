@@ -19,10 +19,10 @@ Get Current Public Developer Auth Identity
 
 <!-- UsageSnippet language="typescript" operationID="get_public_auth_whoami_api_v2_public_auth_whoami_get" method="get" path="/v2/public/auth/whoami" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { publicAuthGetCurrentIdentity } from "sanka-sdk/funcs/public-auth-get-cu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Get Current Public OAuth Session
 
 <!-- UsageSnippet language="typescript" operationID="get_public_auth_session_api_v2_public_auth_session_get" method="get" path="/v2/public/auth/session" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -115,7 +115,7 @@ import { publicAuthGetPublicAuthSessionApiV2PublicAuthSessionGet } from "sanka-s
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -159,10 +159,10 @@ Switch Current Public OAuth Session Workspace
 
 <!-- UsageSnippet language="typescript" operationID="switch_public_auth_session_workspace_api_v2_public_auth_session_switch_workspace_post" method="post" path="/v2/public/auth/session/switch-workspace" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -191,7 +191,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -239,10 +239,10 @@ Switch Current Public MCP OAuth Session Workspace
 
 <!-- UsageSnippet language="typescript" operationID="switch_public_auth_mcp_session_workspace_api_v2_public_auth_mcp_session_switch_workspace_post" method="post" path="/v2/public/auth/mcp-session/switch-workspace" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -271,7 +271,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -319,10 +319,10 @@ Record Public MCP Tool Call
 
 <!-- UsageSnippet language="typescript" operationID="record_public_auth_mcp_tool_call_api_v2_public_auth_mcp_session_tool_call_log_post" method="post" path="/v2/public/auth/mcp-session/tool-call-log" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -349,7 +349,7 @@ import { publicAuthRecordPublicAuthMcpToolCallApiV2PublicAuthMcpSessionToolCallL
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -397,10 +397,10 @@ Revoke Current Public OAuth Session
 
 <!-- UsageSnippet language="typescript" operationID="revoke_public_auth_session_api_v2_public_auth_session_revoke_post" method="post" path="/v2/public/auth/session/revoke" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -423,7 +423,7 @@ import { publicAuthRevokePublicAuthSessionApiV2PublicAuthSessionRevokePost } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

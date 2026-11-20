@@ -22,10 +22,10 @@ List Public Ferry Programs
 
 <!-- UsageSnippet language="typescript" operationID="list_public_ferry_programs_api_v2_public_ferry_programs_get" method="get" path="/v2/public/ferry/programs" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -48,7 +48,7 @@ import { ferryProgramsListPublicFerryProgramsApiV2PublicFerryProgramsGet } from 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -92,10 +92,10 @@ Get Public Ferry Program
 
 <!-- UsageSnippet language="typescript" operationID="get_public_ferry_program_api_v2_public_ferry_programs__program_id__get" method="get" path="/v2/public/ferry/programs/{program_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -120,7 +120,7 @@ import { ferryProgramsGetPublicFerryProgramApiV2PublicFerryProgramsProgramIdGet 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -166,10 +166,10 @@ List Public Ferry Program Meetings
 
 <!-- UsageSnippet language="typescript" operationID="list_public_ferry_program_meetings_api_v2_public_ferry_programs__program_id__meetings_get" method="get" path="/v2/public/ferry/programs/{program_id}/meetings" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -196,7 +196,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -242,10 +242,10 @@ Create Public Ferry Program Meeting
 
 <!-- UsageSnippet language="typescript" operationID="create_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings_post" method="post" path="/v2/public/ferry/programs/{program_id}/meetings" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -275,7 +275,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -324,10 +324,10 @@ Update Public Ferry Program Meeting
 
 <!-- UsageSnippet language="typescript" operationID="update_public_ferry_program_meeting_api_v2_public_ferry_programs__program_id__meetings__meeting_id__patch" method="patch" path="/v2/public/ferry/programs/{program_id}/meetings/{meeting_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -356,7 +356,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -404,10 +404,10 @@ Create Public Ferry Program Todo
 
 <!-- UsageSnippet language="typescript" operationID="create_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos_post" method="post" path="/v2/public/ferry/programs/{program_id}/todos" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -437,7 +437,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -486,10 +486,10 @@ Batch Upsert Public Ferry Program Todos
 
 <!-- UsageSnippet language="typescript" operationID="batch_upsert_public_ferry_program_todos_api_v2_public_ferry_programs__program_id__todos_batch_upsert_post" method="post" path="/v2/public/ferry/programs/{program_id}/todos/batch-upsert" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -523,7 +523,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -576,10 +576,10 @@ Update Public Ferry Program Todo
 
 <!-- UsageSnippet language="typescript" operationID="update_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__patch" method="patch" path="/v2/public/ferry/programs/{program_id}/todos/{todo_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -608,7 +608,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -656,10 +656,10 @@ Delete Public Ferry Program Todo
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_ferry_program_todo_api_v2_public_ferry_programs__program_id__todos__todo_id__delete" method="delete" path="/v2/public/ferry/programs/{program_id}/todos/{todo_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -687,7 +687,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

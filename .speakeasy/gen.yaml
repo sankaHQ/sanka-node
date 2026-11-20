@@ -50,7 +50,7 @@ typescript:
       - README.md
       - RUNTIMES.md
       - LICENSE
-    homepage: https://docs.sanka.com/en/developers/api
+    homepage: https://sanka.com/docs/developers/sdk-node/
     keywords:
       - sanka
       - api

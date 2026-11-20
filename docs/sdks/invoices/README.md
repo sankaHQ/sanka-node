@@ -24,10 +24,10 @@ List Public Invoices
 
 <!-- UsageSnippet language="typescript" operationID="list_public_invoices_api_v2_public_invoices_get" method="get" path="/v2/public/invoices" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -50,7 +50,7 @@ import { invoicesList } from "sanka-sdk/funcs/invoices-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -94,10 +94,10 @@ Create Public Invoice
 
 <!-- UsageSnippet language="typescript" operationID="create_public_invoice_api_v2_public_invoices_post" method="post" path="/v2/public/invoices" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -122,7 +122,7 @@ import { invoicesCreate } from "sanka-sdk/funcs/invoices-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -168,10 +168,10 @@ Upload Public Invoice File
 
 <!-- UsageSnippet language="typescript" operationID="upload_public_invoice_file_api_v2_public_invoices_files_post" method="post" path="/v2/public/invoices/files" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -198,7 +198,7 @@ import { invoicesUploadPublicInvoiceFileApiV2PublicInvoicesFilesPost } from "san
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -246,10 +246,10 @@ Bulk Update Public Invoices
 
 <!-- UsageSnippet language="typescript" operationID="bulk_update_public_invoices_api_v2_public_invoices_bulk_update_post" method="post" path="/v2/public/invoices/bulk-update" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -274,7 +274,7 @@ import { invoicesBulkUpdatePublicInvoicesApiV2PublicInvoicesBulkUpdatePost } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -320,10 +320,10 @@ List Public Overdue Invoices
 
 <!-- UsageSnippet language="typescript" operationID="list_public_overdue_invoices_api_v2_public_invoices_overdue_get" method="get" path="/v2/public/invoices/overdue" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -346,7 +346,7 @@ import { invoicesListPublicOverdueInvoicesApiV2PublicInvoicesOverdueGet } from "
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -390,10 +390,10 @@ Get Public Invoice
 
 <!-- UsageSnippet language="typescript" operationID="get_public_invoice_api_v2_public_invoices__invoice_id__get" method="get" path="/v2/public/invoices/{invoice_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -418,7 +418,7 @@ import { invoicesGet } from "sanka-sdk/funcs/invoices-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -464,10 +464,10 @@ Update Public Invoice
 
 <!-- UsageSnippet language="typescript" operationID="update_public_invoice_api_v2_public_invoices__invoice_id__put" method="put" path="/v2/public/invoices/{invoice_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -493,7 +493,7 @@ import { invoicesUpdate } from "sanka-sdk/funcs/invoices-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -540,10 +540,10 @@ Delete Public Invoice
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_invoice_api_v2_public_invoices__invoice_id__delete" method="delete" path="/v2/public/invoices/{invoice_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -568,7 +568,7 @@ import { invoicesDelete } from "sanka-sdk/funcs/invoices-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -614,10 +614,10 @@ Download Public Invoice Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_invoice_pdf_api_v2_public_invoices__invoice_id__pdf_get" method="get" path="/v2/public/invoices/{invoice_id}/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -642,7 +642,7 @@ import { invoicesDownloadPublicInvoicePdfApiV2PublicInvoicesInvoiceIdPdfGet } fr
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -688,10 +688,10 @@ Send Public Invoice Email
 
 <!-- UsageSnippet language="typescript" operationID="send_public_invoice_email_api_v2_public_invoices__invoice_id__email_post" method="post" path="/v2/public/invoices/{invoice_id}/email" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -717,7 +717,7 @@ import { invoicesSendPublicInvoiceEmailApiV2PublicInvoicesInvoiceIdEmailPost } f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -764,10 +764,10 @@ Permanent Delete Public Invoice
 
 <!-- UsageSnippet language="typescript" operationID="permanent_delete_public_invoice_api_v2_public_invoices__invoice_id__permanent_delete_delete" method="delete" path="/v2/public/invoices/{invoice_id}/permanent-delete" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -794,7 +794,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

@@ -14,10 +14,10 @@ List Public Activity Logs
 
 <!-- UsageSnippet language="typescript" operationID="list_public_activity_logs_api_v2_public_logs_get" method="get" path="/v2/public/logs" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -40,7 +40,7 @@ import { activityLogsListPublicActivityLogsApiV2PublicLogsGet } from "sanka-sdk/
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
