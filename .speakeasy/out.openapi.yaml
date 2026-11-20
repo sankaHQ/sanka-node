@@ -37714,9 +37714,9 @@ components:
           title: "Extension Sha256"
         rate_version:
           type: "string"
-          const: "developer-cloud-2026-09-07"
+          const: "developer-cloud-2026-11-20"
           title: "Rate Version"
-          default: "developer-cloud-2026-09-07"
+          default: "developer-cloud-2026-11-20"
         worker_class:
           type: "string"
           const: "standard-2cpu-4gib"
@@ -37743,7 +37743,7 @@ components:
           title: "Compute Credits"
         premium_credits:
           type: "integer"
-          maximum: 2000.0
+          maximum: 500.0
           minimum: 0.0
           title: "Premium Credits"
           default: 0
@@ -38128,9 +38128,9 @@ components:
           default: "standard-2cpu-4gib"
         rate_version:
           type: "string"
-          const: "developer-cloud-2026-09-07"
+          const: "developer-cloud-2026-11-20"
           title: "Rate Version"
-          default: "developer-cloud-2026-09-07"
+          default: "developer-cloud-2026-11-20"
         runner_image:
           type: "string"
           title: "Runner Image"
@@ -38204,7 +38204,7 @@ components:
           title: "Source Sha256"
         max_credits:
           type: "integer"
-          maximum: 8000.0
+          maximum: 2000.0
           exclusiveMinimum: 0.0
           title: "Max Credits"
         timeout_seconds:
@@ -38723,9 +38723,8 @@ components:
           default: false
         certificate_premium_credits:
           type: "integer"
-          const: 2000
           title: "Certificate Premium Credits"
-          default: 2000
+          default: 500
         enabled:
           type: "boolean"
           title: "Enabled"
@@ -38735,9 +38734,8 @@ components:
           default: "standard-2cpu-4gib"
         credits_per_worker_minute:
           type: "integer"
-          const: 100
           title: "Credits Per Worker Minute"
-          default: 100
+          default: 25
         max_timeout_seconds:
           type: "integer"
           const: 3600
@@ -38757,9 +38755,8 @@ components:
           default: false
         repair_premium_credits:
           type: "integer"
-          const: 1000
           title: "Repair Premium Credits"
-          default: 1000
+          default: 250
         repair_model_policy:
           type: "string"
           const: "bounded-patch-v1"
@@ -38921,7 +38918,7 @@ components:
           title: "Items"
         max_credits:
           type: "integer"
-          maximum: 160000.0
+          maximum: 40000.0
           minimum: 1.0
           title: "Max Credits"
         concurrency:
@@ -38974,7 +38971,7 @@ components:
           title: "Item Keys"
         max_credits:
           type: "integer"
-          maximum: 160000.0
+          maximum: 40000.0
           minimum: 1.0
           title: "Max Credits"
         concurrency:

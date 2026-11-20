@@ -12,15 +12,15 @@ import { SDKValidationError } from "./errors/sdk-validation-error.js";
 export type DeveloperCloudCloudAvailabilityData = {
   fleetEnabled: boolean;
   certificationEnabled: boolean;
-  certificatePremiumCredits: 2000;
+  certificatePremiumCredits: number;
   enabled: boolean;
   workerClass: string;
-  creditsPerWorkerMinute: 100;
+  creditsPerWorkerMinute: number;
   maxTimeoutSeconds: 3600;
   maxSourceBytes: number;
   verificationScope: string;
   repairEnabled: boolean;
-  repairPremiumCredits: 1000;
+  repairPremiumCredits: number;
   repairModelPolicy: "bounded-patch-v1";
 };
 
@@ -32,15 +32,15 @@ export const DeveloperCloudCloudAvailabilityData$inboundSchema: z.ZodMiniType<
   z.object({
     fleet_enabled: z._default(types.boolean(), false),
     certification_enabled: z._default(types.boolean(), false),
-    certificate_premium_credits: z._default(types.literal(2000), 2000),
+    certificate_premium_credits: z._default(types.number(), 500),
     enabled: types.boolean(),
     worker_class: z._default(types.string(), "standard-2cpu-4gib"),
-    credits_per_worker_minute: z._default(types.literal(100), 100),
+    credits_per_worker_minute: z._default(types.number(), 25),
     max_timeout_seconds: z._default(types.literal(3600), 3600),
     max_source_bytes: z._default(types.number(), 8388608),
     verification_scope: z._default(types.string(), "generated-tests-static-v1"),
     repair_enabled: z._default(types.boolean(), false),
-    repair_premium_credits: z._default(types.literal(1000), 1000),
+    repair_premium_credits: z._default(types.number(), 250),
     repair_model_policy: z._default(
       types.literal("bounded-patch-v1"),
       "bounded-patch-v1",
