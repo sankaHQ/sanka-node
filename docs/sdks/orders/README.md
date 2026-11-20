@@ -21,10 +21,10 @@ List Public Orders
 
 <!-- UsageSnippet language="typescript" operationID="list_public_orders_api_v2_public_orders_get" method="get" path="/v2/public/orders" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -47,7 +47,7 @@ import { ordersList } from "sanka-sdk/funcs/orders-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -91,10 +91,10 @@ Create Public Order
 
 <!-- UsageSnippet language="typescript" operationID="create_public_order_api_v2_public_orders_post" method="post" path="/v2/public/orders" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { ordersCreate } from "sanka-sdk/funcs/orders-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -165,10 +165,10 @@ Bulk Create Public Orders
 
 <!-- UsageSnippet language="typescript" operationID="bulk_create_public_orders_api_v2_public_orders_bulk_post" method="post" path="/v2/public/orders/bulk" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -193,7 +193,7 @@ import { ordersBulkCreate } from "sanka-sdk/funcs/orders-bulk-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -239,10 +239,10 @@ Upload Public Order File
 
 <!-- UsageSnippet language="typescript" operationID="upload_public_order_file_api_v2_public_orders_files_post" method="post" path="/v2/public/orders/files" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -269,7 +269,7 @@ import { ordersUploadPublicOrderFileApiV2PublicOrdersFilesPost } from "sanka-sdk
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -317,10 +317,10 @@ Get Public Order
 
 <!-- UsageSnippet language="typescript" operationID="get_public_order_api_v2_public_orders__order_id__get" method="get" path="/v2/public/orders/{order_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -345,7 +345,7 @@ import { ordersGet } from "sanka-sdk/funcs/orders-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -391,10 +391,10 @@ Update Public Order
 
 <!-- UsageSnippet language="typescript" operationID="update_public_order_api_v2_public_orders__order_id__put" method="put" path="/v2/public/orders/{order_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -420,7 +420,7 @@ import { ordersUpdate } from "sanka-sdk/funcs/orders-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -467,10 +467,10 @@ Delete Public Order
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_order_api_v2_public_orders__order_id__delete" method="delete" path="/v2/public/orders/{order_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -495,7 +495,7 @@ import { ordersDelete } from "sanka-sdk/funcs/orders-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -541,10 +541,10 @@ Download Public Order Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_order_pdf_api_v2_public_orders__order_id__pdf_get" method="get" path="/v2/public/orders/{order_id}/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -569,7 +569,7 @@ import { ordersDownloadPublicOrderPdfApiV2PublicOrdersOrderIdPdfGet } from "sank
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

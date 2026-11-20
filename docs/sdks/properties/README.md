@@ -18,10 +18,10 @@ List Public Developer Properties
 
 <!-- UsageSnippet language="typescript" operationID="list_public_developer_properties_api_v2_public_properties__object_name__get" method="get" path="/v2/public/properties/{object_name}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -46,7 +46,7 @@ import { propertiesList } from "sanka-sdk/funcs/properties-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -92,10 +92,10 @@ Create Public Developer Property
 
 <!-- UsageSnippet language="typescript" operationID="create_public_developer_property_api_v2_public_properties__object_name__post" method="post" path="/v2/public/properties/{object_name}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -121,7 +121,7 @@ import { propertiesCreate } from "sanka-sdk/funcs/properties-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -168,10 +168,10 @@ Retrieve Public Developer Property
 
 <!-- UsageSnippet language="typescript" operationID="retrieve_public_developer_property_api_v2_public_properties__object_name___property_ref__get" method="get" path="/v2/public/properties/{object_name}/{property_ref}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -197,7 +197,7 @@ import { propertiesGet } from "sanka-sdk/funcs/properties-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -244,10 +244,10 @@ Update Public Developer Property
 
 <!-- UsageSnippet language="typescript" operationID="update_public_developer_property_api_v2_public_properties__object_name___property_ref__put" method="put" path="/v2/public/properties/{object_name}/{property_ref}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -274,7 +274,7 @@ import { propertiesUpdate } from "sanka-sdk/funcs/properties-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -322,10 +322,10 @@ Delete Public Developer Property
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_developer_property_api_v2_public_properties__object_name___property_ref__delete" method="delete" path="/v2/public/properties/{object_name}/{property_ref}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -351,7 +351,7 @@ import { propertiesDelete } from "sanka-sdk/funcs/properties-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

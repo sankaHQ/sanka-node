@@ -18,10 +18,10 @@ List Public Absences
 
 <!-- UsageSnippet language="typescript" operationID="list_public_absences_api_v2_public_absences_get" method="get" path="/v2/public/absences" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { absencesListPublicAbsencesApiV2PublicAbsencesGet } from "sanka-sdk/func
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -88,10 +88,10 @@ Create Public Absence
 
 <!-- UsageSnippet language="typescript" operationID="create_public_absence_api_v2_public_absences_post" method="post" path="/v2/public/absences" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -116,7 +116,7 @@ import { absencesCreatePublicAbsenceApiV2PublicAbsencesPost } from "sanka-sdk/fu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -162,10 +162,10 @@ Get Public Absence
 
 <!-- UsageSnippet language="typescript" operationID="get_public_absence_api_v2_public_absences__absence_id__get" method="get" path="/v2/public/absences/{absence_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -190,7 +190,7 @@ import { absencesGetPublicAbsenceApiV2PublicAbsencesAbsenceIdGet } from "sanka-s
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -236,10 +236,10 @@ Update Public Absence
 
 <!-- UsageSnippet language="typescript" operationID="update_public_absence_api_v2_public_absences__absence_id__put" method="put" path="/v2/public/absences/{absence_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { absencesUpdatePublicAbsenceApiV2PublicAbsencesAbsenceIdPut } from "sank
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -312,10 +312,10 @@ Delete Public Absence
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_absence_api_v2_public_absences__absence_id__delete" method="delete" path="/v2/public/absences/{absence_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { absencesDeletePublicAbsenceApiV2PublicAbsencesAbsenceIdDelete } from "s
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

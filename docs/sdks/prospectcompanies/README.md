@@ -14,10 +14,10 @@ Prospect Companies
 
 <!-- UsageSnippet language="typescript" operationID="prospect_companies_api_v2_prospect_companies_post" method="post" path="/v2/prospect/companies" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -42,7 +42,7 @@ import { prospectCompaniesCreate } from "sanka-sdk/funcs/prospect-companies-crea
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

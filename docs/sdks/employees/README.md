@@ -14,10 +14,10 @@ List Public Employees
 
 <!-- UsageSnippet language="typescript" operationID="list_public_employees_api_v2_public_employees_get" method="get" path="/v2/public/employees" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -40,7 +40,7 @@ import { employeesListPublicEmployeesApiV2PublicEmployeesGet } from "sanka-sdk/f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

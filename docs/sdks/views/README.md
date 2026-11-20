@@ -19,10 +19,10 @@ List Public Views
 
 <!-- UsageSnippet language="typescript" operationID="list_public_views_api_v2_public_views_get" method="get" path="/v2/public/views" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { viewsListPublicViewsApiV2PublicViewsGet } from "sanka-sdk/funcs/views-l
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Create Public View
 
 <!-- UsageSnippet language="typescript" operationID="create_public_view_api_v2_public_views_post" method="post" path="/v2/public/views" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { viewsCreatePublicViewApiV2PublicViewsPost } from "sanka-sdk/funcs/views
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -167,10 +167,10 @@ Get Public View
 
 <!-- UsageSnippet language="typescript" operationID="get_public_view_api_v2_public_views__view_id__get" method="get" path="/v2/public/views/{view_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -195,7 +195,7 @@ import { viewsGetPublicViewApiV2PublicViewsViewIdGet } from "sanka-sdk/funcs/vie
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -241,10 +241,10 @@ Update Public View
 
 <!-- UsageSnippet language="typescript" operationID="update_public_view_api_v2_public_views__view_id__patch" method="patch" path="/v2/public/views/{view_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -270,7 +270,7 @@ import { viewsUpdatePublicViewApiV2PublicViewsViewIdPatch } from "sanka-sdk/func
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -317,10 +317,10 @@ Delete Public View
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_view_api_v2_public_views__view_id__delete" method="delete" path="/v2/public/views/{view_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -345,7 +345,7 @@ import { viewsDeletePublicViewApiV2PublicViewsViewIdDelete } from "sanka-sdk/fun
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -391,10 +391,10 @@ Return saved view columns as canonical V2 field ids. Legacy raw UUID columns and
 
 <!-- UsageSnippet language="typescript" operationID="get_public_view_columns_api_v2_public_views__view_id__columns_get" method="get" path="/v2/public/views/{view_id}/columns" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -419,7 +419,7 @@ import { viewsGetPublicViewColumnsApiV2PublicViewsViewIdColumnsGet } from "sanka
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

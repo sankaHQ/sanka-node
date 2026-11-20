@@ -23,10 +23,10 @@ List Custom Object Records
 
 <!-- UsageSnippet language="typescript" operationID="list_public_custom_object_records_api_v2_public_custom_objects__custom_object_id__records_get" method="get" path="/v2/public/custom-objects/{custom_object_id}/records" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -51,7 +51,7 @@ import { customObjectsListRecords } from "sanka-sdk/funcs/custom-objects-list-re
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -97,10 +97,10 @@ Create Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="create_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records_post" method="post" path="/v2/public/custom-objects/{custom_object_id}/records" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -126,7 +126,7 @@ import { customObjectsCreateRecord } from "sanka-sdk/funcs/custom-objects-create
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -173,10 +173,10 @@ Get Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="get_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__get" method="get" path="/v2/public/custom-objects/{custom_object_id}/records/{record_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -202,7 +202,7 @@ import { customObjectsGetRecord } from "sanka-sdk/funcs/custom-objects-get-recor
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -249,10 +249,10 @@ Update Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="update_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__put" method="put" path="/v2/public/custom-objects/{custom_object_id}/records/{record_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -279,7 +279,7 @@ import { customObjectsUpdateRecord } from "sanka-sdk/funcs/custom-objects-update
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -327,10 +327,10 @@ Delete Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__delete" method="delete" path="/v2/public/custom-objects/{custom_object_id}/records/{record_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -356,7 +356,7 @@ import { customObjectsDeleteRecord } from "sanka-sdk/funcs/custom-objects-delete
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -403,10 +403,10 @@ Archive Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="archive_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__archive_post" method="post" path="/v2/public/custom-objects/{custom_object_id}/records/{record_id}/archive" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -432,7 +432,7 @@ import { customObjectsArchiveRecord } from "sanka-sdk/funcs/custom-objects-archi
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -479,10 +479,10 @@ Activate Custom Object Record
 
 <!-- UsageSnippet language="typescript" operationID="activate_public_custom_object_record_api_v2_public_custom_objects__custom_object_id__records__record_id__activate_post" method="post" path="/v2/public/custom-objects/{custom_object_id}/records/{record_id}/activate" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -508,7 +508,7 @@ import { customObjectsActivateRecord } from "sanka-sdk/funcs/custom-objects-acti
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -555,10 +555,10 @@ Create Public Custom Object Record Compatibility
 
 <!-- UsageSnippet language="typescript" operationID="create_public_custom_object_record_compatibility_api_v2_public_records_custom_objects_records_post" method="post" path="/v2/public/records/custom-objects/records" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -585,7 +585,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -631,10 +631,10 @@ Update Public Custom Object Record Compatibility
 
 <!-- UsageSnippet language="typescript" operationID="update_public_custom_object_record_compatibility_api_v2_public_records_custom_objects_records__record_id__post" method="post" path="/v2/public/records/custom-objects/records/{record_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -662,7 +662,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -709,10 +709,10 @@ Archive Public Custom Object Record Compatibility
 
 <!-- UsageSnippet language="typescript" operationID="archive_public_custom_object_record_compatibility_api_v2_public_records_custom_objects_records__record_id__archive_post" method="post" path="/v2/public/records/custom-objects/records/{record_id}/archive" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -739,7 +739,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

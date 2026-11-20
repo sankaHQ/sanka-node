@@ -29,10 +29,10 @@ List Public Incentives
 
 <!-- UsageSnippet language="typescript" operationID="list_public_incentives_api_v2_public_incentives_get" method="get" path="/v2/public/incentives" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -57,7 +57,7 @@ import { incentivesListPublicIncentivesApiV2PublicIncentivesGet } from "sanka-sd
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -103,10 +103,10 @@ List Public Incentive Company Options
 
 <!-- UsageSnippet language="typescript" operationID="list_public_incentive_company_options_api_v2_public_incentives_company_options_get" method="get" path="/v2/public/incentives/company-options" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -131,7 +131,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -175,10 +175,10 @@ List Public Incentive Plans
 
 <!-- UsageSnippet language="typescript" operationID="list_public_incentive_plans_api_v2_public_incentives_plans_get" method="get" path="/v2/public/incentives/plans" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -201,7 +201,7 @@ import { incentivesListPublicIncentivePlansApiV2PublicIncentivesPlansGet } from 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -245,10 +245,10 @@ Create Public Incentive Plan
 
 <!-- UsageSnippet language="typescript" operationID="create_public_incentive_plan_api_v2_public_incentives_plans_post" method="post" path="/v2/public/incentives/plans" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -279,7 +279,7 @@ import { incentivesCreatePublicIncentivePlanApiV2PublicIncentivesPlansPost } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -331,10 +331,10 @@ Update Public Incentive Plan
 
 <!-- UsageSnippet language="typescript" operationID="update_public_incentive_plan_api_v2_public_incentives_plans__plan_id__patch" method="patch" path="/v2/public/incentives/plans/{plan_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -360,7 +360,7 @@ import { incentivesUpdatePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdPatc
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -407,10 +407,10 @@ Delete Public Incentive Plan
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_incentive_plan_api_v2_public_incentives_plans__plan_id__delete" method="delete" path="/v2/public/incentives/plans/{plan_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -435,7 +435,7 @@ import { incentivesDeletePublicIncentivePlanApiV2PublicIncentivesPlansPlanIdDele
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -481,10 +481,10 @@ List Public Incentive Allocations
 
 <!-- UsageSnippet language="typescript" operationID="list_public_incentive_allocations_api_v2_public_incentives_allocations_get" method="get" path="/v2/public/incentives/allocations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -510,7 +510,7 @@ import { incentivesListPublicIncentiveAllocationsApiV2PublicIncentivesAllocation
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -557,10 +557,10 @@ Replace Public Incentive Allocations
 
 <!-- UsageSnippet language="typescript" operationID="replace_public_incentive_allocations_api_v2_public_incentives_allocations_put" method="put" path="/v2/public/incentives/allocations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -588,7 +588,7 @@ import { incentivesReplacePublicIncentiveAllocationsApiV2PublicIncentivesAllocat
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -637,10 +637,10 @@ Calculate Public Incentives
 
 <!-- UsageSnippet language="typescript" operationID="calculate_public_incentives_api_v2_public_incentives_calculate_post" method="post" path="/v2/public/incentives/calculate" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -667,7 +667,7 @@ import { incentivesCalculatePublicIncentivesApiV2PublicIncentivesCalculatePost }
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -715,10 +715,10 @@ Approve Public Incentives Bulk
 
 <!-- UsageSnippet language="typescript" operationID="approve_public_incentives_bulk_api_v2_public_incentives_approve_bulk_post" method="post" path="/v2/public/incentives/approve-bulk" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -743,7 +743,7 @@ import { incentivesApprovePublicIncentivesBulkApiV2PublicIncentivesApproveBulkPo
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -789,10 +789,10 @@ List Public Incentive Batches
 
 <!-- UsageSnippet language="typescript" operationID="list_public_incentive_batches_api_v2_public_incentives_batches_get" method="get" path="/v2/public/incentives/batches" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -817,7 +817,7 @@ import { incentivesListPublicIncentiveBatchesApiV2PublicIncentivesBatchesGet } f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -863,10 +863,10 @@ Create Public Incentive Batch
 
 <!-- UsageSnippet language="typescript" operationID="create_public_incentive_batch_api_v2_public_incentives_batches_post" method="post" path="/v2/public/incentives/batches" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -893,7 +893,7 @@ import { incentivesCreatePublicIncentiveBatchApiV2PublicIncentivesBatchesPost } 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -941,10 +941,10 @@ Get Public Incentive Batch
 
 <!-- UsageSnippet language="typescript" operationID="get_public_incentive_batch_api_v2_public_incentives_batches__batch_id__get" method="get" path="/v2/public/incentives/batches/{batch_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -969,7 +969,7 @@ import { incentivesGetPublicIncentiveBatchApiV2PublicIncentivesBatchesBatchIdGet
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1015,10 +1015,10 @@ Approve Public Incentive Batch
 
 <!-- UsageSnippet language="typescript" operationID="approve_public_incentive_batch_api_v2_public_incentives_batches__batch_id__approve_post" method="post" path="/v2/public/incentives/batches/{batch_id}/approve" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1045,7 +1045,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1091,10 +1091,10 @@ Mark Public Incentive Batch Paid
 
 <!-- UsageSnippet language="typescript" operationID="mark_public_incentive_batch_paid_api_v2_public_incentives_batches__batch_id__mark_paid_post" method="post" path="/v2/public/incentives/batches/{batch_id}/mark-paid" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1121,7 +1121,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1167,10 +1167,10 @@ Approve Public Incentive
 
 <!-- UsageSnippet language="typescript" operationID="approve_public_incentive_api_v2_public_incentives__incentive_id__approve_post" method="post" path="/v2/public/incentives/{incentive_id}/approve" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1195,7 +1195,7 @@ import { incentivesApprovePublicIncentiveApiV2PublicIncentivesIncentiveIdApprove
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

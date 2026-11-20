@@ -17,10 +17,10 @@ List Public Export Jobs Compat
 
 <!-- UsageSnippet language="typescript" operationID="list_public_export_jobs_compat_api_v2_public_exports_get" method="get" path="/v2/public/exports" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -43,7 +43,7 @@ import { exportsListPublicExportJobsCompatApiV2PublicExportsGet } from "sanka-sd
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -99,10 +99,10 @@ running until provider completion and required post-processing finish.
 
 <!-- UsageSnippet language="typescript" operationID="create_public_export_job_compat_api_v2_public_exports_post" method="post" path="/v2/public/exports" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -129,7 +129,7 @@ import { exportsCreatePublicExportJobCompatApiV2PublicExportsPost } from "sanka-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -177,10 +177,10 @@ Get Public Export Job Compat
 
 <!-- UsageSnippet language="typescript" operationID="get_public_export_job_compat_api_v2_public_exports__job_id__get" method="get" path="/v2/public/exports/{job_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -205,7 +205,7 @@ import { exportsGetPublicExportJobCompatApiV2PublicExportsJobIdGet } from "sanka
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -251,10 +251,10 @@ Cancel Public Export Job Compat
 
 <!-- UsageSnippet language="typescript" operationID="cancel_public_export_job_compat_api_v2_public_exports__job_id__cancel_post" method="post" path="/v2/public/exports/{job_id}/cancel" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -279,7 +279,7 @@ import { exportsCancelPublicExportJobCompatApiV2PublicExportsJobIdCancelPost } f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

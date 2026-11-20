@@ -7,7 +7,7 @@ starting a run. Free local migration continues through `sanka-sdk/migrate`.
 ```typescript
 import Sanka from "sanka-sdk";
 
-const client = new Sanka({ apiKey: process.env["SANKA_API_TOKEN"] });
+const client = new Sanka({ apiKey: process.env["SANKA_API_KEY"] });
 const workspaceId = "YOUR_INTERNAL_WORKSPACE_UUID";
 const availability = await client.developerCloud.getAvailability({ workspaceId });
 console.log(availability.result.data);

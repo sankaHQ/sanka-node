@@ -19,10 +19,10 @@ List Public Slips
 
 <!-- UsageSnippet language="typescript" operationID="list_public_slips_api_v2_public_slips_get" method="get" path="/v2/public/slips" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { revenuesList } from "sanka-sdk/funcs/revenues-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Create Public Slip
 
 <!-- UsageSnippet language="typescript" operationID="create_public_slip_api_v2_public_slips_post" method="post" path="/v2/public/slips" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -117,7 +117,7 @@ import { revenuesCreate } from "sanka-sdk/funcs/revenues-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -163,10 +163,10 @@ Get Public Slip
 
 <!-- UsageSnippet language="typescript" operationID="get_public_slip_api_v2_public_slips__revenue_id__get" method="get" path="/v2/public/slips/{revenue_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -191,7 +191,7 @@ import { revenuesGet } from "sanka-sdk/funcs/revenues-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -237,10 +237,10 @@ Update Public Slip
 
 <!-- UsageSnippet language="typescript" operationID="update_public_slip_api_v2_public_slips__revenue_id__put" method="put" path="/v2/public/slips/{revenue_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -266,7 +266,7 @@ import { revenuesUpdate } from "sanka-sdk/funcs/revenues-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -313,10 +313,10 @@ Delete Public Slip
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_slip_api_v2_public_slips__revenue_id__delete" method="delete" path="/v2/public/slips/{revenue_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -341,7 +341,7 @@ import { revenuesDelete } from "sanka-sdk/funcs/revenues-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -387,10 +387,10 @@ Download Public Slip Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_slip_pdf_api_v2_public_slips__revenue_id__pdf_get" method="get" path="/v2/public/slips/{revenue_id}/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -415,7 +415,7 @@ import { revenuesDownloadPublicSlipPdfApiV2PublicSlipsRevenueIdPdfGet } from "sa
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
