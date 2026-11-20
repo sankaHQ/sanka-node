@@ -92,11 +92,14 @@ const sanka = new Sanka({
 async function run() {
   const identity = await sanka.publicAuth.getCurrentIdentity();
 
-  console.log(identity);
+  console.log(identity.result.data.workspaceName); // workspace the key belongs to
+  console.log(identity.result.data.permissionLevel); // the key's permission level
 }
 
 run();
 ```
+
+`getCurrentIdentity()` resolves to `{ headers, result }`, where `result` is the response body, so the identity is `identity.result.data`. It also carries `workspaceId`, `tokenName`, `permissions` and `scopes`. About half of the methods resolve to this shape and the rest to the body itself; each method's page shows its response type.
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Local Migration [local-migration] -->
@@ -266,11 +269,14 @@ const sanka = new Sanka({
 async function run() {
   const identity = await sanka.publicAuth.getCurrentIdentity();
 
-  console.log(identity);
+  console.log(identity.result.data.workspaceName); // workspace the key belongs to
+  console.log(identity.result.data.permissionLevel); // the key's permission level
 }
 
 run();
 ```
+
+`getCurrentIdentity()` resolves to `{ headers, result }`, where `result` is the response body, so the identity is `identity.result.data`. It also carries `workspaceId`, `tokenName`, `permissions` and `scopes`. About half of the methods resolve to this shape and the rest to the body itself; each method's page shows its response type.
 
 A missing or invalid key fails with HTTP 401, thrown as `errors.ErrorEnvelope` (see [Error Handling](#error-handling)).
 <!-- End Authentication [security] -->
