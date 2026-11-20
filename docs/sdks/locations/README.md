@@ -18,10 +18,10 @@ List Public Locations
 
 <!-- UsageSnippet language="typescript" operationID="list_public_locations_api_v2_public_locations_get" method="get" path="/v2/public/locations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { locationsList } from "sanka-sdk/funcs/locations-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -88,10 +88,10 @@ Create Public Location
 
 <!-- UsageSnippet language="typescript" operationID="create_public_location_api_v2_public_locations_post" method="post" path="/v2/public/locations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -116,7 +116,7 @@ import { locationsCreate } from "sanka-sdk/funcs/locations-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -162,10 +162,10 @@ Get Public Location
 
 <!-- UsageSnippet language="typescript" operationID="get_public_location_api_v2_public_locations__location_id__get" method="get" path="/v2/public/locations/{location_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -190,7 +190,7 @@ import { locationsGet } from "sanka-sdk/funcs/locations-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -236,10 +236,10 @@ Update Public Location
 
 <!-- UsageSnippet language="typescript" operationID="update_public_location_api_v2_public_locations__location_id__put" method="put" path="/v2/public/locations/{location_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { locationsUpdate } from "sanka-sdk/funcs/locations-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -312,10 +312,10 @@ Delete Public Location
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_location_api_v2_public_locations__location_id__delete" method="delete" path="/v2/public/locations/{location_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { locationsDelete } from "sanka-sdk/funcs/locations-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

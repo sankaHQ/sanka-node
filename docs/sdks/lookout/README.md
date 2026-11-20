@@ -21,10 +21,10 @@ Ingest Clay Signal
 
 <!-- UsageSnippet language="typescript" operationID="ingest_clay_signal_api_v2_lookout_connectors_clay_signals_post" method="post" path="/v2/lookout/connectors/clay/signals" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ import { lookoutIngestClaySignalApiV2LookoutConnectorsClaySignalsPost } from "sa
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -101,10 +101,10 @@ Ingest Provider Signal
 
 <!-- UsageSnippet language="typescript" operationID="ingest_provider_signal_api_v2_lookout_connectors__provider__signals_post" method="post" path="/v2/lookout/connectors/{provider}/signals" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -133,7 +133,7 @@ import { lookoutIngestProviderSignalApiV2LookoutConnectorsProviderSignalsPost } 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -185,10 +185,10 @@ List Provider Actions
 
 <!-- UsageSnippet language="typescript" operationID="list_provider_actions_api_v2_lookout_ad_actions_get" method="get" path="/v2/lookout/ad-actions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -211,7 +211,7 @@ import { lookoutListProviderActionsApiV2LookoutAdActionsGet } from "sanka-sdk/fu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -255,10 +255,10 @@ List Provider Actions
 
 <!-- UsageSnippet language="typescript" operationID="list_provider_actions_api_v2_lookout_provider_actions_get" method="get" path="/v2/lookout/provider-actions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -281,7 +281,7 @@ import { lookoutListProviderActionsApiV2LookoutProviderActionsGet } from "sanka-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -327,10 +327,10 @@ Claim Provider Action
 
 <!-- UsageSnippet language="typescript" operationID="claim_provider_action_api_v2_lookout_ad_actions__action_id__claim_post" method="post" path="/v2/lookout/ad-actions/{action_id}/claim" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -355,7 +355,7 @@ import { lookoutClaimProviderActionApiV2LookoutAdActionsActionIdClaimPost } from
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -401,10 +401,10 @@ Claim Provider Action
 
 <!-- UsageSnippet language="typescript" operationID="claim_provider_action_api_v2_lookout_provider_actions__action_id__claim_post" method="post" path="/v2/lookout/provider-actions/{action_id}/claim" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -429,7 +429,7 @@ import { lookoutClaimProviderActionApiV2LookoutProviderActionsActionIdClaimPost 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -477,10 +477,10 @@ Complete Provider Action
 
 <!-- UsageSnippet language="typescript" operationID="complete_provider_action_api_v2_lookout_ad_actions__action_id__complete_post" method="post" path="/v2/lookout/ad-actions/{action_id}/complete" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -508,7 +508,7 @@ import { lookoutCompleteProviderActionApiV2LookoutAdActionsActionIdCompletePost 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -557,10 +557,10 @@ Complete Provider Action
 
 <!-- UsageSnippet language="typescript" operationID="complete_provider_action_api_v2_lookout_provider_actions__action_id__complete_post" method="post" path="/v2/lookout/provider-actions/{action_id}/complete" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -588,7 +588,7 @@ import { lookoutCompleteProviderActionApiV2LookoutProviderActionsActionIdComplet
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

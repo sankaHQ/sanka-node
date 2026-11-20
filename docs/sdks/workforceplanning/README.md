@@ -18,10 +18,10 @@ Get Public Workforce Organization
 
 <!-- UsageSnippet language="typescript" operationID="get_public_workforce_organization" method="get" path="/v2/public/workforce-planning/organization" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { workforcePlanningGetPublicWorkforceOrganization } from "sanka-sdk/funcs
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -88,10 +88,10 @@ Create Public Workforce Position
 
 <!-- UsageSnippet language="typescript" operationID="create_public_workforce_position" method="post" path="/v2/public/workforce-planning/positions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -118,7 +118,7 @@ import { workforcePlanningCreatePublicWorkforcePosition } from "sanka-sdk/funcs/
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -166,10 +166,10 @@ Update Public Workforce Position
 
 <!-- UsageSnippet language="typescript" operationID="update_public_workforce_position" method="patch" path="/v2/public/workforce-planning/positions/{position_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -197,7 +197,7 @@ import { workforcePlanningUpdatePublicWorkforcePosition } from "sanka-sdk/funcs/
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -246,10 +246,10 @@ Set Public Workforce Position Job
 
 <!-- UsageSnippet language="typescript" operationID="set_public_workforce_position_job" method="put" path="/v2/public/workforce-planning/positions/{position_id}/job" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -278,7 +278,7 @@ import { workforcePlanningSetPublicWorkforcePositionJob } from "sanka-sdk/funcs/
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -328,10 +328,10 @@ Set Public Workforce Position Occupant
 
 <!-- UsageSnippet language="typescript" operationID="set_public_workforce_position_occupant" method="put" path="/v2/public/workforce-planning/positions/{position_id}/occupant" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -360,7 +360,7 @@ import { workforcePlanningSetPublicWorkforcePositionOccupant } from "sanka-sdk/f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

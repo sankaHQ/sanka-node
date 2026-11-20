@@ -33,10 +33,10 @@ Get Public Workflow Run
 
 <!-- UsageSnippet language="typescript" operationID="get_public_workflow_run_api_v2_public_workflow_runs__run_id__get" method="get" path="/v2/public/workflow-runs/{run_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -61,7 +61,7 @@ import { workflowRunsGetRun } from "sanka-sdk/funcs/workflow-runs-get-run.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -107,10 +107,10 @@ Get Public Workflow Run Nested Compat
 
 <!-- UsageSnippet language="typescript" operationID="get_public_workflow_run_nested_compat_api_v2_public_workflows_runs__run_id__get" method="get" path="/v2/public/workflows/runs/{run_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -135,7 +135,7 @@ import { workflowRunsGetPublicWorkflowRunNestedCompatApiV2PublicWorkflowsRunsRun
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -181,10 +181,10 @@ Resolve Public Workflow Record
 
 <!-- UsageSnippet language="typescript" operationID="resolve_public_workflow_record_api_v2_public_workflow_runs_resolve_record_post" method="post" path="/v2/public/workflow-runs/resolve-record" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -211,7 +211,7 @@ import { workflowRunsResolvePublicWorkflowRecordApiV2PublicWorkflowRunsResolveRe
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -259,10 +259,10 @@ Preview Public Workflow Compat
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_workflow_compat_api_v2_public_workflow_runs_preview_post" method="post" path="/v2/public/workflow-runs/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -289,7 +289,7 @@ import { workflowRunsPreviewPublicWorkflowCompatApiV2PublicWorkflowRunsPreviewPo
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -337,10 +337,10 @@ Preview Public Hubspot Invoice Draft
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_hubspot_invoice_draft_api_v2_public_invoices_drafts_hubspot_preview_post" method="post" path="/v2/public/invoices/drafts/hubspot/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -371,7 +371,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -421,10 +421,10 @@ Preview Public Freee Invoice Export
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_freee_invoice_export_api_v2_public_invoices_exports_freee_preview_post" method="post" path="/v2/public/invoices/exports/freee/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -455,7 +455,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -505,10 +505,10 @@ Preview Public Moneyforward Invoice Export
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_moneyforward_invoice_export_api_v2_public_invoices_exports_moneyforward_preview_post" method="post" path="/v2/public/invoices/exports/moneyforward/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -539,7 +539,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -589,10 +589,10 @@ Preview Public Hubspot Estimate Draft
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_hubspot_estimate_draft_api_v2_public_estimates_drafts_hubspot_preview_post" method="post" path="/v2/public/estimates/drafts/hubspot/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -621,7 +621,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -669,10 +669,10 @@ Preview Public Hubspot Order Handoff
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_hubspot_order_handoff_api_v2_public_orders_handoffs_hubspot_preview_post" method="post" path="/v2/public/orders/handoffs/hubspot/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -703,7 +703,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -753,10 +753,10 @@ Preview Public Hubspot Commission Incentive
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_hubspot_commission_incentive_api_v2_public_incentives_commission_hubspot_preview_post" method="post" path="/v2/public/incentives/commission/hubspot/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -786,7 +786,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -835,10 +835,10 @@ Preview Public Salesforce Quote Readiness
 
 <!-- UsageSnippet language="typescript" operationID="preview_public_salesforce_quote_readiness_api_v2_public_cpq_quote_readiness_salesforce_preview_post" method="post" path="/v2/public/cpq/quote-readiness/salesforce/preview" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -867,7 +867,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -915,10 +915,10 @@ Summarize Public Salesforce Quote Readiness
 
 <!-- UsageSnippet language="typescript" operationID="summarize_public_salesforce_quote_readiness_api_v2_public_cpq_quote_readiness_salesforce_summary_post" method="post" path="/v2/public/cpq/quote-readiness/salesforce/summary" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -947,7 +947,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -995,10 +995,10 @@ Start Public Workflow Compat
 
 <!-- UsageSnippet language="typescript" operationID="start_public_workflow_compat_api_v2_public_workflow_runs_start_post" method="post" path="/v2/public/workflow-runs/start" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1025,7 +1025,7 @@ import { workflowRunsStartPublicWorkflowCompatApiV2PublicWorkflowRunsStartPost }
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1073,10 +1073,10 @@ Start Public Hubspot Invoice Draft
 
 <!-- UsageSnippet language="typescript" operationID="start_public_hubspot_invoice_draft_api_v2_public_invoices_drafts_hubspot_post" method="post" path="/v2/public/invoices/drafts/hubspot" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1104,7 +1104,7 @@ import { workflowRunsStartPublicHubspotInvoiceDraftApiV2PublicInvoicesDraftsHubs
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1153,10 +1153,10 @@ Start Public Freee Invoice Export
 
 <!-- UsageSnippet language="typescript" operationID="start_public_freee_invoice_export_api_v2_public_invoices_exports_freee_post" method="post" path="/v2/public/invoices/exports/freee" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1183,7 +1183,7 @@ import { workflowRunsStartPublicFreeeInvoiceExportApiV2PublicInvoicesExportsFree
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1231,10 +1231,10 @@ Start Public Moneyforward Invoice Export
 
 <!-- UsageSnippet language="typescript" operationID="start_public_moneyforward_invoice_export_api_v2_public_invoices_exports_moneyforward_post" method="post" path="/v2/public/invoices/exports/moneyforward" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1264,7 +1264,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1313,10 +1313,10 @@ Start Public Hubspot Estimate Draft
 
 <!-- UsageSnippet language="typescript" operationID="start_public_hubspot_estimate_draft_api_v2_public_estimates_drafts_hubspot_post" method="post" path="/v2/public/estimates/drafts/hubspot" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1343,7 +1343,7 @@ import { workflowRunsStartPublicHubspotEstimateDraftApiV2PublicEstimatesDraftsHu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1391,10 +1391,10 @@ Start Public Hubspot Order Handoff
 
 <!-- UsageSnippet language="typescript" operationID="start_public_hubspot_order_handoff_api_v2_public_orders_handoffs_hubspot_post" method="post" path="/v2/public/orders/handoffs/hubspot" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1422,7 +1422,7 @@ import { workflowRunsStartPublicHubspotOrderHandoffApiV2PublicOrdersHandoffsHubs
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1471,10 +1471,10 @@ Start Public Hubspot Revenue Control Report
 
 <!-- UsageSnippet language="typescript" operationID="start_public_hubspot_revenue_control_report_api_v2_public_reports_revenue_control_hubspot_post" method="post" path="/v2/public/reports/revenue-control/hubspot" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1505,7 +1505,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1555,10 +1555,10 @@ Writeback Public Salesforce Quote Readiness
 
 <!-- UsageSnippet language="typescript" operationID="writeback_public_salesforce_quote_readiness_api_v2_public_cpq_quote_readiness_salesforce_writeback_post" method="post" path="/v2/public/cpq/quote-readiness/salesforce/writeback" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1588,7 +1588,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

@@ -21,10 +21,10 @@ List Public Payments
 
 <!-- UsageSnippet language="typescript" operationID="list_public_payments_api_v2_public_payments_get" method="get" path="/v2/public/payments" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -47,7 +47,7 @@ import { paymentsList } from "sanka-sdk/funcs/payments-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -91,10 +91,10 @@ Create Public Payment
 
 <!-- UsageSnippet language="typescript" operationID="create_public_payment_api_v2_public_payments_post" method="post" path="/v2/public/payments" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { paymentsCreate } from "sanka-sdk/funcs/payments-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -165,10 +165,10 @@ Get Public Payment
 
 <!-- UsageSnippet language="typescript" operationID="get_public_payment_api_v2_public_payments__payment_id__get" method="get" path="/v2/public/payments/{payment_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -193,7 +193,7 @@ import { paymentsGet } from "sanka-sdk/funcs/payments-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -239,10 +239,10 @@ Update Public Payment
 
 <!-- UsageSnippet language="typescript" operationID="update_public_payment_api_v2_public_payments__payment_id__put" method="put" path="/v2/public/payments/{payment_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -268,7 +268,7 @@ import { paymentsUpdate } from "sanka-sdk/funcs/payments-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -315,10 +315,10 @@ Delete Public Payment
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_payment_api_v2_public_payments__payment_id__delete" method="delete" path="/v2/public/payments/{payment_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -343,7 +343,7 @@ import { paymentsDelete } from "sanka-sdk/funcs/payments-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -389,10 +389,10 @@ Download Public Payment Pdf
 
 <!-- UsageSnippet language="typescript" operationID="download_public_payment_pdf_api_v2_public_payments__payment_id__pdf_get" method="get" path="/v2/public/payments/{payment_id}/pdf" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -417,7 +417,7 @@ import { paymentsDownloadPublicPaymentPdfApiV2PublicPaymentsPaymentIdPdfGet } fr
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -463,10 +463,10 @@ List Public Payment Allocations
 
 <!-- UsageSnippet language="typescript" operationID="list_public_payment_allocations_api_v2_public_payments__payment_id__allocations_get" method="get" path="/v2/public/payments/{payment_id}/allocations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -491,7 +491,7 @@ import { paymentsListPublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAllocat
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -537,10 +537,10 @@ Update Public Payment Allocations
 
 <!-- UsageSnippet language="typescript" operationID="update_public_payment_allocations_api_v2_public_payments__payment_id__allocations_put" method="put" path="/v2/public/payments/{payment_id}/allocations" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -566,7 +566,7 @@ import { paymentsUpdatePublicPaymentAllocationsApiV2PublicPaymentsPaymentIdAlloc
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

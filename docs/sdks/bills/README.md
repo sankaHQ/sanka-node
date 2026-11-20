@@ -19,10 +19,10 @@ List Public Bills
 
 <!-- UsageSnippet language="typescript" operationID="list_public_bills_api_v2_public_bills_get" method="get" path="/v2/public/bills" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -45,7 +45,7 @@ import { billsList } from "sanka-sdk/funcs/bills-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -89,10 +89,10 @@ Create Public Bill
 
 <!-- UsageSnippet language="typescript" operationID="create_public_bill_api_v2_public_bills_post" method="post" path="/v2/public/bills" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -117,7 +117,7 @@ import { billsCreate } from "sanka-sdk/funcs/bills-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -163,10 +163,10 @@ Upload Public Bill File
 
 <!-- UsageSnippet language="typescript" operationID="upload_public_bill_file_api_v2_public_bills_files_post" method="post" path="/v2/public/bills/files" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -193,7 +193,7 @@ import { billsUploadPublicBillFileApiV2PublicBillsFilesPost } from "sanka-sdk/fu
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -241,10 +241,10 @@ Get Public Bill
 
 <!-- UsageSnippet language="typescript" operationID="get_public_bill_api_v2_public_bills__bill_id__get" method="get" path="/v2/public/bills/{bill_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -269,7 +269,7 @@ import { billsGet } from "sanka-sdk/funcs/bills-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -315,10 +315,10 @@ Update Public Bill
 
 <!-- UsageSnippet language="typescript" operationID="update_public_bill_api_v2_public_bills__bill_id__put" method="put" path="/v2/public/bills/{bill_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -344,7 +344,7 @@ import { billsUpdate } from "sanka-sdk/funcs/bills-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -391,10 +391,10 @@ Delete Public Bill
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_bill_api_v2_public_bills__bill_id__delete" method="delete" path="/v2/public/bills/{bill_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -419,7 +419,7 @@ import { billsDelete } from "sanka-sdk/funcs/bills-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

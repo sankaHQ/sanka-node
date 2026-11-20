@@ -31,10 +31,10 @@ List Fleets
 
 <!-- UsageSnippet language="typescript" operationID="list_fleets" method="get" path="/v2/migrate/cloud-fleets" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -57,7 +57,7 @@ import { developerCloudListFleets } from "sanka-sdk/funcs/developer-cloud-list-f
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -101,10 +101,10 @@ Create Fleet
 
 <!-- UsageSnippet language="typescript" operationID="create_fleet" method="post" path="/v2/migrate/cloud-fleets" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -134,7 +134,7 @@ import { developerCloudCreateFleet } from "sanka-sdk/funcs/developer-cloud-creat
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -185,10 +185,10 @@ Get Fleet
 
 <!-- UsageSnippet language="typescript" operationID="get_fleet" method="get" path="/v2/migrate/cloud-fleets/{fleet_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -213,7 +213,7 @@ import { developerCloudGetFleet } from "sanka-sdk/funcs/developer-cloud-get-flee
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -259,10 +259,10 @@ Cancel Fleet
 
 <!-- UsageSnippet language="typescript" operationID="cancel_fleet" method="post" path="/v2/migrate/cloud-fleets/{fleet_id}/cancel" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -287,7 +287,7 @@ import { developerCloudCancelFleet } from "sanka-sdk/funcs/developer-cloud-cance
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -333,10 +333,10 @@ Retry Fleet
 
 <!-- UsageSnippet language="typescript" operationID="retry_fleet" method="post" path="/v2/migrate/cloud-fleets/{fleet_id}/retry" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -371,7 +371,7 @@ import { developerCloudRetryFleet } from "sanka-sdk/funcs/developer-cloud-retry-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -427,10 +427,10 @@ Cloud Availability
 
 <!-- UsageSnippet language="typescript" operationID="get_availability" method="get" path="/v2/migrate/cloud-runs/availability" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -453,7 +453,7 @@ import { developerCloudGetAvailability } from "sanka-sdk/funcs/developer-cloud-g
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -497,10 +497,10 @@ Upload Cloud Source
 
 <!-- UsageSnippet language="typescript" operationID="upload_source" method="post" path="/v2/migrate/cloud-sources" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -528,7 +528,7 @@ import { developerCloudUploadSource } from "sanka-sdk/funcs/developer-cloud-uplo
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -577,10 +577,10 @@ List Cloud Runs
 
 <!-- UsageSnippet language="typescript" operationID="list_runs" method="get" path="/v2/migrate/cloud-runs" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -603,7 +603,7 @@ import { developerCloudListRuns } from "sanka-sdk/funcs/developer-cloud-list-run
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -647,10 +647,10 @@ Create Cloud Run
 
 <!-- UsageSnippet language="typescript" operationID="create_run" method="post" path="/v2/migrate/cloud-runs" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -680,7 +680,7 @@ import { developerCloudCreateRun } from "sanka-sdk/funcs/developer-cloud-create-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -731,10 +731,10 @@ Cloud Certificate Keys
 
 <!-- UsageSnippet language="typescript" operationID="list_certificate_keys" method="get" path="/v2/migrate/cloud-runs/certificate-keys" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -757,7 +757,7 @@ import { developerCloudListCertificateKeys } from "sanka-sdk/funcs/developer-clo
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -801,10 +801,10 @@ Cloud Certificate
 
 <!-- UsageSnippet language="typescript" operationID="get_certificate" method="get" path="/v2/migrate/cloud-runs/{run_id}/certificate" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -829,7 +829,7 @@ import { developerCloudGetCertificate } from "sanka-sdk/funcs/developer-cloud-ge
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -875,10 +875,10 @@ Revoke Cloud Certificate
 
 <!-- UsageSnippet language="typescript" operationID="revoke_certificate" method="post" path="/v2/migrate/cloud-runs/{run_id}/certificate/revoke" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -906,7 +906,7 @@ import { developerCloudRevokeCertificate } from "sanka-sdk/funcs/developer-cloud
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -955,10 +955,10 @@ Get Cloud Run
 
 <!-- UsageSnippet language="typescript" operationID="get_run" method="get" path="/v2/migrate/cloud-runs/{run_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -983,7 +983,7 @@ import { developerCloudGetRun } from "sanka-sdk/funcs/developer-cloud-get-run.js
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1029,10 +1029,10 @@ Cancel Cloud Run
 
 <!-- UsageSnippet language="typescript" operationID="cancel_run" method="post" path="/v2/migrate/cloud-runs/{run_id}/cancel" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1057,7 +1057,7 @@ import { developerCloudCancelRun } from "sanka-sdk/funcs/developer-cloud-cancel-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1103,10 +1103,10 @@ Cloud Run Events
 
 <!-- UsageSnippet language="typescript" operationID="list_events" method="get" path="/v2/migrate/cloud-runs/{run_id}/events" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1131,7 +1131,7 @@ import { developerCloudListEvents } from "sanka-sdk/funcs/developer-cloud-list-e
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1177,10 +1177,10 @@ Cloud Run Receipt
 
 <!-- UsageSnippet language="typescript" operationID="get_receipt" method="get" path="/v2/migrate/cloud-runs/{run_id}/receipt" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1205,7 +1205,7 @@ import { developerCloudGetReceipt } from "sanka-sdk/funcs/developer-cloud-get-re
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1251,10 +1251,10 @@ Cloud Run Artifacts
 
 <!-- UsageSnippet language="typescript" operationID="list_artifacts" method="get" path="/v2/migrate/cloud-runs/{run_id}/artifacts" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1279,7 +1279,7 @@ import { developerCloudListArtifacts } from "sanka-sdk/funcs/developer-cloud-lis
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1325,10 +1325,10 @@ Download Cloud Artifact
 
 <!-- UsageSnippet language="typescript" operationID="get_artifact" method="get" path="/v2/migrate/cloud-runs/{run_id}/artifacts/{name}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -1354,7 +1354,7 @@ import { developerCloudGetArtifact } from "sanka-sdk/funcs/developer-cloud-get-a
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

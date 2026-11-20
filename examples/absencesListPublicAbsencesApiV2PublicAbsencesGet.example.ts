@@ -11,10 +11,10 @@ dotenv.config();
  * npm run build && npx tsx absencesListPublicAbsencesApiV2PublicAbsencesGet.example.ts
  */
 
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function main() {

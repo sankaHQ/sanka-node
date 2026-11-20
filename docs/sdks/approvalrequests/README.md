@@ -16,10 +16,10 @@ Create Approval Request
 
 <!-- UsageSnippet language="typescript" operationID="create_approval_request_api_v2_public_approval_requests_post" method="post" path="/v2/public/approval-requests" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -51,7 +51,7 @@ import { approvalRequestsCreateApprovalRequestApiV2PublicApprovalRequestsPost } 
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -104,10 +104,10 @@ Approve Approval Request
 
 <!-- UsageSnippet language="typescript" operationID="approve_approval_request_api_v2_public_approval_requests__history_id__approve_post" method="post" path="/v2/public/approval-requests/{history_id}/approve" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -134,7 +134,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -180,10 +180,10 @@ Reject Approval Request
 
 <!-- UsageSnippet language="typescript" operationID="reject_approval_request_api_v2_public_approval_requests__history_id__reject_post" method="post" path="/v2/public/approval-requests/{history_id}/reject" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -210,7 +210,7 @@ import {
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

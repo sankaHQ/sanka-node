@@ -14,10 +14,10 @@ List Public Workflow Actions Compat
 
 <!-- UsageSnippet language="typescript" operationID="list_public_workflow_actions_compat_api_v2_public_workflows_actions_get" method="get" path="/v2/public/workflows/actions" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -40,7 +40,7 @@ import { workflowActionsListActions } from "sanka-sdk/funcs/workflow-actions-lis
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

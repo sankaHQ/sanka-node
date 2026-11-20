@@ -18,10 +18,10 @@ List Public Meters
 
 <!-- UsageSnippet language="typescript" operationID="list_public_meters_api_v2_public_meters_get" method="get" path="/v2/public/meters" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { metersList } from "sanka-sdk/funcs/meters-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -88,10 +88,10 @@ Create Public Meter
 
 <!-- UsageSnippet language="typescript" operationID="create_public_meter_api_v2_public_meters_post" method="post" path="/v2/public/meters" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -116,7 +116,7 @@ import { metersCreate } from "sanka-sdk/funcs/meters-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -162,10 +162,10 @@ Get Public Meter
 
 <!-- UsageSnippet language="typescript" operationID="get_public_meter_api_v2_public_meters__meter_id__get" method="get" path="/v2/public/meters/{meter_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -190,7 +190,7 @@ import { metersGet } from "sanka-sdk/funcs/meters-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -236,10 +236,10 @@ Update Public Meter
 
 <!-- UsageSnippet language="typescript" operationID="update_public_meter_api_v2_public_meters__meter_id__put" method="put" path="/v2/public/meters/{meter_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { metersUpdate } from "sanka-sdk/funcs/meters-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -312,10 +312,10 @@ Delete Public Meter
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_meter_api_v2_public_meters__meter_id__delete" method="delete" path="/v2/public/meters/{meter_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { metersDelete } from "sanka-sdk/funcs/meters-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

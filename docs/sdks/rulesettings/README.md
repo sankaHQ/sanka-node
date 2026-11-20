@@ -25,10 +25,10 @@ List Public Approval Rules
 
 <!-- UsageSnippet language="typescript" operationID="list_public_approval_rules_api_v2_public_approval_rules_get" method="get" path="/v2/public/approval-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -51,7 +51,7 @@ import { ruleSettingsListPublicApprovalRulesApiV2PublicApprovalRulesGet } from "
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -95,10 +95,10 @@ Upsert Public Approval Rule
 
 <!-- UsageSnippet language="typescript" operationID="upsert_public_approval_rule_api_v2_public_approval_rules_post" method="post" path="/v2/public/approval-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -125,7 +125,7 @@ import { ruleSettingsUpsertPublicApprovalRuleApiV2PublicApprovalRulesPost } from
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -173,10 +173,10 @@ Get Public Approval Rule Options
 
 <!-- UsageSnippet language="typescript" operationID="get_public_approval_rule_options_api_v2_public_approval_rules_options_get" method="get" path="/v2/public/approval-rules/options" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -199,7 +199,7 @@ import { ruleSettingsGetPublicApprovalRuleOptionsApiV2PublicApprovalRulesOptions
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -243,10 +243,10 @@ Delete Public Approval Rule
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_approval_rule_api_v2_public_approval_rules__rule_id__delete" method="delete" path="/v2/public/approval-rules/{rule_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -271,7 +271,7 @@ import { ruleSettingsDeletePublicApprovalRuleApiV2PublicApprovalRulesRuleIdDelet
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -317,10 +317,10 @@ List Public Lock Rules
 
 <!-- UsageSnippet language="typescript" operationID="list_public_lock_rules_api_v2_public_lock_rules_get" method="get" path="/v2/public/lock-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -343,7 +343,7 @@ import { ruleSettingsListPublicLockRulesApiV2PublicLockRulesGet } from "sanka-sd
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -387,10 +387,10 @@ Upsert Public Lock Rule
 
 <!-- UsageSnippet language="typescript" operationID="upsert_public_lock_rule_api_v2_public_lock_rules_post" method="post" path="/v2/public/lock-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -417,7 +417,7 @@ import { ruleSettingsUpsertPublicLockRuleApiV2PublicLockRulesPost } from "sanka-
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -465,10 +465,10 @@ Get Public Lock Rule Options
 
 <!-- UsageSnippet language="typescript" operationID="get_public_lock_rule_options_api_v2_public_lock_rules_options_get" method="get" path="/v2/public/lock-rules/options" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -491,7 +491,7 @@ import { ruleSettingsGetPublicLockRuleOptionsApiV2PublicLockRulesOptionsGet } fr
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -535,10 +535,10 @@ Delete Public Lock Rule
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_lock_rule_api_v2_public_lock_rules__rule_id__delete" method="delete" path="/v2/public/lock-rules/{rule_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -563,7 +563,7 @@ import { ruleSettingsDeletePublicLockRuleApiV2PublicLockRulesRuleIdDelete } from
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -609,10 +609,10 @@ List Public Delivery Rules
 
 <!-- UsageSnippet language="typescript" operationID="list_public_delivery_rules_api_v2_public_delivery_rules_get" method="get" path="/v2/public/delivery-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -635,7 +635,7 @@ import { ruleSettingsListPublicDeliveryRulesApiV2PublicDeliveryRulesGet } from "
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -679,10 +679,10 @@ Upsert Public Delivery Rule
 
 <!-- UsageSnippet language="typescript" operationID="upsert_public_delivery_rule_api_v2_public_delivery_rules_post" method="post" path="/v2/public/delivery-rules" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -709,7 +709,7 @@ import { ruleSettingsUpsertPublicDeliveryRuleApiV2PublicDeliveryRulesPost } from
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -757,10 +757,10 @@ Get Public Delivery Rule Options
 
 <!-- UsageSnippet language="typescript" operationID="get_public_delivery_rule_options_api_v2_public_delivery_rules_options_get" method="get" path="/v2/public/delivery-rules/options" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -783,7 +783,7 @@ import { ruleSettingsGetPublicDeliveryRuleOptionsApiV2PublicDeliveryRulesOptions
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -827,10 +827,10 @@ Delete Public Delivery Rule
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_delivery_rule_api_v2_public_delivery_rules__rule_id__delete" method="delete" path="/v2/public/delivery-rules/{rule_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -855,7 +855,7 @@ import { ruleSettingsDeletePublicDeliveryRuleApiV2PublicDeliveryRulesRuleIdDelet
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

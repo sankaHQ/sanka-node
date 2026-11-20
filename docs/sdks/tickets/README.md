@@ -20,10 +20,10 @@ List Public Tickets
 
 <!-- UsageSnippet language="typescript" operationID="list_public_tickets_api_v2_public_tickets_get" method="get" path="/v2/public/tickets" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -46,7 +46,7 @@ import { ticketsList } from "sanka-sdk/funcs/tickets-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -90,10 +90,10 @@ Create Public Ticket
 
 <!-- UsageSnippet language="typescript" operationID="create_public_ticket_api_v2_public_tickets_post" method="post" path="/v2/public/tickets" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -118,7 +118,7 @@ import { ticketsCreate } from "sanka-sdk/funcs/tickets-create.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -164,10 +164,10 @@ List Public Ticket Pipelines
 
 <!-- UsageSnippet language="typescript" operationID="list_public_ticket_pipelines_api_v2_public_tickets_pipelines_get" method="get" path="/v2/public/tickets/pipelines" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -190,7 +190,7 @@ import { ticketsListPipelines } from "sanka-sdk/funcs/tickets-list-pipelines.js"
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -234,10 +234,10 @@ Get Public Ticket
 
 <!-- UsageSnippet language="typescript" operationID="get_public_ticket_api_v2_public_tickets__ticket_id__get" method="get" path="/v2/public/tickets/{ticket_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -262,7 +262,7 @@ import { ticketsGet } from "sanka-sdk/funcs/tickets-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -308,10 +308,10 @@ Update Public Ticket
 
 <!-- UsageSnippet language="typescript" operationID="update_public_ticket_api_v2_public_tickets__ticket_id__put" method="put" path="/v2/public/tickets/{ticket_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -337,7 +337,7 @@ import { ticketsUpdate } from "sanka-sdk/funcs/tickets-update.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -384,10 +384,10 @@ Delete Public Ticket
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_ticket_api_v2_public_tickets__ticket_id__delete" method="delete" path="/v2/public/tickets/{ticket_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -412,7 +412,7 @@ import { ticketsDelete } from "sanka-sdk/funcs/tickets-delete.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -458,10 +458,10 @@ Update Public Ticket Status
 
 <!-- UsageSnippet language="typescript" operationID="update_public_ticket_status_api_v2_public_tickets__ticket_id__status_patch" method="patch" path="/v2/public/tickets/{ticket_id}/status" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -486,7 +486,7 @@ import { ticketsUpdateStatus } from "sanka-sdk/funcs/tickets-update-status.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

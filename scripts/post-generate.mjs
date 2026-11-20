@@ -8,8 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoDir = path.resolve(__dirname, "..");
 
-const rootFiles = ["README.md", "USAGE.md"];
-const exampleFiles = ["examples/aiEnrich.example.ts"];
+// The npm tarball ships neither docs/ nor FUNCTIONS.md, and npm does not
+// resolve relative README links, so README links point at GitHub.
+const repoBlobUrl = "https://github.com/sankaHQ/sanka-node/blob/main/";
+// npm shows a README only up to 65,536 characters; keep a margin.
+const readmeCharBudget = 60000;
 
 const entrypoint = `/*
  * Custom Sanka entrypoint layered on top of the generated Speakeasy client.
@@ -30,9 +33,68 @@ const readmeHeader = `# sanka-sdk
 
 Official Node.js and TypeScript SDK for Sanka's hosted API and local migration lifecycle.
 
+[Node SDK guide](https://sanka.com/docs/developers/sdk-node/) · [Authentication](https://sanka.com/docs/developers/authentication/) · [Developer documentation](https://sanka.com/docs/developers/) · API base URL \`https://api.sanka.com\`
+
 [![Built by Speakeasy](https://img.shields.io/badge/Built_by-SPEAKEASY-374151?style=for-the-badge&labelColor=f3f4f6)](https://www.speakeasy.com/?utm_source=sanka-sdk&utm_campaign=typescript)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-1f6feb?style=for-the-badge)](LICENSE)
 `;
+
+const whoamiExample = `\`\`\`typescript
+import Sanka from "sanka-sdk";
+
+// With no apiKey, the client reads SANKA_API_KEY from the environment.
+const sanka = new Sanka({
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
+});
+
+async function run() {
+  const identity = await sanka.publicAuth.getCurrentIdentity();
+
+  console.log(identity);
+}
+
+run();
+\`\`\``;
+
+const authenticationReadme = `## Authentication
+
+Every request needs a Sanka API key. Create one as described in [Authentication](https://sanka.com/docs/developers/authentication/) and store it as \`SANKA_API_KEY\`.
+
+| Option   | Type | Scheme      | Environment variable |
+| -------- | ---- | ----------- | -------------------- |
+| \`apiKey\` | http | HTTP Bearer | \`SANKA_API_KEY\`      |
+
+\`new Sanka()\` reads \`SANKA_API_KEY\` when you do not pass \`apiKey\`. The older \`bearerAuth\` option and \`SANKA_BEARER_AUTH\` variable still work: an option you pass wins over the environment, and \`SANKA_API_KEY\` wins over \`SANKA_BEARER_AUTH\`.
+
+${whoamiExample}
+
+A missing or invalid key fails with HTTP 401, thrown as \`errors.ErrorEnvelope\` (see [Error Handling](#error-handling)).`;
+
+const standaloneReadme = `## Standalone functions
+
+Every method above is also a standalone function for browser and serverless bundles, where unused code is tree-shaken away. A function's name is the resource property followed by the method name, it is imported from \`sanka-sdk/funcs/<kebab-case-name>.js\`, and it takes a \`SankaCore\` client. \`SankaCore\` takes the key as \`bearerAuth\` and reads only the older \`SANKA_BEARER_AUTH\` from the environment, so pass the key explicitly:
+
+\`\`\`typescript
+import { SankaCore } from "sanka-sdk/core.js";
+import { publicAuthGetCurrentIdentity } from "sanka-sdk/funcs/public-auth-get-current-identity.js";
+
+const sanka = new SankaCore({
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await publicAuthGetCurrentIdentity(sanka);
+  if (res.ok) {
+    console.log(res.value);
+  } else {
+    console.log("publicAuthGetCurrentIdentity failed:", res.error);
+  }
+}
+
+run();
+\`\`\`
+
+Each resource page linked above shows the standalone form of every method. [FUNCTIONS.md](FUNCTIONS.md) explains the \`Result\` type they return.`;
 
 const migrationReadme = [
   "<!-- Start Local Migration [local-migration] -->",
@@ -189,11 +251,33 @@ async function main() {
   await fs.writeFile(path.join(repoDir, "src/index.ts"), entrypoint);
 
   const files = [
-    ...rootFiles.map((file) => path.join(repoDir, file)),
-    ...exampleFiles.map((file) => path.join(repoDir, file)),
+    ...["README.md", "USAGE.md", "FUNCTIONS.md"].map((file) => path.join(repoDir, file)),
+    ...(await listFiles(path.join(repoDir, "docs"), [".md"])),
+    ...(await listFiles(path.join(repoDir, "examples"), [".ts", ".md", ".env.template"])),
   ];
 
   await Promise.all(files.map(patchFile));
+}
+
+async function listFiles(dir, extensions) {
+  let entries;
+  try {
+    entries = await fs.readdir(dir, { withFileTypes: true });
+  } catch (error) {
+    if (error?.code === "ENOENT") return [];
+    throw error;
+  }
+
+  const files = [];
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name !== "node_modules") files.push(...(await listFiles(fullPath, extensions)));
+    } else if (extensions.some((extension) => entry.name.endsWith(extension))) {
+      files.push(fullPath);
+    }
+  }
+  return files;
 }
 
 async function patchFile(filePath) {
@@ -209,17 +293,10 @@ async function patchFile(filePath) {
 
   next = next.replaceAll("sanka-sdk-speakeasy", "sanka-sdk");
   next = next.replaceAll("<UNSET>", "sanka-sdk");
+  next = filePath.endsWith(".md") ? mapCodeBlocks(next, useApiKey) : useApiKey(next);
 
-  if (path.basename(filePath) === "README.md" && path.dirname(filePath) === repoDir) {
+  if (filePath === path.join(repoDir, "README.md")) {
     next = patchRootReadme(next);
-  }
-
-  if (path.basename(filePath) === "USAGE.md") {
-    next = patchUsageSnippet(next);
-  }
-
-  if (path.basename(filePath) === "aiEnrich.example.ts") {
-    next = patchUsageSnippet(next);
   }
 
   if (next !== original) {
@@ -227,10 +304,135 @@ async function patchFile(filePath) {
   }
 }
 
+// Users read one name for the key: `apiKey` and SANKA_API_KEY.
+function useApiKey(code) {
+  const next = code
+    .replaceAll("SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH", "SANKA_API_KEY")
+    .replaceAll("SANKA_BEARER_AUTH", "SANKA_API_KEY")
+    .replaceAll("your_bearerauth_here", "your_api_key_here");
+
+  // SankaCore has no apiKey alias, so standalone snippets keep `bearerAuth`.
+  if (next.includes("SankaCore")) return next;
+
+  return next
+    .replaceAll('import { Sanka } from "sanka-sdk";', 'import Sanka from "sanka-sdk";')
+    .replace(/\b(?:publicOAuthOrJWTAuth|bearerAuth)(?=:)/g, "apiKey");
+}
+
+const fencePattern = /(^[ \t]*```[^\n]*\n[\s\S]*?^[ \t]*```[^\n]*$)/gm;
+
+function mapCodeBlocks(markdown, fn) {
+  return markdown
+    .split(fencePattern)
+    .map((part, index) => (index % 2 === 1 ? part.replace(/^([^\n]*\n)([\s\S]*?)(^[ \t]*```[^\n]*)$/m, (_, open, body, close) => open + fn(body) + close) : part))
+    .join("");
+}
+
+function mapProse(markdown, fn) {
+  return markdown
+    .split(fencePattern)
+    .map((part, index) => (index % 2 === 0 ? fn(part) : part))
+    .join("");
+}
+
+function absoluteLinks(markdown) {
+  return mapProse(markdown, (prose) =>
+    prose.replace(
+      /\]\((?!https?:\/\/|#|mailto:)(?:\.\/)?([^)\s]+)\)/g,
+      (_, target) => `](${repoBlobUrl}${target})`,
+    ),
+  );
+}
+
+function replaceSection(markdown, id, body) {
+  const pattern = new RegExp(
+    `(<!-- Start [^\\n]*?\\[${id}\\] -->\\n)[\\s\\S]*?(\\n?<!-- End [^\\n]*?\\[${id}\\] -->)`,
+  );
+  return markdown.replace(pattern, (_, start, end) => `${start}${body}\n${end.trimStart()}`);
+}
+
+function sectionBody(markdown, id) {
+  const pattern = new RegExp(
+    `<!-- Start [^\\n]*?\\[${id}\\] -->\\n([\\s\\S]*?)<!-- End [^\\n]*?\\[${id}\\] -->`,
+  );
+  return markdown.match(pattern)?.[1] ?? "";
+}
+
+// Reads Speakeasy's operations list, or the compact list rendered below.
+function parseOperations(body) {
+  const resources = [];
+  for (const line of body.split("\n")) {
+    const heading = line.match(/^### \[([^\]]+)\]\(([^)]+)\)/);
+    if (heading) {
+      resources.push({ name: heading[1], link: heading[2], methods: [] });
+      continue;
+    }
+
+    const method = line.match(/^\* (?:\[~~([^\]~]+)~~\]\([^)]*\)|\[([^\]]+)\]\([^)]*\)|`([^`]+)`) - (.*)$/);
+    if (method && resources.length > 0) {
+      let description = method[4];
+      const deprecated =
+        method[1] !== undefined || /(?: :warning: \*\*Deprecated\*\*| \(deprecated\))$/.test(description);
+      description = description.replace(/(?: :warning: \*\*Deprecated\*\*| \(deprecated\))$/, "");
+      resources.at(-1).methods.push({
+        name: method[1] ?? method[2] ?? method[3],
+        description,
+        deprecated,
+      });
+    }
+  }
+  return resources;
+}
+
+function clientProperty(resourceName) {
+  return resourceName
+    .split(".")
+    .map((part) => part.charAt(0).toLowerCase() + part.slice(1))
+    .join(".");
+}
+
+function renderOperations(resources, { withMethods }) {
+  const intro = `## Available Resources and Operations
+
+Each resource is a property of the client: \`sanka.publicAuth.getCurrentIdentity()\` calls \`GET /v2/public/auth/whoami\`. Each resource links to its page on GitHub with the parameters, response type and an example for every method. The installed package also ships the typed source in \`src/sdk/\`.
+`;
+
+  if (!withMethods) {
+    const rows = resources.map(
+      (resource) =>
+        `| [${resource.name}](${resource.link}) | \`sanka.${clientProperty(resource.name)}\` | ${resource.methods.length} |`,
+    );
+    return `${intro}
+| Resource | Client property | Methods |
+| -------- | --------------- | ------- |
+${rows.join("\n")}`;
+  }
+
+  const blocks = resources.map((resource) => {
+    const methods = resource.methods.map(
+      (method) => `* \`${method.name}\` - ${method.description}${method.deprecated ? " (deprecated)" : ""}`,
+    );
+    return `### [${resource.name}](${resource.link}): \`sanka.${clientProperty(resource.name)}\`
+
+${methods.join("\n")}`;
+  });
+
+  return `${intro}
+<details open>
+<summary>Available methods</summary>
+
+${blocks.join("\n\n")}
+
+</details>`;
+}
+
 function patchRootReadme(content) {
   let next = content;
-  const cloudLink = "[Developer Cloud release candidate](docs/developer-cloud.md)";
-  if (!next.includes(cloudLink)) next += `\n\n${cloudLink}: bounded execution, Repair, certificates and Fleet.\n`;
+
+  const cloudLinkText = "[Developer Cloud release candidate](";
+  if (!next.includes(cloudLinkText)) {
+    next += `\n\n${cloudLinkText}docs/developer-cloud.md): bounded execution, Repair, certificates and Fleet.\n`;
+  }
   next = next.replace(
     /\n<!-- Start Local Migration \[local-migration\] -->[\s\S]*?<!-- End Local Migration \[local-migration\] -->\n*/m,
     "\n",
@@ -267,23 +469,7 @@ The official Node.js and TypeScript SDK for Sanka's hosted API and local migrati
 
 ### Example
 
-\`\`\`typescript
-import Sanka from "sanka-sdk";
-
-const sanka = new Sanka({
-  apiKey: process.env["SANKA_API_KEY"] ?? "",
-});
-
-async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  });
-
-  console.log(result);
-}
-
-run();
-\`\`\`
+${whoamiExample}
 <!-- End SDK Example Usage [usage] -->`,
   );
   next = next.replace(
@@ -291,54 +477,37 @@ run();
     "<!-- End SDK Example Usage [usage] -->\n\n" + migrationReadme,
   );
 
-  next = next.replace(
-    /To authenticate with the API the `[^`]+` parameter must be set when initializing the SDK client instance\. For example:[\s\S]*?run\(\);\n\n\`\`\`/m,
-    `To authenticate with the API the \`apiKey\` parameter must be set when initializing the SDK client instance. For example:
-\`\`\`typescript
-import Sanka from "sanka-sdk";
+  next = replaceSection(next, "security", authenticationReadme);
+  next = replaceSection(next, "standalone-funcs", standaloneReadme);
 
-const sanka = new Sanka({
-  apiKey: process.env["SANKA_API_KEY"] ?? "",
-});
+  const defaultServer = "Requests go to `https://api.sanka.com` by default.";
+  if (!next.includes(defaultServer)) {
+    next = next.replace("## Server Selection\n", `## Server Selection\n\n${defaultServer}\n`);
+  }
 
-async function run() {
-  const result = await sanka.ai.enrich({
-    objectType: "<value>",
-  });
+  const resources = parseOperations(sectionBody(next, "operations"));
+  if (resources.length === 0) {
+    throw new Error("README.md: found no resources in the operations section");
+  }
 
-  console.log(result);
-}
-
-run();
-
-\`\`\``,
+  let readme = absoluteLinks(
+    replaceSection(next, "operations", renderOperations(resources, { withMethods: true })),
   );
+  if (readme.length > readmeCharBudget) {
+    console.warn(
+      `README.md has ${readme.length} characters with every method listed; listing resources only.`,
+    );
+    readme = absoluteLinks(
+      replaceSection(next, "operations", renderOperations(resources, { withMethods: false })),
+    );
+  }
+  if (readme.length > readmeCharBudget) {
+    throw new Error(
+      `README.md has ${readme.length} characters; npm cuts READMEs at 65,536, so keep it under ${readmeCharBudget}.`,
+    );
+  }
 
-  next = next.replace(
-    /\| `publicOAuthOrJWTAuth` \| http \| HTTP Bearer \| `SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH` \|/,
-    "| `apiKey` | http | HTTP Bearer | `SANKA_API_KEY` |",
-  );
-  next = next.replace(
-    /\| `bearerAuth` \| http \| HTTP Bearer \| `SANKA_BEARER_AUTH` \|/,
-    "| `apiKey` | http | HTTP Bearer | `SANKA_API_KEY` |",
-  );
-
-  return next;
-}
-
-function patchUsageSnippet(content) {
-  let next = content;
-
-  next = next.replaceAll(
-    'import { Sanka } from "sanka-sdk";',
-    'import Sanka from "sanka-sdk";',
-  );
-  next = next.replaceAll("publicOAuthOrJWTAuth", "apiKey");
-  next = next.replaceAll("bearerAuth", "apiKey");
-  next = next.replaceAll("SANKA_PUBLIC_O_AUTH_OR_JWT_AUTH", "SANKA_API_KEY");
-  next = next.replaceAll("SANKA_BEARER_AUTH", "SANKA_API_KEY");
-
-  return next;
+  return readme;
 }
 
 await main();

@@ -18,10 +18,10 @@ List Public Tasks
 
 <!-- UsageSnippet language="typescript" operationID="list_public_tasks_api_v2_public_tasks_get" method="get" path="/v2/public/tasks" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -44,7 +44,7 @@ import { tasksListPublicTasksApiV2PublicTasksGet } from "sanka-sdk/funcs/tasks-l
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -88,10 +88,10 @@ Create Public Task
 
 <!-- UsageSnippet language="typescript" operationID="create_public_task_api_v2_public_tasks_post" method="post" path="/v2/public/tasks" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -116,7 +116,7 @@ import { tasksCreatePublicTaskApiV2PublicTasksPost } from "sanka-sdk/funcs/tasks
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -162,10 +162,10 @@ Get Public Task
 
 <!-- UsageSnippet language="typescript" operationID="get_public_task_api_v2_public_tasks__task_id__get" method="get" path="/v2/public/tasks/{task_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -190,7 +190,7 @@ import { tasksGetPublicTaskApiV2PublicTasksTaskIdGet } from "sanka-sdk/funcs/tas
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -236,10 +236,10 @@ Update Public Task
 
 <!-- UsageSnippet language="typescript" operationID="update_public_task_api_v2_public_tasks__task_id__put" method="put" path="/v2/public/tasks/{task_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { tasksUpdatePublicTaskApiV2PublicTasksTaskIdPut } from "sanka-sdk/funcs/
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -312,10 +312,10 @@ Delete Public Task
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_task_api_v2_public_tasks__task_id__delete" method="delete" path="/v2/public/tasks/{task_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -340,7 +340,7 @@ import { tasksDeletePublicTaskApiV2PublicTasksTaskIdDelete } from "sanka-sdk/fun
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

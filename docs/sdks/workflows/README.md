@@ -23,10 +23,10 @@ List Public Workflows
 
 <!-- UsageSnippet language="typescript" operationID="list_public_workflows_api_v2_public_workflows_get" method="get" path="/v2/public/workflows" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -49,7 +49,7 @@ import { workflowsList } from "sanka-sdk/funcs/workflows-list.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -93,10 +93,10 @@ Create Public Workflow
 
 <!-- UsageSnippet language="typescript" operationID="create_public_workflow_api_v2_public_workflows_post" method="post" path="/v2/public/workflows" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -121,7 +121,7 @@ import { workflowsCreateOrUpdate } from "sanka-sdk/funcs/workflows-create-or-upd
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -167,10 +167,10 @@ Get Public Workflow
 
 <!-- UsageSnippet language="typescript" operationID="get_public_workflow_api_v2_public_workflows__workflow_id__get" method="get" path="/v2/public/workflows/{workflow_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -195,7 +195,7 @@ import { workflowsGet } from "sanka-sdk/funcs/workflows-get.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -241,10 +241,10 @@ Update Public Workflow
 
 <!-- UsageSnippet language="typescript" operationID="update_public_workflow_api_v2_public_workflows__workflow_id__patch" method="patch" path="/v2/public/workflows/{workflow_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -270,7 +270,7 @@ import { workflowsUpdatePublicWorkflowApiV2PublicWorkflowsWorkflowIdPatch } from
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -317,10 +317,10 @@ Delete Public Workflow
 
 <!-- UsageSnippet language="typescript" operationID="delete_public_workflow_api_v2_public_workflows__workflow_id__delete" method="delete" path="/v2/public/workflows/{workflow_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -345,7 +345,7 @@ import { workflowsDeletePublicWorkflowApiV2PublicWorkflowsWorkflowIdDelete } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -391,10 +391,10 @@ Run Public Workflow
 
 <!-- UsageSnippet language="typescript" operationID="run_public_workflow_api_v2_public_workflows__workflow_id__run_post" method="post" path="/v2/public/workflows/{workflow_id}/run" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -419,7 +419,7 @@ import { workflowsRunByRef } from "sanka-sdk/funcs/workflows-run-by-ref.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -469,10 +469,10 @@ definition digest. Only advertised shared templates can be planned.
 
 <!-- UsageSnippet language="typescript" operationID="plan_public_workflow_template_api_v2_public_workflows_templates_plan_post" method="post" path="/v2/public/workflows/templates/plan" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -501,7 +501,7 @@ import { workflowsPlanTemplate } from "sanka-sdk/funcs/workflows-plan-template.j
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -554,10 +554,10 @@ original committed definition digest even if a later native edit changed it.
 
 <!-- UsageSnippet language="typescript" operationID="use_public_workflow_template_api_v2_public_workflows_templates_use_post" method="post" path="/v2/public/workflows/templates/use" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -585,7 +585,7 @@ import { workflowsUseTemplate } from "sanka-sdk/funcs/workflows-use-template.js"
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -637,10 +637,10 @@ operations are advertised; this response does not prove workflow execution.
 
 <!-- UsageSnippet language="typescript" operationID="get_public_workflow_flow_api_v2_public_workflows__workflow_id__flow_get" method="get" path="/v2/public/workflows/{workflow_id}/flow" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -665,7 +665,7 @@ import { workflowsGetFlow } from "sanka-sdk/funcs/workflows-get-flow.js";
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -714,10 +714,10 @@ updates are rejected. Retry the original plan and attempt after uncertainty.
 
 <!-- UsageSnippet language="typescript" operationID="construct_public_workflow_flow_api_v2_public_workflows__workflow_id__flow_construct_post" method="post" path="/v2/public/workflows/{workflow_id}/flow/construct" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -746,7 +746,7 @@ import { workflowsConstructFlow } from "sanka-sdk/funcs/workflows-construct-flow
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

@@ -25,7 +25,7 @@ import { absencesListPublicAbsencesApiV2PublicAbsencesGet } from "sanka-sdk/func
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {

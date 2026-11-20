@@ -14,10 +14,10 @@ Get Public Transfer History
 
 <!-- UsageSnippet language="typescript" operationID="get_public_transfer_history_api_v2_public_transfers__history_id__get" method="get" path="/v2/public/transfers/{history_id}" -->
 ```typescript
-import { Sanka } from "sanka-sdk";
+import Sanka from "sanka-sdk";
 
 const sanka = new Sanka({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  apiKey: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -42,7 +42,7 @@ import { transfersGetPublicTransferHistoryApiV2PublicTransfersHistoryIdGet } fro
 // Use `SankaCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const sanka = new SankaCore({
-  bearerAuth: process.env["SANKA_BEARER_AUTH"] ?? "",
+  bearerAuth: process.env["SANKA_API_KEY"] ?? "",
 });
 
 async function run() {
