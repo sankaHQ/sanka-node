@@ -44,7 +44,7 @@ export type DeveloperCloudCloudRunData = {
   sourceRevision?: string | null | undefined;
   status: DeveloperCloudCloudRunDataPropertiesStatus;
   workerClass: "standard-2cpu-4gib";
-  rateVersion: "developer-cloud-2026-09-07";
+  rateVersion: "developer-cloud-2026-11-20";
   runnerImage: string;
   extensionSha256: string;
   executionBudgetMs: number;
@@ -88,8 +88,8 @@ export const DeveloperCloudCloudRunData$inboundSchema: z.ZodMiniType<
       "standard-2cpu-4gib",
     ),
     rate_version: z._default(
-      types.literal("developer-cloud-2026-09-07"),
-      "developer-cloud-2026-09-07",
+      types.literal("developer-cloud-2026-11-20"),
+      "developer-cloud-2026-11-20",
     ),
     runner_image: types.string(),
     extension_sha256: types.string(),

@@ -68,7 +68,7 @@ export type DeveloperCloudCloudReceiptData = {
   sourceRevision?: string | null | undefined;
   runnerImage: string;
   extensionSha256: string;
-  rateVersion: "developer-cloud-2026-09-07";
+  rateVersion: "developer-cloud-2026-11-20";
   workerClass: "standard-2cpu-4gib";
   operation: DeveloperCloudCloudReceiptDataPropertiesOperation;
   attempts: Array<DeveloperCloudUsageAttempt>;
@@ -129,8 +129,8 @@ export const DeveloperCloudCloudReceiptData$inboundSchema: z.ZodMiniType<
     runner_image: types.string(),
     extension_sha256: types.string(),
     rate_version: z._default(
-      types.literal("developer-cloud-2026-09-07"),
-      "developer-cloud-2026-09-07",
+      types.literal("developer-cloud-2026-11-20"),
+      "developer-cloud-2026-11-20",
     ),
     worker_class: z._default(
       types.literal("standard-2cpu-4gib"),

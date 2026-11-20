@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 171da541-da80-4bd4-bbe2-f14bf09377bb
 management:
-  docChecksum: 4a3e5c1a1ba774c4cd8027ef6e2a2b96
+  docChecksum: 595841daf61f93dbb89761d85ad4dc63
   docVersion: 0.1.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
   releaseVersion: 0.1.13
   configChecksum: 58c587823b459938868bf8d7680e6301
 persistentEdits:
-  generation_id: d336a701-e2ae-485e-8d8e-cad635c335af
-  pristine_commit_hash: 6be952a7416cf31ff9396b2690cebafcfb611022
-  pristine_tree_hash: e32103a40f3ee1dcaac221a9ef12e87cbce8c957
+  generation_id: ee828ce5-601a-4d23-9d1e-03e81778061e
+  pristine_commit_hash: 69999c2ada68859070106b2183a9c02bb85c0a6d
+  pristine_tree_hash: 7b50f5ed1280200dd23200566b98346b26315367
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -867,8 +867,8 @@ trackedFiles:
     pristine_git_object: 89fe51ced99c8540298725077410f03bfad8835f
   docs/models/developer-cloud-cloud-availability-data.md:
     id: 1a6bab152360
-    last_write_checksum: sha1:0356c327a533b38b93e29d4a35383de98b08158e
-    pristine_git_object: 9dd1fe40aea2881ba62feb63664cbcaa3d4c2ce7
+    last_write_checksum: sha1:f9278193305e3c4140c183e0d9df348a5c1f7d56
+    pristine_git_object: 42ef2a4f976e00e4e3973d8572f7c500542c1d28
   docs/models/developer-cloud-cloud-certificate-api-v2-migrate-cloud-runs-run-id-certificate-get200-envelope.md:
     id: 17eda32c3eea
     last_write_checksum: sha1:93ebba09b1b768a4480999cd7f9e0e19f084f3a1
@@ -903,8 +903,8 @@ trackedFiles:
     pristine_git_object: 1f857d4d6ce09872c13d45ddb9819d7f2fb656a0
   docs/models/developer-cloud-cloud-receipt-data.md:
     id: ef3111c019e5
-    last_write_checksum: sha1:05f71ef79782a6ef23a4118ef0a10eb426572952
-    pristine_git_object: 866145fac040606de03842c5fe4ee210107ca3bc
+    last_write_checksum: sha1:6db779a1dbbd81399967ae2fa265e73b9da4fa9c
+    pristine_git_object: 0159047bec21b7952cb235e39e889df466801876
   docs/models/developer-cloud-cloud-run-artifacts-api-v2-migrate-cloud-runs-run-id-artifacts-get200-envelope.md:
     id: 158ce648c726
     last_write_checksum: sha1:f2e62a41e1a1af7d7b07d8766103ac27421add47
@@ -919,8 +919,8 @@ trackedFiles:
     pristine_git_object: 913dc8b9b113fd4f1a5210bc1ba7e226aaa3fc34
   docs/models/developer-cloud-cloud-run-data.md:
     id: fa8de2ae863f
-    last_write_checksum: sha1:99871c44a55a886e346857c5bfa343d98603ae88
-    pristine_git_object: e74857d6b5afe18f1aacc1985a42044227bb8d7e
+    last_write_checksum: sha1:944a34b28a73e8d2a909632e878e3ee61c1ffb77
+    pristine_git_object: 920e596f430874f8c83f61f0d219ca6a84ee43b5
   docs/models/developer-cloud-cloud-run-events-api-v2-migrate-cloud-runs-run-id-events-get200-envelope.md:
     id: fcb1ac4b5aac
     last_write_checksum: sha1:13e03aa53019ee762249b1939934c419400bf05b
@@ -6715,8 +6715,8 @@ trackedFiles:
     pristine_git_object: 64540ffac5a71a0fdd4598722ac6648e65005561
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:c3dd09c4977579e7217655bfa0e9ef7df536c205
-    pristine_git_object: 0ac80dd46e85899d5e587d8061ae6360b2b0fc51
+    last_write_checksum: sha1:5cf23be082f1cd77dffc38f3100d96434b8b84f2
+    pristine_git_object: efb0792b4d820d27248cbaad327ae6099961cdb8
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:34efef7138a379cbd77b0a55255e8478b8bc54f9
@@ -9027,8 +9027,8 @@ trackedFiles:
     pristine_git_object: ed4d95d59428f7388fb5bbeec7bb58e13b875d25
   src/models/developer-cloud-cloud-availability-data.ts:
     id: e7f09bb9bcbc
-    last_write_checksum: sha1:8e5623f719a1e7a45eae2bde827d7ff549a54274
-    pristine_git_object: ca1cf43b420c17e5c9c0cf8f4a81be0d927676e7
+    last_write_checksum: sha1:d315b06c22b8aa9d41c780a955e6d26c1e6022e1
+    pristine_git_object: 6483a8ed96d5a7169d07ae07c80b66f5a62a7522
   src/models/developer-cloud-cloud-certificate-api-v2-migrate-cloud-runs-run-id-certificate-get200-envelope.ts:
     id: ff1a736295c8
     last_write_checksum: sha1:7ba3615fd2d559bc3ff86e02eebacddaaa0f8814
@@ -9047,16 +9047,16 @@ trackedFiles:
     pristine_git_object: 134fa407c2c2cb630d25c9b9a389bf3d73792164
   src/models/developer-cloud-cloud-receipt-data.ts:
     id: f056e343c69e
-    last_write_checksum: sha1:2731b0a9ae33e45e26b35872e477aa320756bd3a
-    pristine_git_object: 52b041a3fad906601698e7cf64e55b14df91b2f1
+    last_write_checksum: sha1:9839d61847beea3d2120019589a16c769cef0f53
+    pristine_git_object: 48ade0a4b753a4f6b14431bd8d73480add389395
   src/models/developer-cloud-cloud-run-artifacts-api-v2-migrate-cloud-runs-run-id-artifacts-get200-envelope.ts:
     id: eb82a786ec2b
     last_write_checksum: sha1:247d2ab2d040d4d55a459f93afd9e1acb8b33c7c
     pristine_git_object: 5c50c873df222cf28968183a108b2ad349b1d095
   src/models/developer-cloud-cloud-run-data.ts:
     id: 1d163f8421e1
-    last_write_checksum: sha1:24617f33dd901007ac7fc2c519c432063aa8c890
-    pristine_git_object: c6d249ed39d37125a03a60d78b97ffd6561fecce
+    last_write_checksum: sha1:2247d11d09f5e451c31a71adc8d88a322aece09c
+    pristine_git_object: a6c5b39d42bd8bc7af5732588eb166a4874df6b6
   src/models/developer-cloud-cloud-run-events-api-v2-migrate-cloud-runs-run-id-events-get200-envelope.ts:
     id: a576e2a41c8d
     last_write_checksum: sha1:b6dc3b16a709f5c54b4d8bbc586ebf894aefb1bf
@@ -17562,7 +17562,7 @@ examples:
           fleet_id: "17f3c2a2-1085-4247-8de3-ec243548245e"
       responses:
         "200":
-          application/json: {"success": true, "data": {"id": "f8f6159b-38b3-4e1e-b1a1-65f644824f69", "workspace_id": "e8fe2638-ec1b-47d7-b847-6a40e25a93be", "request": {"items": [], "max_credits": 681584, "concurrency": 864576}, "input_sha256": "<value>", "status": "cancelling", "created_at": "2026-12-15T11:41:46.150Z", "expires_at": "2026-09-15T05:48:17.281Z", "items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "waiting_for_capacity": false, "run": {"id": "abc1d370-4a35-4921-a85d-b52bb5b67f99", "workspace_id": "2f43e985-00ec-48bd-9509-0e0fbd115385", "request": {"source_id": "208d13bb-f315-45a7-b0d0-c55ffb09703f", "source_sha256": "<value>", "max_credits": 397379, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-09-07", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 381351, "created_at": "2024-06-23T06:04:36.830Z"}}], "held_credits": 509597, "compute_credits": 298522, "premium_credits": 434355, "released_credits": 506675, "outstanding_credits": 420509}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"id": "f8f6159b-38b3-4e1e-b1a1-65f644824f69", "workspace_id": "e8fe2638-ec1b-47d7-b847-6a40e25a93be", "request": {"items": [], "max_credits": 681584, "concurrency": 864576}, "input_sha256": "<value>", "status": "cancelling", "created_at": "2026-12-15T11:41:46.150Z", "expires_at": "2026-09-15T05:48:17.281Z", "items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "waiting_for_capacity": false, "run": {"id": "abc1d370-4a35-4921-a85d-b52bb5b67f99", "workspace_id": "2f43e985-00ec-48bd-9509-0e0fbd115385", "request": {"source_id": "208d13bb-f315-45a7-b0d0-c55ffb09703f", "source_sha256": "<value>", "max_credits": 397379, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-11-20", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 381351, "created_at": "2024-06-23T06:04:36.830Z"}}], "held_credits": 509597, "compute_credits": 298522, "premium_credits": 434355, "released_credits": 506675, "outstanding_credits": 420509}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   cancel_fleet:
@@ -17586,14 +17586,14 @@ examples:
         application/json: {"item_keys": ["<value 1>", "<value 2>", "<value 3>"], "max_credits": 826806, "concurrency": 834750}
       responses:
         "201":
-          application/json: {"success": true, "data": {"id": "319aec29-8661-44ca-bee7-024d22eb152e", "workspace_id": "e0f26d4a-c424-48f7-af92-5d5aa2353fb8", "request": {"items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "request": {"source_id": "d2198386-3fbb-4a52-bc25-92bd73852cbb", "source_sha256": "<value>", "max_credits": 524688, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}}], "max_credits": 22212, "concurrency": 829791}, "input_sha256": "<value>", "status": "failed", "created_at": "2025-03-26T02:04:14.751Z", "expires_at": "2024-10-06T11:36:49.383Z", "items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "waiting_for_capacity": true, "run": {"id": "9428e4fd-abf3-450a-8b44-956f958c7f70", "workspace_id": "2c0a3850-af88-4e98-9b1f-2ff114b5d649", "request": {"source_id": "d2198386-3fbb-4a52-bc25-92bd73852cbb", "source_sha256": "<value>", "max_credits": 524688, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "succeeded", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-09-07", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 688743, "created_at": "2024-02-14T22:35:56.970Z"}}], "held_credits": 462811, "compute_credits": 560441, "premium_credits": 591476, "released_credits": 911842, "outstanding_credits": 676705}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"id": "319aec29-8661-44ca-bee7-024d22eb152e", "workspace_id": "e0f26d4a-c424-48f7-af92-5d5aa2353fb8", "request": {"items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "request": {"source_id": "d2198386-3fbb-4a52-bc25-92bd73852cbb", "source_sha256": "<value>", "max_credits": 524688, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}}], "max_credits": 22212, "concurrency": 829791}, "input_sha256": "<value>", "status": "failed", "created_at": "2025-03-26T02:04:14.751Z", "expires_at": "2024-10-06T11:36:49.383Z", "items": [{"key": "<key>", "repository": "<value>", "revision": "<value>", "waiting_for_capacity": true, "run": {"id": "9428e4fd-abf3-450a-8b44-956f958c7f70", "workspace_id": "2c0a3850-af88-4e98-9b1f-2ff114b5d649", "request": {"source_id": "d2198386-3fbb-4a52-bc25-92bd73852cbb", "source_sha256": "<value>", "max_credits": 524688, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "succeeded", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-11-20", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 688743, "created_at": "2024-02-14T22:35:56.970Z"}}], "held_credits": 462811, "compute_credits": 560441, "premium_credits": 591476, "released_credits": 911842, "outstanding_credits": 676705}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   get_availability:
     speakeasy-default-get-availability:
       responses:
         "200":
-          application/json: {"success": true, "data": {"fleet_enabled": false, "certification_enabled": false, "certificate_premium_credits": 2000, "enabled": true, "worker_class": "standard-2cpu-4gib", "credits_per_worker_minute": 100, "max_timeout_seconds": 3600, "max_source_bytes": 8388608, "verification_scope": "generated-tests-static-v1", "repair_enabled": false, "repair_premium_credits": 1000, "repair_model_policy": "bounded-patch-v1"}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"fleet_enabled": false, "certification_enabled": false, "certificate_premium_credits": 500, "enabled": true, "worker_class": "standard-2cpu-4gib", "credits_per_worker_minute": 25, "max_timeout_seconds": 3600, "max_source_bytes": 8388608, "verification_scope": "generated-tests-static-v1", "repair_enabled": false, "repair_premium_credits": 250, "repair_model_policy": "bounded-patch-v1"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   upload_source:
@@ -17624,7 +17624,7 @@ examples:
         application/json: {"source_id": "f8d446bc-7dea-407f-8c79-f838ecaf1738", "source_sha256": "<value>", "max_credits": 937965, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}
       responses:
         "201":
-          application/json: {"success": true, "data": {"id": "6890b984-e374-47ad-82c0-71dfa02cb5e2", "workspace_id": "a290013f-d576-4b66-91a9-fb55b946f07f", "request": {"source_id": "4484b803-1a85-4f1c-829f-ccdddd1450b2", "source_sha256": "<value>", "max_credits": 5363, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-09-07", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 111786, "created_at": "2025-12-05T10:39:28.995Z"}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"id": "6890b984-e374-47ad-82c0-71dfa02cb5e2", "workspace_id": "a290013f-d576-4b66-91a9-fb55b946f07f", "request": {"source_id": "4484b803-1a85-4f1c-829f-ccdddd1450b2", "source_sha256": "<value>", "max_credits": 5363, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "JPY", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-11-20", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 111786, "created_at": "2025-12-05T10:39:28.995Z"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   list_certificate_keys:
@@ -17663,7 +17663,7 @@ examples:
           run_id: "4b80b622-732b-43d6-ac78-a6673df49379"
       responses:
         "200":
-          application/json: {"success": true, "data": {"id": "430a1836-b839-404c-851a-31cf2d26b43a", "workspace_id": "be68c940-1d40-42a2-aa87-161ad56a48b6", "request": {"source_id": "e2dc975e-20e0-4794-9d8c-f6496bd5eead", "source_sha256": "<value>", "max_credits": 205176, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "USD", "input_sha256": "<value>", "status": "running", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-09-07", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 878063, "created_at": "2025-01-08T06:49:01.017Z"}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"id": "430a1836-b839-404c-851a-31cf2d26b43a", "workspace_id": "be68c940-1d40-42a2-aa87-161ad56a48b6", "request": {"source_id": "e2dc975e-20e0-4794-9d8c-f6496bd5eead", "source_sha256": "<value>", "max_credits": 205176, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "USD", "input_sha256": "<value>", "status": "running", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-11-20", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 878063, "created_at": "2025-01-08T06:49:01.017Z"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   cancel_run:
@@ -17673,7 +17673,7 @@ examples:
           run_id: "e2d669e0-af5d-4a31-a936-202054c4ff03"
       responses:
         "200":
-          application/json: {"success": true, "data": {"id": "84f9969f-8f82-4e8e-bbdd-6cc32d3f7811", "workspace_id": "2dddab6e-f578-4144-a784-ca34ab99b9e2", "request": {"source_id": "2af9b623-0135-482e-a6f6-c71136da825d", "source_sha256": "<value>", "max_credits": 774196, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "USD", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-09-07", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 275713, "created_at": "2025-01-09T21:34:35.218Z"}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"id": "84f9969f-8f82-4e8e-bbdd-6cc32d3f7811", "workspace_id": "2dddab6e-f578-4144-a784-ca34ab99b9e2", "request": {"source_id": "2af9b623-0135-482e-a6f6-c71136da825d", "source_sha256": "<value>", "max_credits": 774196, "timeout_seconds": 3600, "recipe": "drf-to-fastapi", "verification_profile": "generated-tests-static-v1"}, "billing_currency": "USD", "input_sha256": "<value>", "status": "cancelling", "worker_class": "standard-2cpu-4gib", "rate_version": "developer-cloud-2026-11-20", "runner_image": "<value>", "extension_sha256": "<value>", "execution_budget_ms": 275713, "created_at": "2025-01-09T21:34:35.218Z"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   list_events:
@@ -17696,7 +17696,7 @@ examples:
           run_id: "e4cc9eb0-13a3-4c05-a6ab-3d3cccbf7b0c"
       responses:
         "200":
-          application/json: {"success": true, "data": {"run_id": "84c98535-8475-4002-913d-6c534dac8a44", "workspace_id": "49dc8502-08ce-4100-9f9f-ad23bab48423", "input_sha256": "<value>", "source_sha256": "<value>", "runner_image": "<value>", "extension_sha256": "<value>", "rate_version": "developer-cloud-2026-09-07", "worker_class": "standard-2cpu-4gib", "operation": "developer_cloud_compute", "attempts": [], "held_credits": 520856, "compute_credits": 907478, "premium_credits": 0, "released_credits": 461036, "billing_currency": "JPY", "outcome": "succeeded", "verification_scope": "generated-tests-static-v1", "artifacts": [{"name": "output.zip", "sha256": "<value>", "size_bytes": 883843, "expires_at": "2026-11-20T05:57:01.684Z"}], "settled_at": "2025-09-05T17:42:35.137Z"}, "meta": {"ctx_id": "<id>"}}
+          application/json: {"success": true, "data": {"run_id": "84c98535-8475-4002-913d-6c534dac8a44", "workspace_id": "49dc8502-08ce-4100-9f9f-ad23bab48423", "input_sha256": "<value>", "source_sha256": "<value>", "runner_image": "<value>", "extension_sha256": "<value>", "rate_version": "developer-cloud-2026-11-20", "worker_class": "standard-2cpu-4gib", "operation": "developer_cloud_compute", "attempts": [], "held_credits": 520856, "compute_credits": 907478, "premium_credits": 0, "released_credits": 461036, "billing_currency": "JPY", "outcome": "succeeded", "verification_scope": "generated-tests-static-v1", "artifacts": [{"name": "output.zip", "sha256": "<value>", "size_bytes": 883843, "expires_at": "2026-11-20T05:57:01.684Z"}], "settled_at": "2025-09-05T17:42:35.137Z"}, "meta": {"ctx_id": "<id>"}}
         "401":
           application/json: {"success": false, "error": {"code": "<value>", "message": "<value>"}, "meta": {"ctx_id": "<id>"}}
   list_artifacts:
